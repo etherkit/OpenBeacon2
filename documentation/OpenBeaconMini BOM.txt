@@ -1,0 +1,46 @@
+OpenBeaconMini BOM
+Etherkit
+2 Dec 2012
+
+| Part (marking)                  | Qty  | Ref                            | P/N
+======================================================================================================
+Capacitors
+| 100n                              9      C5, C6, C7, C8, C9, C10, C11
+                                           C12, C13
+
+Diodes
+| Red LED (5 mm)                    1      D1
+
+Transistors
+| 2N4401                            3      Q1, Q3, Q5        
+| 2N4403                            1      Q2        
+| 2N7000                            1      Q4        
+
+Resistors (0.25 W, unless specified, tolerance band omitted below)
+| 10                                1      R15       
+| 47                                2      R4, R16        
+| 330                               1      R11       
+| 1k                                2      R8, R13        
+| 4.7k                              1      R14       
+| 10k                               2      R1, R2        
+| 22k                               2      R7, R10        
+| 150k                              4      R3, R6, R9, R12        
+
+Inductors
+| FT37-43 10T                       1      L2        
+
+ICs
+| 78L05                             1      U1        
+| ATTINY45-20PU                     1      U2        
+
+Frequency Dependent Components
+            |C1       |C2         |C3/C4   |C14/C16  |C15  |L1     |L3/L4      |R5  |X1
+20 meters   |2.2 C0G  |20 (red)   |22 C0G  |220      |390  |4.7 u  |T37-2 12T  |1k  |14.140 MHz
+
+Miscellaneous
+| Red Magnet Wire, 28 AWG (feet)    4
+| 5 mm Manhattan pad                27
+| DIP-8 Manhattan pad               1
+| Copper clad substrate
+  85 mm x 50 mm                     1   
+
