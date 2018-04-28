@@ -36,6 +36,8 @@
 #ifndef MODES_H_
 #define MODES_H_
 
+//#include <JTEncode.h>
+
 enum class Mode {DFCW3, DFCW6, DFCW10, DFCW120, QRSS3, QRSS6, QRSS10, QRSS120,
   CW, HELL, WSPR, JT65, JT9, JT4};
 enum class MetaMode {MORSE, MFSK};
@@ -49,24 +51,25 @@ struct ModeData
   uint8_t buffer_size;
   uint16_t tone_spacing; // In Hz / 100
   uint16_t symbol_time;  // In ms
+  uint8_t symbol_count;
 };
 
 constexpr ModeData mode_table[] =
 {
-  {Mode::DFCW3, "DFCW3", MetaMode::MORSE, 0.4, 100, 0, 0},
-  {Mode::DFCW6, "DFCW6", MetaMode::MORSE, 0.2, 100, 0, 0},
-  {Mode::DFCW10, "DFCW10", MetaMode::MORSE, 0.12, 100, 0, 0},
-  {Mode::DFCW120, "DFCW120", MetaMode::MORSE, 0.01, 100, 0, 0},
-  {Mode::QRSS3, "QRSS3", MetaMode::MORSE, 0.4, 100, 0, 0},
-  {Mode::QRSS6, "QRSS6", MetaMode::MORSE, 0.2, 100, 0, 0},
-  {Mode::QRSS10, "QRSS10", MetaMode::MORSE, 0.12, 100, 0, 0},
-  {Mode::QRSS120, "QRSS120", MetaMode::MORSE, 0.01, 100, 0, 0},
-  {Mode::CW, "CW", MetaMode::MORSE, 25, 100, 0, 0},
-  {Mode::HELL, "Hell", MetaMode::MFSK, 3.5, 100, 0, 0},
-  {Mode::WSPR, "WSPR", MetaMode::MFSK, 1.75, 163, 146, 683},
-  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 372},
-  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 174, 576},
-  {Mode::JT4, "JT4", MetaMode::MFSK, 1.75, 200, 437, 229}
+  {Mode::DFCW3, "DFCW3", MetaMode::MORSE, 0.4, 100, 0, 0, 0},
+  {Mode::DFCW6, "DFCW6", MetaMode::MORSE, 0.2, 100, 0, 0, 0},
+  {Mode::DFCW10, "DFCW10", MetaMode::MORSE, 0.12, 100, 0, 0, 0},
+  {Mode::DFCW120, "DFCW120", MetaMode::MORSE, 0.01, 100, 0, 0, 0},
+  {Mode::QRSS3, "QRSS3", MetaMode::MORSE, 0.4, 100, 0, 0, 0},
+  {Mode::QRSS6, "QRSS6", MetaMode::MORSE, 0.2, 100, 0, 0, 0},
+  {Mode::QRSS10, "QRSS10", MetaMode::MORSE, 0.12, 100, 0, 0, 0},
+  {Mode::QRSS120, "QRSS120", MetaMode::MORSE, 0.01, 100, 0, 0, 0},
+  {Mode::CW, "CW", MetaMode::MORSE, 25, 100, 0, 0, 0},
+  {Mode::HELL, "Hell", MetaMode::MFSK, 3.5, 100, 0, 0, 0},
+  {Mode::WSPR, "WSPR", MetaMode::MFSK, 1.75, 163, 146, 683, WSPR_SYMBOL_COUNT},
+  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT},
+  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 174, 576, JT9_SYMBOL_COUNT},
+  {Mode::JT4, "JT4", MetaMode::MFSK, 1.75, 200, 437, 229, JT4_SYMBOL_COUNT}
 };
 
 //constexpr ModeData mode_table[] =

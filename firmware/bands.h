@@ -38,13 +38,13 @@
 
 struct BandData
 {
-    uint8_t index;
-    char name[10];
-    uint32_t lower_limit;
-    uint32_t upper_limit;
-    uint16_t lower_v;
-    uint16_t upper_v;
-    uint32_t wspr_freq;
+  uint8_t index;
+  char name[10];
+  uint32_t lower_limit;
+  uint32_t upper_limit;
+  uint16_t lower_v;
+  uint16_t upper_v;
+  uint32_t wspr_freq;
 };
 
 constexpr BandData band_table[] =

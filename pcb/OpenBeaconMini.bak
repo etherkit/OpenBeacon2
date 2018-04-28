@@ -1442,10 +1442,6 @@ Text GLabel 5465 1240 0    50   Output ~ 0
 A2
 Text GLabel 5465 1440 0    50   Output ~ 0
 A3
-Text GLabel 5465 1640 0    50   Output ~ 0
-A4
-Text GLabel 5465 1840 0    50   Output ~ 0
-A5
 $Comp
 L BNC J6
 U 1 1 5A24B150
@@ -1488,50 +1484,44 @@ Text GLabel 4660 1240 0    50   BiDi ~ 0
 D8
 Text GLabel 4660 1440 0    50   BiDi ~ 0
 D9
-Text GLabel 4660 1640 0    50   BiDi ~ 0
-D10
-Text GLabel 4660 1840 0    50   BiDi ~ 0
-D11
 NoConn ~ 7750 5450
 NoConn ~ 8750 5250
 NoConn ~ 8150 4550
 NoConn ~ 8250 4550
 NoConn ~ 8350 4550
 $Comp
-L Conn_01x10 J8
+L Conn_01x06 J8
 U 1 1 5A24D2D9
-P 5665 1440
-F 0 "J8" H 5665 1940 50  0000 C CNN
-F 1 "ADC Inputs" H 5665 840 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x10_Pitch2.54mm" H 5665 1440 50  0001 C CNN
-F 3 "" H 5665 1440 50  0001 C CNN
-	1    5665 1440
+P 5665 1240
+F 0 "J8" H 5665 1545 50  0000 C CNN
+F 1 "ADC Inputs" H 5665 830 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 5665 1240 50  0001 C CNN
+F 3 "" H 5665 1240 50  0001 C CNN
+	1    5665 1240
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x10 J4
+L Conn_01x06 J4
 U 1 1 5A24DE6A
-P 4860 1440
-F 0 "J4" H 4860 1940 50  0000 C CNN
-F 1 "Digital IO" H 4860 840 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x10_Pitch2.54mm" H 4860 1440 50  0001 C CNN
-F 3 "" H 4860 1440 50  0001 C CNN
-	1    4860 1440
+P 4860 1240
+F 0 "J4" H 4860 1545 50  0000 C CNN
+F 1 "Digital IO" H 4860 830 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 4860 1240 50  0001 C CNN
+F 3 "" H 4860 1240 50  0001 C CNN
+	1    4860 1240
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR049
 U 1 1 5A24EC49
-P 5220 1960
-F 0 "#PWR049" H 5220 1710 50  0001 C CNN
-F 1 "GND" H 5220 1830 30  0000 C CNN
-F 2 "" H 5220 1960 50  0001 C CNN
-F 3 "" H 5220 1960 50  0001 C CNN
-	1    5220 1960
+P 5220 1600
+F 0 "#PWR049" H 5220 1350 50  0001 C CNN
+F 1 "GND" H 5220 1470 30  0000 C CNN
+F 2 "" H 5220 1600 50  0001 C CNN
+F 3 "" H 5220 1600 50  0001 C CNN
+	1    5220 1600
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5220 1140 5220 1960
 Wire Wire Line
 	5220 1140 5465 1140
 Wire Wire Line
@@ -1540,25 +1530,17 @@ Connection ~ 5220 1340
 Wire Wire Line
 	5465 1540 5220 1540
 Connection ~ 5220 1540
-Wire Wire Line
-	5465 1740 5220 1740
-Connection ~ 5220 1740
-Wire Wire Line
-	5465 1940 5220 1940
-Connection ~ 5220 1940
 $Comp
 L GND #PWR050
 U 1 1 5A24FB00
-P 4380 1965
-F 0 "#PWR050" H 4380 1715 50  0001 C CNN
-F 1 "GND" H 4380 1835 30  0000 C CNN
-F 2 "" H 4380 1965 50  0001 C CNN
-F 3 "" H 4380 1965 50  0001 C CNN
-	1    4380 1965
+P 4380 1590
+F 0 "#PWR050" H 4380 1340 50  0001 C CNN
+F 1 "GND" H 4380 1460 30  0000 C CNN
+F 2 "" H 4380 1590 50  0001 C CNN
+F 3 "" H 4380 1590 50  0001 C CNN
+	1    4380 1590
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4380 1140 4380 1965
 Wire Wire Line
 	4380 1140 4660 1140
 Wire Wire Line
@@ -1567,12 +1549,6 @@ Connection ~ 4380 1340
 Wire Wire Line
 	4660 1540 4380 1540
 Connection ~ 4380 1540
-Wire Wire Line
-	4660 1740 4380 1740
-Connection ~ 4380 1740
-Wire Wire Line
-	4660 1940 4380 1940
-Connection ~ 4380 1940
 $Comp
 L Conn_01x04 J7
 U 1 1 5A250921
@@ -1757,4 +1733,8 @@ Wire Wire Line
 Connection ~ 6090 6425
 Text Notes 6625 6570 2    70   Italic 14
 I2C Level Conversion
+Wire Wire Line
+	4380 1140 4380 1590
+Wire Wire Line
+	5220 1140 5220 1600
 $EndSCHEMATC
