@@ -42,8 +42,6 @@ constexpr uint16_t MCP4725A1_VREF = 5000UL;
 constexpr uint16_t ANALOG_REF = 3600UL; // TODO
 constexpr uint16_t PA_BIAS_FULL = 1850UL;
 
-//constexpr uint16_t TIMER_PRESCALER_DIV = 1024;
-//constexpr uint32_t TIMER_BASE_CLOCK = 32768;
 constexpr uint32_t TIMER_BASE_CLOCK = 4000000;
 constexpr uint16_t TIMER_PRESCALER_DIV = 1;
 constexpr uint16_t TIMER_FREQUENCY = 1000;
@@ -68,7 +66,7 @@ constexpr char* config_table[][2] =
   {"Callsign", "SNT7S"},
   {"Grid", "SCN85"},
   {"Power", "I25"},
-  {"TX Intv", "U6"},
+  {"TX Intv", "U0"},
   {"WPM", "U22"}
 };
 
@@ -80,10 +78,11 @@ constexpr uint8_t DEFAULT_BAND_INDEX = 0;
 constexpr MetaMode DEFAULT_METAMODE = MetaMode::MFSK;
 constexpr Mode DEFAULT_MODE = Mode::WSPR;
 constexpr bool DEFAULT_TX_LOCK = false;
+constexpr bool DEFAULT_TX_ENABLE = false;
 constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
-constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
+//constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
 constexpr TxState DEFAULT_STATE = TxState::Idle;
-constexpr uint8_t DEFAULT_TX_INTERVAL = 6;
+constexpr uint16_t DEFAULT_TX_INTERVAL = 0;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -109,9 +108,8 @@ volatile uint32_t upper_freq_limit = DEFAULT_UPPER_FREQ_LIMIT;
 volatile uint8_t band_index = DEFAULT_BAND_INDEX;
 volatile MetaMode meta_mode = DEFAULT_METAMODE;
 volatile Mode mode = DEFAULT_MODE;
-volatile bool tx_lock = DEFAULT_TX_LOCK;
 volatile DisplayMode display_mode = DEFAULT_DISPLAY_MODE;
-volatile uint16_t tx_delay = DEFAULT_TX_DELAY;
+//volatile uint16_t tx_interval = DEFAULT_TX_INTERVAL;
 volatile TxState cur_state = DEFAULT_STATE;
 volatile TxState prev_state = DEFAULT_STATE;
 volatile uint32_t cur_timer, next_event;
@@ -135,14 +133,19 @@ SettingType cur_setting_type = SettingType::Uint;
 uint8_t cur_setting_selected = 0;
 std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
-uint32_t next_tx;
+uint32_t next_tx = UINT32_MAX;
+char next_tx_time[14];
 uint32_t time_sync_expire, next_time_sync;
 uint32_t initial_time_sync = 0;
 //bool time_sync_request = false;
-uint8_t tx_interval = DEFAULT_TX_INTERVAL;
-uint8_t tx_buffer[255];
+uint8_t mfsk_buffer[255];
+std::string wspr_buffer;
+char tx_buffer_1[81];
 uint8_t cur_symbol_count;
 uint16_t cur_symbol_time;
+uint16_t cur_tx_interval_mult;
+bool tx_lock = DEFAULT_TX_LOCK;
+bool tx_enable = DEFAULT_TX_ENABLE;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -210,47 +213,6 @@ void startTimer(int frequencyHz)
 
   TC->CTRLA.reg |= TC_CTRLA_ENABLE;
   while (TC->SYNCBUSY.bit.ENABLE == 1);
-  
-//  GCLK->CLKCTRL.reg = (uint16_t)(GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK3 | GCLK_CLKCTRL_ID(GCM_TC4_TC5));
-//  //GCLK->CLKCTRL.reg = (uint16_t) (GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK1 | GCLK_CLKCTRL_ID(GCM_TCC2_TC3));
-//  //GCLK->CLKCTRL.reg = (uint16_t) (GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK0 | GCLK_CLKCTRL_ID(GCM_TCC2_TC3));
-//  //REG_GCLK_CLKCTRL = (uint16_t) (GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK0 | GCLK_CLKCTRL_ID (GCM_TCC2_TC3));
-//  while (GCLK->STATUS.bit.SYNCBUSY == 1);
-//
-//  TcCount16* TC = (TcCount16*) TC5;
-//
-//  TC->CTRLA.reg &= ~TC_CTRLA_ENABLE;
-//
-//  // Use the 16-bit timer
-//  TC->CTRLA.reg |= TC_CTRLA_MODE_COUNT16;
-//  while (TC->STATUS.bit.SYNCBUSY == 1);
-//
-//  // Use match mode so that the timer counter resets when the count matches the compare register
-//  TC->CTRLA.reg |= TC_CTRLA_WAVEGEN_MFRQ;
-//  while (TC->STATUS.bit.SYNCBUSY == 1);
-//
-//  // Set prescaler to 4 to get 1 MHz clock
-//  TC->CTRLA.reg |= TC_CTRLA_PRESCALER_DIV4;
-//  while (TC->STATUS.bit.SYNCBUSY == 1);
-//
-//  // Have counter wrap around on prescaled clock
-////  TC->CTRLA.reg |= TC_CTRLA_PRESCSYNC(TC_CTRLA_PRESCSYNC_PRESC);
-////  while (TC->STATUS.bit.SYNCBUSY == 1);
-//
-//  setTimerFrequency(frequencyHz);
-//
-//  NVIC_DisableIRQ(TC5_IRQn);
-//
-//  // Enable the compare interrupt
-//  TC->INTENSET.reg = 0;
-//  TC->INTENSET.bit.MC0 = 1;
-//
-//  NVIC_ClearPendingIRQ(TC5_IRQn);
-//  NVIC_SetPriority(TC5_IRQn, 0);
-//  NVIC_EnableIRQ(TC5_IRQn);
-//
-//  TC->CTRLA.reg |= TC_CTRLA_ENABLE;
-//  while (TC->STATUS.bit.SYNCBUSY == 1);
 }
 
 constexpr unsigned long power_10(unsigned long exponent)
@@ -309,6 +271,7 @@ void initMenu()
     {
       const char* key = c.first.c_str();
       menu.addChild(key, setConfig, key);
+      //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
     }
 //    menu.addChild("PA Bias", setConfig, "PA Bias");
 //    menu.addChild("Callsign", setConfig, "Callsign");
@@ -330,16 +293,6 @@ void TCC0_Handler()
     TC->INTFLAG.bit.MC0 = 1;
   }
 }
-
-//void handleClkInput()
-//{
-//  ++clk_temp;
-//  if(clk_temp > 10)
-//  {
-//    ++cur_timer;
-//    clk_temp = 0;
-//  }
-//}
 
 // ===== Callbacks =====
 void selectMode(uint8_t sel)
@@ -378,11 +331,13 @@ void selectMode(uint8_t sel)
     break;
   case Mode::WSPR:
     mode = Mode::WSPR;
-    //memset(tx_buffer, 0, 255);
-    //jtencode.wspr_encode(cfg["Callsign"].c_str(), cfg["Grid"].c_str(), atoi(cfg["Power"].c_str()), tx_buffer);
+    memset(mfsk_buffer, 0, 255);
+    jtencode.wspr_encode(cfg["Callsign"].c_str(), cfg["Grid"].c_str(), atoi(cfg["Power"].c_str()), mfsk_buffer);
     cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
     cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
     cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+    //cur_tx_interval_mult = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
     break;
   case Mode::JT65:
     mode = Mode::JT65;
@@ -398,11 +353,12 @@ void selectMode(uint8_t sel)
 
 void setConfig(const char * key)
 {
-  //cfg[key] = "1850";
   display_mode = DisplayMode::Setting;
-  cur_setting = key;
+  cur_setting = std::string(key);
   std::string val = cfg[key];
-  switch(val[0])
+  //switch(val[0])
+  char type = val[0];
+  switch(type)
   {
   case 'U':
     cur_setting_uint = atoll(cfg[key].substr(1).c_str());
@@ -413,7 +369,7 @@ void setConfig(const char * key)
     cur_setting_type = SettingType::Int;
     break;
   case 'S':
-    cur_setting_str = cfg[key].substr(1).c_str();
+    cur_setting_str = cfg[key].substr(1);
     cur_setting_type = SettingType::Str;
     break;
   }
@@ -489,12 +445,12 @@ void setConfig(const char * key)
 //  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
 //
 //  // Clear TX buffer
-//  memset(tx_buffer, 0, 255);
+//  memset(mfsk_buffer, 0, 255);
 //  jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(), 
-//    atoi(cfg["Power"].substr(1).c_str()), tx_buffer);
-//  //jtencode.wspr_encode("NT7S", "CN85", 23, tx_buffer);
+//    atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
+//  //jtencode.wspr_encode("NT7S", "CN85", 23, mfsk_buffer);
 //  setTxState(TxState::Idle);
-//  frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+//  frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
 //  change_freq = true;
 //
 //  //morse.send("DE NT7S");
@@ -518,34 +474,21 @@ void drawOLED()
   // u8g2 draw loop
   // --------------
   u8g2.clearBuffer();          // clear the internal memory
-//  u8g2.firstPage();
-//do{
+
   if(display_mode != DisplayMode::Setting)
   {
     u8g2.setFont(u8g2_font_logisoso16_tn);
-    //u8g2.setFont(u8g2_font_6x10_mr);
     u8g2.setDrawColor(1);
     //u8g2.setFont(u8g2_font_inb19_mn);
   
     // MHz
-    yield();
+    yield(); // you need an odd number of yields or you get a strange bimodal distribution
+             // of transmit times, with half being too long
     freq = base_frequency;
-    //sprintf(freq_str, "%9lu", freq);
-//    sprintf(freq_str_1, "%3lu", freq / 1000000UL);
-//    freq %= 1000000UL;
-//    sprintf(freq_str_2, "%3lu", freq / 1000UL);
-//    freq %= 1000UL;
-//    sprintf(freq_str_3, "%3lu", freq);
 
     if(base_frequency / 1000000UL > 0)
     {
       sprintf(temp_str, "%3lu", freq / 1000000UL);
-//      for(uint8_t i = 0; i < 3; ++i)
-//      {
-//        sprintf(temp_chr, "%c", temp_str[i]);
-//        u8g2.drawGlyph(i * 9, 17, static_cast<uint16_t>(freq_str[i]));
-//      }
-//      u8g2.drawStr(0, 17, temp_str);
       zero_pad = 1;
     }
     else
@@ -559,6 +502,7 @@ void drawOLED()
       //memmove(temp_chr, temp_str + i, 1);
       sprintf(temp_chr, "%c", temp_str[i]);
       u8g2.drawStr(i * 9, 17, temp_chr);
+      yield();
     }
     freq %= 1000000UL;
     
@@ -577,13 +521,12 @@ void drawOLED()
     {
       sprintf(temp_str, "   ");
     }
-    //u8g2.drawStr(38, 20, temp_str);
-    //u8g2.drawStr(29, 17, temp_str);
     for(uint8_t i = 0; i < 3; ++i)
     {
       //memmove(temp_chr, temp_str + i, 1);
       sprintf(temp_chr, "%c", temp_str[i]);
       u8g2.drawStr(i * 9 + 29, 17, temp_chr);
+      yield();
     }
     freq %= 1000UL;
     
@@ -597,12 +540,12 @@ void drawOLED()
     {
       sprintf(temp_str, "%3lu", freq);
     }
-    //u8g2.drawStr(78, 20, temp_str);
     for(uint8_t i = 0; i < 3; ++i)
     {
       //memmove(temp_chr, temp_str + i, 1);
       sprintf(temp_chr, "%c", temp_str[i]);
       u8g2.drawStr(i * 9 + 58, 17, temp_chr);
+      yield();
     }
     
     // Indicate step size
@@ -649,6 +592,7 @@ void drawOLED()
     u8g2.setFont(u8g2_font_5x7_tn);
     sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
       rtc.getMinutes(), rtc.getSeconds());
+    yield();
     u8g2.drawStr(88, 6, temp_str);
   
     // Draw mode
@@ -674,7 +618,7 @@ void drawOLED()
 //    u8g2.drawStr(50, 30, temp_str);
 //    sprintf(temp_str, "%i", RTC->MODE2.FREQCORR.reg);
 //    u8g2.drawStr(0, 30, temp_str);
-//    sprintf(temp_str, "%u", tx_buffer[cur_symbol]);
+//    sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
 //    u8g2.drawStr(100, 30, temp_str);
 
 //    sprintf(temp_str, "%u", cur_symbol);
@@ -682,7 +626,7 @@ void drawOLED()
     
 //      for(uint8_t i = 0; i < 18; ++i)
 //      {
-//        sprintf(temp_str, "%u", tx_buffer[i]);
+//        sprintf(temp_str, "%u", mfsk_buffer[i]);
 //        u8g2.drawStr(i * 6, 30, temp_str);
 //      }
 //    sprintf(temp_str, "%lu", rtc.getEpoch());
@@ -703,7 +647,10 @@ void drawOLED()
     
   
     // Draw TX lock
-    //u8g2.drawXBM(120, 8, 8, 8, lock_bits);
+//    if(tx_lock)
+//    {
+//      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
+//    }
   }
   else // Draw settings menu
   {
@@ -712,23 +659,46 @@ void drawOLED()
     sprintf(temp_str, "%s", cur_setting.c_str());
     u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
 
-    const char* setting_val = cur_setting_str.c_str();
+    //const char* setting_val = cur_setting_str.c_str();
 
-    switch(cur_setting_type)
+//    switch(cur_setting_type)
+//    {
+//    case SettingType::Uint:
+//      sprintf(temp_str, "%lu", cur_setting_uint);
+//      break;
+//    case SettingType::Int:
+//      sprintf(temp_str, "%l", cur_setting_int);
+//      break;
+//    case SettingType::Str:
+////      if(cur_setting_selected > 10)
+////      {
+////        setting_val += cur_setting_selected - 10;
+////      }
+//      //sprintf(temp_str, "%s", cur_setting_str.c_str());
+//      sprintf(temp_str, "%s", cfg[cur_setting].c_str());
+////      SerialUSB.print("\v");
+////      SerialUSB.println(temp_str);
+//      //sprintf(temp_str, "%s", setting_val);
+//      break;
+//    }
+    switch(cfg[cur_setting][0])
     {
-    case SettingType::Uint:
+    case 'U':
       sprintf(temp_str, "%lu", cur_setting_uint);
       break;
-    case SettingType::Int:
+    case 'I':
       sprintf(temp_str, "%l", cur_setting_int);
       break;
-    case SettingType::Str:
-      if(cur_setting_selected > 10)
-      {
-        setting_val += cur_setting_selected - 10;
-      }
-      //sprintf(temp_str, "%s", cur_setting_str.c_str());
-      sprintf(temp_str, "%s", setting_val);
+    case 'S':
+//      if(cur_setting_selected > 10)
+//      {
+//        setting_val += cur_setting_selected - 10;
+//      }
+      sprintf(temp_str, "%s", cur_setting_str.c_str());
+      //sprintf(temp_str, "%s", cfg[cur_setting].c_str());
+//      SerialUSB.print("\v");
+//      SerialUSB.println(temp_str);
+      //sprintf(temp_str, "%s", setting_val);
       break;
     }
     uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
@@ -805,21 +775,54 @@ void drawOLED()
   }
   else // Show the current buffer
   {
-    //yield();
-    if(cur_state != TxState::Idle)
+    // Draw buffer contents if transmitting
+    if(tx_lock)
     {
-      //sprintf(menu_2, "%s", "End TX");
+      char buffer_str[81];
+      //std::string wspr_buffer;
+      yield();
+      
+      switch(mode)
+      {
+      case Mode::DFCW3:
+      case Mode::DFCW6:
+      case Mode::DFCW10:
+      case Mode::DFCW120:
+      case Mode::QRSS3:
+      case Mode::QRSS6:
+      case Mode::QRSS10:
+      case Mode::QRSS120:
+      case Mode::CW:
+      case Mode::HELL:
+
+        break;
+        
+      case Mode::WSPR:
+        sprintf(buffer_str, "%s", wspr_buffer.c_str());
+        break;
+        
+      case Mode::JT65:
+      case Mode::JT9:
+      case Mode::JT4:
+        break;
+      }
+
+      //yield();
+      u8g2.drawStr(0, 30, buffer_str);
     }
-    else
+    else // otherwise show TX enb/dis
     {
-      //sprintf(menu_2, "%s", "");
+      if(tx_enable)
+      {
+        u8g2.drawStr(0, 30, "TX Dis");
+        u8g2.drawStr(45, 30, next_tx_time);
+      }
+      else
+      {
+        u8g2.drawStr(0, 30, "TX Enb");
+      }
     }
-    //sprintf(menu_1, "%s", "Ins/Del");
-    menu_1_x = 6;
-    menu_2_x = 80;
-    u8g2.setFont(u8g2_font_6x10_mf);
-    //u8g2.drawStr(menu_1_x, 30, menu_1);
-    //u8g2.drawStr(menu_2_x, 30, menu_2);
+    yield();
     
     // Menu icon
     //yield();
@@ -844,7 +847,7 @@ void drawOLED()
 //  //u8g2.setDrawColor(0);
 //  u8g2.drawStr(menu_1_x, 31, menu_1);
 //  u8g2.drawStr(menu_2_x, 31, menu_2);
-//}while(u8g2.nextPage());  
+
   yield();
   u8g2.sendBuffer();          // transfer internal memory to the display
   //yield();
@@ -891,7 +894,8 @@ void pollButtons()
       }
       else
       {
-        if(cur_state == TxState::Idle)
+        //if(cur_state == TxState::Idle)
+        if(!tx_lock)
         {
           if(base_frequency + power_10(tune_step) > upper_freq_limit)
           {
@@ -903,9 +907,8 @@ void pollButtons()
           }
         }
       }
-      
-      delay(50); //delay to avoid many steps at one;
       yield();
+      delay(50); //delay to avoid many steps at one;
     }
   }
 
@@ -945,7 +948,8 @@ void pollButtons()
       }
       else
       {
-        if(cur_state == TxState::Idle)
+        //if(cur_state == TxState::Idle)
+        if(!tx_lock)
         {
           if(base_frequency - power_10(tune_step) < lower_freq_limit)
           {
@@ -957,9 +961,8 @@ void pollButtons()
           }
         }
       }
-      
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 
@@ -1018,9 +1021,8 @@ void pollButtons()
           tune_step = 0;
         }
       }
-      
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 
@@ -1075,9 +1077,8 @@ void pollButtons()
           tune_step--;
         }
       }
-      
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 
@@ -1123,10 +1124,19 @@ void pollButtons()
       }
       else
       {
-        //
+        if(tx_enable)
+        {
+          tx_enable = false;
+          next_tx = UINT32_MAX;
+        }
+        else
+        {
+          tx_enable = true;
+          setNextTx(0);
+        }
       }
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 
@@ -1149,7 +1159,7 @@ void pollButtons()
       else if(display_mode == DisplayMode::Setting)
       {
         // OK button
-        char temp_str[42];
+        char temp_str[81];
         switch(cur_setting_type)
         {
         case SettingType::Uint:
@@ -1178,8 +1188,8 @@ void pollButtons()
 //          setNextTx(0);
 //        }
       }
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 
@@ -1197,6 +1207,10 @@ void pollButtons()
           display_mode = DisplayMode::Main;
         }
       }
+      else if(display_mode == DisplayMode::Setting)
+      {
+        display_mode = DisplayMode::Menu;
+      }
       else
       {
         if(cur_state == TxState::Idle)
@@ -1210,10 +1224,8 @@ void pollButtons()
           setNextTx(0);
         }
       }
-      //display_menu ^= true;
-      
-      delay(50); //delay to avoid many steps at one
       yield();
+      delay(50); //delay to avoid many steps at one
     }
   }
 }
@@ -1225,6 +1237,18 @@ void selectBand()
   yield();
   band_id = (band_id * ANALOG_REF) / 4096UL;
   yield();
+
+  if(band_id == 0)
+  {
+    tx_lock = true;
+  }
+  else
+  {
+    if(tx_lock == true && cur_state == TxState::Idle)
+    {
+      tx_lock = false;
+    }
+  }
   
   for(auto band : band_table)
   {
@@ -1250,6 +1274,7 @@ void setTxState(TxState state)
   switch(state)
   {
   case TxState::Idle:
+    tx_lock = false;
     digitalWrite(TX_KEY, LOW);
 //    si5351.output_enable(SI5351_CLK0, 0);
 //    setPABias(0);
@@ -1258,9 +1283,10 @@ void setTxState(TxState state)
     break;
   case TxState::MFSK:
     SerialUSB.write('\f');
+    tx_lock = true;
     //yield();
     cur_symbol = 0;
-    frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+    frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
     change_freq = true;
     digitalWrite(TX_KEY, HIGH);
 //    si5351.output_enable(SI5351_CLK0, 1);
@@ -1272,7 +1298,7 @@ void setTxState(TxState state)
 //    switch(mode)
 //    {
 //    case Mode::WSPR:
-//      //jtencode.wspr_encode(cfg["Callsign"].c_str(), cfg["Grid"].c_str(), atoi(cfg["Power"].c_str()), tx_buffer);
+//      //jtencode.wspr_encode(cfg["Callsign"].c_str(), cfg["Grid"].c_str(), atoi(cfg["Power"].c_str()), mfsk_buffer);
 //      break;
 //    };
     break;
@@ -1294,6 +1320,12 @@ void setNextTx(uint8_t minutes)
   uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
   t += sec_to_add;
   next_tx = t;
+
+  // Build next TX time string
+  const time_t ntx = static_cast<time_t>(next_tx);
+  struct tm * n_tx = gmtime(&ntx);
+  sprintf(next_tx_time, "Nx %02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
+
   //rtc.setAlarmEpoch(t);
 //  struct tm * n_tx = gmtime(&t);
 //
@@ -1415,15 +1447,15 @@ switch(meta_mode)
         {
           SerialUSB.write('\b');
           setTxState(TxState::Idle);
-          //frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
           frequency = (base_frequency * 100);
           change_freq = true;
-          setNextTx(0);
+          setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
         }
         else // next symbol
         {
           next_event = cur_timer + cur_symbol_time;
-          frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
           change_freq = true;
         }
       }
@@ -1436,6 +1468,40 @@ switch(meta_mode)
   yield();
 }
 
+void composeBuffer()
+{
+  switch(mode)
+  {
+  case Mode::DFCW3:
+  case Mode::DFCW6:
+  case Mode::DFCW10:
+  case Mode::DFCW120:
+  case Mode::QRSS3:
+  case Mode::QRSS6:
+  case Mode::QRSS10:
+  case Mode::QRSS120:
+  case Mode::CW:
+  case Mode::HELL:
+
+    break;
+    
+  case Mode::WSPR:
+    //wspr_buffer = cfg["Callsign"].substr(1) + cfg["Grid"].substr(1) + cfg["Power"].substr(1);
+    wspr_buffer = cfg["Callsign"].substr(1) + " ";
+    wspr_buffer += cfg["Grid"].substr(1);
+    wspr_buffer += " ";
+    wspr_buffer += cfg["Power"].substr(1);
+    //sprintf(buffer_str, "%s", wspr_buffer.c_str());
+    break;
+    
+  case Mode::JT65:
+  case Mode::JT9:
+  case Mode::JT4:
+    break;
+  }
+  yield();
+}
+
 // ===== Setup =====
 void setup()
 {
@@ -1443,12 +1509,12 @@ void setup()
   SerialUSB.begin(57600);
   while(!SerialUSB);
 
-
-
   // Load config map
   for(auto const& c : config_table)
   {
     cfg[c[0]] = c[1];
+//    SerialUSB.print(c[0]);
+//    SerialUSB.println(cfg[c[0]].c_str());
   }
   
   // Start u8g2
@@ -1493,7 +1559,7 @@ void setup()
   next_time_sync = rtc.getEpoch();
 
   // 
-  setNextTx(0);
+  //setNextTx(0);
 
   // Init menu
   initMenu();
@@ -1515,17 +1581,30 @@ void setup()
   cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
 
   // Clear TX buffer
-  memset(tx_buffer, 0, 255);
+  memset(mfsk_buffer, 0, 255);
   jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(), 
-    atoi(cfg["Power"].substr(1).c_str()), tx_buffer);
-  //jtencode.wspr_encode("NT7S", "CN85", 23, tx_buffer);
+    atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
-  frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+  frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
   change_freq = true;
 
+  composeBuffer();
+
   //morse.send("DE NT7S");
-  
-  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
+//  SerialUSB.print("\v");
+//  SerialUSB.println("OpenBeacon Mini");
+//  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
+//  for(auto a : config_table)
+//  {
+////    char first_setting[20];
+////    char second_setting[20];
+////    sprintf(first_setting, "%s", a.first().c_str());
+////    sprintf(second_setting, "%s", a.second().c_str());
+//    SerialUSB.print("\v");
+//    SerialUSB.print(a[0]);
+//    SerialUSB.print(" - ");
+//    SerialUSB.println(cfg[a[0]].c_str());
+//  }
 }
 
 void loop()
@@ -1562,7 +1641,7 @@ void loop()
 //        {
 //          SerialUSB.write('\b');
 //          setTxState(TxState::Idle);
-//          //frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+//          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
 //          frequency = (base_frequency * 100);
 //          change_freq = true;
 //          setNextTx(0);
@@ -1570,7 +1649,7 @@ void loop()
 //        else // next symbol
 //        {
 //          next_event = cur_timer + cur_symbol_time;
-//          frequency = (base_frequency * 100) + (tx_buffer[cur_symbol] * cur_tone_spacing);
+//          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
 //          change_freq = true;
 //        }
 //      }

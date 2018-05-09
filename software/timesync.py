@@ -33,4 +33,6 @@ while True:
 		end = timer()
 		print(start_time + str(end - start))
 		#ser.reset_input_buffer()
+	elif('\v' in ser_in):
+		print(ser.readline())
 		
