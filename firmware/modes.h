@@ -68,8 +68,10 @@ constexpr ModeData mode_table[] =
   {Mode::CW, "CW", MetaMode::MORSE, 25, 100, 0, 0, 0, 0},
   {Mode::HELL, "Hell", MetaMode::MFSK, 3.5, 100, 0, 0, 0, 0},
   {Mode::WSPR, "WSPR", MetaMode::MFSK, 1.75, 163, 146, 682, WSPR_SYMBOL_COUNT, 120},
-  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT, 60},
-  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 174, 576, JT9_SYMBOL_COUNT, 60},
+//  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT, 60},
+  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 366, JT65_SYMBOL_COUNT, 60},
+//  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 576, JT9_SYMBOL_COUNT, 60},
+  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 573, JT9_SYMBOL_COUNT, 60},
   {Mode::JT4, "JT4", MetaMode::MFSK, 1.75, 200, 437, 229, JT4_SYMBOL_COUNT, 60}
 };
 
