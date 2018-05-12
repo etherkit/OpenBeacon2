@@ -132,13 +132,16 @@ SettingType cur_setting_type = SettingType::Uint;
 uint8_t cur_setting_selected = 0;
 std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
+char cur_callsign[21];
+char cur_grid[5];
+uint8_t cur_power;
 uint32_t next_tx = UINT32_MAX;
 char next_tx_time[14];
 uint32_t time_sync_expire, next_time_sync;
 uint32_t initial_time_sync = 0;
 //bool time_sync_request = false;
 uint8_t mfsk_buffer[255];
-std::string wspr_buffer;
+char wspr_buffer[41];
 char msg_buffer[81];
 char msg_buffer_1[81];
 uint8_t cur_symbol_count;
@@ -337,8 +340,7 @@ void selectMode(uint8_t sel)
     mode = Mode::WSPR;
     composeBuffer();
     memset(mfsk_buffer, 0, 255);
-    jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(), 
-      atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
+    jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
     cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
     cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
     cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -602,11 +604,11 @@ void drawOLED()
 //    u8g2.drawStr(26, 30, temp_str);
     
   
-//    // Draw TX lock
-//    if(tx_lock)
-//    {
-//      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
-//    }
+    // Draw TX lock
+    if(tx_lock)
+    {
+      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
+    }
   }
   else // Draw settings menu
   {
@@ -732,7 +734,7 @@ void drawOLED()
   else // Show the current buffer
   {
     // Draw buffer contents if transmitting
-    if(tx_lock)
+    if(cur_state != TxState::Idle)
     {
       char buffer_str[81];
       //std::string wspr_buffer;
@@ -754,7 +756,7 @@ void drawOLED()
         break;
         
       case Mode::WSPR:
-        sprintf(buffer_str, "%s", wspr_buffer.c_str());
+        sprintf(buffer_str, "%s", wspr_buffer);
         break;
         
       case Mode::JT65:
@@ -1193,10 +1195,14 @@ void pollButtons()
 
 void selectBand()
 {
-  constexpr uint8_t ADC0_RING_BUF_SIZE = 4;
-  static uint16_t adc0_ring_buf[ADC0_RING_BUF_SIZE];
-  static uint8_t adc0_ring_buf_pos = 0;
-  uint32_t adc0_ring_buf_total = 0;
+  static uint8_t prev_band_index[3] = {0, 0, 0};
+  static uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
+  static uint32_t new_lower_freq_limit, new_upper_freq_limit;
+  
+//  constexpr uint8_t ADC0_RING_BUF_SIZE = 4;
+//  static uint16_t adc0_ring_buf[ADC0_RING_BUF_SIZE];
+//  static uint8_t adc0_ring_buf_pos = 0;
+//  uint32_t adc0_ring_buf_total = 0;
   
   // TODO: handle out of bounds
 //  uint16_t adc0 = analogRead(A0);
@@ -1219,22 +1225,15 @@ void selectBand()
 //    yield();
 //  }
 //  band_id = adc0_ring_buf_total / ADC0_RING_BUF_SIZE;
+
+  prev_band_index[2] = prev_band_index[1];
+  prev_band_index[1] = prev_band_index[0];
+  //prev_band_index[0] = band_index;
+
   band_id = analogRead(A0);
   yield();
   band_id = (band_id * ANALOG_REF) / 4096UL;
   yield();
-
-  if(band_id == 0)
-  {
-    tx_lock = true;
-  }
-  else
-  {
-    if(tx_lock == true && cur_state == TxState::Idle)
-    {
-      //tx_lock = false;
-    }
-  }
   
   for(auto band : band_table)
   {
@@ -1242,42 +1241,149 @@ void selectBand()
     {
       if(band.index != band_index)
       {
-        band_index = band.index;
-        lower_freq_limit = band.lower_limit;
-        upper_freq_limit = band.upper_limit;
-        if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
-        {
-          switch(mode)
-          {
-          case Mode::DFCW3:
-          case Mode::DFCW6:
-          case Mode::DFCW10:
-          case Mode::DFCW120:
-          case Mode::QRSS3:
-          case Mode::QRSS6:
-          case Mode::QRSS10:
-          case Mode::QRSS120:
-          case Mode::CW:
-          case Mode::HELL:
-            base_frequency = band.wspr_freq;
-            break;
-            
-          case Mode::WSPR:
-            base_frequency = band.wspr_freq;
-            break; 
-          case Mode::JT65:
-            base_frequency = band.jt65_freq;
-            break;
-          case Mode::JT9:
-          case Mode::JT4:
-            base_frequency = band.jt9_freq;
-            break;
-          }
-          //base_frequency = band.wspr_freq;
-        }
+        prev_band_index[0] = band.index;
+        new_lower_freq_limit = band.lower_limit;
+        new_upper_freq_limit = band.upper_limit;
+        new_cw_freq = band.cw_freq;
+        new_wspr_freq = band.wspr_freq;
+        new_jt65_freq = band.jt65_freq;
+        new_jt9_freq = band.jt9_freq;
+//        if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+//        {
+//          switch(mode)
+//          {
+//          case Mode::DFCW3:
+//          case Mode::DFCW6:
+//          case Mode::DFCW10:
+//          case Mode::DFCW120:
+//          case Mode::QRSS3:
+//          case Mode::QRSS6:
+//          case Mode::QRSS10:
+//          case Mode::QRSS120:
+//          case Mode::CW:
+//          case Mode::HELL:
+//            new_freq = band.cw_freq;
+//            break;
+//            
+//          case Mode::WSPR:
+//            new_freq = band.wspr_freq;
+//            break; 
+//          case Mode::JT65:
+//            new_freq = band.jt65_freq;
+//            break;
+//          case Mode::JT9:
+//          case Mode::JT4:
+//            new_freq = band.jt9_freq;
+//            break;
+//          }
+//        }
       }
     }
   }
+  yield();
+
+  // Guard against ADC glitches by not changing bands until
+  // three consequtive reads of the same band
+  if(prev_band_index[0] == prev_band_index[1] && prev_band_index[1] == prev_band_index[2])
+  {
+    // If the band index is changed
+    if(band_index != prev_band_index[0])
+    {
+      lower_freq_limit = new_lower_freq_limit;
+      upper_freq_limit = new_upper_freq_limit;
+
+      if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+      {
+        switch(mode)
+        {
+        case Mode::DFCW3:
+        case Mode::DFCW6:
+        case Mode::DFCW10:
+        case Mode::DFCW120:
+        case Mode::QRSS3:
+        case Mode::QRSS6:
+        case Mode::QRSS10:
+        case Mode::QRSS120:
+        case Mode::CW:
+        case Mode::HELL:
+          new_freq = new_cw_freq;
+          break;
+          
+        case Mode::WSPR:
+          new_freq = new_wspr_freq;
+          break; 
+        case Mode::JT65:
+          new_freq = new_jt65_freq;
+          break;
+        case Mode::JT9:
+        case Mode::JT4:
+          new_freq = new_jt9_freq;
+          break;
+        }
+      }
+
+      if(!tx_lock)
+      {
+        base_frequency = new_freq;
+      }
+    }
+    // Then change band index
+    band_index = prev_band_index[0];
+
+    if(band_index == 0)
+    {
+      tx_lock = true;
+      base_frequency = 0;
+    }
+
+//    if(!tx_lock)
+//    {
+//      base_frequency = new_freq;
+//    }
+  }
+  else if(prev_band_index[2] == 0 && prev_band_index[1] != 0 && prev_band_index[0] != 0)
+  {
+    tx_lock = false;
+  }
+  else
+  {
+    return;
+  }
+
+//  if(band_index == 0 && prev_band_index[1] == 0 && prev_band_index[0] == 0)
+//  {
+//    tx_lock = true;
+//    base_frequency = 0;
+//  }
+//  else
+//  {
+//    if(tx_lock == true && cur_state == TxState::Idle)
+//    {
+//      //tx_lock = false;
+//    }
+//  }
+
+
+//  if(prev_band_index[1] == 0 && prev_band_index[0] != 0 && band_index != 0)
+//  {
+//    tx_lock = false;
+//  }
+//  else if(prev_band_index[0] != prev_band_index[1] && prev_band_index[0] == band_index)
+//  {
+//    return;
+//  }
+
+//  if(!tx_lock)
+//  {
+//    base_frequency = new_freq;
+//  }
+//  else
+//  {
+//    if(band_index == 0)
+//    {
+//      base_frequency = new_freq;
+//    }
+//  }
   yield();
 }
 
@@ -1506,11 +1612,10 @@ void composeBuffer()
     
   case Mode::WSPR:
     //wspr_buffer = cfg["Callsign"].substr(1) + cfg["Grid"].substr(1) + cfg["Power"].substr(1);
-    wspr_buffer = cfg["Callsign"].substr(1) + " ";
-    wspr_buffer += cfg["Grid"].substr(1);
-    wspr_buffer += " ";
-    wspr_buffer += cfg["Power"].substr(1);
-    //sprintf(buffer_str, "%s", wspr_buffer.c_str());
+    sprintf(cur_callsign, "%s", cfg["Callsign"].substr(1).c_str());
+    sprintf(cur_grid, "%s", cfg["Grid"].substr(1).c_str());
+    cur_power = atoi(cfg["Power"].substr(1).c_str());
+    sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
     break;
     
   case Mode::JT65:
