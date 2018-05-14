@@ -20,8 +20,8 @@
 
 // Enumerations
 enum class DisplayMode {Main, Menu, Setting};
-enum class SettingType {Uint, Int, Str, Time};
-enum class TxState {Idle, MFSK, Preamble};
+enum class SettingType {Uint, Int, Str, Float, Time};
+enum class TxState {Idle, MFSK, CW, DFCW, Preamble};
 
 // Hardware constexprs
 constexpr uint8_t BTN_DSP_1 = 0;
@@ -59,6 +59,7 @@ constexpr static unsigned char lock_bits[] = {
 // S == string
 // U == uint
 // I == int
+// F == float
 // T == time
 constexpr char* config_table[][2] =
 {
@@ -67,7 +68,7 @@ constexpr char* config_table[][2] =
   {"Grid", "SCN85"},
   {"Power", "I25"},
   {"TX Intv", "U0"},
-  {"WPM", "U22"}
+  {"WPM", "F22.0"}
 };
 
 // Defaults
@@ -111,6 +112,7 @@ volatile DisplayMode display_mode = DEFAULT_DISPLAY_MODE;
 //volatile uint16_t tx_interval = DEFAULT_TX_INTERVAL;
 volatile TxState cur_state = DEFAULT_STATE;
 volatile TxState prev_state = DEFAULT_STATE;
+TxState next_state = DEFAULT_STATE;
 volatile uint32_t cur_timer, next_event;
 volatile uint8_t clk_temp = 0;
 volatile uint8_t cur_symbol = 0;
@@ -128,6 +130,7 @@ int64_t cur_setting_int = 0;
 //int64_t temp_setting_int = 0;
 std::string cur_setting_str = "";
 //std::string temp_setting_str = "";
+float cur_setting_float;
 SettingType cur_setting_type = SettingType::Uint;
 uint8_t cur_setting_selected = 0;
 std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
@@ -149,6 +152,7 @@ uint16_t cur_symbol_time;
 uint16_t cur_tx_interval_mult;
 bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
+float wpm = DEFAULT_WPM;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -291,7 +295,10 @@ void TCC0_Handler()
   if (TC->INTFLAG.bit.MC0 == 1)
   {
     ++cur_timer;
-    //morse.update();
+    if(meta_mode == MetaMode::CW or meta_mode == MetaMode::DFCW)
+    {
+      morse.update();
+    }
     TC->INTFLAG.bit.MC0 = 1;
   }
 }
@@ -299,45 +306,107 @@ void TCC0_Handler()
 // ===== Callbacks =====
 void selectMode(uint8_t sel)
 {
-//  char temp_call[16];
-//  char temp_grid[6];
-//  composeBuffer();
-//  yield();
   
   switch(static_cast<Mode>(sel))
   {
   case Mode::DFCW3:
     mode = Mode::DFCW3;
+    meta_mode = MetaMode::DFCW;
+    next_state = TxState::DFCW;
+    composeBuffer();
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::DFCW6:
     mode = Mode::DFCW6;
+    meta_mode = MetaMode::DFCW;
+    next_state = TxState::DFCW;
+    composeBuffer();
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::DFCW10:
     mode = Mode::DFCW10;
+    meta_mode = MetaMode::DFCW;
+    next_state = TxState::DFCW;
+    composeBuffer();
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::DFCW120:
     mode = Mode::DFCW120;
+    meta_mode = MetaMode::DFCW;
+    next_state = TxState::DFCW;
+    composeBuffer();
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::QRSS3:
     mode = Mode::QRSS3;
+    meta_mode = MetaMode::CW;
+    next_state = TxState::CW;
+    composeBuffer();
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::QRSS6:
     mode = Mode::QRSS6;
+    meta_mode = MetaMode::CW;
+    next_state = TxState::CW;
+    composeBuffer();
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::QRSS10:
     mode = Mode::QRSS10;
+    meta_mode = MetaMode::CW;
+    next_state = TxState::CW;
+    composeBuffer();
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::QRSS120:
     mode = Mode::QRSS120;
+    meta_mode = MetaMode::CW;
+    next_state = TxState::CW;
+    composeBuffer();
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::CW:
     mode = Mode::CW;
+    meta_mode = MetaMode::CW;
+    next_state = TxState::CW;
+    composeBuffer();
+    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::HELL:
     mode = Mode::HELL;
+    meta_mode = MetaMode::MFSK;
+    next_state = TxState::MFSK;
+    composeBuffer();
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    base_frequency = band_table[band_index].cw_freq;
     break;
   case Mode::WSPR:
     mode = Mode::WSPR;
+    meta_mode = MetaMode::MFSK;
+    next_state = TxState::MFSK;
     composeBuffer();
     memset(mfsk_buffer, 0, 255);
     jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
@@ -349,6 +418,8 @@ void selectMode(uint8_t sel)
     break;
   case Mode::JT65:
     mode = Mode::JT65;
+    meta_mode = MetaMode::MFSK;
+    next_state = TxState::MFSK;
     composeBuffer();
     memset(mfsk_buffer, 0, 255);
     jtencode.jt65_encode(msg_buffer_1, mfsk_buffer);
@@ -360,6 +431,8 @@ void selectMode(uint8_t sel)
     break;
   case Mode::JT9:
     mode = Mode::JT9;
+    meta_mode = MetaMode::MFSK;
+    next_state = TxState::MFSK;
     composeBuffer();
     memset(mfsk_buffer, 0, 255);
     jtencode.jt9_encode(msg_buffer_1, mfsk_buffer);
@@ -371,6 +444,8 @@ void selectMode(uint8_t sel)
     break;
   case Mode::JT4:
     mode = Mode::JT4;
+    meta_mode = MetaMode::MFSK;
+    next_state = TxState::MFSK;
     composeBuffer();
     memset(mfsk_buffer, 0, 255);
     jtencode.jt4_encode(msg_buffer_1, mfsk_buffer);
@@ -404,6 +479,10 @@ void setConfig(const char * key)
   case 'S':
     cur_setting_str = cfg[key].substr(1);
     cur_setting_type = SettingType::Str;
+    break;
+  case 'F':
+    cur_setting_float = atof(cfg[key].substr(1).c_str());
+    cur_setting_type = SettingType::Float;
     break;
   }
 }
@@ -581,6 +660,8 @@ void drawOLED()
 
 //    sprintf(temp_str, "%u", cur_symbol);
 //    u8g2.drawStr(111, 15, temp_str);
+//    sprintf(temp_str, "%u", morse.tx);
+//    u8g2.drawStr(122, 15, temp_str);
     
 //      for(uint8_t i = 0; i < 18; ++i)
 //      {
@@ -605,10 +686,10 @@ void drawOLED()
     
   
     // Draw TX lock
-    if(tx_lock)
-    {
-      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
-    }
+//    if(tx_lock)
+//    {
+//      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
+//    }
   }
   else // Draw settings menu
   {
@@ -752,7 +833,7 @@ void drawOLED()
       case Mode::QRSS120:
       case Mode::CW:
       case Mode::HELL:
-
+        sprintf(buffer_str, "%s", msg_buffer_1);
         break;
         
       case Mode::WSPR:
@@ -1079,6 +1160,10 @@ void pollButtons()
           sprintf(temp_str, "S%s", cur_setting_str.c_str());
           cfg[cur_setting] = temp_str;
           break;
+        case SettingType::Float:
+          sprintf(temp_str, "F%f", cur_setting_float);
+          cfg[cur_setting] = temp_str;
+          break;
         }
 
         cur_setting_selected = 0;
@@ -1397,6 +1482,7 @@ void setTxState(TxState state)
     yield();
 //    si5351.output_enable(SI5351_CLK0, 0);
 //    setPABias(0);
+//    next_state = prev_state;
     prev_state = cur_state;
     cur_state = state;
     break;
@@ -1410,18 +1496,38 @@ void setTxState(TxState state)
     yield();
 //    si5351.output_enable(SI5351_CLK0, 1);
 //    setPABias(PA_BIAS_FULL);
+    next_state = TxState::MFSK;
     prev_state = cur_state;
     cur_state = state;
     next_event = cur_timer + cur_symbol_time;
-    //cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-//    switch(mode)
-//    {
-//    case Mode::WSPR:
-//      //jtencode.wspr_encode(cfg["Callsign"].c_str(), cfg["Grid"].c_str(), atoi(cfg["Power"].c_str()), mfsk_buffer);
-//      break;
-//    };
     break;
-  case TxState::Preamble:
+  case TxState::CW:
+//    SerialUSB.write('\v');
+//    SerialUSB.println("Start CW");
+    SerialUSB.write('\f');
+    tx_lock = true;
+    frequency = (base_frequency * 100);
+    change_freq = true;
+    morse.output_pin = TX_KEY;
+    morse.setWPM(wpm);
+    next_state = TxState::CW;
+    prev_state = cur_state;
+    cur_state = state;
+    morse.send(msg_buffer_1);
+    break;
+  case TxState::DFCW:
+    SerialUSB.write('\f');
+    tx_lock = true;
+    digitalWrite(TX_KEY, HIGH);
+    frequency = (base_frequency * 100);
+    change_freq = true;
+    morse.output_pin = 0;
+    morse.setWPM(wpm);
+    next_state = TxState::DFCW;
+    prev_state = cur_state;
+    cur_state = state;
+    morse.preamble_enable = true;
+    morse.send(msg_buffer_1);
     break;
   default:
     break;
@@ -1435,8 +1541,40 @@ void setNextTx(uint8_t minutes)
 //    rtc.getDay(), rtc.getMonth(), rtc.getYear(), 1, 0, 1};
 //  time_t t = mktime(&cur_time);
 //  time_t t = rtc.getEpoch();
+  uint16_t sec_to_add;
   uint32_t t = rtc.getEpoch();
-  uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
+
+  switch(mode)
+  {
+  case Mode::DFCW3:
+  case Mode::DFCW6:
+  case Mode::DFCW10:
+  case Mode::DFCW120:
+  case Mode::QRSS3:
+  case Mode::QRSS6:
+  case Mode::QRSS10:
+  case Mode::QRSS120:
+  case Mode::HELL:
+    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+    break;
+
+  case Mode::CW:
+    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+    break;
+    
+  case Mode::WSPR:
+    sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
+    break;
+    
+  case Mode::JT65:
+  case Mode::JT9:
+  case Mode::JT4:
+    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+    break;
+  }
+  
+  //uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
+
   t += sec_to_add;
   next_tx = t;
   yield();
@@ -1445,12 +1583,6 @@ void setNextTx(uint8_t minutes)
   const time_t ntx = static_cast<time_t>(next_tx);
   struct tm * n_tx = gmtime(&ntx);
   sprintf(next_tx_time, "Nx %02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
-
-  //rtc.setAlarmEpoch(t);
-//  struct tm * n_tx = gmtime(&t);
-//
-//  rtc.setAlarmTime(n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
-//  rtc.setAlarmDate(n_tx->tm_mday, n_tx->tm_mon, n_tx->tm_year);
 }
 
 void processSyncMessage()
@@ -1531,7 +1663,8 @@ void processTxTrigger()
 {
   if(rtc.getEpoch() >= next_tx)
   {
-    setTxState(TxState::MFSK);
+//    setTxState(TxState::MFSK);
+    setTxState(next_state);
     next_tx = UINT32_MAX;
   }
   yield();
@@ -1551,9 +1684,67 @@ void processTxTrigger()
 
 void txStateMachine()
 {
-switch(meta_mode)
+  static bool prev_morse_tx = false;
+  
+  switch(meta_mode)
   {
-  case MetaMode::MORSE:
+  case MetaMode::CW:
+    switch(cur_state)
+    {
+    case TxState::Idle:
+      break;
+    case TxState::CW:
+      if(!morse.busy)
+      {
+        SerialUSB.write('\b');
+        yield();
+        setTxState(TxState::Idle);
+        //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+        //frequency = (base_frequency * 100);
+        //change_freq = true;
+        //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+        
+        setNextTx(0);
+      }
+      break;
+    }
+    break;
+  case MetaMode::DFCW:
+    switch(cur_state)
+    {
+    case TxState::Idle:
+      break;
+    case TxState::DFCW:
+      if(morse.tx != prev_morse_tx)
+      {
+        if(morse.tx)
+        {
+          frequency = (base_frequency * 100) + cur_tone_spacing;
+          change_freq = true;
+        }
+        else
+        {
+          frequency = (base_frequency * 100);
+          change_freq = true;
+        }
+
+        prev_morse_tx = morse.tx;
+      }
+      
+      if(!morse.busy)
+      {
+        SerialUSB.write('\b');
+        yield();
+        prev_morse_tx = false;
+        setTxState(TxState::Idle);
+        frequency = (base_frequency * 100);
+        change_freq = true;
+        //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+        
+        setNextTx(0);
+      }
+      break;
+    }
     break;
   case MetaMode::MFSK:
     switch(cur_state)
@@ -1582,8 +1773,6 @@ switch(meta_mode)
         }
       }
       break;
-    case TxState::Preamble:
-      break;
     }
     break;
   }
@@ -1607,7 +1796,9 @@ void composeBuffer()
   case Mode::QRSS120:
   case Mode::CW:
   case Mode::HELL:
-
+    sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
+    sprintf(temp_grid, "%s", cfg["Grid"].substr(1).c_str());
+    sprintf(msg_buffer_1, "%s %s", temp_call, temp_grid);
     break;
     
   case Mode::WSPR:
@@ -1740,6 +1931,8 @@ void setup()
 //  }
   // Start Timer
   startTimer(TIMER_FREQUENCY); // 1 ms ISR
+
+  //morse.send("NT7S");
 }
 
 void loop()
