@@ -1,32 +1,50 @@
 #!/usr/bin/python3
 
 import serial
+import serial.tools.list_ports
 import sys
 import time
 from timeit import default_timer as timer
 import argparse
-#import fire
 
 # Arduino serial dev paramaters
-DEVICE = '/dev/ttyACM0'  # Change this as necessary
+if sys.platform.startswith('win'):
+    DEVICE = 'COM1'
+elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
+    DEVICE = '/dev/ttyACM0'
+elif sys.platform.startswith('darwin'):
+    DEVICE = '/dev/tty.'
+else:
+    raise EnvironmentError('Unsupported platform')
+    # DEVICE = '/dev/ttyACM0'
+
 BAUD = 57600
+
+class ListSerialPorts(argparse.Action):
+    def __init__(self, option_strings, dest, nargs = 0, **kwargs):
+        super(ListSerialPorts, self).__init__(option_strings, dest, nargs = nargs, **kwargs)
+    def __call__(self, parser, namespace, values, option_string=None):
+        print("Available serial ports:")
+        for port in serial.tools.list_ports.comports():
+            print(str(port.device))
+        sys.exit(0)
 
 # Set up argument parser
 arg_parser = argparse.ArgumentParser(description = "OpenBeacon Mini Synchronization")
-arg_parser.add_argument("--port", help = "Serial port that OpenBeacon Mini is connected to", default = DEVICE)
-arg_parser.add_argument("--baud", help = "Baud rate of the serial connection", default = BAUD)
+arg_parser.add_argument("--port", "-p", help = "Serial port connected to OpenBeacon Mini", nargs = '?', default = DEVICE)
+arg_parser.add_argument("--baud", "-b", help = "Baud rate of the serial connection", nargs = '?', default = BAUD)
+arg_parser.add_argument("--list-ports", "-l", help = "Enumerate available serial ports", nargs = 0, action = ListSerialPorts)
+arg_parser.add_argument("--verbosity", "-v", action="store_true", help="Increase output verbosity")
 args = arg_parser.parse_args()
 
 def main():
     # Open serial port
     try:
-        ser = serial.Serial(port=DEVICE, baudrate=BAUD,
+        ser = serial.Serial(port=args.port, baudrate=args.baud,
                             timeout=1, writeTimeout=1)
     except:
-        print('Cannot open serial port')
+        print('Cannot open serial port ' + args.port)
         sys.exit(0)
-
-    # Handle the args
 
 
     # Wait for ASCII bell, then send the Unix time string
@@ -40,18 +58,18 @@ def main():
 
             time_str = "T" + str(int(time.time()))
             ser.write(time_str.encode())
-            print('Time sync at ' + str(int(time.time())))
+            print('Time sync at ' + time.asctime(time.gmtime()))
         elif('\f' in ser_in.decode()):
             start = timer()
             start_time = time.strftime("%H:%M:%S - ", time.gmtime())
-            # ser.reset_input_buffer()
             while('\b' not in ser.read()):
                 pass
             end = timer()
-            print(start_time + str(end - start))
-            # ser.reset_input_buffer()
+            if args.verbosity == 2:
+                print(start_time + str(end - start))
         elif('\v' in ser_in.decode()):
-            print(ser.readline())
+            if args.verbosity == 2:
+                print(ser.readline())
 
 
 if __name__ == "__main__":
