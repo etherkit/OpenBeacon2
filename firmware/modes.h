@@ -57,10 +57,10 @@ struct ModeData
 
 constexpr ModeData mode_table[] =
 {
-  {Mode::DFCW3, "DFCW3", MetaMode::DFCW, 0.4, 100, 300, 0, 0, 0},
-  {Mode::DFCW6, "DFCW6", MetaMode::DFCW, 0.2, 100, 300, 0, 0, 0},
-  {Mode::DFCW10, "DFCW10", MetaMode::DFCW, 0.12, 100, 300, 0, 0, 0},
-  {Mode::DFCW120, "DFCW120", MetaMode::DFCW, 0.01, 100, 300, 0, 0, 0},
+  {Mode::DFCW3, "DFCW3", MetaMode::DFCW, 0.4, 100, 600, 0, 0, 0},
+  {Mode::DFCW6, "DFCW6", MetaMode::DFCW, 0.2, 100, 600, 0, 0, 0},
+  {Mode::DFCW10, "DFCW10", MetaMode::DFCW, 0.12, 100, 600, 0, 0, 0},
+  {Mode::DFCW120, "DFCW120", MetaMode::DFCW, 0.01, 100, 600, 0, 0, 0},
   {Mode::QRSS3, "QRSS3", MetaMode::CW, 0.4, 100, 0, 0, 0, 0},
   {Mode::QRSS6, "QRSS6", MetaMode::CW, 0.2, 100, 0, 0, 0, 0},
   {Mode::QRSS10, "QRSS10", MetaMode::CW, 0.12, 100, 0, 0, 0, 0},

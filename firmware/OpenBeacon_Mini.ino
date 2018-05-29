@@ -39,7 +39,7 @@ constexpr uint8_t ADC_BAND_ID = 0;
 
 constexpr uint8_t MCP4725A1_BUS_BASE_ADDR = 0x62;
 constexpr uint16_t MCP4725A1_VREF = 5000UL;
-constexpr uint16_t ANALOG_REF = 3500UL; // TODO
+constexpr uint16_t ANALOG_REF = 3400UL; // TODO
 constexpr uint16_t PA_BIAS_FULL = 1850UL;
 
 constexpr uint32_t TIMER_BASE_CLOCK = 4000000;
@@ -66,9 +66,9 @@ constexpr char* config_table[][2] =
   {"PA Bias", "U1800"},
   {"Callsign", "SNT7S"},
   {"Grid", "SCN85"},
-  {"Power", "I25"},
+  {"Power", "U23"},
   {"TX Intv", "U0"},
-  {"WPM", "F22.0"}
+  {"CW WPM", "U22"}
 };
 
 // Defaults
@@ -83,7 +83,7 @@ constexpr bool DEFAULT_TX_ENABLE = false;
 constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
 //constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
 constexpr TxState DEFAULT_STATE = TxState::Idle;
-constexpr uint16_t DEFAULT_TX_INTERVAL = 0;
+constexpr uint16_t DEFAULT_TX_INTERVAL = 6;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -133,6 +133,7 @@ std::string cur_setting_str = "";
 float cur_setting_float;
 SettingType cur_setting_type = SettingType::Uint;
 uint8_t cur_setting_selected = 0;
+uint8_t cur_setting_len = 0;
 std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
 char cur_callsign[21];
@@ -153,6 +154,7 @@ uint16_t cur_tx_interval_mult;
 bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
 float wpm = DEFAULT_WPM;
+uint8_t cur_setting_digit = 0;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -464,25 +466,36 @@ void setConfig(const char * key)
   display_mode = DisplayMode::Setting;
   cur_setting = std::string(key);
   std::string val = cfg[key];
-  //switch(val[0])
+  char temp_str[41];
+  //cur_setting_selected = 0;
+//  //switch(val[0])
   char type = val[0];
+  
   switch(type)
   {
   case 'U':
     cur_setting_uint = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Uint;
+    sprintf(temp_str, "%lu", cur_setting_uint);
+    cur_setting_selected = strlen(temp_str) - 1;
     break;
   case 'I':
     cur_setting_int = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Int;
+    sprintf(temp_str, "%l", cur_setting_uint);
+    cur_setting_selected = strlen(temp_str) - 1;
     break;
   case 'S':
     cur_setting_str = cfg[key].substr(1);
     cur_setting_type = SettingType::Str;
+    sprintf(temp_str, "%s", cur_setting_str.c_str());
+    cur_setting_selected = strlen(temp_str) - 1;
     break;
   case 'F':
     cur_setting_float = atof(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Float;
+    sprintf(temp_str, "%f", cur_setting_uint);
+    cur_setting_selected = strlen(temp_str) - 1;
     break;
   }
 }
@@ -740,7 +753,13 @@ void drawOLED()
       //sprintf(temp_str, "%s", setting_val);
       break;
     }
-    uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
+
+    cur_setting_len = strlen(temp_str);
+
+    // Put active digit/char at X pos 61
+    uint8_t str_x = 61 - ((cur_setting_len - 1 - cur_setting_selected) * SETTING_FONT_WIDTH);
+    
+    //uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
     //u8g2.setDrawColor(0);
     u8g2.drawStr(str_x, 20, temp_str);
     //u8g2.setDrawColor(1);
@@ -918,7 +937,10 @@ void pollButtons()
         switch(cur_setting_type)
         {
         case SettingType::Uint:
-          ++cur_setting_uint;
+          if(cur_setting_uint + power_10(cur_setting_selected) < UINT64_MAX)
+          {
+            cur_setting_uint += power_10(cur_setting_selected);
+          }
           break;
         case SettingType::Int:
           ++cur_setting_int;
@@ -972,7 +994,10 @@ void pollButtons()
         switch(cur_setting_type)
         {
         case SettingType::Uint:
-          --cur_setting_uint;
+          if((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
+          {
+            cur_setting_uint -= power_10(cur_setting_selected);
+          }
           break;
         case SettingType::Int:
           --cur_setting_int;
@@ -1037,21 +1062,26 @@ void pollButtons()
         switch(cur_setting_type)
         {
         case SettingType::Uint:
-          --cur_setting_uint;
-          break;
         case SettingType::Int:
-          --cur_setting_int;
-          break;
         case SettingType::Str:
-          if(cur_setting_selected == 0)
+          if(cur_setting_selected < cur_setting_len - 1)
           {
-            //
-          }
-          else
-          {
-            cur_setting_selected--;
+            ++cur_setting_selected;
           }
           break;
+//        case SettingType::Int:
+//          --cur_setting_int;
+//          break;
+//        case SettingType::Str:
+//          if(cur_setting_selected == 0)
+//          {
+//            //
+//          }
+//          else
+//          {
+//            cur_setting_selected--;
+//          }
+//          break;
         }
       }
       else
@@ -1097,17 +1127,22 @@ void pollButtons()
         switch(cur_setting_type)
         {
         case SettingType::Uint:
-          --cur_setting_uint;
-          break;
         case SettingType::Int:
-          --cur_setting_int;
-          break;
         case SettingType::Str:
-          if(cur_setting_selected < cur_setting_str.size())
+          if(cur_setting_selected > 0)
           {
-            cur_setting_selected++;
+            --cur_setting_selected;
           }
           break;
+//        case SettingType::Int:
+//          --cur_setting_int;
+//          break;
+//        case SettingType::Str:
+//          if(cur_setting_selected < cur_setting_str.size())
+//          {
+//            cur_setting_selected++;
+//          }
+//          break;
         }
       }
       else
@@ -1543,6 +1578,7 @@ void setNextTx(uint8_t minutes)
 //  time_t t = rtc.getEpoch();
   uint16_t sec_to_add;
   uint32_t t = rtc.getEpoch();
+  uint8_t ten_min_delay, one_min_delay;
 
   switch(mode)
   {
@@ -1555,7 +1591,17 @@ void setNextTx(uint8_t minutes)
   case Mode::QRSS10:
   case Mode::QRSS120:
   case Mode::HELL:
-    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+    one_min_delay = (60 - rtc.getSeconds());
+//    if(one_min_delay == )
+//    {
+      ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
+//    }
+//    else
+//    {
+//      ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
+//    }
+    sec_to_add = (one_min_delay) + (ten_min_delay * 60) + (minutes * 60);
+//    sec_to_add = (one_min_delay) + (ten_min_delay * 60);
     break;
 
   case Mode::CW:
@@ -1797,8 +1843,7 @@ void composeBuffer()
   case Mode::CW:
   case Mode::HELL:
     sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
-    sprintf(temp_grid, "%s", cfg["Grid"].substr(1).c_str());
-    sprintf(msg_buffer_1, "%s %s", temp_call, temp_grid);
+    sprintf(msg_buffer_1, "%s", temp_call);
     break;
     
   case Mode::WSPR:
@@ -1903,6 +1948,7 @@ void setup()
   cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
   cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
   cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+  next_state = TxState::MFSK;
 
   // Clear TX buffer
   memset(mfsk_buffer, 0, 255);
