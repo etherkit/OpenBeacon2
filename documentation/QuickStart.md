@@ -32,9 +32,13 @@ Time Synchronization
 --------------------
 Open a terminal/command window in the directory where the timesync.py script resides. In order to run the time synchronization program, we need to know which serial port that timesync.py can find OpenBeacon Mini. You can use the command `python3 timesync.py -l` to list all of the available serial ports on your PC.
 
-The `-p` argument of timesync.py is used to specify the port that your OpenBeacon Mini is connected to.  So for example, if your OpenBeacon Mini is on COM25, you would use the following command to start the program:
+The `-p` argument of timesync.py is used to specify the port that your OpenBeacon Mini is connected to.  So for example, if your OpenBeacon Mini is on COM25, you would use the following command on Windows to start the program:
 
-`python3 timesync.py -p COM25`
+`python timesync.py -p COM25`
+
+The command on Linux and macOS machines would be:
+
+`python3 timesync.py -p /dev/ttyACM0`
 
 Once the program connects to OpenBeacon Mini and sets the time on it, the green LED on OpenBeacon Mini will light to indicate a good time synchronization and timesync.py will print out a timestamp of the synchronization.
 

@@ -3,10 +3,7 @@
 import serial
 import serial.tools.list_ports
 import sys
-# import tty
-# import termios
 import time
-#import _thread
 import threading
 from timeit import default_timer as timer
 import argparse
@@ -14,7 +11,6 @@ import argparse
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
     DEVICE = 'COM1'
-
 elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
     DEVICE = '/dev/ttyACM0'
 elif sys.platform.startswith('darwin'):
@@ -56,7 +52,9 @@ args = arg_parser.parse_args()
 try:
     from msvcrt import getch  # try to import Windows version
 except ImportError:
-    import tty, termios
+    import tty
+    import termios
+
     def getch():   # define non-Windows version
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
@@ -114,7 +112,7 @@ def main():
                 print(ser.readline())
 
         if char is not None:
-            if char == b'q' or char == b'\x1b':  # x1b is ESC
+            if char == b'q' or char == b'\x1b':  # 1b is ESC
                 sys.exit(0)
             char = None
 
