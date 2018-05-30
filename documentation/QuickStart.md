@@ -42,6 +42,10 @@ The command on Linux and macOS machines would be:
 
 Once the program connects to OpenBeacon Mini and sets the time on it, the green LED on OpenBeacon Mini will light to indicate a good time synchronization and timesync.py will print out a timestamp of the synchronization.
 
+Setting Frequency
+-----------------
+While the presence of the plug-in band module will automatically set your frequency within the nominal band, you will still need to tune to an exact frequency within the band. This is accomplished with the four arrow keys to the right of the OLED display. There is a tune step indicator below the digit indicating the tune step. This can be moved with the LEFT and RIGHT buttons to change the desired tune step. The UP and DOWN buttons are used to increment and decrement the frequency by the desired tune step.
+
 Menu System
 -----------
 

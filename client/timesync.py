@@ -102,7 +102,7 @@ def main():
         elif('\f' in ser_in.decode()):
             start = timer()
             start_time = time.strftime("%H:%M:%S - ", time.gmtime())
-            while('\b' not in ser.read()):
+            while('\b' not in ser.read().decode()):
                 pass
             end = timer()
             if args.verbosity == 2:
@@ -112,9 +112,12 @@ def main():
                 print(ser.readline())
 
         if char is not None:
-            if char == b'q' or char == b'\x1b':  # 1b is ESC
+            if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
                 sys.exit(0)
             char = None
+            t = threading.Thread(target=keypress)
+            t.daemon = True
+            t.start()
 
 
 if __name__ == "__main__":
