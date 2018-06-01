@@ -6,7 +6,7 @@ Requirements
 
 * Internet connected PC (Windows, Linux, or macOS)
 * Python 3 programming language [installed](https://www.python.org/)
-* NTP time synchronization (Use of ntpd on Linux and macOS, or on Windows a program such as [Meinberg NTP](https://www.meinbergglobal.com/english/sw/)
+* NTP time synchronization (Use of ntpd on Linux and macOS, or on Windows a program such as [Meinberg NTP](https://www.meinbergglobal.com/english/sw/))
 
 Software Prerequisite Installation
 ----------------------------------
