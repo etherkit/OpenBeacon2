@@ -58,30 +58,13 @@ if sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
     DEVICE = 'COM1'
-    # fd = None
 elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
     DEVICE = '/dev/ttyACM0'
-    # fd = sys.stdin.fileno()
-    # old_settings = termios.tcgetattr(sys.stdin)
-    # tty.setcbreak(fd)
 elif sys.platform.startswith('darwin'):
     DEVICE = '/dev/tty.'
-    # fd = sys.stdin.fileno()
-    # old_settings = termios.tcgetattr(fd)
-    # tty.setcbreak(fd)
 else:
     raise EnvironmentError('Unsupported platform')
     # DEVICE = '/dev/ttyACM0'
-
-
-# def set_normal_term():
-#     if sys.platform.startswith('win'):
-#         pass
-#     else:
-#         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-
-
-# atexit.register(set_normal_term)
 
 BAUD = 57600
 
