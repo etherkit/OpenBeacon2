@@ -2,11 +2,10 @@
 
 import serial
 import serial.tools.list_ports
-import sys, os
+import sys
+import os
 import time
 import threading
-import tty
-import termios
 from timeit import default_timer as timer
 import argparse
 import logging
@@ -16,7 +15,45 @@ logging.basicConfig(level=logging.DEBUG,
                     format='[%(levelname)s] (%(threadName)-10s) %(message)s',
                     )
 
+# Set up non-blocking keyboard read
+try:
+    from msvcrt import getch  # try to import Windows version
+except ImportError:
+    import tty
+    import termios
+    import fcntl
 
+    def getch():   # define non-Windows version
+        with raw(sys.stdin):
+            with nonblocking(sys.stdin):
+                ch = sys.stdin.read(1)
+
+        return ch
+
+if sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.platform.startswith('darwin'):
+    class raw(object):
+        def __init__(self, stream):
+            self.stream = stream
+            self.fd = self.stream.fileno()
+
+        def __enter__(self):
+            self.original_stty = termios.tcgetattr(self.stream)
+            tty.setcbreak(self.stream)
+
+        def __exit__(self, type, value, traceback):
+            termios.tcsetattr(self.stream, termios.TCSANOW, self.original_stty)
+
+    class nonblocking(object):
+        def __init__(self, stream):
+            self.stream = stream
+            self.fd = self.stream.fileno()
+
+        def __enter__(self):
+            self.orig_fl = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+            fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl | os.O_NONBLOCK)
+
+        def __exit__(self, *args):
+            fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl)
 
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
@@ -38,11 +75,13 @@ else:
     raise EnvironmentError('Unsupported platform')
     # DEVICE = '/dev/ttyACM0'
 
+
 def set_normal_term():
     if sys.platform.startswith('win'):
         pass
     else:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+
 
 atexit.register(set_normal_term)
 
@@ -75,34 +114,6 @@ arg_parser.add_argument("--verbosity", "-v", default=0,
                         action="count", help="Increase output verbosity")
 args = arg_parser.parse_args()
 
-# Set up non-blocking keyboard read
-try:
-    from msvcrt import getch  # try to import Windows version
-except ImportError:
-    # import tty
-    # import termios
-
-    # fd = sys.stdin.fileno()
-    # term = open(fd)
-
-    def getch():   # define non-Windows version
-        # old_settings = termios.tcgetattr(fd)
-        # old_settings[3] = old_settings[3] | termios.ECHO
-        # term = open(fd)
-        # try:
-            # tty.setraw(sys.stdin.fileno())
-            # tty.setraw(fd, termios.TCSANOW)
-            # tty.setcbreak(fd)
-        ch = sys.stdin.read(1)
-            # ch = term.read(1).decode()
-            # ch = sys.stdin.read(1)
-            # ch = os.read(fd, 1)
-        # finally:
-            # termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-            # termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        # tty.setcbreak(fd, termios.TCSANOW)
-
-        return ch
 
 # Open serial port
 try:
@@ -113,23 +124,17 @@ except:
     sys.exit(0)
 
 
-def keypress(ev):
+def keypress():
     global char
 
-    while not ev.is_set():
+    while True:
         char = getch()
-        # if char is not None:
-        #     if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
-        #         print('EXIT')
-        #         sys.exit(0)
-        #     else:
-        #         print('char: ')
-        #     char = None
 
-def serial_handler(ev):
+
+def serial_handler():
     global char
 
-    while not ev.is_set():
+    while True:
         ser_in = ser.read()
         if('\a' in ser_in.decode()):
             cur_time = int(time.time())
@@ -145,67 +150,31 @@ def serial_handler(ev):
                 pass
             end = timer()
             if args.verbosity > 0:
-                print(start_time + str(end - start)  + "\r")
+                print(start_time + str(end - start) + "\r")
         elif('\v' in ser_in.decode()):
             if args.verbosity > 0:
                 print(ser.readline() + "\r")
 
 
-# # Start non-blocking keypress thread
-# t = threading.Thread(target=keypress)
-# t.daemon = True
-# t.start()
-
-
 def main():
     global char
     char = None
-    # # Open serial port
-    # try:
-    #     ser = serial.Serial(port=args.port, baudrate=args.baud,
-    #                         timeout=1, writeTimeout=1)
-    # except:
-    #     print('Cannot open serial port ' + args.port)
-    #     sys.exit(0)
 
-    # Start non-blocking keypress thread
-    close_event = threading.Event()
-    t = threading.Thread(target=keypress, args=(close_event,))
-    s = threading.Thread(target=serial_handler, args=(close_event,))
-    t.daemon = True
+    # Start threads
+    # t = threading.Thread(target=keypress)
+    s = threading.Thread(target=serial_handler)
+    # t.daemon = True
     s.daemon = True
-    t.start()
+    # t.start()
     s.start()
 
-    # Wait for ASCII bell, then send the Unix time string
-    # while True:
-    #     ser_in = ser.read()
-    #     if('\a' in ser_in.decode()):
-    #         cur_time = int(time.time())
-    #         while(cur_time == int(time.time())):
-    #             pass
-    #         time_str = "T" + str(int(time.time()))
-    #         ser.write(time_str.encode())
-    #         print("Time sync at " + time.asctime(time.gmtime()) + "\r")
-    #     elif('\f' in ser_in.decode()):
-    #         start = timer()
-    #         start_time = time.strftime("%H:%M:%S - ", time.gmtime())
-    #         while('\b' not in ser.read().decode()):
-    #             pass
-    #         end = timer()
-    #         if args.verbosity > 0:
-    #             print(start_time + str(end - start)  + "\r")
-    #     elif('\v' in ser_in.decode()):
-    #         if args.verbosity > 0:
-    #             print(ser.readline() + "\r")
     while True:
-        if char is not None:
-            if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
-                print('EXIT' + '\r')
-                close_event.set()
-                os._exit(-1)
+        char = getch()
+        if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
+            print('EXIT' + '\r')
+            sys.exit()
 
-            char = None
+        char = None
 
 
 if __name__ == "__main__":
