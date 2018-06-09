@@ -58,32 +58,30 @@ if sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
     DEVICE = 'COM1'
-    fd = None
+    # fd = None
 elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
     DEVICE = '/dev/ttyACM0'
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(sys.stdin)
-    # old_settings[3] = old_settings[3] | termios.ECHO
-    # old_settings[3] = old_settings[3] | termios.ICANON
-    tty.setcbreak(fd)
+    # fd = sys.stdin.fileno()
+    # old_settings = termios.tcgetattr(sys.stdin)
+    # tty.setcbreak(fd)
 elif sys.platform.startswith('darwin'):
     DEVICE = '/dev/tty.'
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    tty.setcbreak(fd)
+    # fd = sys.stdin.fileno()
+    # old_settings = termios.tcgetattr(fd)
+    # tty.setcbreak(fd)
 else:
     raise EnvironmentError('Unsupported platform')
     # DEVICE = '/dev/ttyACM0'
 
 
-def set_normal_term():
-    if sys.platform.startswith('win'):
-        pass
-    else:
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+# def set_normal_term():
+#     if sys.platform.startswith('win'):
+#         pass
+#     else:
+#         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
 
 
-atexit.register(set_normal_term)
+# atexit.register(set_normal_term)
 
 BAUD = 57600
 
@@ -142,7 +140,7 @@ def serial_handler():
                 pass
             time_str = "T" + str(int(time.time()))
             ser.write(time_str.encode())
-            print("Time sync at " + time.asctime(time.gmtime()) + "\r")
+            print("Time sync at " + time.asctime(time.gmtime()))
         elif('\f' in ser_in.decode()):
             start = timer()
             start_time = time.strftime("%H:%M:%S - ", time.gmtime())
@@ -150,10 +148,12 @@ def serial_handler():
                 pass
             end = timer()
             if args.verbosity > 0:
-                print(start_time + str(end - start) + "\r")
+                logging.info(start_time + str(end - start))
+                # print(start_time + str(end - start) + "\r")
         elif('\v' in ser_in.decode()):
             if args.verbosity > 0:
-                print(ser.readline() + "\r")
+                logging.info(ser.readline())
+                # print(ser.readline() + "\r")
 
 
 def main():
@@ -162,7 +162,7 @@ def main():
 
     # Start threads
     # t = threading.Thread(target=keypress)
-    s = threading.Thread(target=serial_handler)
+    s = threading.Thread(target=serial_handler, name="Serial")
     # t.daemon = True
     s.daemon = True
     # t.start()
@@ -171,7 +171,8 @@ def main():
     while True:
         char = getch()
         if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
-            print('EXIT' + '\r')
+            if args.verbosity > 0:
+                logging.info('EXIT')
             sys.exit()
 
         char = None
