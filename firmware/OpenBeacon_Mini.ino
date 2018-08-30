@@ -1,3 +1,21 @@
+// Hardware Requirements
+// ---------------------
+// This firmware must be run on an Etherkit Empyrean Alpha or Arduino Zero capable microcontroller
+//
+// Required Libraries
+// ------------------
+// Flash Storage (Library Manager)
+// TinyGPS++ (http://arduiniana.org/libraries/tinygpsplus/)
+// ArduinoSTL (Library Manager)
+// u8g2lib (Library Manager)
+// Etherkit Menu (https://github.com/etherkit/MenuArduino)
+// Etherkit Morse (Library Manager)
+// Etherkit Si5351 (Library Manager)
+// Etherkit JTEncode (Library Manager)
+// Scheduler (Library Manager)
+// ArduinoJson (Library Manager)
+// Wire (Arduino Standard Library)
+
 #include <Scheduler.h>
 #include <JTEncode.h>
 #include <ArduinoJson.h>
@@ -100,8 +118,8 @@ Menu menu;
 JTEncode jtencode;
 
 // ISR global variables
-volatile uint32_t base_frequency = DEFAULT_FREQUENCY; // 30m WSPR
-volatile uint32_t frequency = base_frequency;
+volatile uint64_t base_frequency = DEFAULT_FREQUENCY; // 30m WSPR
+volatile uint64_t frequency = base_frequency;
 volatile uint32_t last_reported_pos;   // change management
 volatile uint32_t lower_freq_limit = DEFAULT_LOWER_FREQ_LIMIT;
 volatile uint32_t upper_freq_limit = DEFAULT_UPPER_FREQ_LIMIT;
@@ -136,6 +154,7 @@ uint8_t cur_setting_selected = 0;
 uint8_t cur_setting_len = 0;
 std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
+uint8_t cur_setting_index = 0;
 char cur_callsign[21];
 char cur_grid[5];
 uint8_t cur_power;
@@ -764,15 +783,20 @@ void drawOLED()
     u8g2.drawStr(str_x, 20, temp_str);
     //u8g2.setDrawColor(1);
 
+    cur_setting_char = cur_setting_str[cur_setting_len - cur_setting_selected - 1];
+
     // Find char in allowable list
     std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
     if(pos != std::string::npos)
     {
-      cur_setting_char = pos;
+      cur_setting_index = pos;
     }
     
     sprintf(temp_str, "%d", cur_setting_selected);
     u8g2.drawStr(0, 10, temp_str);
+    sprintf(temp_str, "%c", cur_setting_char);
+    u8g2.drawStr(20, 10, temp_str);
+    
 
     // Underline the current setting selection
     u8g2.drawLine(60, 21, 66, 21);
@@ -1348,7 +1372,7 @@ void selectBand()
 
   prev_band_index[2] = prev_band_index[1];
   prev_band_index[1] = prev_band_index[0];
-  //prev_band_index[0] = band_index;
+  prev_band_index[0] = band_index;
 
   band_id = analogRead(A0);
   yield();
@@ -1362,6 +1386,7 @@ void selectBand()
       if(band.index != band_index)
       {
         prev_band_index[0] = band.index;
+        //band_index = band.index;
         new_lower_freq_limit = band.lower_limit;
         new_upper_freq_limit = band.upper_limit;
         new_cw_freq = band.cw_freq;
@@ -1406,7 +1431,10 @@ void selectBand()
   // three consequtive reads of the same band
   if(prev_band_index[0] == prev_band_index[1] && prev_band_index[1] == prev_band_index[2])
   {
-    // If the band index is changed
+    // If the band index is changed, change bands only when not transmitting,
+    // unless band index is 0, which indicates removal of the band module
+    //if(band_index != prev_band_index[0] && (cur_state != TxState::Idle || band_index == 0))
+    //if(band_index != prev_band_index[0] && (!tx_lock || prev_band_index[0] == 0))
     if(band_index != prev_band_index[0])
     {
       lower_freq_limit = new_lower_freq_limit;
@@ -1442,7 +1470,18 @@ void selectBand()
         }
       }
 
-      if(!tx_lock)
+      //if(cur_state != TxState::Idle)
+      if(tx_lock)
+      {
+        // Terminate the transmission if module is removed while transmitting
+        if(prev_band_index[0] == 0)
+        {
+          setTxState(TxState::Idle);
+          tx_enable = false;
+          return;
+        }
+      }
+      else
       {
         base_frequency = new_freq;
       }
@@ -1450,11 +1489,11 @@ void selectBand()
     // Then change band index
     band_index = prev_band_index[0];
 
-    if(band_index == 0)
-    {
-      tx_lock = true;
-      base_frequency = 0;
-    }
+//    if(band_index == 0)
+//    {
+//      tx_lock = true;
+//      base_frequency = 0;
+//    }
 
 //    if(!tx_lock)
 //    {
@@ -1525,7 +1564,7 @@ void setTxState(TxState state)
     SerialUSB.write('\f');
     tx_lock = true;
     cur_symbol = 0;
-    frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+    frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
     change_freq = true;
     digitalWrite(TX_KEY, HIGH);
     yield();
@@ -1541,7 +1580,7 @@ void setTxState(TxState state)
 //    SerialUSB.println("Start CW");
     SerialUSB.write('\f');
     tx_lock = true;
-    frequency = (base_frequency * 100);
+    frequency = (base_frequency * 100ULL);
     change_freq = true;
     morse.output_pin = TX_KEY;
     morse.setWPM(wpm);
@@ -1554,7 +1593,7 @@ void setTxState(TxState state)
     SerialUSB.write('\f');
     tx_lock = true;
     digitalWrite(TX_KEY, HIGH);
-    frequency = (base_frequency * 100);
+    frequency = (base_frequency * 100ULL);
     change_freq = true;
     morse.output_pin = 0;
     morse.setWPM(wpm);
@@ -1765,12 +1804,12 @@ void txStateMachine()
       {
         if(morse.tx)
         {
-          frequency = (base_frequency * 100) + cur_tone_spacing;
+          frequency = (base_frequency * 100ULL) + cur_tone_spacing;
           change_freq = true;
         }
         else
         {
-          frequency = (base_frequency * 100);
+          frequency = (base_frequency * 100ULL);
           change_freq = true;
         }
 
@@ -1783,7 +1822,7 @@ void txStateMachine()
         yield();
         prev_morse_tx = false;
         setTxState(TxState::Idle);
-        frequency = (base_frequency * 100);
+        frequency = (base_frequency * 100ULL);
         change_freq = true;
         //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
         
@@ -1814,7 +1853,7 @@ void txStateMachine()
         else // next symbol
         {
           next_event = cur_timer + cur_symbol_time;
-          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+          frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
           change_freq = true;
         }
       }
@@ -1905,7 +1944,7 @@ void setup()
   // Si5351
   si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, 0);
   si5351.set_freq(base_frequency * SI5351_FREQ_MULT, SI5351_CLK0);
-  si5351.set_freq(1000000UL, SI5351_CLK2);
+//  si5351.set_freq(1000000UL, SI5351_CLK2);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
   Wire.setClock(400000UL);
 
@@ -1955,7 +1994,7 @@ void setup()
   jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(), 
     atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
-  frequency = (base_frequency * 100);
+  frequency = (base_frequency * 100ULL);
   change_freq = true;
 
   composeBuffer();
