@@ -73,6 +73,8 @@ constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 constexpr static unsigned char lock_bits[] = {
    0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e };
 
+const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
+
 // Character 0 of the value field denotes setting type:
 // S == string
 // U == uint
@@ -149,10 +151,10 @@ int64_t cur_setting_int = 0;
 std::string cur_setting_str = "";
 //std::string temp_setting_str = "";
 float cur_setting_float;
-SettingType cur_setting_type = SettingType::Uint;
+SettingType cur_setting_type = SettingType::Str;
 uint8_t cur_setting_selected = 0;
 uint8_t cur_setting_len = 0;
-std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
+//std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
 uint8_t cur_setting_index = 0;
 char cur_callsign[21];
@@ -486,9 +488,8 @@ void setConfig(const char * key)
   cur_setting = std::string(key);
   std::string val = cfg[key];
   char temp_str[41];
-  //cur_setting_selected = 0;
-//  //switch(val[0])
   char type = val[0];
+  std::size_t pos;
   
   switch(type)
   {
@@ -496,25 +497,34 @@ void setConfig(const char * key)
     cur_setting_uint = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Uint;
     sprintf(temp_str, "%lu", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = strlen(temp_str) - 1;
+    cur_setting_selected = 0;
     break;
   case 'I':
     cur_setting_int = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Int;
     sprintf(temp_str, "%l", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = strlen(temp_str) - 1;
+    cur_setting_selected = 0;
     break;
   case 'S':
     cur_setting_str = cfg[key].substr(1);
     cur_setting_type = SettingType::Str;
     sprintf(temp_str, "%s", cur_setting_str.c_str());
-    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = strlen(temp_str) - 1;
+    cur_setting_selected = 0;
+    pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+    if(pos != std::string::npos)
+    {
+      cur_setting_index = (uint8_t)pos;
+    }
     break;
   case 'F':
     cur_setting_float = atof(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Float;
     sprintf(temp_str, "%f", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = strlen(temp_str) - 1;
+    cur_setting_selected = 0;
     break;
   }
 }
@@ -765,7 +775,7 @@ void drawOLED()
 //      {
 //        setting_val += cur_setting_selected - 10;
 //      }
-      sprintf(temp_str, "%s", cur_setting_str.c_str());
+      sprintf(temp_str, "%s<", cur_setting_str.c_str());
       //sprintf(temp_str, "%s", cfg[cur_setting].c_str());
 //      SerialUSB.print("\v");
 //      SerialUSB.println(temp_str);
@@ -773,29 +783,35 @@ void drawOLED()
       break;
     }
 
-    cur_setting_len = strlen(temp_str);
+    cur_setting_len = strlen(temp_str) - 1;
 
     // Put active digit/char at X pos 61
-    uint8_t str_x = 61 - ((cur_setting_len - 1 - cur_setting_selected) * SETTING_FONT_WIDTH);
+    uint8_t str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
+//    uint8_t str_x = 61 - ((cur_setting_selected - 1 - cur_setting_len) * SETTING_FONT_WIDTH);
     
     //uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
     //u8g2.setDrawColor(0);
     u8g2.drawStr(str_x, 20, temp_str);
     //u8g2.setDrawColor(1);
 
-    cur_setting_char = cur_setting_str[cur_setting_len - cur_setting_selected - 1];
+    cur_setting_char = cur_setting_str[cur_setting_selected];
 
     // Find char in allowable list
-    std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-    if(pos != std::string::npos)
-    {
-      cur_setting_index = pos;
-    }
-    
-    sprintf(temp_str, "%d", cur_setting_selected);
-    u8g2.drawStr(0, 10, temp_str);
-    sprintf(temp_str, "%c", cur_setting_char);
-    u8g2.drawStr(20, 10, temp_str);
+//    std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+//    if(pos != std::string::npos)
+//    {
+//      cur_setting_index = pos;
+//    }
+
+    // debugging stuff
+//    sprintf(temp_str, "%d", cur_setting_selected);
+//    u8g2.drawStr(0, 10, temp_str);
+//    sprintf(temp_str, "%c", cur_setting_char);
+//    u8g2.drawStr(20, 10, temp_str);
+//    sprintf(temp_str, "%d", cur_setting_index);
+//    u8g2.drawStr(90, 10, temp_str);
+//    sprintf(temp_str, "%d", cur_setting_type);
+//    u8g2.drawStr(110, 10, temp_str);
     
 
     // Underline the current setting selection
@@ -970,15 +986,16 @@ void pollButtons()
           ++cur_setting_int;
           break;
         case SettingType::Str:
-          if(cur_setting_char == 0)
+          if(cur_setting_index >= settings_str_chars.size() - 1)
           {
-            cur_setting_char = settings_str_chars.size() - 1;
+            cur_setting_index = 0;
           }
           else
           {
-            cur_setting_char--;
+            cur_setting_index++;
           }
-          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_char];
+
+          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
           break;
         } 
       }
@@ -1027,15 +1044,15 @@ void pollButtons()
           --cur_setting_int;
           break;
         case SettingType::Str:
-          if(cur_setting_char > settings_str_chars.size())
+          if(cur_setting_index == 0)
           {
-            cur_setting_char = 0;
+            cur_setting_index = settings_str_chars.size() - 1;
           }
           else
           {
-            cur_setting_char++;
+            cur_setting_index--;
           }
-          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_char];
+          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
           break;
         }
       }
@@ -1088,9 +1105,17 @@ void pollButtons()
         case SettingType::Uint:
         case SettingType::Int:
         case SettingType::Str:
-          if(cur_setting_selected < cur_setting_len - 1)
+          if(cur_setting_selected > 0)
           {
-            ++cur_setting_selected;
+            --cur_setting_selected;
+            
+            // Find char in allowable list
+            std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+            if(pos != std::string::npos)
+            {
+              cur_setting_index = (uint8_t)pos;
+              //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+            }
           }
           break;
 //        case SettingType::Int:
@@ -1153,9 +1178,16 @@ void pollButtons()
         case SettingType::Uint:
         case SettingType::Int:
         case SettingType::Str:
-          if(cur_setting_selected > 0)
+          if(cur_setting_selected < cur_setting_len - 1)
           {
-            --cur_setting_selected;
+            ++cur_setting_selected;
+            // Find char in allowable list
+            std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+            if(pos != std::string::npos)
+            {
+              cur_setting_index = (uint8_t)pos;
+              //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+            }
           }
           break;
 //        case SettingType::Int:
