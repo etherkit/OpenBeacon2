@@ -73,7 +73,7 @@ constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 constexpr static unsigned char lock_bits[] = {
    0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e };
 
-const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
+const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/. ";
 
 // Character 0 of the value field denotes setting type:
 // S == string
@@ -176,6 +176,7 @@ bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
 float wpm = DEFAULT_WPM;
 uint8_t cur_setting_digit = 0;
+bool ins_del_mode = false;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -497,15 +498,15 @@ void setConfig(const char * key)
     cur_setting_uint = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Uint;
     sprintf(temp_str, "%lu", cur_setting_uint);
-//    cur_setting_selected = strlen(temp_str) - 1;
-    cur_setting_selected = 0;
+    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = 0;
     break;
   case 'I':
     cur_setting_int = atoll(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Int;
     sprintf(temp_str, "%l", cur_setting_uint);
-//    cur_setting_selected = strlen(temp_str) - 1;
-    cur_setting_selected = 0;
+    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = 0;
     break;
   case 'S':
     cur_setting_str = cfg[key].substr(1);
@@ -523,8 +524,8 @@ void setConfig(const char * key)
     cur_setting_float = atof(cfg[key].substr(1).c_str());
     cur_setting_type = SettingType::Float;
     sprintf(temp_str, "%f", cur_setting_uint);
-//    cur_setting_selected = strlen(temp_str) - 1;
-    cur_setting_selected = 0;
+    cur_setting_selected = strlen(temp_str) - 1;
+//    cur_setting_selected = 0;
     break;
   }
 }
@@ -859,8 +860,16 @@ void drawOLED()
   }
   else if(display_mode == DisplayMode::Setting)
   {
-    sprintf(menu_1, "%s", "Ins/Del");
-    sprintf(menu_2, "%s", "OK");
+    if(ins_del_mode)
+    {
+      sprintf(menu_1, "%s", "Ins");
+      sprintf(menu_2, "%s", "Del");
+    }
+    else
+    {
+      sprintf(menu_1, "%s", "Ins/Del");
+      sprintf(menu_2, "%s", "OK");
+    }
     menu_1_x = 6;
     menu_2_x = 80;
     u8g2.setFont(u8g2_font_6x10_mf);
@@ -1235,31 +1244,55 @@ void pollButtons()
       }
       else if(display_mode == DisplayMode::Setting)
       {
-        // OK button
-        char temp_str[42];
-        switch(cur_setting_type)
+        // INS/DEL button
+        if(ins_del_mode)
         {
-        case SettingType::Uint:
-          sprintf(temp_str, "U%lu", cur_setting_uint);
-          cfg[cur_setting] = temp_str;
-          break;
-        case SettingType::Int:
-          sprintf(temp_str, "I%l", cur_setting_int);
-          cfg[cur_setting] = temp_str;
-          break;
-        case SettingType::Str:
-          sprintf(temp_str, "S%s", cur_setting_str.c_str());
-          cfg[cur_setting] = temp_str;
-          break;
-        case SettingType::Float:
-          sprintf(temp_str, "F%f", cur_setting_float);
-          cfg[cur_setting] = temp_str;
-          break;
+          // Insert
+          cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+          cur_setting_index = settings_str_chars.length() - 1;
         }
-
-        cur_setting_selected = 0;
-        display_mode = DisplayMode::Main;
-        menu.selectRoot();
+        else
+        {
+          ins_del_mode = true;
+        }
+//        switch(cur_setting_type)
+//        {
+//        case SettingType::Str:
+//          // Loop here to see if a long or short press
+//          // Short press == INS, long press == DEL
+//          uint32_t btn_timer_end = cur_timer + 1000;
+//          bool short_press = false;
+//
+//          while(cur_timer < btn_timer_end)
+//          {
+//            if(digitalRead(BTN_DSP_1) == HIGH)
+//            {
+//              // Insert a space
+////              cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+////              cur_setting_index = settings_str_chars.length() - 1;
+//              short_press = true;
+//              break;
+//            }
+//            yield();
+//          }
+//          // If we made it this far, the button was held down for 1 s,
+//          // so do an DEL
+////          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+//          if(short_press)
+//          {
+//            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+//            cur_setting_index = settings_str_chars.length() - 1;
+//          }
+//          else
+//          {
+//            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+//            while(digitalRead(BTN_DSP_1) == LOW)
+//            {
+//              yield();
+//            }
+//          }
+//          break;
+//        }
       }
       else
       {
@@ -1310,14 +1343,26 @@ void pollButtons()
           cfg[cur_setting] = temp_str;
           break;
         case SettingType::Str:
-          sprintf(temp_str, "S%s", cur_setting_str.c_str());
-          cfg[cur_setting] = temp_str;
+          if(ins_del_mode)
+          {
+            // Delete
+            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
+          }
+          else
+          {
+            sprintf(temp_str, "S%s", cur_setting_str.c_str());
+            cfg[cur_setting] = temp_str;
+          }
+          
           break;
         }
-        
-        cur_setting_selected = 0;
-        display_mode = DisplayMode::Main;
-        menu.selectRoot();
+
+        if(!ins_del_mode)
+        {
+          cur_setting_selected = 0;
+          display_mode = DisplayMode::Main;
+          menu.selectRoot();
+        }
       }
       else
       {
@@ -1348,7 +1393,14 @@ void pollButtons()
       }
       else if(display_mode == DisplayMode::Setting)
       {
-        display_mode = DisplayMode::Menu;
+        if(ins_del_mode)
+        {
+          ins_del_mode = false;
+        }
+        else
+        {
+          display_mode = DisplayMode::Menu;
+        }
       }
       else
       {
