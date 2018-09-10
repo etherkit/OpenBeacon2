@@ -118,8 +118,8 @@ def serial_handler():
     while True:
         ser_in = ser.read()
         if('\a' in ser_in.decode()):
-            cur_time = int(time.time())
-            while(cur_time == int(time.time())):
+            cur_time = time.time()
+            while(cur_time == time.time()):
                 pass
             time_str = "T" + str(int(time.time()))
             ser.write(time_str.encode())
