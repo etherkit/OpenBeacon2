@@ -37,7 +37,7 @@
 #include "modes.h"
 
 // Enumerations
-enum class DisplayMode {Main, Menu, Setting};
+enum class DisplayMode {Main, Menu, Setting, Buffer};
 enum class SettingType {Uint, Int, Str, Float, Time};
 enum class TxState {Idle, MFSK, CW, DFCW, Preamble};
 
@@ -71,7 +71,8 @@ constexpr uint32_t TIME_SYNC_INTERVAL = 43200;
 constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 
 constexpr static unsigned char lock_bits[] = {
-   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e };
+  0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
+};
 
 const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/. ";
 
@@ -168,7 +169,10 @@ uint32_t initial_time_sync = 0;
 uint8_t mfsk_buffer[255];
 char wspr_buffer[41];
 char msg_buffer[81];
-char msg_buffer_1[81];
+char msg_buffer_1[81] = "TESTING";
+char msg_buffer_2[81];
+char msg_buffer_3[81];
+char msg_buffer_4[81];
 uint8_t cur_symbol_count;
 uint16_t cur_symbol_time;
 uint16_t cur_tx_interval_mult;
@@ -176,6 +180,7 @@ bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
 float wpm = DEFAULT_WPM;
 uint8_t cur_setting_digit = 0;
+uint8_t cur_edit_buffer;
 bool ins_del_mode = false;
 
 // Timer code derived from:
@@ -198,9 +203,9 @@ void setTimerFrequency(uint16_t frequencyHz)
 }
 
 /*
-This is a slightly modified version of the timer setup found at:
-https://github.com/maxbader/arduino_tools
- */
+  This is a slightly modified version of the timer setup found at:
+  https://github.com/maxbader/arduino_tools
+*/
 void startTimer(int frequencyHz)
 {
   GCLK->CLKCTRL.reg = (uint16_t)(GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK3 | GCLK_CLKCTRL_ID(GCLK_CLKCTRL_ID_TCC0_TCC1));
@@ -226,8 +231,8 @@ void startTimer(int frequencyHz)
   //while (TC->STATUS.bit.SYNCBUSY == 1);
 
   // Have counter wrap around on prescaled clock
-//  TC->CTRLA.reg |= TC_CTRLA_PRESCSYNC(TC_CTRLA_PRESCSYNC_PRESC);
-//  while (TC->STATUS.bit.SYNCBUSY == 1);
+  //  TC->CTRLA.reg |= TC_CTRLA_PRESCSYNC(TC_CTRLA_PRESCSYNC_PRESC);
+  //  while (TC->STATUS.bit.SYNCBUSY == 1);
 
   setTimerFrequency(frequencyHz);
 
@@ -237,8 +242,8 @@ void startTimer(int frequencyHz)
   TC->INTENSET.reg = 0;
   TC->INTENSET.bit.MC0 = 1;
 
-//  NVIC_ClearPendingIRQ(TCC0_IRQn);
-//  NVIC_SetPriority(TCC0_IRQn, 0);
+  //  NVIC_ClearPendingIRQ(TCC0_IRQn);
+  //  NVIC_SetPriority(TCC0_IRQn, 0);
   NVIC_EnableIRQ(TCC0_IRQn);
 
   TC->CTRLA.reg |= TC_CTRLA_ENABLE;
@@ -251,23 +256,36 @@ constexpr unsigned long power_10(unsigned long exponent)
   return (exponent == 0) ? 1 : 10 * power_10(exponent - 1);
 }
 
+uint8_t num_digits(uint64_t number)
+{
+  uint8_t result = 0;
+
+  do
+  {
+    number /= 10;
+    result++;
+  }while(number > 0);
+
+  return result;
+}
+
 // Voltage specified in millivolts
 void setPABias(uint16_t voltage)
 {
   uint32_t reg;
   uint8_t reg1, reg2;
-  
+
   // Bounds checking
-  if(voltage > MCP4725A1_VREF)
+  if (voltage > MCP4725A1_VREF)
   {
     voltage = MCP4725A1_VREF;
   }
-  
+
   // Convert millivolts to the correct register value
   reg = ((uint32_t)voltage * 4096UL) / MCP4725A1_VREF;
   reg1 = (uint8_t)((reg >> 8) & 0xFF);
-  reg2 = (uint8_t)(reg & 0xFF); 
-  
+  reg2 = (uint8_t)(reg & 0xFF);
+
   // Write the register to the MCP4725A1
   noInterrupts();
   Wire.beginTransmission(MCP4725A1_BUS_BASE_ADDR);
@@ -280,33 +298,37 @@ void setPABias(uint16_t voltage)
 void initMenu()
 {
   menu.addChild("Mode");
-    menu.selectChild(0);
-    for(auto i : mode_table)
-    {
-      uint8_t index = static_cast<uint8_t>(i.index);
-      menu.addChild(i.mode_name, selectMode, index);
-    }
-    menu.selectParent();
-  menu.addChild("Buffers");
-    menu.selectChild(1);
-    menu.addChild("1");
-    menu.selectParent();
+  menu.selectChild(0);
+  for (auto i : mode_table)
+  {
+    uint8_t index = static_cast<uint8_t>(i.index);
+    menu.addChild(i.mode_name, selectMode, index);
+  }
+  menu.selectParent();
+  menu.addChild("Buf Sel");
+  menu.selectChild(1);
+  menu.addChild("1", selectBuffer, 1);
+  menu.addChild("2", selectBuffer, 2);
+  menu.addChild("3", selectBuffer, 3);
+  menu.addChild("4", selectBuffer, 4);
+  menu.selectParent();
+  menu.addChild("Buf Edit");
+  menu.selectChild(2);
+  menu.addChild("1", setBuffer, "1");
+  menu.addChild("2", setBuffer, "2");
+  menu.addChild("3", setBuffer, "3");
+  menu.addChild("4", setBuffer, "4");
+  menu.selectParent();
   menu.addChild("Settings");
-    menu.selectChild(2);
-//    for(uint8_t i = 0; i < cfg.size(); ++i)
-//    {
-//      
-//    }
-    for(auto& c : cfg)
-    {
-      const char* key = c.first.c_str();
-      menu.addChild(key, setConfig, key);
-      //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
-    }
-//    menu.addChild("PA Bias", setConfig, "PA Bias");
-//    menu.addChild("Callsign", setConfig, "Callsign");
-    menu.selectParent();
-  //menu.addChild("Menu");  
+  menu.selectChild(3);
+  for (auto& c : cfg)
+  {
+    const char* key = c.first.c_str();
+    menu.addChild(key, setConfig, key);
+    //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
+  }
+  menu.selectParent();
+  //menu.addChild("Menu");
   menu.selectRoot();
 }
 
@@ -319,7 +341,7 @@ void TCC0_Handler()
   if (TC->INTFLAG.bit.MC0 == 1)
   {
     ++cur_timer;
-    if(meta_mode == MetaMode::CW or meta_mode == MetaMode::DFCW)
+    if (meta_mode == MetaMode::CW or meta_mode == MetaMode::DFCW)
     {
       morse.update();
     }
@@ -330,157 +352,193 @@ void TCC0_Handler()
 // ===== Callbacks =====
 void selectMode(uint8_t sel)
 {
-  
-  switch(static_cast<Mode>(sel))
+  switch (static_cast<Mode>(sel))
   {
-  case Mode::DFCW3:
-    mode = Mode::DFCW3;
-    meta_mode = MetaMode::DFCW;
-    next_state = TxState::DFCW;
-    composeBuffer();
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::DFCW6:
-    mode = Mode::DFCW6;
-    meta_mode = MetaMode::DFCW;
-    next_state = TxState::DFCW;
-    composeBuffer();
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::DFCW10:
-    mode = Mode::DFCW10;
-    meta_mode = MetaMode::DFCW;
-    next_state = TxState::DFCW;
-    composeBuffer();
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::DFCW120:
-    mode = Mode::DFCW120;
-    meta_mode = MetaMode::DFCW;
-    next_state = TxState::DFCW;
-    composeBuffer();
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::QRSS3:
-    mode = Mode::QRSS3;
-    meta_mode = MetaMode::CW;
-    next_state = TxState::CW;
-    composeBuffer();
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::QRSS6:
-    mode = Mode::QRSS6;
-    meta_mode = MetaMode::CW;
-    next_state = TxState::CW;
-    composeBuffer();
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::QRSS10:
-    mode = Mode::QRSS10;
-    meta_mode = MetaMode::CW;
-    next_state = TxState::CW;
-    composeBuffer();
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::QRSS120:
-    mode = Mode::QRSS120;
-    meta_mode = MetaMode::CW;
-    next_state = TxState::CW;
-    composeBuffer();
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::CW:
-    mode = Mode::CW;
-    meta_mode = MetaMode::CW;
-    next_state = TxState::CW;
-    composeBuffer();
-    wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::HELL:
-    mode = Mode::HELL;
-    meta_mode = MetaMode::MFSK;
-    next_state = TxState::MFSK;
-    composeBuffer();
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].cw_freq;
-    break;
-  case Mode::WSPR:
-    mode = Mode::WSPR;
-    meta_mode = MetaMode::MFSK;
-    next_state = TxState::MFSK;
-    composeBuffer();
-    memset(mfsk_buffer, 0, 255);
-    jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-    cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].wspr_freq;
-    break;
-  case Mode::JT65:
-    mode = Mode::JT65;
-    meta_mode = MetaMode::MFSK;
-    next_state = TxState::MFSK;
-    composeBuffer();
-    memset(mfsk_buffer, 0, 255);
-    jtencode.jt65_encode(msg_buffer_1, mfsk_buffer);
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-    cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].jt65_freq;
-    break;
-  case Mode::JT9:
-    mode = Mode::JT9;
-    meta_mode = MetaMode::MFSK;
-    next_state = TxState::MFSK;
-    composeBuffer();
-    memset(mfsk_buffer, 0, 255);
-    jtencode.jt9_encode(msg_buffer_1, mfsk_buffer);
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-    cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].jt9_freq;
-    break;
-  case Mode::JT4:
-    mode = Mode::JT4;
-    meta_mode = MetaMode::MFSK;
-    next_state = TxState::MFSK;
-    composeBuffer();
-    memset(mfsk_buffer, 0, 255);
-    jtencode.jt4_encode(msg_buffer_1, mfsk_buffer);
-    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-    cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-    cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-    cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-    base_frequency = band_table[band_index].jt9_freq;
-    break;
+    case Mode::DFCW3:
+      mode = Mode::DFCW3;
+      meta_mode = MetaMode::DFCW;
+      next_state = TxState::DFCW;
+      composeBuffer();
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::DFCW6:
+      mode = Mode::DFCW6;
+      meta_mode = MetaMode::DFCW;
+      next_state = TxState::DFCW;
+      composeBuffer();
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::DFCW10:
+      mode = Mode::DFCW10;
+      meta_mode = MetaMode::DFCW;
+      next_state = TxState::DFCW;
+      composeBuffer();
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::DFCW120:
+      mode = Mode::DFCW120;
+      meta_mode = MetaMode::DFCW;
+      next_state = TxState::DFCW;
+      composeBuffer();
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::QRSS3:
+      mode = Mode::QRSS3;
+      meta_mode = MetaMode::CW;
+      next_state = TxState::CW;
+      composeBuffer();
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::QRSS6:
+      mode = Mode::QRSS6;
+      meta_mode = MetaMode::CW;
+      next_state = TxState::CW;
+      composeBuffer();
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::QRSS10:
+      mode = Mode::QRSS10;
+      meta_mode = MetaMode::CW;
+      next_state = TxState::CW;
+      composeBuffer();
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::QRSS120:
+      mode = Mode::QRSS120;
+      meta_mode = MetaMode::CW;
+      next_state = TxState::CW;
+      composeBuffer();
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::CW:
+      mode = Mode::CW;
+      meta_mode = MetaMode::CW;
+      next_state = TxState::CW;
+      composeBuffer();
+      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::HELL:
+      mode = Mode::HELL;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+      composeBuffer();
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].cw_freq;
+      break;
+    case Mode::WSPR:
+      mode = Mode::WSPR;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+      composeBuffer();
+      memset(mfsk_buffer, 0, 255);
+      jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].wspr_freq;
+      break;
+    case Mode::JT65:
+      mode = Mode::JT65;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+      composeBuffer();
+      memset(mfsk_buffer, 0, 255);
+      jtencode.jt65_encode(msg_buffer_1, mfsk_buffer);
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].jt65_freq;
+      break;
+    case Mode::JT9:
+      mode = Mode::JT9;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+      composeBuffer();
+      memset(mfsk_buffer, 0, 255);
+      jtencode.jt9_encode(msg_buffer_1, mfsk_buffer);
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].jt9_freq;
+      break;
+    case Mode::JT4:
+      mode = Mode::JT4;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+      composeBuffer();
+      memset(mfsk_buffer, 0, 255);
+      jtencode.jt4_encode(msg_buffer_1, mfsk_buffer);
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].jt9_freq;
+      break;
   }
   yield();
+}
+
+void setBuffer(const char * b)
+{
+  std::size_t pos;
+  uint8_t buf;
+
+  display_mode = DisplayMode::Buffer;
+
+  buf = atoi(b);
+
+  if (buf >= 1 && buf <= 4)
+  {
+    switch (buf)
+    {
+      case 1:
+        cur_setting_str = msg_buffer_1;
+        break;
+      case 2:
+        cur_setting_str = msg_buffer_2;
+        break;
+      case 3:
+        cur_setting_str = msg_buffer_3;
+        break;
+      case 4:
+        cur_setting_str = msg_buffer_4;
+        break;
+    }
+    cur_edit_buffer = buf;
+    cur_setting_type = SettingType::Str;
+    cur_setting_selected = 0;
+    pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+    if (pos != std::string::npos)
+    {
+      cur_setting_index = (uint8_t)pos;
+    }
+  }
 }
 
 void setConfig(const char * key)
@@ -491,43 +549,45 @@ void setConfig(const char * key)
   char temp_str[41];
   char type = val[0];
   std::size_t pos;
-  
-  switch(type)
+
+  switch (type)
   {
-  case 'U':
-    cur_setting_uint = atoll(cfg[key].substr(1).c_str());
-    cur_setting_type = SettingType::Uint;
-    sprintf(temp_str, "%lu", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
-//    cur_setting_selected = 0;
-    break;
-  case 'I':
-    cur_setting_int = atoll(cfg[key].substr(1).c_str());
-    cur_setting_type = SettingType::Int;
-    sprintf(temp_str, "%l", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
-//    cur_setting_selected = 0;
-    break;
-  case 'S':
-    cur_setting_str = cfg[key].substr(1);
-    cur_setting_type = SettingType::Str;
-    sprintf(temp_str, "%s", cur_setting_str.c_str());
-//    cur_setting_selected = strlen(temp_str) - 1;
-    cur_setting_selected = 0;
-    pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-    if(pos != std::string::npos)
-    {
-      cur_setting_index = (uint8_t)pos;
-    }
-    break;
-  case 'F':
-    cur_setting_float = atof(cfg[key].substr(1).c_str());
-    cur_setting_type = SettingType::Float;
-    sprintf(temp_str, "%f", cur_setting_uint);
-    cur_setting_selected = strlen(temp_str) - 1;
-//    cur_setting_selected = 0;
-    break;
+    case 'U':
+      cur_setting_uint = atoll(cfg[key].substr(1).c_str());
+      cur_setting_type = SettingType::Uint;
+      sprintf(temp_str, "%lu", cur_setting_uint);
+      cur_setting_selected = 0;
+      break;
+    case 'I':
+      cur_setting_int = atoll(cfg[key].substr(1).c_str());
+      cur_setting_type = SettingType::Int;
+      sprintf(temp_str, "%l", cur_setting_uint);
+      cur_setting_selected = 0;
+      break;
+    case 'S':
+      cur_setting_str = cfg[key].substr(1);
+      cur_setting_type = SettingType::Str;
+      sprintf(temp_str, "%s", cur_setting_str.c_str());
+      //    cur_setting_selected = strlen(temp_str) - 1;
+      cur_setting_selected = 0;
+      pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+      if (pos != std::string::npos)
+      {
+        cur_setting_index = (uint8_t)pos;
+      }
+      break;
+    case 'F':
+      cur_setting_float = atof(cfg[key].substr(1).c_str());
+      cur_setting_type = SettingType::Float;
+      sprintf(temp_str, "%f", cur_setting_uint);
+      cur_setting_selected = 0;
+      break;
   }
+}
+
+void selectBuffer(const uint8_t buf)
+{
+
 }
 
 void drawOLED()
@@ -545,7 +605,7 @@ void drawOLED()
   char menu_2[16];
   uint8_t menu_1_x, menu_2_x;
 
-  // u8g2 draw loop
+// u8g2 draw loop
   // --------------
   u8g2.clearBuffer();          // clear the internal memory
 
@@ -763,13 +823,18 @@ void drawOLED()
 //      //sprintf(temp_str, "%s", setting_val);
 //      break;
 //    }
+
+    uint8_t str_x;
+
     switch(cfg[cur_setting][0])
     {
     case 'U':
       sprintf(temp_str, "%lu", cur_setting_uint);
+      str_x = 61 - (num_digits(cur_setting_uint) * SETTING_FONT_WIDTH) + ((cur_setting_selected + 1) * SETTING_FONT_WIDTH);
       break;
     case 'I':
       sprintf(temp_str, "%l", cur_setting_int);
+      str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
       break;
     case 'S':
 //      if(cur_setting_selected > 10)
@@ -777,6 +842,7 @@ void drawOLED()
 //        setting_val += cur_setting_selected - 10;
 //      }
       sprintf(temp_str, "%s<", cur_setting_str.c_str());
+      str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
       //sprintf(temp_str, "%s", cfg[cur_setting].c_str());
 //      SerialUSB.print("\v");
 //      SerialUSB.println(temp_str);
@@ -787,7 +853,7 @@ void drawOLED()
     cur_setting_len = strlen(temp_str) - 1;
 
     // Put active digit/char at X pos 61
-    uint8_t str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
+//    uint8_t str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
 //    uint8_t str_x = 61 - ((cur_setting_selected - 1 - cur_setting_len) * SETTING_FONT_WIDTH);
     
     //uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
@@ -867,7 +933,14 @@ void drawOLED()
     }
     else
     {
-      sprintf(menu_1, "%s", "Ins/Del");
+      if (cur_setting_type == SettingType::Str)
+      {
+        sprintf(menu_1, "%s", "Ins/Del");
+      }
+      else
+      {
+        sprintf(menu_1, "%s", "");
+      }
       sprintf(menu_2, "%s", "OK");
     }
     menu_1_x = 6;
@@ -965,1203 +1038,1240 @@ void drawOLED()
   //yield();
 }
 
-void pollButtons()
-{
-  // Read buttons
-  // ------------
-  yield();
-  // Handle up button
-  if(digitalRead(BTN_UP) == LOW)
+  void pollButtons()
   {
-    delay(50);   // delay to debounce
+    // Read buttons
+    // ------------
     yield();
+    // Handle up button
     if (digitalRead(BTN_UP) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_UP) == LOW)
       {
-        
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        switch(cur_setting_type)
+        if (display_mode == DisplayMode::Menu)
         {
-        case SettingType::Uint:
-          if(cur_setting_uint + power_10(cur_setting_selected) < UINT64_MAX)
-          {
-            cur_setting_uint += power_10(cur_setting_selected);
-          }
-          break;
-        case SettingType::Int:
-          ++cur_setting_int;
-          break;
-        case SettingType::Str:
-          if(cur_setting_index >= settings_str_chars.size() - 1)
-          {
-            cur_setting_index = 0;
-          }
-          else
-          {
-            cur_setting_index++;
-          }
 
-          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-          break;
-        } 
-      }
-      else
-      {
-        //if(cur_state == TxState::Idle)
-        if(!tx_lock)
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
         {
-          if(base_frequency + power_10(tune_step) > upper_freq_limit)
+          switch (cur_setting_type)
           {
-            base_frequency = upper_freq_limit;
-          }
-          else
-          {
-            base_frequency += power_10(tune_step);
+            case SettingType::Uint:
+              if (cur_setting_uint + power_10(cur_setting_selected) < UINT64_MAX)
+              {
+                cur_setting_uint += power_10(cur_setting_selected);
+              }
+              break;
+            case SettingType::Int:
+              ++cur_setting_int;
+              break;
+            case SettingType::Str:
+              if (cur_setting_index >= settings_str_chars.size() - 1)
+              {
+                cur_setting_index = 0;
+              }
+              else
+              {
+                cur_setting_index++;
+              }
+
+              cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+              break;
           }
         }
+        else
+        {
+          //if(cur_state == TxState::Idle)
+          if (!tx_lock)
+          {
+            if (base_frequency + power_10(tune_step) > upper_freq_limit)
+            {
+              base_frequency = upper_freq_limit;
+            }
+            else
+            {
+              base_frequency += power_10(tune_step);
+            }
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one;
       }
-      yield();
-      delay(50); //delay to avoid many steps at one;
     }
-  }
 
-  // Handle down button
-  if(digitalRead(BTN_DOWN) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle down button
     if (digitalRead(BTN_DOWN) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
-      {
-        
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        switch(cur_setting_type)
-        {
-        case SettingType::Uint:
-          if((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
-          {
-            cur_setting_uint -= power_10(cur_setting_selected);
-          }
-          break;
-        case SettingType::Int:
-          --cur_setting_int;
-          break;
-        case SettingType::Str:
-          if(cur_setting_index == 0)
-          {
-            cur_setting_index = settings_str_chars.size() - 1;
-          }
-          else
-          {
-            cur_setting_index--;
-          }
-          cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-          break;
-        }
-      }
-      else
-      {
-        //if(cur_state == TxState::Idle)
-        if(!tx_lock)
-        {
-          if(base_frequency - power_10(tune_step) < lower_freq_limit)
-          {
-            base_frequency = lower_freq_limit;
-          }
-          else
-          {
-            base_frequency -= power_10(tune_step);
-          }
-        }
-      }
+      delay(50);   // delay to debounce
       yield();
-      delay(50); //delay to avoid many steps at one
-    }
-  }
+      if (digitalRead(BTN_DOWN) == LOW)
+      {
+        if (display_mode == DisplayMode::Menu)
+        {
 
-  // Handle left button
-  if(digitalRead(BTN_LEFT) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+              if ((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
+              {
+                cur_setting_uint -= power_10(cur_setting_selected);
+              }
+              if (num_digits(cur_setting_uint) - 1 < cur_setting_selected)
+              {
+                --cur_setting_selected;
+              }
+              break;
+            case SettingType::Int:
+              --cur_setting_int;
+              break;
+            case SettingType::Str:
+              if (cur_setting_index == 0)
+              {
+                cur_setting_index = settings_str_chars.size() - 1;
+              }
+              else
+              {
+                cur_setting_index--;
+              }
+              cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+              break;
+          }
+        }
+        else
+        {
+          //if(cur_state == TxState::Idle)
+          if (!tx_lock)
+          {
+            if (base_frequency - power_10(tune_step) < lower_freq_limit)
+            {
+              base_frequency = lower_freq_limit;
+            }
+            else
+            {
+              base_frequency -= power_10(tune_step);
+            }
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
+    }
+
+    // Handle left button
     if (digitalRead(BTN_LEFT) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_LEFT) == LOW)
       {
-        if(menu.countChildren() > 2)
+        if (display_mode == DisplayMode::Menu)
         {
-          if(menu.active_child == 0 && menu.countChildren() % 2 == 1)
+          if (menu.countChildren() > 2)
           {
-            menu--;
-          }
-          else
-          {
-            menu--;
-            menu--;
-          }
-        }
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        switch(cur_setting_type)
-        {
-        case SettingType::Uint:
-        case SettingType::Int:
-        case SettingType::Str:
-          if(cur_setting_selected > 0)
-          {
-            --cur_setting_selected;
-            
-            // Find char in allowable list
-            std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-            if(pos != std::string::npos)
+            if (menu.active_child == 0 && menu.countChildren() % 2 == 1)
             {
-              cur_setting_index = (uint8_t)pos;
-              //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+              menu--;
+            }
+            else
+            {
+              menu--;
+              menu--;
             }
           }
-          break;
-//        case SettingType::Int:
-//          --cur_setting_int;
-//          break;
-//        case SettingType::Str:
-//          if(cur_setting_selected == 0)
-//          {
-//            //
-//          }
-//          else
-//          {
-//            cur_setting_selected--;
-//          }
-//          break;
         }
-      }
-      else
-      {
-        if(tune_step < 5)
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
         {
-          tune_step++;
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+            case SettingType::Int:
+              if (cur_setting_selected < num_digits(cur_setting_uint) - 1)
+              {
+                ++cur_setting_selected;
+              }
+              break;
+            case SettingType::Str:
+              if (cur_setting_selected > 0)
+              {
+                --cur_setting_selected;
+
+                // Find char in allowable list
+                std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+                if (pos != std::string::npos)
+                {
+                  cur_setting_index = (uint8_t)pos;
+                  //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+                }
+              }
+              break;
+          }
         }
         else
         {
-          tune_step = 0;
+          if (tune_step < 5)
+          {
+            tune_step++;
+          }
+          else
+          {
+            tune_step = 0;
+          }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      yield();
-      delay(50); //delay to avoid many steps at one
     }
-  }
 
-  // Handle right button
-  if(digitalRead(BTN_RIGHT) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle right button
     if (digitalRead(BTN_RIGHT) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_RIGHT) == LOW)
       {
-        if(menu.countChildren() > 2)
+        if (display_mode == DisplayMode::Menu)
         {
-          if(menu.active_child == menu.countChildren() - 1)
+          if (menu.countChildren() > 2)
           {
-            menu++;
+            if (menu.active_child == menu.countChildren() - 1)
+            {
+              menu++;
+            }
+            else
+            {
+              menu++;
+              menu++;
+            }
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+            case SettingType::Int:
+              if (cur_setting_selected > 0)
+              {
+                --cur_setting_selected;
+              }
+              break;
+            case SettingType::Str:
+              if (cur_setting_selected < cur_setting_len - 1)
+              {
+                ++cur_setting_selected;
+                // Find char in allowable list
+                std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+                if (pos != std::string::npos)
+                {
+                  cur_setting_index = (uint8_t)pos;
+                  //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+                }
+              }
+              break;
+              //        case SettingType::Int:
+              //          --cur_setting_int;
+              //          break;
+              //        case SettingType::Str:
+              //          if(cur_setting_selected < cur_setting_str.size())
+              //          {
+              //            cur_setting_selected++;
+              //          }
+              //          break;
+          }
+        }
+        else
+        {
+          if (tune_step == 0)
+          {
+            tune_step = 5;
           }
           else
           {
-            menu++;
-            menu++;
+            tune_step--;
           }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        switch(cur_setting_type)
-        {
-        case SettingType::Uint:
-        case SettingType::Int:
-        case SettingType::Str:
-          if(cur_setting_selected < cur_setting_len - 1)
-          {
-            ++cur_setting_selected;
-            // Find char in allowable list
-            std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-            if(pos != std::string::npos)
-            {
-              cur_setting_index = (uint8_t)pos;
-              //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-            }
-          }
-          break;
-//        case SettingType::Int:
-//          --cur_setting_int;
-//          break;
-//        case SettingType::Str:
-//          if(cur_setting_selected < cur_setting_str.size())
-//          {
-//            cur_setting_selected++;
-//          }
-//          break;
-        }
-      }
-      else
-      {
-        if(tune_step == 0)
-        {
-          tune_step = 5;
-        }
-        else
-        {
-          tune_step--;
-        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
     }
-  }
 
-  // Handle display 1 button
-  if(digitalRead(BTN_DSP_1) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle display 1 button
     if (digitalRead(BTN_DSP_1) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
-      {
-        MenuType type = menu.selectChild(menu.active_child);
-        if(type == MenuType::Action)
-        {
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
-        }
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        // INS/DEL button
-        if(ins_del_mode)
-        {
-          // Insert
-          cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-          cur_setting_index = settings_str_chars.length() - 1;
-        }
-        else
-        {
-          ins_del_mode = true;
-        }
-//        switch(cur_setting_type)
-//        {
-//        case SettingType::Str:
-//          // Loop here to see if a long or short press
-//          // Short press == INS, long press == DEL
-//          uint32_t btn_timer_end = cur_timer + 1000;
-//          bool short_press = false;
-//
-//          while(cur_timer < btn_timer_end)
-//          {
-//            if(digitalRead(BTN_DSP_1) == HIGH)
-//            {
-//              // Insert a space
-////              cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-////              cur_setting_index = settings_str_chars.length() - 1;
-//              short_press = true;
-//              break;
-//            }
-//            yield();
-//          }
-//          // If we made it this far, the button was held down for 1 s,
-//          // so do an DEL
-////          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
-//          if(short_press)
-//          {
-//            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-//            cur_setting_index = settings_str_chars.length() - 1;
-//          }
-//          else
-//          {
-//            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
-//            while(digitalRead(BTN_DSP_1) == LOW)
-//            {
-//              yield();
-//            }
-//          }
-//          break;
-//        }
-      }
-      else
-      {
-        if(tx_enable)
-        {
-          tx_enable = false;
-          next_tx = UINT32_MAX;
-        }
-        else
-        {
-          tx_enable = true;
-          setNextTx(0);
-        }
-      }
+      delay(50);   // delay to debounce
       yield();
-      delay(50); //delay to avoid many steps at one
+      if (digitalRead(BTN_DSP_1) == LOW)
+      {
+        if (display_mode == DisplayMode::Menu)
+        {
+          MenuType type = menu.selectChild(menu.active_child);
+          if (type == MenuType::Action)
+          {
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          // INS/DEL button
+          if (ins_del_mode)
+          {
+            // Insert
+            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+            cur_setting_index = settings_str_chars.length() - 1;
+          }
+          else
+          {
+            ins_del_mode = true;
+          }
+          //        switch(cur_setting_type)
+          //        {
+          //        case SettingType::Str:
+          //          // Loop here to see if a long or short press
+          //          // Short press == INS, long press == DEL
+          //          uint32_t btn_timer_end = cur_timer + 1000;
+          //          bool short_press = false;
+          //
+          //          while(cur_timer < btn_timer_end)
+          //          {
+          //            if(digitalRead(BTN_DSP_1) == HIGH)
+          //            {
+          //              // Insert a space
+          ////              cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+          ////              cur_setting_index = settings_str_chars.length() - 1;
+          //              short_press = true;
+          //              break;
+          //            }
+          //            yield();
+          //          }
+          //          // If we made it this far, the button was held down for 1 s,
+          //          // so do an DEL
+          ////          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+          //          if(short_press)
+          //          {
+          //            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+          //            cur_setting_index = settings_str_chars.length() - 1;
+          //          }
+          //          else
+          //          {
+          //            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+          //            while(digitalRead(BTN_DSP_1) == LOW)
+          //            {
+          //              yield();
+          //            }
+          //          }
+          //          break;
+          //        }
+        }
+        else
+        {
+          if (tx_enable)
+          {
+            tx_enable = false;
+            next_tx = UINT32_MAX;
+          }
+          else
+          {
+            tx_enable = true;
+            setNextTx(0);
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
     }
-  }
 
-  // Handle display 2 button
-  if(digitalRead(BTN_DSP_2) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle display 2 button
     if (digitalRead(BTN_DSP_2) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_DSP_2) == LOW)
       {
-        MenuType type = menu.selectChild(menu.active_child + 1);
-        if(type == MenuType::Action)
+        if (display_mode == DisplayMode::Menu)
         {
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
+          MenuType type = menu.selectChild(menu.active_child + 1);
+          if (type == MenuType::Action)
+          {
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
         }
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        // OK button
-        char temp_str[81];
-        switch(cur_setting_type)
+        else if (display_mode == DisplayMode::Setting)
         {
-        case SettingType::Uint:
-          sprintf(temp_str, "U%lu", cur_setting_uint);
-          cfg[cur_setting] = temp_str;
-          break;
-        case SettingType::Int:
-          sprintf(temp_str, "I%l", cur_setting_int);
-          cfg[cur_setting] = temp_str;
-          break;
-        case SettingType::Str:
-          if(ins_del_mode)
+          // OK button
+          char temp_str[81];
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+              sprintf(temp_str, "U%lu", cur_setting_uint);
+              cfg[cur_setting] = temp_str;
+              break;
+            case SettingType::Int:
+              sprintf(temp_str, "I%l", cur_setting_int);
+              cfg[cur_setting] = temp_str;
+              break;
+            case SettingType::Str:
+              if (ins_del_mode)
+              {
+                // Delete
+                cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
+              }
+              else
+              {
+                sprintf(temp_str, "S%s", cur_setting_str.c_str());
+                cfg[cur_setting] = temp_str;
+              }
+
+              break;
+          }
+
+          // If we need to make any immediate setting changes to hardware
+          if (cur_setting == "PA Bias")
+          {
+            setPABias(cur_setting_uint);
+          }
+
+          if (!ins_del_mode)
+          {
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
+        }
+        else if (display_mode == DisplayMode::Buffer)
+        {
+          if (ins_del_mode)
           {
             // Delete
             cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
           }
           else
           {
-            sprintf(temp_str, "S%s", cur_setting_str.c_str());
-            cfg[cur_setting] = temp_str;
+            switch (cur_edit_buffer)
+            {
+              case 1:
+                sprintf(msg_buffer_1, "%s", cur_setting_str.c_str());
+                break;
+              case 2:
+                sprintf(msg_buffer_2, "%s", cur_setting_str.c_str());
+                break;
+              case 3:
+                sprintf(msg_buffer_3, "%s", cur_setting_str.c_str());
+                break;
+              case 4:
+                sprintf(msg_buffer_4, "%s", cur_setting_str.c_str());
+                break;
+            }
+
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
           }
-          
-          break;
         }
-
-        if(!ins_del_mode)
+        else
         {
-          cur_setting_selected = 0;
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
+          //        if(cur_state != TxState::Idle)
+          //        {
+          //          setTxState(TxState::Idle);
+          //          setNextTx(0);
+          //        }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      else
-      {
-//        if(cur_state != TxState::Idle)
-//        {
-//          setTxState(TxState::Idle);
-//          setNextTx(0);
-//        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
     }
-  }
 
-  // Handle menu button
-  if(digitalRead(BTN_BACK) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle menu button
     if (digitalRead(BTN_BACK) == LOW)
     {
-      if(display_mode == DisplayMode::Menu)
-      {
-        if(menu.selectParent()) // if we are at root menu, exit
-        {
-          display_mode = DisplayMode::Main;
-        }
-      }
-      else if(display_mode == DisplayMode::Setting)
-      {
-        if(ins_del_mode)
-        {
-          ins_del_mode = false;
-        }
-        else
-        {
-          display_mode = DisplayMode::Menu;
-        }
-      }
-      else
-      {
-        if(cur_state == TxState::Idle)
-        {
-          cur_setting_selected = 0;
-          display_mode = DisplayMode::Menu;
-        }
-        else
-        {
-          setTxState(TxState::Idle);
-          setNextTx(0);
-        }
-      }
+      delay(50);   // delay to debounce
       yield();
-      delay(50); //delay to avoid many steps at one
-    }
-  }
-}
-
-void selectBand()
-{
-  static uint8_t prev_band_index[3] = {0, 0, 0};
-  static uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
-  static uint32_t new_lower_freq_limit, new_upper_freq_limit;
-  
-//  constexpr uint8_t ADC0_RING_BUF_SIZE = 4;
-//  static uint16_t adc0_ring_buf[ADC0_RING_BUF_SIZE];
-//  static uint8_t adc0_ring_buf_pos = 0;
-//  uint32_t adc0_ring_buf_total = 0;
-  
-  // TODO: handle out of bounds
-//  uint16_t adc0 = analogRead(A0);
-//  yield();
-//  adc0_ring_buf[adc0_ring_buf_pos++] = adc0;
-//  if(adc0_ring_buf_pos >= ADC0_RING_BUF_SIZE)
-//  {
-//    adc0_ring_buf_pos = 0;
-//  }
-//  for(uint8_t i = 0; i <= ADC0_RING_BUF_SIZE; ++i)
-//  {
-//    if(adc0_ring_buf[i] == 0)
-//    {
-//      adc0_ring_buf_total += adc0;
-//    }
-//    else
-//    {
-//      adc0_ring_buf_total += adc0_ring_buf[i];
-//    }
-//    yield();
-//  }
-//  band_id = adc0_ring_buf_total / ADC0_RING_BUF_SIZE;
-
-  prev_band_index[2] = prev_band_index[1];
-  prev_band_index[1] = prev_band_index[0];
-  prev_band_index[0] = band_index;
-
-  band_id = analogRead(A0);
-  yield();
-  band_id = (band_id * ANALOG_REF) / 4096UL;
-  yield();
-  
-  for(auto band : band_table)
-  {
-    if(band_id < band.upper_v && band_id > band.lower_v)
-    {
-      if(band.index != band_index)
+      if (digitalRead(BTN_BACK) == LOW)
       {
-        prev_band_index[0] = band.index;
-        //band_index = band.index;
-        new_lower_freq_limit = band.lower_limit;
-        new_upper_freq_limit = band.upper_limit;
-        new_cw_freq = band.cw_freq;
-        new_wspr_freq = band.wspr_freq;
-        new_jt65_freq = band.jt65_freq;
-        new_jt9_freq = band.jt9_freq;
-//        if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
-//        {
-//          switch(mode)
-//          {
-//          case Mode::DFCW3:
-//          case Mode::DFCW6:
-//          case Mode::DFCW10:
-//          case Mode::DFCW120:
-//          case Mode::QRSS3:
-//          case Mode::QRSS6:
-//          case Mode::QRSS10:
-//          case Mode::QRSS120:
-//          case Mode::CW:
-//          case Mode::HELL:
-//            new_freq = band.cw_freq;
-//            break;
-//            
-//          case Mode::WSPR:
-//            new_freq = band.wspr_freq;
-//            break; 
-//          case Mode::JT65:
-//            new_freq = band.jt65_freq;
-//            break;
-//          case Mode::JT9:
-//          case Mode::JT4:
-//            new_freq = band.jt9_freq;
-//            break;
-//          }
-//        }
-      }
-    }
-  }
-  yield();
-
-  // Guard against ADC glitches by not changing bands until
-  // three consequtive reads of the same band
-  if(prev_band_index[0] == prev_band_index[1] && prev_band_index[1] == prev_band_index[2])
-  {
-    // If the band index is changed, change bands only when not transmitting,
-    // unless band index is 0, which indicates removal of the band module
-    //if(band_index != prev_band_index[0] && (cur_state != TxState::Idle || band_index == 0))
-    //if(band_index != prev_band_index[0] && (!tx_lock || prev_band_index[0] == 0))
-    if(band_index != prev_band_index[0])
-    {
-      lower_freq_limit = new_lower_freq_limit;
-      upper_freq_limit = new_upper_freq_limit;
-
-      if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
-      {
-        switch(mode)
+        if (display_mode == DisplayMode::Menu)
         {
-        case Mode::DFCW3:
-        case Mode::DFCW6:
-        case Mode::DFCW10:
-        case Mode::DFCW120:
-        case Mode::QRSS3:
-        case Mode::QRSS6:
-        case Mode::QRSS10:
-        case Mode::QRSS120:
-        case Mode::CW:
-        case Mode::HELL:
-          new_freq = new_cw_freq;
-          break;
-          
-        case Mode::WSPR:
-          new_freq = new_wspr_freq;
-          break; 
-        case Mode::JT65:
-          new_freq = new_jt65_freq;
-          break;
-        case Mode::JT9:
-        case Mode::JT4:
-          new_freq = new_jt9_freq;
-          break;
+          if (menu.selectParent()) // if we are at root menu, exit
+          {
+            display_mode = DisplayMode::Main;
+          }
         }
-      }
-
-      //if(cur_state != TxState::Idle)
-      if(tx_lock)
-      {
-        // Terminate the transmission if module is removed while transmitting
-        if(prev_band_index[0] == 0)
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
         {
-          setTxState(TxState::Idle);
-          tx_enable = false;
-          return;
-        }
-      }
-      else
-      {
-        base_frequency = new_freq;
-      }
-    }
-    // Then change band index
-    band_index = prev_band_index[0];
-
-//    if(band_index == 0)
-//    {
-//      tx_lock = true;
-//      base_frequency = 0;
-//    }
-
-//    if(!tx_lock)
-//    {
-//      base_frequency = new_freq;
-//    }
-  }
-  else if(prev_band_index[2] == 0 && prev_band_index[1] != 0 && prev_band_index[0] != 0)
-  {
-    tx_lock = false;
-  }
-  else
-  {
-    return;
-  }
-
-//  if(band_index == 0 && prev_band_index[1] == 0 && prev_band_index[0] == 0)
-//  {
-//    tx_lock = true;
-//    base_frequency = 0;
-//  }
-//  else
-//  {
-//    if(tx_lock == true && cur_state == TxState::Idle)
-//    {
-//      //tx_lock = false;
-//    }
-//  }
-
-
-//  if(prev_band_index[1] == 0 && prev_band_index[0] != 0 && band_index != 0)
-//  {
-//    tx_lock = false;
-//  }
-//  else if(prev_band_index[0] != prev_band_index[1] && prev_band_index[0] == band_index)
-//  {
-//    return;
-//  }
-
-//  if(!tx_lock)
-//  {
-//    base_frequency = new_freq;
-//  }
-//  else
-//  {
-//    if(band_index == 0)
-//    {
-//      base_frequency = new_freq;
-//    }
-//  }
-  yield();
-}
-
-void setTxState(TxState state)
-{
-  switch(state)
-  {
-  case TxState::Idle:
-    tx_lock = false;
-    digitalWrite(TX_KEY, LOW);
-    yield();
-//    si5351.output_enable(SI5351_CLK0, 0);
-//    setPABias(0);
-//    next_state = prev_state;
-    prev_state = cur_state;
-    cur_state = state;
-    break;
-  case TxState::MFSK:
-    SerialUSB.write('\f');
-    tx_lock = true;
-    cur_symbol = 0;
-    frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-    change_freq = true;
-    digitalWrite(TX_KEY, HIGH);
-    yield();
-//    si5351.output_enable(SI5351_CLK0, 1);
-//    setPABias(PA_BIAS_FULL);
-    next_state = TxState::MFSK;
-    prev_state = cur_state;
-    cur_state = state;
-    next_event = cur_timer + cur_symbol_time;
-    break;
-  case TxState::CW:
-//    SerialUSB.write('\v');
-//    SerialUSB.println("Start CW");
-    SerialUSB.write('\f');
-    tx_lock = true;
-    frequency = (base_frequency * 100ULL);
-    change_freq = true;
-    morse.output_pin = TX_KEY;
-    morse.setWPM(wpm);
-    next_state = TxState::CW;
-    prev_state = cur_state;
-    cur_state = state;
-    morse.send(msg_buffer_1);
-    break;
-  case TxState::DFCW:
-    SerialUSB.write('\f');
-    tx_lock = true;
-    digitalWrite(TX_KEY, HIGH);
-    frequency = (base_frequency * 100ULL);
-    change_freq = true;
-    morse.output_pin = 0;
-    morse.setWPM(wpm);
-    next_state = TxState::DFCW;
-    prev_state = cur_state;
-    cur_state = state;
-    morse.preamble_enable = true;
-    morse.send(msg_buffer_1);
-    break;
-  default:
-    break;
-  }
-  yield();
-}
-
-void setNextTx(uint8_t minutes)
-{
-//  struct tm cur_time = {rtc.getSeconds(), rtc.getMinutes(), rtc.getHours(),
-//    rtc.getDay(), rtc.getMonth(), rtc.getYear(), 1, 0, 1};
-//  time_t t = mktime(&cur_time);
-//  time_t t = rtc.getEpoch();
-  uint16_t sec_to_add;
-  uint32_t t = rtc.getEpoch();
-  uint8_t ten_min_delay, one_min_delay;
-
-  switch(mode)
-  {
-  case Mode::DFCW3:
-  case Mode::DFCW6:
-  case Mode::DFCW10:
-  case Mode::DFCW120:
-  case Mode::QRSS3:
-  case Mode::QRSS6:
-  case Mode::QRSS10:
-  case Mode::QRSS120:
-  case Mode::HELL:
-    one_min_delay = (60 - rtc.getSeconds());
-//    if(one_min_delay == )
-//    {
-      ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
-//    }
-//    else
-//    {
-//      ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
-//    }
-    sec_to_add = (one_min_delay) + (ten_min_delay * 60) + (minutes * 60);
-//    sec_to_add = (one_min_delay) + (ten_min_delay * 60);
-    break;
-
-  case Mode::CW:
-    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
-    break;
-    
-  case Mode::WSPR:
-    sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
-    break;
-    
-  case Mode::JT65:
-  case Mode::JT9:
-  case Mode::JT4:
-    sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
-    break;
-  }
-  
-  //uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
-
-  t += sec_to_add;
-  next_tx = t;
-  yield();
-
-  // Build next TX time string
-  const time_t ntx = static_cast<time_t>(next_tx);
-  struct tm * n_tx = gmtime(&ntx);
-  sprintf(next_tx_time, "Nx %02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
-}
-
-void processSyncMessage()
-{
-  uint32_t pctime;
-  constexpr uint32_t DEFAULT_TIME = 946684800; // 1 Jan 2000
-
-  yield();
-
-  if(SerialUSB.find(TIME_HEADER))
-  {
-    // check the integer is a valid time (greater than 1 Jan 2000)
-    pctime = SerialUSB.parseInt();
-    //yield();
-    if(pctime >= DEFAULT_TIME)
-    {
-      rtc.setEpoch(pctime); // Sync RTC to the time received on the serial port
-      time_sync_expire = pctime + TIME_EXPIRE;
-      next_time_sync = pctime + TIME_SYNC_INTERVAL;
-      if(initial_time_sync == 0)
-      {
-        initial_time_sync = pctime;
-      }
-    }
-  }
-  yield();
-}
-
-bool isTimeValid()
-{
-  if(time_sync_expire < rtc.getEpoch())
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-void processTimeSync()
-{
-  static bool time_sync_request = false;
-  
-  // Check to see if we need to sync
-  if(rtc.getEpoch() > next_time_sync)
-  {
-    SerialUSB.write(TIME_REQUEST);
-    yield();
-    time_sync_request = true;
-    next_time_sync = rtc.getEpoch() + TIME_SYNC_RETRY_RATE;
-  }
-
-  // Process time sync message if data is available on the serial port
-  if(time_sync_request)
-  {
-    if(SerialUSB.available())
-    {
-      processSyncMessage();
-      time_sync_request = false;
-    }
-  }
-  yield();
-
-  // Indicate time sync status
-  if(isTimeValid())
-  {
-    digitalWrite(SYNC_LED, HIGH);
-  }
-  else
-  {
-    digitalWrite(SYNC_LED, LOW);
-  }
-  yield();
-}
-
-void processTxTrigger()
-{
-  if(rtc.getEpoch() >= next_tx)
-  {
-//    setTxState(TxState::MFSK);
-    setTxState(next_state);
-    next_tx = UINT32_MAX;
-  }
-  yield();
-}
-
-
-//void updateTimer(void)
-//{
-//  yield();
-//  
-//  // Latch the current time
-//  // MUST disable interrupts during this read or there will be an occasional corruption of cur_timer
-//  noInterrupts();
-//  cur_timer = millis();
-//  interrupts();
-//}
-
-void txStateMachine()
-{
-  static bool prev_morse_tx = false;
-  
-  switch(meta_mode)
-  {
-  case MetaMode::CW:
-    switch(cur_state)
-    {
-    case TxState::Idle:
-      break;
-    case TxState::CW:
-      if(!morse.busy)
-      {
-        SerialUSB.write('\b');
-        yield();
-        setTxState(TxState::Idle);
-        //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-        //frequency = (base_frequency * 100);
-        //change_freq = true;
-        //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
-        
-        setNextTx(0);
-      }
-      break;
-    }
-    break;
-  case MetaMode::DFCW:
-    switch(cur_state)
-    {
-    case TxState::Idle:
-      break;
-    case TxState::DFCW:
-      if(morse.tx != prev_morse_tx)
-      {
-        if(morse.tx)
-        {
-          frequency = (base_frequency * 100ULL) + cur_tone_spacing;
-          change_freq = true;
+          if (ins_del_mode)
+          {
+            ins_del_mode = false;
+          }
+          else
+          {
+            display_mode = DisplayMode::Menu;
+          }
         }
         else
         {
-          frequency = (base_frequency * 100ULL);
-          change_freq = true;
+          if (cur_state == TxState::Idle)
+          {
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Menu;
+          }
+          else
+          {
+            setTxState(TxState::Idle);
+            setNextTx(0);
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
+    }
+  }
+
+  void selectBand()
+  {
+    static uint8_t prev_band_index[3] = {0, 0, 0};
+    static uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
+    static uint32_t new_lower_freq_limit, new_upper_freq_limit;
+
+    //  constexpr uint8_t ADC0_RING_BUF_SIZE = 4;
+    //  static uint16_t adc0_ring_buf[ADC0_RING_BUF_SIZE];
+    //  static uint8_t adc0_ring_buf_pos = 0;
+    //  uint32_t adc0_ring_buf_total = 0;
+
+    // TODO: handle out of bounds
+    //  uint16_t adc0 = analogRead(A0);
+    //  yield();
+    //  adc0_ring_buf[adc0_ring_buf_pos++] = adc0;
+    //  if(adc0_ring_buf_pos >= ADC0_RING_BUF_SIZE)
+    //  {
+    //    adc0_ring_buf_pos = 0;
+    //  }
+    //  for(uint8_t i = 0; i <= ADC0_RING_BUF_SIZE; ++i)
+    //  {
+    //    if(adc0_ring_buf[i] == 0)
+    //    {
+    //      adc0_ring_buf_total += adc0;
+    //    }
+    //    else
+    //    {
+    //      adc0_ring_buf_total += adc0_ring_buf[i];
+    //    }
+    //    yield();
+    //  }
+    //  band_id = adc0_ring_buf_total / ADC0_RING_BUF_SIZE;
+
+    prev_band_index[2] = prev_band_index[1];
+    prev_band_index[1] = prev_band_index[0];
+    prev_band_index[0] = band_index;
+
+    band_id = analogRead(A0);
+    yield();
+    band_id = (band_id * ANALOG_REF) / 4096UL;
+    yield();
+
+    for (auto band : band_table)
+    {
+      if (band_id < band.upper_v && band_id > band.lower_v)
+      {
+        if (band.index != band_index)
+        {
+          prev_band_index[0] = band.index;
+          //band_index = band.index;
+          new_lower_freq_limit = band.lower_limit;
+          new_upper_freq_limit = band.upper_limit;
+          new_cw_freq = band.cw_freq;
+          new_wspr_freq = band.wspr_freq;
+          new_jt65_freq = band.jt65_freq;
+          new_jt9_freq = band.jt9_freq;
+          //        if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+          //        {
+          //          switch(mode)
+          //          {
+          //          case Mode::DFCW3:
+          //          case Mode::DFCW6:
+          //          case Mode::DFCW10:
+          //          case Mode::DFCW120:
+          //          case Mode::QRSS3:
+          //          case Mode::QRSS6:
+          //          case Mode::QRSS10:
+          //          case Mode::QRSS120:
+          //          case Mode::CW:
+          //          case Mode::HELL:
+          //            new_freq = band.cw_freq;
+          //            break;
+          //
+          //          case Mode::WSPR:
+          //            new_freq = band.wspr_freq;
+          //            break;
+          //          case Mode::JT65:
+          //            new_freq = band.jt65_freq;
+          //            break;
+          //          case Mode::JT9:
+          //          case Mode::JT4:
+          //            new_freq = band.jt9_freq;
+          //            break;
+          //          }
+          //        }
+        }
+      }
+    }
+    yield();
+
+    // Guard against ADC glitches by not changing bands until
+    // three consequtive reads of the same band
+    if (prev_band_index[0] == prev_band_index[1] && prev_band_index[1] == prev_band_index[2])
+    {
+      // If the band index is changed, change bands only when not transmitting,
+      // unless band index is 0, which indicates removal of the band module
+      //if(band_index != prev_band_index[0] && (cur_state != TxState::Idle || band_index == 0))
+      //if(band_index != prev_band_index[0] && (!tx_lock || prev_band_index[0] == 0))
+      if (band_index != prev_band_index[0])
+      {
+        lower_freq_limit = new_lower_freq_limit;
+        upper_freq_limit = new_upper_freq_limit;
+
+        if (base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+        {
+          switch (mode)
+          {
+            case Mode::DFCW3:
+            case Mode::DFCW6:
+            case Mode::DFCW10:
+            case Mode::DFCW120:
+            case Mode::QRSS3:
+            case Mode::QRSS6:
+            case Mode::QRSS10:
+            case Mode::QRSS120:
+            case Mode::CW:
+            case Mode::HELL:
+              new_freq = new_cw_freq;
+              break;
+
+            case Mode::WSPR:
+              new_freq = new_wspr_freq;
+              break;
+            case Mode::JT65:
+              new_freq = new_jt65_freq;
+              break;
+            case Mode::JT9:
+            case Mode::JT4:
+              new_freq = new_jt9_freq;
+              break;
+          }
         }
 
-        prev_morse_tx = morse.tx;
+        //if(cur_state != TxState::Idle)
+        if (tx_lock)
+        {
+          // Terminate the transmission if module is removed while transmitting
+          if (prev_band_index[0] == 0)
+          {
+            setTxState(TxState::Idle);
+            tx_enable = false;
+            return;
+          }
+        }
+        else
+        {
+          base_frequency = new_freq;
+        }
       }
-      
-      if(!morse.busy)
-      {
-        SerialUSB.write('\b');
+      // Then change band index
+      band_index = prev_band_index[0];
+
+      //    if(band_index == 0)
+      //    {
+      //      tx_lock = true;
+      //      base_frequency = 0;
+      //    }
+
+      //    if(!tx_lock)
+      //    {
+      //      base_frequency = new_freq;
+      //    }
+    }
+    else if (prev_band_index[2] == 0 && prev_band_index[1] != 0 && prev_band_index[0] != 0)
+    {
+      tx_lock = false;
+    }
+    else
+    {
+      return;
+    }
+
+    //  if(band_index == 0 && prev_band_index[1] == 0 && prev_band_index[0] == 0)
+    //  {
+    //    tx_lock = true;
+    //    base_frequency = 0;
+    //  }
+    //  else
+    //  {
+    //    if(tx_lock == true && cur_state == TxState::Idle)
+    //    {
+    //      //tx_lock = false;
+    //    }
+    //  }
+
+
+    //  if(prev_band_index[1] == 0 && prev_band_index[0] != 0 && band_index != 0)
+    //  {
+    //    tx_lock = false;
+    //  }
+    //  else if(prev_band_index[0] != prev_band_index[1] && prev_band_index[0] == band_index)
+    //  {
+    //    return;
+    //  }
+
+    //  if(!tx_lock)
+    //  {
+    //    base_frequency = new_freq;
+    //  }
+    //  else
+    //  {
+    //    if(band_index == 0)
+    //    {
+    //      base_frequency = new_freq;
+    //    }
+    //  }
+    yield();
+  }
+
+  void setTxState(TxState state)
+  {
+    switch (state)
+    {
+      case TxState::Idle:
+        tx_lock = false;
+        digitalWrite(TX_KEY, LOW);
         yield();
-        prev_morse_tx = false;
-        setTxState(TxState::Idle);
+        //    si5351.output_enable(SI5351_CLK0, 0);
+        //    setPABias(0);
+        //    next_state = prev_state;
+        prev_state = cur_state;
+        cur_state = state;
+        break;
+      case TxState::MFSK:
+        SerialUSB.write('\f');
+        tx_lock = true;
+        cur_symbol = 0;
+        frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+        change_freq = true;
+        digitalWrite(TX_KEY, HIGH);
+        yield();
+        //    si5351.output_enable(SI5351_CLK0, 1);
+        //    setPABias(PA_BIAS_FULL);
+        next_state = TxState::MFSK;
+        prev_state = cur_state;
+        cur_state = state;
+        next_event = cur_timer + cur_symbol_time;
+        break;
+      case TxState::CW:
+        //    SerialUSB.write('\v');
+        //    SerialUSB.println("Start CW");
+        SerialUSB.write('\f');
+        tx_lock = true;
         frequency = (base_frequency * 100ULL);
         change_freq = true;
-        //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
-        
-        setNextTx(0);
-      }
-      break;
+        morse.output_pin = TX_KEY;
+        morse.setWPM(wpm);
+        next_state = TxState::CW;
+        prev_state = cur_state;
+        cur_state = state;
+        morse.send(msg_buffer_1);
+        break;
+      case TxState::DFCW:
+        SerialUSB.write('\f');
+        tx_lock = true;
+        digitalWrite(TX_KEY, HIGH);
+        frequency = (base_frequency * 100ULL);
+        change_freq = true;
+        morse.output_pin = 0;
+        morse.setWPM(wpm);
+        next_state = TxState::DFCW;
+        prev_state = cur_state;
+        cur_state = state;
+        morse.preamble_enable = true;
+        morse.send(msg_buffer_1);
+        break;
+      default:
+        break;
     }
-    break;
-  case MetaMode::MFSK:
-    switch(cur_state)
+    yield();
+  }
+
+  void setNextTx(uint8_t minutes)
+  {
+    //  struct tm cur_time = {rtc.getSeconds(), rtc.getMinutes(), rtc.getHours(),
+    //    rtc.getDay(), rtc.getMonth(), rtc.getYear(), 1, 0, 1};
+    //  time_t t = mktime(&cur_time);
+    //  time_t t = rtc.getEpoch();
+    uint16_t sec_to_add;
+    uint32_t t = rtc.getEpoch();
+    uint8_t ten_min_delay, one_min_delay;
+
+    switch (mode)
     {
-    case TxState::Idle:
-      break;
-    case TxState::MFSK:
-      if(cur_timer >= next_event)
+      case Mode::DFCW3:
+      case Mode::DFCW6:
+      case Mode::DFCW10:
+      case Mode::DFCW120:
+      case Mode::QRSS3:
+      case Mode::QRSS6:
+      case Mode::QRSS10:
+      case Mode::QRSS120:
+      case Mode::HELL:
+        one_min_delay = (60 - rtc.getSeconds());
+        //    if(one_min_delay == )
+        //    {
+        ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
+        //    }
+        //    else
+        //    {
+        //      ten_min_delay = 9 - ((rtc.getMinutes() % 10) ? (rtc.getMinutes() % 10) : 10);
+        //    }
+        sec_to_add = (one_min_delay) + (ten_min_delay * 60) + (minutes * 60);
+        //    sec_to_add = (one_min_delay) + (ten_min_delay * 60);
+        break;
+
+      case Mode::CW:
+        sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+        break;
+
+      case Mode::WSPR:
+        sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
+        break;
+
+      case Mode::JT65:
+      case Mode::JT9:
+      case Mode::JT4:
+        sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+        break;
+    }
+
+    //uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
+
+    t += sec_to_add;
+    next_tx = t;
+    yield();
+
+    // Build next TX time string
+    const time_t ntx = static_cast<time_t>(next_tx);
+    struct tm * n_tx = gmtime(&ntx);
+    sprintf(next_tx_time, "Nx %02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
+  }
+
+  void processSyncMessage()
+  {
+    uint32_t pctime;
+    constexpr uint32_t DEFAULT_TIME = 946684800; // 1 Jan 2000
+
+    yield();
+
+    if (SerialUSB.find(TIME_HEADER))
+    {
+      // check the integer is a valid time (greater than 1 Jan 2000)
+      pctime = SerialUSB.parseInt();
+      //yield();
+      if (pctime >= DEFAULT_TIME)
       {
-        ++cur_symbol;
-        if(cur_symbol >= cur_symbol_count) //reset everything and switch to idle
+        rtc.setEpoch(pctime); // Sync RTC to the time received on the serial port
+        time_sync_expire = pctime + TIME_EXPIRE;
+        next_time_sync = pctime + TIME_SYNC_INTERVAL;
+        if (initial_time_sync == 0)
         {
-          SerialUSB.write('\b');
-          yield();
-          setTxState(TxState::Idle);
-          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-          //frequency = (base_frequency * 100);
-          //change_freq = true;
-          setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
-        }
-        else // next symbol
-        {
-          next_event = cur_timer + cur_symbol_time;
-          frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-          change_freq = true;
+          initial_time_sync = pctime;
         }
       }
-      break;
     }
-    break;
+    yield();
   }
-  yield();
-}
 
-void composeBuffer()
-{
-  char temp_call[16];
-  char temp_grid[6];
-  
-  switch(mode)
+  bool isTimeValid()
   {
-  case Mode::DFCW3:
-  case Mode::DFCW6:
-  case Mode::DFCW10:
-  case Mode::DFCW120:
-  case Mode::QRSS3:
-  case Mode::QRSS6:
-  case Mode::QRSS10:
-  case Mode::QRSS120:
-  case Mode::CW:
-  case Mode::HELL:
-    sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
-    sprintf(msg_buffer_1, "%s", temp_call);
-    break;
-    
-  case Mode::WSPR:
-    //wspr_buffer = cfg["Callsign"].substr(1) + cfg["Grid"].substr(1) + cfg["Power"].substr(1);
-    sprintf(cur_callsign, "%s", cfg["Callsign"].substr(1).c_str());
-    sprintf(cur_grid, "%s", cfg["Grid"].substr(1).c_str());
-    cur_power = atoi(cfg["Power"].substr(1).c_str());
-    sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
-    break;
-    
-  case Mode::JT65:
-  case Mode::JT9:
-  case Mode::JT4:
-    //memset(msg_buffer_1, 0, 81);
-    sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
-    sprintf(temp_grid, "%s", cfg["Grid"].substr(1).c_str());
-    sprintf(msg_buffer_1, "%s %s", temp_call, temp_grid);
-    break;
+    if (time_sync_expire < rtc.getEpoch())
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
-  yield();
-}
 
-// ===== Setup =====
-void setup()
-{
-  // Serial port init
-  SerialUSB.begin(57600);
-  while(!SerialUSB);
-
-  // Load config map
-  for(auto const& c : config_table)
+  void processTimeSync()
   {
-    cfg[c[0]] = c[1];
+    static bool time_sync_request = false;
+
+    // Check to see if we need to sync
+    if (rtc.getEpoch() > next_time_sync)
+    {
+      SerialUSB.write(TIME_REQUEST);
+      yield();
+      time_sync_request = true;
+      next_time_sync = rtc.getEpoch() + TIME_SYNC_RETRY_RATE;
+    }
+
+    // Process time sync message if data is available on the serial port
+    if (time_sync_request)
+    {
+      if (SerialUSB.available())
+      {
+        processSyncMessage();
+        time_sync_request = false;
+      }
+    }
+    yield();
+
+    // Indicate time sync status
+    if (isTimeValid())
+    {
+      digitalWrite(SYNC_LED, HIGH);
+    }
+    else
+    {
+      digitalWrite(SYNC_LED, LOW);
+    }
+    yield();
   }
-  
-  // Start u8g2
-  u8g2.begin();
 
-  // I/O init
-  pinMode(BTN_DSP_1, INPUT_PULLUP);
-  pinMode(BTN_DSP_2, INPUT_PULLUP);
-  pinMode(BTN_UP, INPUT_PULLUP);
-  pinMode(BTN_DOWN, INPUT_PULLUP);
-  pinMode(BTN_LEFT, INPUT_PULLUP);
-  pinMode(BTN_RIGHT, INPUT_PULLUP);
-  pinMode(BTN_BACK, INPUT_PULLUP);
-  pinMode(CLK_INPUT, INPUT);
-  pinMode(TX_KEY, OUTPUT);
-  pinMode(SYNC_LED, OUTPUT);
-
-  //attachInterrupt(digitalPinToInterrupt(BTN_BACK), handleMenuBack, FALLING);
-  
-
-
-  // ADC resolution
-  analogReadResolution(12);
-  analogReference(AR_DEFAULT);
-
-  // Si5351
-  si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, 0);
-  si5351.set_freq(base_frequency * SI5351_FREQ_MULT, SI5351_CLK0);
-//  si5351.set_freq(1000000UL, SI5351_CLK2);
-  si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
-  Wire.setClock(400000UL);
-
-  // Set PA bias
-  setPABias(PA_BIAS_FULL);
-
-  // RTC setup
-  // Can't use the RTC alarm interrupt, far too much trigger time variance
-  rtc.begin();
-  rtc.setTime(DEFAULT_TIME.tm_hour, DEFAULT_TIME.tm_min, DEFAULT_TIME.tm_sec);
-  rtc.setDate(DEFAULT_TIME.tm_mday, DEFAULT_TIME.tm_mon, DEFAULT_TIME.tm_year);
-  time_sync_expire = rtc.getEpoch();
-  next_time_sync = rtc.getEpoch();
-
-  // 
-  //setNextTx(0);
-
-  // Init menu
-  initMenu();
-
-  // Set up scheduler
-  Scheduler.startLoop(txStateMachine);
-  //Scheduler.startLoop(updateTimer);
-  //Scheduler.startLoop(processTxTrigger);
-  Scheduler.startLoop(drawOLED, 10000);
-  Scheduler.startLoop(pollButtons);
-  Scheduler.startLoop(selectBand);
-  //Scheduler.startLoop(processTimeSync);
-
-
-
-//  memset(mfsk_buffer, 0, 255);
-//  jtencode.jt9_encode(msg_buffer_1.c_str(), mfsk_buffer);
-//  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-//  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-//  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//  cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-//  base_frequency = band_table[band_index].jt9_freq;
-
-  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-  next_state = TxState::MFSK;
-
-  // Clear TX buffer
-  memset(mfsk_buffer, 0, 255);
-  jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(), 
-    atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
-  setTxState(TxState::Idle);
-  frequency = (base_frequency * 100ULL);
-  change_freq = true;
-
-  composeBuffer();
-
-  //morse.send("DE NT7S");
-//  SerialUSB.print("\v");
-//  SerialUSB.println("OpenBeacon Mini");
-//  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
-//  for(auto a : config_table)
-//  {
-////    char first_setting[20];
-////    char second_setting[20];
-////    sprintf(first_setting, "%s", a.first().c_str());
-////    sprintf(second_setting, "%s", a.second().c_str());
-//    SerialUSB.print("\v");
-//    SerialUSB.print(a[0]);
-//    SerialUSB.print(" - ");
-//    SerialUSB.println(cfg[a[0]].c_str());
-//  }
-  // Start Timer
-  startTimer(TIMER_FREQUENCY); // 1 ms ISR
-
-  //morse.send("NT7S");
-}
-
-void loop()
-{
-//  noInterrupts();
-//  cur_timer = millis();
-//  interrupts();
-//  yield();
-
-  if(change_freq)
+  void processTxTrigger()
   {
-    //noInterrupts();
-    si5351.set_freq(frequency, SI5351_CLK0);
-    change_freq = false;
-    //interrupts();
+    if (rtc.getEpoch() >= next_tx)
+    {
+      //    setTxState(TxState::MFSK);
+      setTxState(next_state);
+      next_tx = UINT32_MAX;
+    }
+    yield();
   }
 
-  yield();
-  
-//  switch(meta_mode)
-//  {
-//  case MetaMode::MORSE:
-//    break;
-//  case MetaMode::MFSK:
-//    switch(cur_state)
-//    {
-//    case TxState::Idle:
-//      break;
-//    case TxState::MFSK:
-//      if(cur_timer >= next_event)
-//      {
-//        ++cur_symbol;
-//        if(cur_symbol >= cur_symbol_count) //reset everything and switch to idle
-//        {
-//          SerialUSB.write('\b');
-//          setTxState(TxState::Idle);
-//          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-//          frequency = (base_frequency * 100);
-//          change_freq = true;
-//          setNextTx(0);
-//        }
-//        else // next symbol
-//        {
-//          next_event = cur_timer + cur_symbol_time;
-//          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-//          change_freq = true;
-//        }
-//      }
-//      break;
-//    case TxState::Preamble:
-//      break;
-//    }
-//    break;
-//  }
-//  yield();
 
-  processTxTrigger();
-  yield();
-  //drawOLED();
-//  pollButtons();
-//  selectBand();
-  processTimeSync();
-}
+  //void updateTimer(void)
+  //{
+  //  yield();
+  //
+  //  // Latch the current time
+  //  // MUST disable interrupts during this read or there will be an occasional corruption of cur_timer
+  //  noInterrupts();
+  //  cur_timer = millis();
+  //  interrupts();
+  //}
+
+  void txStateMachine()
+  {
+    static bool prev_morse_tx = false;
+
+    switch (meta_mode)
+    {
+      case MetaMode::CW:
+        switch (cur_state)
+        {
+          case TxState::Idle:
+            break;
+          case TxState::CW:
+            if (!morse.busy)
+            {
+              SerialUSB.write('\b');
+              yield();
+              setTxState(TxState::Idle);
+              //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+              //frequency = (base_frequency * 100);
+              //change_freq = true;
+              //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+
+              setNextTx(0);
+            }
+            break;
+        }
+        break;
+      case MetaMode::DFCW:
+        switch (cur_state)
+        {
+          case TxState::Idle:
+            break;
+          case TxState::DFCW:
+            if (morse.tx != prev_morse_tx)
+            {
+              if (morse.tx)
+              {
+                frequency = (base_frequency * 100ULL) + cur_tone_spacing;
+                change_freq = true;
+              }
+              else
+              {
+                frequency = (base_frequency * 100ULL);
+                change_freq = true;
+              }
+
+              prev_morse_tx = morse.tx;
+            }
+
+            if (!morse.busy)
+            {
+              SerialUSB.write('\b');
+              yield();
+              prev_morse_tx = false;
+              setTxState(TxState::Idle);
+              frequency = (base_frequency * 100ULL);
+              change_freq = true;
+              //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+
+              setNextTx(0);
+            }
+            break;
+        }
+        break;
+      case MetaMode::MFSK:
+        switch (cur_state)
+        {
+          case TxState::Idle:
+            break;
+          case TxState::MFSK:
+            if (cur_timer >= next_event)
+            {
+              ++cur_symbol;
+              if (cur_symbol >= cur_symbol_count) //reset everything and switch to idle
+              {
+                SerialUSB.write('\b');
+                yield();
+                setTxState(TxState::Idle);
+                //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+                //frequency = (base_frequency * 100);
+                //change_freq = true;
+                setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+              }
+              else // next symbol
+              {
+                next_event = cur_timer + cur_symbol_time;
+                frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+                change_freq = true;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    yield();
+  }
+
+  void composeBuffer()
+  {
+    char temp_call[16];
+    char temp_grid[6];
+
+    switch (mode)
+    {
+      case Mode::DFCW3:
+      case Mode::DFCW6:
+      case Mode::DFCW10:
+      case Mode::DFCW120:
+      case Mode::QRSS3:
+      case Mode::QRSS6:
+      case Mode::QRSS10:
+      case Mode::QRSS120:
+      case Mode::CW:
+      case Mode::HELL:
+        sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
+        sprintf(msg_buffer_1, "%s", temp_call);
+        break;
+
+      case Mode::WSPR:
+        //wspr_buffer = cfg["Callsign"].substr(1) + cfg["Grid"].substr(1) + cfg["Power"].substr(1);
+        sprintf(cur_callsign, "%s", cfg["Callsign"].substr(1).c_str());
+        sprintf(cur_grid, "%s", cfg["Grid"].substr(1).c_str());
+        cur_power = atoi(cfg["Power"].substr(1).c_str());
+        sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
+        break;
+
+      case Mode::JT65:
+      case Mode::JT9:
+      case Mode::JT4:
+        //memset(msg_buffer_1, 0, 81);
+        sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
+        sprintf(temp_grid, "%s", cfg["Grid"].substr(1).c_str());
+        sprintf(msg_buffer_1, "%s %s", temp_call, temp_grid);
+        break;
+    }
+    yield();
+  }
+
+  // ===== Setup =====
+  void setup()
+  {
+    // Serial port init
+    SerialUSB.begin(57600);
+    while (!SerialUSB);
+
+    // Load config map
+    for (auto const& c : config_table)
+    {
+      cfg[c[0]] = c[1];
+    }
+
+    // Start u8g2
+    u8g2.begin();
+
+    // I/O init
+    pinMode(BTN_DSP_1, INPUT_PULLUP);
+    pinMode(BTN_DSP_2, INPUT_PULLUP);
+    pinMode(BTN_UP, INPUT_PULLUP);
+    pinMode(BTN_DOWN, INPUT_PULLUP);
+    pinMode(BTN_LEFT, INPUT_PULLUP);
+    pinMode(BTN_RIGHT, INPUT_PULLUP);
+    pinMode(BTN_BACK, INPUT_PULLUP);
+    pinMode(CLK_INPUT, INPUT);
+    pinMode(TX_KEY, OUTPUT);
+    pinMode(SYNC_LED, OUTPUT);
+
+    //attachInterrupt(digitalPinToInterrupt(BTN_BACK), handleMenuBack, FALLING);
+
+
+
+    // ADC resolution
+    analogReadResolution(12);
+    analogReference(AR_DEFAULT);
+
+    // Si5351
+    si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, 0);
+    si5351.set_freq(base_frequency * SI5351_FREQ_MULT, SI5351_CLK0);
+    //  si5351.set_freq(1000000UL, SI5351_CLK2);
+    si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
+    Wire.setClock(400000UL);
+
+    // Set PA bias
+    setPABias(atoll(cfg["PA Bias"].substr(1).c_str()));
+
+    // RTC setup
+    // Can't use the RTC alarm interrupt, far too much trigger time variance
+    rtc.begin();
+    rtc.setTime(DEFAULT_TIME.tm_hour, DEFAULT_TIME.tm_min, DEFAULT_TIME.tm_sec);
+    rtc.setDate(DEFAULT_TIME.tm_mday, DEFAULT_TIME.tm_mon, DEFAULT_TIME.tm_year);
+    time_sync_expire = rtc.getEpoch();
+    next_time_sync = rtc.getEpoch();
+
+    //
+    //setNextTx(0);
+
+    // Init menu
+    initMenu();
+
+    // Set up scheduler
+    Scheduler.startLoop(txStateMachine);
+    //Scheduler.startLoop(updateTimer);
+    //Scheduler.startLoop(processTxTrigger);
+    Scheduler.startLoop(drawOLED, 10000);
+    Scheduler.startLoop(pollButtons);
+    Scheduler.startLoop(selectBand);
+    //Scheduler.startLoop(processTimeSync);
+
+
+
+    //  memset(mfsk_buffer, 0, 255);
+    //  jtencode.jt9_encode(msg_buffer_1.c_str(), mfsk_buffer);
+    //  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    //  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+    //  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+    //  cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+    //  base_frequency = band_table[band_index].jt9_freq;
+
+    cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+    cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+    cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+    next_state = TxState::MFSK;
+
+    // Clear TX buffer
+    memset(mfsk_buffer, 0, 255);
+    jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(),
+                         atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
+    setTxState(TxState::Idle);
+    frequency = (base_frequency * 100ULL);
+    change_freq = true;
+
+    composeBuffer();
+
+    //morse.send("DE NT7S");
+    //  SerialUSB.print("\v");
+    //  SerialUSB.println("OpenBeacon Mini");
+    //  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
+    //  for(auto a : config_table)
+    //  {
+    ////    char first_setting[20];
+    ////    char second_setting[20];
+    ////    sprintf(first_setting, "%s", a.first().c_str());
+    ////    sprintf(second_setting, "%s", a.second().c_str());
+    //    SerialUSB.print("\v");
+    //    SerialUSB.print(a[0]);
+    //    SerialUSB.print(" - ");
+    //    SerialUSB.println(cfg[a[0]].c_str());
+    //  }
+    // Start Timer
+    startTimer(TIMER_FREQUENCY); // 1 ms ISR
+
+    //morse.send("NT7S");
+  }
+
+  void loop()
+  {
+    //  noInterrupts();
+    //  cur_timer = millis();
+    //  interrupts();
+    //  yield();
+
+    if (change_freq)
+    {
+      //noInterrupts();
+      si5351.set_freq(frequency, SI5351_CLK0);
+      change_freq = false;
+      //interrupts();
+    }
+
+    yield();
+
+    //  switch(meta_mode)
+    //  {
+    //  case MetaMode::MORSE:
+    //    break;
+    //  case MetaMode::MFSK:
+    //    switch(cur_state)
+    //    {
+    //    case TxState::Idle:
+    //      break;
+    //    case TxState::MFSK:
+    //      if(cur_timer >= next_event)
+    //      {
+    //        ++cur_symbol;
+    //        if(cur_symbol >= cur_symbol_count) //reset everything and switch to idle
+    //        {
+    //          SerialUSB.write('\b');
+    //          setTxState(TxState::Idle);
+    //          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+    //          frequency = (base_frequency * 100);
+    //          change_freq = true;
+    //          setNextTx(0);
+    //        }
+    //        else // next symbol
+    //        {
+    //          next_event = cur_timer + cur_symbol_time;
+    //          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+    //          change_freq = true;
+    //        }
+    //      }
+    //      break;
+    //    case TxState::Preamble:
+    //      break;
+    //    }
+    //    break;
+    //  }
+    //  yield();
+
+    processTxTrigger();
+    yield();
+    //drawOLED();
+    //  pollButtons();
+    //  selectBand();
+    processTimeSync();
+  }
