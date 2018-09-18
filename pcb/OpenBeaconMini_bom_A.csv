@@ -1,0 +1,56 @@
+Component,Description,Part,References,Value,Footprint,Quantity Per PCB,Datasheet
+1,,C,C2 C5 C6 C8 C10 C11 C12,100n,C_0805,7,
+2,,C,C1,10n,C_0805,1,
+3,,C,C4,10u,C_0805,1,
+4,,C,C7 C9,1u,C_0805,2,
+5,,C,C3,2.2u,C_0805,1,
+6,,Conn_01x06,J8,ADC Inputs,Pin_Header_Straight_1x06_Pitch2.54mm,1,
+7,,BNC,J10,BNC,BNC-AMPHENOL-31-5431-10RFX,1,
+8,,CONN_01X01,J1,Bias V,Measurement_Point_Square-TH_Small,1,
+9,,Conn_01x06,J4,Digital IO,Pin_Header_Straight_1x06_Pitch2.54mm,1,
+10,,CONN_01X01,J9,GND,Measurement_Point_Square-TH_Small,1,
+11,,Conn_01x04,J7,I2C Bus,Pin_Header_Straight_1x04_Pitch2.54mm,1,
+12,,CONN_01X01,J2,PAI+,Measurement_Point_Square-TH_Small,1,
+13,,CONN_01X01,J3,PAI-,Measurement_Point_Square-TH_Small,1,
+14,,BNC,J5 J6,SMA,SMA-ENDLAUNCH,2,
+15,,L-IRONCORE,L2,FB2402-61 5T,BN2402,1,
+16,,L-IRONCORE,L1,FDSD0420-H-100M-P3,Murata100M,1,
+17,Etherkit LPF Module,LPFModule,M1,LPFModule,LPFModule,1,
+18,,MOS_N,Q1 Q4 Q5,2N7002,SOT23-2N7002,3,
+19,,PNP,Q2,MMBT4403,SOT23-MMBT440X,1,
+20,,MOS_N,Q3,RD00HVS1,SOT89-3,1,
+21,,R,R8,1 1%,R_0805,1,
+22,,R,R6,10,R_0805,1,
+23,,R,R1 R2 R4,22k,R_0805,3,
+24,,R,R5 R9 R10 R11 R12,3.3k,R_0805,5,
+25,,R,R7,56,R_0805,1,
+26,,ChipAttenuator,R3,PAT1220-C-10dB,PAT1220,1,
+27,,PUSHBUTTON_TACTILE,S7,Back,Omron_B3F-1052,1,
+28,,PUSHBUTTON_TACTILE,S3,Down,Omron_B3F-1052,1,
+29,,PUSHBUTTON_TACTILE,S1,Left,Omron_B3F-1052,1,
+30,,PUSHBUTTON_TACTILE,S2,Menu 1,Omron_B3F-1052,1,
+31,,PUSHBUTTON_TACTILE,S5,Menu 2,Omron_B3F-1052,1,
+32,,PUSHBUTTON_TACTILE,S6,Right,Omron_B3F-1052,1,
+33,,PUSHBUTTON_TACTILE,S4,Up,Omron_B3F-1052,1,
+34,,128x32OLED,U6,128x32OLED,128x32OLED,1,
+35,,OSCILLATOR,U2,ASTX-H11-25.000MHZ-T,ASTX-H11-25.000MHZ-T,1,
+36,,Empyrean,U7,Empyrean,Empyrean,1,
+37,,MCP4725A1T,U5,MCP4725A1T-E/CH,SOT23-6,1,
+38,,SI5351A,U4,SI5351A,MSOP-10,1,DOCUMENTATION
+39,Single Schmitt Trigger,SN74LVC1G17,U3,SN74LVC1G17,SOT23-5,1,
+40,DC-DC Boost Converter,TLV61046A,U1,TLV61046A,SOT23-6,1,
+
+
+
+
+
+Component Groups:,40
+Component Count:,56
+Fitted Components:,56
+Number of PCBs:,1
+Total components:,56
+Schematic Version:,A
+Schematic Date:,2018-04-10
+BoM Date:,Tue 18 Sep 2018 02:22:32 PM PDT
+Schematic Source:,/home/jason/Nextcloud/Etherkit/git/OpenBeaconMini/pcb/OpenBeaconMini.sch
+KiCad Version:,Eeschema 5.0.0-fee4fd1~66~ubuntu18.04.1

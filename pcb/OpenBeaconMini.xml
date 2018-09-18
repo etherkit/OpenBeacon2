@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/jason/Nextcloud/Etherkit/git/OpenBeaconMini/pcb/OpenBeaconMini.sch</source>
+    <date>Tue 18 Sep 2018 02:22:32 PM PDT</date>
+    <tool>Eeschema 5.0.0-fee4fd1~66~ubuntu18.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>OpenBeacon Mini</title>
+        <company>Etherkit</company>
+        <rev>A</rev>
+        <date>2018-04-10</date>
+        <source>OpenBeaconMini.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value="Creative Commons License CC-BY-SA"/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U7">
+      <value>Empyrean</value>
+      <footprint>EtherkitKicadLibrary:Empyrean</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="Empyrean" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2082FC</tstamp>
+    </comp>
+    <comp ref="U6">
+      <value>128x32OLED</value>
+      <footprint>EtherkitKicadLibrary:128x32OLED</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="128x32OLED" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A208CBC</tstamp>
+    </comp>
+    <comp ref="S4">
+      <value>Up</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21C770</tstamp>
+    </comp>
+    <comp ref="S1">
+      <value>Left</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21C7AC</tstamp>
+    </comp>
+    <comp ref="S6">
+      <value>Right</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21C8B8</tstamp>
+    </comp>
+    <comp ref="S3">
+      <value>Down</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21C96B</tstamp>
+    </comp>
+    <comp ref="S2">
+      <value>Menu 1</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21CA09</tstamp>
+    </comp>
+    <comp ref="S5">
+      <value>Menu 2</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21CA6E</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>PAT1220-C-10dB</value>
+      <footprint>EtherkitKicadLibrary:PAT1220</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="ChipAttenuator" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21E491</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>ASTX-H11-25.000MHZ-T</value>
+      <footprint>EtherkitKicadLibrary:ASTX-H11-25.000MHZ-T</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="OSCILLATOR" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21E50A</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>SI5351A</value>
+      <footprint>EtherkitKicadLibrary:MSOP-10</footprint>
+      <datasheet>DOCUMENTATION</datasheet>
+      <libsource lib="EtherkitKicadLibrary" part="SI5351A" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21E5CB</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21EF3D</tstamp>
+    </comp>
+    <comp ref="C12">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21EFCC</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>3.3k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21F493</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>3.3k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A21F518</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>SN74LVC1G17</value>
+      <footprint>EtherkitKicadLibrary:SOT23-5</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="SN74LVC1G17" description="Single Schmitt Trigger"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A236D57</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2370F6</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>3.3k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2373C4</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A237679</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>56</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2377EC</tstamp>
+    </comp>
+    <comp ref="U5">
+      <value>MCP4725A1T-E/CH</value>
+      <footprint>EtherkitKicadLibrary:SOT23-6</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="MCP4725A1T" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2382BF</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23834F</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>1u</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2388F2</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>2N7002</value>
+      <footprint>EtherkitKicadLibrary:SOT23-2N7002</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="MOS_N" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23943C</tstamp>
+    </comp>
+    <comp ref="L2">
+      <value>FB2402-61 5T</value>
+      <footprint>EtherkitKicadLibrary:BN2402</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="L-IRONCORE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A239754</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2399BB</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Bias V</value>
+      <footprint>Measurement_Points:Measurement_Point_Square-TH_Small</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="CONN_01X01" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23A4F7</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>GND</value>
+      <footprint>Measurement_Points:Measurement_Point_Square-TH_Small</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="CONN_01X01" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23A781</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23B80E</tstamp>
+    </comp>
+    <comp ref="M1">
+      <value>LPFModule</value>
+      <footprint>EtherkitKicadLibrary:LPFModule</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="LPFModule" description="Etherkit LPF Module"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23C6C0</tstamp>
+    </comp>
+    <comp ref="J10">
+      <value>BNC</value>
+      <footprint>EtherkitKicadLibrary:BNC-AMPHENOL-31-5431-10RFX</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="BNC" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23D5F4</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>MMBT4403</value>
+      <footprint>EtherkitKicadLibrary:SOT23-MMBT440X</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PNP" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23E9A0</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>22k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23EAA5</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>22k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23EC41</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>10n</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23EE0F</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>22k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A23FB76</tstamp>
+    </comp>
+    <comp ref="Q3">
+      <value>RD00HVS1</value>
+      <footprint>EtherkitKicadLibrary:SOT89-3</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="MOS_N" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2400A1</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>10</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2407FA</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>1 1%</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A240A92</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>1u</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A240C7F</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>PAI+</value>
+      <footprint>Measurement_Points:Measurement_Point_Square-TH_Small</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="CONN_01X01" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A241320</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>PAI-</value>
+      <footprint>Measurement_Points:Measurement_Point_Square-TH_Small</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="CONN_01X01" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A241664</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>TLV61046A</value>
+      <footprint>EtherkitKicadLibrary:SOT23-6</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="TLV61046A" description="DC-DC Boost Converter"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A243F1C</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>FDSD0420-H-100M-P3</value>
+      <footprint>EtherkitKicadLibrary:Murata100M</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="L-IRONCORE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A24425F</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>10u</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A244AAB</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>2.2u</value>
+      <footprint>EtherkitKicadLibrary:C_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A246653</tstamp>
+    </comp>
+    <comp ref="S7">
+      <value>Back</value>
+      <footprint>EtherkitKicadLibrary:Omron_B3F-1052</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2481F8</tstamp>
+    </comp>
+    <comp ref="J6">
+      <value>SMA</value>
+      <footprint>EtherkitKicadLibrary:SMA-ENDLAUNCH</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="BNC" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A24B150</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>ADC Inputs</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm</footprint>
+      <libsource lib="OpenBeaconMini-rescue" part="Conn_01x06" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A24D2D9</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>Digital IO</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm</footprint>
+      <libsource lib="OpenBeaconMini-rescue" part="Conn_01x06" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A24DE6A</tstamp>
+    </comp>
+    <comp ref="J7">
+      <value>I2C Bus</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm</footprint>
+      <libsource lib="OpenBeaconMini-rescue" part="Conn_01x04" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A250921</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>SMA</value>
+      <footprint>EtherkitKicadLibrary:SMA-ENDLAUNCH</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="BNC" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A251F5A</tstamp>
+    </comp>
+    <comp ref="Q5">
+      <value>2N7002</value>
+      <footprint>EtherkitKicadLibrary:SOT23-2N7002</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="MOS_N" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A252F60</tstamp>
+    </comp>
+    <comp ref="Q4">
+      <value>2N7002</value>
+      <footprint>EtherkitKicadLibrary:SOT23-2N7002</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="MOS_N" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A253413</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>3.3k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A2540D7</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>3.3k</value>
+      <footprint>EtherkitKicadLibrary:R_0805</footprint>
+      <libsource lib="EtherkitKicadLibrary" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A254242</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="EtherkitKicadLibrary" part="128x32OLED">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">128x32OLED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SDA" type="passive"/>
+        <pin num="2" name="SCL" type="passive"/>
+        <pin num="3" name="VCC" type="passive"/>
+        <pin num="4" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="BNC">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">BNC</field>
+      </fields>
+      <pins>
+        <pin num="1" name="In" type="passive"/>
+        <pin num="2" name="Ext" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="C">
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="CONN_01X01">
+      <footprints>
+        <fp>Pin_Header_Straight_1X01</fp>
+        <fp>Pin_Header_Angled_1X01</fp>
+        <fp>Socket_Strip_Straight_1X01</fp>
+        <fp>Socket_Strip_Angled_1X01</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">CONN_01X01</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="ChipAttenuator">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">ChipAttenuator</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="Empyrean">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Empyrean</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SCL" type="passive"/>
+        <pin num="2" name="SDA" type="passive"/>
+        <pin num="3" name="RESET" type="passive"/>
+        <pin num="4" name="VIN" type="passive"/>
+        <pin num="5" name="+3.3V" type="passive"/>
+        <pin num="6" name="GND" type="passive"/>
+        <pin num="7" name="AREF" type="passive"/>
+        <pin num="8" name="A0" type="passive"/>
+        <pin num="9" name="A1" type="passive"/>
+        <pin num="10" name="A2" type="passive"/>
+        <pin num="11" name="A3" type="passive"/>
+        <pin num="12" name="A4" type="passive"/>
+        <pin num="13" name="A5" type="passive"/>
+        <pin num="14" name="D0" type="passive"/>
+        <pin num="15" name="D1" type="passive"/>
+        <pin num="16" name="D2" type="passive"/>
+        <pin num="17" name="D3" type="passive"/>
+        <pin num="18" name="D4" type="passive"/>
+        <pin num="19" name="D5" type="passive"/>
+        <pin num="20" name="D6" type="passive"/>
+        <pin num="21" name="D7" type="passive"/>
+        <pin num="22" name="D8" type="passive"/>
+        <pin num="23" name="D9" type="passive"/>
+        <pin num="24" name="D10" type="passive"/>
+        <pin num="25" name="D11" type="passive"/>
+        <pin num="26" name="D12" type="passive"/>
+        <pin num="27" name="D13" type="passive"/>
+        <pin num="28" name="RESET" type="passive"/>
+        <pin num="29" name="GND" type="passive"/>
+        <pin num="30" name="+3.3V" type="passive"/>
+        <pin num="31" name="SCK" type="passive"/>
+        <pin num="32" name="MISO" type="passive"/>
+        <pin num="33" name="MOSI" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="L-IRONCORE">
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L-IRONCORE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="LPFModule">
+      <description>Etherkit LPF Module</description>
+      <fields>
+        <field name="Reference">M</field>
+        <field name="Value">LPFModule</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="input"/>
+        <pin num="5" name="~" type="passive"/>
+        <pin num="6" name="~" type="passive"/>
+        <pin num="7" name="~" type="passive"/>
+        <pin num="8" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="MCP4725A1T">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP4725A1T</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VOUT" type="passive"/>
+        <pin num="2" name="VSS" type="passive"/>
+        <pin num="3" name="VDD" type="passive"/>
+        <pin num="4" name="SDA" type="passive"/>
+        <pin num="5" name="SCL" type="passive"/>
+        <pin num="6" name="A0" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="MOS_N">
+      <aliases>
+        <alias>MOSFET_N</alias>
+      </aliases>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MOS_N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="2" name="G" type="input"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="OSCILLATOR">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">OSCILLATOR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OE" type="passive"/>
+        <pin num="2" name="GND" type="passive"/>
+        <pin num="3" name="OUT" type="passive"/>
+        <pin num="4" name="VDD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="PNP">
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">PNP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="E" type="passive"/>
+        <pin num="2" name="B" type="input"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="PUSHBUTTON_TACTILE">
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">PUSHBUTTON_TACTILE</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="R">
+      <footprints>
+        <fp>R?</fp>
+        <fp>SM0603</fp>
+        <fp>SM0805</fp>
+        <fp>R?-*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="SI5351A">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SI5351A</field>
+        <field name="Footprint">MODULE</field>
+        <field name="Datasheet">DOCUMENTATION</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="passive"/>
+        <pin num="2" name="XA" type="passive"/>
+        <pin num="3" name="XB" type="passive"/>
+        <pin num="4" name="SCL" type="passive"/>
+        <pin num="5" name="SDA" type="passive"/>
+        <pin num="6" name="CLK2" type="passive"/>
+        <pin num="7" name="VDDO" type="passive"/>
+        <pin num="8" name="GND" type="passive"/>
+        <pin num="9" name="CLK1" type="passive"/>
+        <pin num="10" name="CLK0" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="SN74LVC1G17">
+      <description>Single Schmitt Trigger</description>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN74LVC1G17</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="~" type="output"/>
+        <pin num="5" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="EtherkitKicadLibrary" part="TLV61046A">
+      <description>DC-DC Boost Converter</description>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TLV61046A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SW" type="passive"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="FB" type="passive"/>
+        <pin num="4" name="EN" type="passive"/>
+        <pin num="5" name="VO" type="power_out"/>
+        <pin num="6" name="VIN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="OpenBeaconMini-rescue" part="Conn_01x04">
+      <footprints>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Pin?Header?Straight?1X*</fp>
+        <fp>Pin?Header?Angled?1X*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="OpenBeaconMini-rescue" part="Conn_01x06">
+      <footprints>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Pin?Header?Straight?1X*</fp>
+        <fp>Pin?Header?Angled?1X*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="EtherkitKicadLibrary">
+      <uri>/home/jason/Nextcloud/Etherkit/git/EtherkitKicadLibrary/EtherkitKicadLibrary.lib</uri>
+    </library>
+    <library logical="OpenBeaconMini-rescue">
+      <uri>/home/jason/Nextcloud/Etherkit/git/OpenBeaconMini/pcb/OpenBeaconMini-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(L1-Pad1)">
+      <node ref="L1" pin="1"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="2" name="GND">
+      <node ref="J7" pin="4"/>
+      <node ref="S5" pin="2"/>
+      <node ref="S5" pin="1"/>
+      <node ref="S2" pin="4"/>
+      <node ref="S2" pin="3"/>
+      <node ref="J8" pin="6"/>
+      <node ref="J8" pin="4"/>
+      <node ref="J8" pin="2"/>
+      <node ref="J4" pin="2"/>
+      <node ref="J5" pin="2"/>
+      <node ref="J6" pin="2"/>
+      <node ref="J4" pin="6"/>
+      <node ref="J4" pin="4"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="J9" pin="1"/>
+      <node ref="U3" pin="3"/>
+      <node ref="C9" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="C6" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="R3" pin="3"/>
+      <node ref="U4" pin="8"/>
+      <node ref="U7" pin="29"/>
+      <node ref="S3" pin="1"/>
+      <node ref="U5" pin="2"/>
+      <node ref="U5" pin="6"/>
+      <node ref="U6" pin="4"/>
+      <node ref="S3" pin="2"/>
+      <node ref="S6" pin="2"/>
+      <node ref="S1" pin="4"/>
+      <node ref="S1" pin="3"/>
+      <node ref="S4" pin="2"/>
+      <node ref="S4" pin="1"/>
+      <node ref="S6" pin="1"/>
+      <node ref="U7" pin="6"/>
+      <node ref="R1" pin="2"/>
+      <node ref="S7" pin="2"/>
+      <node ref="S7" pin="1"/>
+      <node ref="Q3" pin="1"/>
+      <node ref="C7" pin="2"/>
+      <node ref="M1" pin="4"/>
+      <node ref="M1" pin="8"/>
+      <node ref="M1" pin="5"/>
+      <node ref="C2" pin="2"/>
+      <node ref="M1" pin="1"/>
+      <node ref="J10" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="3" name="TX">
+      <node ref="R1" pin="1"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="U7" pin="27"/>
+    </net>
+    <net code="4" name="+5V">
+      <node ref="L1" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="U1" pin="6"/>
+      <node ref="U7" pin="4"/>
+      <node ref="C10" pin="1"/>
+      <node ref="U5" pin="3"/>
+      <node ref="U1" pin="4"/>
+      <node ref="U1" pin="3"/>
+      <node ref="U6" pin="3"/>
+      <node ref="U3" pin="5"/>
+      <node ref="R10" pin="1"/>
+      <node ref="R9" pin="1"/>
+    </net>
+    <net code="5" name="BTN_BACK">
+      <node ref="S7" pin="3"/>
+      <node ref="S7" pin="4"/>
+      <node ref="U7" pin="20"/>
+    </net>
+    <net code="6" name="Net-(J10-Pad1)">
+      <node ref="M1" pin="6"/>
+      <node ref="J10" pin="1"/>
+    </net>
+    <net code="7" name="+3.3V">
+      <node ref="R12" pin="1"/>
+      <node ref="R11" pin="1"/>
+      <node ref="U7" pin="30"/>
+      <node ref="U7" pin="5"/>
+      <node ref="U4" pin="1"/>
+      <node ref="U2" pin="4"/>
+      <node ref="C6" pin="1"/>
+      <node ref="U2" pin="1"/>
+      <node ref="U4" pin="7"/>
+      <node ref="Q4" pin="2"/>
+      <node ref="C12" pin="1"/>
+      <node ref="Q5" pin="2"/>
+      <node ref="J7" pin="1"/>
+      <node ref="M1" pin="7"/>
+    </net>
+    <net code="8" name="BAND_ID">
+      <node ref="M1" pin="2"/>
+      <node ref="U7" pin="8"/>
+    </net>
+    <net code="9" name="Net-(C11-Pad1)">
+      <node ref="M1" pin="3"/>
+      <node ref="C11" pin="1"/>
+    </net>
+    <net code="10" name="Net-(Q2-Pad3)">
+      <node ref="Q2" pin="3"/>
+      <node ref="R4" pin="1"/>
+      <node ref="R6" pin="2"/>
+    </net>
+    <net code="11" name="Net-(C7-Pad1)">
+      <node ref="J2" pin="1"/>
+      <node ref="R8" pin="2"/>
+      <node ref="C7" pin="1"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="12" name="Net-(J3-Pad1)">
+      <node ref="R8" pin="1"/>
+      <node ref="L2" pin="1"/>
+      <node ref="J3" pin="1"/>
+    </net>
+    <net code="13" name="Net-(Q1-Pad3)">
+      <node ref="Q1" pin="3"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="14" name="Net-(C1-Pad2)">
+      <node ref="C1" pin="2"/>
+      <node ref="Q2" pin="2"/>
+      <node ref="R4" pin="2"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="15" name="Net-(C1-Pad1)">
+      <node ref="Q2" pin="1"/>
+      <node ref="U1" pin="5"/>
+      <node ref="C4" pin="1"/>
+      <node ref="C1" pin="1"/>
+    </net>
+    <net code="16" name="BTN_UP">
+      <node ref="S4" pin="4"/>
+      <node ref="S4" pin="3"/>
+      <node ref="U7" pin="16"/>
+    </net>
+    <net code="17" name="SDA">
+      <node ref="J7" pin="3"/>
+      <node ref="U4" pin="5"/>
+      <node ref="R12" pin="2"/>
+      <node ref="Q4" pin="1"/>
+      <node ref="U7" pin="2"/>
+    </net>
+    <net code="18" name="Net-(U7-Pad7)">
+      <node ref="U7" pin="7"/>
+    </net>
+    <net code="19" name="Net-(U7-Pad26)">
+      <node ref="U7" pin="26"/>
+    </net>
+    <net code="20" name="Net-(U7-Pad33)">
+      <node ref="U7" pin="33"/>
+    </net>
+    <net code="21" name="Net-(U7-Pad32)">
+      <node ref="U7" pin="32"/>
+    </net>
+    <net code="22" name="Net-(U7-Pad31)">
+      <node ref="U7" pin="31"/>
+    </net>
+    <net code="23" name="D9">
+      <node ref="U7" pin="23"/>
+      <node ref="J4" pin="5"/>
+    </net>
+    <net code="24" name="Net-(J6-Pad1)">
+      <node ref="J6" pin="1"/>
+      <node ref="U4" pin="6"/>
+    </net>
+    <net code="25" name="Net-(J5-Pad1)">
+      <node ref="J5" pin="1"/>
+      <node ref="U4" pin="9"/>
+    </net>
+    <net code="26" name="SCL">
+      <node ref="R11" pin="2"/>
+      <node ref="U7" pin="1"/>
+      <node ref="Q5" pin="1"/>
+      <node ref="J7" pin="2"/>
+      <node ref="U4" pin="4"/>
+    </net>
+    <net code="27" name="BTN_DSP_1">
+      <node ref="S2" pin="2"/>
+      <node ref="S2" pin="1"/>
+      <node ref="U7" pin="14"/>
+    </net>
+    <net code="28" name="BTN_DSP_2">
+      <node ref="S5" pin="3"/>
+      <node ref="S5" pin="4"/>
+      <node ref="U7" pin="15"/>
+    </net>
+    <net code="29" name="BTN_RIGHT">
+      <node ref="S6" pin="4"/>
+      <node ref="S6" pin="3"/>
+      <node ref="U7" pin="19"/>
+    </net>
+    <net code="30" name="BTN_DOWN">
+      <node ref="U7" pin="17"/>
+      <node ref="S3" pin="3"/>
+      <node ref="S3" pin="4"/>
+    </net>
+    <net code="31" name="BTN_LEFT">
+      <node ref="S1" pin="1"/>
+      <node ref="S1" pin="2"/>
+      <node ref="U7" pin="18"/>
+    </net>
+    <net code="32" name="D10">
+      <node ref="U7" pin="24"/>
+    </net>
+    <net code="33" name="D11">
+      <node ref="U7" pin="25"/>
+    </net>
+    <net code="34" name="Net-(U7-Pad28)">
+      <node ref="U7" pin="28"/>
+    </net>
+    <net code="35" name="Net-(U7-Pad3)">
+      <node ref="U7" pin="3"/>
+    </net>
+    <net code="36" name="A1">
+      <node ref="J8" pin="1"/>
+      <node ref="U7" pin="9"/>
+    </net>
+    <net code="37" name="A2">
+      <node ref="U7" pin="10"/>
+      <node ref="J8" pin="3"/>
+    </net>
+    <net code="38" name="A3">
+      <node ref="J8" pin="5"/>
+      <node ref="U7" pin="11"/>
+    </net>
+    <net code="39" name="D7">
+      <node ref="U7" pin="21"/>
+      <node ref="J4" pin="1"/>
+    </net>
+    <net code="40" name="A4">
+      <node ref="U7" pin="12"/>
+    </net>
+    <net code="41" name="D8">
+      <node ref="U7" pin="22"/>
+      <node ref="J4" pin="3"/>
+    </net>
+    <net code="42" name="A5">
+      <node ref="U7" pin="13"/>
+    </net>
+    <net code="43" name="SDA_5V">
+      <node ref="U6" pin="1"/>
+      <node ref="U5" pin="4"/>
+      <node ref="R10" pin="2"/>
+      <node ref="Q4" pin="3"/>
+    </net>
+    <net code="44" name="SCL_5V">
+      <node ref="Q5" pin="3"/>
+      <node ref="U6" pin="2"/>
+      <node ref="U5" pin="5"/>
+      <node ref="R9" pin="2"/>
+    </net>
+    <net code="45" name="Net-(C9-Pad1)">
+      <node ref="R7" pin="2"/>
+      <node ref="U5" pin="1"/>
+      <node ref="C9" pin="1"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="46" name="Net-(C5-Pad2)">
+      <node ref="R5" pin="2"/>
+      <node ref="U3" pin="4"/>
+      <node ref="C5" pin="2"/>
+    </net>
+    <net code="47" name="Net-(U4-Pad3)">
+      <node ref="U4" pin="3"/>
+    </net>
+    <net code="48" name="Net-(C5-Pad1)">
+      <node ref="R7" pin="1"/>
+      <node ref="Q3" pin="2"/>
+      <node ref="C5" pin="1"/>
+    </net>
+    <net code="49" name="Net-(C8-Pad2)">
+      <node ref="R5" pin="1"/>
+      <node ref="C8" pin="2"/>
+    </net>
+    <net code="50" name="Net-(C11-Pad2)">
+      <node ref="C11" pin="2"/>
+      <node ref="L2" pin="2"/>
+      <node ref="Q3" pin="3"/>
+      <node ref="C8" pin="1"/>
+    </net>
+    <net code="51" name="CLK0">
+      <node ref="U4" pin="10"/>
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="52" name="Net-(R3-Pad2)">
+      <node ref="R3" pin="2"/>
+      <node ref="U4" pin="2"/>
+    </net>
+    <net code="53" name="Net-(R3-Pad1)">
+      <node ref="U2" pin="3"/>
+      <node ref="R3" pin="1"/>
+    </net>
+  </nets>
+</export>
