@@ -27,6 +27,7 @@
 #include <U8g2lib.h>
 #include <si5351.h>
 #include <Wire.h>
+#include <FlashStorage.h>
 
 #include <cstdlib>
 #include <map>
@@ -70,27 +71,42 @@ constexpr uint32_t TIME_EXPIRE = 86400;
 constexpr uint32_t TIME_SYNC_INTERVAL = 43200;
 constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 
+constexpr uint8_t MSG_BUFFER_SIZE = 81;
+
+constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
+
 constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
 };
 
 const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/. ";
 
-// Character 0 of the value field denotes setting type:
-// S == string
-// U == uint
-// I == int
-// F == float
-// T == time
-constexpr char* config_table[][2] =
+// Configuration schema version 1
+// 8 Oct 2018
+struct Config
 {
-  {"PA Bias", "U1800"},
-  {"Callsign", "SNT7S"},
-  {"Grid", "SCN85"},
-  {"Power", "U23"},
-  {"TX Intv", "U0"},
-  {"CW WPM", "U22"}
+  boolean valid;
+  uint8_t version;
+  Mode mode;
+  uint8_t band;
+  uint16_t wpm;
+  uint8_t tx_intv;
+  uint8_t dfcw_offset;
+  uint8_t buffer;
+  char callsign[20];
+  char grid[10];
+  uint8_t power;
+  uint16_t pa_bias;
+  char msg_buffer_1[MSG_BUFFER_SIZE];
+  char msg_buffer_2[MSG_BUFFER_SIZE];
+  char msg_buffer_3[MSG_BUFFER_SIZE];
+  char msg_buffer_4[MSG_BUFFER_SIZE];
+  int32_t si5351_int_corr; 
 };
+
+// Instantiate flash storage
+FlashStorage(flash_store, Config);
+Config flash_config;
 
 // Defaults
 constexpr uint32_t DEFAULT_FREQUENCY = 0UL;
@@ -106,11 +122,53 @@ constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
 constexpr TxState DEFAULT_STATE = TxState::Idle;
 constexpr uint16_t DEFAULT_TX_INTERVAL = 6;
 constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
+constexpr uint8_t DEFAULT_DFCW_OFFSET = 5;
+constexpr char DEFAULT_CALLSIGN[20] = "N0CALL";
+constexpr char DEFAULT_GRID[10] = "AA00";
+constexpr uint8_t DEFAULT_POWER = 23;
+constexpr uint16_t DEFAULT_PA_BIAS = 1800;
+constexpr char DEFAULT_MSG_1[81] = "";
+constexpr char DEFAULT_MSG_2[81] = "";
+constexpr char DEFAULT_MSG_3[81] = "";
+constexpr char DEFAULT_MSG_4[81] = "";
+constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
+// Character 0 of the value field denotes setting type:
+// S == string
+// U == uint
+// I == int
+// F == float
+// T == time
+const char* settings_table[][2] =
+{
+  {"pa_bias", "PA Bias"},
+  {"callsign", "Callsign"},
+  {"grid", "Grid"},
+  {"power", "Power"},
+  {"tx_intv", "TX Intv"},
+  {"wpm", "CW WPM"}
+};
+//const char* settings_table[][3] =
+//{
+//  {"pa_bias", "PA Bias", "U1801"},
+//  {"callsign", "Callsign", "SNT7S"},
+//  {"grid", "Grid", "SCN85"},
+//  {"power", "Power", "U23"},
+//  {"tx_intv", "TX Intv", "U0"},
+//  {"wpm", "CW WPM", "U22"}
+//};
+
+const char* default_config = 
+  "{\"valid\":\"true\", \"version\":1, \"mode\":\"MODE::WSPR\", \"band\":0, \"wpm\":25, \"tx_intv\":6, \"dfcw_offset\":5, \"buffer\":0, \"callsign\":\"N0CALL\", \"grid\":\"AA00\", \"power\":23, \"pa_bias\":1800, \"msg_buffer_1\":\"\", \"msg_buffer_2\":\"\", \"msg_buffer_3\":\"\", \"msg_buffer_4\":\"\",\"si5351_int_corr\":0}";
+
 // Limits
 constexpr uint8_t SETTING_FONT_WIDTH = 6;
+
+// Typedef
+typedef std::pair<std::string, std::string> settings_value_type;
+typedef std::map<std::string, settings_value_type> settings_type; //<key, <display_name, value>>
 
 // Class constructors
 //U8G2_SSD1306_128X32_UNIVISION_2_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
@@ -144,14 +202,16 @@ volatile bool change_freq = false;
 // Global variables
 uint8_t tune_step = 0;
 uint32_t band_id = 0;
-std::map<std::string, std::string> cfg;
-std::string cur_setting = "";
+settings_type settings;
+//std::string cur_setting = "";
 uint64_t cur_setting_uint = 0;
 //uint64_t temp_setting_uint = 0;
 int64_t cur_setting_int = 0;
 //int64_t temp_setting_int = 0;
+std::string cur_setting_label = "";
+std::string cur_setting_key = "";
 std::string cur_setting_str = "";
-//std::string temp_setting_str = "";
+std::string temp_setting_str = "";
 float cur_setting_float;
 SettingType cur_setting_type = SettingType::Str;
 uint8_t cur_setting_selected = 0;
@@ -169,21 +229,26 @@ uint32_t initial_time_sync = 0;
 //bool time_sync_request = false;
 uint8_t mfsk_buffer[255];
 char wspr_buffer[41];
-char msg_buffer[81];
-char msg_buffer_1[81];
-char msg_buffer_2[81] = "TESTING";
-char msg_buffer_3[81];
-char msg_buffer_4[81];
+char msg_buffer[MSG_BUFFER_SIZE];
+char msg_buffer_1[MSG_BUFFER_SIZE];
+char msg_buffer_2[MSG_BUFFER_SIZE] = "TESTING";
+char msg_buffer_3[MSG_BUFFER_SIZE];
+char msg_buffer_4[MSG_BUFFER_SIZE];
 uint8_t cur_buffer = DEFAULT_CUR_BUFFER;
 uint8_t cur_symbol_count;
 uint16_t cur_symbol_time;
 uint16_t cur_tx_interval_mult;
+uint16_t cur_tx_interval = DEFAULT_TX_INTERVAL;
 bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
 float wpm = DEFAULT_WPM;
 uint8_t cur_setting_digit = 0;
 uint8_t cur_edit_buffer;
 bool ins_del_mode = false;
+uint16_t cur_pa_bias = DEFAULT_PA_BIAS;
+uint16_t cur_dfcw_offset = DEFAULT_DFCW_OFFSET;
+uint64_t cur_si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+Config cur_config;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -323,10 +388,11 @@ void initMenu()
   menu.selectParent();
   menu.addChild("Settings");
   menu.selectChild(3);
-  for (auto& c : cfg)
+  for (auto& c : settings_table)
   {
-    const char* key = c.first.c_str();
-    menu.addChild(key, setConfig, key);
+    const char* key = c[0];
+    const char* label = c[1];
+    menu.addChild(label, setConfig, key);
     //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
   }
   menu.selectParent();
@@ -363,7 +429,8 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW6:
@@ -373,7 +440,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW10:
@@ -383,7 +450,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW120:
@@ -393,7 +460,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS3:
@@ -402,7 +469,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS6:
@@ -411,7 +478,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS10:
@@ -420,7 +487,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS120:
@@ -429,7 +496,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::CW:
@@ -438,7 +505,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::HELL:
@@ -447,7 +514,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::MFSK;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::WSPR:
@@ -460,7 +527,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].wspr_freq;
       break;
     case Mode::JT65:
@@ -473,7 +540,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt65_freq;
       break;
     case Mode::JT9:
@@ -486,7 +553,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
     case Mode::JT4:
@@ -499,14 +566,14 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
   }
   yield();
 }
 
-void setBuffer(const char * b)
+void setBuffer(const char * b, const char * value)
 {
   std::size_t pos;
   uint8_t buf;
@@ -565,11 +632,13 @@ void selectBuffer(const uint8_t buf)
   }
 }
 
-void setConfig(const char * key)
+void setConfig(const char * key, const char * label)
 {
   display_mode = DisplayMode::Setting;
-  cur_setting = std::string(key);
-  std::string val = cfg[key];
+  cur_setting_key = std::string(key);
+//  cur_setting_label = settings[key].first;
+  cur_setting_label = std::string(label);
+  std::string val = settings[key].second;
   char temp_str[41];
   char type = val[0];
   std::size_t pos;
@@ -577,19 +646,19 @@ void setConfig(const char * key)
   switch (type)
   {
     case 'U':
-      cur_setting_uint = atoll(cfg[key].substr(1).c_str());
+      cur_setting_uint = atoll(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Uint;
       sprintf(temp_str, "%lu", cur_setting_uint);
       cur_setting_selected = 0;
       break;
     case 'I':
-      cur_setting_int = atoll(cfg[key].substr(1).c_str());
+      cur_setting_int = atoll(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Int;
       sprintf(temp_str, "%l", cur_setting_uint);
       cur_setting_selected = 0;
       break;
     case 'S':
-      cur_setting_str = cfg[key].substr(1);
+      cur_setting_str = settings[key].second.substr(1);
       cur_setting_type = SettingType::Str;
       sprintf(temp_str, "%s", cur_setting_str.c_str());
       //    cur_setting_selected = strlen(temp_str) - 1;
@@ -601,7 +670,7 @@ void setConfig(const char * key)
       }
       break;
     case 'F':
-      cur_setting_float = atof(cfg[key].substr(1).c_str());
+      cur_setting_float = atof(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Float;
       sprintf(temp_str, "%f", cur_setting_uint);
       cur_setting_selected = 0;
@@ -762,12 +831,12 @@ void drawOLED()
     yield();
   
     // Draw index
-    //sprintf(temp_str, "%s", cfg["Callsign"].c_str());
+    //sprintf(temp_str, "%s", settings["Callsign"].c_str());
 //    sprintf(temp_str, "%s", cur_setting.c_str());
 //    u8g2.drawStr(87, 15, temp_str);
 
     // Draw key
-//    sprintf(temp_str, "%s", cfg["PA Bias"].first.c_str());
+//    sprintf(temp_str, "%s", settings["PA Bias"].first.c_str());
 //    u8g2.drawStr(87, 15, temp_str);
 
     // Draw timer and next event
@@ -801,9 +870,9 @@ void drawOLED()
 //    u8g2.drawStr(0, 30, temp_str);
 
     // Draw callsign
-    //sprintf(temp_str, "%s", cfg["Callsign"].substr(1).c_str());
-    //sprintf(temp_str, "%s", cfg["Grid"].substr(1).c_str());
-//    sprintf(temp_str, "%s", cfg["Power"].substr(1).c_str());
+    //sprintf(temp_str, "%s", settings["Callsign"].substr(1).c_str());
+    //sprintf(temp_str, "%s", settings["Grid"].substr(1).c_str());
+//    sprintf(temp_str, "%s", settings["Power"].substr(1).c_str());
 //    u8g2.drawStr(26, 30, temp_str);
     
   
@@ -817,7 +886,7 @@ void drawOLED()
   {
     // Draw setting name
     u8g2.setFont(u8g2_font_6x10_mr);
-    sprintf(temp_str, "%s", cur_setting.c_str());
+    sprintf(temp_str, "%s", cur_setting_label.c_str());
     u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
 
     //const char* setting_val = cur_setting_str.c_str();
@@ -836,7 +905,7 @@ void drawOLED()
 ////        setting_val += cur_setting_selected - 10;
 ////      }
 //      //sprintf(temp_str, "%s", cur_setting_str.c_str());
-//      sprintf(temp_str, "%s", cfg[cur_setting].c_str());
+//      sprintf(temp_str, "%s", settings[cur_setting].c_str());
 ////      SerialUSB.print("\v");
 ////      SerialUSB.println(temp_str);
 //      //sprintf(temp_str, "%s", setting_val);
@@ -845,7 +914,7 @@ void drawOLED()
 
     uint8_t str_x;
 
-    switch(cfg[cur_setting][0])
+    switch(settings[cur_setting_key].second[0])
     {
     case 'U':
       sprintf(temp_str, "%lu", cur_setting_uint);
@@ -862,7 +931,7 @@ void drawOLED()
 //      }
       sprintf(temp_str, "%s<", cur_setting_str.c_str());
       str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
-      //sprintf(temp_str, "%s", cfg[cur_setting].c_str());
+      //sprintf(temp_str, "%s", settings[cur_setting].c_str());
 //      SerialUSB.print("\v");
 //      SerialUSB.println(temp_str);
       //sprintf(temp_str, "%s", setting_val);
@@ -1450,11 +1519,11 @@ void pollButtons()
         {
           case SettingType::Uint:
             sprintf(temp_str, "U%lu", cur_setting_uint);
-            cfg[cur_setting] = temp_str;
+            settings[cur_setting_key].second = temp_str;
             break;
           case SettingType::Int:
             sprintf(temp_str, "I%l", cur_setting_int);
-            cfg[cur_setting] = temp_str;
+            settings[cur_setting_key].second = temp_str;
             break;
           case SettingType::Str:
             if (ins_del_mode)
@@ -1465,17 +1534,51 @@ void pollButtons()
             else
             {
               sprintf(temp_str, "S%s", cur_setting_str.c_str());
-              cfg[cur_setting] = temp_str;
+              settings[cur_setting_key].second = temp_str;
             }
 
             break;
         }
 
+        // Yeah, inelegant. Hopefully we can get C++17 in Arduino soon for better data structures
+        if (cur_setting_key == "pa_bias")
+        {
+          cur_config.pa_bias = cur_setting_uint;
+        }
+        else if (cur_setting_key == "callsign")
+        {
+          strcpy(cur_config.callsign, cur_setting_str.c_str());
+        }
+        else if (cur_setting_key == "grid")
+        {
+          strcpy(cur_config.grid, cur_setting_str.c_str());
+        }
+        else if (cur_setting_key == "power")
+        {
+          cur_config.power = cur_setting_uint;
+        }
+        else if (cur_setting_key == "tx_intv")
+        {
+          cur_config.tx_intv = cur_setting_uint;
+        }
+        else if (cur_setting_key == "wpm")
+        {
+          cur_config.wpm = cur_setting_uint;
+        }
+
         // If we need to make any immediate setting changes to hardware
-        if (cur_setting == "PA Bias")
+        if (cur_setting_key == "pa_bias")
         {
           setPABias(cur_setting_uint);
         }
+        
+
+        // Re-compose the buffers to reflect changes
+        composeWSPRBuffer();
+        composeMorseBuffer(cur_buffer);
+
+        // Save the config to NVM
+        serializeConfig();
 
         if (!ins_del_mode)
         {
@@ -2021,7 +2124,7 @@ void txStateMachine()
             //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
             //frequency = (base_frequency * 100);
             //change_freq = true;
-            //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+            //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
 
             setNextTx(0);
           }
@@ -2058,7 +2161,7 @@ void txStateMachine()
             setTxState(TxState::Idle);
             frequency = (base_frequency * 100ULL);
             change_freq = true;
-            //setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+            //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
 
             setNextTx(0);
           }
@@ -2082,7 +2185,7 @@ void txStateMachine()
               //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (base_frequency * 100);
               //change_freq = true;
-              setNextTx(atoi(cfg["TX Intv"].substr(1).c_str()));
+              setNextTx(atoi(settings["tx_intv"].second.substr(1).c_str()));
             }
             else // next symbol
             {
@@ -2103,7 +2206,7 @@ void composeMorseBuffer(uint8_t buf)
   char temp_call[16];
   char temp_grid[6];
 
-  sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
+  sprintf(temp_call, "%s", settings["callsign"].second.substr(1).c_str());
   switch(buf)
   {
   case 1:
@@ -2125,10 +2228,13 @@ void composeMorseBuffer(uint8_t buf)
 
 void composeWSPRBuffer()
 {
-  sprintf(cur_callsign, "%s", cfg["Callsign"].substr(1).c_str());
-  sprintf(cur_grid, "%s", cfg["Grid"].substr(1).c_str());
-  cur_power = atoi(cfg["Power"].substr(1).c_str());
+  sprintf(cur_callsign, "%s", settings["callsign"].second.substr(1).c_str());
+  sprintf(cur_grid, "%s", settings["grid"].second.substr(1).c_str());
+  cur_power = atoi(settings["power"].second.substr(1).c_str());
   sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
+  memset(mfsk_buffer, 0, 255);
+  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
+                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
 }
 
 void composeJTBuffer(uint8_t buf)
@@ -2136,8 +2242,8 @@ void composeJTBuffer(uint8_t buf)
   char temp_call[16];
   char temp_grid[6];
 
-  sprintf(temp_call, "%s", cfg["Callsign"].substr(1).c_str());
-  sprintf(temp_grid, "%s", cfg["Grid"].substr(1).c_str());
+  sprintf(temp_call, "%s", settings["callsign"].second.substr(1).c_str());
+  sprintf(temp_grid, "%s", settings["grid"].second.substr(1).c_str());
   switch(buf)
   {
   case 1:
@@ -2155,6 +2261,74 @@ void composeJTBuffer(uint8_t buf)
   }
 }
 
+void serializeConfig()
+{
+  //flash_config = flash_store.read();
+
+  flash_config.valid = true;
+  flash_config.version = cur_config.version;
+  flash_config.mode = cur_config.mode;
+  flash_config.band = cur_config.band;
+  flash_config.wpm = cur_config.wpm;
+  flash_config.tx_intv = cur_config.tx_intv;
+  flash_config.dfcw_offset = cur_config.dfcw_offset;
+  flash_config.buffer = cur_config.buffer;
+  strcpy(flash_config.callsign, cur_config.callsign);
+  strcpy(flash_config.grid, cur_config.grid);
+  flash_config.power = cur_config.power;
+  flash_config.pa_bias = cur_config.pa_bias;
+  strcpy(flash_config.msg_buffer_1, cur_config.msg_buffer_1);
+  strcpy(flash_config.msg_buffer_2, cur_config.msg_buffer_2);
+  strcpy(flash_config.msg_buffer_3, cur_config.msg_buffer_3);
+  strcpy(flash_config.msg_buffer_4, cur_config.msg_buffer_4);
+  flash_config.si5351_int_corr = cur_config.si5351_int_corr;
+  flash_store.write(flash_config);
+}
+
+void deserializeConfig()
+{
+  char temp_str[81];
+  flash_config = flash_store.read();
+  if(flash_config.valid == true)
+  {
+    cur_config.mode = flash_config.mode;
+    cur_config.band = flash_config.band;
+    cur_config.wpm = flash_config.wpm;
+    cur_config.tx_intv = flash_config.tx_intv;
+    cur_config.dfcw_offset = flash_config.dfcw_offset;
+    cur_config.buffer = flash_config.buffer;
+    strcpy(cur_config.callsign, flash_config.callsign);
+    strcpy(cur_config.grid, flash_config.grid);
+    cur_config.power = flash_config.power;
+    cur_config.pa_bias = flash_config.pa_bias;
+    strcpy(cur_config.msg_buffer_1, flash_config.msg_buffer_1);
+    strcpy(cur_config.msg_buffer_2, flash_config.msg_buffer_2);
+    strcpy(cur_config.msg_buffer_3, flash_config.msg_buffer_3);
+    strcpy(cur_config.msg_buffer_4, flash_config.msg_buffer_4);
+    cur_config.si5351_int_corr = flash_config.si5351_int_corr;
+    sprintf(temp_str, "U%lu", flash_config.pa_bias);
+    settings["pa_bias"].second = temp_str;
+    sprintf(temp_str, "S%s", flash_config.callsign);
+    settings["callsign"].second = temp_str;
+    sprintf(temp_str, "S%s", flash_config.grid);
+    settings["grid"].second = temp_str;
+    sprintf(temp_str, "U%lu", flash_config.power);
+    settings["power"].second = temp_str;
+    sprintf(temp_str, "U%lu", flash_config.tx_intv);
+    settings["tx_intv"].second = temp_str;
+    sprintf(temp_str, "U%lu", flash_config.wpm);
+    settings["wpm"].second = temp_str;
+//    SerialUSB.print('\v');
+//    SerialUSB.print("Callsign: ");
+//    SerialUSB.print(flash_config.callsign);
+  }
+  else
+  {
+//    SerialUSB.print('\v');
+//    SerialUSB.print("Deserialize failure");
+  }
+}
+
 // ===== Setup =====
 void setup()
 {
@@ -2163,9 +2337,43 @@ void setup()
   while (!SerialUSB);
 
   // Load config map
-  for (auto const& c : config_table)
+  for (auto const& c : settings_table)
   {
-    cfg[c[0]] = c[1];
+    settings[c[0]].first = c[1];
+//    settings[c[0]].second = c[2];
+  }
+
+  // If there isn't a valid configuration record in NVM,
+  // create one based on the defaults
+  flash_config = flash_store.read();
+  if(flash_config.valid == false)
+  {
+    flash_config.valid = true;
+    flash_config.version = CONFIG_SCHEMA_VERSION;
+    flash_config.mode = DEFAULT_MODE;
+    flash_config.band = DEFAULT_BAND_INDEX;
+    flash_config.wpm = DEFAULT_WPM;
+    flash_config.tx_intv = DEFAULT_TX_INTERVAL;
+    flash_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+    flash_config.buffer = DEFAULT_CUR_BUFFER;
+    strcpy(flash_config.callsign, DEFAULT_CALLSIGN);
+    strcpy(flash_config.grid, DEFAULT_GRID);
+    flash_config.power = DEFAULT_POWER;
+    flash_config.pa_bias = DEFAULT_PA_BIAS;
+    strcpy(flash_config.msg_buffer_1, DEFAULT_MSG_1);
+    strcpy(flash_config.msg_buffer_2, DEFAULT_MSG_2);
+    strcpy(flash_config.msg_buffer_3, DEFAULT_MSG_3);
+    strcpy(flash_config.msg_buffer_4, DEFAULT_MSG_4);
+    flash_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+    flash_store.write(flash_config);
+    deserializeConfig();
+//    SerialUSB.print('\v');
+//    SerialUSB.print("New flash store written");
+  }
+  else
+  {
+    // load valid config from NVM to RAM
+    deserializeConfig();
   }
 
   // Start u8g2
@@ -2185,8 +2393,6 @@ void setup()
 
   //attachInterrupt(digitalPinToInterrupt(BTN_BACK), handleMenuBack, FALLING);
 
-
-
   // ADC resolution
   analogReadResolution(12);
   analogReference(AR_DEFAULT);
@@ -2199,7 +2405,7 @@ void setup()
   Wire.setClock(400000UL);
 
   // Set PA bias
-  setPABias(atoll(cfg["PA Bias"].substr(1).c_str()));
+  setPABias(atoll(settings["pa_bias"].second.substr(1).c_str()));
 
   // RTC setup
   // Can't use the RTC alarm interrupt, far too much trigger time variance
@@ -2214,6 +2420,20 @@ void setup()
 
   // Init menu
   initMenu();
+
+  // Set up ArduinoJSON
+  const size_t bufferSize = JSON_OBJECT_SIZE(17) + 230;
+//  const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 60;
+//  StaticJsonDocument<800> jsonDoc;
+  DynamicJsonDocument jsonDoc(bufferSize);
+//  DynamicJsonBuffer jsonBuffer(bufferSize);
+//  JsonObject& root = jsonBuffer.parseObject(default_config);
+  DeserializationError error = deserializeJson(jsonDoc, default_config);
+  if(error)
+  {
+    //TODO
+  }
+  JsonObject config_root = jsonDoc.as<JsonObject>();
 
   // Set up scheduler
   Scheduler.startLoop(txStateMachine);
@@ -2231,7 +2451,7 @@ void setup()
   //  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
   //  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
   //  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-  //  cfg["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+  //  settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
   //  base_frequency = band_table[band_index].jt9_freq;
 
   cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
@@ -2241,8 +2461,8 @@ void setup()
 
   // Clear TX buffer
   memset(mfsk_buffer, 0, 255);
-  jtencode.wspr_encode(cfg["Callsign"].substr(1).c_str(), cfg["Grid"].substr(1).c_str(),
-                       atoi(cfg["Power"].substr(1).c_str()), mfsk_buffer);
+//  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
+//                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
   frequency = (base_frequency * 100ULL);
   change_freq = true;
@@ -2251,11 +2471,13 @@ void setup()
   composeMorseBuffer(cur_buffer);
   selectBuffer(cur_buffer);
 
+
+
   //morse.send("DE NT7S");
   //  SerialUSB.print("\v");
   //  SerialUSB.println("OpenBeacon Mini");
   //  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
-  //  for(auto a : config_table)
+  //  for(auto a : settings_table)
   //  {
   ////    char first_setting[20];
   ////    char second_setting[20];
@@ -2264,7 +2486,7 @@ void setup()
   //    SerialUSB.print("\v");
   //    SerialUSB.print(a[0]);
   //    SerialUSB.print(" - ");
-  //    SerialUSB.println(cfg[a[0]].c_str());
+  //    SerialUSB.println(settings[a[0]].c_str());
   //  }
   // Start Timer
   startTimer(TIMER_FREQUENCY); // 1 ms ISR

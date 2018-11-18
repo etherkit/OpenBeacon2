@@ -135,7 +135,7 @@ def serial_handler():
                 # print(start_time + str(end - start) + "\r")
         elif('\v' in ser_in.decode()):
             if args.verbosity > 0:
-                logging.info(ser.readline())
+                logging.info(ser.readline().decode())
                 # print(ser.readline() + "\r")
 
 

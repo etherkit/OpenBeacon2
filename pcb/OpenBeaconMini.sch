@@ -1,36 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:EtherkitKicadLibrary
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
+EESchema Schematic File Version 4
 LIBS:OpenBeaconMini-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
@@ -45,7 +15,7 @@ Comment3 ""
 Comment4 "Creative Commons License CC-BY-SA"
 $EndDescr
 $Comp
-L Empyrean U7
+L EtherkitKicadLibrary:Empyrean U7
 U 1 1 5A2082FC
 P 8250 5550
 F 0 "U7" H 8250 4795 60  0000 C CNN
@@ -56,7 +26,7 @@ F 3 "" H 8250 5550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR01
+L OpenBeaconMini-rescue:GND #PWR01
 U 1 1 5A2083BC
 P 7695 5350
 F 0 "#PWR01" H 7695 5100 50  0001 C CNN
@@ -67,7 +37,7 @@ F 3 "" H 7695 5350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR02
+L OpenBeaconMini-rescue:GND #PWR02
 U 1 1 5A2083EC
 P 8795 4950
 F 0 "#PWR02" H 8795 4700 50  0001 C CNN
@@ -78,7 +48,7 @@ F 3 "" H 8795 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR03
+L EtherkitKicadLibrary:+5V #PWR03
 U 1 1 5A20880E
 P 7660 5150
 F 0 "#PWR03" H 7660 5110 30  0001 C CNN
@@ -89,7 +59,7 @@ F 3 "" H 7660 5150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR04
+L EtherkitKicadLibrary:+3.3V #PWR04
 U 1 1 5A208AD2
 P 7660 5250
 F 0 "#PWR04" H 7660 5210 30  0001 C CNN
@@ -100,7 +70,7 @@ F 3 "" H 7660 5250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR05
+L EtherkitKicadLibrary:+3.3V #PWR05
 U 1 1 5A208B18
 P 8850 4850
 F 0 "#PWR05" H 8850 4810 30  0001 C CNN
@@ -121,7 +91,7 @@ Wire Wire Line
 Wire Wire Line
 	7750 5150 7660 5150
 $Comp
-L +5V #PWR06
+L EtherkitKicadLibrary:+5V #PWR06
 U 1 1 5A208C1C
 P 6785 1060
 F 0 "#PWR06" H 6785 1020 30  0001 C CNN
@@ -132,7 +102,7 @@ F 3 "" H 6785 1060 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L OpenBeaconMini-rescue:GND #PWR07
 U 1 1 5A208C5F
 P 7120 1160
 F 0 "#PWR07" H 7120 910 50  0001 C CNN
@@ -143,7 +113,7 @@ F 3 "" H 7120 1160 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 128x32OLED U6
+L EtherkitKicadLibrary:128x32OLED U6
 U 1 1 5A208CBC
 P 7980 1010
 F 0 "U6" H 7980 1055 60  0000 C CNN
@@ -158,7 +128,7 @@ Wire Wire Line
 Wire Wire Line
 	6785 1060 7180 1060
 $Comp
-L PUSHBUTTON_TACTILE S4
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S4
 U 1 1 5A21C770
 P 7965 2540
 F 0 "S4" H 7965 2425 50  0000 C CNN
@@ -169,7 +139,7 @@ F 3 "" H 7965 2540 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PUSHBUTTON_TACTILE S1
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S1
 U 1 1 5A21C7AC
 P 7300 3120
 F 0 "S1" H 7300 3005 50  0000 C CNN
@@ -180,7 +150,7 @@ F 3 "" H 7300 3120 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PUSHBUTTON_TACTILE S6
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S6
 U 1 1 5A21C8B8
 P 8530 3120
 F 0 "S6" H 8530 3005 50  0000 C CNN
@@ -191,7 +161,7 @@ F 3 "" H 8530 3120 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PUSHBUTTON_TACTILE S3
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S3
 U 1 1 5A21C96B
 P 7950 3690
 F 0 "S3" H 7950 3575 50  0000 C CNN
@@ -202,7 +172,7 @@ F 3 "" H 7950 3690 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PUSHBUTTON_TACTILE S2
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S2
 U 1 1 5A21CA09
 P 7505 1590
 F 0 "S2" H 7505 1475 50  0000 C CNN
@@ -213,7 +183,7 @@ F 3 "" H 7505 1590 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PUSHBUTTON_TACTILE S5
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S5
 U 1 1 5A21CA6E
 P 8420 1590
 F 0 "S5" H 8420 1475 50  0000 C CNN
@@ -236,7 +206,7 @@ BTN_RIGHT
 Text GLabel 6990 3120 0    50   Output ~ 0
 BTN_LEFT
 $Comp
-L GND #PWR08
+L OpenBeaconMini-rescue:GND #PWR08
 U 1 1 5A21D06C
 P 7800 1665
 F 0 "#PWR08" H 7800 1415 50  0001 C CNN
@@ -247,7 +217,7 @@ F 3 "" H 7800 1665 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR09
+L OpenBeaconMini-rescue:GND #PWR09
 U 1 1 5A21D0A7
 P 8110 1665
 F 0 "#PWR09" H 8110 1415 50  0001 C CNN
@@ -258,7 +228,7 @@ F 3 "" H 8110 1665 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR010
+L OpenBeaconMini-rescue:GND #PWR010
 U 1 1 5A21D0CA
 P 7670 2615
 F 0 "#PWR010" H 7670 2365 50  0001 C CNN
@@ -269,7 +239,7 @@ F 3 "" H 7670 2615 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR011
+L OpenBeaconMini-rescue:GND #PWR011
 U 1 1 5A21D155
 P 7650 3765
 F 0 "#PWR011" H 7650 3515 50  0001 C CNN
@@ -280,7 +250,7 @@ F 3 "" H 7650 3765 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR012
+L OpenBeaconMini-rescue:GND #PWR012
 U 1 1 5A21D1D8
 P 7600 3195
 F 0 "#PWR012" H 7600 2945 50  0001 C CNN
@@ -291,7 +261,7 @@ F 3 "" H 7600 3195 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR013
+L OpenBeaconMini-rescue:GND #PWR013
 U 1 1 5A21D23B
 P 8230 3195
 F 0 "#PWR013" H 8230 2945 50  0001 C CNN
@@ -302,84 +272,84 @@ F 3 "" H 8230 3195 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7200 1590 7255 1590
+	7200 1590 7230 1590
 Wire Wire Line
 	7255 1665 7230 1665
 Wire Wire Line
 	7230 1665 7230 1590
 Connection ~ 7230 1590
 Wire Wire Line
-	7755 1665 7800 1665
+	7755 1665 7785 1665
 Wire Wire Line
 	7755 1590 7785 1590
 Wire Wire Line
 	7785 1590 7785 1665
 Connection ~ 7785 1665
 Wire Wire Line
-	8110 1665 8170 1665
+	8110 1665 8140 1665
 Wire Wire Line
 	8170 1590 8140 1590
 Wire Wire Line
 	8140 1590 8140 1665
 Connection ~ 8140 1665
 Wire Wire Line
-	8670 1590 8710 1590
+	8670 1590 8690 1590
 Wire Wire Line
 	8670 1665 8690 1665
 Wire Wire Line
 	8690 1665 8690 1590
 Connection ~ 8690 1590
 Wire Wire Line
-	7670 2615 7715 2615
+	7670 2615 7700 2615
 Wire Wire Line
 	7715 2540 7700 2540
 Wire Wire Line
 	7700 2540 7700 2615
 Connection ~ 7700 2615
 Wire Wire Line
-	8215 2540 8290 2540
+	8215 2540 8255 2540
 Wire Wire Line
 	8215 2615 8255 2615
 Wire Wire Line
 	8255 2615 8255 2540
 Connection ~ 8255 2540
 Wire Wire Line
-	6990 3120 7050 3120
+	6990 3120 7025 3120
 Wire Wire Line
 	7050 3195 7025 3195
 Wire Wire Line
 	7025 3195 7025 3120
 Connection ~ 7025 3120
 Wire Wire Line
-	7550 3195 7600 3195
+	7550 3195 7570 3195
 Wire Wire Line
 	7550 3120 7570 3120
 Wire Wire Line
 	7570 3120 7570 3195
 Connection ~ 7570 3195
 Wire Wire Line
-	8230 3195 8280 3195
+	8230 3195 8255 3195
 Wire Wire Line
 	8280 3120 8255 3120
 Wire Wire Line
 	8255 3120 8255 3195
 Connection ~ 8255 3195
 Wire Wire Line
-	8780 3120 8820 3120
+	8780 3120 8800 3120
 Wire Wire Line
 	8780 3195 8800 3195
 Wire Wire Line
 	8800 3195 8800 3120
 Connection ~ 8800 3120
 Wire Wire Line
-	7650 3765 7700 3765
+	7650 3765 7675 3765
 Wire Wire Line
 	7700 3690 7675 3690
 Wire Wire Line
 	7675 3690 7675 3765
 Connection ~ 7675 3765
 Wire Wire Line
-	8200 3690 8280 3690
+	8200 3690 8240 3690
 Wire Wire Line
 	8200 3765 8240 3765
 Wire Wire Line
@@ -400,7 +370,7 @@ BTN_RIGHT
 NoConn ~ 8750 5050
 NoConn ~ 7750 5050
 $Comp
-L ChipAttenuator R3
+L EtherkitKicadLibrary:ChipAttenuator R3
 U 1 1 5A21E491
 P 2375 6870
 F 0 "R3" H 2080 7145 50  0000 C CNN
@@ -411,7 +381,7 @@ F 3 "" V 2295 6920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OSCILLATOR U2
+L EtherkitKicadLibrary:OSCILLATOR U2
 U 1 1 5A21E50A
 P 1695 6870
 F 0 "U2" H 1250 7400 50  0000 C CNN
@@ -422,7 +392,7 @@ F 3 "" H 1695 6870 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SI5351A U4
+L EtherkitKicadLibrary:SI5351A U4
 U 1 1 5A21E5CB
 P 3650 6970
 F 0 "U4" H 3650 7530 50  0000 C CNN
@@ -437,7 +407,7 @@ Wire Wire Line
 Wire Wire Line
 	2125 6870 1945 6870
 $Comp
-L GND #PWR014
+L OpenBeaconMini-rescue:GND #PWR014
 U 1 1 5A21E905
 P 4390 6950
 F 0 "#PWR014" H 4390 6700 50  0001 C CNN
@@ -448,7 +418,7 @@ F 3 "" H 4390 6950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR015
+L OpenBeaconMini-rescue:GND #PWR015
 U 1 1 5A21EA0C
 P 2375 7120
 F 0 "#PWR015" H 2375 6870 50  0001 C CNN
@@ -459,7 +429,7 @@ F 3 "" H 2375 7120 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR016
+L OpenBeaconMini-rescue:GND #PWR016
 U 1 1 5A21EA9B
 P 1695 7120
 F 0 "#PWR016" H 1695 6870 50  0001 C CNN
@@ -470,7 +440,7 @@ F 3 "" H 1695 7120 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR017
+L EtherkitKicadLibrary:+3.3V #PWR017
 U 1 1 5A21ED38
 P 1695 6570
 F 0 "#PWR017" H 1695 6530 30  0001 C CNN
@@ -481,7 +451,7 @@ F 3 "" H 1695 6570 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR018
+L EtherkitKicadLibrary:+3.3V #PWR018
 U 1 1 5A21EDC7
 P 2965 6420
 F 0 "#PWR018" H 2965 6380 30  0001 C CNN
@@ -492,7 +462,7 @@ F 3 "" H 2965 6420 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR019
+L EtherkitKicadLibrary:+3.3V #PWR019
 U 1 1 5A21EE40
 P 4725 7035
 F 0 "#PWR019" H 4725 6995 30  0001 C CNN
@@ -503,7 +473,7 @@ F 3 "" H 4725 7035 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C6
+L EtherkitKicadLibrary:C C6
 U 1 1 5A21EF3D
 P 2825 6605
 F 0 "C6" H 2660 6730 50  0000 C CNN
@@ -514,7 +484,7 @@ F 3 "" H 2825 6605 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C12
+L EtherkitKicadLibrary:C C12
 U 1 1 5A21EFCC
 P 4725 7210
 F 0 "C12" H 4895 7245 50  0000 C CNN
@@ -525,7 +495,7 @@ F 3 "" H 4725 7210 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR020
+L OpenBeaconMini-rescue:GND #PWR020
 U 1 1 5A21F17B
 P 2825 6705
 F 0 "#PWR020" H 2825 6455 50  0001 C CNN
@@ -536,7 +506,7 @@ F 3 "" H 2825 6705 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR021
+L OpenBeaconMini-rescue:GND #PWR021
 U 1 1 5A21F300
 P 4725 7310
 F 0 "#PWR021" H 4725 7060 50  0001 C CNN
@@ -547,7 +517,7 @@ F 3 "" H 4725 7310 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R12
+L EtherkitKicadLibrary:R R12
 U 1 1 5A21F493
 P 7500 4585
 F 0 "R12" H 7635 4625 50  0000 C CNN
@@ -558,7 +528,7 @@ F 3 "" H 7500 4585 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R11
+L EtherkitKicadLibrary:R R11
 U 1 1 5A21F518
 P 7180 4585
 F 0 "R11" H 7310 4625 50  0000 C CNN
@@ -569,7 +539,7 @@ F 3 "" H 7180 4585 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR022
+L EtherkitKicadLibrary:+3.3V #PWR022
 U 1 1 5A21F6FF
 P 7500 4350
 F 0 "#PWR022" H 7500 4310 30  0001 C CNN
@@ -580,7 +550,7 @@ F 3 "" H 7500 4350 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2965 6420 2965 6770
+	2965 6420 2965 6475
 Wire Wire Line
 	2965 6770 3000 6770
 Wire Wire Line
@@ -589,7 +559,7 @@ Wire Wire Line
 	2825 6475 2965 6475
 Connection ~ 2965 6475
 Wire Wire Line
-	4725 7035 4725 7110
+	4725 7035 4725 7070
 Wire Wire Line
 	4300 7070 4725 7070
 Connection ~ 4725 7070
@@ -600,7 +570,7 @@ Wire Wire Line
 Wire Wire Line
 	4340 6950 4390 6950
 Wire Wire Line
-	1695 6570 1695 6620
+	1695 6570 1695 6595
 Wire Wire Line
 	1445 6870 1415 6870
 Wire Wire Line
@@ -613,16 +583,16 @@ SCL
 Text GLabel 7070 4950 0    50   BiDi ~ 0
 SDA
 Wire Wire Line
-	7500 4350 7500 4435
+	7500 4350 7500 4390
 Wire Wire Line
 	7180 4435 7180 4390
 Wire Wire Line
 	7180 4390 7500 4390
 Connection ~ 7500 4390
 Wire Wire Line
-	7070 4850 7750 4850
+	7070 4850 7180 4850
 Wire Wire Line
-	7070 4950 7750 4950
+	7070 4950 7500 4950
 Wire Wire Line
 	7500 4735 7500 4950
 Connection ~ 7500 4950
@@ -635,7 +605,7 @@ SCL
 Text GLabel 3000 7170 0    50   BiDi ~ 0
 SDA
 $Comp
-L SN74LVC1G17 U3
+L EtherkitKicadLibrary:SN74LVC1G17 U3
 U 1 1 5A236D57
 P 1920 4855
 F 0 "U3" H 2030 4765 50  0000 C CNN
@@ -646,7 +616,7 @@ F 3 "" H 1920 4855 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR023
+L EtherkitKicadLibrary:+5V #PWR023
 U 1 1 5A236E3E
 P 1870 4395
 F 0 "#PWR023" H 1870 4355 30  0001 C CNN
@@ -657,7 +627,7 @@ F 3 "" H 1870 4395 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR024
+L OpenBeaconMini-rescue:GND #PWR024
 U 1 1 5A236FF9
 P 1870 5055
 F 0 "#PWR024" H 1870 4805 50  0001 C CNN
@@ -668,7 +638,7 @@ F 3 "" H 1870 5055 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C5
+L EtherkitKicadLibrary:C C5
 U 1 1 5A2370F6
 P 2660 4855
 F 0 "C5" V 2455 4860 50  0000 C CNN
@@ -679,7 +649,7 @@ F 3 "" H 2660 4855 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R5
+L EtherkitKicadLibrary:R R5
 U 1 1 5A2373C4
 P 2675 4495
 F 0 "R5" V 2495 4500 50  0000 C CNN
@@ -690,7 +660,7 @@ F 3 "" H 2675 4495 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C8
+L EtherkitKicadLibrary:C C8
 U 1 1 5A237679
 P 2980 4495
 F 0 "C8" V 2775 4500 50  0000 C CNN
@@ -701,7 +671,7 @@ F 3 "" H 2980 4495 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R7
+L EtherkitKicadLibrary:R R7
 U 1 1 5A2377EC
 P 2995 5095
 F 0 "R7" H 3105 5135 50  0000 C CNN
@@ -712,7 +682,7 @@ F 3 "" H 2995 5095 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MCP4725A1T U5
+L EtherkitKicadLibrary:MCP4725A1T U5
 U 1 1 5A2382BF
 P 3710 5620
 F 0 "U5" H 3710 6005 50  0000 C CNN
@@ -723,7 +693,7 @@ F 3 "" H 3710 5620 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C10
+L EtherkitKicadLibrary:C C10
 U 1 1 5A23834F
 P 3290 5935
 F 0 "C10" H 3460 5965 50  0000 C CNN
@@ -734,7 +704,7 @@ F 3 "" H 3290 5935 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR025
+L OpenBeaconMini-rescue:GND #PWR025
 U 1 1 5A2384E7
 P 3290 6035
 F 0 "#PWR025" H 3290 5785 50  0001 C CNN
@@ -745,7 +715,7 @@ F 3 "" H 3290 6035 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR026
+L OpenBeaconMini-rescue:GND #PWR026
 U 1 1 5A2385E4
 P 3410 5620
 F 0 "#PWR026" H 3410 5370 50  0001 C CNN
@@ -756,7 +726,7 @@ F 3 "" H 3410 5620 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C9
+L EtherkitKicadLibrary:C C9
 U 1 1 5A2388F2
 P 2995 5555
 F 0 "C9" H 3145 5590 50  0000 C CNN
@@ -767,7 +737,7 @@ F 3 "" H 2995 5555 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR027
+L OpenBeaconMini-rescue:GND #PWR027
 U 1 1 5A238AE0
 P 2995 5655
 F 0 "#PWR027" H 2995 5405 50  0001 C CNN
@@ -778,7 +748,7 @@ F 3 "" H 2995 5655 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR028
+L OpenBeaconMini-rescue:GND #PWR028
 U 1 1 5A238CC6
 P 4010 5445
 F 0 "#PWR028" H 4010 5195 50  0001 C CNN
@@ -797,7 +767,7 @@ CLK0
 Text GLabel 1670 4855 0    50   Input ~ 0
 CLK0
 $Comp
-L MOS_N Q1
+L EtherkitKicadLibrary:MOS_N Q1
 U 1 1 5A23943C
 P 2180 3400
 F 0 "Q1" H 2435 3445 50  0000 R CNN
@@ -808,7 +778,7 @@ F 3 "" H 2180 3400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR029
+L OpenBeaconMini-rescue:GND #PWR029
 U 1 1 5A239627
 P 3480 4930
 F 0 "#PWR029" H 3480 4680 50  0001 C CNN
@@ -819,7 +789,7 @@ F 3 "" H 3480 4930 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L L-IRONCORE L2
+L EtherkitKicadLibrary:L-IRONCORE L2
 U 1 1 5A239754
 P 3530 4075
 F 0 "L2" H 3465 4110 50  0000 C CNN
@@ -830,7 +800,7 @@ F 3 "" H 3530 4075 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C11
+L EtherkitKicadLibrary:C C11
 U 1 1 5A2399BB
 P 3710 4495
 F 0 "C11" V 3505 4500 50  0000 C CNN
@@ -841,14 +811,14 @@ F 3 "" H 3710 4495 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	3480 4235 3480 4530
+	3480 4235 3480 4495
 Wire Wire Line
-	3080 4495 3610 4495
+	3080 4495 3480 4495
 Connection ~ 3480 4495
 Wire Wire Line
-	2760 4855 3280 4855
+	2760 4855 2995 4855
 Wire Wire Line
-	2170 4855 2560 4855
+	2170 4855 2415 4855
 Wire Wire Line
 	2880 4495 2825 4495
 Wire Wire Line
@@ -860,17 +830,17 @@ Wire Wire Line
 	2995 4945 2995 4855
 Connection ~ 2995 4855
 Wire Wire Line
-	2995 5245 2995 5455
+	2995 5245 2995 5445
 Wire Wire Line
-	2780 5445 3410 5445
+	2780 5445 2995 5445
 Connection ~ 2995 5445
 Wire Wire Line
-	3250 5795 3410 5795
+	3250 5795 3290 5795
 Wire Wire Line
 	3290 5835 3290 5795
 Connection ~ 3290 5795
 $Comp
-L CONN_01X01 J1
+L EtherkitKicadLibrary:CONN_01X01 J1
 U 1 1 5A23A4F7
 P 2630 5445
 F 0 "J1" H 2630 5350 50  0000 C CNN
@@ -881,7 +851,7 @@ F 3 "" H 2630 5445 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 J9
+L EtherkitKicadLibrary:CONN_01X01 J9
 U 1 1 5A23A781
 P 5830 7395
 F 0 "J9" V 5990 7395 50  0000 C CNN
@@ -892,7 +862,7 @@ F 3 "" H 5830 7395 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L GND #PWR030
+L OpenBeaconMini-rescue:GND #PWR030
 U 1 1 5A23AC8E
 P 5830 7545
 F 0 "#PWR030" H 5830 7295 50  0001 C CNN
@@ -903,7 +873,7 @@ F 3 "" H 5830 7545 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C2
+L EtherkitKicadLibrary:C C2
 U 1 1 5A23B80E
 P 2005 4545
 F 0 "C2" H 2155 4580 50  0000 C CNN
@@ -914,7 +884,7 @@ F 3 "" H 2005 4545 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR031
+L OpenBeaconMini-rescue:GND #PWR031
 U 1 1 5A23B97B
 P 2005 4645
 F 0 "#PWR031" H 2005 4395 50  0001 C CNN
@@ -925,7 +895,7 @@ F 3 "" H 2005 4645 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1870 4395 1870 4655
+	1870 4395 1870 4445
 Wire Wire Line
 	2005 4445 1870 4445
 Connection ~ 1870 4445
@@ -934,7 +904,7 @@ SDA_5V
 Text GLabel 7180 960  0    50   BiDi ~ 0
 SCL_5V
 $Comp
-L LPFModule M1
+L EtherkitKicadLibrary:LPFModule M1
 U 1 1 5A23C6C0
 P 4990 4420
 F 0 "M1" H 4535 4760 50  0000 C CNN
@@ -947,7 +917,7 @@ $EndComp
 Wire Wire Line
 	4440 4495 3810 4495
 $Comp
-L GND #PWR032
+L OpenBeaconMini-rescue:GND #PWR032
 U 1 1 5A23C9E6
 P 4420 4645
 F 0 "#PWR032" H 4420 4395 50  0001 C CNN
@@ -958,7 +928,7 @@ F 3 "" H 4420 4645 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR033
+L OpenBeaconMini-rescue:GND #PWR033
 U 1 1 5A23CAE1
 P 5560 4645
 F 0 "#PWR033" H 5560 4395 50  0001 C CNN
@@ -969,7 +939,7 @@ F 3 "" H 5560 4645 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR034
+L OpenBeaconMini-rescue:GND #PWR034
 U 1 1 5A23CCB8
 P 5560 4195
 F 0 "#PWR034" H 5560 3945 50  0001 C CNN
@@ -980,7 +950,7 @@ F 3 "" H 5560 4195 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR035
+L OpenBeaconMini-rescue:GND #PWR035
 U 1 1 5A23CEA3
 P 4420 4195
 F 0 "#PWR035" H 4420 3945 50  0001 C CNN
@@ -999,7 +969,7 @@ Wire Wire Line
 Wire Wire Line
 	4440 4195 4420 4195
 $Comp
-L BNC J10
+L EtherkitKicadLibrary:BNC J10
 U 1 1 5A23D5F4
 P 5980 4495
 F 0 "J10" H 5980 4675 50  0000 C CNN
@@ -1010,7 +980,7 @@ F 3 "" H 5980 4495 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR036
+L OpenBeaconMini-rescue:GND #PWR036
 U 1 1 5A23D78C
 P 5980 4645
 F 0 "#PWR036" H 5980 4395 50  0001 C CNN
@@ -1023,7 +993,7 @@ $EndComp
 Wire Wire Line
 	5830 4495 5540 4495
 $Comp
-L +3.3V #PWR037
+L EtherkitKicadLibrary:+3.3V #PWR037
 U 1 1 5A23DBC6
 P 5770 4345
 F 0 "#PWR037" H 5770 4305 30  0001 C CNN
@@ -1040,7 +1010,7 @@ BAND_ID
 Text GLabel 7750 5550 0    50   Input ~ 0
 BAND_ID
 $Comp
-L PNP Q2
+L EtherkitKicadLibrary:PNP Q2
 U 1 1 5A23E9A0
 P 2280 2570
 F 0 "Q2" V 2510 2715 50  0000 C CNN
@@ -1051,7 +1021,7 @@ F 3 "" H 2280 2570 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R4
+L EtherkitKicadLibrary:R R4
 U 1 1 5A23EAA5
 P 2520 2690
 F 0 "R4" H 2630 2730 50  0000 C CNN
@@ -1062,7 +1032,7 @@ F 3 "" H 2520 2690 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R2
+L EtherkitKicadLibrary:R R2
 U 1 1 5A23EC41
 P 2280 3050
 F 0 "R2" H 2390 3090 50  0000 C CNN
@@ -1073,7 +1043,7 @@ F 3 "" H 2280 3050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
+L EtherkitKicadLibrary:C C1
 U 1 1 5A23EE0F
 P 2000 2735
 F 0 "C1" H 2150 2770 50  0000 C CNN
@@ -1084,7 +1054,7 @@ F 3 "" H 2000 2735 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR038
+L OpenBeaconMini-rescue:GND #PWR038
 U 1 1 5A23F9C7
 P 2280 3600
 F 0 "#PWR038" H 2280 3350 50  0001 C CNN
@@ -1095,7 +1065,7 @@ F 3 "" H 2280 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R1
+L EtherkitKicadLibrary:R R1
 U 1 1 5A23FB76
 P 1960 3720
 F 0 "R1" H 2070 3760 50  0000 C CNN
@@ -1106,7 +1076,7 @@ F 3 "" H 1960 3720 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR039
+L OpenBeaconMini-rescue:GND #PWR039
 U 1 1 5A23FC5E
 P 1960 3870
 F 0 "#PWR039" H 1960 3620 50  0001 C CNN
@@ -1117,7 +1087,7 @@ F 3 "" H 1960 3870 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MOS_N Q3
+L EtherkitKicadLibrary:MOS_N Q3
 U 1 1 5A2400A1
 P 3380 4730
 F 0 "Q3" H 3635 4775 50  0000 R CNN
@@ -1130,7 +1100,7 @@ $EndComp
 Text GLabel 1890 3525 0    50   Input ~ 0
 TX
 $Comp
-L R R6
+L EtherkitKicadLibrary:R R6
 U 1 1 5A2407FA
 P 2760 2470
 F 0 "R6" V 2580 2475 50  0000 C CNN
@@ -1141,7 +1111,7 @@ F 3 "" H 2760 2470 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L R R8
+L EtherkitKicadLibrary:R R8
 U 1 1 5A240A92
 P 3145 2470
 F 0 "R8" V 2965 2475 50  0000 C CNN
@@ -1152,7 +1122,7 @@ F 3 "" H 3145 2470 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C C7
+L EtherkitKicadLibrary:C C7
 U 1 1 5A240C7F
 P 2950 2695
 F 0 "C7" H 3100 2730 50  0000 C CNN
@@ -1163,7 +1133,7 @@ F 3 "" H 2950 2695 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR040
+L OpenBeaconMini-rescue:GND #PWR040
 U 1 1 5A240EA1
 P 2950 2795
 F 0 "#PWR040" H 2950 2545 50  0001 C CNN
@@ -1174,7 +1144,7 @@ F 3 "" H 2950 2795 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X01 J2
+L EtherkitKicadLibrary:CONN_01X01 J2
 U 1 1 5A241320
 P 2950 2235
 F 0 "J2" V 3110 2235 50  0000 C CNN
@@ -1185,7 +1155,7 @@ F 3 "" H 2950 2235 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L CONN_01X01 J3
+L EtherkitKicadLibrary:CONN_01X01 J3
 U 1 1 5A241664
 P 3350 2235
 F 0 "J3" V 3510 2235 50  0000 C CNN
@@ -1200,36 +1170,36 @@ TX
 Wire Wire Line
 	3480 2470 3480 3915
 Wire Wire Line
-	3295 2470 3480 2470
+	3295 2470 3350 2470
 Wire Wire Line
-	2910 2470 2995 2470
+	2910 2470 2950 2470
 Wire Wire Line
-	2950 2385 2950 2595
+	2950 2385 2950 2470
 Connection ~ 2950 2470
 Wire Wire Line
 	3350 2385 3350 2470
 Connection ~ 3350 2470
 Wire Wire Line
-	2455 2470 2610 2470
+	2455 2470 2520 2470
 Wire Wire Line
 	2520 2540 2520 2470
 Connection ~ 2520 2470
 Wire Wire Line
 	2520 2860 2520 2840
 Wire Wire Line
-	2000 2860 2520 2860
+	2000 2860 2280 2860
 Wire Wire Line
 	2000 2860 2000 2835
 Wire Wire Line
-	2280 2670 2280 2900
+	2280 2670 2280 2860
 Connection ~ 2280 2860
 Wire Wire Line
-	1890 3525 2080 3525
+	1890 3525 1960 3525
 Wire Wire Line
 	1960 3570 1960 3525
 Connection ~ 1960 3525
 $Comp
-L TLV61046A U1
+L EtherkitKicadLibrary:TLV61046A U1
 U 1 1 5A243F1C
 P 1650 1415
 F 0 "U1" H 1650 1800 50  0000 C CNN
@@ -1240,7 +1210,7 @@ F 3 "" H 1650 1415 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L L-IRONCORE L1
+L EtherkitKicadLibrary:L-IRONCORE L1
 U 1 1 5A24425F
 P 1640 870
 F 0 "L1" V 1860 1290 50  0000 C CNN
@@ -1251,7 +1221,7 @@ F 3 "" H 1640 870 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C C4
+L EtherkitKicadLibrary:C C4
 U 1 1 5A244AAB
 P 2175 1560
 F 0 "C4" H 2325 1595 50  0000 C CNN
@@ -1262,7 +1232,7 @@ F 3 "" H 2175 1560 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR041
+L OpenBeaconMini-rescue:GND #PWR041
 U 1 1 5A244E16
 P 2175 1660
 F 0 "#PWR041" H 2175 1410 50  0001 C CNN
@@ -1273,7 +1243,7 @@ F 3 "" H 2175 1660 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR042
+L OpenBeaconMini-rescue:GND #PWR042
 U 1 1 5A2451D2
 P 1350 1415
 F 0 "#PWR042" H 1350 1165 50  0001 C CNN
@@ -1284,7 +1254,7 @@ F 3 "" H 1350 1415 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR043
+L EtherkitKicadLibrary:+5V #PWR043
 U 1 1 5A2457AA
 P 1140 1590
 F 0 "#PWR043" H 1140 1550 30  0001 C CNN
@@ -1295,7 +1265,7 @@ F 3 "" H 1140 1590 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR044
+L EtherkitKicadLibrary:+5V #PWR044
 U 1 1 5A2459FE
 P 2175 885
 F 0 "#PWR044" H 2175 845 30  0001 C CNN
@@ -1306,7 +1276,7 @@ F 3 "" H 2175 885 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR045
+L EtherkitKicadLibrary:+5V #PWR045
 U 1 1 5A245BCB
 P 2030 1535
 F 0 "#PWR045" H 2030 1495 30  0001 C CNN
@@ -1317,7 +1287,7 @@ F 3 "" H 2030 1535 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C3
+L EtherkitKicadLibrary:C C3
 U 1 1 5A246653
 P 2175 1110
 F 0 "C3" H 2325 1145 50  0000 C CNN
@@ -1328,7 +1298,7 @@ F 3 "" H 2175 1110 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR046
+L OpenBeaconMini-rescue:GND #PWR046
 U 1 1 5A246807
 P 2175 1210
 F 0 "#PWR046" H 2175 960 50  0001 C CNN
@@ -1339,9 +1309,9 @@ F 3 "" H 2175 1210 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2175 885  2175 1010
+	2175 885  2175 920 
 Wire Wire Line
-	1800 920  2175 920 
+	1800 920  1995 920 
 Connection ~ 2175 920 
 Wire Wire Line
 	1950 1240 1995 1240
@@ -1359,13 +1329,13 @@ Wire Wire Line
 Wire Wire Line
 	1140 1590 1350 1590
 Wire Wire Line
-	1950 1415 2500 1415
+	1950 1415 2175 1415
 Wire Wire Line
 	2500 1415 2500 2135
 Wire Wire Line
 	2500 2135 2000 2135
 Wire Wire Line
-	2000 2135 2000 2635
+	2000 2135 2000 2470
 Wire Wire Line
 	2105 2470 2000 2470
 Connection ~ 2000 2470
@@ -1373,7 +1343,7 @@ Wire Wire Line
 	2175 1460 2175 1415
 Connection ~ 2175 1415
 $Comp
-L PUSHBUTTON_TACTILE S7
+L EtherkitKicadLibrary:PUSHBUTTON_TACTILE S7
 U 1 1 5A2481F8
 P 9630 1600
 F 0 "S7" H 9630 1485 50  0000 C CNN
@@ -1386,7 +1356,7 @@ $EndComp
 Text GLabel 9920 1600 2    50   Output ~ 0
 BTN_BACK
 $Comp
-L GND #PWR047
+L OpenBeaconMini-rescue:GND #PWR047
 U 1 1 5A2481FF
 P 9320 1675
 F 0 "#PWR047" H 9320 1425 50  0001 C CNN
@@ -1397,14 +1367,14 @@ F 3 "" H 9320 1675 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9320 1675 9380 1675
+	9320 1675 9350 1675
 Wire Wire Line
 	9380 1600 9350 1600
 Wire Wire Line
 	9350 1600 9350 1675
 Connection ~ 9350 1675
 Wire Wire Line
-	9880 1600 9920 1600
+	9880 1600 9900 1600
 Wire Wire Line
 	9880 1675 9900 1675
 Wire Wire Line
@@ -1443,7 +1413,7 @@ A2
 Text GLabel 5465 1440 0    50   Output ~ 0
 A3
 $Comp
-L BNC J6
+L EtherkitKicadLibrary:BNC J6
 U 1 1 5A24B150
 P 5050 7595
 F 0 "J6" H 5050 7775 50  0000 C CNN
@@ -1454,7 +1424,7 @@ F 3 "" H 5050 7595 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR048
+L OpenBeaconMini-rescue:GND #PWR048
 U 1 1 5A24B372
 P 5050 7745
 F 0 "#PWR048" H 5050 7495 50  0001 C CNN
@@ -1490,7 +1460,7 @@ NoConn ~ 8150 4550
 NoConn ~ 8250 4550
 NoConn ~ 8350 4550
 $Comp
-L Conn_01x06 J8
+L OpenBeaconMini-rescue:Conn_01x06 J8
 U 1 1 5A24D2D9
 P 5665 1240
 F 0 "J8" H 5665 1545 50  0000 C CNN
@@ -1501,7 +1471,7 @@ F 3 "" H 5665 1240 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x06 J4
+L OpenBeaconMini-rescue:Conn_01x06 J4
 U 1 1 5A24DE6A
 P 4860 1240
 F 0 "J4" H 4860 1545 50  0000 C CNN
@@ -1512,7 +1482,7 @@ F 3 "" H 4860 1240 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR049
+L OpenBeaconMini-rescue:GND #PWR049
 U 1 1 5A24EC49
 P 5220 1600
 F 0 "#PWR049" H 5220 1350 50  0001 C CNN
@@ -1531,7 +1501,7 @@ Wire Wire Line
 	5465 1540 5220 1540
 Connection ~ 5220 1540
 $Comp
-L GND #PWR050
+L OpenBeaconMini-rescue:GND #PWR050
 U 1 1 5A24FB00
 P 4380 1590
 F 0 "#PWR050" H 4380 1340 50  0001 C CNN
@@ -1550,7 +1520,7 @@ Wire Wire Line
 	4660 1540 4380 1540
 Connection ~ 4380 1540
 $Comp
-L Conn_01x04 J7
+L OpenBeaconMini-rescue:Conn_01x04 J7
 U 1 1 5A250921
 P 5660 2420
 F 0 "J7" H 5660 2620 50  0000 C CNN
@@ -1561,7 +1531,7 @@ F 3 "" H 5660 2420 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR051
+L OpenBeaconMini-rescue:GND #PWR051
 U 1 1 5A250BCF
 P 5350 2620
 F 0 "#PWR051" H 5350 2370 50  0001 C CNN
@@ -1572,7 +1542,7 @@ F 3 "" H 5350 2620 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR052
+L EtherkitKicadLibrary:+3.3V #PWR052
 U 1 1 5A250FA8
 P 5350 2320
 F 0 "#PWR052" H 5350 2280 30  0001 C CNN
@@ -1591,7 +1561,7 @@ SCL
 Text GLabel 5460 2520 0    50   BiDi ~ 0
 SDA
 $Comp
-L BNC J5
+L EtherkitKicadLibrary:BNC J5
 U 1 1 5A251F5A
 P 5040 6805
 F 0 "J5" H 5040 6985 50  0000 C CNN
@@ -1602,7 +1572,7 @@ F 3 "" H 5040 6805 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR053
+L OpenBeaconMini-rescue:GND #PWR053
 U 1 1 5A25206E
 P 5040 6955
 F 0 "#PWR053" H 5040 6705 50  0001 C CNN
@@ -1619,7 +1589,7 @@ Wire Wire Line
 Wire Wire Line
 	4595 6870 4300 6870
 $Comp
-L +5V #PWR054
+L EtherkitKicadLibrary:+5V #PWR054
 U 1 1 5A252BF7
 P 3250 5795
 F 0 "#PWR054" H 3250 5755 30  0001 C CNN
@@ -1630,7 +1600,7 @@ F 3 "" H 3250 5795 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MOS_N Q5
+L EtherkitKicadLibrary:MOS_N Q5
 U 1 1 5A252F60
 P 6625 5815
 F 0 "Q5" V 6420 6055 50  0000 R CNN
@@ -1641,7 +1611,7 @@ F 3 "" H 6625 5815 60  0000 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L MOS_N Q4
+L EtherkitKicadLibrary:MOS_N Q4
 U 1 1 5A253413
 P 6620 6325
 F 0 "Q4" V 6415 6565 50  0000 R CNN
@@ -1652,7 +1622,7 @@ F 3 "" H 6620 6325 60  0000 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L +3.3V #PWR055
+L EtherkitKicadLibrary:+3.3V #PWR055
 U 1 1 5A253515
 P 6750 5715
 F 0 "#PWR055" H 6750 5675 30  0001 C CNN
@@ -1663,7 +1633,7 @@ F 3 "" H 6750 5715 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3.3V #PWR056
+L EtherkitKicadLibrary:+3.3V #PWR056
 U 1 1 5A253746
 P 6745 6225
 F 0 "#PWR056" H 6745 6185 30  0001 C CNN
@@ -1678,7 +1648,7 @@ SCL
 Text GLabel 6820 6425 2    50   BiDi ~ 0
 SDA
 $Comp
-L R R10
+L EtherkitKicadLibrary:R R10
 U 1 1 5A2540D7
 P 6090 5600
 F 0 "R10" H 6225 5645 50  0000 C CNN
@@ -1689,7 +1659,7 @@ F 3 "" H 6090 5600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R9
+L EtherkitKicadLibrary:R R9
 U 1 1 5A254242
 P 5790 5600
 F 0 "R9" H 5900 5640 50  0000 C CNN
@@ -1700,7 +1670,7 @@ F 3 "" H 5790 5600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR057
+L EtherkitKicadLibrary:+5V #PWR057
 U 1 1 5A2546DE
 P 6090 5310
 F 0 "#PWR057" H 6090 5270 30  0001 C CNN
@@ -1711,7 +1681,7 @@ F 3 "" H 6090 5310 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6090 5310 6090 5450
+	6090 5310 6090 5380
 Wire Wire Line
 	5790 5450 5790 5380
 Wire Wire Line
@@ -1722,9 +1692,9 @@ SDA_5V
 Text GLabel 5490 5915 0    50   BiDi ~ 0
 SCL_5V
 Wire Wire Line
-	6425 5915 5490 5915
+	6425 5915 5790 5915
 Wire Wire Line
-	6420 6425 5490 6425
+	6420 6425 6090 6425
 Wire Wire Line
 	5790 5750 5790 5915
 Connection ~ 5790 5915
@@ -1734,7 +1704,99 @@ Connection ~ 6090 6425
 Text Notes 6625 6570 2    70   Italic 14
 I2C Level Conversion
 Wire Wire Line
-	4380 1140 4380 1590
+	4380 1140 4380 1340
 Wire Wire Line
-	5220 1140 5220 1600
+	5220 1140 5220 1340
+Wire Wire Line
+	7230 1590 7255 1590
+Wire Wire Line
+	7785 1665 7800 1665
+Wire Wire Line
+	8140 1665 8170 1665
+Wire Wire Line
+	8690 1590 8710 1590
+Wire Wire Line
+	7700 2615 7715 2615
+Wire Wire Line
+	8255 2540 8290 2540
+Wire Wire Line
+	7025 3120 7050 3120
+Wire Wire Line
+	7570 3195 7600 3195
+Wire Wire Line
+	8255 3195 8280 3195
+Wire Wire Line
+	8800 3120 8820 3120
+Wire Wire Line
+	7675 3765 7700 3765
+Wire Wire Line
+	8240 3690 8280 3690
+Wire Wire Line
+	2965 6475 2965 6770
+Wire Wire Line
+	4725 7070 4725 7110
+Wire Wire Line
+	1695 6595 1695 6620
+Wire Wire Line
+	7500 4390 7500 4435
+Wire Wire Line
+	7500 4950 7750 4950
+Wire Wire Line
+	7180 4850 7750 4850
+Wire Wire Line
+	3480 4495 3480 4530
+Wire Wire Line
+	3480 4495 3610 4495
+Wire Wire Line
+	2415 4855 2560 4855
+Wire Wire Line
+	2995 4855 3280 4855
+Wire Wire Line
+	2995 5445 2995 5455
+Wire Wire Line
+	2995 5445 3410 5445
+Wire Wire Line
+	3290 5795 3410 5795
+Wire Wire Line
+	1870 4445 1870 4655
+Wire Wire Line
+	2950 2470 2995 2470
+Wire Wire Line
+	2950 2470 2950 2595
+Wire Wire Line
+	3350 2470 3480 2470
+Wire Wire Line
+	2520 2470 2610 2470
+Wire Wire Line
+	2280 2860 2520 2860
+Wire Wire Line
+	2280 2860 2280 2900
+Wire Wire Line
+	1960 3525 2080 3525
+Wire Wire Line
+	2175 920  2175 1010
+Wire Wire Line
+	1995 920  2175 920 
+Wire Wire Line
+	2000 2470 2000 2635
+Wire Wire Line
+	2175 1415 2500 1415
+Wire Wire Line
+	9350 1675 9380 1675
+Wire Wire Line
+	9900 1600 9920 1600
+Wire Wire Line
+	5220 1340 5220 1540
+Wire Wire Line
+	5220 1540 5220 1600
+Wire Wire Line
+	4380 1340 4380 1540
+Wire Wire Line
+	4380 1540 4380 1590
+Wire Wire Line
+	6090 5380 6090 5450
+Wire Wire Line
+	5790 5915 5490 5915
+Wire Wire Line
+	6090 6425 5490 6425
 $EndSCHEMATC
