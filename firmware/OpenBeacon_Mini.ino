@@ -39,8 +39,8 @@
 
 // Enumerations
 enum class DisplayMode {Main, Menu, Setting, Buffer};
-enum class SettingType {Uint, Int, Str, Float, Time};
-enum class TxState {Idle, MFSK, CW, DFCW, Preamble};
+enum class SettingType {Uint, Int, Str, Float, Time, Bool};
+enum class TxState {Idle, MFSK, CW, DFCW, CWID, IDDelay, Preamble};
 
 // Hardware constexprs
 constexpr uint8_t BTN_DSP_1 = 0;
@@ -97,6 +97,7 @@ struct Config
   char grid[10];
   uint8_t power;
   uint16_t pa_bias;
+  boolean cwid;
   char msg_buffer_1[MSG_BUFFER_SIZE];
   char msg_buffer_2[MSG_BUFFER_SIZE];
   char msg_buffer_3[MSG_BUFFER_SIZE];
@@ -120,13 +121,14 @@ constexpr bool DEFAULT_TX_ENABLE = false;
 constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
 //constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
 constexpr TxState DEFAULT_STATE = TxState::Idle;
-constexpr uint16_t DEFAULT_TX_INTERVAL = 6;
+constexpr uint16_t DEFAULT_TX_INTERVAL = 0;
 constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
 constexpr uint8_t DEFAULT_DFCW_OFFSET = 5;
 constexpr char DEFAULT_CALLSIGN[20] = "N0CALL";
 constexpr char DEFAULT_GRID[10] = "AA00";
 constexpr uint8_t DEFAULT_POWER = 23;
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
+constexpr boolean DEFAULT_CWID = true;
 constexpr char DEFAULT_MSG_1[81] = "";
 constexpr char DEFAULT_MSG_2[81] = "";
 constexpr char DEFAULT_MSG_3[81] = "";
@@ -141,6 +143,7 @@ struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 // I == int
 // F == float
 // T == time
+// B == boolean
 const char* settings_table[][2] =
 {
   {"pa_bias", "PA Bias"},
@@ -148,7 +151,8 @@ const char* settings_table[][2] =
   {"grid", "Grid"},
   {"power", "Power"},
   {"tx_intv", "TX Intv"},
-  {"wpm", "CW WPM"}
+  {"wpm", "CW WPM"},
+  {"cwid", "CW ID"}
 };
 //const char* settings_table[][3] =
 //{
@@ -161,7 +165,7 @@ const char* settings_table[][2] =
 //};
 
 const char* default_config = 
-  "{\"valid\":\"true\", \"version\":1, \"mode\":\"MODE::WSPR\", \"band\":0, \"wpm\":25, \"tx_intv\":6, \"dfcw_offset\":5, \"buffer\":0, \"callsign\":\"N0CALL\", \"grid\":\"AA00\", \"power\":23, \"pa_bias\":1800, \"msg_buffer_1\":\"\", \"msg_buffer_2\":\"\", \"msg_buffer_3\":\"\", \"msg_buffer_4\":\"\",\"si5351_int_corr\":0}";
+  "{\"valid\":\"true\", \"version\":1, \"mode\":\"MODE::WSPR\", \"band\":0, \"wpm\":25, \"tx_intv\":6, \"dfcw_offset\":5, \"buffer\":0, \"callsign\":\"N0CALL\", \"grid\":\"AA00\", \"power\":23, \"pa_bias\":1800, \"cwid\":true, \"msg_buffer_1\":\"\", \"msg_buffer_2\":\"\", \"msg_buffer_3\":\"\", \"msg_buffer_4\":\"\",\"si5351_int_corr\":0}";
 
 // Limits
 constexpr uint8_t SETTING_FONT_WIDTH = 6;
@@ -213,6 +217,7 @@ std::string cur_setting_key = "";
 std::string cur_setting_str = "";
 std::string temp_setting_str = "";
 float cur_setting_float;
+boolean cur_setting_bool;
 SettingType cur_setting_type = SettingType::Str;
 uint8_t cur_setting_selected = 0;
 uint8_t cur_setting_len = 0;
@@ -248,6 +253,9 @@ bool ins_del_mode = false;
 uint16_t cur_pa_bias = DEFAULT_PA_BIAS;
 uint16_t cur_dfcw_offset = DEFAULT_DFCW_OFFSET;
 uint64_t cur_si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+uint32_t cwid_delay = 1000;
+uint32_t cwid_start;
+uint8_t cwid_wpm = 30;
 Config cur_config;
 
 // Timer code derived from:
@@ -409,7 +417,7 @@ void TCC0_Handler()
   if (TC->INTFLAG.bit.MC0 == 1)
   {
     ++cur_timer;
-    if (meta_mode == MetaMode::CW or meta_mode == MetaMode::DFCW)
+    if (meta_mode == MetaMode::CW or meta_mode == MetaMode::DFCW or cur_state == TxState::CWID)
     {
       morse.update();
     }
@@ -675,6 +683,17 @@ void setConfig(const char * key, const char * label)
       sprintf(temp_str, "%f", cur_setting_uint);
       cur_setting_selected = 0;
       break;
+    case 'B':
+      if(val[1] == '1')
+      {
+        cur_setting_bool = true;
+      }
+      else
+      {
+        cur_setting_bool = false;
+      }
+      cur_setting_type = SettingType::Bool;
+      break;
   }
 }
 
@@ -924,6 +943,18 @@ void drawOLED()
       sprintf(temp_str, "%l", cur_setting_int);
       str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
       break;
+    case 'B':
+      if(cur_setting_bool)
+      {
+        sprintf(temp_str, "On");
+        str_x = 61;
+      }
+      else
+      {
+        sprintf(temp_str, "Off");
+        str_x = 61;
+      }
+      break;
     case 'S':
 //      if(cur_setting_selected > 10)
 //      {
@@ -1055,12 +1086,12 @@ void drawOLED()
     menu_1_x = 6;
     menu_2_x = 80;
     u8g2.setFont(u8g2_font_6x10_mf);
-    u8g2.drawStr(menu_1_x, 30, menu_1);
-    u8g2.drawStr(menu_2_x, 30, menu_2);
+    u8g2.drawStr(menu_1_x, 29, menu_1);
+    u8g2.drawStr(menu_2_x, 29, menu_2);
 
     // Back icon
     u8g2.setFont(u8g2_font_m2icon_9_tf);
-    u8g2.drawGlyph(118, 31, 0x0061);
+    u8g2.drawGlyph(118, 30, 0x0061);
   }
   else // Show the current buffer
   {
@@ -1083,11 +1114,25 @@ void drawOLED()
       case Mode::QRSS120:
       case Mode::CW:
       case Mode::HELL:
-        sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+        if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+        {
+          sprintf(buffer_str, "CWID:%s", cur_config.callsign);
+        }
+        else
+        {
+          sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+        }
         break;
         
       case Mode::WSPR:
-        sprintf(buffer_str, "%s", wspr_buffer);
+        if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+        {
+          sprintf(buffer_str, "CWID:%s", cur_config.callsign);
+        }
+        else
+        {
+          sprintf(buffer_str, "%s", wspr_buffer);
+        }
         break;
         
       case Mode::JT65:
@@ -1105,14 +1150,14 @@ void drawOLED()
       if(tx_enable)
       {
         u8g2.setDrawColor(0);
-        u8g2.drawStr(0, 30, "TX Dis");
+        u8g2.drawStr(0, 29, "TX Dis");
         u8g2.setDrawColor(1);
-        u8g2.drawStr(45, 30, next_tx_time);
+        u8g2.drawStr(45, 29, next_tx_time);
       }
       else
       {
         u8g2.setDrawColor(0);
-        u8g2.drawStr(0, 30, "TX Enb");
+        u8g2.drawStr(0, 29, "TX Enb");
         u8g2.setDrawColor(1);
       }
     }
@@ -1123,12 +1168,12 @@ void drawOLED()
     if(cur_state == TxState::Idle)
     {
       u8g2.setFont(u8g2_font_m2icon_9_tf);
-      u8g2.drawGlyph(121, 31, 0x0042);
+      u8g2.drawGlyph(121, 30, 0x0042);
     }
     else
     {
       u8g2.setFont(u8g2_font_m2icon_9_tf);
-      u8g2.drawGlyph(121, 31, 0x0043);
+      u8g2.drawGlyph(121, 30, 0x0043);
     }
   }
   //yield();
@@ -1175,6 +1220,9 @@ void pollButtons()
             break;
           case SettingType::Int:
             ++cur_setting_int;
+            break;
+          case SettingType::Bool:
+            cur_setting_bool = !cur_setting_bool;
             break;
           case SettingType::Str:
             if (cur_setting_index >= settings_str_chars.size() - 1)
@@ -1226,17 +1274,23 @@ void pollButtons()
         switch (cur_setting_type)
         {
           case SettingType::Uint:
-            if ((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
+            if(cur_setting_uint >0)
             {
-              cur_setting_uint -= power_10(cur_setting_selected);
-            }
-            if (num_digits(cur_setting_uint) - 1 < cur_setting_selected)
-            {
-              --cur_setting_selected;
+              if ((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
+              {
+                cur_setting_uint -= power_10(cur_setting_selected);
+              }
+              if (num_digits(cur_setting_uint) - 1 < cur_setting_selected)
+              {
+                --cur_setting_selected;
+              }
             }
             break;
           case SettingType::Int:
             --cur_setting_int;
+            break;
+          case SettingType::Bool:
+            cur_setting_bool = !cur_setting_bool;
             break;
           case SettingType::Str:
             if (cur_setting_index == 0)
@@ -1487,6 +1541,10 @@ void pollButtons()
         else
         {
           tx_enable = true;
+          // Re-compose the buffers to reflect changes
+          composeWSPRBuffer();
+//          composeMorseBuffer(cur_buffer);
+          selectBuffer(cur_buffer);
           setNextTx(0);
         }
       }
@@ -1524,6 +1582,16 @@ void pollButtons()
           case SettingType::Int:
             sprintf(temp_str, "I%l", cur_setting_int);
             settings[cur_setting_key].second = temp_str;
+            break;
+          case SettingType::Bool:
+            if(cur_setting_bool)
+            {
+              settings[cur_setting_key].second = "B1";
+            }
+            else
+            {
+              settings[cur_setting_key].second = "B0";
+            }
             break;
           case SettingType::Str:
             if (ins_del_mode)
@@ -1565,6 +1633,10 @@ void pollButtons()
         {
           cur_config.wpm = cur_setting_uint;
         }
+        else if (cur_setting_key == "cwid")
+        {
+          cur_config.cwid = cur_setting_bool;
+        }
 
         // If we need to make any immediate setting changes to hardware
         if (cur_setting_key == "pa_bias")
@@ -1575,7 +1647,8 @@ void pollButtons()
 
         // Re-compose the buffers to reflect changes
         composeWSPRBuffer();
-        composeMorseBuffer(cur_buffer);
+//        composeMorseBuffer(cur_buffer);
+        selectBuffer(cur_buffer);
 
         // Save the config to NVM
         serializeConfig();
@@ -1891,9 +1964,9 @@ void setTxState(TxState state)
       tx_lock = false;
       digitalWrite(TX_KEY, LOW);
       yield();
-      //    si5351.output_enable(SI5351_CLK0, 0);
+      si5351.output_enable(SI5351_CLK0, 0);
       //    setPABias(0);
-      //    next_state = prev_state;
+//      next_state = prev_state;
       prev_state = cur_state;
       cur_state = state;
       break;
@@ -1905,7 +1978,7 @@ void setTxState(TxState state)
       change_freq = true;
       digitalWrite(TX_KEY, HIGH);
       yield();
-      //    si5351.output_enable(SI5351_CLK0, 1);
+      si5351.output_enable(SI5351_CLK0, 1);
       //    setPABias(PA_BIAS_FULL);
       next_state = TxState::MFSK;
       prev_state = cur_state;
@@ -1916,6 +1989,7 @@ void setTxState(TxState state)
       //    SerialUSB.write('\v');
       //    SerialUSB.println("Start CW");
       SerialUSB.write('\f');
+      si5351.output_enable(SI5351_CLK0, 1);
       tx_lock = true;
       frequency = (base_frequency * 100ULL);
       change_freq = true;
@@ -1924,10 +1998,46 @@ void setTxState(TxState state)
       next_state = TxState::CW;
       prev_state = cur_state;
       cur_state = state;
+      selectBuffer(cur_buffer);
       morse.send(msg_buffer);
+      break;
+    case TxState::IDDelay:
+      //    SerialUSB.write('\v');
+      //    SerialUSB.println("Start CW");
+//      SerialUSB.write('\f');
+      digitalWrite(TX_KEY, LOW);
+      si5351.output_enable(SI5351_CLK0, 0);
+//      tx_lock = true;
+//      frequency = (base_frequency * 100ULL);
+//      change_freq = true;
+//      morse.output_pin = TX_KEY;
+//      morse.setWPM(wpm);
+//      next_state = prev_state;
+//      prev_state = cur_state;
+      cur_state = state;
+      cwid_start = cur_timer + cwid_delay;
+      break;
+    case TxState::CWID:
+      //    SerialUSB.write('\v');
+      //    SerialUSB.println("Start CW");
+//      SerialUSB.write('\f');
+      si5351.output_enable(SI5351_CLK0, 1);
+      tx_lock = true;
+      frequency = (base_frequency * 100ULL);
+      change_freq = true;
+      morse.output_pin = TX_KEY;
+//      morse.setWPM(wpm);
+      morse.setWPM(cwid_wpm);
+//      next_state = prev_state;
+//      prev_state = cur_state;
+      cur_state = state;
+      strcpy(cur_callsign, cur_config.callsign);
+//      strcpy(cur_callsign, "NT7S");
+      morse.send(cur_callsign);
       break;
     case TxState::DFCW:
       SerialUSB.write('\f');
+      si5351.output_enable(SI5351_CLK0, 1);
       tx_lock = true;
       digitalWrite(TX_KEY, HIGH);
       frequency = (base_frequency * 100ULL);
@@ -1938,6 +2048,7 @@ void setTxState(TxState state)
       prev_state = cur_state;
       cur_state = state;
       morse.preamble_enable = true;
+      selectBuffer(cur_buffer);
       morse.send(msg_buffer);
       break;
     default:
@@ -2136,6 +2247,20 @@ void txStateMachine()
       {
         case TxState::Idle:
           break;
+        case TxState::IDDelay:
+          if (cur_timer >= cwid_start)
+          {
+            setTxState(TxState::CWID);
+          }
+          break;
+        case TxState::CWID:
+          if (!morse.busy)
+          {
+            setTxState(TxState::Idle);
+
+            setNextTx(cur_config.tx_intv);
+          }
+          break;
         case TxState::DFCW:
           if (morse.tx != prev_morse_tx)
           {
@@ -2158,12 +2283,21 @@ void txStateMachine()
             SerialUSB.write('\b');
             yield();
             prev_morse_tx = false;
-            setTxState(TxState::Idle);
             frequency = (base_frequency * 100ULL);
             change_freq = true;
-            //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
+              
+            if(cur_config.cwid)
+            {
+              setTxState(TxState::IDDelay);
+            }
+            else
+            {
+              setTxState(TxState::Idle);
+              setNextTx(cur_config.tx_intv);
+            }
+            
 
-            setNextTx(0);
+//            setNextTx(0);
           }
           break;
       }
@@ -2173,6 +2307,20 @@ void txStateMachine()
       {
         case TxState::Idle:
           break;
+        case TxState::IDDelay:
+          if (cur_timer >= cwid_start)
+          {
+            setTxState(TxState::CWID);
+          }
+          break;
+        case TxState::CWID:
+          if (!morse.busy)
+          {
+            setTxState(TxState::Idle);
+
+            setNextTx(cur_config.tx_intv);
+          }
+          break;
         case TxState::MFSK:
           if (cur_timer >= next_event)
           {
@@ -2181,11 +2329,20 @@ void txStateMachine()
             {
               SerialUSB.write('\b');
               yield();
-              setTxState(TxState::Idle);
+              if(cur_config.cwid)
+              {
+                setTxState(TxState::IDDelay);
+              }
+              else
+              {
+                setTxState(TxState::Idle);
+                setNextTx(cur_config.tx_intv);
+              }
               //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (base_frequency * 100);
               //change_freq = true;
-              setNextTx(atoi(settings["tx_intv"].second.substr(1).c_str()));
+//              setNextTx(cur_config.tx_intv);
+//              setNextTx(atoi(settings["tx_intv"].second.substr(1).c_str()));
             }
             else // next symbol
             {
@@ -2206,7 +2363,7 @@ void composeMorseBuffer(uint8_t buf)
   char temp_call[16];
   char temp_grid[6];
 
-  sprintf(temp_call, "%s", settings["callsign"].second.substr(1).c_str());
+  sprintf(temp_call, "%s", cur_config.callsign);
   switch(buf)
   {
   case 1:
@@ -2277,6 +2434,7 @@ void serializeConfig()
   strcpy(flash_config.grid, cur_config.grid);
   flash_config.power = cur_config.power;
   flash_config.pa_bias = cur_config.pa_bias;
+  flash_config.cwid = cur_config.cwid;
   strcpy(flash_config.msg_buffer_1, cur_config.msg_buffer_1);
   strcpy(flash_config.msg_buffer_2, cur_config.msg_buffer_2);
   strcpy(flash_config.msg_buffer_3, cur_config.msg_buffer_3);
@@ -2301,6 +2459,7 @@ void deserializeConfig()
     strcpy(cur_config.grid, flash_config.grid);
     cur_config.power = flash_config.power;
     cur_config.pa_bias = flash_config.pa_bias;
+    cur_config.cwid = flash_config.cwid;
     strcpy(cur_config.msg_buffer_1, flash_config.msg_buffer_1);
     strcpy(cur_config.msg_buffer_2, flash_config.msg_buffer_2);
     strcpy(cur_config.msg_buffer_3, flash_config.msg_buffer_3);
@@ -2318,6 +2477,14 @@ void deserializeConfig()
     settings["tx_intv"].second = temp_str;
     sprintf(temp_str, "U%lu", flash_config.wpm);
     settings["wpm"].second = temp_str;
+    if(flash_config.cwid)
+    {
+      settings["cwid"].second = "B1";
+    }
+    else
+    {
+      settings["cwid"].second = "B0";
+    }
 //    SerialUSB.print('\v');
 //    SerialUSB.print("Callsign: ");
 //    SerialUSB.print(flash_config.callsign);
@@ -2360,6 +2527,7 @@ void setup()
     strcpy(flash_config.grid, DEFAULT_GRID);
     flash_config.power = DEFAULT_POWER;
     flash_config.pa_bias = DEFAULT_PA_BIAS;
+    flash_config.cwid = DEFAULT_CWID;
     strcpy(flash_config.msg_buffer_1, DEFAULT_MSG_1);
     strcpy(flash_config.msg_buffer_2, DEFAULT_MSG_2);
     strcpy(flash_config.msg_buffer_3, DEFAULT_MSG_3);
