@@ -1,3 +1,8 @@
+// OpenBeacon Mini
+// Etherkit
+//
+// Rev 19 Nov 2018
+//
 // Hardware Requirements
 // ---------------------
 // This firmware must be run on an Etherkit Empyrean Alpha or Arduino Zero capable microcontroller
@@ -15,6 +20,7 @@
 // Scheduler (Library Manager)
 // ArduinoJson (Library Manager)
 // Wire (Arduino Standard Library)
+// #include <extEEPROM.h>
 
 #include <Scheduler.h>
 #include <JTEncode.h>
@@ -28,6 +34,7 @@
 #include <si5351.h>
 #include <Wire.h>
 #include <FlashStorage.h>
+#include <extEEPROM.h>
 
 #include <cstdlib>
 #include <map>
@@ -36,6 +43,8 @@
 
 #include "bands.h"
 #include "modes.h"
+
+//#define EXT_EEPROM // Microchip 24AA64T
 
 // Enumerations
 enum class DisplayMode {Main, Menu, Setting, Buffer};
@@ -74,6 +83,8 @@ constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 constexpr uint8_t MSG_BUFFER_SIZE = 81;
 
 constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
+
+constexpr uint16_t EEPROM_BLOCK_SIZE = 32;
 
 constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
@@ -182,6 +193,9 @@ Morse morse(TX_KEY, 15);
 RTCZero rtc;
 Menu menu;
 JTEncode jtencode;
+#ifdef EXT_EEPROM
+extEEPROM eeprom(kbits_64, 1, EEPROM_BLOCK_SIZE, 0x50);
+#endif
 
 // ISR global variables
 volatile uint64_t base_frequency = DEFAULT_FREQUENCY; // 30m WSPR
@@ -256,7 +270,27 @@ uint64_t cur_si5351_int_corr = DEFAULT_SI5351_INT_CORR;
 uint32_t cwid_delay = 1000;
 uint32_t cwid_start;
 uint8_t cwid_wpm = 30;
-Config cur_config;
+Config cur_config; 
+//{
+//  true, // valid
+//  CONFIG_SCHEMA_VERSION, // version
+//  DEFAULT_MODE, // mode
+//  DEFAULT_BAND_INDEX, // band
+//  DEFAULT_WPM, // wpm
+//  DEFAULT_TX_INTERVAL, // tx_intv
+//  DEFAULT_DFCW_OFFSET, // dfcw_offset
+//  DEFAULT_CUR_BUFFER, // buffer
+//  DEFAULT_CALLSIGN, // callsign
+//  DEFAULT_GRID, // grid
+//  DEFAULT_POWER, // power
+//  DEFAULT_PA_BIAS, // pa_bias
+//  DEFAULT_CWID, // cwid
+//  DEFAULT_MSG_1, // msg_buffer_1
+//  DEFAULT_MSG_2, // msg_buffer_2
+//  DEFAULT_MSG_3, // msg_buffer_3
+//  DEFAULT_MSG_4, // msg_buffer_4
+//  DEFAULT_SI5351_INT_CORR // si5351_int_corr
+//};
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -432,101 +466,112 @@ void selectMode(uint8_t sel)
   {
     case Mode::DFCW3:
       mode = Mode::DFCW3;
+      cur_config.mode = mode;
       meta_mode = MetaMode::DFCW;
       next_state = TxState::DFCW;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
 //      settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW6:
       mode = Mode::DFCW6;
+      cur_config.mode = mode;
       meta_mode = MetaMode::DFCW;
       next_state = TxState::DFCW;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW10:
       mode = Mode::DFCW10;
+      cur_config.mode = mode;
       meta_mode = MetaMode::DFCW;
       next_state = TxState::DFCW;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW120:
       mode = Mode::DFCW120;
+      cur_config.mode = mode;
       meta_mode = MetaMode::DFCW;
       next_state = TxState::DFCW;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS3:
       mode = Mode::QRSS3;
+      cur_config.mode = mode;
       meta_mode = MetaMode::CW;
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS6:
       mode = Mode::QRSS6;
+      cur_config.mode = mode;
       meta_mode = MetaMode::CW;
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS10:
       mode = Mode::QRSS10;
+      cur_config.mode = mode;
       meta_mode = MetaMode::CW;
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS120:
       mode = Mode::QRSS120;
+      cur_config.mode = mode;
       meta_mode = MetaMode::CW;
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::CW:
       mode = Mode::CW;
+      cur_config.mode = mode;
       meta_mode = MetaMode::CW;
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::HELL:
       mode = Mode::HELL;
+      cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::WSPR:
       mode = Mode::WSPR;
+      cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
 //      composeBuffer(1);
@@ -535,11 +580,12 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].wspr_freq;
       break;
     case Mode::JT65:
       mode = Mode::JT65;
+      cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
 //      composeBuffer();
@@ -548,11 +594,12 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt65_freq;
       break;
     case Mode::JT9:
       mode = Mode::JT9;
+      cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
 //      composeBuffer();
@@ -561,11 +608,12 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
     case Mode::JT4:
       mode = Mode::JT4;
+      cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
 //      composeBuffer();
@@ -574,10 +622,11 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      settings["tx_intv"].second = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
   }
+  serializeConfig();
   yield();
 }
 
@@ -1647,7 +1696,7 @@ void pollButtons()
 
         // Re-compose the buffers to reflect changes
         composeWSPRBuffer();
-//        composeMorseBuffer(cur_buffer);
+        composeMorseBuffer(1);
         selectBuffer(cur_buffer);
 
         // Save the config to NVM
@@ -2256,9 +2305,8 @@ void txStateMachine()
         case TxState::CWID:
           if (!morse.busy)
           {
-            setTxState(TxState::Idle);
-
             setNextTx(cur_config.tx_intv);
+            setTxState(TxState::Idle);
           }
           break;
         case TxState::DFCW:
@@ -2421,7 +2469,30 @@ void composeJTBuffer(uint8_t buf)
 void serializeConfig()
 {
   //flash_config = flash_store.read();
-
+  #ifdef EXT_EEPROM
+  byte * byte_array = (byte*) &cur_config;
+  for(uint16_t i = 0; i < sizeof(cur_config); i += EEPROM_BLOCK_SIZE)
+  {
+    uint8_t eep_status = eeprom.write(i, byte_array, EEPROM_BLOCK_SIZE); // EEPROM_CONFIG_SIZE
+    byte_array += EEPROM_BLOCK_SIZE;
+  }
+//  byte write_byte = 11;
+//  uint8_t eep_status = eeprom.write(0, &write_byte, 1);
+//  if(eep_status != 0)
+//  {
+//    if(eep_status == EEPROM_ADDR_ERR)
+//    {
+//      // Tried to write past the end of address space
+//      SerialUSB.write('\v');
+//      SerialUSB.print("Tried to write past the end of EEPROM address space");
+//    }
+//    else
+//    {
+//      SerialUSB.write('\v');
+//      SerialUSB.print("EEPROM write error");
+//    }
+//  }
+  #else
   flash_config.valid = true;
   flash_config.version = cur_config.version;
   flash_config.mode = cur_config.mode;
@@ -2441,11 +2512,55 @@ void serializeConfig()
   strcpy(flash_config.msg_buffer_4, cur_config.msg_buffer_4);
   flash_config.si5351_int_corr = cur_config.si5351_int_corr;
   flash_store.write(flash_config);
+  #endif
 }
 
 void deserializeConfig()
 {
   char temp_str[81];
+
+  // TODO: need to add version checking
+  #ifdef EXT_EEPROM
+  byte * byte_array = (byte*) &cur_config;
+  for(uint16_t i = 0; i < sizeof(cur_config); ++i)
+  {
+    *byte_array++ = eeprom.read(i);
+  }
+//  byte read_byte = 0;
+//  uint8_t eep_status = eeprom.read(0, &read_byte, 1);
+//  if(eep_status != 0)
+//  {
+//    SerialUSB.write('\v');
+//    SerialUSB.print("EEPROM read error");
+//  }
+//  else
+//  {
+//    SerialUSB.write('\v');
+//    SerialUSB.print("EEPROM read: ");
+//    SerialUSB.print(read_byte);
+//  }
+  mode = cur_config.mode;
+  sprintf(temp_str, "U%lu", cur_config.pa_bias);
+  settings["pa_bias"].second = std::string(temp_str);
+  sprintf(temp_str, "S%s", cur_config.callsign);
+  settings["callsign"].second = std::string(temp_str);
+  sprintf(temp_str, "S%s", cur_config.grid);
+  settings["grid"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.power);
+  settings["power"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.tx_intv);
+  settings["tx_intv"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.wpm);
+  settings["wpm"].second = std::string(temp_str);
+  if(cur_config.cwid)
+  {
+    settings["cwid"].second = "B1";
+  }
+  else
+  {
+    settings["cwid"].second = "B0";
+  }
+  #else
   flash_config = flash_store.read();
   if(flash_config.valid == true)
   {
@@ -2465,18 +2580,19 @@ void deserializeConfig()
     strcpy(cur_config.msg_buffer_3, flash_config.msg_buffer_3);
     strcpy(cur_config.msg_buffer_4, flash_config.msg_buffer_4);
     cur_config.si5351_int_corr = flash_config.si5351_int_corr;
+    mode = flash_config.mode;
     sprintf(temp_str, "U%lu", flash_config.pa_bias);
-    settings["pa_bias"].second = temp_str;
+    settings["pa_bias"].second = std::string(temp_str);
     sprintf(temp_str, "S%s", flash_config.callsign);
-    settings["callsign"].second = temp_str;
+    settings["callsign"].second = std::string(temp_str);
     sprintf(temp_str, "S%s", flash_config.grid);
-    settings["grid"].second = temp_str;
+    settings["grid"].second = std::string(temp_str);
     sprintf(temp_str, "U%lu", flash_config.power);
-    settings["power"].second = temp_str;
+    settings["power"].second = std::string(temp_str);
     sprintf(temp_str, "U%lu", flash_config.tx_intv);
-    settings["tx_intv"].second = temp_str;
+    settings["tx_intv"].second = std::string(temp_str);
     sprintf(temp_str, "U%lu", flash_config.wpm);
-    settings["wpm"].second = temp_str;
+    settings["wpm"].second = std::string(temp_str);
     if(flash_config.cwid)
     {
       settings["cwid"].second = "B1";
@@ -2494,11 +2610,15 @@ void deserializeConfig()
 //    SerialUSB.print('\v');
 //    SerialUSB.print("Deserialize failure");
   }
+  #endif
 }
 
 // ===== Setup =====
 void setup()
 {
+  // Start u8g2
+  u8g2.begin();
+  
   // Serial port init
   SerialUSB.begin(57600);
   while (!SerialUSB);
@@ -2507,45 +2627,50 @@ void setup()
   for (auto const& c : settings_table)
   {
     settings[c[0]].first = c[1];
-//    settings[c[0]].second = c[2];
   }
 
-  // If there isn't a valid configuration record in NVM,
-  // create one based on the defaults
-  flash_config = flash_store.read();
-  if(flash_config.valid == false)
+  // Populate configuration with defaults
+  char temp_str[81];
+  cur_config.valid = true;
+  cur_config.version = CONFIG_SCHEMA_VERSION;
+  cur_config.mode = DEFAULT_MODE;
+  cur_config.band = DEFAULT_BAND_INDEX;
+  cur_config.wpm = DEFAULT_WPM;
+  cur_config.tx_intv = DEFAULT_TX_INTERVAL;
+  cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+  cur_config.buffer = DEFAULT_CUR_BUFFER;
+  strcpy(cur_config.callsign, DEFAULT_CALLSIGN);
+  strcpy(cur_config.grid, DEFAULT_GRID);
+  cur_config.power = DEFAULT_POWER;
+  cur_config.pa_bias = DEFAULT_PA_BIAS;
+  cur_config.cwid = DEFAULT_CWID;
+  strcpy(cur_config.msg_buffer_1, DEFAULT_MSG_1);
+  strcpy(cur_config.msg_buffer_2, DEFAULT_MSG_2);
+  strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
+  strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
+  cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+  sprintf(temp_str, "U%lu", cur_config.pa_bias);
+  settings["pa_bias"].second = std::string(temp_str);
+  sprintf(temp_str, "S%s", cur_config.callsign);
+  settings["callsign"].second = std::string(temp_str);
+  sprintf(temp_str, "S%s", cur_config.grid);
+  settings["grid"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.power);
+  settings["power"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.tx_intv);
+  settings["tx_intv"].second = std::string(temp_str);
+  sprintf(temp_str, "U%lu", cur_config.wpm);
+  settings["wpm"].second = std::string(temp_str);
+  if(cur_config.cwid)
   {
-    flash_config.valid = true;
-    flash_config.version = CONFIG_SCHEMA_VERSION;
-    flash_config.mode = DEFAULT_MODE;
-    flash_config.band = DEFAULT_BAND_INDEX;
-    flash_config.wpm = DEFAULT_WPM;
-    flash_config.tx_intv = DEFAULT_TX_INTERVAL;
-    flash_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
-    flash_config.buffer = DEFAULT_CUR_BUFFER;
-    strcpy(flash_config.callsign, DEFAULT_CALLSIGN);
-    strcpy(flash_config.grid, DEFAULT_GRID);
-    flash_config.power = DEFAULT_POWER;
-    flash_config.pa_bias = DEFAULT_PA_BIAS;
-    flash_config.cwid = DEFAULT_CWID;
-    strcpy(flash_config.msg_buffer_1, DEFAULT_MSG_1);
-    strcpy(flash_config.msg_buffer_2, DEFAULT_MSG_2);
-    strcpy(flash_config.msg_buffer_3, DEFAULT_MSG_3);
-    strcpy(flash_config.msg_buffer_4, DEFAULT_MSG_4);
-    flash_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
-    flash_store.write(flash_config);
-    deserializeConfig();
-//    SerialUSB.print('\v');
-//    SerialUSB.print("New flash store written");
+    settings["cwid"].second = "B1";
   }
   else
   {
-    // load valid config from NVM to RAM
-    deserializeConfig();
+    settings["cwid"].second = "B0";
   }
 
-  // Start u8g2
-  u8g2.begin();
+
 
   // I/O init
   pinMode(BTN_DSP_1, INPUT_PULLUP);
@@ -2572,9 +2697,6 @@ void setup()
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
   Wire.setClock(400000UL);
 
-  // Set PA bias
-  setPABias(atoll(settings["pa_bias"].second.substr(1).c_str()));
-
   // RTC setup
   // Can't use the RTC alarm interrupt, far too much trigger time variance
   rtc.begin();
@@ -2583,8 +2705,78 @@ void setup()
   time_sync_expire = rtc.getEpoch();
   next_time_sync = rtc.getEpoch();
 
-  //
-  //setNextTx(0);
+  // External EEPROM
+  #ifdef EXT_EEPROM
+  uint8_t eep_status = eeprom.begin(extEEPROM::twiClock400kHz);
+  if(eep_status)
+  {
+    SerialUSB.write('\v');
+    SerialUSB.println("EEPROM init failure");
+  }
+//  deserializeConfig();
+  #endif
+
+  // If there isn't a valid configuration record in NVM,
+  // create one based on the defaults
+  #ifdef EXT_EEPROM
+  deserializeConfig();
+  if(cur_config.valid == false && cur_config.version != CONFIG_SCHEMA_VERSION)
+  {
+    cur_config.valid = true;
+    cur_config.version = CONFIG_SCHEMA_VERSION;
+    cur_config.mode = DEFAULT_MODE;
+    cur_config.band = DEFAULT_BAND_INDEX;
+    cur_config.wpm = DEFAULT_WPM;
+    cur_config.tx_intv = DEFAULT_TX_INTERVAL;
+    cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+    cur_config.buffer = DEFAULT_CUR_BUFFER;
+    strcpy(cur_config.callsign, DEFAULT_CALLSIGN);
+    strcpy(cur_config.grid, DEFAULT_GRID);
+    cur_config.power = DEFAULT_POWER;
+    cur_config.pa_bias = DEFAULT_PA_BIAS;
+    cur_config.cwid = DEFAULT_CWID;
+    strcpy(cur_config.msg_buffer_1, DEFAULT_MSG_1);
+    strcpy(cur_config.msg_buffer_2, DEFAULT_MSG_2);
+    strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
+    strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
+    cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+    serializeConfig();
+    SerialUSB.write('\v');
+    SerialUSB.print("New EEPROM store written");
+  }
+  #else
+  flash_config = flash_store.read();
+  if(flash_config.valid == false)
+  {
+    flash_config.valid = true;
+    flash_config.version = CONFIG_SCHEMA_VERSION;
+    flash_config.mode = DEFAULT_MODE;
+    flash_config.band = DEFAULT_BAND_INDEX;
+    flash_config.wpm = DEFAULT_WPM;
+    flash_config.tx_intv = DEFAULT_TX_INTERVAL;
+    flash_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+    flash_config.buffer = DEFAULT_CUR_BUFFER;
+    strcpy(flash_config.callsign, DEFAULT_CALLSIGN);
+    strcpy(flash_config.grid, DEFAULT_GRID);
+    flash_config.power = DEFAULT_POWER;
+    flash_config.pa_bias = DEFAULT_PA_BIAS;
+    flash_config.cwid = DEFAULT_CWID;
+    strcpy(flash_config.msg_buffer_1, DEFAULT_MSG_1);
+    strcpy(flash_config.msg_buffer_2, DEFAULT_MSG_2);
+    strcpy(flash_config.msg_buffer_3, DEFAULT_MSG_3);
+    strcpy(flash_config.msg_buffer_4, DEFAULT_MSG_4);
+    flash_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+    flash_store.write(flash_config);
+    deserializeConfig();
+    SerialUSB.print('\v');
+    SerialUSB.print("New flash store written");
+  }
+  else
+  {
+    // load valid config from NVM to RAM
+    deserializeConfig();
+  }
+  #endif
 
   // Init menu
   initMenu();
@@ -2639,7 +2831,8 @@ void setup()
   composeMorseBuffer(cur_buffer);
   selectBuffer(cur_buffer);
 
-
+  // Set PA bias
+  setPABias(cur_config.pa_bias);
 
   //morse.send("DE NT7S");
   //  SerialUSB.print("\v");
@@ -2656,10 +2849,9 @@ void setup()
   //    SerialUSB.print(" - ");
   //    SerialUSB.println(settings[a[0]].c_str());
   //  }
+  
   // Start Timer
   startTimer(TIMER_FREQUENCY); // 1 ms ISR
-
-  //morse.send("NT7S");
 }
 
 void loop()
