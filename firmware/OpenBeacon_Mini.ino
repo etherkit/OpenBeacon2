@@ -1,7 +1,7 @@
 // OpenBeacon Mini
 // Etherkit
 //
-// Rev 19 Nov 2018
+// Rev 20 Nov 2018
 //
 // Hardware Requirements
 // ---------------------
@@ -19,8 +19,10 @@
 // Etherkit JTEncode (Library Manager)
 // Scheduler (Library Manager)
 // ArduinoJson (Library Manager)
+// External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
-// #include <extEEPROM.h>
+
+//#define EXT_EEPROM // Microchip 24AA64T
 
 #include <Scheduler.h>
 #include <JTEncode.h>
@@ -33,8 +35,11 @@
 #include <U8g2lib.h>
 #include <si5351.h>
 #include <Wire.h>
-#include <FlashStorage.h>
+#ifdef EXT_EEPROM
 #include <extEEPROM.h>
+#else
+#include <FlashStorage.h>
+#endif
 
 #include <cstdlib>
 #include <map>
@@ -43,8 +48,6 @@
 
 #include "bands.h"
 #include "modes.h"
-
-//#define EXT_EEPROM // Microchip 24AA64T
 
 // Enumerations
 enum class DisplayMode {Main, Menu, Setting, Buffer};
@@ -70,6 +73,9 @@ constexpr uint16_t MCP4725A1_VREF = 5000UL;
 constexpr uint16_t ANALOG_REF = 3400UL; // TODO
 constexpr uint16_t PA_BIAS_FULL = 1850UL;
 
+constexpr uint8_t EEP_24AA64T_BUS_BASE_ADDR = 0x50;
+constexpr uint16_t EEP_24AA64T_BLOCK_SIZE = 32;
+
 constexpr uint32_t TIMER_BASE_CLOCK = 4000000;
 constexpr uint16_t TIMER_PRESCALER_DIV = 1;
 constexpr uint16_t TIMER_FREQUENCY = 1000;
@@ -83,8 +89,6 @@ constexpr uint32_t TIME_SYNC_RETRY_RATE = 60;
 constexpr uint8_t MSG_BUFFER_SIZE = 81;
 
 constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
-
-constexpr uint16_t EEPROM_BLOCK_SIZE = 32;
 
 constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
@@ -117,8 +121,10 @@ struct Config
 };
 
 // Instantiate flash storage
+#ifndef EXT_EEPROM
 FlashStorage(flash_store, Config);
 Config flash_config;
+#endif
 
 // Defaults
 constexpr uint32_t DEFAULT_FREQUENCY = 0UL;
@@ -140,10 +146,10 @@ constexpr char DEFAULT_GRID[10] = "AA00";
 constexpr uint8_t DEFAULT_POWER = 23;
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
 constexpr boolean DEFAULT_CWID = true;
-constexpr char DEFAULT_MSG_1[81] = "";
-constexpr char DEFAULT_MSG_2[81] = "";
-constexpr char DEFAULT_MSG_3[81] = "";
-constexpr char DEFAULT_MSG_4[81] = "";
+constexpr char DEFAULT_MSG_1[81] = "BUFFER1";
+constexpr char DEFAULT_MSG_2[81] = "BUFFER2";
+constexpr char DEFAULT_MSG_3[81] = "BUFFER3";
+constexpr char DEFAULT_MSG_4[81] = "BUFFER4";
 constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
@@ -194,7 +200,7 @@ RTCZero rtc;
 Menu menu;
 JTEncode jtencode;
 #ifdef EXT_EEPROM
-extEEPROM eeprom(kbits_64, 1, EEPROM_BLOCK_SIZE, 0x50);
+extEEPROM eeprom(kbits_64, 1, EEP_24AA64T_BLOCK_SIZE, EEP_24AA64T_BUS_BASE_ADDR);
 #endif
 
 // ISR global variables
@@ -473,7 +479,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
 //      settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW6:
@@ -484,7 +490,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW10:
@@ -495,7 +501,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::DFCW120:
@@ -506,7 +512,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS3:
@@ -516,7 +522,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS6:
@@ -526,7 +532,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS10:
@@ -536,7 +542,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::QRSS120:
@@ -546,7 +552,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::CW:
@@ -556,7 +562,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::CW;
 //      composeBuffer();
       wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::HELL:
@@ -566,7 +572,7 @@ void selectMode(uint8_t sel)
       next_state = TxState::MFSK;
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].cw_freq;
       break;
     case Mode::WSPR:
@@ -580,7 +586,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].wspr_freq;
       break;
     case Mode::JT65:
@@ -594,7 +600,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt65_freq;
       break;
     case Mode::JT9:
@@ -608,7 +614,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
     case Mode::JT4:
@@ -622,11 +628,12 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
   }
   serializeConfig();
+  setNextTx(cur_config.tx_intv);
   yield();
 }
 
@@ -687,6 +694,7 @@ void selectBuffer(const uint8_t buf)
     cur_buffer = buf;
     break;
   }
+  cur_config.buffer = cur_buffer;
 }
 
 void setConfig(const char * key, const char * label)
@@ -1661,6 +1669,7 @@ void pollButtons()
         if (cur_setting_key == "pa_bias")
         {
           cur_config.pa_bias = cur_setting_uint;
+          setPABias(cur_setting_uint);
         }
         else if (cur_setting_key == "callsign")
         {
@@ -1688,10 +1697,10 @@ void pollButtons()
         }
 
         // If we need to make any immediate setting changes to hardware
-        if (cur_setting_key == "pa_bias")
-        {
-          setPABias(cur_setting_uint);
-        }
+//        if (cur_setting_key == "pa_bias")
+//        {
+//          setPABias(cur_setting_uint);
+//        }
         
 
         // Re-compose the buffers to reflect changes
@@ -2113,7 +2122,7 @@ void setNextTx(uint8_t minutes)
   //  time_t t = mktime(&cur_time);
   //  time_t t = rtc.getEpoch();
   uint16_t sec_to_add;
-  uint32_t t = rtc.getEpoch();
+//  uint32_t t = rtc.getEpoch();
   uint8_t ten_min_delay, one_min_delay;
 
   switch (mode)
@@ -2156,9 +2165,8 @@ void setNextTx(uint8_t minutes)
   }
 
   //uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
-
-  t += sec_to_add;
-  next_tx = t;
+//  uint32_t t = rtc.getEpoch();
+  next_tx = rtc.getEpoch() + sec_to_add;
   yield();
 
   // Build next TX time string
@@ -2471,10 +2479,10 @@ void serializeConfig()
   //flash_config = flash_store.read();
   #ifdef EXT_EEPROM
   byte * byte_array = (byte*) &cur_config;
-  for(uint16_t i = 0; i < sizeof(cur_config); i += EEPROM_BLOCK_SIZE)
+  for(uint16_t i = 0; i < sizeof(cur_config); i += EEP_24AA64T_BLOCK_SIZE)
   {
-    uint8_t eep_status = eeprom.write(i, byte_array, EEPROM_BLOCK_SIZE); // EEPROM_CONFIG_SIZE
-    byte_array += EEPROM_BLOCK_SIZE;
+    uint8_t eep_status = eeprom.write(i, byte_array, EEP_24AA64T_BLOCK_SIZE); // EEPROM_CONFIG_SIZE
+    byte_array += EEP_24AA64T_BLOCK_SIZE;
   }
 //  byte write_byte = 11;
 //  uint8_t eep_status = eeprom.write(0, &write_byte, 1);
@@ -2540,6 +2548,13 @@ void deserializeConfig()
 //    SerialUSB.print(read_byte);
 //  }
   mode = cur_config.mode;
+  strcpy(msg_buffer_1, cur_config.msg_buffer_1);
+  strcpy(msg_buffer_2, cur_config.msg_buffer_2);
+  strcpy(msg_buffer_3, cur_config.msg_buffer_3);
+  strcpy(msg_buffer_4, cur_config.msg_buffer_4);
+  cur_buffer = cur_config.buffer;
+  selectBuffer(cur_buffer);
+  cur_tone_spacing = cur_config.dfcw_offset;
   sprintf(temp_str, "U%lu", cur_config.pa_bias);
   settings["pa_bias"].second = std::string(temp_str);
   sprintf(temp_str, "S%s", cur_config.callsign);
@@ -2581,6 +2596,13 @@ void deserializeConfig()
     strcpy(cur_config.msg_buffer_4, flash_config.msg_buffer_4);
     cur_config.si5351_int_corr = flash_config.si5351_int_corr;
     mode = flash_config.mode;
+    strcpy(msg_buffer_1, cur_config.msg_buffer_1);
+    strcpy(msg_buffer_2, cur_config.msg_buffer_2);
+    strcpy(msg_buffer_3, cur_config.msg_buffer_3);
+    strcpy(msg_buffer_4, cur_config.msg_buffer_4);
+    cur_buffer = cur_config.buffer;
+    selectBuffer(cur_buffer);
+    cur_tone_spacing = cur_config.dfcw_offset;
     sprintf(temp_str, "U%lu", flash_config.pa_bias);
     settings["pa_bias"].second = std::string(temp_str);
     sprintf(temp_str, "S%s", flash_config.callsign);
@@ -2629,48 +2651,46 @@ void setup()
     settings[c[0]].first = c[1];
   }
 
-  // Populate configuration with defaults
-  char temp_str[81];
-  cur_config.valid = true;
-  cur_config.version = CONFIG_SCHEMA_VERSION;
-  cur_config.mode = DEFAULT_MODE;
-  cur_config.band = DEFAULT_BAND_INDEX;
-  cur_config.wpm = DEFAULT_WPM;
-  cur_config.tx_intv = DEFAULT_TX_INTERVAL;
-  cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
-  cur_config.buffer = DEFAULT_CUR_BUFFER;
-  strcpy(cur_config.callsign, DEFAULT_CALLSIGN);
-  strcpy(cur_config.grid, DEFAULT_GRID);
-  cur_config.power = DEFAULT_POWER;
-  cur_config.pa_bias = DEFAULT_PA_BIAS;
-  cur_config.cwid = DEFAULT_CWID;
-  strcpy(cur_config.msg_buffer_1, DEFAULT_MSG_1);
-  strcpy(cur_config.msg_buffer_2, DEFAULT_MSG_2);
-  strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
-  strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
-  cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
-  sprintf(temp_str, "U%lu", cur_config.pa_bias);
-  settings["pa_bias"].second = std::string(temp_str);
-  sprintf(temp_str, "S%s", cur_config.callsign);
-  settings["callsign"].second = std::string(temp_str);
-  sprintf(temp_str, "S%s", cur_config.grid);
-  settings["grid"].second = std::string(temp_str);
-  sprintf(temp_str, "U%lu", cur_config.power);
-  settings["power"].second = std::string(temp_str);
-  sprintf(temp_str, "U%lu", cur_config.tx_intv);
-  settings["tx_intv"].second = std::string(temp_str);
-  sprintf(temp_str, "U%lu", cur_config.wpm);
-  settings["wpm"].second = std::string(temp_str);
-  if(cur_config.cwid)
-  {
-    settings["cwid"].second = "B1";
-  }
-  else
-  {
-    settings["cwid"].second = "B0";
-  }
-
-
+//  // Populate configuration with defaults
+//  char temp_str[81];
+//  cur_config.valid = true;
+//  cur_config.version = CONFIG_SCHEMA_VERSION;
+//  cur_config.mode = DEFAULT_MODE;
+//  cur_config.band = DEFAULT_BAND_INDEX;
+//  cur_config.wpm = DEFAULT_WPM;
+//  cur_config.tx_intv = DEFAULT_TX_INTERVAL;
+//  cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+//  cur_config.buffer = DEFAULT_CUR_BUFFER;
+//  strcpy(cur_config.callsign, DEFAULT_CALLSIGN);
+//  strcpy(cur_config.grid, DEFAULT_GRID);
+//  cur_config.power = DEFAULT_POWER;
+//  cur_config.pa_bias = DEFAULT_PA_BIAS;
+//  cur_config.cwid = DEFAULT_CWID;
+//  strcpy(cur_config.msg_buffer_1, DEFAULT_MSG_1);
+//  strcpy(cur_config.msg_buffer_2, DEFAULT_MSG_2);
+//  strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
+//  strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
+//  cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+//  sprintf(temp_str, "U%lu", cur_config.pa_bias);
+//  settings["pa_bias"].second = std::string(temp_str);
+//  sprintf(temp_str, "S%s", cur_config.callsign);
+//  settings["callsign"].second = std::string(temp_str);
+//  sprintf(temp_str, "S%s", cur_config.grid);
+//  settings["grid"].second = std::string(temp_str);
+//  sprintf(temp_str, "U%lu", cur_config.power);
+//  settings["power"].second = std::string(temp_str);
+//  sprintf(temp_str, "U%lu", cur_config.tx_intv);
+//  settings["tx_intv"].second = std::string(temp_str);
+//  sprintf(temp_str, "U%lu", cur_config.wpm);
+//  settings["wpm"].second = std::string(temp_str);
+//  if(cur_config.cwid)
+//  {
+//    settings["cwid"].second = "B1";
+//  }
+//  else
+//  {
+//    settings["cwid"].second = "B0";
+//  }
 
   // I/O init
   pinMode(BTN_DSP_1, INPUT_PULLUP);
@@ -2778,6 +2798,9 @@ void setup()
   }
   #endif
 
+  // Set up for the mode
+  selectMode(static_cast<uint8_t>(mode));
+
   // Init menu
   initMenu();
 
@@ -2817,7 +2840,7 @@ void setup()
   cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
   cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
   cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-  next_state = TxState::MFSK;
+//  next_state = TxState::MFSK;
 
   // Clear TX buffer
   memset(mfsk_buffer, 0, 255);
