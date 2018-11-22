@@ -1,7 +1,7 @@
 // OpenBeacon Mini
 // Etherkit
 //
-// Rev 20 Nov 2018
+// Rev 21 Nov 2018
 //
 // Hardware Requirements
 // ---------------------
@@ -50,7 +50,7 @@
 #include "modes.h"
 
 // Enumerations
-enum class DisplayMode {Main, Menu, Setting, Buffer};
+enum class DisplayMode {Main, Menu, Setting, Buffer, Modal};
 enum class SettingType {Uint, Int, Str, Float, Time, Bool};
 enum class TxState {Idle, MFSK, CW, DFCW, CWID, IDDelay, Preamble};
 
@@ -74,7 +74,8 @@ constexpr uint16_t ANALOG_REF = 3400UL; // TODO
 constexpr uint16_t PA_BIAS_FULL = 1850UL;
 
 constexpr uint8_t EEP_24AA64T_BUS_BASE_ADDR = 0x50;
-constexpr uint16_t EEP_24AA64T_BLOCK_SIZE = 32;
+constexpr uint16_t EEP_24AA64T_BLOCK_SIZE = 32;  // bytes
+constexpr uint16_t EEP_24AA64T_CAPACITY = 8192;  // bytes
 
 constexpr uint32_t TIMER_BASE_CLOCK = 4000000;
 constexpr uint16_t TIMER_PRESCALER_DIV = 1;
@@ -138,7 +139,7 @@ constexpr bool DEFAULT_TX_ENABLE = false;
 constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
 //constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
 constexpr TxState DEFAULT_STATE = TxState::Idle;
-constexpr uint16_t DEFAULT_TX_INTERVAL = 0;
+constexpr uint16_t DEFAULT_TX_INTERVAL = 4;
 constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
 constexpr uint8_t DEFAULT_DFCW_OFFSET = 5;
 constexpr char DEFAULT_CALLSIGN[20] = "N0CALL";
@@ -146,7 +147,7 @@ constexpr char DEFAULT_GRID[10] = "AA00";
 constexpr uint8_t DEFAULT_POWER = 23;
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
 constexpr boolean DEFAULT_CWID = true;
-constexpr char DEFAULT_MSG_1[81] = "BUFFER1";
+constexpr char DEFAULT_MSG_1[81] = "N0CALL";
 constexpr char DEFAULT_MSG_2[81] = "BUFFER2";
 constexpr char DEFAULT_MSG_3[81] = "BUFFER3";
 constexpr char DEFAULT_MSG_4[81] = "BUFFER4";
@@ -277,26 +278,7 @@ uint32_t cwid_delay = 1000;
 uint32_t cwid_start;
 uint8_t cwid_wpm = 30;
 Config cur_config; 
-//{
-//  true, // valid
-//  CONFIG_SCHEMA_VERSION, // version
-//  DEFAULT_MODE, // mode
-//  DEFAULT_BAND_INDEX, // band
-//  DEFAULT_WPM, // wpm
-//  DEFAULT_TX_INTERVAL, // tx_intv
-//  DEFAULT_DFCW_OFFSET, // dfcw_offset
-//  DEFAULT_CUR_BUFFER, // buffer
-//  DEFAULT_CALLSIGN, // callsign
-//  DEFAULT_GRID, // grid
-//  DEFAULT_POWER, // power
-//  DEFAULT_PA_BIAS, // pa_bias
-//  DEFAULT_CWID, // cwid
-//  DEFAULT_MSG_1, // msg_buffer_1
-//  DEFAULT_MSG_2, // msg_buffer_2
-//  DEFAULT_MSG_3, // msg_buffer_3
-//  DEFAULT_MSG_4, // msg_buffer_4
-//  DEFAULT_SI5351_INT_CORR // si5351_int_corr
-//};
+boolean disable_display_loop = false;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -443,6 +425,8 @@ void initMenu()
     menu.addChild(label, setConfig, key);
     //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
   }
+  menu.selectParent();
+  menu.addChild("Reset", resetConfig, 0);
   menu.selectParent();
   //menu.addChild("Menu");
   menu.selectRoot();
@@ -633,7 +617,10 @@ void selectMode(uint8_t sel)
       break;
   }
   serializeConfig();
-  setNextTx(cur_config.tx_intv);
+  if(next_tx != UINT32_MAX)
+  {
+    setNextTx(cur_config.tx_intv);
+  }
   yield();
 }
 
@@ -754,6 +741,114 @@ void setConfig(const char * key, const char * label)
   }
 }
 
+void resetConfig(const uint8_t x)
+{
+  disable_display_loop = true;
+  
+  // TODO: get confirmation
+  u8g2.clearBuffer();
+  u8g2.setDrawColor(1);
+  u8g2.setFont(u8g2_font_6x10_mr);
+  u8g2.drawStr(64 - u8g2.getStrWidth("Reset Configuration?") / 2, 10, "Reset Configuration?");
+  u8g2.drawStr(6, 29, "OK");
+  u8g2.drawStr(80, 29, "Cancel");
+  u8g2.sendBuffer();
+  delay(500);
+  while (digitalRead(BTN_DSP_1) == LOW || digitalRead(BTN_DSP_2) == LOW)
+  {
+  }
+  delay(50);
+  
+  while (digitalRead(BTN_DSP_1) == HIGH && digitalRead(BTN_DSP_2) == HIGH)
+  {
+    delay(50);
+  }
+  if (digitalRead(BTN_DSP_2) == LOW)
+  {
+    delay(50);
+    if (digitalRead(BTN_DSP_2) == LOW)
+    {
+      disable_display_loop = false;
+      return;
+    }
+  }
+  else if (digitalRead(BTN_DSP_1) == LOW)
+  {
+    delay(50);
+    if (digitalRead(BTN_DSP_1) == LOW)
+    {
+      // Display wait message
+      u8g2.clearBuffer();
+      u8g2.setDrawColor(1);
+      u8g2.setFont(u8g2_font_6x10_mr);
+      u8g2.drawStr(64 - u8g2.getStrWidth("Resetting.") / 2, 10, "Resetting.");
+      u8g2.drawStr(64 - u8g2.getStrWidth("Please wait...") / 2, 25, "Please wait...");
+      u8g2.sendBuffer();
+
+      #ifdef EXT_EEPROM
+      // Erase EEPROM
+      eraseEEPROM();
+      #endif
+      
+      // Load default values into config
+      char temp_str[81];
+      cur_config.valid = true;
+      cur_config.version = CONFIG_SCHEMA_VERSION;
+      cur_config.mode = DEFAULT_MODE;
+      cur_config.band = DEFAULT_BAND_INDEX;
+      cur_config.wpm = DEFAULT_WPM;
+      cur_config.tx_intv = DEFAULT_TX_INTERVAL;
+      cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
+      cur_config.buffer = DEFAULT_CUR_BUFFER;
+      strcpy(cur_config.callsign, DEFAULT_CALLSIGN);
+      strcpy(cur_config.grid, DEFAULT_GRID);
+      cur_config.power = DEFAULT_POWER;
+      cur_config.pa_bias = DEFAULT_PA_BIAS;
+      cur_config.cwid = DEFAULT_CWID;
+      strcpy(cur_config.msg_buffer_1, DEFAULT_MSG_1);
+      strcpy(cur_config.msg_buffer_2, DEFAULT_MSG_2);
+      strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
+      strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
+      cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+      mode = cur_config.mode;
+      strcpy(msg_buffer_1, cur_config.msg_buffer_1);
+      strcpy(msg_buffer_2, cur_config.msg_buffer_2);
+      strcpy(msg_buffer_3, cur_config.msg_buffer_3);
+      strcpy(msg_buffer_4, cur_config.msg_buffer_4);
+      cur_buffer = cur_config.buffer;
+      selectBuffer(cur_buffer);
+      cur_tone_spacing = cur_config.dfcw_offset;
+      sprintf(temp_str, "U%lu", cur_config.pa_bias);
+      settings["pa_bias"].second = std::string(temp_str);
+      sprintf(temp_str, "S%s", cur_config.callsign);
+      settings["callsign"].second = std::string(temp_str);
+      sprintf(temp_str, "S%s", cur_config.grid);
+      settings["grid"].second = std::string(temp_str);
+      sprintf(temp_str, "U%lu", cur_config.power);
+      settings["power"].second = std::string(temp_str);
+      sprintf(temp_str, "U%lu", cur_config.tx_intv);
+      settings["tx_intv"].second = std::string(temp_str);
+      sprintf(temp_str, "U%lu", cur_config.wpm);
+      settings["wpm"].second = std::string(temp_str);
+      if(cur_config.cwid)
+      {
+        settings["cwid"].second = "B1";
+      }
+      else
+      {
+        settings["cwid"].second = "B0";
+      }
+    
+      // Save config to EEPROM
+      serializeConfig();
+    }
+  }
+
+  disable_display_loop = false;
+}
+
+// ===== Main routines =====
+
 void drawOLED()
 {
   static char temp_str[8];
@@ -769,484 +864,497 @@ void drawOLED()
   char menu_2[16];
   uint8_t menu_1_x, menu_2_x;
 
-// u8g2 draw loop
-  // --------------
-  u8g2.clearBuffer();          // clear the internal memory
+  yield();
 
-  if(display_mode == DisplayMode::Main || display_mode == DisplayMode::Menu)
+  if(!disable_display_loop)
   {
-    u8g2.setFont(u8g2_font_logisoso16_tn);
-    //yield();
-    u8g2.setDrawColor(1);
-    //u8g2.setFont(u8g2_font_inb19_mn);
+    // u8g2 draw loop
+    // --------------
+    u8g2.clearBuffer();          // clear the internal memory
   
-    // MHz
-    yield(); // you need an odd number of yields or you get a strange bimodal distribution
-             // of transmit times, with half being too long
-    freq = base_frequency;
-
-    if(base_frequency / 1000000UL > 0)
+    if(display_mode == DisplayMode::Main || display_mode == DisplayMode::Menu)
     {
-      sprintf(temp_str, "%3lu", freq / 1000000UL);
-      zero_pad = 1;
-    }
-    else
-    {
-      sprintf(temp_str, "   ");
-      //u8g2.drawStr(0, 17, temp_str);
-    }
-    yield();
-    // We do this because the desired font isn't quite monospaced :-/
-    for(uint8_t i = 0; i < 3; ++i)
-    {
-      //memmove(temp_chr, temp_str + i, 1);
-      sprintf(temp_chr, "%c", temp_str[i]);
-      yield();
-      u8g2.drawStr(i * 9, 17, temp_chr);
-      yield();
-    }
-    freq %= 1000000UL;
+      u8g2.setFont(u8g2_font_logisoso16_tn);
+      //yield();
+      u8g2.setDrawColor(1);
+      //u8g2.setFont(u8g2_font_inb19_mn);
     
-    // kHz
-    yield();
-    if(zero_pad == 1)
-    {
-      sprintf(temp_str, "%03lu", freq / 1000UL);
-    }
-    else if(freq / 1000UL > 0)
-    {
-      sprintf(temp_str, "%3lu", freq / 1000UL);
-      zero_pad = 1;
-    }
-    else
-    {
-      sprintf(temp_str, "   ");
-    }
-    yield();
-    for(uint8_t i = 0; i < 3; ++i)
-    {
-      //memmove(temp_chr, temp_str + i, 1);
-      sprintf(temp_chr, "%c", temp_str[i]);
-      yield();
-      u8g2.drawStr(i * 9 + 29, 17, temp_chr);
-      yield();
-    }
-    freq %= 1000UL;
-    
-    // Hz
-    yield();
-    if(zero_pad == 1)
-    {
-      sprintf(temp_str, "%03lu", freq);
-    }
-    else
-    {
-      sprintf(temp_str, "%3lu", freq);
-    }
-    yield();
-    for(uint8_t i = 0; i < 3; ++i)
-    {
-      //memmove(temp_chr, temp_str + i, 1);
-      sprintf(temp_chr, "%c", temp_str[i]);
-      yield();
-      u8g2.drawStr(i * 9 + 58, 17, temp_chr);
-      yield();
-    }
-    
-    // Indicate step size
-    switch(tune_step)
-    {
-    case 5:
-      underline = 29;
-      break;
-    case 4:
-      underline = 38;
-      break;
-    case 3:
-      underline = 47;
-      break;
-    case 2:
-      underline = 59;
-      break;
-    case 1:
-      underline = 68;
-      break;
-    case 0:
-      underline = 77;
-      break;
-    }
-
-    //yield();
+      // MHz
+      yield(); // you need an odd number of yields or you get a strange bimodal distribution
+               // of transmit times, with half being too long
+      freq = base_frequency;
   
-    // Draw step size indicator
-    u8g2.drawBox(underline, 18, 9, 2);
-  
-    // Draw Hz
-    //u8g2.setFont(u8g2_font_5x8_mr);
-  //  u8g2.drawStr(120, 20, "Hz");
-  
-    // Draw ADC
-    //u8g2.setFont(u8g2_font_5x8_mr);
-  //  sprintf(temp_str, "%u %u", band_id, band_index);
-  //  u8g2.drawStr(90, 10, temp_str);
-  
-    // Draw clock
-    yield();
-    //u8g2.setFont(u8g2_font_6x10_mr);
-    u8g2.setFont(u8g2_font_5x7_tn);
-    sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
-      rtc.getMinutes(), rtc.getSeconds());
-    yield();
-    u8g2.drawStr(88, 6, temp_str);
-  
-    // Draw mode
-    yield();
-    u8g2.setFont(u8g2_font_6x10_mr);
-    sprintf(temp_str, "%s", mode_table[static_cast<uint8_t>(mode)].mode_name);
-    u8g2.drawStr(87, 15, temp_str);
-    yield();
-  
-    // Draw index
-    //sprintf(temp_str, "%s", settings["Callsign"].c_str());
-//    sprintf(temp_str, "%s", cur_setting.c_str());
-//    u8g2.drawStr(87, 15, temp_str);
-
-    // Draw key
-//    sprintf(temp_str, "%s", settings["PA Bias"].first.c_str());
-//    u8g2.drawStr(87, 15, temp_str);
-
-    // Draw timer and next event
-//    sprintf(temp_str, "%lu", cur_timer);
-//    u8g2.drawStr(0, 30, temp_str);
-//    sprintf(temp_str, "%lu", next_event);
-//    u8g2.drawStr(50, 30, temp_str);
-//    sprintf(temp_str, "%i", RTC->MODE2.FREQCORR.reg);
-//    u8g2.drawStr(0, 30, temp_str);
-//    sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
-//    u8g2.drawStr(100, 30, temp_str);
-
-//    sprintf(temp_str, "%u", cur_symbol);
-//    u8g2.drawStr(111, 15, temp_str);
-//    sprintf(temp_str, "%u", morse.tx);
-//    u8g2.drawStr(122, 15, temp_str);
-    
-//      for(uint8_t i = 0; i < 18; ++i)
-//      {
-//        sprintf(temp_str, "%u", mfsk_buffer[i]);
-//        u8g2.drawStr(i * 6, 30, temp_str);
-//      }
-//    sprintf(temp_str, "%lu", rtc.getEpoch());
-//    u8g2.drawStr(0, 30, temp_str);
-//    sprintf(temp_str, "%lu", next_time_sync);
-//    u8g2.drawStr(66, 30, temp_str);
-
-
-    // Draw band ID
-//    sprintf(temp_str, "%lu", band_id);
-//    u8g2.drawStr(0, 30, temp_str);
-
-    // Draw callsign
-    //sprintf(temp_str, "%s", settings["Callsign"].substr(1).c_str());
-    //sprintf(temp_str, "%s", settings["Grid"].substr(1).c_str());
-//    sprintf(temp_str, "%s", settings["Power"].substr(1).c_str());
-//    u8g2.drawStr(26, 30, temp_str);
-    
-  
-    // Draw TX lock
-//    if(tx_lock)
-//    {
-//      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
-//    }
-  }
-  else if (display_mode == DisplayMode::Setting) // Draw settings menu
-  {
-    // Draw setting name
-    u8g2.setFont(u8g2_font_6x10_mr);
-    sprintf(temp_str, "%s", cur_setting_label.c_str());
-    u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
-
-    //const char* setting_val = cur_setting_str.c_str();
-
-//    switch(cur_setting_type)
-//    {
-//    case SettingType::Uint:
-//      sprintf(temp_str, "%lu", cur_setting_uint);
-//      break;
-//    case SettingType::Int:
-//      sprintf(temp_str, "%l", cur_setting_int);
-//      break;
-//    case SettingType::Str:
-////      if(cur_setting_selected > 10)
-////      {
-////        setting_val += cur_setting_selected - 10;
-////      }
-//      //sprintf(temp_str, "%s", cur_setting_str.c_str());
-//      sprintf(temp_str, "%s", settings[cur_setting].c_str());
-////      SerialUSB.print("\v");
-////      SerialUSB.println(temp_str);
-//      //sprintf(temp_str, "%s", setting_val);
-//      break;
-//    }
-
-    uint8_t str_x;
-
-    switch(settings[cur_setting_key].second[0])
-    {
-    case 'U':
-      sprintf(temp_str, "%lu", cur_setting_uint);
-      str_x = 61 - (num_digits(cur_setting_uint) * SETTING_FONT_WIDTH) + ((cur_setting_selected + 1) * SETTING_FONT_WIDTH);
-      break;
-    case 'I':
-      sprintf(temp_str, "%l", cur_setting_int);
-      str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
-      break;
-    case 'B':
-      if(cur_setting_bool)
+      if(base_frequency / 1000000UL > 0)
       {
-        sprintf(temp_str, "On");
-        str_x = 61;
+        sprintf(temp_str, "%3lu", freq / 1000000UL);
+        zero_pad = 1;
       }
       else
       {
-        sprintf(temp_str, "Off");
-        str_x = 61;
+        sprintf(temp_str, "   ");
+        //u8g2.drawStr(0, 17, temp_str);
       }
-      break;
-    case 'S':
-//      if(cur_setting_selected > 10)
-//      {
-//        setting_val += cur_setting_selected - 10;
-//      }
+      yield();
+      // We do this because the desired font isn't quite monospaced :-/
+      for(uint8_t i = 0; i < 3; ++i)
+      {
+        //memmove(temp_chr, temp_str + i, 1);
+        sprintf(temp_chr, "%c", temp_str[i]);
+        yield();
+        u8g2.drawStr(i * 9, 17, temp_chr);
+        yield();
+      }
+      freq %= 1000000UL;
+      
+      // kHz
+      yield();
+      if(zero_pad == 1)
+      {
+        sprintf(temp_str, "%03lu", freq / 1000UL);
+      }
+      else if(freq / 1000UL > 0)
+      {
+        sprintf(temp_str, "%3lu", freq / 1000UL);
+        zero_pad = 1;
+      }
+      else
+      {
+        sprintf(temp_str, "   ");
+      }
+      yield();
+      for(uint8_t i = 0; i < 3; ++i)
+      {
+        //memmove(temp_chr, temp_str + i, 1);
+        sprintf(temp_chr, "%c", temp_str[i]);
+        yield();
+        u8g2.drawStr(i * 9 + 29, 17, temp_chr);
+        yield();
+      }
+      freq %= 1000UL;
+      
+      // Hz
+      yield();
+      if(zero_pad == 1)
+      {
+        sprintf(temp_str, "%03lu", freq);
+      }
+      else
+      {
+        sprintf(temp_str, "%3lu", freq);
+      }
+      yield();
+      for(uint8_t i = 0; i < 3; ++i)
+      {
+        //memmove(temp_chr, temp_str + i, 1);
+        sprintf(temp_chr, "%c", temp_str[i]);
+        yield();
+        u8g2.drawStr(i * 9 + 58, 17, temp_chr);
+        yield();
+      }
+      
+      // Indicate step size
+      switch(tune_step)
+      {
+      case 5:
+        underline = 29;
+        break;
+      case 4:
+        underline = 38;
+        break;
+      case 3:
+        underline = 47;
+        break;
+      case 2:
+        underline = 59;
+        break;
+      case 1:
+        underline = 68;
+        break;
+      case 0:
+        underline = 77;
+        break;
+      }
+  
+      //yield();
+    
+      // Draw step size indicator
+      u8g2.drawBox(underline, 18, 9, 2);
+    
+      // Draw Hz
+      //u8g2.setFont(u8g2_font_5x8_mr);
+    //  u8g2.drawStr(120, 20, "Hz");
+    
+      // Draw ADC
+      //u8g2.setFont(u8g2_font_5x8_mr);
+    //  sprintf(temp_str, "%u %u", band_id, band_index);
+    //  u8g2.drawStr(90, 10, temp_str);
+    
+      // Draw clock
+      yield();
+      //u8g2.setFont(u8g2_font_6x10_mr);
+      u8g2.setFont(u8g2_font_5x7_tn);
+      sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
+        rtc.getMinutes(), rtc.getSeconds());
+      yield();
+      u8g2.drawStr(88, 6, temp_str);
+    
+      // Draw mode
+      yield();
+      u8g2.setFont(u8g2_font_6x10_mr);
+      sprintf(temp_str, "%s", mode_table[static_cast<uint8_t>(mode)].mode_name);
+      u8g2.drawStr(87, 15, temp_str);
+      yield();
+    
+      // Draw index
+      //sprintf(temp_str, "%s", settings["Callsign"].c_str());
+  //    sprintf(temp_str, "%s", cur_setting.c_str());
+  //    u8g2.drawStr(87, 15, temp_str);
+  
+      // Draw key
+  //    sprintf(temp_str, "%s", settings["PA Bias"].first.c_str());
+  //    u8g2.drawStr(87, 15, temp_str);
+  
+      // Draw timer and next event
+  //    sprintf(temp_str, "%lu", cur_timer);
+  //    u8g2.drawStr(0, 30, temp_str);
+  //    sprintf(temp_str, "%lu", next_event);
+  //    u8g2.drawStr(50, 30, temp_str);
+  //    sprintf(temp_str, "%i", RTC->MODE2.FREQCORR.reg);
+  //    u8g2.drawStr(0, 30, temp_str);
+  //    sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
+  //    u8g2.drawStr(100, 30, temp_str);
+  
+  //    sprintf(temp_str, "%u", cur_symbol);
+  //    u8g2.drawStr(111, 15, temp_str);
+  //    sprintf(temp_str, "%u", morse.tx);
+  //    u8g2.drawStr(122, 15, temp_str);
+      
+  //      for(uint8_t i = 0; i < 18; ++i)
+  //      {
+  //        sprintf(temp_str, "%u", mfsk_buffer[i]);
+  //        u8g2.drawStr(i * 6, 30, temp_str);
+  //      }
+  //    sprintf(temp_str, "%lu", rtc.getEpoch());
+  //    u8g2.drawStr(0, 30, temp_str);
+  //    sprintf(temp_str, "%lu", next_time_sync);
+  //    u8g2.drawStr(66, 30, temp_str);
+  
+  
+      // Draw band ID
+  //    sprintf(temp_str, "%lu", band_id);
+  //    u8g2.drawStr(0, 30, temp_str);
+  
+      // Draw callsign
+      //sprintf(temp_str, "%s", settings["Callsign"].substr(1).c_str());
+      //sprintf(temp_str, "%s", settings["Grid"].substr(1).c_str());
+  //    sprintf(temp_str, "%s", settings["Power"].substr(1).c_str());
+  //    u8g2.drawStr(26, 30, temp_str);
+      
+    
+      // Draw TX lock
+  //    if(tx_lock)
+  //    {
+  //      u8g2.drawXBM(120, 8, 8, 8, lock_bits);
+  //    }
+    }
+    else if (display_mode == DisplayMode::Setting) // Draw settings menu
+    {
+      // Draw setting name
+      u8g2.setFont(u8g2_font_6x10_mr);
+      sprintf(temp_str, "%s", cur_setting_label.c_str());
+      u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
+  
+      //const char* setting_val = cur_setting_str.c_str();
+  
+  //    switch(cur_setting_type)
+  //    {
+  //    case SettingType::Uint:
+  //      sprintf(temp_str, "%lu", cur_setting_uint);
+  //      break;
+  //    case SettingType::Int:
+  //      sprintf(temp_str, "%l", cur_setting_int);
+  //      break;
+  //    case SettingType::Str:
+  ////      if(cur_setting_selected > 10)
+  ////      {
+  ////        setting_val += cur_setting_selected - 10;
+  ////      }
+  //      //sprintf(temp_str, "%s", cur_setting_str.c_str());
+  //      sprintf(temp_str, "%s", settings[cur_setting].c_str());
+  ////      SerialUSB.print("\v");
+  ////      SerialUSB.println(temp_str);
+  //      //sprintf(temp_str, "%s", setting_val);
+  //      break;
+  //    }
+  
+      uint8_t str_x;
+  
+      switch(settings[cur_setting_key].second[0])
+      {
+      case 'U':
+        sprintf(temp_str, "%lu", cur_setting_uint);
+        str_x = 61 - (num_digits(cur_setting_uint) * SETTING_FONT_WIDTH) + ((cur_setting_selected + 1) * SETTING_FONT_WIDTH);
+        break;
+      case 'I':
+        sprintf(temp_str, "%l", cur_setting_int);
+        str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
+        break;
+      case 'B':
+        if(cur_setting_bool)
+        {
+          sprintf(temp_str, "On");
+          str_x = 61;
+        }
+        else
+        {
+          sprintf(temp_str, "Off");
+          str_x = 61;
+        }
+        break;
+      case 'S':
+  //      if(cur_setting_selected > 10)
+  //      {
+  //        setting_val += cur_setting_selected - 10;
+  //      }
+        sprintf(temp_str, "%s<", cur_setting_str.c_str());
+        str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
+        //sprintf(temp_str, "%s", settings[cur_setting].c_str());
+  //      SerialUSB.print("\v");
+  //      SerialUSB.println(temp_str);
+        //sprintf(temp_str, "%s", setting_val);
+        break;
+      }
+  
+      cur_setting_len = strlen(temp_str) - 1;
+  
+      // Put active digit/char at X pos 61
+  //    uint8_t str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
+  //    uint8_t str_x = 61 - ((cur_setting_selected - 1 - cur_setting_len) * SETTING_FONT_WIDTH);
+      
+      //uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
+      //u8g2.setDrawColor(0);
+      u8g2.drawStr(str_x, 20, temp_str);
+      //u8g2.setDrawColor(1);
+  
+      cur_setting_char = cur_setting_str[cur_setting_selected];
+  
+      // Find char in allowable list
+  //    std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+  //    if(pos != std::string::npos)
+  //    {
+  //      cur_setting_index = pos;
+  //    }
+  
+      // debugging stuff
+  //    sprintf(temp_str, "%d", cur_setting_selected);
+  //    u8g2.drawStr(0, 10, temp_str);
+  //    sprintf(temp_str, "%c", cur_setting_char);
+  //    u8g2.drawStr(20, 10, temp_str);
+  //    sprintf(temp_str, "%d", cur_setting_index);
+  //    u8g2.drawStr(90, 10, temp_str);
+  //    sprintf(temp_str, "%d", cur_setting_type);
+  //    u8g2.drawStr(110, 10, temp_str);
+      
+  
+      // Underline the current setting selection
+      u8g2.drawLine(60, 21, 66, 21);
+    }
+    else // Draw buffer menu
+    {
+      uint8_t str_x;
+  
+      // Draw buffer name
+      u8g2.setFont(u8g2_font_6x10_mr);
+      sprintf(temp_str, "Buffer %d", cur_edit_buffer);
+      u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
+      
       sprintf(temp_str, "%s<", cur_setting_str.c_str());
       str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
-      //sprintf(temp_str, "%s", settings[cur_setting].c_str());
-//      SerialUSB.print("\v");
-//      SerialUSB.println(temp_str);
-      //sprintf(temp_str, "%s", setting_val);
-      break;
-    }
-
-    cur_setting_len = strlen(temp_str) - 1;
-
-    // Put active digit/char at X pos 61
-//    uint8_t str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
-//    uint8_t str_x = 61 - ((cur_setting_selected - 1 - cur_setting_len) * SETTING_FONT_WIDTH);
-    
-    //uint8_t str_x = (cur_setting_selected * SETTING_FONT_WIDTH > 60 ? 0 : 60 - cur_setting_selected * SETTING_FONT_WIDTH);
-    //u8g2.setDrawColor(0);
-    u8g2.drawStr(str_x, 20, temp_str);
-    //u8g2.setDrawColor(1);
-
-    cur_setting_char = cur_setting_str[cur_setting_selected];
-
-    // Find char in allowable list
-//    std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-//    if(pos != std::string::npos)
-//    {
-//      cur_setting_index = pos;
-//    }
-
-    // debugging stuff
-//    sprintf(temp_str, "%d", cur_setting_selected);
-//    u8g2.drawStr(0, 10, temp_str);
-//    sprintf(temp_str, "%c", cur_setting_char);
-//    u8g2.drawStr(20, 10, temp_str);
-//    sprintf(temp_str, "%d", cur_setting_index);
-//    u8g2.drawStr(90, 10, temp_str);
-//    sprintf(temp_str, "%d", cur_setting_type);
-//    u8g2.drawStr(110, 10, temp_str);
-    
-
-    // Underline the current setting selection
-    u8g2.drawLine(60, 21, 66, 21);
-  }
-  else // Draw buffer menu
-  {
-    uint8_t str_x;
-
-    // Draw buffer name
-    u8g2.setFont(u8g2_font_6x10_mr);
-    sprintf(temp_str, "Buffer %d", cur_edit_buffer);
-    u8g2.drawStr(64 - u8g2.getStrWidth(temp_str) / 2, 10, temp_str);
-    
-    sprintf(temp_str, "%s<", cur_setting_str.c_str());
-    str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
-    cur_setting_len = strlen(temp_str) - 1;
-    u8g2.drawStr(str_x, 20, temp_str);
-
-    // Underline the current setting selection
-    u8g2.drawLine(60, 21, 66, 21);
-
-    // debugging stuff
-//    sprintf(temp_str, "%d", cur_edit_buffer);
-//    u8g2.drawStr(0, 10, temp_str);
-  }
-
-  //yield();
-
-  // Draw buffer or menu items
+      cur_setting_len = strlen(temp_str) - 1;
+      u8g2.drawStr(str_x, 20, temp_str);
   
-  // Arrows
-  constexpr uint8_t triangle_top = 21;
-  constexpr uint8_t triangle_bottom = 30;
-  constexpr uint8_t triangle_center = 26;
-  constexpr uint8_t left_triangle_left = 0;
-  constexpr uint8_t left_triangle_right = 4;
-  constexpr uint8_t right_triangle_left = 110;
-  constexpr uint8_t right_triangle_right = 115;
-    
-  if(display_mode == DisplayMode::Menu)
-  {
-    // Menu items
-    sprintf(menu_1, "%s", menu.getActiveChildLabel());
-    sprintf(menu_2, "%s", menu.getActiveChildLabel(1));
-    menu_1_x = 6;
-    menu_2_x = 58;
-    u8g2.setFont(u8g2_font_6x10_mf);
-    //u8g2.setDrawColor(0);
-    u8g2.drawStr(menu_1_x, 30, menu_1);
-    u8g2.drawStr(menu_2_x, 30, menu_2);
-    
-    if(menu.countChildren() > 2)
-    {
-      u8g2.drawTriangle(left_triangle_right, triangle_top,
-        left_triangle_right, triangle_bottom, 
-        left_triangle_left, triangle_center);
-      u8g2.drawTriangle(right_triangle_left, triangle_top,
-        right_triangle_left, triangle_bottom, 
-        right_triangle_right, triangle_center);
+      // Underline the current setting selection
+      u8g2.drawLine(60, 21, 66, 21);
+  
+      // debugging stuff
+  //    sprintf(temp_str, "%d", cur_edit_buffer);
+  //    u8g2.drawStr(0, 10, temp_str);
     }
+  
+    //yield();
+  
+    // Draw buffer or menu items
     
-    // Back icon
-    u8g2.setFont(u8g2_font_m2icon_9_tf);
-    u8g2.drawGlyph(118, 31, 0x0061);
-  }
-  else if(display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-  {
-    if(ins_del_mode)
+    // Arrows
+    constexpr uint8_t triangle_top = 21;
+    constexpr uint8_t triangle_bottom = 30;
+    constexpr uint8_t triangle_center = 26;
+    constexpr uint8_t left_triangle_left = 0;
+    constexpr uint8_t left_triangle_right = 4;
+    constexpr uint8_t right_triangle_left = 110;
+    constexpr uint8_t right_triangle_right = 115;
+      
+    if(display_mode == DisplayMode::Menu)
     {
-      sprintf(menu_1, "%s", "Ins");
-      sprintf(menu_2, "%s", "Del");
-    }
-    else
-    {
-      if (cur_setting_type == SettingType::Str)
+      // Menu items
+      sprintf(menu_1, "%s", menu.getActiveChildLabel());
+      sprintf(menu_2, "%s", menu.getActiveChildLabel(1));
+      menu_1_x = 6;
+      menu_2_x = 58;
+      u8g2.setFont(u8g2_font_6x10_mf);
+      //u8g2.setDrawColor(0);
+      u8g2.drawStr(menu_1_x, 30, menu_1);
+      u8g2.drawStr(menu_2_x, 30, menu_2);
+      
+      if(menu.countChildren() > 2)
       {
-        sprintf(menu_1, "%s", "Ins/Del");
+        u8g2.drawTriangle(left_triangle_right, triangle_top,
+          left_triangle_right, triangle_bottom, 
+          left_triangle_left, triangle_center);
+        u8g2.drawTriangle(right_triangle_left, triangle_top,
+          right_triangle_left, triangle_bottom, 
+          right_triangle_right, triangle_center);
+      }
+      
+      // Back icon
+      u8g2.setFont(u8g2_font_m2icon_9_tf);
+      u8g2.drawGlyph(118, 31, 0x0061);
+    }
+    else if(display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+    {
+      if(ins_del_mode)
+      {
+        sprintf(menu_1, "%s", "Ins");
+        sprintf(menu_2, "%s", "Del");
       }
       else
       {
-        sprintf(menu_1, "%s", "");
+        if (cur_setting_type == SettingType::Str)
+        {
+          sprintf(menu_1, "%s", "Ins/Del");
+        }
+        else
+        {
+          sprintf(menu_1, "%s", "");
+        }
+        sprintf(menu_2, "%s", "OK");
       }
-      sprintf(menu_2, "%s", "OK");
+      menu_1_x = 6;
+      menu_2_x = 80;
+      u8g2.setFont(u8g2_font_6x10_mf);
+      u8g2.drawStr(menu_1_x, 29, menu_1);
+      u8g2.drawStr(menu_2_x, 29, menu_2);
+  
+      // Back icon
+      u8g2.setFont(u8g2_font_m2icon_9_tf);
+      u8g2.drawGlyph(118, 30, 0x0061);
     }
-    menu_1_x = 6;
-    menu_2_x = 80;
-    u8g2.setFont(u8g2_font_6x10_mf);
-    u8g2.drawStr(menu_1_x, 29, menu_1);
-    u8g2.drawStr(menu_2_x, 29, menu_2);
-
-    // Back icon
-    u8g2.setFont(u8g2_font_m2icon_9_tf);
-    u8g2.drawGlyph(118, 30, 0x0061);
-  }
-  else // Show the current buffer
-  {
-    // Draw buffer contents if transmitting
-    if(cur_state != TxState::Idle)
+    else // Show the current buffer
     {
-      char buffer_str[81];
-      //std::string wspr_buffer;
+      // Draw buffer contents if transmitting
+      if(cur_state != TxState::Idle)
+      {
+        char buffer_str[81];
+        //std::string wspr_buffer;
+        yield();
+        
+        switch(mode)
+        {
+        case Mode::DFCW3:
+        case Mode::DFCW6:
+        case Mode::DFCW10:
+        case Mode::DFCW120:
+        case Mode::QRSS3:
+        case Mode::QRSS6:
+        case Mode::QRSS10:
+        case Mode::QRSS120:
+        case Mode::CW:
+        case Mode::HELL:
+          if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+          {
+            sprintf(buffer_str, "CWID:%s", cur_config.callsign);
+          }
+          else
+          {
+            sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+          }
+          break;
+          
+        case Mode::WSPR:
+          if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+          {
+            sprintf(buffer_str, "CWID:%s", cur_config.callsign);
+          }
+          else
+          {
+            sprintf(buffer_str, "%s", wspr_buffer);
+          }
+          break;
+          
+        case Mode::JT65:
+        case Mode::JT9:
+        case Mode::JT4:
+          sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+          break;
+        }
+  
+        //yield();
+        u8g2.drawStr(0, 30, buffer_str);
+      }
+      else // otherwise show TX enb/dis
+      {
+        if(tx_enable)
+        {
+          u8g2.setDrawColor(0);
+          u8g2.drawStr(0, 29, "TX Dis");
+          u8g2.setDrawColor(1);
+          u8g2.drawStr(45, 29, next_tx_time);
+        }
+        else
+        {
+          u8g2.setDrawColor(0);
+          u8g2.drawStr(0, 29, "TX Enb");
+          u8g2.setDrawColor(1);
+        }
+      }
       yield();
       
-      switch(mode)
-      {
-      case Mode::DFCW3:
-      case Mode::DFCW6:
-      case Mode::DFCW10:
-      case Mode::DFCW120:
-      case Mode::QRSS3:
-      case Mode::QRSS6:
-      case Mode::QRSS10:
-      case Mode::QRSS120:
-      case Mode::CW:
-      case Mode::HELL:
-        if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
-        {
-          sprintf(buffer_str, "CWID:%s", cur_config.callsign);
-        }
-        else
-        {
-          sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
-        }
-        break;
-        
-      case Mode::WSPR:
-        if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
-        {
-          sprintf(buffer_str, "CWID:%s", cur_config.callsign);
-        }
-        else
-        {
-          sprintf(buffer_str, "%s", wspr_buffer);
-        }
-        break;
-        
-      case Mode::JT65:
-      case Mode::JT9:
-      case Mode::JT4:
-        sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
-        break;
-      }
-
+      // Menu icon
       //yield();
-      u8g2.drawStr(0, 30, buffer_str);
-    }
-    else // otherwise show TX enb/dis
-    {
-      if(tx_enable)
+      if(cur_state == TxState::Idle)
       {
-        u8g2.setDrawColor(0);
-        u8g2.drawStr(0, 29, "TX Dis");
-        u8g2.setDrawColor(1);
-        u8g2.drawStr(45, 29, next_tx_time);
+        u8g2.setFont(u8g2_font_m2icon_9_tf);
+        u8g2.drawGlyph(121, 30, 0x0042);
       }
       else
       {
-        u8g2.setDrawColor(0);
-        u8g2.drawStr(0, 29, "TX Enb");
-        u8g2.setDrawColor(1);
+        u8g2.setFont(u8g2_font_m2icon_9_tf);
+        u8g2.drawGlyph(121, 30, 0x0043);
       }
     }
-    yield();
-    
-    // Menu icon
     //yield();
-    if(cur_state == TxState::Idle)
+  //  sprintf(menu_1, "%s", "DFCW");
+  //  sprintf(menu_2, "%s", "TX Enb");
+  //  menu_1_x = 32 - ((u8g2.getStrWidth(menu_1) / 2) > 32 ? 32 : u8g2.getStrWidth(menu_1) / 2);
+  //  menu_2_x = 96 - ((u8g2.getStrWidth(menu_2) / 2) > 32 ? 32 : u8g2.getStrWidth(menu_2) / 2);
+  //  
+  //  u8g2.setFont(u8g2_font_6x10_mr);
+  //  //u8g2.setDrawColor(0);
+  //  u8g2.drawStr(menu_1_x, 31, menu_1);
+  //  u8g2.drawStr(menu_2_x, 31, menu_2);
+  
+    yield();
+    if(disable_display_loop)
     {
-      u8g2.setFont(u8g2_font_m2icon_9_tf);
-      u8g2.drawGlyph(121, 30, 0x0042);
+      u8g2.clearBuffer();
     }
     else
     {
-      u8g2.setFont(u8g2_font_m2icon_9_tf);
-      u8g2.drawGlyph(121, 30, 0x0043);
+      u8g2.sendBuffer();          // transfer internal memory to the display
     }
+    //yield();
   }
-  //yield();
-//  sprintf(menu_1, "%s", "DFCW");
-//  sprintf(menu_2, "%s", "TX Enb");
-//  menu_1_x = 32 - ((u8g2.getStrWidth(menu_1) / 2) > 32 ? 32 : u8g2.getStrWidth(menu_1) / 2);
-//  menu_2_x = 96 - ((u8g2.getStrWidth(menu_2) / 2) > 32 ? 32 : u8g2.getStrWidth(menu_2) / 2);
-//  
-//  u8g2.setFont(u8g2_font_6x10_mr);
-//  //u8g2.setDrawColor(0);
-//  u8g2.drawStr(menu_1_x, 31, menu_1);
-//  u8g2.drawStr(menu_2_x, 31, menu_2);
-
   yield();
-  u8g2.sendBuffer();          // transfer internal memory to the display
-  //yield();
 }
 
 void pollButtons()
@@ -1254,553 +1362,556 @@ void pollButtons()
   // Read buttons
   // ------------
   yield();
-  // Handle up button
-  if (digitalRead(BTN_UP) == LOW)
+  if(!disable_display_loop)
   {
-    delay(50);   // delay to debounce
-    yield();
+    // Handle up button
     if (digitalRead(BTN_UP) == LOW)
     {
-      if (display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_UP) == LOW)
       {
-
-      }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        switch (cur_setting_type)
+        if (display_mode == DisplayMode::Menu)
         {
-          case SettingType::Uint:
-            if (cur_setting_uint + power_10(cur_setting_selected) < UINT64_MAX)
+  
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+              if (cur_setting_uint + power_10(cur_setting_selected) < UINT64_MAX)
+              {
+                cur_setting_uint += power_10(cur_setting_selected);
+              }
+              break;
+            case SettingType::Int:
+              ++cur_setting_int;
+              break;
+            case SettingType::Bool:
+              cur_setting_bool = !cur_setting_bool;
+              break;
+            case SettingType::Str:
+              if (cur_setting_index >= settings_str_chars.size() - 1)
+              {
+                cur_setting_index = 0;
+              }
+              else
+              {
+                cur_setting_index++;
+              }
+  
+              cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+              break;
+          }
+        }
+        else
+        {
+          //if(cur_state == TxState::Idle)
+          if (!tx_lock)
+          {
+            if (base_frequency + power_10(tune_step) > upper_freq_limit)
             {
-              cur_setting_uint += power_10(cur_setting_selected);
-            }
-            break;
-          case SettingType::Int:
-            ++cur_setting_int;
-            break;
-          case SettingType::Bool:
-            cur_setting_bool = !cur_setting_bool;
-            break;
-          case SettingType::Str:
-            if (cur_setting_index >= settings_str_chars.size() - 1)
-            {
-              cur_setting_index = 0;
+              base_frequency = upper_freq_limit;
             }
             else
             {
-              cur_setting_index++;
+              base_frequency += power_10(tune_step);
             }
-
-            cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-            break;
+          }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one;
       }
-      else
+    }
+  
+    // Handle down button
+    if (digitalRead(BTN_DOWN) == LOW)
+    {
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_DOWN) == LOW)
       {
-        //if(cur_state == TxState::Idle)
-        if (!tx_lock)
+        if (display_mode == DisplayMode::Menu)
         {
-          if (base_frequency + power_10(tune_step) > upper_freq_limit)
+  
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
           {
-            base_frequency = upper_freq_limit;
+            case SettingType::Uint:
+              if(cur_setting_uint >0)
+              {
+                if ((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
+                {
+                  cur_setting_uint -= power_10(cur_setting_selected);
+                }
+                if (num_digits(cur_setting_uint) - 1 < cur_setting_selected)
+                {
+                  --cur_setting_selected;
+                }
+              }
+              break;
+            case SettingType::Int:
+              --cur_setting_int;
+              break;
+            case SettingType::Bool:
+              cur_setting_bool = !cur_setting_bool;
+              break;
+            case SettingType::Str:
+              if (cur_setting_index == 0)
+              {
+                cur_setting_index = settings_str_chars.size() - 1;
+              }
+              else
+              {
+                cur_setting_index--;
+              }
+              cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+              break;
+          }
+        }
+        else
+        {
+          //if(cur_state == TxState::Idle)
+          if (!tx_lock)
+          {
+            if (base_frequency - power_10(tune_step) < lower_freq_limit)
+            {
+              base_frequency = lower_freq_limit;
+            }
+            else
+            {
+              base_frequency -= power_10(tune_step);
+            }
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
+    }
+  
+    // Handle left button
+    if (digitalRead(BTN_LEFT) == LOW)
+    {
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_LEFT) == LOW)
+      {
+        if (display_mode == DisplayMode::Menu)
+        {
+          if (menu.countChildren() > 2)
+          {
+            if (menu.active_child == 0 && menu.countChildren() % 2 == 1)
+            {
+              menu--;
+            }
+            else
+            {
+              menu--;
+              menu--;
+            }
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+            case SettingType::Int:
+              if (cur_setting_selected < num_digits(cur_setting_uint) - 1)
+              {
+                ++cur_setting_selected;
+              }
+              break;
+            case SettingType::Str:
+              if (cur_setting_selected > 0)
+              {
+                --cur_setting_selected;
+  
+                // Find char in allowable list
+                std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+                if (pos != std::string::npos)
+                {
+                  cur_setting_index = (uint8_t)pos;
+                  //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+                }
+              }
+              break;
+          }
+        }
+        else
+        {
+          if (tune_step < 5)
+          {
+            tune_step++;
           }
           else
           {
-            base_frequency += power_10(tune_step);
+            tune_step = 0;
           }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      yield();
-      delay(50); //delay to avoid many steps at one;
     }
-  }
-
-  // Handle down button
-  if (digitalRead(BTN_DOWN) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
-    if (digitalRead(BTN_DOWN) == LOW)
+  
+    // Handle right button
+    if (digitalRead(BTN_RIGHT) == LOW)
     {
-      if (display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_RIGHT) == LOW)
       {
-
-      }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        switch (cur_setting_type)
+        if (display_mode == DisplayMode::Menu)
         {
-          case SettingType::Uint:
-            if(cur_setting_uint >0)
+          if (menu.countChildren() > 2)
+          {
+            if (menu.active_child == menu.countChildren() - 1)
             {
-              if ((cur_setting_uint - power_10(cur_setting_selected)) >= 0)
-              {
-                cur_setting_uint -= power_10(cur_setting_selected);
-              }
-              if (num_digits(cur_setting_uint) - 1 < cur_setting_selected)
+              menu++;
+            }
+            else
+            {
+              menu++;
+              menu++;
+            }
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+            case SettingType::Int:
+              if (cur_setting_selected > 0)
               {
                 --cur_setting_selected;
               }
-            }
-            break;
-          case SettingType::Int:
-            --cur_setting_int;
-            break;
-          case SettingType::Bool:
-            cur_setting_bool = !cur_setting_bool;
-            break;
-          case SettingType::Str:
-            if (cur_setting_index == 0)
-            {
-              cur_setting_index = settings_str_chars.size() - 1;
-            }
-            else
-            {
-              cur_setting_index--;
-            }
-            cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-            break;
-        }
-      }
-      else
-      {
-        //if(cur_state == TxState::Idle)
-        if (!tx_lock)
-        {
-          if (base_frequency - power_10(tune_step) < lower_freq_limit)
-          {
-            base_frequency = lower_freq_limit;
-          }
-          else
-          {
-            base_frequency -= power_10(tune_step);
-          }
-        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
-    }
-  }
-
-  // Handle left button
-  if (digitalRead(BTN_LEFT) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
-    if (digitalRead(BTN_LEFT) == LOW)
-    {
-      if (display_mode == DisplayMode::Menu)
-      {
-        if (menu.countChildren() > 2)
-        {
-          if (menu.active_child == 0 && menu.countChildren() % 2 == 1)
-          {
-            menu--;
-          }
-          else
-          {
-            menu--;
-            menu--;
-          }
-        }
-      }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        switch (cur_setting_type)
-        {
-          case SettingType::Uint:
-          case SettingType::Int:
-            if (cur_setting_selected < num_digits(cur_setting_uint) - 1)
-            {
-              ++cur_setting_selected;
-            }
-            break;
-          case SettingType::Str:
-            if (cur_setting_selected > 0)
-            {
-              --cur_setting_selected;
-
-              // Find char in allowable list
-              std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-              if (pos != std::string::npos)
+              break;
+            case SettingType::Str:
+              if (cur_setting_selected < cur_setting_len - 1)
               {
-                cur_setting_index = (uint8_t)pos;
-                //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+                ++cur_setting_selected;
+                // Find char in allowable list
+                std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
+                if (pos != std::string::npos)
+                {
+                  cur_setting_index = (uint8_t)pos;
+                  //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
+                }
               }
-            }
-            break;
-        }
-      }
-      else
-      {
-        if (tune_step < 5)
-        {
-          tune_step++;
+              break;
+              //        case SettingType::Int:
+              //          --cur_setting_int;
+              //          break;
+              //        case SettingType::Str:
+              //          if(cur_setting_selected < cur_setting_str.size())
+              //          {
+              //            cur_setting_selected++;
+              //          }
+              //          break;
+          }
         }
         else
         {
-          tune_step = 0;
-        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
-    }
-  }
-
-  // Handle right button
-  if (digitalRead(BTN_RIGHT) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
-    if (digitalRead(BTN_RIGHT) == LOW)
-    {
-      if (display_mode == DisplayMode::Menu)
-      {
-        if (menu.countChildren() > 2)
-        {
-          if (menu.active_child == menu.countChildren() - 1)
+          if (tune_step == 0)
           {
-            menu++;
+            tune_step = 5;
           }
           else
           {
-            menu++;
-            menu++;
+            tune_step--;
           }
         }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        switch (cur_setting_type)
-        {
-          case SettingType::Uint:
-          case SettingType::Int:
-            if (cur_setting_selected > 0)
-            {
-              --cur_setting_selected;
-            }
-            break;
-          case SettingType::Str:
-            if (cur_setting_selected < cur_setting_len - 1)
-            {
-              ++cur_setting_selected;
-              // Find char in allowable list
-              std::size_t pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
-              if (pos != std::string::npos)
-              {
-                cur_setting_index = (uint8_t)pos;
-                //cur_setting_str[cur_setting_selected] = settings_str_chars[cur_setting_index];
-              }
-            }
-            break;
-            //        case SettingType::Int:
-            //          --cur_setting_int;
-            //          break;
-            //        case SettingType::Str:
-            //          if(cur_setting_selected < cur_setting_str.size())
-            //          {
-            //            cur_setting_selected++;
-            //          }
-            //          break;
-        }
-      }
-      else
-      {
-        if (tune_step == 0)
-        {
-          tune_step = 5;
-        }
-        else
-        {
-          tune_step--;
-        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
     }
-  }
-
-  // Handle display 1 button
-  if (digitalRead(BTN_DSP_1) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+  
+    // Handle display 1 button
     if (digitalRead(BTN_DSP_1) == LOW)
     {
-      if (display_mode == DisplayMode::Menu)
-      {
-        MenuType type = menu.selectChild(menu.active_child);
-        if (type == MenuType::Action)
-        {
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
-        }
-      }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        // INS/DEL button
-        if (ins_del_mode)
-        {
-          // Insert
-          cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-          cur_setting_index = settings_str_chars.length() - 1;
-        }
-        else
-        {
-          ins_del_mode = true;
-        }
-        //        switch(cur_setting_type)
-        //        {
-        //        case SettingType::Str:
-        //          // Loop here to see if a long or short press
-        //          // Short press == INS, long press == DEL
-        //          uint32_t btn_timer_end = cur_timer + 1000;
-        //          bool short_press = false;
-        //
-        //          while(cur_timer < btn_timer_end)
-        //          {
-        //            if(digitalRead(BTN_DSP_1) == HIGH)
-        //            {
-        //              // Insert a space
-        ////              cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-        ////              cur_setting_index = settings_str_chars.length() - 1;
-        //              short_press = true;
-        //              break;
-        //            }
-        //            yield();
-        //          }
-        //          // If we made it this far, the button was held down for 1 s,
-        //          // so do an DEL
-        ////          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
-        //          if(short_press)
-        //          {
-        //            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
-        //            cur_setting_index = settings_str_chars.length() - 1;
-        //          }
-        //          else
-        //          {
-        //            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
-        //            while(digitalRead(BTN_DSP_1) == LOW)
-        //            {
-        //              yield();
-        //            }
-        //          }
-        //          break;
-        //        }
-      }
-      else
-      {
-        if (tx_enable)
-        {
-          tx_enable = false;
-          next_tx = UINT32_MAX;
-        }
-        else
-        {
-          tx_enable = true;
-          // Re-compose the buffers to reflect changes
-          composeWSPRBuffer();
-//          composeMorseBuffer(cur_buffer);
-          selectBuffer(cur_buffer);
-          setNextTx(0);
-        }
-      }
+      delay(50);   // delay to debounce
       yield();
-      delay(50); //delay to avoid many steps at one
+      if (digitalRead(BTN_DSP_1) == LOW)
+      {
+        if (display_mode == DisplayMode::Menu)
+        {
+          MenuType type = menu.selectChild(menu.active_child);
+          if (type == MenuType::Action)
+          {
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          // INS/DEL button
+          if (ins_del_mode)
+          {
+            // Insert
+            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+            cur_setting_index = settings_str_chars.length() - 1;
+          }
+          else
+          {
+            ins_del_mode = true;
+          }
+          //        switch(cur_setting_type)
+          //        {
+          //        case SettingType::Str:
+          //          // Loop here to see if a long or short press
+          //          // Short press == INS, long press == DEL
+          //          uint32_t btn_timer_end = cur_timer + 1000;
+          //          bool short_press = false;
+          //
+          //          while(cur_timer < btn_timer_end)
+          //          {
+          //            if(digitalRead(BTN_DSP_1) == HIGH)
+          //            {
+          //              // Insert a space
+          ////              cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+          ////              cur_setting_index = settings_str_chars.length() - 1;
+          //              short_press = true;
+          //              break;
+          //            }
+          //            yield();
+          //          }
+          //          // If we made it this far, the button was held down for 1 s,
+          //          // so do an DEL
+          ////          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+          //          if(short_press)
+          //          {
+          //            cur_setting_str.insert(static_cast<std::size_t>(++cur_setting_selected), " ");
+          //            cur_setting_index = settings_str_chars.length() - 1;
+          //          }
+          //          else
+          //          {
+          //            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--));
+          //            while(digitalRead(BTN_DSP_1) == LOW)
+          //            {
+          //              yield();
+          //            }
+          //          }
+          //          break;
+          //        }
+        }
+        else
+        {
+          if (tx_enable)
+          {
+            tx_enable = false;
+            next_tx = UINT32_MAX;
+          }
+          else
+          {
+            tx_enable = true;
+            // Re-compose the buffers to reflect changes
+            composeWSPRBuffer();
+  //          composeMorseBuffer(cur_buffer);
+            selectBuffer(cur_buffer);
+            setNextTx(0);
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
     }
-  }
-
-  // Handle display 2 button
-  if (digitalRead(BTN_DSP_2) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+  
+    // Handle display 2 button
     if (digitalRead(BTN_DSP_2) == LOW)
     {
-      if (display_mode == DisplayMode::Menu)
+      delay(50);   // delay to debounce
+      yield();
+      if (digitalRead(BTN_DSP_2) == LOW)
       {
-        MenuType type = menu.selectChild(menu.active_child + 1);
-        if (type == MenuType::Action)
+        if (display_mode == DisplayMode::Menu)
         {
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
-        }
-      }
-      else if (display_mode == DisplayMode::Setting)
-      {
-        // OK button
-        char temp_str[81];
-        switch (cur_setting_type)
-        {
-          case SettingType::Uint:
-            sprintf(temp_str, "U%lu", cur_setting_uint);
-            settings[cur_setting_key].second = temp_str;
-            break;
-          case SettingType::Int:
-            sprintf(temp_str, "I%l", cur_setting_int);
-            settings[cur_setting_key].second = temp_str;
-            break;
-          case SettingType::Bool:
-            if(cur_setting_bool)
-            {
-              settings[cur_setting_key].second = "B1";
-            }
-            else
-            {
-              settings[cur_setting_key].second = "B0";
-            }
-            break;
-          case SettingType::Str:
-            if (ins_del_mode)
-            {
-              // Delete
-              cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
-            }
-            else
-            {
-              sprintf(temp_str, "S%s", cur_setting_str.c_str());
-              settings[cur_setting_key].second = temp_str;
-            }
-
-            break;
-        }
-
-        // Yeah, inelegant. Hopefully we can get C++17 in Arduino soon for better data structures
-        if (cur_setting_key == "pa_bias")
-        {
-          cur_config.pa_bias = cur_setting_uint;
-          setPABias(cur_setting_uint);
-        }
-        else if (cur_setting_key == "callsign")
-        {
-          strcpy(cur_config.callsign, cur_setting_str.c_str());
-        }
-        else if (cur_setting_key == "grid")
-        {
-          strcpy(cur_config.grid, cur_setting_str.c_str());
-        }
-        else if (cur_setting_key == "power")
-        {
-          cur_config.power = cur_setting_uint;
-        }
-        else if (cur_setting_key == "tx_intv")
-        {
-          cur_config.tx_intv = cur_setting_uint;
-        }
-        else if (cur_setting_key == "wpm")
-        {
-          cur_config.wpm = cur_setting_uint;
-        }
-        else if (cur_setting_key == "cwid")
-        {
-          cur_config.cwid = cur_setting_bool;
-        }
-
-        // If we need to make any immediate setting changes to hardware
-//        if (cur_setting_key == "pa_bias")
-//        {
-//          setPABias(cur_setting_uint);
-//        }
-        
-
-        // Re-compose the buffers to reflect changes
-        composeWSPRBuffer();
-        composeMorseBuffer(1);
-        selectBuffer(cur_buffer);
-
-        // Save the config to NVM
-        serializeConfig();
-
-        if (!ins_del_mode)
-        {
-          cur_setting_selected = 0;
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
-        }
-      }
-      else if (display_mode == DisplayMode::Buffer)
-      {
-        if (ins_del_mode)
-        {
-          // Delete
-          cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
-        }
-        else
-        {
-          switch (cur_edit_buffer)
+          MenuType type = menu.selectChild(menu.active_child + 1);
+          if (type == MenuType::Action)
           {
-            case 1:
-              sprintf(msg_buffer_1, "%s", cur_setting_str.c_str());
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
+        }
+        else if (display_mode == DisplayMode::Setting)
+        {
+          // OK button
+          char temp_str[81];
+          switch (cur_setting_type)
+          {
+            case SettingType::Uint:
+              sprintf(temp_str, "U%lu", cur_setting_uint);
+              settings[cur_setting_key].second = temp_str;
               break;
-            case 2:
-              sprintf(msg_buffer_2, "%s", cur_setting_str.c_str());
+            case SettingType::Int:
+              sprintf(temp_str, "I%l", cur_setting_int);
+              settings[cur_setting_key].second = temp_str;
               break;
-            case 3:
-              sprintf(msg_buffer_3, "%s", cur_setting_str.c_str());
+            case SettingType::Bool:
+              if(cur_setting_bool)
+              {
+                settings[cur_setting_key].second = "B1";
+              }
+              else
+              {
+                settings[cur_setting_key].second = "B0";
+              }
               break;
-            case 4:
-              sprintf(msg_buffer_4, "%s", cur_setting_str.c_str());
+            case SettingType::Str:
+              if (ins_del_mode)
+              {
+                // Delete
+                cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
+              }
+              else
+              {
+                sprintf(temp_str, "S%s", cur_setting_str.c_str());
+                settings[cur_setting_key].second = temp_str;
+              }
+  
               break;
           }
-
-          cur_setting_selected = 0;
-          display_mode = DisplayMode::Main;
-          menu.selectRoot();
+  
+          // Yeah, inelegant. Hopefully we can get C++17 in Arduino soon for better data structures
+          if (cur_setting_key == "pa_bias")
+          {
+            cur_config.pa_bias = cur_setting_uint;
+            setPABias(cur_setting_uint);
+          }
+          else if (cur_setting_key == "callsign")
+          {
+            strcpy(cur_config.callsign, cur_setting_str.c_str());
+          }
+          else if (cur_setting_key == "grid")
+          {
+            strcpy(cur_config.grid, cur_setting_str.c_str());
+          }
+          else if (cur_setting_key == "power")
+          {
+            cur_config.power = cur_setting_uint;
+          }
+          else if (cur_setting_key == "tx_intv")
+          {
+            cur_config.tx_intv = cur_setting_uint;
+          }
+          else if (cur_setting_key == "wpm")
+          {
+            cur_config.wpm = cur_setting_uint;
+          }
+          else if (cur_setting_key == "cwid")
+          {
+            cur_config.cwid = cur_setting_bool;
+          }
+  
+          // If we need to make any immediate setting changes to hardware
+  //        if (cur_setting_key == "pa_bias")
+  //        {
+  //          setPABias(cur_setting_uint);
+  //        }
+          
+  
+          // Re-compose the buffers to reflect changes
+          composeWSPRBuffer();
+          composeMorseBuffer(1);
+          selectBuffer(cur_buffer);
+  
+          // Save the config to NVM
+          serializeConfig();
+  
+          if (!ins_del_mode)
+          {
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
         }
+        else if (display_mode == DisplayMode::Buffer)
+        {
+          if (ins_del_mode)
+          {
+            // Delete
+            cur_setting_str.erase(static_cast<std::size_t>(cur_setting_selected--), 1);
+          }
+          else
+          {
+            switch (cur_edit_buffer)
+            {
+              case 1:
+                sprintf(msg_buffer_1, "%s", cur_setting_str.c_str());
+                break;
+              case 2:
+                sprintf(msg_buffer_2, "%s", cur_setting_str.c_str());
+                break;
+              case 3:
+                sprintf(msg_buffer_3, "%s", cur_setting_str.c_str());
+                break;
+              case 4:
+                sprintf(msg_buffer_4, "%s", cur_setting_str.c_str());
+                break;
+            }
+  
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Main;
+            menu.selectRoot();
+          }
+        }
+        else
+        {
+          //        if(cur_state != TxState::Idle)
+          //        {
+          //          setTxState(TxState::Idle);
+          //          setNextTx(0);
+          //        }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
       }
-      else
-      {
-        //        if(cur_state != TxState::Idle)
-        //        {
-        //          setTxState(TxState::Idle);
-        //          setNextTx(0);
-        //        }
-      }
-      yield();
-      delay(50); //delay to avoid many steps at one
     }
-  }
-
-  // Handle menu button
-  if (digitalRead(BTN_BACK) == LOW)
-  {
-    delay(50);   // delay to debounce
-    yield();
+  
+    // Handle menu button
     if (digitalRead(BTN_BACK) == LOW)
     {
-      if (display_mode == DisplayMode::Menu)
-      {
-        if (menu.selectParent()) // if we are at root menu, exit
-        {
-          display_mode = DisplayMode::Main;
-        }
-      }
-      else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
-      {
-        if (ins_del_mode)
-        {
-          ins_del_mode = false;
-        }
-        else
-        {
-          display_mode = DisplayMode::Menu;
-        }
-      }
-      else
-      {
-        if (cur_state == TxState::Idle)
-        {
-          cur_setting_selected = 0;
-          display_mode = DisplayMode::Menu;
-        }
-        else
-        {
-          setTxState(TxState::Idle);
-          setNextTx(0);
-        }
-      }
+      delay(50);   // delay to debounce
       yield();
-      delay(50); //delay to avoid many steps at one
+      if (digitalRead(BTN_BACK) == LOW)
+      {
+        if (display_mode == DisplayMode::Menu)
+        {
+          if (menu.selectParent()) // if we are at root menu, exit
+          {
+            display_mode = DisplayMode::Main;
+          }
+        }
+        else if (display_mode == DisplayMode::Setting || display_mode == DisplayMode::Buffer)
+        {
+          if (ins_del_mode)
+          {
+            ins_del_mode = false;
+          }
+          else
+          {
+            display_mode = DisplayMode::Menu;
+          }
+        }
+        else
+        {
+          if (cur_state == TxState::Idle)
+          {
+            cur_setting_selected = 0;
+            display_mode = DisplayMode::Menu;
+          }
+          else
+          {
+            setTxState(TxState::Idle);
+            setNextTx(0);
+          }
+        }
+        yield();
+        delay(50); //delay to avoid many steps at one
+      }
     }
   }
 }
@@ -2635,11 +2746,35 @@ void deserializeConfig()
   #endif
 }
 
+#ifdef EXT_EEPROM
+void eraseEEPROM() // Erase by writing 0xFF to every byte
+{
+  uint8_t data[EEP_24AA64T_BLOCK_SIZE];
+  for(uint16_t i = 0; i < EEP_24AA64T_BLOCK_SIZE; ++i)
+  {
+    data[i] = 0xff;
+  }
+  for(uint16_t i = 0; i < EEP_24AA64T_CAPACITY; i += EEP_24AA64T_BLOCK_SIZE)
+  {
+    uint8_t eep_status = eeprom.write(i, data, EEP_24AA64T_BLOCK_SIZE);
+  }
+}
+#endif
+
 // ===== Setup =====
 void setup()
 {
   // Start u8g2
   u8g2.begin();
+
+  // Draw welcome message
+  u8g2.clearBuffer();
+  u8g2.setDrawColor(1);
+  u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
+  u8g2.drawStr(64 - u8g2.getStrWidth("OpenBeacon Mini") / 2, 15, "OpenBeacon Mini");
+  u8g2.setFont(u8g2_font_6x10_mr);
+  u8g2.drawStr(64 - u8g2.getStrWidth("Sync with PC to begin") / 2, 30, "Sync with PC to begin");
+  u8g2.sendBuffer();
   
   // Serial port init
   SerialUSB.begin(57600);
@@ -2827,16 +2962,6 @@ void setup()
   Scheduler.startLoop(selectBand);
   //Scheduler.startLoop(processTimeSync);
 
-
-
-  //  memset(mfsk_buffer, 0, 255);
-  //  jtencode.jt9_encode(msg_buffer_1.c_str(), mfsk_buffer);
-  //  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-  //  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-  //  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-  //  settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-  //  base_frequency = band_table[band_index].jt9_freq;
-
   cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
   cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
   cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -2847,6 +2972,7 @@ void setup()
 //  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
 //                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
+  next_tx = UINT32_MAX;
   frequency = (base_frequency * 100ULL);
   change_freq = true;
   
