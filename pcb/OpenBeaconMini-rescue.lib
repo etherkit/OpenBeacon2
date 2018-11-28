@@ -74,4 +74,26 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
+# LPFModule-EtherkitKicadLibrary
+#
+DEF LPFModule-EtherkitKicadLibrary M 0 40 Y Y 1 F N
+F0 "M" -455 340 50 H V C CNN
+F1 "LPFModule-EtherkitKicadLibrary" 305 345 50 H V C CNN
+F2 "" 0 0 70 H V C CNN
+F3 "" 0 0 70 H V C CNN
+DRAW
+S -500 -300 500 300 0 1 0 N
+S -200 200 200 -200 0 1 0 N
+P 4 0 1 0 -140 140 0 140 100 -140 170 -140 N
+X ~ 1 -550 225 50 R 50 50 0 1 P
+X ~ 2 -550 75 50 R 50 50 0 1 P
+X ~ 3 -550 -75 50 R 50 50 0 1 P
+X ~ 5 550 -225 50 L 50 50 0 1 P
+X ~ 6 550 -75 50 L 50 50 0 1 P
+X ~ 7 550 75 50 L 50 50 0 1 P
+X ~ 8 550 225 50 L 50 50 0 1 P
+X ~ 4 -550 -225 50 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
 #End Library

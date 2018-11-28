@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# EtherkitKicadLibrary:+3.3V
+# EtherkitKicadLibrary_+3.3V
 #
-DEF EtherkitKicadLibrary:+3.3V #PWR 0 0 Y Y 1 F P
+DEF EtherkitKicadLibrary_+3.3V #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -40 30 H I C CNN
-F1 "EtherkitKicadLibrary:+3.3V" 0 105 30 H V C CNN
+F1 "EtherkitKicadLibrary_+3.3V" 0 105 30 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -15,11 +15,11 @@ X +3.3V 1 0 0 0 U 30 30 0 0 W N
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:+5V
+# EtherkitKicadLibrary_+5V
 #
-DEF EtherkitKicadLibrary:+5V #PWR 0 0 Y Y 1 F P
+DEF EtherkitKicadLibrary_+5V #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -40 30 H I C CNN
-F1 "EtherkitKicadLibrary:+5V" 0 105 30 H V C CNN
+F1 "EtherkitKicadLibrary_+5V" 0 105 30 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -29,11 +29,11 @@ X +5V 1 0 0 0 U 30 30 0 0 W N
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:128x32OLED
+# EtherkitKicadLibrary_128x32OLED
 #
-DEF EtherkitKicadLibrary:128x32OLED U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_128x32OLED U 0 40 Y Y 1 F N
 F0 "U" 0 45 60 H V C CNN
-F1 "EtherkitKicadLibrary:128x32OLED" 0 -60 60 H V C CNN
+F1 "EtherkitKicadLibrary_128x32OLED" 0 -60 60 H V C CNN
 F2 "" 0 0 60 H I C CNN
 F3 "" 0 0 60 H I C CNN
 DRAW
@@ -45,11 +45,31 @@ X GND 4 -800 -150 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:BNC
+# EtherkitKicadLibrary_24AA64T
 #
-DEF EtherkitKicadLibrary:BNC J 0 40 N N 1 F N
+DEF EtherkitKicadLibrary_24AA64T U 0 20 Y Y 1 F N
+F0 "U" -300 250 50 H V C CNN
+F1 "EtherkitKicadLibrary_24AA64T" 100 -250 50 H V L CNN
+F2 "Package_TO_SOT_SMD:SOT-23-5" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SOT?23*
+$ENDFPLIST
+DRAW
+S -300 200 300 -200 1 1 10 f
+X SCL 1 400 0 100 L 50 50 1 1 I
+X VSS 2 0 -300 100 U 50 50 1 1 W
+X SDA 3 400 100 100 L 50 50 1 1 B
+X VCC 4 0 300 100 D 50 50 1 1 W
+X WP 5 -400 100 100 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# EtherkitKicadLibrary_BNC
+#
+DEF EtherkitKicadLibrary_BNC J 0 40 N N 1 F N
 F0 "J" 0 180 50 H V C CNN
-F1 "EtherkitKicadLibrary:BNC" 0 110 50 H V C CNN
+F1 "EtherkitKicadLibrary_BNC" 0 110 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -60,11 +80,11 @@ X Ext 2 0 -150 75 U 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:C
+# EtherkitKicadLibrary_C
 #
-DEF EtherkitKicadLibrary:C C 0 0 N Y 1 F N
+DEF EtherkitKicadLibrary_C C 0 0 N Y 1 F N
 F0 "C" 150 35 50 H V C CNN
-F1 "EtherkitKicadLibrary:C" 150 -40 50 H V C CNN
+F1 "EtherkitKicadLibrary_C" 150 -40 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -81,11 +101,11 @@ X ~ 2 0 -100 70 U 60 60 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:CONN_01X01
+# EtherkitKicadLibrary_CONN_01X01
 #
-DEF EtherkitKicadLibrary:CONN_01X01 J 0 40 Y N 1 F N
+DEF EtherkitKicadLibrary_CONN_01X01 J 0 40 Y N 1 F N
 F0 "J" 0 -95 50 H V C CNN
-F1 "EtherkitKicadLibrary:CONN_01X01" 0 -160 50 H V C CNN
+F1 "EtherkitKicadLibrary_CONN_01X01" 0 -160 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -101,11 +121,11 @@ X P1 1 -150 0 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:ChipAttenuator
+# EtherkitKicadLibrary_ChipAttenuator
 #
-DEF EtherkitKicadLibrary:ChipAttenuator R 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_ChipAttenuator R 0 40 Y Y 1 F N
 F0 "R" 0 270 50 H V C CNN
-F1 "EtherkitKicadLibrary:ChipAttenuator" 5 205 50 H V C CNN
+F1 "EtherkitKicadLibrary_ChipAttenuator" 5 205 50 H V C CNN
 F2 "" -80 50 50 V I C CNN
 F3 "" -80 50 50 V I C CNN
 DRAW
@@ -125,11 +145,30 @@ X ~ 3 0 -250 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:Empyrean
+# EtherkitKicadLibrary_DIODE
 #
-DEF EtherkitKicadLibrary:Empyrean U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_DIODE D 0 40 N N 1 F N
+F0 "D" -10 -115 50 H V C CNN
+F1 "EtherkitKicadLibrary_DIODE" 0 -180 50 H V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+$FPLIST
+ D?
+ S*
+$ENDFPLIST
+DRAW
+P 2 0 1 6 50 50 50 -50 N
+P 3 0 1 0 -50 50 50 0 -50 -50 F
+X A 1 -100 0 50 R 40 40 1 1 P
+X K 2 100 0 50 L 40 40 1 1 P
+ENDDRAW
+ENDDEF
+#
+# EtherkitKicadLibrary_Empyrean
+#
+DEF EtherkitKicadLibrary_Empyrean U 0 40 Y Y 1 F N
 F0 "U" 0 -755 60 H V C CNN
-F1 "EtherkitKicadLibrary:Empyrean" 0 -840 60 H V C CNN
+F1 "EtherkitKicadLibrary_Empyrean" 0 -840 60 H V C CNN
 F2 "" 0 0 60 H I C CNN
 F3 "" 0 0 60 H I C CNN
 DRAW
@@ -170,11 +209,11 @@ X A1 9 -500 -100 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:L-IRONCORE
+# EtherkitKicadLibrary_L-IRONCORE
 #
-DEF EtherkitKicadLibrary:L-IRONCORE L 0 40 N N 1 F N
+DEF EtherkitKicadLibrary_L-IRONCORE L 0 40 N N 1 F N
 F0 "L" -65 35 50 H V C CNN
-F1 "EtherkitKicadLibrary:L-IRONCORE" -250 -45 50 H V C CNN
+F1 "EtherkitKicadLibrary_L-IRONCORE" -250 -45 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -189,33 +228,34 @@ X 2 2 -50 -160 50 R 70 70 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:LPFModule
+# EtherkitKicadLibrary_LPFModule
 #
-DEF EtherkitKicadLibrary:LPFModule M 0 40 Y Y 1 F N
-F0 "M" -455 340 50 H V C CNN
-F1 "EtherkitKicadLibrary:LPFModule" 305 345 50 H V C CNN
+DEF EtherkitKicadLibrary_LPFModule M 0 40 Y Y 1 F N
+F0 "M" -445 390 50 H V C CNN
+F1 "EtherkitKicadLibrary_LPFModule" 305 390 50 H V C CNN
 F2 "" 0 0 70 H V C CNN
 F3 "" 0 0 70 H V C CNN
 DRAW
-S -500 -300 500 300 0 1 0 N
+S -500 -350 500 350 0 1 0 N
 S -200 200 200 -200 0 1 0 N
 P 4 0 1 0 -140 140 0 140 100 -140 170 -140 N
-X ~ 1 -550 225 50 R 50 50 0 1 P
-X ~ 2 -550 75 50 R 50 50 0 1 P
-X ~ 3 -550 -75 50 R 50 50 0 1 P
-X ~ 5 550 -225 50 L 50 50 0 1 P
-X ~ 6 550 -75 50 L 50 50 0 1 P
-X ~ 7 550 75 50 L 50 50 0 1 P
-X ~ 8 550 225 50 L 50 50 0 1 P
-X ~ 4 -550 -225 50 R 50 50 1 1 I
+X GND 1 -550 300 50 R 50 40 0 1 P
+X BAND_V 2 -550 150 50 R 50 40 0 1 P
+X GND 3 -550 0 50 R 50 40 0 1 P
+X GND 5 -550 -300 50 R 50 40 0 1 P
+X GND 6 550 -225 50 L 50 40 0 1 P
+X RF 7 550 -75 50 L 50 40 0 1 P
+X GND 8 550 75 50 L 50 40 0 1 P
+X VCC 9 550 225 50 L 50 40 0 1 P
+X RF 4 -550 -150 50 R 50 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:MCP4725A1T
+# EtherkitKicadLibrary_MCP4725A1T
 #
-DEF EtherkitKicadLibrary:MCP4725A1T U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_MCP4725A1T U 0 40 Y Y 1 F N
 F0 "U" 0 385 50 H V C CNN
-F1 "EtherkitKicadLibrary:MCP4725A1T" 0 300 50 H V C CNN
+F1 "EtherkitKicadLibrary_MCP4725A1T" 0 300 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -229,11 +269,11 @@ X A0 6 300 175 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:MOS_N
+# EtherkitKicadLibrary_MOS_N
 #
-DEF EtherkitKicadLibrary:MOS_N Q 0 0 N N 1 F N
+DEF EtherkitKicadLibrary_MOS_N Q 0 0 N N 1 F N
 F0 "Q" 255 45 50 H V R CNN
-F1 "EtherkitKicadLibrary:MOS_N" 410 -50 50 H V R CNN
+F1 "EtherkitKicadLibrary_MOS_N" 410 -50 50 H V R CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 ALIAS MOSFET_N
@@ -252,11 +292,11 @@ X D 3 100 200 100 D 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:OSCILLATOR
+# EtherkitKicadLibrary_OSCILLATOR
 #
-DEF EtherkitKicadLibrary:OSCILLATOR U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_OSCILLATOR U 0 40 Y Y 1 F N
 F0 "U" -480 335 50 H V C CNN
-F1 "EtherkitKicadLibrary:OSCILLATOR" -305 255 50 H V C CNN
+F1 "EtherkitKicadLibrary_OSCILLATOR" -305 255 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -268,11 +308,11 @@ X VDD 4 0 250 50 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:PNP
+# EtherkitKicadLibrary_PNP
 #
-DEF EtherkitKicadLibrary:PNP Q 0 0 N N 1 F N
+DEF EtherkitKicadLibrary_PNP Q 0 0 N N 1 F N
 F0 "Q" 180 45 50 H V R CNN
-F1 "EtherkitKicadLibrary:PNP" 240 -50 50 H V R CNN
+F1 "EtherkitKicadLibrary_PNP" 240 -50 50 H V R CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -286,11 +326,11 @@ X C 3 100 -175 45 U 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:PUSHBUTTON_TACTILE
+# EtherkitKicadLibrary_PUSHBUTTON_TACTILE
 #
-DEF EtherkitKicadLibrary:PUSHBUTTON_TACTILE S 0 40 Y N 1 F N
+DEF EtherkitKicadLibrary_PUSHBUTTON_TACTILE S 0 40 Y N 1 F N
 F0 "S" 0 -115 50 H V C CNN
-F1 "EtherkitKicadLibrary:PUSHBUTTON_TACTILE" 5 -215 50 H V C CNN
+F1 "EtherkitKicadLibrary_PUSHBUTTON_TACTILE" 5 -215 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -309,11 +349,11 @@ X 4 4 250 -75 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:R
+# EtherkitKicadLibrary_R
 #
-DEF EtherkitKicadLibrary:R R 0 0 N Y 1 F N
+DEF EtherkitKicadLibrary_R R 0 0 N Y 1 F N
 F0 "R" 110 40 50 H V C CNN
-F1 "EtherkitKicadLibrary:R" 90 -40 50 H V C CNN
+F1 "EtherkitKicadLibrary_R" 90 -40 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -329,11 +369,11 @@ X ~ 2 0 -150 30 U 60 60 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:SI5351A
+# EtherkitKicadLibrary_SI5351A
 #
-DEF EtherkitKicadLibrary:SI5351A U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_SI5351A U 0 40 Y Y 1 F N
 F0 "U" 0 560 50 H V C CNN
-F1 "EtherkitKicadLibrary:SI5351A" 0 475 50 H V C CNN
+F1 "EtherkitKicadLibrary_SI5351A" 0 475 50 H V C CNN
 F2 "MODULE" 0 0 50 H I C CNN
 F3 "DOCUMENTATION" 0 0 50 H I C CNN
 DRAW
@@ -351,11 +391,11 @@ X CLK1 9 650 100 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:SN74LVC1G17
+# EtherkitKicadLibrary_SN74LVC1G17
 #
-DEF EtherkitKicadLibrary:SN74LVC1G17 U 0 20 Y Y 1 F N
+DEF EtherkitKicadLibrary_SN74LVC1G17 U 0 20 Y Y 1 F N
 F0 "U" 195 115 50 H V C CNN
-F1 "EtherkitKicadLibrary:SN74LVC1G17" 280 -120 50 H V C CNN
+F1 "EtherkitKicadLibrary_SN74LVC1G17" 280 -120 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -373,11 +413,11 @@ X ~ 2 250 0 300 L 50 50 1 2 O
 ENDDRAW
 ENDDEF
 #
-# EtherkitKicadLibrary:TLV61046A
+# EtherkitKicadLibrary_TLV61046A
 #
-DEF EtherkitKicadLibrary:TLV61046A U 0 40 Y Y 1 F N
+DEF EtherkitKicadLibrary_TLV61046A U 0 40 Y Y 1 F N
 F0 "U" 0 385 50 H V C CNN
-F1 "EtherkitKicadLibrary:TLV61046A" 0 300 50 H V C CNN
+F1 "EtherkitKicadLibrary_TLV61046A" 0 300 50 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -391,11 +431,11 @@ X VIN 6 300 175 100 L 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# OpenBeaconMini-rescue:Conn_01x04
+# OpenBeaconMini-rescue_Conn_01x04
 #
-DEF OpenBeaconMini-rescue:Conn_01x04 J 0 40 Y N 1 F N
+DEF OpenBeaconMini-rescue_Conn_01x04 J 0 40 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "OpenBeaconMini-rescue:Conn_01x04" 0 -300 50 H V C CNN
+F1 "OpenBeaconMini-rescue_Conn_01x04" 0 -300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -419,11 +459,11 @@ X Pin_4 4 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# OpenBeaconMini-rescue:Conn_01x06
+# OpenBeaconMini-rescue_Conn_01x06
 #
-DEF OpenBeaconMini-rescue:Conn_01x06 J 0 40 Y N 1 F N
+DEF OpenBeaconMini-rescue_Conn_01x06 J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "OpenBeaconMini-rescue:Conn_01x06" 0 -400 50 H V C CNN
+F1 "OpenBeaconMini-rescue_Conn_01x06" 0 -400 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -451,16 +491,54 @@ X Pin_6 6 -200 -300 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# OpenBeaconMini-rescue:GND
+# OpenBeaconMini-rescue_GND
 #
-DEF OpenBeaconMini-rescue:GND #PWR 0 0 Y Y 1 F P
+DEF OpenBeaconMini-rescue_GND #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "OpenBeaconMini-rescue:GND" 0 -150 50 H V C CNN
+F1 "OpenBeaconMini-rescue_GND" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
 X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# Relay_G5V-1
+#
+DEF Relay_G5V-1 K 0 40 Y Y 1 F N
+F0 "K" 450 150 50 H V L CNN
+F1 "Relay_G5V-1" 450 50 50 H V L CNN
+F2 "Relay_THT:Relay_SPDT_Omron_G5V-1" 1130 -30 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Relay*SPDT*Omron*G5V?1*
+$ENDFPLIST
+DRAW
+T 0 -160 140 60 0 0 0 + Normal 0 C C
+S -400 200 400 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 0 0 300 150 300 200 N
+P 4 0 0 0 300 150 300 100 275 125 300 150 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 10 125 0 150 0 N
+P 2 0 1 20 200 -100 125 150 N
+P 2 0 1 0 200 -100 200 -200 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 300 100 D 50 50 1 1 P
+X ~ 10 300 300 100 D 50 50 1 1 P
+X ~ 2 -200 300 100 D 50 50 1 1 P
+X ~ 5 200 -300 100 U 50 50 1 1 P
+X ~ 6 200 -300 100 U 50 50 1 1 P N
+X ~ 9 -200 -300 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
