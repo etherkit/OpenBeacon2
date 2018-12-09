@@ -1381,10 +1381,10 @@ A3
 Text GLabel 4480 1195 0    50   Output ~ 0
 A4
 $Comp
-L EtherkitKicadLibrary:BNC J7
+L EtherkitKicadLibrary:BNC J6
 U 1 1 5A24B150
 P 5050 7595
-F 0 "J7" H 5050 7775 50  0000 C CNN
+F 0 "J6" H 5050 7775 50  0000 C CNN
 F 1 "SMA" H 5050 7705 50  0000 C CNN
 F 2 "EtherkitKicadLibrary:SMA-ENDLAUNCH" H 5050 7595 60  0001 C CNN
 F 3 "" H 5050 7595 60  0000 C CNN
@@ -1424,7 +1424,7 @@ U 1 1 5A24D2D9
 P 4680 995
 F 0 "J5" H 4680 1300 50  0000 C CNN
 F 1 "ADC Inputs" H 4680 585 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 4680 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 4680 995 50  0001 C CNN
 F 3 "" H 4680 995 50  0001 C CNN
 	1    4680 995 
 	1    0    0    -1  
@@ -1465,7 +1465,7 @@ U 1 1 5A250921
 P 5430 995
 F 0 "J8" H 5430 1195 50  0000 C CNN
 F 1 "I2C Bus" H 5430 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 5430 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 5430 995 50  0001 C CNN
 F 3 "" H 5430 995 50  0001 C CNN
 	1    5430 995 
 	1    0    0    -1  
@@ -1500,34 +1500,6 @@ Text GLabel 5230 995  0    50   BiDi ~ 0
 SCL
 Text GLabel 5230 1095 0    50   BiDi ~ 0
 SDA
-$Comp
-L EtherkitKicadLibrary:BNC J6
-U 1 1 5A251F5A
-P 5040 6805
-F 0 "J6" H 5040 6985 50  0000 C CNN
-F 1 "SMA" H 5040 6915 50  0000 C CNN
-F 2 "EtherkitKicadLibrary:SMA-ENDLAUNCH" H 5040 6805 60  0001 C CNN
-F 3 "" H 5040 6805 60  0000 C CNN
-	1    5040 6805
-	1    0    0    -1  
-$EndComp
-$Comp
-L OpenBeaconMini-rescue:GND #PWR034
-U 1 1 5A25206E
-P 5040 6955
-F 0 "#PWR034" H 5040 6705 50  0001 C CNN
-F 1 "GND" H 5040 6825 30  0000 C CNN
-F 2 "" H 5040 6955 50  0001 C CNN
-F 3 "" H 5040 6955 50  0001 C CNN
-	1    5040 6955
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4890 6805 4595 6805
-Wire Wire Line
-	4595 6805 4595 6870
-Wire Wire Line
-	4595 6870 4300 6870
 $Comp
 L EtherkitKicadLibrary:+5V #PWR019
 U 1 1 5A252BF7
@@ -1870,7 +1842,7 @@ U 1 1 5C0EF538
 P 3875 995
 F 0 "J4" H 3875 1195 50  0000 C CNN
 F 1 "Digital IO" H 3875 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 3875 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3875 995 50  0001 C CNN
 F 3 "" H 3875 995 50  0001 C CNN
 	1    3875 995 
 	1    0    0    -1  
@@ -1881,7 +1853,7 @@ U 1 1 5C0FAD0D
 P 6155 995
 F 0 "J10" H 6155 1195 50  0000 C CNN
 F 1 "UART" H 6155 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 6155 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 6155 995 50  0001 C CNN
 F 3 "" H 6155 995 50  0001 C CNN
 	1    6155 995 
 	1    0    0    -1  
@@ -2560,4 +2532,5 @@ Connection ~ 8740 2760
 Wire Wire Line
 	7280 2775 7280 2760
 Connection ~ 7280 2760
+NoConn ~ 4300 6870
 $EndSCHEMATC

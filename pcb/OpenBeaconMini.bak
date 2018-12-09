@@ -1424,7 +1424,7 @@ U 1 1 5A24D2D9
 P 4680 995
 F 0 "J5" H 4680 1300 50  0000 C CNN
 F 1 "ADC Inputs" H 4680 585 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x06_Pitch2.54mm" H 4680 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 4680 995 50  0001 C CNN
 F 3 "" H 4680 995 50  0001 C CNN
 	1    4680 995 
 	1    0    0    -1  
@@ -1465,7 +1465,7 @@ U 1 1 5A250921
 P 5430 995
 F 0 "J8" H 5430 1195 50  0000 C CNN
 F 1 "I2C Bus" H 5430 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 5430 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 5430 995 50  0001 C CNN
 F 3 "" H 5430 995 50  0001 C CNN
 	1    5430 995 
 	1    0    0    -1  
@@ -1870,7 +1870,7 @@ U 1 1 5C0EF538
 P 3875 995
 F 0 "J4" H 3875 1195 50  0000 C CNN
 F 1 "Digital IO" H 3875 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 3875 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3875 995 50  0001 C CNN
 F 3 "" H 3875 995 50  0001 C CNN
 	1    3875 995 
 	1    0    0    -1  
@@ -1881,7 +1881,7 @@ U 1 1 5C0FAD0D
 P 6155 995
 F 0 "J10" H 6155 1195 50  0000 C CNN
 F 1 "UART" H 6155 695 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 6155 995 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 6155 995 50  0001 C CNN
 F 3 "" H 6155 995 50  0001 C CNN
 	1    6155 995 
 	1    0    0    -1  

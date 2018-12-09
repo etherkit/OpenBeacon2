@@ -39,7 +39,7 @@
 //#include <JTEncode.h>
 
 enum class Mode {DFCW3, DFCW6, DFCW10, DFCW120, QRSS3, QRSS6, QRSS10, QRSS120,
-  CW, HELL, WSPR, JT65, JT9, JT4};
+  CW, HELL, WSPR, JT65, JT9, JT4, FT8};
 enum class MetaMode {CW, DFCW, MFSK};
 
 struct ModeData
@@ -68,11 +68,10 @@ constexpr ModeData mode_table[] =
   {Mode::CW, "CW", MetaMode::CW, 25, 100, 0, 0, 0, 10},
   {Mode::HELL, "Hell", MetaMode::MFSK, 3.5, 100, 0, 0, 0, 0},
   {Mode::WSPR, "WSPR", MetaMode::MFSK, 1.75, 163, 146, 682, WSPR_SYMBOL_COUNT, 120},
-//  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT, 60},
-  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 366, JT65_SYMBOL_COUNT, 60},
-//  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 576, JT9_SYMBOL_COUNT, 60},
-  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 573, JT9_SYMBOL_COUNT, 60},
-  {Mode::JT4, "JT4", MetaMode::MFSK, 1.75, 200, 437, 229, JT4_SYMBOL_COUNT, 60}
+  {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT, 60},
+  {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 576, JT9_SYMBOL_COUNT, 60},
+  {Mode::JT4, "JT4", MetaMode::MFSK, 1.75, 200, 437, 229, JT4_SYMBOL_COUNT, 60},
+  {Mode::FT8, "FT8", MetaMode::MFSK, 1.75, 200, 625, 159, FT8_SYMBOL_COUNT, 15}
 };
 
 //constexpr ModeData mode_table[] =
@@ -95,4 +94,3 @@ constexpr ModeData mode_table[] =
 //};
 
 #endif /* MODES_H_ */
-

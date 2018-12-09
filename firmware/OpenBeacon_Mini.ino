@@ -22,7 +22,7 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 
-//#define EXT_EEPROM // Microchip 24AA64T
+#define EXT_EEPROM // Microchip 24AA64T
 
 #include <Scheduler.h>
 #include <JTEncode.h>
@@ -615,6 +615,27 @@ void selectMode(uint8_t sel)
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
       base_frequency = band_table[band_index].jt9_freq;
       break;
+    case Mode::FT8:
+      mode = Mode::FT8;
+      cur_config.mode = mode;
+      meta_mode = MetaMode::MFSK;
+      next_state = TxState::MFSK;
+//      composeBuffer();
+      memset(mfsk_buffer, 0, 255);
+      jtencode.ft8_encode(msg_buffer, mfsk_buffer);
+//      SerialUSB.write('\v');
+//      for(uint8_t i = 0; i < FT8_SYMBOL_COUNT; ++i)
+//      {
+//        SerialUSB.print(mfsk_buffer[i], HEX);
+//      }
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+//      SerialUSB.write('\v');
+//      SerialUSB.print(cur_tone_spacing, DEC);
+      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
+      base_frequency = band_table[band_index].ft8_freq;
+      break;
   }
   serializeConfig();
   if(next_tx != UINT32_MAX)
@@ -1021,11 +1042,11 @@ void drawOLED()
   //    u8g2.drawStr(50, 30, temp_str);
   //    sprintf(temp_str, "%i", RTC->MODE2.FREQCORR.reg);
   //    u8g2.drawStr(0, 30, temp_str);
-  //    sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
-  //    u8g2.drawStr(100, 30, temp_str);
+//      sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
+//      u8g2.drawStr(100, 30, temp_str);
   
-  //    sprintf(temp_str, "%u", cur_symbol);
-  //    u8g2.drawStr(111, 15, temp_str);
+//      sprintf(temp_str, "%u", cur_symbol);
+//      u8g2.drawStr(111, 15, temp_str);
   //    sprintf(temp_str, "%u", morse.tx);
   //    u8g2.drawStr(122, 15, temp_str);
       
@@ -1294,6 +1315,7 @@ void drawOLED()
         case Mode::JT65:
         case Mode::JT9:
         case Mode::JT4:
+        case Mode::FT8:
           sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
           break;
         }
@@ -1815,6 +1837,7 @@ void pollButtons()
   
           // Re-compose the buffers to reflect changes
           composeWSPRBuffer();
+          composeJTBuffer(1);
           composeMorseBuffer(1);
           selectBuffer(cur_buffer);
   
@@ -1856,6 +1879,8 @@ void pollButtons()
             cur_setting_selected = 0;
             display_mode = DisplayMode::Main;
             menu.selectRoot();
+            selectBuffer(cur_buffer);
+            selectMode(static_cast<uint8_t>(mode));
           }
         }
         else
@@ -2044,6 +2069,7 @@ void selectBand()
             break;
           case Mode::JT9:
           case Mode::JT4:
+          case Mode::FT8: // TODO
             new_freq = new_jt9_freq;
             break;
         }
@@ -2273,6 +2299,10 @@ void setNextTx(uint8_t minutes)
     case Mode::JT4:
       sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
       break;
+
+    case Mode::FT8:
+      sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+      break;
   }
 
   //uint16_t sec_to_add = (60 - rtc.getSeconds()) + (rtc.getMinutes() % 2 ? 0 : 60) + (minutes * 60);
@@ -2404,6 +2434,7 @@ void txStateMachine()
             //frequency = (base_frequency * 100);
             //change_freq = true;
             //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
+            selectMode(static_cast<uint8_t>(mode));
 
             setNextTx(0);
           }
@@ -2426,6 +2457,7 @@ void txStateMachine()
           {
             setNextTx(cur_config.tx_intv);
             setTxState(TxState::Idle);
+            selectMode(static_cast<uint8_t>(mode));
           }
           break;
         case TxState::DFCW:
@@ -2461,6 +2493,7 @@ void txStateMachine()
             {
               setTxState(TxState::Idle);
               setNextTx(cur_config.tx_intv);
+              selectMode(static_cast<uint8_t>(mode));
             }
             
 
@@ -2486,6 +2519,7 @@ void txStateMachine()
             setTxState(TxState::Idle);
 
             setNextTx(cur_config.tx_intv);
+            selectMode(static_cast<uint8_t>(mode));
           }
           break;
         case TxState::MFSK:
@@ -2504,6 +2538,7 @@ void txStateMachine()
               {
                 setTxState(TxState::Idle);
                 setNextTx(cur_config.tx_intv);
+                selectMode(static_cast<uint8_t>(mode));
               }
               //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (base_frequency * 100);
@@ -2556,9 +2591,9 @@ void composeWSPRBuffer()
   sprintf(cur_grid, "%s", settings["grid"].second.substr(1).c_str());
   cur_power = atoi(settings["power"].second.substr(1).c_str());
   sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
-  memset(mfsk_buffer, 0, 255);
-  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
-                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
+//  memset(mfsk_buffer, 0, 255);
+//  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
+//                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
 }
 
 void composeJTBuffer(uint8_t buf)
@@ -2969,6 +3004,7 @@ void setup()
 
   // Clear TX buffer
   memset(mfsk_buffer, 0, 255);
+  selectBuffer(cur_buffer);
 //  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
 //                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
@@ -2976,9 +3012,9 @@ void setup()
   frequency = (base_frequency * 100ULL);
   change_freq = true;
   
-  composeWSPRBuffer();
+//  composeWSPRBuffer();
   composeMorseBuffer(cur_buffer);
-  selectBuffer(cur_buffer);
+  selectMode(static_cast<uint8_t>(mode));
 
   // Set PA bias
   setPABias(cur_config.pa_bias);
