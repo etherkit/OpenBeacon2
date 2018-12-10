@@ -22,8 +22,8 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 
-#define REV_A
-//#define REV_B
+//#define REV_A
+#define REV_B
 
 #ifdef REV_B
 #define EXT_EEPROM // Microchip 24AA64T
@@ -1766,6 +1766,7 @@ void pollButtons()
           if (type == MenuType::Action)
           {
             display_mode = DisplayMode::Main;
+            selectBuffer(cur_buffer);
             menu.selectRoot();
           }
         }
