@@ -1,7 +1,7 @@
 // OpenBeacon Mini
 // Etherkit
 //
-// Rev 21 Nov 2018
+// Rev 10 Dec 2018
 //
 // Hardware Requirements
 // ---------------------
@@ -22,7 +22,12 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 
+#define REV_A
+//#define REV_B
+
+#ifdef REV_B
 #define EXT_EEPROM // Microchip 24AA64T
+#endif
 
 #include <Scheduler.h>
 #include <JTEncode.h>
@@ -1840,6 +1845,7 @@ void pollButtons()
           composeJTBuffer(1);
           composeMorseBuffer(1);
           selectBuffer(cur_buffer);
+          selectMode(static_cast<uint8_t>(mode));
   
           // Save the config to NVM
           serializeConfig();
