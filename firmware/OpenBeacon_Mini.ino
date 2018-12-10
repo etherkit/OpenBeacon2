@@ -22,8 +22,8 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 
-#define REV_A
-//#define REV_B
+//#define REV_A
+#define REV_B
 
 #ifdef REV_B
 #define EXT_EEPROM // Microchip 24AA64T
@@ -146,7 +146,7 @@ constexpr TxState DEFAULT_STATE = TxState::Idle;
 constexpr uint16_t DEFAULT_TX_INTERVAL = 4;
 constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
 constexpr uint8_t DEFAULT_DFCW_OFFSET = 5;
-constexpr char DEFAULT_CALLSIGN[20] = "N0CALL";
+constexpr char DEFAULT_CALLSIGN[20] = "LA3PNA/B JO59";
 constexpr char DEFAULT_GRID[10] = "AA00";
 constexpr uint8_t DEFAULT_POWER = 23;
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
@@ -2328,7 +2328,7 @@ void setNextTx(uint8_t minutes)
       break;
 
     case Mode::FT8:
-      sec_to_add = (60 - rtc.getSeconds()) + (minutes * 60);
+      sec_to_add = (60 - rtc.getSeconds() - 1) + (minutes * 60);
       break;
   }
 
