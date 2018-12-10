@@ -22,8 +22,8 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 
-//#define REV_A
-#define REV_B
+#define REV_A
+//#define REV_B
 
 #ifdef REV_B
 #define EXT_EEPROM // Microchip 24AA64T
@@ -142,7 +142,6 @@ constexpr Mode DEFAULT_MODE = Mode::WSPR;
 constexpr bool DEFAULT_TX_LOCK = false;
 constexpr bool DEFAULT_TX_ENABLE = false;
 constexpr DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode::Main;
-//constexpr uint16_t DEFAULT_TX_DELAY = 1; // in minutes
 constexpr TxState DEFAULT_STATE = TxState::Idle;
 constexpr uint16_t DEFAULT_TX_INTERVAL = 4;
 constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
@@ -713,6 +712,12 @@ void selectBuffer(const uint8_t buf)
     break;
   }
   cur_config.buffer = cur_buffer;
+  composeMFSKMessage();
+//  SerialUSB.write('\v');
+//  for(uint8_t i = 0; i < FT8_SYMBOL_COUNT; ++i)
+//  {
+//    SerialUSB.print(mfsk_buffer[i]);
+//  }
 }
 
 void setConfig(const char * key, const char * label)
@@ -1021,7 +1026,7 @@ void drawOLED()
     //  u8g2.drawStr(90, 10, temp_str);
     
       // Draw clock
-      yield();
+//      yield();
       //u8g2.setFont(u8g2_font_6x10_mr);
       u8g2.setFont(u8g2_font_5x7_tn);
       sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
@@ -1287,7 +1292,7 @@ void drawOLED()
       {
         char buffer_str[81];
         //std::string wspr_buffer;
-        yield();
+//        yield();
         
         switch(mode)
         {
@@ -1326,11 +1331,18 @@ void drawOLED()
         case Mode::JT9:
         case Mode::JT4:
         case Mode::FT8:
-          sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+          if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+          {
+            sprintf(buffer_str, "CWID:%s", cur_config.callsign);
+          }
+          else
+          {
+            sprintf(buffer_str, "%d:%s", cur_buffer, msg_buffer);
+          }
           break;
         }
   
-        //yield();
+        yield();
         u8g2.drawStr(0, 30, buffer_str);
       }
       else // otherwise show TX enb/dis
@@ -1339,8 +1351,9 @@ void drawOLED()
         {
           u8g2.setDrawColor(0);
           u8g2.drawStr(0, 29, "TX Dis");
-          u8g2.setDrawColor(1);
-          u8g2.drawStr(45, 29, next_tx_time);
+          u8g2.setDrawColor(1); 
+          sprintf(temp_str, "%1u: %s", cur_buffer, next_tx_time);
+          u8g2.drawStr(45, 29, temp_str);
         }
         else
         {
@@ -1741,10 +1754,8 @@ void pollButtons()
           {
             tx_enable = true;
             // Re-compose the buffers to reflect changes
-//            composeWSPRBuffer();
-  //          composeMorseBuffer(cur_buffer);
             selectBuffer(cur_buffer);
-            composeMFSKMessage();
+//            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -1765,8 +1776,9 @@ void pollButtons()
           MenuType type = menu.selectChild(menu.active_child + 1);
           if (type == MenuType::Action)
           {
-            display_mode = DisplayMode::Main;
             selectBuffer(cur_buffer);
+//            composeMFSKMessage();  // logic so executed only on Sel Buf?
+            display_mode = DisplayMode::Main;
             menu.selectRoot();
           }
         }
@@ -1852,7 +1864,7 @@ void pollButtons()
 //          composeJTBuffer(1);
 //          composeMorseBuffer(1);
           selectBuffer(cur_buffer);
-          composeMFSKMessage();
+//          composeMFSKMessage();
 //          selectMode(static_cast<uint8_t>(mode));
   
           // Save the config to NVM
@@ -1894,7 +1906,7 @@ void pollButtons()
             display_mode = DisplayMode::Main;
             menu.selectRoot();
             selectBuffer(cur_buffer);
-            composeMFSKMessage();
+//            composeMFSKMessage();
 //            selectMode(static_cast<uint8_t>(mode));
           }
         }
@@ -2328,7 +2340,7 @@ void setNextTx(uint8_t minutes)
   // Build next TX time string
   const time_t ntx = static_cast<time_t>(next_tx);
   struct tm * n_tx = gmtime(&ntx);
-  sprintf(next_tx_time, "Nx %02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
+  sprintf(next_tx_time, "%02u:%02u:%02u", n_tx->tm_hour, n_tx->tm_min, n_tx->tm_sec);
 }
 
 void processSyncMessage()
@@ -2642,23 +2654,26 @@ void composeJTBuffer(uint8_t buf)
 
 void composeMFSKMessage()
 {
-  memset(mfsk_buffer, 0, 255);
-  
   switch(mode)
   {
   case Mode::WSPR:
+    memset(mfsk_buffer, 0, 255);
     jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
     break;
   case Mode::JT65:
+    memset(mfsk_buffer, 0, 255);
     jtencode.jt65_encode(msg_buffer, mfsk_buffer);
     break;
   case Mode::JT9:
-      jtencode.jt9_encode(msg_buffer, mfsk_buffer);
+    memset(mfsk_buffer, 0, 255);
+    jtencode.jt9_encode(msg_buffer, mfsk_buffer);
     break;
   case Mode::JT4:
+    memset(mfsk_buffer, 0, 255);
     jtencode.jt4_encode(msg_buffer, mfsk_buffer);
     break;
   case Mode::FT8:
+    memset(mfsk_buffer, 0, 255);
     jtencode.ft8_encode(msg_buffer, mfsk_buffer);
     break;
   }
@@ -3048,7 +3063,7 @@ void setup()
 
   // Clear TX buffer
   selectBuffer(cur_buffer);
-  composeMFSKMessage();
+//  composeMFSKMessage();
 //  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
 //                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
