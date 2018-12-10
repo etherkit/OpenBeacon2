@@ -152,7 +152,7 @@ constexpr char DEFAULT_GRID[10] = "AA00";
 constexpr uint8_t DEFAULT_POWER = 23;
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
 constexpr boolean DEFAULT_CWID = true;
-constexpr char DEFAULT_MSG_1[81] = "N0CALL";
+constexpr char DEFAULT_MSG_1[81] = "BUFFER1";
 constexpr char DEFAULT_MSG_2[81] = "BUFFER2";
 constexpr char DEFAULT_MSG_3[81] = "BUFFER3";
 constexpr char DEFAULT_MSG_4[81] = "BUFFER4";
@@ -569,9 +569,10 @@ void selectMode(uint8_t sel)
       cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
+      composeMFSKMessage();
 //      composeBuffer(1);
-      memset(mfsk_buffer, 0, 255);
-      jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
+//      memset(mfsk_buffer, 0, 255);
+//      jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -583,9 +584,10 @@ void selectMode(uint8_t sel)
       cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
+      composeMFSKMessage();
 //      composeBuffer();
-      memset(mfsk_buffer, 0, 255);
-      jtencode.jt65_encode(msg_buffer, mfsk_buffer);
+//      memset(mfsk_buffer, 0, 255);
+//      jtencode.jt65_encode(msg_buffer, mfsk_buffer);
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -597,9 +599,10 @@ void selectMode(uint8_t sel)
       cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
+      composeMFSKMessage();
 //      composeBuffer();
-      memset(mfsk_buffer, 0, 255);
-      jtencode.jt9_encode(msg_buffer, mfsk_buffer);
+//      memset(mfsk_buffer, 0, 255);
+//      jtencode.jt9_encode(msg_buffer, mfsk_buffer);
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -611,9 +614,10 @@ void selectMode(uint8_t sel)
       cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
+      composeMFSKMessage();
 //      composeBuffer();
-      memset(mfsk_buffer, 0, 255);
-      jtencode.jt4_encode(msg_buffer, mfsk_buffer);
+//      memset(mfsk_buffer, 0, 255);
+//      jtencode.jt4_encode(msg_buffer, mfsk_buffer);
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
       cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
       cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
@@ -625,13 +629,14 @@ void selectMode(uint8_t sel)
       cur_config.mode = mode;
       meta_mode = MetaMode::MFSK;
       next_state = TxState::MFSK;
+      composeMFSKMessage();
 //      composeBuffer();
-      memset(mfsk_buffer, 0, 255);
-      jtencode.ft8_encode(msg_buffer, mfsk_buffer);
+//      memset(mfsk_buffer, 0, 255);
+//      jtencode.ft8_encode(msg_buffer, mfsk_buffer);
 //      SerialUSB.write('\v');
 //      for(uint8_t i = 0; i < FT8_SYMBOL_COUNT; ++i)
 //      {
-//        SerialUSB.print(mfsk_buffer[i], HEX);
+//        SerialUSB.print(mfsk_buffer[i]);
 //      }
       cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
 //      SerialUSB.write('\v');
@@ -1736,9 +1741,10 @@ void pollButtons()
           {
             tx_enable = true;
             // Re-compose the buffers to reflect changes
-            composeWSPRBuffer();
+//            composeWSPRBuffer();
   //          composeMorseBuffer(cur_buffer);
             selectBuffer(cur_buffer);
+            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -1841,11 +1847,12 @@ void pollButtons()
           
   
           // Re-compose the buffers to reflect changes
-          composeWSPRBuffer();
-          composeJTBuffer(1);
-          composeMorseBuffer(1);
+//          composeWSPRBuffer();
+//          composeJTBuffer(1);
+//          composeMorseBuffer(1);
           selectBuffer(cur_buffer);
-          selectMode(static_cast<uint8_t>(mode));
+          composeMFSKMessage();
+//          selectMode(static_cast<uint8_t>(mode));
   
           // Save the config to NVM
           serializeConfig();
@@ -1886,7 +1893,8 @@ void pollButtons()
             display_mode = DisplayMode::Main;
             menu.selectRoot();
             selectBuffer(cur_buffer);
-            selectMode(static_cast<uint8_t>(mode));
+            composeMFSKMessage();
+//            selectMode(static_cast<uint8_t>(mode));
           }
         }
         else
@@ -2403,6 +2411,11 @@ void processTxTrigger()
     //    setTxState(TxState::MFSK);
     setTxState(next_state);
     next_tx = UINT32_MAX;
+    SerialUSB.write('\v');
+    for(uint i = 0; i < 79; ++i)
+    {
+      SerialUSB.print(mfsk_buffer[i]);
+    }
   }
   yield();
 }
@@ -2440,7 +2453,7 @@ void txStateMachine()
             //frequency = (base_frequency * 100);
             //change_freq = true;
             //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
-            selectMode(static_cast<uint8_t>(mode));
+//            selectMode(static_cast<uint8_t>(mode));
 
             setNextTx(0);
           }
@@ -2463,7 +2476,7 @@ void txStateMachine()
           {
             setNextTx(cur_config.tx_intv);
             setTxState(TxState::Idle);
-            selectMode(static_cast<uint8_t>(mode));
+//            selectMode(static_cast<uint8_t>(mode));
           }
           break;
         case TxState::DFCW:
@@ -2499,7 +2512,7 @@ void txStateMachine()
             {
               setTxState(TxState::Idle);
               setNextTx(cur_config.tx_intv);
-              selectMode(static_cast<uint8_t>(mode));
+//              selectMode(static_cast<uint8_t>(mode));
             }
             
 
@@ -2525,7 +2538,7 @@ void txStateMachine()
             setTxState(TxState::Idle);
 
             setNextTx(cur_config.tx_intv);
-            selectMode(static_cast<uint8_t>(mode));
+            composeMFSKMessage();
           }
           break;
         case TxState::MFSK:
@@ -2544,7 +2557,7 @@ void txStateMachine()
               {
                 setTxState(TxState::Idle);
                 setNextTx(cur_config.tx_intv);
-                selectMode(static_cast<uint8_t>(mode));
+                composeMFSKMessage();
               }
               //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (base_frequency * 100);
@@ -2622,6 +2635,30 @@ void composeJTBuffer(uint8_t buf)
     break;
   case 4:
     sprintf(msg_buffer_4, "%s %s", temp_call, temp_grid);
+    break;
+  }
+}
+
+void composeMFSKMessage()
+{
+  memset(mfsk_buffer, 0, 255);
+  
+  switch(mode)
+  {
+  case Mode::WSPR:
+    jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
+    break;
+  case Mode::JT65:
+    jtencode.jt65_encode(msg_buffer, mfsk_buffer);
+    break;
+  case Mode::JT9:
+      jtencode.jt9_encode(msg_buffer, mfsk_buffer);
+    break;
+  case Mode::JT4:
+    jtencode.jt4_encode(msg_buffer, mfsk_buffer);
+    break;
+  case Mode::FT8:
+    jtencode.ft8_encode(msg_buffer, mfsk_buffer);
     break;
   }
 }
@@ -3009,8 +3046,8 @@ void setup()
 //  next_state = TxState::MFSK;
 
   // Clear TX buffer
-  memset(mfsk_buffer, 0, 255);
   selectBuffer(cur_buffer);
+  composeMFSKMessage();
 //  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
 //                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
   setTxState(TxState::Idle);
@@ -3019,8 +3056,7 @@ void setup()
   change_freq = true;
   
 //  composeWSPRBuffer();
-  composeMorseBuffer(cur_buffer);
-  selectMode(static_cast<uint8_t>(mode));
+//  composeMorseBuffer(cur_buffer);
 
   // Set PA bias
   setPABias(cur_config.pa_bias);
