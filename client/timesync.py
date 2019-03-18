@@ -10,50 +10,52 @@ from timeit import default_timer as timer
 import argparse
 import logging
 import atexit
+# import cmd
+import cmd2 as cmd
 
 logging.basicConfig(level=logging.DEBUG,
                     format='[%(levelname)s] (%(threadName)-10s) %(message)s',
                     )
 
-# Set up non-blocking keyboard read
-try:
-    from msvcrt import getch  # try to import Windows version
-except ImportError:
-    import tty
-    import termios
-    import fcntl
-
-    def getch():   # define non-Windows version
-        with raw(sys.stdin):
-            with nonblocking(sys.stdin):
-                ch = sys.stdin.read(1)
-
-        return ch
-
-if sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.platform.startswith('darwin'):
-    class raw(object):
-        def __init__(self, stream):
-            self.stream = stream
-            self.fd = self.stream.fileno()
-
-        def __enter__(self):
-            self.original_stty = termios.tcgetattr(self.stream)
-            tty.setcbreak(self.stream)
-
-        def __exit__(self, type, value, traceback):
-            termios.tcsetattr(self.stream, termios.TCSANOW, self.original_stty)
-
-    class nonblocking(object):
-        def __init__(self, stream):
-            self.stream = stream
-            self.fd = self.stream.fileno()
-
-        def __enter__(self):
-            self.orig_fl = fcntl.fcntl(self.fd, fcntl.F_GETFL)
-            fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl | os.O_NONBLOCK)
-
-        def __exit__(self, *args):
-            fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl)
+# # Set up non-blocking keyboard read
+# try:
+#     from msvcrt import getch  # try to import Windows version
+# except ImportError:
+#     import tty
+#     import termios
+#     import fcntl
+#
+#     def getch():   # define non-Windows version
+#         with raw(sys.stdin):
+#             with nonblocking(sys.stdin):
+#                 ch = sys.stdin.read(1)
+#
+#         return ch
+#
+# if sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.platform.startswith('darwin'):
+#     class raw(object):
+#         def __init__(self, stream):
+#             self.stream = stream
+#             self.fd = self.stream.fileno()
+#
+#         def __enter__(self):
+#             self.original_stty = termios.tcgetattr(self.stream)
+#             tty.setcbreak(self.stream)
+#
+#         def __exit__(self, type, value, traceback):
+#             termios.tcsetattr(self.stream, termios.TCSANOW, self.original_stty)
+#
+#     class nonblocking(object):
+#         def __init__(self, stream):
+#             self.stream = stream
+#             self.fd = self.stream.fileno()
+#
+#         def __enter__(self):
+#             self.orig_fl = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+#             fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl | os.O_NONBLOCK)
+#
+#         def __exit__(self, *args):
+#             fcntl.fcntl(self.fd, fcntl.F_SETFL, self.orig_fl)
 
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
@@ -138,10 +140,18 @@ def serial_handler():
                 logging.info(ser.readline().decode())
                 # print(ser.readline() + "\r")
 
+class CmdParser(cmd.Cmd):
+    prompt = '>'
+    intro = 'OpenBeacon Mini'
+    
+    def do_quit():
+        if args.verbosity > 0:
+            logging.info('EXIT')
+        sys.exit()
 
 def main():
-    global char
-    char = None
+    # global char
+    # char = None
 
     # Start threads
     # t = threading.Thread(target=keypress)
@@ -151,15 +161,19 @@ def main():
     # t.start()
     s.start()
 
-    while True:
-        char = getch()
-        if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
-            if args.verbosity > 0:
-                logging.info('EXIT')
-            sys.exit()
+    # Drop into command parser loop
+    CmdParser().cmdloop()
 
-        char = None
-        time.sleep(0.01)
+    # while True:
+        # char = getch()
+        # line_input = input('>')
+        # if char == 'q' or char == b'q' or char == '\x1b' or char == b'\x1b':  # 1b is ESC
+        #     if args.verbosity > 0:
+        #         logging.info('EXIT')
+        #     sys.exit()
+        #
+        # char = None
+        # time.sleep(0.01)
 
 
 if __name__ == "__main__":

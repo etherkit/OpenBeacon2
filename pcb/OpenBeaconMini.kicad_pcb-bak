@@ -518,7 +518,7 @@
     (tags "SOT89-3, Housing,")
     (path /5A2400A1)
     (attr smd)
-    (fp_text reference Q3 (at 0 -3.55 180) (layer F.SilkS)
+    (fp_text reference Q3 (at 0 3.6 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 2SK3074 (at 0 3.65 180) (layer F.Fab) hide
