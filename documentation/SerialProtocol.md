@@ -3,7 +3,7 @@ OpenBeacon Mini Serial Communication Protocol
 
 Synopsis
 --------
-The OpenBeacon Mini serial communications protocol is a flexible, discoverable, yet compact way to
+The OpenBeacon Mini serial communications protocol is a flexible, discoverable, yet compact way to pass data between OpenBeacon Mini and a PC attached via the USB-UART. This allows for synchronization of time, setting of all configuration parameters, and complete control of OpenBeacon Mini from the PC.
 
 Packet Description
 ------------------
@@ -69,6 +69,21 @@ None
 | Field | Type | Description |
 |-------|------|-------------|
 | id | uint64_t | Unique packet ID |
+
+- ### 0xFE &mdash; Notification
+
+#### Required Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| text | string | Notification text |
+
+#### Optional Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | uint64_t | Unique packet ID |
+| level | uint8_t | Notification level |
 
 - ### 0xFF &mdash; Error
 
