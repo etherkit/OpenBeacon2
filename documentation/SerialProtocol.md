@@ -9,7 +9,7 @@ Packet Description
 ------------------
 A well-formed serial packet consists of three main components: a header, an optional JSON payload, and a termination byte. The header is formed from one identification byte (always 0x07/ASCII BEL), followed by a one-byte message type, and then a two-byte JSON payload length in big-endian format.
 
-The optional payload is a minified JSON string whose length in bytes much match the payload length field specified previously. Because this protocol is meant to be implemented on a microcontroller, the maximum length of this JSON string is 500 bytes.
+The optional payload is a minified JSON string whose length in bytes must match the payload length field specified previously. Because this protocol is meant to be implemented on a microcontroller, the maximum length of this JSON string is 500 bytes.
 
 Finally, the end of the packet is indicated with one byte (always 0x0A/ASCII LF).
 
@@ -62,7 +62,7 @@ None
 
 | Field | Type | Description |
 |-------|------|-------------|
-| timestamp | string | Current time in Unix timestamp format |
+| timestamp | uint64_t | Current time in Unix timestamp format |
 
 #### Optional Fields
 
@@ -74,9 +74,7 @@ None
 
 #### Required Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| text | string | Notification text |
+None
 
 #### Optional Fields
 
@@ -84,6 +82,7 @@ None
 |-------|------|-------------|
 | id | uint64_t | Unique packet ID |
 | level | uint8_t | Notification level |
+| text | string | Notification text |
 
 - ### 0xFF &mdash; Error
 

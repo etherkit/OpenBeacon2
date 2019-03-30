@@ -39,6 +39,7 @@ def send_serial_packet(msg_type, payload):
 
     return len(serial_packet)
 
+
 def main():
     while True:
         if(ser.in_waiting > 0):
