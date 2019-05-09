@@ -66,7 +66,7 @@ constexpr ModeData mode_table[] =
   {Mode::QRSS10, "QRSS10", MetaMode::CW, 0.12, 100, 0, 0, 0, 0},
   {Mode::QRSS120, "QRSS120", MetaMode::CW, 0.01, 100, 0, 0, 0, 0},
   {Mode::CW, "CW", MetaMode::CW, 25, 100, 0, 0, 0, 10},
-  {Mode::HELL, "Hell", MetaMode::MFSK, 3.5, 100, 0, 0, 0, 0},
+  {Mode::HELL, "HELL", MetaMode::MFSK, 3.5, 100, 0, 0, 0, 0},
   {Mode::WSPR, "WSPR", MetaMode::MFSK, 1.75, 163, 146, 682, WSPR_SYMBOL_COUNT, 120},
   {Mode::JT65, "JT65", MetaMode::MFSK, 1.75, 200, 269, 371, JT65_SYMBOL_COUNT, 60},
   {Mode::JT9, "JT9", MetaMode::MFSK, 1.75, 200, 173, 576, JT9_SYMBOL_COUNT, 60},

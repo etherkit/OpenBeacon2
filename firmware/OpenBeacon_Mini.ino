@@ -1,7 +1,7 @@
 // OpenBeacon Mini
 // Etherkit
 //
-// Rev 20 Jan 2019
+// Rev 3 May 2019
 //
 // Hardware Requirements
 // ---------------------
@@ -116,8 +116,8 @@ constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
 
 constexpr char PACKET_ID = '\a'; // ASCII BEL
 constexpr char PACKET_TERM = '\n'; // ASCII LF
-constexpr uint8_t PACKET_MSG_TYPE_0 = 0;
-constexpr uint16_t JSON_MAX_SIZE = 500;
+//constexpr uint8_t PACKET_MSG_TYPE_0 = 0;
+constexpr uint16_t JSON_MAX_SIZE = 900;
 
 constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
@@ -133,6 +133,7 @@ struct Config
   uint8_t version;
   Mode mode;
   uint8_t band;
+  uint64_t base_freq;
   uint16_t wpm;
   uint8_t tx_intv;
   uint8_t dfcw_offset;
@@ -195,7 +196,7 @@ struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 // F == float
 // T == time
 // B == boolean
-const char* settings_table[][2] =
+const std::string settings_table[][2] =
 {
   {"pa_bias", "PA Bias"},
   {"callsign", "Callsign"},
@@ -238,18 +239,18 @@ extEEPROM eeprom(kbits_64, 1, EEP_24AA64T_BLOCK_SIZE, EEP_24AA64T_BUS_BASE_ADDR)
 #endif
 
 // ISR global variables
-volatile uint64_t base_frequency = DEFAULT_FREQUENCY; // 30m WSPR
-volatile uint64_t frequency = base_frequency;
+//volatile uint64_t base_frequency = DEFAULT_FREQUENCY; // 30m WSPR
+volatile uint64_t frequency = DEFAULT_FREQUENCY;
 volatile uint32_t last_reported_pos;   // change management
 volatile uint32_t lower_freq_limit = DEFAULT_LOWER_FREQ_LIMIT;
 volatile uint32_t upper_freq_limit = DEFAULT_UPPER_FREQ_LIMIT;
 volatile MetaMode meta_mode = DEFAULT_METAMODE;
-volatile Mode mode = DEFAULT_MODE;
+//volatile Mode mode = DEFAULT_MODE;
 volatile DisplayMode display_mode = DEFAULT_DISPLAY_MODE;
 //volatile uint16_t tx_interval = DEFAULT_TX_INTERVAL;
 volatile TxState cur_state = DEFAULT_STATE;
 volatile TxState prev_state = DEFAULT_STATE;
-TxState next_state = DEFAULT_STATE;
+volatile TxState next_state = DEFAULT_STATE;
 volatile uint32_t cur_timer, next_event;
 volatile uint8_t clk_temp = 0;
 volatile uint8_t cur_symbol = 0;
@@ -265,7 +266,7 @@ uint8_t band_module_index_2 = DEFAULT_BAND_MODULE_INDEX;
 #endif
 uint8_t tune_step = 0;
 uint32_t band_id = 0;
-uint8_t band_index = 0;
+//uint8_t band_index = 0;
 settings_type settings;
 //std::string cur_setting = "";
 uint64_t cur_setting_uint = 0;
@@ -296,18 +297,18 @@ uint32_t initial_time_sync = 0;
 uint8_t mfsk_buffer[255];
 char wspr_buffer[41];
 char msg_buffer[MSG_BUFFER_SIZE];
-char msg_buffer_1[MSG_BUFFER_SIZE];
-char msg_buffer_2[MSG_BUFFER_SIZE] = "TESTING";
-char msg_buffer_3[MSG_BUFFER_SIZE];
-char msg_buffer_4[MSG_BUFFER_SIZE];
-uint8_t cur_buffer = DEFAULT_CUR_BUFFER;
+//char msg_buffer_1[MSG_BUFFER_SIZE];
+//char msg_buffer_2[MSG_BUFFER_SIZE] = "TESTING";
+//char msg_buffer_3[MSG_BUFFER_SIZE];
+//char msg_buffer_4[MSG_BUFFER_SIZE];
+//uint8_t cur_buffer = DEFAULT_CUR_BUFFER;
 uint8_t cur_symbol_count;
 uint16_t cur_symbol_time;
 uint16_t cur_tx_interval_mult;
 uint16_t cur_tx_interval = DEFAULT_TX_INTERVAL;
 bool tx_lock = DEFAULT_TX_LOCK;
 bool tx_enable = DEFAULT_TX_ENABLE;
-float wpm = DEFAULT_WPM;
+//float wpm = DEFAULT_WPM;
 uint8_t cur_setting_digit = 0;
 uint8_t cur_edit_buffer;
 bool ins_del_mode = false;
@@ -322,6 +323,10 @@ boolean disable_display_loop = false;
 uint8_t cur_band_module = 0;
 std::string band_name;
 bool time_sync_request = false;
+bool select_band_reset = false;
+
+StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
+StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -461,12 +466,16 @@ void initMenu()
   menu.selectParent();
   menu.addChild("Settings");
   menu.selectChild(3);
-  for (auto& c : settings_table)
+  for (auto c : settings_table)
   {
-    const char* key = c[0];
-    const char* label = c[1];
-    menu.addChild(label, setConfig, key);
-    //menu.addChild(c.first.c_str(), setConfig, c.first.c_str());
+//    const char* key = c[0].c_str();
+//    const char* label = c[1].c_str();
+//    char key[20];
+//    char label[20];
+//    strcpy(key, c[0]);
+//    strcpy(label, c[1]);
+//    menu.addChild(label, setConfig, key);
+    menu.addChild(c[1].c_str(), setConfig, c[0].c_str());
   }
   menu.selectParent();
   menu.addChild("Reset", resetConfig, 0);
@@ -499,163 +508,174 @@ void selectMode(uint8_t sel)
   switch (static_cast<Mode>(sel))
   {
     case Mode::DFCW3:
-      mode = Mode::DFCW3;
-      cur_config.mode = mode;
+//      mode = Mode::DFCW3;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::DFCW3;
       meta_mode = MetaMode::DFCW;
       setTxState(TxState::Idle);
       next_state = TxState::DFCW;
 //      composeBuffer();
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::DFCW6:
-      mode = Mode::DFCW6;
-      cur_config.mode = mode;
+//      mode = Mode::DFCW6;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::DFCW6;
       meta_mode = MetaMode::DFCW;
       setTxState(TxState::Idle);
       next_state = TxState::DFCW;
 //      composeBuffer();
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::DFCW10:
-      mode = Mode::DFCW10;
-      cur_config.mode = mode;
+//      mode = Mode::DFCW10;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::DFCW10;
       meta_mode = MetaMode::DFCW;
       setTxState(TxState::Idle);
       next_state = TxState::DFCW;
 //      composeBuffer();
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::DFCW120:
-      mode = Mode::DFCW120;
-      cur_config.mode = mode;
+//      mode = Mode::DFCW120;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::DFCW120;
       meta_mode = MetaMode::DFCW;
       setTxState(TxState::Idle);
       next_state = TxState::DFCW;
 //      composeBuffer();
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::QRSS3:
-      mode = Mode::QRSS3;
-      cur_config.mode = mode;
+//      mode = Mode::QRSS3;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::QRSS3;
       meta_mode = MetaMode::CW;
       setTxState(TxState::Idle);
       next_state = TxState::CW;
 //      composeBuffer();
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::QRSS6:
-      mode = Mode::QRSS6;
-      cur_config.mode = mode;
+//      mode = Mode::QRSS6;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::QRSS6;
       meta_mode = MetaMode::CW;
       setTxState(TxState::Idle);
       next_state = TxState::CW;
 //      composeBuffer();
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::QRSS10:
-      mode = Mode::QRSS10;
-      cur_config.mode = mode;
+//      mode = Mode::QRSS10;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::QRSS10;
       meta_mode = MetaMode::CW;
       setTxState(TxState::Idle);
       next_state = TxState::CW;
 //      composeBuffer();
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::QRSS120:
-      mode = Mode::QRSS120;
-      cur_config.mode = mode;
+//      mode = Mode::QRSS120;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::QRSS120;
       meta_mode = MetaMode::CW;
       setTxState(TxState::Idle);
       next_state = TxState::CW;
 //      composeBuffer();
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
       break;
     case Mode::CW:
-      mode = Mode::CW;
-      cur_config.mode = mode;
+//      mode = Mode::CW;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::CW;
       meta_mode = MetaMode::CW;
       setTxState(TxState::Idle);
       next_state = TxState::CW;
 //      composeBuffer();
-      wpm = mode_table[static_cast<uint8_t>(mode)].WPM;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::HELL:
-      mode = Mode::HELL;
-      cur_config.mode = mode;
+//      mode = Mode::HELL;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::HELL;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
 //      composeBuffer();
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].cw_freq;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].cw_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::WSPR:
-      mode = Mode::WSPR;
-      cur_config.mode = mode;
+//      mode = Mode::WSPR;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::WSPR;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
@@ -664,82 +684,86 @@ void selectMode(uint8_t sel)
 //      composeBuffer(1);
 //      memset(mfsk_buffer, 0, 255);
 //      jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].wspr_freq;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].wspr_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::JT65:
-      mode = Mode::JT65;
-      cur_config.mode = mode;
+//      mode = Mode::JT65;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::JT65;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
-      selectBuffer(cur_buffer);
+      selectBuffer(cur_config.buffer);
 //      composeMFSKMessage();
 //      composeBuffer();
 //      memset(mfsk_buffer, 0, 255);
 //      jtencode.jt65_encode(msg_buffer, mfsk_buffer);
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].jt65_freq;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].jt65_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::JT9:
-      mode = Mode::JT9;
-      cur_config.mode = mode;
+//      mode = Mode::JT9;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::JT9;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
-      selectBuffer(cur_buffer);
+      selectBuffer(cur_config.buffer);
 //      composeMFSKMessage();
 //      composeBuffer();
 //      memset(mfsk_buffer, 0, 255);
 //      jtencode.jt9_encode(msg_buffer, mfsk_buffer);
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].jt9_freq;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].jt9_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::JT4:
-      mode = Mode::JT4;
-      cur_config.mode = mode;
+//      mode = Mode::JT4;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::JT4;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
-      selectBuffer(cur_buffer);
+      selectBuffer(cur_config.buffer);
 //      composeMFSKMessage();
 //      composeBuffer();
 //      memset(mfsk_buffer, 0, 255);
 //      jtencode.jt4_encode(msg_buffer, mfsk_buffer);
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].jt9_freq;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].jt9_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
       break;
     case Mode::FT8:
-      mode = Mode::FT8;
-      cur_config.mode = mode;
+//      mode = Mode::FT8;
+//      cur_config.mode = mode;
+      cur_config.mode = Mode::FT8;
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
@@ -754,13 +778,13 @@ void selectMode(uint8_t sel)
 //      {
 //        SerialUSB.print(mfsk_buffer[i]);
 //      }
-      cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
+      cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
 //      SerialUSB.write('\v');
 //      SerialUSB.print(cur_tone_spacing, DEC);
-      cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-      cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
-//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      base_frequency = band_table[band_index].ft8_freq;
+      cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+      cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
+//      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
+      cur_config.base_freq = band_table[cur_config.band].ft8_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
@@ -786,16 +810,16 @@ void setBuffer(const char * b, const char * value)
     switch (buf)
     {
       case 1:
-        cur_setting_str = msg_buffer_1;
+        cur_setting_str = cur_config.msg_buffer_1;
         break;
       case 2:
-        cur_setting_str = msg_buffer_2;
+        cur_setting_str = cur_config.msg_buffer_2;
         break;
       case 3:
-        cur_setting_str = msg_buffer_3;
+        cur_setting_str = cur_config.msg_buffer_3;
         break;
       case 4:
-        cur_setting_str = msg_buffer_4;
+        cur_setting_str = cur_config.msg_buffer_4;
         break;
     }
     cur_edit_buffer = buf;
@@ -816,23 +840,27 @@ void selectBuffer(const uint8_t buf)
   switch(buf)
   {
   case 1:
-    strcpy(msg_buffer, msg_buffer_1);
-    cur_buffer = buf;
+    strcpy(msg_buffer, cur_config.msg_buffer_1);
+//    cur_buffer = buf;
+    cur_config.buffer = buf;
     break;
   case 2:
-    strcpy(msg_buffer, msg_buffer_2);
-    cur_buffer = buf;
+    strcpy(msg_buffer, cur_config.msg_buffer_2);
+//    cur_buffer = buf;
+    cur_config.buffer = buf;
     break;
   case 3:
-    strcpy(msg_buffer, msg_buffer_3);
-    cur_buffer = buf;
+    strcpy(msg_buffer, cur_config.msg_buffer_3);
+//    cur_buffer = buf;
+    cur_config.buffer = buf;
     break;
   case 4:
-    strcpy(msg_buffer, msg_buffer_4);
-    cur_buffer = buf;
+    strcpy(msg_buffer, cur_config.msg_buffer_4);
+//    cur_buffer = buf;
+    cur_config.buffer = buf;
     break;
   }
-  cur_config.buffer = cur_buffer;
+//  cur_config.buffer = buf;
   composeMFSKMessage();
 //  SerialUSB.write('\v');
 //  for(uint8_t i = 0; i < FT8_SYMBOL_COUNT; ++i)
@@ -953,6 +981,7 @@ void resetConfig(const uint8_t x)
       cur_config.version = CONFIG_SCHEMA_VERSION;
       cur_config.mode = DEFAULT_MODE;
       cur_config.band = DEFAULT_BAND_INDEX;
+      cur_config.base_freq = DEFAULT_FREQUENCY;
       cur_config.wpm = DEFAULT_WPM;
       cur_config.tx_intv = DEFAULT_TX_INTERVAL;
       cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
@@ -967,13 +996,13 @@ void resetConfig(const uint8_t x)
       strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
       strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
       cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
-      mode = cur_config.mode;
-      strcpy(msg_buffer_1, cur_config.msg_buffer_1);
-      strcpy(msg_buffer_2, cur_config.msg_buffer_2);
-      strcpy(msg_buffer_3, cur_config.msg_buffer_3);
-      strcpy(msg_buffer_4, cur_config.msg_buffer_4);
-      cur_buffer = cur_config.buffer;
-      selectBuffer(cur_buffer);
+//      mode = cur_config.mode;
+//      strcpy(msg_buffer_1, cur_config.msg_buffer_1);
+//      strcpy(msg_buffer_2, cur_config.msg_buffer_2);
+//      strcpy(msg_buffer_3, cur_config.msg_buffer_3);
+//      strcpy(msg_buffer_4, cur_config.msg_buffer_4);
+//      cur_buffer = cur_config.buffer;
+      selectBuffer(cur_config.buffer);
       cur_tone_spacing = cur_config.dfcw_offset;
       sprintf(temp_str, "U%lu", cur_config.pa_bias);
       settings["pa_bias"].second = std::string(temp_str);
@@ -998,6 +1027,8 @@ void resetConfig(const uint8_t x)
     
       // Save config to EEPROM
       serializeConfig();
+
+      select_band_reset = true;
     }
   }
 
@@ -1039,9 +1070,9 @@ void drawOLED()
       // MHz
       yield(); // you need an odd number of yields or you get a strange bimodal distribution
                // of transmit times, with half being too long
-      freq = base_frequency;
+      freq = cur_config.base_freq;
   
-      if(base_frequency / 1000000UL > 0)
+      if(cur_config.base_freq / 1000000UL > 0)
       {
         sprintf(temp_str, "%3lu", freq / 1000000UL);
         zero_pad = 1;
@@ -1158,7 +1189,7 @@ void drawOLED()
       // Draw mode
       yield();
       u8g2.setFont(u8g2_font_6x10_mr);
-      sprintf(temp_str, "%s", mode_table[static_cast<uint8_t>(mode)].mode_name);
+      sprintf(temp_str, "%s", mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name);
       u8g2.drawStr(87, 15, temp_str);
       yield();
     
@@ -1428,7 +1459,7 @@ void drawOLED()
         //std::string wspr_buffer;
 //        yield();
         
-        switch(mode)
+        switch(cur_config.mode)
         {
         case Mode::DFCW3:
         case Mode::DFCW6:
@@ -1452,7 +1483,7 @@ void drawOLED()
           }
           else
           {
-            sprintf(buffer_str, "%d:%s<", cur_buffer, msg_buffer);
+            sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
             yield();
             u8g2.drawStr(0, 30, buffer_str);
 
@@ -1499,7 +1530,7 @@ void drawOLED()
           }
           else
           {
-            sprintf(buffer_str, "%d:%s<", cur_buffer, msg_buffer);
+            sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
             yield();
             u8g2.drawStr(0, 30, buffer_str);
 
@@ -1523,7 +1554,7 @@ void drawOLED()
           }
           else
           {
-            sprintf(buffer_str, "%d:%s<", cur_buffer, msg_buffer);
+            sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
             yield();
             u8g2.drawStr(0, 30, buffer_str);
 
@@ -1547,7 +1578,7 @@ void drawOLED()
           }
           else
           {
-            sprintf(buffer_str, "%d:%s<", cur_buffer, msg_buffer);
+            sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
             yield();
             u8g2.drawStr(0, 30, buffer_str);
 
@@ -1571,7 +1602,7 @@ void drawOLED()
           }
           else
           {
-            sprintf(buffer_str, "%d:%s<", cur_buffer, msg_buffer);
+            sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
             yield();
             u8g2.drawStr(0, 30, buffer_str);
 
@@ -1594,7 +1625,7 @@ void drawOLED()
           u8g2.setDrawColor(0);
           u8g2.drawStr(0, 29, "TX Dis");
           u8g2.setDrawColor(1); 
-          sprintf(temp_str, "%1u: %s", cur_buffer, next_tx_time);
+          sprintf(temp_str, "%1u: %s", cur_config.buffer, next_tx_time);
           u8g2.drawStr(45, 29, temp_str);
         }
         else
@@ -1715,13 +1746,13 @@ void pollButtons()
           //if(cur_state == TxState::Idle)
           if (!tx_lock)
           {
-            if (base_frequency + power_10(tune_step) > upper_freq_limit)
+            if (cur_config.base_freq + power_10(tune_step) > upper_freq_limit)
             {
-              base_frequency = upper_freq_limit;
+              cur_config.base_freq = upper_freq_limit;
             }
             else
             {
-              base_frequency += power_10(tune_step);
+              cur_config.base_freq += power_10(tune_step);
             }
           }
         }
@@ -1782,13 +1813,13 @@ void pollButtons()
           //if(cur_state == TxState::Idle)
           if (!tx_lock)
           {
-            if (base_frequency - power_10(tune_step) < lower_freq_limit)
+            if (cur_config.base_freq - power_10(tune_step) < lower_freq_limit)
             {
-              base_frequency = lower_freq_limit;
+              cur_config.base_freq = lower_freq_limit;
             }
             else
             {
-              base_frequency -= power_10(tune_step);
+              cur_config.base_freq -= power_10(tune_step);
             }
           }
         }
@@ -2015,9 +2046,8 @@ void pollButtons()
             tx_enable = true;
             setTxState(TxState::Idle);
             // Re-compose the buffers to reflect changes
-            selectBuffer(cur_buffer);
+            selectBuffer(cur_config.buffer);
             composeWSPRBuffer();
-//            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -2038,7 +2068,7 @@ void pollButtons()
           MenuType type = menu.selectChild(menu.active_child + 1);
           if (type == MenuType::Action)
           {
-            selectBuffer(cur_buffer);
+            selectBuffer(cur_config.buffer);
 //            composeMFSKMessage();  // logic so executed only on Sel Buf?
             display_mode = DisplayMode::Main;
             menu.selectRoot();
@@ -2132,7 +2162,7 @@ void pollButtons()
 //          composeWSPRBuffer();
 //          composeJTBuffer(1);
 //          composeMorseBuffer(1);
-          selectBuffer(cur_buffer);
+          selectBuffer(cur_config.buffer);
 //          composeMFSKMessage();
 //          selectMode(static_cast<uint8_t>(mode));
   
@@ -2158,27 +2188,27 @@ void pollButtons()
             switch (cur_edit_buffer)
             {
               case 1:
-                sprintf(msg_buffer_1, "%s", cur_setting_str.c_str());
-                strcpy(cur_config.msg_buffer_1, msg_buffer_1);
+                sprintf(cur_config.msg_buffer_1, "%s", cur_setting_str.c_str());
+//                strcpy(cur_config.msg_buffer_1, msg_buffer_1);
                 break;
               case 2:
-                sprintf(msg_buffer_2, "%s", cur_setting_str.c_str());
-                strcpy(cur_config.msg_buffer_2, msg_buffer_2);
+                sprintf(cur_config.msg_buffer_2, "%s", cur_setting_str.c_str());
+//                strcpy(cur_config.msg_buffer_2, msg_buffer_2);
                 break;
               case 3:
-                sprintf(msg_buffer_3, "%s", cur_setting_str.c_str());
-                strcpy(cur_config.msg_buffer_3, msg_buffer_3);
+                sprintf(cur_config.msg_buffer_3, "%s", cur_setting_str.c_str());
+//                strcpy(cur_config.msg_buffer_3, msg_buffer_3);
                 break;
               case 4:
-                sprintf(msg_buffer_4, "%s", cur_setting_str.c_str());
-                strcpy(cur_config.msg_buffer_4, msg_buffer_4);
+                sprintf(cur_config.msg_buffer_4, "%s", cur_setting_str.c_str());
+//                strcpy(cur_config.msg_buffer_4, msg_buffer_4);
                 break;
             }
   
             cur_setting_selected = 0;
             display_mode = DisplayMode::Main;
             menu.selectRoot();
-            selectBuffer(cur_buffer);
+            selectBuffer(cur_config.buffer);
             serializeConfig();
 //            composeMFSKMessage();
 //            selectMode(static_cast<uint8_t>(mode));
@@ -2196,16 +2226,16 @@ void pollButtons()
             // Switch bands
 
             // First, check if there is another higher band in this band module
-            if(band_table[band_index].module_index == band_table[band_index + 1].module_index)
+            if(band_table[cur_config.band].module_index == band_table[cur_config.band + 1].module_index)
             {
-              ++band_index;
-              new_lower_freq_limit = band_table[band_index].lower_limit;
-              new_upper_freq_limit = band_table[band_index].upper_limit;
-              new_cw_freq = band_table[band_index].cw_freq;
-              new_wspr_freq = band_table[band_index].wspr_freq;
-              new_jt65_freq = band_table[band_index].jt65_freq;
-              new_jt9_freq = band_table[band_index].jt9_freq;
-              new_band_name = band_table[band_index].name;
+              ++cur_config.band;
+              new_lower_freq_limit = band_table[cur_config.band].lower_limit;
+              new_upper_freq_limit = band_table[cur_config.band].upper_limit;
+              new_cw_freq = band_table[cur_config.band].cw_freq;
+              new_wspr_freq = band_table[cur_config.band].wspr_freq;
+              new_jt65_freq = band_table[cur_config.band].jt65_freq;
+              new_jt9_freq = band_table[cur_config.band].jt9_freq;
+              new_band_name = band_table[cur_config.band].name;
               retune = true;
             }
             // Then, check if there is another band module to switch to
@@ -2223,7 +2253,7 @@ void pollButtons()
                   {
                     if(band.module_index == band_module_index_2)
                     {
-                      band_index = band.index;
+                      cur_config.band = band.index;
           
                       // Set default frequencies for band
                       new_lower_freq_limit = band.lower_limit;
@@ -2245,7 +2275,7 @@ void pollButtons()
                   {
                     if(band.module_index == band_module_index_1)
                     {
-                      band_index = band.index;
+                      cur_config.band = band.index;
           
                       // Set default frequencies for band
                       new_lower_freq_limit = band.lower_limit;
@@ -2273,7 +2303,7 @@ void pollButtons()
                   {
                     if(band.module_index == band_module_index_1)
                     {
-                      band_index = band.index;
+                      cur_config.band = band.index;
           
                       // Set default frequencies for band
                       new_lower_freq_limit = band.lower_limit;
@@ -2294,7 +2324,7 @@ void pollButtons()
                   {
                     if(band.module_index == band_module_index_2)
                     {
-                      band_index = band.index;
+                      cur_config.band = band.index;
           
                       // Set default frequencies for band
                       new_lower_freq_limit = band.lower_limit;
@@ -2318,7 +2348,7 @@ void pollButtons()
               upper_freq_limit = new_upper_freq_limit;
               band_name = new_band_name;
 
-              switch (mode)
+              switch (cur_config.mode)
               {
                 case Mode::DFCW3:
                 case Mode::DFCW6:
@@ -2330,19 +2360,19 @@ void pollButtons()
                 case Mode::QRSS120:
                 case Mode::CW:
                 case Mode::HELL:
-                  base_frequency = new_cw_freq;
+                  cur_config.base_freq = new_cw_freq;
                   break;
       
                 case Mode::WSPR:
-                  base_frequency = new_wspr_freq;
+                  cur_config.base_freq = new_wspr_freq;
                   break;
                 case Mode::JT65:
-                  base_frequency = new_jt65_freq;
+                  cur_config.base_freq = new_jt65_freq;
                   break;
                 case Mode::JT9:
                 case Mode::JT4:
                 case Mode::FT8: // TODO
-                  base_frequency = new_jt9_freq;
+                  cur_config.base_freq = new_jt9_freq;
                   break;
               }
             }
@@ -2399,9 +2429,16 @@ void pollButtons()
           else
           {
             setTxState(TxState::Idle);
-            SerialUSB.write('\b');
             morse.reset();
             setNextTx(0);
+
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE + 6];
+            json_tx_doc["level"] = 0;
+            json_tx_doc["text"] = "TX End";
+            json_tx_doc["data"] = cur_config.base_freq;
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0xFE, send_json);
           }
         }
         yield();
@@ -2447,7 +2484,7 @@ void selectBand()
 
   prev_band_module_index[2] = prev_band_module_index[1];
   prev_band_module_index[1] = prev_band_module_index[0];
-  prev_band_module_index[0] = band_index;
+  prev_band_module_index[0] = cur_config.band;
 
   band_id = analogRead(ADC_BAND_ID);
 
@@ -2459,7 +2496,7 @@ void selectBand()
   {
     if (band_id < band.upper_v && band_id > band.lower_v)
     {
-      if (band.index != band_index)
+      if (band.index != cur_config.band)
       {
         prev_band_module_index[0] = band.index;
         //band_index = band.index;
@@ -2469,7 +2506,7 @@ void selectBand()
         new_wspr_freq = band.wspr_freq;
         new_jt65_freq = band.jt65_freq;
         new_jt9_freq = band.jt9_freq;
-        //        if(base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+        //        if(cur_config.base_freq > upper_freq_limit || cur_config.base_freq < lower_freq_limit)
         //        {
         //          switch(mode)
         //          {
@@ -2511,14 +2548,14 @@ void selectBand()
     // unless band index is 0, which indicates removal of the band module
     //if(band_index != prev_band_module_index[0] && (cur_state != TxState::Idle || band_index == 0))
     //if(band_index != prev_band_module_index[0] && (!tx_lock || prev_band_module_index[0] == 0))
-    if (band_index != prev_band_module_index[0])
+    if (cur_config.band != prev_band_module_index[0])
     {
       lower_freq_limit = new_lower_freq_limit;
       upper_freq_limit = new_upper_freq_limit;
 
-      if (base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+      if (cur_config.base_freq > upper_freq_limit || cur_config.base_freq < lower_freq_limit)
       {
-        switch (mode)
+        switch (cur_config.mode)
         {
           case Mode::DFCW3:
           case Mode::DFCW6:
@@ -2560,21 +2597,21 @@ void selectBand()
       }
       else
       {
-        base_frequency = new_freq;
+        cur_config.base_freq = new_freq;
       }
     }
     // Then change band index
-    band_index = prev_band_module_index[0];
+    cur_config.band = prev_band_module_index[0];
 
     //    if(band_index == 0)
     //    {
     //      tx_lock = true;
-    //      base_frequency = 0;
+    //      cur_config.base_freq = 0;
     //    }
 
     //    if(!tx_lock)
     //    {
-    //      base_frequency = new_freq;
+    //      cur_config.base_freq = new_freq;
     //    }
   }
   else if (prev_band_module_index[2] == 0 && prev_band_module_index[1] != 0 && prev_band_module_index[0] != 0)
@@ -2589,7 +2626,7 @@ void selectBand()
   //  if(band_index == 0 && prev_band_module_index[1] == 0 && prev_band_module_index[0] == 0)
   //  {
   //    tx_lock = true;
-  //    base_frequency = 0;
+  //    cur_config.base_freq = 0;
   //  }
   //  else
   //  {
@@ -2611,13 +2648,13 @@ void selectBand()
 
   //  if(!tx_lock)
   //  {
-  //    base_frequency = new_freq;
+  //    cur_config.base_freq = new_freq;
   //  }
   //  else
   //  {
   //    if(band_index == 0)
   //    {
-  //      base_frequency = new_freq;
+  //      cur_config.base_freq = new_freq;
   //    }
   //  }
   yield();
@@ -2629,13 +2666,28 @@ void selectBand()
   static uint32_t new_lower_freq_limit, new_upper_freq_limit;
   static std::string new_band_name;
 
-  prev_band_module_index_1[2] = prev_band_module_index_1[1];
-  prev_band_module_index_1[1] = prev_band_module_index_1[0];
-  prev_band_module_index_1[0] = band_module_index_1;
+  if(select_band_reset)
+  {
+    prev_band_module_index_1[2] = 0;
+    prev_band_module_index_1[1] = 0;
+    prev_band_module_index_1[0] = 0;
+  
+    prev_band_module_index_2[2] = 0;
+    prev_band_module_index_2[1] = 0;
+    prev_band_module_index_2[0] = 0;
 
-  prev_band_module_index_2[2] = prev_band_module_index_2[1];
-  prev_band_module_index_2[1] = prev_band_module_index_2[0];
-  prev_band_module_index_2[0] = band_module_index_2;
+    select_band_reset = false;
+  }
+  else
+  {
+    prev_band_module_index_1[2] = prev_band_module_index_1[1];
+    prev_band_module_index_1[1] = prev_band_module_index_1[0];
+    prev_band_module_index_1[0] = band_module_index_1;
+  
+    prev_band_module_index_2[2] = prev_band_module_index_2[1];
+    prev_band_module_index_2[1] = prev_band_module_index_2[0];
+    prev_band_module_index_2[0] = band_module_index_2;
+  }
 
   band_id_1 = analogRead(ADC_BAND_ID_1);
   yield();
@@ -2655,43 +2707,113 @@ void selectBand()
   band_id_2 = (band_id_2 * ANALOG_REF) / 4096UL;
   yield();
 
+//  for (auto band_module : band_module_table)
+//  {
+//    yield();
+//    band_id = cur_band_module == 0 ? band_id_1 : band_id_2;
+//    if (band_id < band_module.upper_v && band_id > band_module.lower_v)
+//    {
+//      // Module change
+//      if (band_module.index != (cur_band_module == 0 ? band_module_index_1 : band_module_index_2))
+//      {
+//        if(cur_band_module == 0)
+//        {
+//          prev_band_module_index_1[0] = band_module.index;
+//        }
+//        else
+//        {
+//          prev_band_module_index_2[0] = band_module.index;
+//        }
+//        
+//        // Set band to first in band module list
+//        for(auto band : band_table)
+//        {
+//          if(band.module_index == band_module.index)
+//          {
+//            band_index = band.index;
+//
+//            // Set default frequencies for band
+//            new_lower_freq_limit = band.lower_limit;
+//            new_upper_freq_limit = band.upper_limit;
+//            new_cw_freq = band.cw_freq;
+//            new_wspr_freq = band.wspr_freq;
+//            new_jt65_freq = band.jt65_freq;
+//            new_jt9_freq = band.jt9_freq;
+//            new_band_name = band.name;
+//            break;
+//          }
+//        }
+//      }
+//    }
+//  }
   for (auto band_module : band_module_table)
   {
     yield();
-    band_id = cur_band_module == 0 ? band_id_1 : band_id_2;
-    if (band_id < band_module.upper_v && band_id > band_module.lower_v)
+    if (band_id_1 < band_module.upper_v && band_id_1 > band_module.lower_v)
     {
       // Module change
-      if (band_module.index != (cur_band_module == 0 ? band_module_index_1 : band_module_index_2))
+      if (band_module.index != band_module_index_1)
       {
-        if(cur_band_module == 0)
-        {
-          prev_band_module_index_1[0] = band_module.index;
-        }
-        else
-        {
-          prev_band_module_index_2[0] = band_module.index;
-        }
+        prev_band_module_index_1[0] = band_module.index;
         
         // Set band to first in band module list
-        for(auto band : band_table)
+        if(cur_band_module == 0)
         {
-          if(band.module_index == band_module.index)
+          for(auto band : band_table)
           {
-            band_index = band.index;
-
-            // Set default frequencies for band
-            new_lower_freq_limit = band.lower_limit;
-            new_upper_freq_limit = band.upper_limit;
-            new_cw_freq = band.cw_freq;
-            new_wspr_freq = band.wspr_freq;
-            new_jt65_freq = band.jt65_freq;
-            new_jt9_freq = band.jt9_freq;
-            new_band_name = band.name;
-            break;
+            if(band.module_index == band_module.index)
+            {
+              cur_config.band = band.index;
+  
+              // Set default frequencies for band
+              new_lower_freq_limit = band.lower_limit;
+              new_upper_freq_limit = band.upper_limit;
+              new_cw_freq = band.cw_freq;
+              new_wspr_freq = band.wspr_freq;
+              new_jt65_freq = band.jt65_freq;
+              new_jt9_freq = band.jt9_freq;
+              new_band_name = band.name;
+              break;
+            }
           }
         }
-
+      }
+    }
+  }
+  yield();
+  for (auto band_module : band_module_table)
+  {
+    yield();
+    if (band_id_2 < band_module.upper_v && band_id_2 > band_module.lower_v)
+    {
+      prev_band_module_index_2[0] = band_module.index;
+      
+      // Module change
+      if (band_module.index != band_module_index_2)
+      {
+//        prev_band_module_index_2[0] = band_module.index;
+        
+        // Set band to first in band module list
+        if(cur_band_module == 1)
+        {
+          for(auto band : band_table)
+          {
+            if(band.module_index == band_module.index)
+            {
+              cur_config.band = band.index;
+  
+              // Set default frequencies for band
+              new_lower_freq_limit = band.lower_limit;
+              new_upper_freq_limit = band.upper_limit;
+              new_cw_freq = band.cw_freq;
+              new_wspr_freq = band.wspr_freq;
+              new_jt65_freq = band.jt65_freq;
+              new_jt9_freq = band.jt9_freq;
+              new_band_name = band.name;
+              break;
+            }
+          }
+        }
       }
     }
   }
@@ -2699,9 +2821,9 @@ void selectBand()
 
   // Guard against ADC glitches by not changing bands until
   // three consequtive reads of the same band
-  if(cur_band_module == 0)
+  if (prev_band_module_index_1[0] == prev_band_module_index_1[1] && prev_band_module_index_1[1] == prev_band_module_index_1[2])
   {
-    if (prev_band_module_index_1[0] == prev_band_module_index_1[1] && prev_band_module_index_1[1] == prev_band_module_index_1[2])
+    if(cur_band_module == 0)
     {
       // If the band index is changed, change bands only when not transmitting,
       // unless band index is 0, which indicates removal of the band module
@@ -2711,9 +2833,9 @@ void selectBand()
         upper_freq_limit = new_upper_freq_limit;
         band_name = new_band_name;
   
-        if (base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+        if (cur_config.base_freq > upper_freq_limit || cur_config.base_freq < lower_freq_limit)
         {
-          switch (mode)
+          switch (cur_config.mode)
           {
             case Mode::DFCW3:
             case Mode::DFCW6:
@@ -2755,24 +2877,25 @@ void selectBand()
         }
         else
         {
-          base_frequency = new_freq;
+          cur_config.base_freq = new_freq;
         }
       }
-      // Then change band index
-      band_module_index_1 = prev_band_module_index_1[0];
     }
-    else if (prev_band_module_index_1[2] == 0 && prev_band_module_index_1[1] != 0 && prev_band_module_index_1[0] != 0)
-    {
-      tx_lock = false;
-    }
-    else
-    {
-      return;
-    }
+    // Then change band index
+    band_module_index_1 = prev_band_module_index_1[0];
+  }
+  else if (prev_band_module_index_1[2] == 0 && prev_band_module_index_1[1] != 0 && prev_band_module_index_1[0] != 0)
+  {
+    tx_lock = false;
   }
   else
   {
-    if (prev_band_module_index_2[0] == prev_band_module_index_2[1] && prev_band_module_index_2[1] == prev_band_module_index_2[2])
+    return;
+  }
+  
+  if (prev_band_module_index_2[0] == prev_band_module_index_2[1] && prev_band_module_index_2[1] == prev_band_module_index_2[2])
+  {
+    if(cur_band_module == 1)
     {
       // If the band index is changed, change bands only when not transmitting,
       // unless band index is 0, which indicates removal of the band module
@@ -2782,9 +2905,9 @@ void selectBand()
         upper_freq_limit = new_upper_freq_limit;
         band_name = new_band_name;
   
-        if (base_frequency > upper_freq_limit || base_frequency < lower_freq_limit)
+        if (cur_config.base_freq > upper_freq_limit || cur_config.base_freq < lower_freq_limit)
         {
-          switch (mode)
+          switch (cur_config.mode)
           {
             case Mode::DFCW3:
             case Mode::DFCW6:
@@ -2826,21 +2949,22 @@ void selectBand()
         }
         else
         {
-          base_frequency = new_freq;
+          cur_config.base_freq = new_freq;
         }
       }
-      // Then change band index
-      band_module_index_2 = prev_band_module_index_2[0];
     }
-    else if (prev_band_module_index_2[2] == 0 && prev_band_module_index_2[1] != 0 && prev_band_module_index_2[0] != 0)
-    {
-      tx_lock = false;
-    }
-    else
-    {
-      return;
-    }
+    // Then change band index
+    band_module_index_2 = prev_band_module_index_2[0];
   }
+  else if (prev_band_module_index_2[2] == 0 && prev_band_module_index_2[1] != 0 && prev_band_module_index_2[0] != 0)
+  {
+    tx_lock = false;
+  }
+  else
+  {
+    return;
+  }
+
   #endif
 }
 
@@ -2857,9 +2981,9 @@ void setTxState(TxState state)
       digitalWrite(TX_KEY, LOW);
       #endif
       #ifdef REV_B
-      if(mode == Mode::DFCW3 || mode == Mode::DFCW6 || mode == Mode::DFCW10 ||
-         mode == Mode::DFCW120 || mode == Mode::QRSS3 || mode == Mode::QRSS6 || 
-         mode == Mode::QRSS10 || mode == Mode::QRSS120)
+      if(cur_config.mode == Mode::DFCW3 || cur_config.mode == Mode::DFCW6 || cur_config.mode == Mode::DFCW10 ||
+         cur_config.mode == Mode::DFCW120 || cur_config.mode == Mode::QRSS3 || cur_config.mode == Mode::QRSS6 || 
+         cur_config.mode == Mode::QRSS10 || cur_config.mode == Mode::QRSS120)
       {
         digitalWrite(TX_KEY, HIGH);
         setPABias(cur_config.pa_bias + 800);
@@ -2872,7 +2996,7 @@ void setTxState(TxState state)
       #endif
       yield();
       si5351.output_enable(SI5351_CLK0, 0);
-//      frequency = (base_frequency * 100ULL);
+//      frequency = (cur_config.base_freq * 100ULL);
 //      change_freq = true;
 //      next_state = prev_state;
       prev_state = cur_state;
@@ -2885,7 +3009,7 @@ void setTxState(TxState state)
       sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");
       tx_lock = true;
       cur_symbol = 0;
-      frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+      frequency = (cur_config.base_freq * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
       change_freq = true;
       digitalWrite(TX_KEY, HIGH);
       #ifdef REV_B
@@ -2904,7 +3028,7 @@ void setTxState(TxState state)
       sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");
       si5351.output_enable(SI5351_CLK0, 1);
       tx_lock = true;
-      frequency = (base_frequency * 100ULL);
+      frequency = (cur_config.base_freq * 100ULL);
       change_freq = true;
       morse.tx_enable = true;
       #ifdef REV_B
@@ -2912,11 +3036,11 @@ void setTxState(TxState state)
       #endif
 //      morse.output_pin = TX_KEY;
       morse.dfcw_mode = false;
-      morse.setWPM(wpm);
+      morse.setWPM(cur_config.wpm);
       next_state = TxState::CW;
       prev_state = cur_state;
       cur_state = state;
-      selectBuffer(cur_buffer);
+      selectBuffer(cur_config.buffer);
       morse.send(msg_buffer);
       break;
     case TxState::IDDelay:
@@ -2928,7 +3052,7 @@ void setTxState(TxState state)
       #endif
       si5351.output_enable(SI5351_CLK0, 0);
 //      tx_lock = true;
-//      frequency = (base_frequency * 100ULL);
+//      frequency = (cur_config.base_freq * 100ULL);
 //      change_freq = true;
 //      morse.output_pin = TX_KEY;
 //      morse.setWPM(wpm);
@@ -2941,7 +3065,7 @@ void setTxState(TxState state)
 //      sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");
       si5351.output_enable(SI5351_CLK0, 1);
       tx_lock = true;
-      frequency = (base_frequency * 100ULL);
+      frequency = (cur_config.base_freq * 100ULL);
       change_freq = true;
       morse.tx_enable = true;
       #ifdef REV_B
@@ -2968,16 +3092,16 @@ void setTxState(TxState state)
       setPABias(cur_config.pa_bias);
       digitalWrite(TX_LED, HIGH);
       #endif
-      frequency = (base_frequency * 100ULL);
+      frequency = (cur_config.base_freq * 100ULL);
       change_freq = true;
 //      morse.output_pin = 0;
       morse.dfcw_mode = true;
-      morse.setWPM(wpm);
+      morse.setWPM(cur_config.wpm);
       next_state = TxState::DFCW;
       prev_state = cur_state;
       cur_state = state;
       morse.preamble_enable = true;
-      selectBuffer(cur_buffer);
+      selectBuffer(cur_config.buffer);
       morse.send(msg_buffer);
       break;
     default:
@@ -2996,7 +3120,7 @@ void setNextTx(uint8_t minutes)
 //  uint32_t t = rtc.getEpoch();
   uint8_t ten_min_delay, one_min_delay;
 
-  switch (mode)
+  switch (cur_config.mode)
   {
     case Mode::DFCW3:
     case Mode::DFCW6:
@@ -3134,14 +3258,22 @@ void processSerialIn()
   constexpr uint32_t DEFAULT_TIME = 946684800; // 1 Jan 2000
 
   uint32_t pctime;
-  char serial_packet[JSON_MAX_SIZE + 6];
+//  char serial_packet[JSON_MAX_SIZE + 6];
   char payload[JSON_MAX_SIZE];
-  StaticJsonDocument<JSON_MAX_SIZE> json_doc;
+//  StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
+//  StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+  char send_json[JSON_MAX_SIZE + 6];
 
   if(SerialUSB)
   {
     if (SerialUSB.available())
     {
+//      char serial_packet[JSON_MAX_SIZE + 6];
+//      char payload[JSON_MAX_SIZE];
+//      StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
+//      StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//      char send_json[JSON_MAX_SIZE + 6];
+  
       if (SerialUSB.read() == PACKET_ID)
       {
   //      digitalWrite(LED_BUILTIN, HIGH);
@@ -3167,7 +3299,7 @@ void processSerialIn()
         else return;
     
         // Deserialize the JSON document
-        DeserializationError error = deserializeJson(json_doc, payload);
+        DeserializationError error = deserializeJson(json_rx_doc, payload);
     
         if(!error)
         {
@@ -3177,9 +3309,9 @@ void processSerialIn()
         // Handle message
         switch(message_type)
         {
-        case 1:
-          pctime = json_doc["timestamp"];
-          sendSerialPacket(0xFE, "{\"text\":\"hello\"}");
+        case 0x01:
+          pctime = json_rx_doc["timestamp"];
+//          sendSerialPacket(0xFE, "{\"text\":\"hello\"}");
           if (pctime >= DEFAULT_TIME)
           {
             time_sync_expire = pctime + TIME_EXPIRE;
@@ -3190,6 +3322,424 @@ void processSerialIn()
               initial_time_sync = pctime;
             }
             time_sync_request = false;
+          }
+          break;
+        case 0x02:
+          if(json_rx_doc["set"] == true)
+          {
+            // Only make changes if not transmitting
+            if (cur_state == TxState::Idle)
+            {
+              if(json_rx_doc["config"] == "base_freq")
+              {
+                uint64_t temp_freq = json_rx_doc["value"];
+                if(temp_freq >= lower_freq_limit && temp_freq <= upper_freq_limit)
+                {
+                  cur_config.base_freq = temp_freq;
+                }
+              }
+              else if(json_rx_doc["config"] == "mode")
+              {
+                // TODO: bounds checking
+                uint8_t temp_mode = json_rx_doc["value"];
+                selectMode(temp_mode);
+//                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "band")
+              {
+                uint8_t temp_band_index = json_rx_doc["value"];
+                
+                // Make sure the requested band is available
+                if(band_table[temp_band_index].module_index == band_module_index_1 ||
+                  band_table[temp_band_index].module_index == band_module_index_2)
+                {
+                  if(band_table[temp_band_index].module_index == band_module_index_1)
+                  {
+                    cur_band_module = 0;
+                    digitalWrite(BAND_SW, LOW);
+                  }
+                  else
+                  {
+                    cur_band_module = 1;
+                    digitalWrite(BAND_SW, HIGH);
+                  }
+                  cur_config.band = temp_band_index;
+//                  band_index = cur_config.band;
+                  lower_freq_limit = band_table[cur_config.band].lower_limit;
+                  upper_freq_limit = band_table[cur_config.band].upper_limit;
+                  band_name = band_table[cur_config.band].name;
+    
+                  switch (cur_config.mode)
+                  {
+                    case Mode::DFCW3:
+                    case Mode::DFCW6:
+                    case Mode::DFCW10:
+                    case Mode::DFCW120:
+                    case Mode::QRSS3:
+                    case Mode::QRSS6:
+                    case Mode::QRSS10:
+                    case Mode::QRSS120:
+                    case Mode::CW:
+                    case Mode::HELL:
+                      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+                      break;
+          
+                    case Mode::WSPR:
+                      cur_config.base_freq = band_table[cur_config.band].wspr_freq;
+                      break;
+                    case Mode::JT65:
+                      cur_config.base_freq = band_table[cur_config.band].jt65_freq;
+                      break;
+                    case Mode::JT9:
+                    case Mode::JT4:
+                    case Mode::FT8: // TODO
+                      cur_config.base_freq = band_table[cur_config.band].jt9_freq;
+                      break;
+                  }
+                }
+//                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "wpm")
+              {
+                char temp_str[40];
+                uint8_t temp_wpm = json_rx_doc["value"];
+                cur_config.wpm = temp_wpm;
+                sprintf(temp_str, "U%lu", cur_config.wpm);
+                settings["wpm"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "tx_intv")
+              {
+                char temp_str[40];
+                uint8_t temp_tx_intv = json_rx_doc["value"];
+                cur_config.tx_intv = temp_tx_intv;
+                sprintf(temp_str, "U%lu", cur_config.tx_intv);
+                settings["tx_intv"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "dfcw_offset")
+              {
+                char temp_str[40];
+                uint8_t temp_dfcw_offset = json_rx_doc["value"];
+                cur_config.dfcw_offset = temp_dfcw_offset;
+                sprintf(temp_str, "U%lu", cur_config.dfcw_offset);
+                settings["dfcw_offset"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "buffer")
+              {
+                char temp_str[40];
+                uint8_t temp_buffer = json_rx_doc["value"];
+                selectBuffer(temp_buffer);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "callsign")
+              {
+                char temp_str[40];
+                strcpy(cur_config.callsign, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.callsign);
+                settings["callsign"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "grid")
+              {
+                char temp_str[40];
+                strcpy(cur_config.grid, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.grid);
+                settings["grid"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "power")
+              {
+                char temp_str[40];
+                uint8_t temp_power = json_rx_doc["value"];
+                cur_config.power = temp_power;
+                sprintf(temp_str, "U%lu", cur_config.power);
+                settings["power"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "pa_bias")
+              {
+                char temp_str[40];
+                uint16_t temp_pa_bias = json_rx_doc["value"];
+                cur_config.pa_bias = temp_pa_bias;
+                sprintf(temp_str, "U%lu", cur_config.pa_bias);
+                settings["pa_bias"].second = std::string(temp_str);
+                setPABias(cur_config.pa_bias);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "cwid")
+              {
+                char temp_str[40];
+                bool temp_cwid = json_rx_doc["value"];
+                cur_config.cwid = temp_cwid;
+                if(temp_cwid)
+                {
+                  sprintf(temp_str, "B1");
+                }
+                else
+                {
+                  sprintf(temp_str, "B0");
+                }
+                settings["cwid"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "msg_buffer_1")
+              {
+                char temp_str[42];
+                strcpy(cur_config.msg_buffer_1, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.msg_buffer_1);
+                settings["msg_buffer_1"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "msg_buffer_2")
+              {
+                char temp_str[42];
+                strcpy(cur_config.msg_buffer_2, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.msg_buffer_2);
+                settings["msg_buffer_2"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "msg_buffer_3")
+              {
+                char temp_str[42];
+                strcpy(cur_config.msg_buffer_3, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.msg_buffer_3);
+                settings["msg_buffer_3"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "msg_buffer_4")
+              {
+                char temp_str[42];
+                strcpy(cur_config.msg_buffer_4, json_rx_doc["value"]);
+                sprintf(temp_str, "S%s", cur_config.msg_buffer_4);
+                settings["msg_buffer_4"].second = std::string(temp_str);
+                serializeConfig();
+              }
+              else if(json_rx_doc["config"] == "si5351_int_corr")
+              {
+                char temp_str[40];
+                int32_t temp_si5351_int_corr = json_rx_doc["value"];
+                cur_config.si5351_int_corr = temp_si5351_int_corr;
+                sprintf(temp_str, "I%li", cur_config.si5351_int_corr);
+//                settings["si5351_int_corr"].second = std::string(temp_str);
+                serializeConfig();
+              }
+            }
+          }
+          else if(json_rx_doc["get"] == true)
+          {
+            if(json_rx_doc["config"] == "base_freq")
+            {
+              json_tx_doc["config"] = "base_freq";
+              json_tx_doc["value"] = cur_config.base_freq;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "mode")
+            {
+              json_tx_doc["config"] = "mode";
+              json_tx_doc["value"] = static_cast<uint8_t>(cur_config.mode);
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "band")
+            {
+              json_tx_doc["config"] = "band";
+              json_tx_doc["value"] = static_cast<uint8_t>(cur_config.band);
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "wpm")
+            {
+              json_tx_doc["config"] = "wpm";
+              json_tx_doc["value"] = cur_config.wpm;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "tx_intv")
+            {
+              json_tx_doc["config"] = "tx_intv";
+              json_tx_doc["value"] = cur_config.tx_intv;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "dfcw_offset")
+            {
+              json_tx_doc["config"] = "dfcw_offset";
+              json_tx_doc["value"] = cur_config.dfcw_offset;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "buffer")
+            {
+              json_tx_doc["config"] = "buffer";
+              json_tx_doc["value"] = cur_config.buffer;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "callsign")
+            {
+              json_tx_doc["config"] = "callsign";
+              json_tx_doc["value"] = cur_config.callsign;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "grid")
+            {
+              json_tx_doc["config"] = "grid";
+              json_tx_doc["value"] = cur_config.grid;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "power")
+            {
+              json_tx_doc["config"] = "power";
+              json_tx_doc["value"] = cur_config.power;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "pa_bias")
+            {
+              json_tx_doc["config"] = "pa_bias";
+              json_tx_doc["value"] = cur_config.pa_bias;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "cwid")
+            {
+              json_tx_doc["config"] = "cwid";
+              json_tx_doc["value"] = cur_config.cwid;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "msg_buffer_1")
+            {
+              json_tx_doc["config"] = "msg_buffer_1";
+              json_tx_doc["value"] = cur_config.msg_buffer_1;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "msg_buffer_2")
+            {
+              json_tx_doc["config"] = "msg_buffer_2";
+              json_tx_doc["value"] = cur_config.msg_buffer_2;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "msg_buffer_3")
+            {
+              json_tx_doc["config"] = "msg_buffer_3";
+              json_tx_doc["value"] = cur_config.msg_buffer_3;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "msg_buffer_4")
+            {
+              json_tx_doc["config"] = "msg_buffer_4";
+              json_tx_doc["value"] = cur_config.msg_buffer_4;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+            else if(json_rx_doc["config"] == "si5351_int_corr")
+            {
+              json_tx_doc["config"] = "si5351_int_corr";
+              json_tx_doc["value"] = cur_config.si5351_int_corr;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
+          }
+          break;
+        case 0x04:
+          if(json_rx_doc["action"] == "tx_enable")
+          {
+            tx_enable = true;
+            setTxState(TxState::Idle);
+            // Re-compose the buffers to reflect changes
+            selectBuffer(cur_config.buffer);
+            composeWSPRBuffer();
+            setNextTx(0);
+          }
+          else if(json_rx_doc["action"] == "tx_disable")
+          {
+            tx_enable = false;
+            next_tx = UINT32_MAX;
+          }
+          else if(json_rx_doc["action"] == "tx_cancel")
+          {
+            if(cur_state != TxState::Idle)
+            {
+              setTxState(TxState::Idle);
+              morse.reset();
+              setNextTx(0);
+
+              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+              char send_json[JSON_MAX_SIZE + 6];
+              json_tx_doc["level"] = 0;
+              json_tx_doc["text"] = "TX End";
+              json_tx_doc["data"] = cur_config.base_freq;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0xFE, send_json);
+            }
+          }
+          break;
+        case 0x06:
+          if(json_rx_doc["enum"] == "modes")
+          {
+            JsonObject root = json_tx_doc.to<JsonObject>();
+            JsonArray modes = root.createNestedArray("modes");
+
+            for(auto m : mode_table)
+            {
+              modes.add(m.mode_name);
+            }
+
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0x07, send_json);
+          }
+          else if(json_rx_doc["enum"] == "bands")
+          {
+            JsonObject root = json_tx_doc.to<JsonObject>();
+            JsonArray bands = root.createNestedArray("bands");
+
+//            for(auto b : band_table)
+//            {
+//              bands.add(b.name);
+//            }
+
+            for(auto b : band_table)
+            {
+              JsonObject nested = bands.createNestedObject();
+              nested["name"] = b.name;
+              nested["mod"] = b.module_index;
+            }
+
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0x07, send_json);
+          }
+          else if(json_rx_doc["enum"] == "band_modules")
+          {
+            JsonObject root = json_tx_doc.to<JsonObject>();
+            JsonArray band_modules = root.createNestedArray("band_modules");
+
+            for(auto b : band_module_table)
+            {
+              band_modules.add(b.name);
+            }
+
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0x07, send_json);
+          }
+          else if(json_rx_doc["enum"] == "inst_band_modules")
+          {
+            JsonObject root = json_tx_doc.to<JsonObject>();
+            JsonArray band_modules = root.createNestedArray("inst_band_modules");
+
+            band_modules.add(band_module_index_1);
+            band_modules.add(band_module_index_2);
+
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0x07, send_json);
           }
           break;
         default:
@@ -3220,7 +3770,7 @@ void processTxTrigger()
   yield();
 }
 
-uint16_t sendSerialPacket(uint8_t msg_type, char * payload)
+uint16_t sendSerialPacket(uint8_t msg_type, const char * payload)
 {
   char serial_packet[JSON_MAX_SIZE + 6];
   uint16_t payload_len = strlen(payload);
@@ -3271,11 +3821,17 @@ void txStateMachine()
         case TxState::CW:
           if (!morse.busy)
           {
-            sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX End\"}");
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE + 6];
+            json_tx_doc["level"] = 0;
+            json_tx_doc["text"] = "TX End";
+            json_tx_doc["data"] = cur_config.base_freq;
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0xFE, send_json);
             yield();
             setTxState(TxState::Idle);
-            //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-            //frequency = (base_frequency * 100);
+            //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+            //frequency = (cur_config.base_freq * 100);
             //change_freq = true;
             //setNextTx(atoi(settings["TX Intv"].substr(1).c_str()));
 //            selectMode(static_cast<uint8_t>(mode));
@@ -3312,12 +3868,12 @@ void txStateMachine()
           {
             if (morse.tx)
             {
-              frequency = (base_frequency * 100ULL) + cur_tone_spacing;
+              frequency = (cur_config.base_freq * 100ULL) + cur_tone_spacing;
               change_freq = true;
             }
             else
             {
-              frequency = (base_frequency * 100ULL);
+              frequency = (cur_config.base_freq * 100ULL);
               change_freq = true;
             }
 
@@ -3326,10 +3882,16 @@ void txStateMachine()
 
           if (!morse.busy)
           {
-            sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX End\"}");
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE + 6];
+            json_tx_doc["level"] = 0;
+            json_tx_doc["text"] = "TX End";
+            json_tx_doc["data"] = cur_config.base_freq;
+            serializeJson(json_tx_doc, send_json);
+            sendSerialPacket(0xFE, send_json);
             yield();
             prev_morse_tx = false;
-            frequency = (base_frequency * 100ULL);
+            frequency = (cur_config.base_freq * 100ULL);
             change_freq = true;
               
             if(cur_config.cwid)
@@ -3372,8 +3934,13 @@ void txStateMachine()
             ++cur_symbol;
             if (cur_symbol >= cur_symbol_count) //reset everything and switch to idle
             {
-              sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX End\"}");
-//              yield();
+//              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+              char send_json[JSON_MAX_SIZE + 6];
+              json_tx_doc["level"] = 0;
+              json_tx_doc["text"] = "TX End";
+              json_tx_doc["data"] = cur_config.base_freq;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0xFE, send_json);
               if(cur_config.cwid)
               {
                 setTxState(TxState::IDDelay);
@@ -3384,8 +3951,8 @@ void txStateMachine()
                 setNextTx(cur_config.tx_intv);
                 composeMFSKMessage();
               }
-              //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-              //frequency = (base_frequency * 100);
+              //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+              //frequency = (cur_config.base_freq * 100);
               //change_freq = true;
 //              setNextTx(cur_config.tx_intv);
 //              setNextTx(atoi(settings["tx_intv"].second.substr(1).c_str()));
@@ -3393,7 +3960,7 @@ void txStateMachine()
             else // next symbol
             {
               next_event = cur_timer + cur_symbol_time;
-              frequency = (base_frequency * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
+              frequency = (cur_config.base_freq * 100ULL) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               change_freq = true;
             }
           }
@@ -3413,16 +3980,16 @@ void composeMorseBuffer(uint8_t buf)
   switch(buf)
   {
   case 1:
-    sprintf(msg_buffer_1, "%s", temp_call);
+    sprintf(cur_config.msg_buffer_1, "%s", temp_call);
     break;
   case 2:
-    sprintf(msg_buffer_2, "%s", temp_call);
+    sprintf(cur_config.msg_buffer_2, "%s", temp_call);
     break;
   case 3:
-    sprintf(msg_buffer_3, "%s", temp_call);
+    sprintf(cur_config.msg_buffer_3, "%s", temp_call);
     break;
   case 4:
-    sprintf(msg_buffer_4, "%s", temp_call);
+    sprintf(cur_config.msg_buffer_4, "%s", temp_call);
     break;
   }
       
@@ -3450,23 +4017,23 @@ void composeJTBuffer(uint8_t buf)
   switch(buf)
   {
   case 1:
-    sprintf(msg_buffer_1, "%s %s", temp_call, temp_grid);
+    sprintf(cur_config.msg_buffer_1, "%s %s", temp_call, temp_grid);
     break;
   case 2:
-    sprintf(msg_buffer_2, "%s %s", temp_call, temp_grid);
+    sprintf(cur_config.msg_buffer_2, "%s %s", temp_call, temp_grid);
     break;
   case 3:
-    sprintf(msg_buffer_3, "%s %s", temp_call, temp_grid);
+    sprintf(cur_config.msg_buffer_3, "%s %s", temp_call, temp_grid);
     break;
   case 4:
-    sprintf(msg_buffer_4, "%s %s", temp_call, temp_grid);
+    sprintf(cur_config.msg_buffer_4, "%s %s", temp_call, temp_grid);
     break;
   }
 }
 
 void composeMFSKMessage()
 {
-  switch(mode)
+  switch(cur_config.mode)
   {
   case Mode::WSPR:
     memset(mfsk_buffer, 0, 255);
@@ -3526,6 +4093,7 @@ void serializeConfig()
   flash_config.version = cur_config.version;
   flash_config.mode = cur_config.mode;
   flash_config.band = cur_config.band;
+  flash_config.base_freq = cur_config.base_freq;
   flash_config.wpm = cur_config.wpm;
   flash_config.tx_intv = cur_config.tx_intv;
   flash_config.dfcw_offset = cur_config.dfcw_offset;
@@ -3568,13 +4136,13 @@ void deserializeConfig()
 //    SerialUSB.print("EEPROM read: ");
 //    SerialUSB.print(read_byte);
 //  }
-  mode = cur_config.mode;
-  strcpy(msg_buffer_1, cur_config.msg_buffer_1);
-  strcpy(msg_buffer_2, cur_config.msg_buffer_2);
-  strcpy(msg_buffer_3, cur_config.msg_buffer_3);
-  strcpy(msg_buffer_4, cur_config.msg_buffer_4);
-  cur_buffer = cur_config.buffer;
-  selectBuffer(cur_buffer);
+//  mode = cur_config.mode;
+//  strcpy(msg_buffer_1, cur_config.msg_buffer_1);
+//  strcpy(msg_buffer_2, cur_config.msg_buffer_2);
+//  strcpy(msg_buffer_3, cur_config.msg_buffer_3);
+//  strcpy(msg_buffer_4, cur_config.msg_buffer_4);
+//  cur_buffer = cur_config.buffer;
+  selectBuffer(cur_config.buffer);
   cur_tone_spacing = cur_config.dfcw_offset;
   sprintf(temp_str, "U%lu", cur_config.pa_bias);
   settings["pa_bias"].second = std::string(temp_str);
@@ -3602,6 +4170,7 @@ void deserializeConfig()
   {
     cur_config.mode = flash_config.mode;
     cur_config.band = flash_config.band;
+    cur_config.base_freq = flash_config.base_freq;
     cur_config.wpm = flash_config.wpm;
     cur_config.tx_intv = flash_config.tx_intv;
     cur_config.dfcw_offset = flash_config.dfcw_offset;
@@ -3616,13 +4185,13 @@ void deserializeConfig()
     strcpy(cur_config.msg_buffer_3, flash_config.msg_buffer_3);
     strcpy(cur_config.msg_buffer_4, flash_config.msg_buffer_4);
     cur_config.si5351_int_corr = flash_config.si5351_int_corr;
-    mode = flash_config.mode;
+//    mode = flash_config.mode;
     strcpy(msg_buffer_1, cur_config.msg_buffer_1);
     strcpy(msg_buffer_2, cur_config.msg_buffer_2);
     strcpy(msg_buffer_3, cur_config.msg_buffer_3);
     strcpy(msg_buffer_4, cur_config.msg_buffer_4);
-    cur_buffer = cur_config.buffer;
-    selectBuffer(cur_buffer);
+//    cur_buffer = cur_config.buffer;
+    selectBuffer(cur_config.buffer);
     cur_tone_spacing = cur_config.dfcw_offset;
     sprintf(temp_str, "U%lu", flash_config.pa_bias);
     settings["pa_bias"].second = std::string(temp_str);
@@ -3655,11 +4224,11 @@ void deserializeConfig()
   }
   #endif
 
-  selectMode(static_cast<uint8_t>(mode));
+  selectMode(static_cast<uint8_t>(cur_config.mode));
 //  composeWSPRBuffer();
   setTxState(TxState::Idle);
   next_tx = UINT32_MAX;
-  frequency = (base_frequency * 100ULL);
+  frequency = (cur_config.base_freq * 100ULL);
   change_freq = true;
 }
 
@@ -3704,7 +4273,8 @@ void setup()
 //  u8g2.sendBuffer();
 
   // Load config map
-  for (auto const& c : settings_table)
+//  for (auto const& c : settings_table)
+  for (auto c : settings_table)
   {
     settings[c[0]].first = c[1];
   }
@@ -3778,7 +4348,7 @@ void setup()
 
   // Si5351
   si5351.init(SI5351_CRYSTAL_LOAD_0PF, 0, 0);
-  si5351.set_freq(base_frequency * SI5351_FREQ_MULT, SI5351_CLK0);
+  si5351.set_freq(cur_config.base_freq * SI5351_FREQ_MULT, SI5351_CLK0);
   si5351.set_freq(1000000UL, SI5351_CLK2);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
   Wire.setClock(400000UL);
@@ -3820,6 +4390,7 @@ void setup()
     cur_config.version = CONFIG_SCHEMA_VERSION;
     cur_config.mode = DEFAULT_MODE;
     cur_config.band = DEFAULT_BAND_INDEX;
+    cur_config.base_freq = DEFAULT_FREQUENCY;
     cur_config.wpm = DEFAULT_WPM;
     cur_config.tx_intv = DEFAULT_TX_INTERVAL;
     cur_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
@@ -3846,6 +4417,7 @@ void setup()
     flash_config.version = CONFIG_SCHEMA_VERSION;
     flash_config.mode = DEFAULT_MODE;
     flash_config.band = DEFAULT_BAND_INDEX;
+    flash_config.base_freq = DEFAULT_FREQUENCY;
     flash_config.wpm = DEFAULT_WPM;
     flash_config.tx_intv = DEFAULT_TX_INTERVAL;
     flash_config.dfcw_offset = DEFAULT_DFCW_OFFSET;
@@ -3910,20 +4482,20 @@ void setup()
   Scheduler.startLoop(selectBand);
   //Scheduler.startLoop(processTimeSync);
 
-  cur_tone_spacing = mode_table[static_cast<uint8_t>(mode)].tone_spacing;
-  cur_symbol_count = mode_table[static_cast<uint8_t>(mode)].symbol_count;
-  cur_symbol_time = mode_table[static_cast<uint8_t>(mode)].symbol_time;
+  cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+  cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+  cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
 //  next_state = TxState::MFSK;
 
   // Clear TX buffer
-  selectBuffer(cur_buffer);
+  selectBuffer(cur_config.buffer);
 //  composeMFSKMessage();
 //  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
 //                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
 //  prev_state = TxState::Idle;
   setTxState(TxState::Idle);
   next_tx = UINT32_MAX;
-  frequency = (base_frequency * 100ULL);
+  frequency = (cur_config.base_freq * 100ULL);
   change_freq = true;
   
 //  composeWSPRBuffer();
@@ -3972,48 +4544,7 @@ void loop()
 
   yield();
 
-  //  switch(meta_mode)
-  //  {
-  //  case MetaMode::MORSE:
-  //    break;
-  //  case MetaMode::MFSK:
-  //    switch(cur_state)
-  //    {
-  //    case TxState::Idle:
-  //      break;
-  //    case TxState::MFSK:
-  //      if(cur_timer >= next_event)
-  //      {
-  //        ++cur_symbol;
-  //        if(cur_symbol >= cur_symbol_count) //reset everything and switch to idle
-  //        {
-  //          SerialUSB.write('\b');
-  //          setTxState(TxState::Idle);
-  //          //frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-  //          frequency = (base_frequency * 100);
-  //          change_freq = true;
-  //          setNextTx(0);
-  //        }
-  //        else // next symbol
-  //        {
-  //          next_event = cur_timer + cur_symbol_time;
-  //          frequency = (base_frequency * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-  //          change_freq = true;
-  //        }
-  //      }
-  //      break;
-  //    case TxState::Preamble:
-  //      break;
-  //    }
-  //    break;
-  //  }
-  //  yield();
-
   processTxTrigger();
-  yield();
-  //drawOLED();
-  //  pollButtons();
-  //  selectBand();
   processSerialIn();
   processTimeSync();
 }
