@@ -8,8 +8,8 @@ import time
 import threading
 from timeit import default_timer as timer
 import argparse
-import logging
-import atexit
+# import logging
+# import atexit
 import json
 import cmd2
 import colorama
@@ -26,9 +26,9 @@ bands = []
 band_modules = []
 inst_band_modules = []
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='[%(levelname)s] (%(threadName)-10s) %(message)s',
-                    )
+# logging.basicConfig(level=logging.DEBUG,
+#                     format='[%(levelname)s] (%(threadName)-10s) %(message)s',
+#                     )
 
 # Arduino serial dev paramaters
 if sys.platform.startswith('win'):
