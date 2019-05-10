@@ -2,9 +2,9 @@
 
 source linux/venv/bin/activate
 
-pyinstaller --onedir --noconfirm \
-  --distpath ./linux \
+pyinstaller --onefile --noconfirm \
+  --distpath ./linux-arm \
   --clean \
-  obmsync_linux.spec
+  obmsync_linux_x86.spec
 
 deactivate
