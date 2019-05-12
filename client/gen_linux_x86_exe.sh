@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source linux/venv/bin/activate
+source linux-x86/venv/bin/activate
 
 pyinstaller --onefile --noconfirm \
-  --distpath ./linux-arm \
+  --distpath ./linux-x86 \
   --clean \
   obmsync_linux_x86.spec
 

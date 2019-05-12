@@ -128,6 +128,9 @@ def serial_handler():
 
             # Act on message
             if(message_type == 0x00): # Time Sync Request
+                cur_time = time.time()
+                while(cur_time == time.time()):
+                    pass
                 send_payload = {'timestamp': int(time.time())}
                 # print(json.dumps(send_payload, ensure_ascii=True, separators=(',', ':')))
                 send_serial_packet(1, json.dumps(
