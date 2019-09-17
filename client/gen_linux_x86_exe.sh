@@ -2,11 +2,8 @@
 
 # To generate virtual environment:
 
-# sudo apt install python3-venv (if not yet installed)
+# sudo apt install python3-venv (for Debian-based systems, if not yet installed)
 # python3 -m venv linux-x86/venv
-
-
-# virtualenv linux-x86/venv
 # pip install pyinstaller
 # pip install pyserial
 # pip install cmd2
