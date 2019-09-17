@@ -4,6 +4,7 @@
 
 # sudo apt install python3-venv (for Debian-based systems, if not yet installed)
 # python3 -m venv linux-arm/venv
+# source ./linux-arm/venv/bin/activate
 # pip install pyinstaller
 # pip install pyserial
 # pip install cmd2
