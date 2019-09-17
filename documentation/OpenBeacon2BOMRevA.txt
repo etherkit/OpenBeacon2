@@ -1,0 +1,67 @@
+OpenBeacon 2 BOM
+Rev A
+Etherkit
+17 May 2019
+
+| Part (marking)                  | Qty  | Ref                            | P/N
+======================================================================================================
+Capacitors (size 0805)
+| 10nF MLCC                         1      C4
+| 100nF MLCC                        17     C1, C5, C6, C8, C10, C11, C12,
+                                           C13, C14, C17, C18, C19, C20,
+                                           C21, C22, C23, C24
+| 1uF MLCC                          3      C1, C7, C9
+| 4.7uF MLCC                        3      C2, C15, C16
+| 10uF MLCC                         1      C3
+
+Inductors
+| 10uH 2.5A                         1      L1                               Murata FDSD0420-H-100M-P3
+| FB2402-61 5T                      1      L2
+
+Resistors & Trimmers (0.125 W size 0805, 5% unless otherwise specified)
+| 1 (1% current sense)              1      R8                               Bournes CRL0805-FW-1R00ELF
+| 10                                1      R6
+| 56                                1      R7
+| 3.3k                              5      R5, R11, R12, R14, R15
+| 22k                               4      R1, R2, R3, R13
+| 270k                              2      R9, R10
+| 10 dB 50 ohm attenuator           1      R4                               Susumu PAT1220-C-10DB-T5
+
+Semiconductors
+| 1N4148WS                          2      D1, D2                           On Semi 1N4148WS
+| 2N7002                            4      Q1, Q4, Q5, Q6                   NXP 2N7002P,215
+| 2SK3074                           1      Q3                               Toshiba 2SK3074TE12LF
+| MMBT4403                          1      Q2                               On Semi MMBT4403LT1G
+
+ICs
+| 24AA64T                           1      U8                               Microchip 24AA64T-I/OT
+| MCP4725A1T                        1      U5                               Microchip MCP4725A1T-E/CH
+| Si5351A-B                         1      U4                               SiLabs SI5351A-B-GT
+| SN74LVC1G17                       1      U3                               TI SN74LVC1G17DBVR
+| TLV61046A                         1      U1                               TI TLV61046ADBVT
+
+Crystals/Oscillators
+| 25 MHz TCXO                       1      U2                               Abracon ASTX-H11-25.000MHZ-T
+
+Modules
+| SSD1306 128x32 OLED, I2C          1      U6
+| Empyrean Alpha                    1      U7                               Etherkit Empyrean Alpha
+
+Connectors
+| 0.1" machined header - 4 pins     2      M1, M2
+| 0.1" machined header - 5 pins     2      M1, M2
+| BNC jack, PCB mount               1      J11                              Amphenol 031-5431-10RFX
+
+Switches/Relays
+| Tactile pushbutton                7      S1, S2, S3, S4, S5, S6, S7       Omron B3F-1052
+| 5V relay                          2      K1, K2                           Omron G5V-1-DC5
+
+Miscellaneous
+| PCB                               1
+| 26 AWG magnet wire (cm)           20
+| Switch keycap, 4x4, blue          7                                       Omron B32-1040
+
+Optional
+| 0.1 inch header - 4 pins          2      J2, J3
+| 0.1 inch header - 6 pins          2      J2, J3
+| SMA female end launch             1      J7

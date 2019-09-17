@@ -1,4 +1,5 @@
 (sym_lib_table
-  (lib (name OpenBeaconMini-rescue)(type Legacy)(uri ${KIPRJMOD}/OpenBeaconMini-rescue.lib)(options "")(descr ""))
+  (lib (name OpenBeaconMini-rescue)(type Legacy)(uri ${KIPRJMOD}/OpenBeaconMini-rescue.lib)(options "")(descr "")(disabled))
   (lib (name EtherkitKicadLibrary)(type Legacy)(uri /home/jason/Nextcloud/Etherkit/git/EtherkitKicadLibrary/EtherkitKicadLibrary.lib)(options "")(descr ""))
+  (lib (name OpenBeacon2-rescue)(type Legacy)(uri ${KIPRJMOD}/OpenBeacon2-rescue.lib)(options "")(descr ""))
 )

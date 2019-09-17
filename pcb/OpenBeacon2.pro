@@ -1,4 +1,4 @@
-update=Thu 29 Nov 2018 01:02:56 PM PST
+update=Tue 17 Sep 2019 11:38:27 AM PDT
 version=1
 last_client=kicad
 [cvpcb]
@@ -44,7 +44,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=
+PlotDirectoryName=../documentation/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=Pcbnew

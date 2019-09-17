@@ -1,0 +1,5 @@
+client/__pycache__/
+client/build/
+client/linux-x86/venv/
+client/linux-arm/venv/
+client/win/venv/

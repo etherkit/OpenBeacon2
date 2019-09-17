@@ -1,9 +1,9 @@
-OpenBeacon Mini Serial Communication Protocol
-=============================================
+OpenBeacon 2 Serial Communication Protocol
+==========================================
 
 Synopsis
 --------
-The OpenBeacon Mini serial communications protocol is a flexible, discoverable, yet compact way to pass data between OpenBeacon Mini and a PC attached via the USB-UART. This allows for synchronization of time, setting of all configuration parameters, and complete control of OpenBeacon Mini from the PC.
+The OpenBeacon 2 serial communications protocol is a flexible, discoverable, yet compact way to pass data between OpenBeacon 2 and a PC attached via the USB-UART. This allows for synchronization of time, setting of all configuration parameters, and complete control of OpenBeacon 2 from the PC.
 
 Packet Description
 ------------------
@@ -35,17 +35,17 @@ Message Types Summary
 
 | Type | Name | Sender | Description |
 |------|------|--------|-------------|
-| 0x00 | Time Sync Request | OBM | Request current time from PC |
-| 0x01 | Time Sync Response | PC | Send current time to OBM |
+| 0x00 | Time Sync Request | OB2 | Request current time from PC |
+| 0x01 | Time Sync Response | PC | Send current time to OB2 |
 | 0x02 | Parameter Request | PC | Request to get or set a configuration value |
-| 0x03 | Parameter Response | OBM | Confirm parameter request |
-| 0x04 | Command Request | PC | Request to execute action on OBM |
-| 0x05 | Command Response | OBM | Confirm command request |
+| 0x03 | Parameter Response | OB2 | Confirm parameter request |
+| 0x04 | Command Request | PC | Request to execute action on OB2 |
+| 0x05 | Command Response | OB2 | Confirm command request |
 | 0x06 | Enumeration Request | PC | Request a list of valid values in an enumeration
-| 0x07 | Enumeration Response | OBM | List of valid values in an enumeration
+| 0x07 | Enumeration Response | OB2 | List of valid values in an enumeration
 | 0x08 | Serialize Configuration Request | PC |
-| 0x09 | Serialize Configuration Response | OBM |
-| 0xFE | Notification | OBM | Notification to client PC |
+| 0x09 | Serialize Configuration Response | OB2 |
+| 0xFE | Notification | OB2 | Notification to client PC |
 | 0xFF | Error | Either | Response to an unknown packet type |
 
 Message Types
@@ -166,7 +166,7 @@ None
 | type | uint8_t | Error number |
 | name | string | Text description of error |
 
-OpenBeacon Mini Parameters
+OpenBeacon 2 Parameters
 --------------------------
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -179,7 +179,7 @@ OpenBeacon Mini Parameters
 | buffer | uint8_t | Active buffer (1-4) |
 | callsign | char[20] | Station callsign |
 | grid | char[10] | Station Maidenhead grid locator |
-| power | uint8_t | OpenBeacon Mini RF output power (in dBm) |
+| power | uint8_t | OpenBeacon 2 RF output power (in dBm) |
 | pa_bias | uint16_t | TX power amplifier bias voltage (in mV) |
 | cwid | bool | CWID after transmission |
 | msg_buffer_1 | char[40] | Message buffer 1 |
@@ -188,7 +188,7 @@ OpenBeacon Mini Parameters
 | msg_buffer_4 | char[40] | Message buffer 4 |
 | si5351_int_corr | int32_t | Si5351A internal reference frequency correction |
 
-OpenBeacon Mini Commands
+OpenBeacon 2 Commands
 ------------------------
 | Action |  Description |
 |--------|--------------|
@@ -196,13 +196,13 @@ OpenBeacon Mini Commands
 | tx_disable | Disable transmitting |
 | tx_cancel | Cancel current transmission |
 
-OpenBeacon Mini Enumerations
+OpenBeacon 2 Enumerations
 ----------------------------
 | Enumeration | Description |
 |-------------|-------------|
 | modes | Operating modes |
 | bands | Amateur frequency bands |
-| band_modules | OpenBeacon Mini band modules |
+| band_modules | OpenBeacon 2 band modules |
 | inst_band_modlues | Band modules currently installed |
 
 

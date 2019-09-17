@@ -3,6 +3,6 @@ win\venv\Scripts\activate.bat
 pyinstaller --onefile --noconfirm ^
   --distpath win ^
   --clean ^
-  obmsync_win.spec
+  ob2sync_win.spec
 
 deactivate

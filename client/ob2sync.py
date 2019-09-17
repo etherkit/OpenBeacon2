@@ -220,10 +220,10 @@ class CmdParser(cmd2.Cmd):
     intro = Style.BRIGHT + Fore.BLUE + 'OpenBeacon Mini' + Style.RESET_ALL
 
     def __init__(self):
-        # shortcuts = dict(self.DEFAULT_SHORTCUTS)
-        # shortcuts.update({'q': 'quit'})
-        # super().__init__(self, shortcuts=shortcuts)
-        cmd2.Cmd.__init__(self)
+        shortcuts = dict(self.DEFAULT_SHORTCUTS)
+        shortcuts.update({'q': 'quit'})
+        super().__init__(shortcuts=shortcuts)
+        # cmd2.Cmd.__init__(self)
 
     set_parser = argparse.ArgumentParser()
     set_parser.add_argument('config', help='Configuration parameter to set')
