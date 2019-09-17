@@ -1,10 +1,18 @@
 #!/bin/bash
 
+# To generate virtual environment:
+
+# sudo apt install python3-venv (if not yet installed)
+# python3 -m venv linux-x86/venv
+
+
+# virtualenv linux-x86/venv
+# pip install pyinstaller
+# pip install pyserial
+# pip install cmd2
+
 source linux-x86/venv/bin/activate
 
-pyinstaller --onefile --noconfirm \
-  --distpath ./linux-x86 \
-  --clean \
-  ob2sync_linux_x86.spec
+pyinstaller --onefile --noconfirm --distpath ./linux-x86 --clean ob2sync_linux_x86.spec
 
 deactivate

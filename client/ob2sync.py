@@ -220,8 +220,8 @@ class CmdParser(cmd2.Cmd):
     intro = Style.BRIGHT + Fore.BLUE + 'OpenBeacon Mini' + Style.RESET_ALL
 
     def __init__(self):
-        shortcuts = dict(self.DEFAULT_SHORTCUTS)
-        shortcuts.update({'q': 'quit'})
+        shortcuts = dict(cmd2.DEFAULT_SHORTCUTS)
+        #shortcuts.update({'q': 'quit'})
         super().__init__(shortcuts=shortcuts)
         # cmd2.Cmd.__init__(self)
 

@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['obmsync.py'],
+a = Analysis(['ob2sync.py'],
              pathex=['/home/pi/git/OpenBeaconMini/client'],
              binaries=[],
              datas=[],

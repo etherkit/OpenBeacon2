@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['obmsync.py'],
-             pathex=['/home/jason/Nextcloud/Etherkit/git/OpenBeaconMini/client'],
+a = Analysis(['ob2sync.py'],
+             pathex=['/home/jason/Nextcloud/Etherkit/git/OpenBeacon2/client'],
              binaries=[],
              datas=[],
              hiddenimports=[],
