@@ -6,7 +6,7 @@ rem pip install pyinstaller
 rem pip install pyserial
 rem pip install cmd2
 
-win\venv\Scripts\activate.bat
+rem win\venv\Scripts\activate.bat
 
 pyinstaller --onefile --noconfirm ^
   --distpath win ^

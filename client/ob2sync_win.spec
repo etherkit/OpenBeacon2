@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['obmsync.py'],
+a = Analysis(['ob2sync.py'],
              pathex=['C:\\Users\\jmill\\git\\OpenBeacon2\\client'],
              binaries=[],
              datas=[],
