@@ -1,12 +1,12 @@
 EESchema Schematic File Version 4
-LIBS:OpenBeaconMini-cache
-EELAYER 26 0
+LIBS:OpenBeacon2-cache
+EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "OpenBeacon Mini"
-Date "2018-11-28"
+Title "OpenBeacon 2"
+Date "2019-09-17"
 Rev "B"
 Comp "Etherkit"
 Comment1 ""
@@ -26,7 +26,7 @@ F 3 "" H 9450 5765 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR072
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR072
 U 1 1 5A2083BC
 P 8895 5565
 F 0 "#PWR072" H 8895 5315 50  0001 C CNN
@@ -37,7 +37,7 @@ F 3 "" H 8895 5565 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR085
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR085
 U 1 1 5A2083EC
 P 9995 5165
 F 0 "#PWR085" H 9995 4915 50  0001 C CNN
@@ -102,7 +102,7 @@ F 3 "" H 6835 2155 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR058
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR058
 U 1 1 5A208C5F
 P 7170 2255
 F 0 "#PWR058" H 7170 2005 50  0001 C CNN
@@ -206,7 +206,7 @@ BTN_RIGHT
 Text GLabel 8565 1370 0    50   Output ~ 0
 BTN_LEFT
 $Comp
-L OpenBeaconMini-rescue:GND #PWR063
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR063
 U 1 1 5A21D06C
 P 7850 2760
 F 0 "#PWR063" H 7850 2510 50  0001 C CNN
@@ -217,7 +217,7 @@ F 3 "" H 7850 2760 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR065
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR065
 U 1 1 5A21D0A7
 P 8160 2760
 F 0 "#PWR065" H 8160 2510 50  0001 C CNN
@@ -228,7 +228,7 @@ F 3 "" H 8160 2760 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR074
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR074
 U 1 1 5A21D0CA
 P 9050 885
 F 0 "#PWR074" H 9050 635 50  0001 C CNN
@@ -239,7 +239,7 @@ F 3 "" H 9050 885 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR073
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR073
 U 1 1 5A21D155
 P 9010 1920
 F 0 "#PWR073" H 9010 1670 50  0001 C CNN
@@ -250,7 +250,7 @@ F 3 "" H 9010 1920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR075
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR075
 U 1 1 5A21D1D8
 P 9175 1445
 F 0 "#PWR075" H 9175 1195 50  0001 C CNN
@@ -261,7 +261,7 @@ F 3 "" H 9175 1445 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR078
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR078
 U 1 1 5A21D23B
 P 9450 1445
 F 0 "#PWR078" H 9450 1195 50  0001 C CNN
@@ -407,7 +407,7 @@ Wire Wire Line
 Wire Wire Line
 	2125 6870 1945 6870
 $Comp
-L OpenBeaconMini-rescue:GND #PWR026
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR026
 U 1 1 5A21E905
 P 4390 6950
 F 0 "#PWR026" H 4390 6700 50  0001 C CNN
@@ -418,7 +418,7 @@ F 3 "" H 4390 6950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR014
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR014
 U 1 1 5A21EA0C
 P 2375 7120
 F 0 "#PWR014" H 2375 6870 50  0001 C CNN
@@ -429,7 +429,7 @@ F 3 "" H 2375 7120 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR04
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR04
 U 1 1 5A21EA9B
 P 1695 7120
 F 0 "#PWR04" H 1695 6870 50  0001 C CNN
@@ -495,7 +495,7 @@ F 3 "" H 4725 7210 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR015
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR015
 U 1 1 5A21F17B
 P 2825 6705
 F 0 "#PWR015" H 2825 6455 50  0001 C CNN
@@ -506,7 +506,7 @@ F 3 "" H 2825 6705 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR031
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR031
 U 1 1 5A21F300
 P 4725 7310
 F 0 "#PWR031" H 4725 7060 50  0001 C CNN
@@ -627,7 +627,7 @@ F 3 "" H 1870 4395 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR06
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR06
 U 1 1 5A236FF9
 P 1870 5055
 F 0 "#PWR06" H 1870 4805 50  0001 C CNN
@@ -704,7 +704,7 @@ F 3 "" H 3290 5935 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR020
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR020
 U 1 1 5A2384E7
 P 3290 6035
 F 0 "#PWR020" H 3290 5785 50  0001 C CNN
@@ -715,7 +715,7 @@ F 3 "" H 3290 6035 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR022
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR022
 U 1 1 5A2385E4
 P 3410 5620
 F 0 "#PWR022" H 3410 5370 50  0001 C CNN
@@ -737,7 +737,7 @@ F 3 "" H 2995 5555 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR018
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR018
 U 1 1 5A238AE0
 P 2995 5655
 F 0 "#PWR018" H 2995 5405 50  0001 C CNN
@@ -748,7 +748,7 @@ F 3 "" H 2995 5655 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR024
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR024
 U 1 1 5A238CC6
 P 4010 5445
 F 0 "#PWR024" H 4010 5195 50  0001 C CNN
@@ -778,7 +778,7 @@ F 3 "" H 2180 3400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR023
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR023
 U 1 1 5A239627
 P 3480 4930
 F 0 "#PWR023" H 3480 4680 50  0001 C CNN
@@ -862,7 +862,7 @@ F 3 "" H 5830 7395 60  0000 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR044
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR044
 U 1 1 5A23AC8E
 P 5830 7545
 F 0 "#PWR044" H 5830 7295 50  0001 C CNN
@@ -884,7 +884,7 @@ F 3 "" H 2005 4545 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR08
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR08
 U 1 1 5A23B97B
 P 2005 4645
 F 0 "#PWR08" H 2005 4395 50  0001 C CNN
@@ -915,7 +915,7 @@ F 3 "" H 5890 3695 70  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR047
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR047
 U 1 1 5A23CAE1
 P 6460 3620
 F 0 "#PWR047" H 6460 3370 50  0001 C CNN
@@ -926,7 +926,7 @@ F 3 "" H 6460 3620 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR048
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR048
 U 1 1 5A23CCB8
 P 6460 3920
 F 0 "#PWR048" H 6460 3670 50  0001 C CNN
@@ -937,7 +937,7 @@ F 3 "" H 6460 3920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR040
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR040
 U 1 1 5A23CEA3
 P 5320 3995
 F 0 "#PWR040" H 5320 3745 50  0001 C CNN
@@ -959,7 +959,7 @@ F 3 "" H 7715 4495 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR062
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR062
 U 1 1 5A23D78C
 P 7715 4645
 F 0 "#PWR062" H 7715 4395 50  0001 C CNN
@@ -1029,7 +1029,7 @@ F 3 "" H 2520 2685 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR013
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR013
 U 1 1 5A23F9C7
 P 2280 3600
 F 0 "#PWR013" H 2280 3350 50  0001 C CNN
@@ -1051,7 +1051,7 @@ F 3 "" H 1960 3720 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR07
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR07
 U 1 1 5A23FC5E
 P 1960 3870
 F 0 "#PWR07" H 1960 3620 50  0001 C CNN
@@ -1108,7 +1108,7 @@ F 3 "" H 2950 2695 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR016
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR016
 U 1 1 5A240EA1
 P 2950 2795
 F 0 "#PWR016" H 2950 2545 50  0001 C CNN
@@ -1203,7 +1203,7 @@ F 3 "" H 2175 1560 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR012
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR012
 U 1 1 5A244E16
 P 2175 1660
 F 0 "#PWR012" H 2175 1410 50  0001 C CNN
@@ -1214,7 +1214,7 @@ F 3 "" H 2175 1660 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR02
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR02
 U 1 1 5A2451D2
 P 1350 1415
 F 0 "#PWR02" H 1350 1165 50  0001 C CNN
@@ -1262,14 +1262,14 @@ L EtherkitKicadLibrary:C C2
 U 1 1 5A246653
 P 2175 1110
 F 0 "C2" H 2325 1145 50  0000 C CNN
-F 1 "2.2u" H 2360 1070 50  0000 C CNN
+F 1 "4.7u" H 2360 1070 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2175 1110 60  0001 C CNN
 F 3 "" H 2175 1110 60  0000 C CNN
 	1    2175 1110
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR011
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR011
 U 1 1 5A246807
 P 2175 1210
 F 0 "#PWR011" H 2175 960 50  0001 C CNN
@@ -1326,7 +1326,7 @@ $EndComp
 Text GLabel 9970 2695 2    50   Output ~ 0
 BTN_BACK
 $Comp
-L OpenBeaconMini-rescue:GND #PWR077
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR077
 U 1 1 5A2481FF
 P 9370 2770
 F 0 "#PWR077" H 9370 2520 50  0001 C CNN
@@ -1392,7 +1392,7 @@ F 3 "" H 5050 7595 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR035
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR035
 U 1 1 5A24B372
 P 5050 7745
 F 0 "#PWR035" H 5050 7495 50  0001 C CNN
@@ -1419,7 +1419,7 @@ NoConn ~ 9350 4765
 NoConn ~ 9450 4765
 NoConn ~ 9550 4765
 $Comp
-L OpenBeaconMini-rescue:Conn_01x06 J5
+L Connector_Generic:Conn_01x06 J5
 U 1 1 5A24D2D9
 P 4680 995
 F 0 "J5" H 4680 1300 50  0000 C CNN
@@ -1430,7 +1430,7 @@ F 3 "" H 4680 995 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR025
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR025
 U 1 1 5A24EC49
 P 4235 1355
 F 0 "#PWR025" H 4235 1105 50  0001 C CNN
@@ -1449,7 +1449,7 @@ Wire Wire Line
 	4480 1295 4235 1295
 Connection ~ 4235 1295
 $Comp
-L OpenBeaconMini-rescue:GND #PWR021
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR021
 U 1 1 5A24FB00
 P 3395 1250
 F 0 "#PWR021" H 3395 1000 50  0001 C CNN
@@ -1460,7 +1460,7 @@ F 3 "" H 3395 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:Conn_01x04 J8
+L Connector_Generic:Conn_01x04 J8
 U 1 1 5A250921
 P 5430 995
 F 0 "J8" H 5430 1195 50  0000 C CNN
@@ -1471,7 +1471,7 @@ F 3 "" H 5430 995 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR037
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR037
 U 1 1 5A250BCF
 P 5120 1195
 F 0 "#PWR037" H 5120 945 50  0001 C CNN
@@ -1704,7 +1704,7 @@ Wire Wire Line
 Wire Wire Line
 	6945 6545 6345 6545
 $Comp
-L OpenBeaconMini-rescue:GND #PWR039
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR039
 U 1 1 5A23C9E6
 P 5320 3695
 F 0 "#PWR039" H 5320 3445 50  0001 C CNN
@@ -1715,7 +1715,7 @@ F 3 "" H 5320 3695 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR038
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR038
 U 1 1 5C046978
 P 5320 3395
 F 0 "#PWR038" H 5320 3145 50  0001 C CNN
@@ -1760,7 +1760,7 @@ F 3 "" H 5890 4780 70  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR049
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR049
 U 1 1 5C08FF2F
 P 6460 4705
 F 0 "#PWR049" H 6460 4455 50  0001 C CNN
@@ -1771,7 +1771,7 @@ F 3 "" H 6460 4705 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR050
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR050
 U 1 1 5C08FF35
 P 6460 5005
 F 0 "#PWR050" H 6460 4755 50  0001 C CNN
@@ -1782,7 +1782,7 @@ F 3 "" H 6460 5005 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR043
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR043
 U 1 1 5C08FF3B
 P 5320 5080
 F 0 "#PWR043" H 5320 4830 50  0001 C CNN
@@ -1806,7 +1806,7 @@ $EndComp
 Text GLabel 5015 4360 0    50   Output ~ 0
 BAND_ID_2
 $Comp
-L OpenBeaconMini-rescue:GND #PWR042
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR042
 U 1 1 5C08FF48
 P 5320 4780
 F 0 "#PWR042" H 5320 4530 50  0001 C CNN
@@ -1817,7 +1817,7 @@ F 3 "" H 5320 4780 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR041
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR041
 U 1 1 5C08FF4E
 P 5320 4480
 F 0 "#PWR041" H 5320 4230 50  0001 C CNN
@@ -1837,7 +1837,7 @@ Wire Wire Line
 Wire Wire Line
 	2520 2785 2520 2860
 $Comp
-L OpenBeaconMini-rescue:Conn_01x04 J4
+L Connector_Generic:Conn_01x04 J4
 U 1 1 5C0EF538
 P 3875 995
 F 0 "J4" H 3875 1195 50  0000 C CNN
@@ -1848,7 +1848,7 @@ F 3 "" H 3875 995 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:Conn_01x04 J10
+L Connector_Generic:Conn_01x04 J10
 U 1 1 5C0FAD0D
 P 6155 995
 F 0 "J10" H 6155 1195 50  0000 C CNN
@@ -1859,7 +1859,7 @@ F 3 "" H 6155 995 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR046
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR046
 U 1 1 5C0FAD13
 P 5845 1195
 F 0 "#PWR046" H 5845 945 50  0001 C CNN
@@ -1921,7 +1921,7 @@ Wire Wire Line
 Wire Wire Line
 	4490 4930 5340 4930
 $Comp
-L OpenBeaconMini-rescue:GND #PWR033
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR033
 U 1 1 5C11D8C8
 P 4990 4815
 F 0 "#PWR033" H 4990 4565 50  0001 C CNN
@@ -1932,7 +1932,7 @@ F 3 "" H 4990 4815 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR028
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR028
 U 1 1 5C1283BF
 P 4640 4765
 F 0 "#PWR028" H 4640 4515 50  0001 C CNN
@@ -1943,7 +1943,7 @@ F 3 "" H 4640 4765 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR052
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR052
 U 1 1 5C128F13
 P 6590 4495
 F 0 "#PWR052" H 6590 4245 50  0001 C CNN
@@ -2061,7 +2061,7 @@ F 3 "" H 4930 3580 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR032
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR032
 U 1 1 5BFFAF6C
 P 4930 3730
 F 0 "#PWR032" H 4930 3480 50  0001 C CNN
@@ -2072,7 +2072,7 @@ F 3 "" H 4930 3730 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR027
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR027
 U 1 1 5BFFAF72
 P 4580 3680
 F 0 "#PWR027" H 4580 3430 50  0001 C CNN
@@ -2112,7 +2112,7 @@ F 3 "" H 6625 3305 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR054
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR054
 U 1 1 5C008119
 P 6625 3405
 F 0 "#PWR054" H 6625 3155 50  0001 C CNN
@@ -2196,7 +2196,7 @@ F 3 "" H 8145 3865 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR064
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR064
 U 1 1 5C147797
 P 8045 4065
 F 0 "#PWR064" H 8045 3815 50  0001 C CNN
@@ -2218,7 +2218,7 @@ F 3 "" H 8365 4185 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR066
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR066
 U 1 1 5C1477A3
 P 8365 4335
 F 0 "#PWR066" H 8365 4085 50  0001 C CNN
@@ -2282,7 +2282,7 @@ F 3 "" H 9750 4070 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR082
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR082
 U 1 1 5C20B0F7
 P 9750 4370
 F 0 "#PWR082" H 9750 4120 50  0001 C CNN
@@ -2293,7 +2293,7 @@ F 3 "" H 9750 4370 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR076
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR076
 U 1 1 5C20B33A
 P 9350 3970
 F 0 "#PWR076" H 9350 3720 50  0001 C CNN
@@ -2326,7 +2326,7 @@ F 3 "" H 9910 3585 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR083
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR083
 U 1 1 5C21E28F
 P 9910 3685
 F 0 "#PWR083" H 9910 3435 50  0001 C CNN
@@ -2380,7 +2380,7 @@ F 3 "" H 8740 2880 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR084
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR084
 U 1 1 5C306E55
 P 9950 2990
 F 0 "#PWR084" H 9950 2740 50  0001 C CNN
@@ -2391,7 +2391,7 @@ F 3 "" H 9950 2990 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR069
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR069
 U 1 1 5C3079F0
 P 8740 2980
 F 0 "#PWR069" H 8740 2730 50  0001 C CNN
@@ -2413,7 +2413,7 @@ F 3 "" H 7280 2875 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR059
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR059
 U 1 1 5C309738
 P 7280 2975
 F 0 "#PWR059" H 7280 2725 50  0001 C CNN
@@ -2435,7 +2435,7 @@ F 3 "" H 10020 1560 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR086
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR086
 U 1 1 5C30A4AD
 P 10020 1660
 F 0 "#PWR086" H 10020 1410 50  0001 C CNN
@@ -2457,7 +2457,7 @@ F 3 "" H 9600 2035 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR079
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR079
 U 1 1 5C30AB4F
 P 9600 2135
 F 0 "#PWR079" H 9600 1885 50  0001 C CNN
@@ -2479,7 +2479,7 @@ F 3 "" H 9635 1000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR080
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR080
 U 1 1 5C330B0C
 P 9635 1100
 F 0 "#PWR080" H 9635 850 50  0001 C CNN
@@ -2501,7 +2501,7 @@ F 3 "" H 8600 1560 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L OpenBeaconMini-rescue:GND #PWR067
+L OpenBeacon2-rescue:GND-OpenBeaconMini-rescue #PWR067
 U 1 1 5C343D56
 P 8600 1660
 F 0 "#PWR067" H 8600 1410 50  0001 C CNN

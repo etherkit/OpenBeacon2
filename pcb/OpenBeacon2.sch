@@ -6,7 +6,7 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "OpenBeacon 2"
-Date "2019-09-17"
+Date "2019-09-18"
 Rev "B"
 Comp "Etherkit"
 Comment1 ""
@@ -1262,7 +1262,7 @@ L EtherkitKicadLibrary:C C2
 U 1 1 5A246653
 P 2175 1110
 F 0 "C2" H 2325 1145 50  0000 C CNN
-F 1 "2.2u" H 2360 1070 50  0000 C CNN
+F 1 "4.7u" H 2360 1070 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2175 1110 60  0001 C CNN
 F 3 "" H 2175 1110 60  0000 C CNN
 	1    2175 1110

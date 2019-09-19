@@ -1,0 +1,6 @@
+{
+    "programmer": "Atmel-ICE (AVR)",
+    "board": "etherkit:samd:empyrean_alpha",
+    "port": "/dev/ttyACM0",
+    "sketch": "OpenBeacon2.ino"
+}

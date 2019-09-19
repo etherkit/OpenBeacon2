@@ -1,7 +1,7 @@
-// OpenBeacon Mini
+// OpenBeacon 2
 // Etherkit
 //
-// Rev 3 May 2019
+// Rev 19 September 2019
 //
 // Hardware Requirements
 // ---------------------
@@ -116,7 +116,6 @@ constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
 
 constexpr char PACKET_ID = '\a'; // ASCII BEL
 constexpr char PACKET_TERM = '\n'; // ASCII LF
-//constexpr uint8_t PACKET_MSG_TYPE_0 = 0;
 constexpr uint16_t JSON_MAX_SIZE = 900;
 
 constexpr static unsigned char lock_bits[] = {
@@ -323,10 +322,12 @@ boolean disable_display_loop = false;
 uint8_t cur_band_module = 0;
 std::string band_name;
 bool time_sync_request = false;
-bool select_band_reset = false;
+bool select_band_reset = true;
 
 StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
-StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
+//DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -1212,8 +1213,9 @@ void drawOLED()
 //      sprintf(temp_str, "%u", mfsk_buffer[cur_symbol]);
 //      u8g2.drawStr(100, 30, temp_str);
   
-//      sprintf(temp_str, "%u", cur_state);
-//      u8g2.drawStr(0, 8, temp_str);
+  // DEBUGGING HERE
+      // sprintf(temp_str, "%u", band_table[cur_config.band].wspr_freq);
+      // u8g2.drawStr(0, 8, temp_str);
 //      sprintf(temp_str, "%u", cur_symbol);
 //      u8g2.drawStr(111, 15, temp_str);
   //    sprintf(temp_str, "%u", morse.tx);
@@ -2862,6 +2864,11 @@ void selectBand()
               new_freq = new_jt9_freq;
               break;
           }
+
+          if (!tx_lock)
+          {
+            cur_config.base_freq = new_freq;
+          }
         }
   
         //if(cur_state != TxState::Idle)
@@ -2875,10 +2882,10 @@ void selectBand()
             return;
           }
         }
-        else
-        {
-          cur_config.base_freq = new_freq;
-        }
+        // else
+        // {
+        //   cur_config.base_freq = new_freq;
+        // }
       }
     }
     // Then change band index
@@ -2934,6 +2941,11 @@ void selectBand()
               new_freq = new_jt9_freq;
               break;
           }
+
+          if (!tx_lock)
+          {
+            cur_config.base_freq = new_freq;
+          }
         }
   
         //if(cur_state != TxState::Idle)
@@ -2947,10 +2959,10 @@ void selectBand()
             return;
           }
         }
-        else
-        {
-          cur_config.base_freq = new_freq;
-        }
+        // else
+        // {
+        //   cur_config.base_freq = new_freq;
+        // }
       }
     }
     // Then change band index
@@ -3262,7 +3274,9 @@ void processSerialIn()
   char payload[JSON_MAX_SIZE];
 //  StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
 //  StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-  char send_json[JSON_MAX_SIZE + 6];
+//  DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
+//  DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//  char send_json[JSON_MAX_SIZE];
 
   if(SerialUSB)
   {
@@ -3273,6 +3287,8 @@ void processSerialIn()
 //      StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
 //      StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //      char send_json[JSON_MAX_SIZE + 6];
+//      DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
+//      DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
   
       if (SerialUSB.read() == PACKET_ID)
       {
@@ -3529,6 +3545,9 @@ void processSerialIn()
           }
           else if(json_rx_doc["get"] == true)
           {
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE];
+            
             if(json_rx_doc["config"] == "base_freq")
             {
               json_tx_doc["config"] = "base_freq";
@@ -3686,6 +3705,8 @@ void processSerialIn()
         case 0x06:
           if(json_rx_doc["enum"] == "modes")
           {
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray modes = root.createNestedArray("modes");
 
@@ -3699,6 +3720,8 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "bands")
           {
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray bands = root.createNestedArray("bands");
 
@@ -3719,6 +3742,8 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "band_modules")
           {
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray band_modules = root.createNestedArray("band_modules");
 
@@ -3732,6 +3757,8 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "inst_band_modules")
           {
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray band_modules = root.createNestedArray("inst_band_modules");
 
@@ -3821,7 +3848,8 @@ void txStateMachine()
         case TxState::CW:
           if (!morse.busy)
           {
-//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
             char send_json[JSON_MAX_SIZE + 6];
             json_tx_doc["level"] = 0;
             json_tx_doc["text"] = "TX End";
@@ -3882,7 +3910,8 @@ void txStateMachine()
 
           if (!morse.busy)
           {
-//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
             char send_json[JSON_MAX_SIZE + 6];
             json_tx_doc["level"] = 0;
             json_tx_doc["text"] = "TX End";
@@ -3934,7 +3963,8 @@ void txStateMachine()
             ++cur_symbol;
             if (cur_symbol >= cur_symbol_count) //reset everything and switch to idle
             {
-//              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//              DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
               char send_json[JSON_MAX_SIZE + 6];
               json_tx_doc["level"] = 0;
               json_tx_doc["text"] = "TX End";
@@ -3949,6 +3979,7 @@ void txStateMachine()
               {
                 setTxState(TxState::Idle);
                 setNextTx(cur_config.tx_intv);
+//                setNextTx(0);
                 composeMFSKMessage();
               }
               //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
@@ -4143,6 +4174,7 @@ void deserializeConfig()
 //  strcpy(msg_buffer_4, cur_config.msg_buffer_4);
 //  cur_buffer = cur_config.buffer;
   selectBuffer(cur_config.buffer);
+  selectMode(static_cast<uint8_t>(cur_config.mode));
   cur_tone_spacing = cur_config.dfcw_offset;
   sprintf(temp_str, "U%lu", cur_config.pa_bias);
   settings["pa_bias"].second = std::string(temp_str);
@@ -4257,7 +4289,7 @@ void setup()
   u8g2.clearBuffer();
   u8g2.setDrawColor(1);
   u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
-  u8g2.drawStr(64 - u8g2.getStrWidth("OpenBeacon Mini") / 2, 15, "OpenBeacon Mini");
+  u8g2.drawStr(64 - u8g2.getStrWidth("OpenBeacon 2") / 2, 15, "OpenBeacon 2");
   u8g2.setFont(u8g2_font_6x10_mr);
   u8g2.drawStr(64 - u8g2.getStrWidth("Sync with PC to begin") / 2, 30, "Sync with PC to begin");
   u8g2.sendBuffer();
@@ -4406,8 +4438,9 @@ void setup()
     strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
     cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
     serializeConfig();
-    SerialUSB.write('\v');
-    SerialUSB.print("New EEPROM store written");
+    sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"New EEPROM store written\"}");
+    // SerialUSB.write('\v');
+    // SerialUSB.print("New EEPROM store written");
   }
   #else
   flash_config = flash_store.read();
@@ -4482,10 +4515,10 @@ void setup()
   Scheduler.startLoop(selectBand);
   //Scheduler.startLoop(processTimeSync);
 
-  cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
-  cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
-  cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
-//  next_state = TxState::MFSK;
+  selectMode(static_cast<uint8_t>(cur_config.mode));
+  // cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
+  // cur_symbol_count = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_count;
+  // cur_symbol_time = mode_table[static_cast<uint8_t>(cur_config.mode)].symbol_time;
 
   // Clear TX buffer
   selectBuffer(cur_config.buffer);
@@ -4505,7 +4538,7 @@ void setup()
 
   //morse.send("DE NT7S");
   //  SerialUSB.print("\v");
-  //  SerialUSB.println("OpenBeacon Mini");
+  //  SerialUSB.println( OpenBeacon 2");
   //  //attachInterrupt(digitalPinToInterrupt(CLK_INPUT), handleClkInput, FALLING);
   //  for(auto a : settings_table)
   //  {

@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/jason/.arduino15/packages/etherkit/tools/**",
+                "/home/jason/.arduino15/packages/etherkit/hardware/samd/1.0.0/**",
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/local/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": [
+                "/home/jason/.arduino15/packages/etherkit/hardware/samd/1.0.0/cores/arduino/Arduino.h"
+            ]
+        }
+    ],
+    "version": 4
+}
