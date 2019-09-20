@@ -122,7 +122,8 @@ constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
 };
 
-constexpr char * SCREEN_SAVER_MESSAGE = "OpenBeacon 2";
+constexpr char SCREEN_SAVER_MESSAGE[] = "OpenBeacon 2";
+constexpr uint32_t SCREEN_SAVER_TIMER_INTERVAL = 100;
 
 const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/. ";
 
@@ -333,6 +334,7 @@ uint8_t cur_screen_saver_x = 30;
 uint8_t cur_screen_saver_y = 15;
 int8_t screen_saver_x_accel = 1;
 int8_t screen_saver_y_accel = 1;
+uint32_t screen_saver_update = 0;
 
 
 StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
@@ -1064,20 +1066,19 @@ void drawOLED()
   char menu_2[16];
   uint8_t menu_1_x, menu_2_x;
 
-  yield();
-
   if(!disable_display_loop)
   {
     // u8g2 draw loop
     // --------------
     u8g2.clearBuffer();          // clear the internal memory
+    yield();
 
     if(!screen_saver_enable)
     {
       if(display_mode == DisplayMode::Main || display_mode == DisplayMode::Menu)
       {
         u8g2.setFont(u8g2_font_logisoso16_tn);
-        //yield();
+        // yield();
         u8g2.setDrawColor(1);
         //u8g2.setFont(u8g2_font_inb19_mn);
       
@@ -1102,7 +1103,7 @@ void drawOLED()
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
-          yield();
+          // yield();
           u8g2.drawStr(i * 9, 17, temp_chr);
           yield();
         }
@@ -1128,7 +1129,7 @@ void drawOLED()
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
-          yield();
+          // yield();
           u8g2.drawStr(i * 9 + 29, 17, temp_chr);
           yield();
         }
@@ -1149,7 +1150,7 @@ void drawOLED()
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
-          yield();
+          // yield();
           u8g2.drawStr(i * 9 + 58, 17, temp_chr);
           yield();
         }
@@ -1197,11 +1198,12 @@ void drawOLED()
         u8g2.setFont(u8g2_font_5x7_tn);
         sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
           rtc.getMinutes(), rtc.getSeconds());
-        yield();
         u8g2.drawStr(88, 6, temp_str);
+        yield();
+        
       
         // Draw mode
-        yield();
+        // yield();
         u8g2.setFont(u8g2_font_6x10_mr);
         sprintf(temp_str, "%s", mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name);
         u8g2.drawStr(87, 15, temp_str);
@@ -1697,22 +1699,17 @@ void drawOLED()
     }
     else // screen saver enabled
     {
-      u8g2.setDrawColor(1);
+      // u8g2.setDrawColor(1);
       u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
       u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, SCREEN_SAVER_MESSAGE);
+      yield();
     }
     
-
-    // if(screen_saver_enable)
+    // if(cur_timer % 2 == 0) // only try to send every 2 ms
     // {
-    //   u8g2.clearBuffer();
-    //   u8g2.sendBuffer();          // transfer internal memory to the display
+      // yield();
+      u8g2.sendBuffer();          // transfer internal memory to the display
     // }
-    // else
-    // {
-    //   u8g2.sendBuffer();          // transfer internal memory to the display
-    // }
-    u8g2.sendBuffer();          // transfer internal memory to the display
   }
   yield();
 }
@@ -1728,7 +1725,7 @@ void pollButtons()
     if (digitalRead(BTN_UP) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_UP) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -1790,7 +1787,7 @@ void pollButtons()
             }
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one;
       }
     }
@@ -1799,7 +1796,7 @@ void pollButtons()
     if (digitalRead(BTN_DOWN) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_DOWN) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -1867,7 +1864,7 @@ void pollButtons()
             }
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -1876,7 +1873,7 @@ void pollButtons()
     if (digitalRead(BTN_LEFT) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_LEFT) == LOW)
       {
         // Disable screen saver
@@ -1942,7 +1939,7 @@ void pollButtons()
             tune_step = 0;
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -1951,7 +1948,7 @@ void pollButtons()
     if (digitalRead(BTN_RIGHT) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_RIGHT) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -2025,7 +2022,7 @@ void pollButtons()
             tune_step--;
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -2034,7 +2031,7 @@ void pollButtons()
     if (digitalRead(BTN_DSP_1) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_DSP_1) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -2125,7 +2122,7 @@ void pollButtons()
             setNextTx(0);
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -2134,7 +2131,7 @@ void pollButtons()
     if (digitalRead(BTN_DSP_2) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_DSP_2) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -2473,7 +2470,7 @@ void pollButtons()
 //            }
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -2482,7 +2479,7 @@ void pollButtons()
     if (digitalRead(BTN_BACK) == LOW)
     {
       delay(50);   // delay to debounce
-      yield();
+      // yield();
       if (digitalRead(BTN_BACK) == LOW)
       {
         screen_saver_timeout = cur_timer + (screen_saver_interval * 60 * 1000UL); // Convert to ms for timer
@@ -2535,7 +2532,7 @@ void pollButtons()
             sendSerialPacket(0xFE, send_json);
           }
         }
-        yield();
+        // yield();
         delay(50); //delay to avoid many steps at one
       }
     }
@@ -4092,41 +4089,6 @@ void txStateMachine()
       break;
   }
   yield();
-
-  // Turn on screen saver if necessary
-  if(cur_timer >= screen_saver_timeout && !screen_saver_enable)
-  {
-    screen_saver_enable = true;
-  }
-
-  // Screen saver animation
-  if(screen_saver_enable)
-  {
-    if(cur_timer % 5 == 0)
-    {
-      if((cur_screen_saver_x >= u8g2.getDisplayWidth() - u8g2.getStrWidth(SCREEN_SAVER_MESSAGE) - 1) && screen_saver_x_accel == 1)
-      {
-        screen_saver_x_accel = -1;
-      }
-      else if(cur_screen_saver_x == 0 && screen_saver_x_accel == -1)
-      {
-        screen_saver_x_accel = 1;
-      }
-
-      // if((cur_screen_saver_y >= u8g2.getDisplayHeight() - u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == 1)
-      if((cur_screen_saver_y >= u8g2.getDisplayHeight() - 1) && screen_saver_y_accel == 1)
-      {
-        screen_saver_y_accel = -1;
-      }
-      else if((cur_screen_saver_y == u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == -1)
-      {
-        screen_saver_y_accel = 1;
-      }
-
-      cur_screen_saver_x += screen_saver_x_accel;
-      cur_screen_saver_y += screen_saver_y_accel;
-    }
-  }
 }
 
 void composeMorseBuffer(uint8_t buf)
@@ -4406,15 +4368,55 @@ void eraseEEPROM() // Erase by writing 0xFF to every byte
 }
 #endif
 
-void enableScreenSaver()
+void processScreenSaver()
 {
+  // Turn on screen saver if necessary
+  if(cur_timer >= screen_saver_timeout && !screen_saver_enable)
+  {
+    cur_screen_saver_x = random(16);
+    cur_screen_saver_y = random(16);
+    screen_saver_enable = true;
+  }
 
+  // Screen saver animation
+  if(screen_saver_enable)
+  {
+    if(cur_timer >= screen_saver_update)
+    {
+      if((cur_screen_saver_x >= u8g2.getDisplayWidth() - u8g2.getStrWidth(SCREEN_SAVER_MESSAGE) - 1) && screen_saver_x_accel == 1)
+      {
+        screen_saver_x_accel = -1;
+      }
+      else if(cur_screen_saver_x == 0 && screen_saver_x_accel == -1)
+      {
+        screen_saver_x_accel = 1;
+      }
+
+      // if((cur_screen_saver_y >= u8g2.getDisplayHeight() - u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == 1)
+      if((cur_screen_saver_y >= u8g2.getDisplayHeight() - 1) && screen_saver_y_accel == 1)
+      {
+        screen_saver_y_accel = -1;
+      }
+      else if((cur_screen_saver_y == u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == -1)
+      {
+        screen_saver_y_accel = 1;
+      }
+
+      cur_screen_saver_x += screen_saver_x_accel;
+      cur_screen_saver_y += screen_saver_y_accel;
+      screen_saver_update = cur_timer + SCREEN_SAVER_TIMER_INTERVAL;
+    }
+  }
+  // yield();
 }
 
 // ===== Setup =====
 void setup()
 {
+  // Wire.setClock(1000000UL);
+
   // Start u8g2
+  u8g2.setBusClock(600000);
   u8g2.begin();
 
   // Draw welcome message
@@ -4500,6 +4502,8 @@ void setup()
   #endif
   pinMode(SYNC_LED, OUTPUT);
 
+  randomSeed(analogRead(5));
+
 //  SerialUSB.write('\v');
 //  uint8_t pin_state = digitalRead(TX_KEY);
 //  SerialUSB.println(pin_state);
@@ -4515,7 +4519,6 @@ void setup()
   si5351.set_freq(cur_config.base_freq * SI5351_FREQ_MULT, SI5351_CLK0);
   si5351.set_freq(1000000UL, SI5351_CLK2);
   si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);
-  Wire.setClock(400000UL);
 
   // RTC setup
   // Can't use the RTC alarm interrupt, far too much trigger time variance
@@ -4640,11 +4643,10 @@ void setup()
 
   // Set up scheduler
   Scheduler.startLoop(txStateMachine);
-  //Scheduler.startLoop(updateTimer);
-  //Scheduler.startLoop(processTxTrigger);
-  Scheduler.startLoop(drawOLED, 10000);
+  Scheduler.startLoop(drawOLED, 2000);
   Scheduler.startLoop(pollButtons);
   Scheduler.startLoop(selectBand);
+  // Scheduler.startLoop(processScreenSaver);
   //Scheduler.startLoop(processTimeSync);
 
   selectMode(static_cast<uint8_t>(cur_config.mode));
@@ -4714,4 +4716,5 @@ void loop()
   processTxTrigger();
   processSerialIn();
   processTimeSync();
+  processScreenSaver();
 }
