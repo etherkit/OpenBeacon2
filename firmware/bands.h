@@ -40,7 +40,7 @@
 struct BandData
 {
   uint8_t index;
-  char name[10];
+  std::string name;
   uint32_t lower_limit;
   uint32_t upper_limit;
   uint16_t lower_v;
@@ -52,7 +52,7 @@ struct BandData
   uint32_t ft8_freq;
 };
 
-constexpr BandData band_table[] =
+const BandData band_table[] =
 {
   {0, "Empty", 0UL, 0UL, 0U, 149U, 0UL, 0UL, 0UL},
   {1, "2200 m", 135700UL, 137800UL, 150U, 299U, 136000UL, 136000UL, 0UL, 0UL, 0UL},
@@ -75,12 +75,12 @@ constexpr BandData band_table[] =
 struct BandModuleData
 {
   uint8_t index;
-  char name[20];
+  std::string name;
   uint16_t lower_v;
   uint16_t upper_v;
 };
 
-constexpr BandModuleData band_module_table[] =
+const BandModuleData band_module_table[] =
 {
   {0, "Empty", 0, 150},
   {1, "2200m", 151, 300},
@@ -97,7 +97,7 @@ constexpr BandModuleData band_module_table[] =
 struct BandData
 {
   uint8_t index;
-  char name[10];
+  std::string name;
   uint8_t module_index;
   uint32_t lower_limit;
   uint32_t upper_limit;
@@ -108,7 +108,7 @@ struct BandData
   uint32_t ft8_freq;
 };
 
-constexpr BandData band_table[] =
+const BandData band_table[] =
 {
   {0, "Empty", 0, 0UL, 0UL, 0U, 149U, 0UL, 0UL, 0UL},
   {1, "2200 m", 1, 135700UL, 137800UL, 136000UL, 136000UL, 0UL, 0UL, 0UL},

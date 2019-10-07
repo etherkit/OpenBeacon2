@@ -55,7 +55,7 @@ struct ModeData
   uint16_t tx_interval_mult;  // In seconds
 };
 
-constexpr ModeData mode_table[] =
+const ModeData mode_table[] =
 {
   {Mode::DFCW3, "DFCW3", MetaMode::DFCW, 0.4, 100, 600, 0, 0, 0},
   {Mode::DFCW6, "DFCW6", MetaMode::DFCW, 0.2, 100, 600, 0, 0, 0},

@@ -17,7 +17,7 @@ from colorama import Fore, Back, Style
 
 colorama.init()
 
-JSON_MAX_SIZE = 500
+JSON_MAX_SIZE = 400
 PACKET_ID = b'\a'  # ASCII BEL
 PACKET_TERM = b'\n'  # ASCII LF
 
@@ -110,20 +110,22 @@ def serial_handler():
                 try:
                     payload = ser.read(payload_len).decode()
                 except:
-                    print('Payload malformed')
-                    # sys.exit(0)
+                    CmdParser().async_alert('Payload malformed')
+                    CmdParser().async_alert(payload)
+                    continue
 
             # Make sure packet is terminated correctly
             try:
                 ser_in = ser.read()
                 '\n' in ser_in.decode()
             except:
-                print('No packet terminator')
+                CmdParser().async_alert('No packet terminator')
                 # sys.exit(0)
 
             # Parse the payload
             # print(payload)
             if(payload_len > 0):
+                # CmdParser().async_alert(payload)
                 json_payload = json.loads(payload)
 
             # Act on message
@@ -170,7 +172,12 @@ def serial_handler():
                 if 'level' in json_payload:
                     if isinstance(json_payload["level"], int):
                         if args.verbose > json_payload["level"]:
-                            CmdParser().async_alert(json_payload["text"])
+                            # CmdParser().async_alert(json.dumps(json_payload, ensure_ascii=True, separators=(',', ':')))
+                            if 'data' in json_payload:
+                                CmdParser().async_alert(json_payload["text"] + ": " + str(json_payload["data"]))
+                            else:
+                                CmdParser().async_alert(json_payload["text"])
+                            # CmdParser().async_alert(json_payload["data"])
 
         #     cur_time = time.time()
         #     while(cur_time == time.time()):

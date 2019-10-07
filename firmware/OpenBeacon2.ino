@@ -11,7 +11,6 @@
 // ------------------
 // Flash Storage (Library Manager)
 // TinyGPS++ (http://arduiniana.org/libraries/tinygpsplus/)
-// ArduinoSTL (Library Manager)
 // u8g2lib (Library Manager)
 // Etherkit Menu (https://github.com/etherkit/MenuArduino)
 // Etherkit Morse (Library Manager)
@@ -22,6 +21,7 @@
 // External EEPROM (extEEPROM) (Library Manager)
 // Wire (Arduino Standard Library)
 // RTCZero (Library Manager)
+// Arduino-MemoryFree (https://github.com/mpflaga/Arduino-MemoryFree)
 
 //#define REV_A
 #define REV_B
@@ -33,7 +33,6 @@
 #include <Scheduler.h>
 #include <JTEncode.h>
 #include <ArduinoJson.h>
-#include <ArduinoSTL.h>
 #include <Menu.h>
 #include <RTCZero.h>
 #include <Morse.h>
@@ -41,6 +40,7 @@
 #include <U8g2lib.h>
 #include <si5351.h>
 #include <Wire.h>
+#include <MemoryFree.h>
 #ifdef EXT_EEPROM
 #include <extEEPROM.h>
 #else
@@ -50,10 +50,24 @@
 #include <cstdlib>
 #include <map>
 #include <string>
+#include <cstring>
 #include <time.h>
 
 #include "bands.h"
 #include "modes.h"
+
+//template class std::basic_string<char>;
+
+//namespace std {
+//  void __throw_length_error(char const*) {
+//  }
+//
+//  void __throw_out_of_range(char const*) {
+//  }
+//
+//  void __throw_logic_error(char const*) {
+//  }
+//}
 
 // Enumerations
 enum class DisplayMode {Main, Menu, Setting, Buffer, Modal};
@@ -116,7 +130,8 @@ constexpr uint8_t CONFIG_SCHEMA_VERSION = 1;
 
 constexpr char PACKET_ID = '\a'; // ASCII BEL
 constexpr char PACKET_TERM = '\n'; // ASCII LF
-constexpr uint16_t JSON_MAX_SIZE = 900;
+constexpr uint16_t JSON_MAX_SIZE = 2000;
+constexpr uint16_t JSON_PACKET_MAX_SIZE = 400;
 
 constexpr static unsigned char lock_bits[] = {
   0x18, 0x24, 0x24, 0x7e, 0x81, 0x81, 0x81, 0x7e
@@ -188,7 +203,7 @@ constexpr char DEFAULT_MSG_2[41] = "BUFFER2";
 constexpr char DEFAULT_MSG_3[41] = "BUFFER3";
 constexpr char DEFAULT_MSG_4[41] = "BUFFER4";
 constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
-constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 1; // In minutes
+constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 20; // In minutes
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -199,6 +214,17 @@ struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 // F == float
 // T == time
 // B == boolean
+
+//const char* settings_table[][2] =
+//{
+//  {"pa_bias", "PA Bias"},
+//  {"callsign", "Callsign"},
+//  {"grid", "Grid"},
+//  {"power", "Power"},
+//  {"tx_intv", "TX Intv"},
+//  {"wpm", "CW WPM"},
+//  {"cwid", "CW ID"}
+//};
 const std::string settings_table[][2] =
 {
   {"pa_bias", "PA Bias"},
@@ -209,15 +235,6 @@ const std::string settings_table[][2] =
   {"wpm", "CW WPM"},
   {"cwid", "CW ID"}
 };
-//const char* settings_table[][3] =
-//{
-//  {"pa_bias", "PA Bias", "U1801"},
-//  {"callsign", "Callsign", "SNT7S"},
-//  {"grid", "Grid", "SCN85"},
-//  {"power", "Power", "U23"},
-//  {"tx_intv", "TX Intv", "U0"},
-//  {"wpm", "CW WPM", "U22"}
-//};
 
 const char* default_config = 
   "{\"valid\":\"true\", \"version\":1, \"mode\":\"MODE::WSPR\", \"band\":0, \"wpm\":25, \"tx_intv\":6, \"dfcw_offset\":5, \"buffer\":0, \"callsign\":\"N0CALL\", \"grid\":\"AA00\", \"power\":23, \"pa_bias\":1800, \"cwid\":true, \"msg_buffer_1\":\"\", \"msg_buffer_2\":\"\", \"msg_buffer_3\":\"\", \"msg_buffer_4\":\"\",\"si5351_int_corr\":0}";
@@ -288,9 +305,9 @@ uint8_t cur_setting_len = 0;
 //std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.";
 uint8_t cur_setting_char = 0;
 uint8_t cur_setting_index = 0;
-char cur_callsign[21];
-char cur_grid[5];
-uint8_t cur_power;
+//char cur_callsign[21];
+//char cur_grid[5];
+//uint8_t cur_power;
 uint32_t next_tx = UINT32_MAX;
 char next_tx_time[14];
 uint32_t time_sync_expire = 0;
@@ -298,7 +315,7 @@ uint32_t next_time_sync = 0;
 uint32_t initial_time_sync = 0;
 //bool time_sync_request = false;
 uint8_t mfsk_buffer[255];
-char wspr_buffer[41];
+std::string wspr_buffer;
 char msg_buffer[MSG_BUFFER_SIZE];
 //char msg_buffer_1[MSG_BUFFER_SIZE];
 //char msg_buffer_2[MSG_BUFFER_SIZE] = "TESTING";
@@ -337,7 +354,7 @@ int8_t screen_saver_y_accel = 1;
 uint32_t screen_saver_update = 0;
 
 
-StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
+//StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
 //StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
 //DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
@@ -461,8 +478,34 @@ void initMenu()
   for (auto i : mode_table)
   {
     uint8_t index = static_cast<uint8_t>(i.index);
-    menu.addChild(i.mode_name, selectMode, index);
+    menu.addChild(i.mode_name, selectMode, static_cast<uint8_t>(i.index));
   }
+//  menu.addChild(mode_table[0].mode_name.c_str(), selectMode, 0);
+//  menu.addChild(mode_table[1].mode_name.c_str(), selectMode, 1);
+//  menu.addChild(mode_table[2].mode_name.c_str(), selectMode, 2);
+//  menu.addChild(mode_table[3].mode_name.c_str(), selectMode, 3);
+//  menu.addChild(mode_table[4].mode_name.c_str(), selectMode, 4);
+//  menu.addChild(mode_table[5].mode_name.c_str(), selectMode, 5);
+//  menu.addChild(mode_table[6].mode_name.c_str(), selectMode, 6);
+//  menu.addChild(mode_table[7].mode_name.c_str(), selectMode, 7);
+//  menu.addChild(mode_table[8].mode_name.c_str(), selectMode, 8);
+//  menu.addChild(mode_table[9].mode_name, selectMode, 9);
+//  menu.addChild(mode_table[10].mode_name, selectMode, 10);
+//  menu.addChild(mode_table[11].mode_name, selectMode, 11);
+//  menu.addChild(mode_table[12].mode_name, selectMode, 12);
+//  menu.addChild(mode_table[13].mode_name, selectMode, 13);
+//  menu.addChild("Test1");
+//  menu.addChild("Test2");
+//  menu.addChild("Test3");
+//  menu.addChild("Test4");
+//  menu.addChild("Test5");
+//  menu.addChild("Test6");
+//  menu.addChild("Test7");
+//  menu.addChild("Test8");
+//  for(uint8_t i = 0; i < 6; ++i)
+//  {
+//    menu.addChild(mode_table[i].mode_name, selectMode, i);
+//  }
   menu.selectParent();
   menu.addChild("Buf Sel");
   menu.selectChild(1);
@@ -470,6 +513,13 @@ void initMenu()
   menu.addChild("2", selectBuffer, 2);
   menu.addChild("3", selectBuffer, 3);
   menu.addChild("4", selectBuffer, 4);
+//  menu.addChild("1", setConfig, "1");
+//  menu.addChild("2", setConfig, "2");
+//  menu.addChild("3", setConfig, "3");
+//  menu.addChild("4", setConfig, "4");
+//  menu.addChild("5", setConfig, "5");
+//  menu.addChild("6", setConfig, "6");
+//  menu.addChild("7", setConfig, "7");
   menu.selectParent();
   menu.addChild("Buf Edit");
   menu.selectChild(2);
@@ -480,22 +530,38 @@ void initMenu()
   menu.selectParent();
   menu.addChild("Settings");
   menu.selectChild(3);
-  for (auto c : settings_table)
+  for (auto& c : settings_table)
   {
-//    const char* key = c[0].c_str();
-//    const char* label = c[1].c_str();
-//    char key[20];
-//    char label[20];
-//    strcpy(key, c[0]);
-//    strcpy(label, c[1]);
-//    menu.addChild(label, setConfig, key);
     menu.addChild(c[1].c_str(), setConfig, c[0].c_str());
   }
+////  menu.addChild("PA Bias", setConfig, "pa_bias");
+////  menu.addChild("Callsign", setConfig, "callsign");
+////  menu.addChild("Grid", setConfig, "grid");
+////  menu.addChild("Power", setConfig, "power");
+////  menu.addChild("TX Intv", setConfig, "tx_intv");
+////  menu.addChild("CW WPM", setConfig, "wpm");
+////  menu.addChild("CW ID", setConfig, "CW ID");
   menu.selectParent();
   menu.addChild("Reset", resetConfig, 0);
   menu.selectParent();
-  //menu.addChild("Menu");
+////  menu.addChild("Testing");
+////  menu.selectChild(4);
+////  menu.addChild("1", setConfig, "1");
+////  menu.addChild("2", setConfig, "2");
+////  menu.addChild("3", setConfig, "3");
+////  menu.addChild("4", setConfig, "4");
+////  menu.addChild("5", setConfig, "5");
+////  menu.addChild("6", setConfig, "6");
   menu.selectRoot();
+
+//  StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//  char send_json[JSON_MAX_SIZE + 6];
+//  json_tx_doc["level"] = 1;
+//  json_tx_doc["text"] = "Menu Children";
+//  json_tx_doc["data"] = menu.countChildren();
+//  serializeJson(json_tx_doc, send_json);
+//  sendSerialPacket(0xFE, send_json);
+  
 }
 
 // ===== ISRs =====
@@ -814,6 +880,7 @@ void selectMode(uint8_t sel)
 }
 
 void setBuffer(const char * b, const char * value)
+//void setBuffer(std::string b, std::string value)
 {
   std::size_t pos;
   uint8_t buf;
@@ -876,21 +943,17 @@ void selectBuffer(const uint8_t buf)
   }
 //  cur_config.buffer = buf;
   composeMFSKMessage();
-//  SerialUSB.write('\v');
-//  for(uint8_t i = 0; i < FT8_SYMBOL_COUNT; ++i)
-//  {
-//    SerialUSB.print(mfsk_buffer[i]);
-//  }
+  serializeConfig();
 }
 
 void setConfig(const char * key, const char * label)
+//void setConfig(std::string key, std::string label)
 {
   display_mode = DisplayMode::Setting;
   cur_setting_key = std::string(key);
-//  cur_setting_label = settings[key].first;
   cur_setting_label = std::string(label);
   std::string val = settings[key].second;
-  char temp_str[41];
+//  char temp_str[41];
   char type = val[0];
   std::size_t pos;
 
@@ -899,19 +962,19 @@ void setConfig(const char * key, const char * label)
     case 'U':
       cur_setting_uint = atoll(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Uint;
-      sprintf(temp_str, "%lu", cur_setting_uint);
+//      sprintf(temp_str, "%lu", cur_setting_uint);
       cur_setting_selected = 0;
       break;
     case 'I':
       cur_setting_int = atoll(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Int;
-      sprintf(temp_str, "%l", cur_setting_uint);
+//      sprintf(temp_str, "%l", cur_setting_uint);
       cur_setting_selected = 0;
       break;
     case 'S':
       cur_setting_str = settings[key].second.substr(1);
       cur_setting_type = SettingType::Str;
-      sprintf(temp_str, "%s", cur_setting_str.c_str());
+//      sprintf(temp_str, "%s", cur_setting_str.c_str());
       //    cur_setting_selected = strlen(temp_str) - 1;
       cur_setting_selected = 0;
       pos = settings_str_chars.find(cur_setting_str[cur_setting_selected]);
@@ -923,7 +986,7 @@ void setConfig(const char * key, const char * label)
     case 'F':
       cur_setting_float = atof(settings[key].second.substr(1).c_str());
       cur_setting_type = SettingType::Float;
-      sprintf(temp_str, "%f", cur_setting_uint);
+//      sprintf(temp_str, "%f", cur_setting_uint);
       cur_setting_selected = 0;
       break;
     case 'B':
@@ -1024,7 +1087,7 @@ void resetConfig(const uint8_t x)
       settings["callsign"].second = std::string(temp_str);
       sprintf(temp_str, "S%s", cur_config.grid);
       settings["grid"].second = std::string(temp_str);
-      sprintf(temp_str, "U%lu", cur_config.power);
+      sprintf(temp_str, "U%u", cur_config.power);
       settings["power"].second = std::string(temp_str);
       sprintf(temp_str, "U%lu", cur_config.tx_intv);
       settings["tx_intv"].second = std::string(temp_str);
@@ -1229,8 +1292,8 @@ void drawOLED()
   //      u8g2.drawStr(100, 30, temp_str);
     
     // DEBUGGING HERE
-        // sprintf(temp_str, "%u", screen_saver_enable);
-        // u8g2.drawStr(0, 8, temp_str);
+//         sprintf(temp_str, "%lu", cur_timer);
+//         u8g2.drawStr(0, 8, temp_str);
   //      sprintf(temp_str, "%u", cur_symbol);
   //      u8g2.drawStr(111, 15, temp_str);
     //    sprintf(temp_str, "%u", morse.tx);
@@ -1415,14 +1478,27 @@ void drawOLED()
       if(display_mode == DisplayMode::Menu)
       {
         // Menu items
-        sprintf(menu_1, "%s", menu.getActiveChildLabel());
-        sprintf(menu_2, "%s", menu.getActiveChildLabel(1));
+//        std::string temp_menu_1 = menu.getActiveChildLabel();
+//        std::string temp_menu_2 = menu.getActiveChildLabel(1);
+        char temp_menu_1[21];
+        char temp_menu_2[21];
+//        temp_menu_1 = menu.getActiveChildLabel();
+//        temp_menu_2 = menu.getActiveChildLabel(1);
+//        sprintf(menu_1, "%s", temp_menu_1.c_str());
+//        sprintf(menu_2, "%s", temp_menu_2.c_str());
+        snprintf(temp_menu_1, 20, "%s", menu.getActiveChildLabel());
+        snprintf(temp_menu_2, 20, "%s", menu.getActiveChildLabel(1));
         menu_1_x = 6;
         menu_2_x = 58;
         u8g2.setFont(u8g2_font_6x10_mf);
         //u8g2.setDrawColor(0);
-        u8g2.drawStr(menu_1_x, 30, menu_1);
-        u8g2.drawStr(menu_2_x, 30, menu_2);
+        u8g2.drawStr(menu_1_x, 30, temp_menu_1);
+        u8g2.drawStr(menu_2_x, 30, temp_menu_2);
+        char json[80];
+//        sprintf(json, "{\"level\":0,\"text\":\"Menu 1\",\"data\":\"%s\"}", temp_menu_1);
+//        sendSerialPacket(0xFE, json);
+//        sprintf(json, "{\"level\":0,\"text\":\"Menu 2\",\"data\":\"%s\"}", temp_menu_2);
+//        sendSerialPacket(0xFE, json);
         
         if(menu.countChildren() > 2)
         {
@@ -1523,7 +1599,8 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%s<", wspr_buffer);
+              sprintf(buffer_str, "%s<", wspr_buffer.c_str());
+//              sprintf(buffer_str, "%s<", "a test");
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 
@@ -1890,7 +1967,7 @@ void pollButtons()
         {
           if (menu.countChildren() > 2)
           {
-            if (menu.active_child == 0 && menu.countChildren() % 2 == 1)
+            if (menu.getActiveChild() == 0 && menu.countChildren() % 2 == 1)
             {
               menu--;
             }
@@ -1965,7 +2042,7 @@ void pollButtons()
         {
           if (menu.countChildren() > 2)
           {
-            if (menu.active_child == menu.countChildren() - 1)
+            if (menu.getActiveChild() == menu.countChildren() - 1)
             {
               menu++;
             }
@@ -2046,7 +2123,7 @@ void pollButtons()
 
         if (display_mode == DisplayMode::Menu)
         {
-          MenuType type = menu.selectChild(menu.active_child);
+          MenuType type = menu.selectChild(menu.getActiveChild());
           if (type == MenuType::Action)
           {
             display_mode = DisplayMode::Main;
@@ -2119,6 +2196,7 @@ void pollButtons()
             // Re-compose the buffers to reflect changes
             selectBuffer(cur_config.buffer);
             composeWSPRBuffer();
+//            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -2146,7 +2224,7 @@ void pollButtons()
 
         if (display_mode == DisplayMode::Menu)
         {
-          MenuType type = menu.selectChild(menu.active_child + 1);
+          MenuType type = menu.selectChild(menu.getActiveChild() + 1);
           if (type == MenuType::Action)
           {
             selectBuffer(cur_config.buffer);
@@ -2337,13 +2415,21 @@ void pollButtons()
                       cur_config.band = band.index;
           
                       // Set default frequencies for band
-                      new_lower_freq_limit = band.lower_limit;
-                      new_upper_freq_limit = band.upper_limit;
-                      new_cw_freq = band.cw_freq;
-                      new_wspr_freq = band.wspr_freq;
-                      new_jt65_freq = band.jt65_freq;
-                      new_jt9_freq = band.jt9_freq;
-                      new_band_name = band.name;
+//                      new_lower_freq_limit = band.lower_limit;
+//                      new_upper_freq_limit = band.upper_limit;
+//                      new_cw_freq = band.cw_freq;
+//                      new_wspr_freq = band.wspr_freq;
+//                      new_jt65_freq = band.jt65_freq;
+//                      new_jt9_freq = band.jt9_freq;
+//                      new_band_name = band.name;
+//                      retune = true;
+                      new_lower_freq_limit = band_table[cur_config.band].lower_limit;
+                      new_upper_freq_limit = band_table[cur_config.band].upper_limit;
+                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_wspr_freq = band_table[cur_config.band].wspr_freq;
+                      new_jt65_freq = band_table[cur_config.band].jt65_freq;
+                      new_jt9_freq = band_table[cur_config.band].jt9_freq;
+                      new_band_name = std::string(band_table[cur_config.band].name);
                       retune = true;
                       break;
                     }
@@ -2359,13 +2445,21 @@ void pollButtons()
                       cur_config.band = band.index;
           
                       // Set default frequencies for band
-                      new_lower_freq_limit = band.lower_limit;
-                      new_upper_freq_limit = band.upper_limit;
-                      new_cw_freq = band.cw_freq;
-                      new_wspr_freq = band.wspr_freq;
-                      new_jt65_freq = band.jt65_freq;
-                      new_jt9_freq = band.jt9_freq;
-                      new_band_name = band.name;
+//                      new_lower_freq_limit = band.lower_limit;
+//                      new_upper_freq_limit = band.upper_limit;
+//                      new_cw_freq = band.cw_freq;
+//                      new_wspr_freq = band.wspr_freq;
+//                      new_jt65_freq = band.jt65_freq;
+//                      new_jt9_freq = band.jt9_freq;
+//                      new_band_name = band.name;
+//                      retune = true;
+                      new_lower_freq_limit = band_table[cur_config.band].lower_limit;
+                      new_upper_freq_limit = band_table[cur_config.band].upper_limit;
+                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_wspr_freq = band_table[cur_config.band].wspr_freq;
+                      new_jt65_freq = band_table[cur_config.band].jt65_freq;
+                      new_jt9_freq = band_table[cur_config.band].jt9_freq;
+                      new_band_name = std::string(band_table[cur_config.band].name);
                       retune = true;
                       break;
                     }
@@ -2387,13 +2481,21 @@ void pollButtons()
                       cur_config.band = band.index;
           
                       // Set default frequencies for band
-                      new_lower_freq_limit = band.lower_limit;
-                      new_upper_freq_limit = band.upper_limit;
-                      new_cw_freq = band.cw_freq;
-                      new_wspr_freq = band.wspr_freq;
-                      new_jt65_freq = band.jt65_freq;
-                      new_jt9_freq = band.jt9_freq;
-                      new_band_name = band.name;
+//                      new_lower_freq_limit = band.lower_limit;
+//                      new_upper_freq_limit = band.upper_limit;
+//                      new_cw_freq = band.cw_freq;
+//                      new_wspr_freq = band.wspr_freq;
+//                      new_jt65_freq = band.jt65_freq;
+//                      new_jt9_freq = band.jt9_freq;
+//                      new_band_name = band.name;
+//                      retune = true;
+                      new_lower_freq_limit = band_table[cur_config.band].lower_limit;
+                      new_upper_freq_limit = band_table[cur_config.band].upper_limit;
+                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_wspr_freq = band_table[cur_config.band].wspr_freq;
+                      new_jt65_freq = band_table[cur_config.band].jt65_freq;
+                      new_jt9_freq = band_table[cur_config.band].jt9_freq;
+                      new_band_name = std::string(band_table[cur_config.band].name);
                       retune = true;
                       break;
                     }
@@ -2408,13 +2510,21 @@ void pollButtons()
                       cur_config.band = band.index;
           
                       // Set default frequencies for band
-                      new_lower_freq_limit = band.lower_limit;
-                      new_upper_freq_limit = band.upper_limit;
-                      new_cw_freq = band.cw_freq;
-                      new_wspr_freq = band.wspr_freq;
-                      new_jt65_freq = band.jt65_freq;
-                      new_jt9_freq = band.jt9_freq;
-                      new_band_name = band.name;
+//                      new_lower_freq_limit = band.lower_limit;
+//                      new_upper_freq_limit = band.upper_limit;
+//                      new_cw_freq = band.cw_freq;
+//                      new_wspr_freq = band.wspr_freq;
+//                      new_jt65_freq = band.jt65_freq;
+//                      new_jt9_freq = band.jt9_freq;
+//                      new_band_name = band.name;
+//                      retune = true;
+                      new_lower_freq_limit = band_table[cur_config.band].lower_limit;
+                      new_upper_freq_limit = band_table[cur_config.band].upper_limit;
+                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_wspr_freq = band_table[cur_config.band].wspr_freq;
+                      new_jt65_freq = band_table[cur_config.band].jt65_freq;
+                      new_jt9_freq = band_table[cur_config.band].jt9_freq;
+                      new_band_name = std::string(band_table[cur_config.band].name);
                       retune = true;
                       break;
                     }
@@ -2523,12 +2633,14 @@ void pollButtons()
             morse.reset();
             setNextTx(0);
 
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
             char send_json[JSON_MAX_SIZE + 6];
-            json_tx_doc["level"] = 0;
-            json_tx_doc["text"] = "TX End";
-            json_tx_doc["data"] = cur_config.base_freq;
-            serializeJson(json_tx_doc, send_json);
+            snprintf(send_json, JSON_PACKET_MAX_SIZE, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%s\"}",
+                cur_config.base_freq);
+//            json_tx_doc["level"] = 0;
+//            json_tx_doc["text"] = "TX End";
+//            json_tx_doc["data"] = cur_config.base_freq;
+//            serializeJson(json_tx_doc, send_json);
             sendSerialPacket(0xFE, send_json);
           }
         }
@@ -2988,6 +3100,7 @@ void selectBand()
   {
     return;
   }
+  yield();
   
   if (prev_band_module_index_2[0] == prev_band_module_index_2[1] && prev_band_module_index_2[1] == prev_band_module_index_2[2])
   {
@@ -3065,6 +3178,7 @@ void selectBand()
   {
     return;
   }
+  yield();
 
   #endif
 }
@@ -3179,11 +3293,12 @@ void setTxState(TxState state)
 //      next_state = prev_state;
 //      prev_state = cur_state;
       cur_state = state;
-      strcpy(cur_callsign, cur_config.callsign);
-      morse.send(cur_callsign);
+//      strcpy(cur_callsign, cur_config.callsign);
+//      morse.send(cur_callsign);
+      morse.send(cur_config.callsign);
       break;
     case TxState::DFCW:
-      sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");;
+      sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");
       si5351.output_enable(SI5351_CLK0, 1);
       tx_lock = true;
       digitalWrite(TX_KEY, HIGH);
@@ -3325,7 +3440,7 @@ void processTimeSync()
   {
     sendSerialPacket(0, "");
 //    SerialUSB.write(TIME_REQUEST);
-    yield();
+//    yield();
     time_sync_request = true;
     next_time_sync = rtc.getEpoch() + TIME_SYNC_RETRY_RATE;
   }
@@ -3360,7 +3475,7 @@ void processSerialIn()
 
   uint32_t pctime;
 //  char serial_packet[JSON_MAX_SIZE + 6];
-  char payload[JSON_MAX_SIZE];
+//  char payload[JSON_PACKET_MAX_SIZE];
 //  StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
 //  StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //  DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
@@ -3381,7 +3496,7 @@ void processSerialIn()
   
       if (SerialUSB.read() == PACKET_ID)
       {
-  //      digitalWrite(LED_BUILTIN, HIGH);
+        char payload[JSON_PACKET_MAX_SIZE];
         
         // Get message type
         uint8_t message_type = SerialUSB.read();
@@ -3404,6 +3519,8 @@ void processSerialIn()
         else return;
     
         // Deserialize the JSON document
+        DynamicJsonDocument json_rx_doc(JSON_MAX_SIZE);
+//        StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
         DeserializationError error = deserializeJson(json_rx_doc, payload);
     
         if(!error)
@@ -3559,7 +3676,7 @@ void processSerialIn()
                 char temp_str[40];
                 uint8_t temp_power = json_rx_doc["value"];
                 cur_config.power = temp_power;
-                sprintf(temp_str, "U%lu", cur_config.power);
+                sprintf(temp_str, "U%u", cur_config.power);
                 settings["power"].second = std::string(temp_str);
                 serializeConfig();
               }
@@ -3634,8 +3751,9 @@ void processSerialIn()
           }
           else if(json_rx_doc["get"] == true)
           {
+//            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
             StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-            char send_json[JSON_MAX_SIZE];
+            char send_json[JSON_PACKET_MAX_SIZE];
             
             if(json_rx_doc["config"] == "base_freq")
             {
@@ -3756,6 +3874,13 @@ void processSerialIn()
               serializeJson(json_tx_doc, send_json);
               sendSerialPacket(0x03, send_json);
             }
+            else if(json_rx_doc["config"] == "mem_free")
+            {
+              json_tx_doc["config"] = "mem_free";
+              json_tx_doc["value"] = freeMemory();
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
           }
           break;
         case 0x04:
@@ -3781,12 +3906,15 @@ void processSerialIn()
               morse.reset();
               setNextTx(0);
 
-              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-              char send_json[JSON_MAX_SIZE + 6];
-              json_tx_doc["level"] = 0;
-              json_tx_doc["text"] = "TX End";
-              json_tx_doc["data"] = cur_config.base_freq;
-              serializeJson(json_tx_doc, send_json);
+//              DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+              char send_json[JSON_PACKET_MAX_SIZE];
+              sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%lu\"}",
+                cur_config.base_freq);
+//              json_tx_doc["level"] = 0;
+//              json_tx_doc["text"] = "TX End";
+//              json_tx_doc["data"] = cur_config.base_freq;
+//              serializeJson(json_tx_doc, send_json);
               sendSerialPacket(0xFE, send_json);
             }
           }
@@ -3794,8 +3922,9 @@ void processSerialIn()
         case 0x06:
           if(json_rx_doc["enum"] == "modes")
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-            char send_json[JSON_MAX_SIZE];
+            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_PACKET_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray modes = root.createNestedArray("modes");
 
@@ -3809,8 +3938,9 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "bands")
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-            char send_json[JSON_MAX_SIZE];
+            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_PACKET_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray bands = root.createNestedArray("bands");
 
@@ -3822,7 +3952,7 @@ void processSerialIn()
             for(auto b : band_table)
             {
               JsonObject nested = bands.createNestedObject();
-              nested["name"] = b.name;
+              nested["name"] = b.name.c_str();
               nested["mod"] = b.module_index;
             }
 
@@ -3831,14 +3961,15 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "band_modules")
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-            char send_json[JSON_MAX_SIZE];
+            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_PACKET_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray band_modules = root.createNestedArray("band_modules");
 
             for(auto b : band_module_table)
             {
-              band_modules.add(b.name);
+              band_modules.add(b.name.c_str());
             }
 
             serializeJson(json_tx_doc, send_json);
@@ -3846,8 +3977,9 @@ void processSerialIn()
           }
           else if(json_rx_doc["enum"] == "inst_band_modules")
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-            char send_json[JSON_MAX_SIZE];
+            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+            char send_json[JSON_PACKET_MAX_SIZE];
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray band_modules = root.createNestedArray("inst_band_modules");
 
@@ -3877,20 +4009,16 @@ void processTxTrigger()
   {
     setTxState(next_state);
     next_tx = UINT32_MAX;
-//    SerialUSB.write('\v');
-//    for(uint i = 0; i < 79; ++i)
-//    {
-//      SerialUSB.print(mfsk_buffer[i]);
-//    }
   }
+
   yield();
 }
 
 uint16_t sendSerialPacket(uint8_t msg_type, const char * payload)
 {
-  char serial_packet[JSON_MAX_SIZE + 6];
+  char serial_packet[JSON_PACKET_MAX_SIZE + 6];
   uint16_t payload_len = strlen(payload);
-  if(payload_len > JSON_MAX_SIZE)
+  if(payload_len > JSON_PACKET_MAX_SIZE)
   {
     return 0;
   }
@@ -3910,6 +4038,7 @@ uint16_t sendSerialPacket(uint8_t msg_type, const char * payload)
   // Send it
   uint16_t bytes_written = SerialUSB.write(serial_packet, payload_len + 5);
   return bytes_written;
+  yield();
 }
 
 //void updateTimer(void)
@@ -3937,13 +4066,15 @@ void txStateMachine()
         case TxState::CW:
           if (!morse.busy)
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
-            char send_json[JSON_MAX_SIZE + 6];
-            json_tx_doc["level"] = 0;
-            json_tx_doc["text"] = "TX End";
-            json_tx_doc["data"] = cur_config.base_freq;
-            serializeJson(json_tx_doc, send_json);
+            char send_json[JSON_PACKET_MAX_SIZE];
+            sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%lu\"}",
+                cur_config.base_freq);
+//            json_tx_doc["level"] = 0;
+//            json_tx_doc["text"] = "TX End";
+//            json_tx_doc["data"] = cur_config.base_freq;
+//            serializeJson(json_tx_doc, send_json);
             sendSerialPacket(0xFE, send_json);
             yield();
             setTxState(TxState::Idle);
@@ -3999,13 +4130,15 @@ void txStateMachine()
 
           if (!morse.busy)
           {
-            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //            DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
-            char send_json[JSON_MAX_SIZE + 6];
-            json_tx_doc["level"] = 0;
-            json_tx_doc["text"] = "TX End";
-            json_tx_doc["data"] = cur_config.base_freq;
-            serializeJson(json_tx_doc, send_json);
+            char send_json[JSON_PACKET_MAX_SIZE];
+            sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%lu\"}",
+                cur_config.base_freq);
+//            json_tx_doc["level"] = 0;
+//            json_tx_doc["text"] = "TX End";
+//            json_tx_doc["data"] = cur_config.base_freq;
+//            serializeJson(json_tx_doc, send_json);
             sendSerialPacket(0xFE, send_json);
             yield();
             prev_morse_tx = false;
@@ -4052,13 +4185,15 @@ void txStateMachine()
             ++cur_symbol;
             if (cur_symbol >= cur_symbol_count) //reset everything and switch to idle
             {
-              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
 //              DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
-              char send_json[JSON_MAX_SIZE + 6];
-              json_tx_doc["level"] = 0;
-              json_tx_doc["text"] = "TX End";
-              json_tx_doc["data"] = cur_config.base_freq;
-              serializeJson(json_tx_doc, send_json);
+              char send_json[JSON_PACKET_MAX_SIZE];
+              sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%lu\"}",
+                cur_config.base_freq);
+//              json_tx_doc["level"] = 0;
+//              json_tx_doc["text"] = "TX End";
+//              json_tx_doc["data"] = cur_config.base_freq;
+//              serializeJson(json_tx_doc, send_json);
               sendSerialPacket(0xFE, send_json);
               if(cur_config.cwid)
               {
@@ -4118,13 +4253,17 @@ void composeMorseBuffer(uint8_t buf)
 
 void composeWSPRBuffer()
 {
-  sprintf(cur_callsign, "%s", settings["callsign"].second.substr(1).c_str());
-  sprintf(cur_grid, "%s", settings["grid"].second.substr(1).c_str());
-  cur_power = atoi(settings["power"].second.substr(1).c_str());
-  sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
-//  memset(mfsk_buffer, 0, 255);
-//  jtencode.wspr_encode(settings["callsign"].second.substr(1).c_str(), settings["grid"].second.substr(1).c_str(),
-//                       atoi(settings["power"].second.substr(1).c_str()), mfsk_buffer);
+//  sprintf(cur_callsign, "%s", settings["callsign"].second.substr(1).c_str());
+//  sprintf(cur_grid, "%s", settings["grid"].second.substr(1).c_str());
+//  cur_power = atoi(settings["power"].second.substr(1).c_str());
+//  sprintf(wspr_buffer, "%s %s %u", cur_callsign, cur_grid, cur_power);
+//  wspr_buffer = settings["callsign"].second.substr(1) + " " +
+//    settings["grid"].second.substr(1) + " " +
+//    settings["power"].second.substr(1);
+//  wspr_buffer = settings["callsign"].second.substr(1) + " " + settings["grid"].second.substr(1) + " " + settings["power"].second.substr(1);
+  char temp_power[10];
+  itoa(cur_config.power, temp_power, 10);
+  wspr_buffer = std::string(cur_config.callsign) + " " + std::string(cur_config.grid) + " " + std::string(temp_power);
 }
 
 void composeJTBuffer(uint8_t buf)
@@ -4157,7 +4296,7 @@ void composeMFSKMessage()
   {
   case Mode::WSPR:
     memset(mfsk_buffer, 0, 255);
-    jtencode.wspr_encode(cur_callsign, cur_grid, cur_power, mfsk_buffer);
+    jtencode.wspr_encode(cur_config.callsign, cur_config.grid, cur_config.power, mfsk_buffer);
     break;
   case Mode::JT65:
     memset(mfsk_buffer, 0, 255);
@@ -4271,7 +4410,7 @@ void deserializeConfig()
   settings["callsign"].second = std::string(temp_str);
   sprintf(temp_str, "S%s", cur_config.grid);
   settings["grid"].second = std::string(temp_str);
-  sprintf(temp_str, "U%lu", cur_config.power);
+  sprintf(temp_str, "U%u", cur_config.power);
   settings["power"].second = std::string(temp_str);
   sprintf(temp_str, "U%lu", cur_config.tx_intv);
   settings["tx_intv"].second = std::string(temp_str);
@@ -4320,7 +4459,7 @@ void deserializeConfig()
     settings["callsign"].second = std::string(temp_str);
     sprintf(temp_str, "S%s", flash_config.grid);
     settings["grid"].second = std::string(temp_str);
-    sprintf(temp_str, "U%lu", flash_config.power);
+    sprintf(temp_str, "U%u", flash_config.power);
     settings["power"].second = std::string(temp_str);
     sprintf(temp_str, "U%lu", flash_config.tx_intv);
     settings["tx_intv"].second = std::string(temp_str);
@@ -4373,10 +4512,13 @@ void processScreenSaver()
   // Turn on screen saver if necessary
   if(cur_timer >= screen_saver_timeout && !screen_saver_enable)
   {
-    cur_screen_saver_x = random(16);
-    cur_screen_saver_y = random(16);
+//    cur_screen_saver_x = random(16);
+//    cur_screen_saver_y = random(16);
+    cur_screen_saver_x = 4;
+    cur_screen_saver_y = 3;
     screen_saver_enable = true;
   }
+  yield();
 
   // Screen saver animation
   if(screen_saver_enable)
@@ -4407,7 +4549,7 @@ void processScreenSaver()
       screen_saver_update = cur_timer + SCREEN_SAVER_TIMER_INTERVAL;
     }
   }
-  // yield();
+  yield();
 }
 
 // ===== Setup =====
@@ -4416,7 +4558,7 @@ void setup()
   // Wire.setClock(1000000UL);
 
   // Start u8g2
-  u8g2.setBusClock(600000);
+  u8g2.setBusClock(400000);
   u8g2.begin();
 
   // Draw welcome message
@@ -4439,8 +4581,8 @@ void setup()
 //  u8g2.sendBuffer();
 
   // Load config map
-//  for (auto const& c : settings_table)
-  for (auto c : settings_table)
+  for (auto const& c : settings_table)
+//  for (auto c : settings_table)
   {
     settings[c[0]].first = c[1];
   }
@@ -4628,18 +4770,18 @@ void setup()
   initMenu();
 
   // Set up ArduinoJSON
-  const size_t bufferSize = JSON_OBJECT_SIZE(17) + 230;
-//  const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 60;
-//  StaticJsonDocument<800> jsonDoc;
-  DynamicJsonDocument jsonDoc(bufferSize);
-//  DynamicJsonBuffer jsonBuffer(bufferSize);
-//  JsonObject& root = jsonBuffer.parseObject(default_config);
-  DeserializationError error = deserializeJson(jsonDoc, default_config);
-  if(error)
-  {
-    //TODO
-  }
-  JsonObject config_root = jsonDoc.as<JsonObject>();
+//  const size_t bufferSize = JSON_OBJECT_SIZE(17) + 230;
+////  const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 60;
+////  StaticJsonDocument<800> jsonDoc;
+//  DynamicJsonDocument jsonDoc(bufferSize);
+////  DynamicJsonBuffer jsonBuffer(bufferSize);
+////  JsonObject& root = jsonBuffer.parseObject(default_config);
+//  DeserializationError error = deserializeJson(jsonDoc, default_config);
+//  if(error)
+//  {
+//    //TODO
+//  }
+//  JsonObject config_root = jsonDoc.as<JsonObject>();
 
   // Set up scheduler
   Scheduler.startLoop(txStateMachine);
@@ -4698,6 +4840,7 @@ void setup()
 
 void loop()
 {
+  static bool sent = false;
   //  noInterrupts();
   //  cur_timer = millis();
   //  interrupts();
@@ -4714,7 +4857,34 @@ void loop()
   yield();
 
   processTxTrigger();
+//  yield();
   processSerialIn();
+//  yield();
   processTimeSync();
+//  yield();
   processScreenSaver();
+  yield();
+
+  if(cur_timer > 2000 && !sent)
+  {
+//    menu.selectChild(0);
+//    menu.selectRoot();
+//    StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
+//    char send_json[JSON_MAX_SIZE + 6];
+//    json_tx_doc["level"] = 0;
+//    json_tx_doc["text"] = "Menu Name";
+//    json_tx_doc["data"] = menu.active_menu->label;
+//    json_tx_doc["data"] = "test menu";
+//    serializeJson(json_tx_doc, send_json);
+//    sendSerialPacket(0xFE, send_json);
+//    json_tx_doc.clear();
+//    char send_json_2[JSON_MAX_SIZE + 6];
+//    json_tx_doc["level"] = 0;
+//    json_tx_doc["text"] = "Menu Name";
+//    json_tx_doc["data"] = BaseMenu::active_menu->label.c_str();
+//    serializeJson(json_tx_doc, send_json_2);
+//    sendSerialPacket(0xFE, send_json_2);
+    sent = true;
+//    menu.selectRoot();
+  }
 }
