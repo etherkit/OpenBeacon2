@@ -157,7 +157,7 @@ struct Config
   uint8_t buffer;
   char callsign[20];
   char grid[10];
-  uint8_t power;
+  int8_t power;
   uint16_t pa_bias;
   boolean cwid;
   char msg_buffer_1[MSG_BUFFER_SIZE];
@@ -190,20 +190,20 @@ constexpr uint8_t DEFAULT_CUR_BUFFER = 1;
 constexpr uint8_t DEFAULT_DFCW_OFFSET = 5;
 constexpr char DEFAULT_CALLSIGN[20] = "NT7S";
 constexpr char DEFAULT_GRID[10] = "AA00";
-constexpr uint8_t DEFAULT_POWER = 23;
+constexpr int8_t DEFAULT_POWER = 23;
 #ifdef REV_A
 constexpr uint16_t DEFAULT_PA_BIAS = 1800;
 #endif
 #ifdef REV_B
 constexpr uint16_t DEFAULT_PA_BIAS = 2000;
 #endif
-constexpr boolean DEFAULT_CWID = true;
+constexpr boolean DEFAULT_CWID = false;
 constexpr char DEFAULT_MSG_1[41] = "BUFFER1";
 constexpr char DEFAULT_MSG_2[41] = "BUFFER2";
 constexpr char DEFAULT_MSG_3[41] = "BUFFER3";
 constexpr char DEFAULT_MSG_4[41] = "BUFFER4";
 constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
-constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 20; // In minutes
+constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 2; // In minutes
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -352,6 +352,7 @@ uint8_t cur_screen_saver_y = 15;
 int8_t screen_saver_x_accel = 1;
 int8_t screen_saver_y_accel = 1;
 uint32_t screen_saver_update = 0;
+uint8_t tx_progress = 0;
 
 
 //StaticJsonDocument<JSON_MAX_SIZE> json_rx_doc;
@@ -1376,7 +1377,7 @@ void drawOLED()
           str_x = 61 - (num_digits(cur_setting_uint) * SETTING_FONT_WIDTH) + ((cur_setting_selected + 1) * SETTING_FONT_WIDTH);
           break;
         case 'I':
-          sprintf(temp_str, "%l", cur_setting_int);
+          sprintf(temp_str, "%i", cur_setting_int);
           str_x = 61 - ((cur_setting_selected) * SETTING_FONT_WIDTH);
           break;
         case 'B':
@@ -1606,8 +1607,8 @@ void drawOLED()
 
               // Draw TX progress bar
               yield();
-              uint8_t tx_progress = (cur_symbol * 128 / WSPR_SYMBOL_COUNT);
-              u8g2.drawLine(0, 31, tx_progress, 31);
+              uint8_t tx_progress_line = (cur_symbol * 128 / WSPR_SYMBOL_COUNT);
+              u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
             break;
             
@@ -1630,8 +1631,8 @@ void drawOLED()
 
               // Draw TX progress bar
               yield();
-              uint8_t tx_progress = (cur_symbol * 128 / JT65_SYMBOL_COUNT);
-              u8g2.drawLine(0, 31, tx_progress, 31);
+              uint8_t tx_progress_line = (cur_symbol * 128 / JT65_SYMBOL_COUNT);
+              u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
             break;
             
@@ -1654,8 +1655,8 @@ void drawOLED()
 
               // Draw TX progress bar
               yield();
-              uint8_t tx_progress = (cur_symbol * 128 / JT9_SYMBOL_COUNT);
-              u8g2.drawLine(0, 31, tx_progress, 31);
+              uint8_t tx_progress_line = (cur_symbol * 128 / JT9_SYMBOL_COUNT);
+              u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
             break;
             
@@ -1678,8 +1679,8 @@ void drawOLED()
 
               // Draw TX progress bar
               yield();
-              uint8_t tx_progress = (cur_symbol * 128 / JT4_SYMBOL_COUNT);
-              u8g2.drawLine(0, 31, tx_progress, 31);
+              uint8_t tx_progress_line = (cur_symbol * 128 / JT4_SYMBOL_COUNT);
+              u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
             break;
             
@@ -1702,8 +1703,8 @@ void drawOLED()
 
               // Draw TX progress bar
               yield();
-              uint8_t tx_progress = (cur_symbol * 128 / FT8_SYMBOL_COUNT);
-              u8g2.drawLine(0, 31, tx_progress, 31);
+              uint8_t tx_progress_line = (cur_symbol * 128 / FT8_SYMBOL_COUNT);
+              u8g2.drawLine(0, 31, tx_progress_line, 31);
               yield();
             }
             break;
@@ -1776,10 +1777,24 @@ void drawOLED()
     }
     else // screen saver enabled
     {
-      // u8g2.setDrawColor(1);
-      u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
-      u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, SCREEN_SAVER_MESSAGE);
-      yield();
+      if(tx_lock)
+      {
+        u8g2.setFont(u8g2_font_6x10_mr);
+        yield();
+        char screen_saver_msg[40];
+        sprintf(screen_saver_msg, "TX: %s %d%%", 
+          mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name, tx_progress);
+        yield();
+        u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, screen_saver_msg);
+        yield();
+      }
+      else
+      {
+        u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
+        yield();
+        u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, SCREEN_SAVER_MESSAGE);
+        yield();
+      }
     }
     
     // if(cur_timer % 2 == 0) // only try to send every 2 ms
@@ -2196,7 +2211,7 @@ void pollButtons()
             // Re-compose the buffers to reflect changes
             selectBuffer(cur_config.buffer);
             composeWSPRBuffer();
-//            composeMFSKMessage();
+            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -2293,7 +2308,7 @@ void pollButtons()
           }
           else if (cur_setting_key == "power")
           {
-            cur_config.power = cur_setting_uint;
+            cur_config.power = cur_setting_int;
             composeWSPRBuffer();
             composeMFSKMessage();
           }
@@ -2635,7 +2650,7 @@ void pollButtons()
 
 //            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
             char send_json[JSON_MAX_SIZE + 6];
-            snprintf(send_json, JSON_PACKET_MAX_SIZE, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%s\"}",
+            sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"data\":\"%lu\"}",
                 cur_config.base_freq);
 //            json_tx_doc["level"] = 0;
 //            json_tx_doc["text"] = "TX End";
@@ -3676,7 +3691,7 @@ void processSerialIn()
                 char temp_str[40];
                 uint8_t temp_power = json_rx_doc["value"];
                 cur_config.power = temp_power;
-                sprintf(temp_str, "U%u", cur_config.power);
+                sprintf(temp_str, "I%u", cur_config.power);
                 settings["power"].second = std::string(temp_str);
                 serializeConfig();
               }
@@ -4085,6 +4100,8 @@ void txStateMachine()
 //            selectMode(static_cast<uint8_t>(mode));
 
             setNextTx(0);
+            cur_screen_saver_x = random(16);
+            cur_screen_saver_y = random(16);
           }
           break;
       }
@@ -4106,6 +4123,8 @@ void txStateMachine()
             setNextTx(cur_config.tx_intv);
             setTxState(TxState::Idle);
             morse.tx_enable = false;
+            cur_screen_saver_x = random(16);
+            cur_screen_saver_y = random(16);
 //            #ifdef REV_B
 //            digitalWrite(TX_KEY, HIGH);
 //            #endif
@@ -4148,12 +4167,16 @@ void txStateMachine()
             if(cur_config.cwid)
             {
               setTxState(TxState::IDDelay);
+              cur_screen_saver_x = random(16);
+              cur_screen_saver_y = random(16);
             }
             else
             {
               setTxState(TxState::Idle);
               setNextTx(cur_config.tx_intv);
               morse.tx_enable = false;
+              cur_screen_saver_x = random(16);
+              cur_screen_saver_y = random(16);
             }
           }
           break;
@@ -4177,6 +4200,8 @@ void txStateMachine()
 
             setNextTx(cur_config.tx_intv);
             composeMFSKMessage();
+            cur_screen_saver_x = random(16);
+            cur_screen_saver_y = random(16);
           }
           break;
         case TxState::MFSK:
@@ -4198,6 +4223,8 @@ void txStateMachine()
               if(cur_config.cwid)
               {
                 setTxState(TxState::IDDelay);
+                cur_screen_saver_x = random(16);
+                cur_screen_saver_y = random(16);
               }
               else
               {
@@ -4205,6 +4232,8 @@ void txStateMachine()
                 setNextTx(cur_config.tx_intv);
 //                setNextTx(0);
                 composeMFSKMessage();
+                cur_screen_saver_x = random(16);
+                cur_screen_saver_y = random(16);
               }
               //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (cur_config.base_freq * 100);
@@ -4410,7 +4439,7 @@ void deserializeConfig()
   settings["callsign"].second = std::string(temp_str);
   sprintf(temp_str, "S%s", cur_config.grid);
   settings["grid"].second = std::string(temp_str);
-  sprintf(temp_str, "U%u", cur_config.power);
+  sprintf(temp_str, "I%u", cur_config.power);
   settings["power"].second = std::string(temp_str);
   sprintf(temp_str, "U%lu", cur_config.tx_intv);
   settings["tx_intv"].second = std::string(temp_str);
@@ -4512,13 +4541,110 @@ void processScreenSaver()
   // Turn on screen saver if necessary
   if(cur_timer >= screen_saver_timeout && !screen_saver_enable)
   {
-//    cur_screen_saver_x = random(16);
-//    cur_screen_saver_y = random(16);
-    cur_screen_saver_x = 4;
-    cur_screen_saver_y = 3;
+    cur_screen_saver_x = random(16);
+    cur_screen_saver_y = random(16);
+//    cur_screen_saver_x = 4;
+//    cur_screen_saver_y = 3;
     screen_saver_enable = true;
   }
   yield();
+
+  // Update the TX progress percentage
+  if(cur_state != TxState::Idle)
+  {
+//    char buffer_str[81];
+    //std::string wspr_buffer;
+//        yield();
+    
+    switch(cur_config.mode)
+    {
+    case Mode::DFCW3:
+    case Mode::DFCW6:
+    case Mode::DFCW10:
+    case Mode::DFCW120:
+    case Mode::QRSS3:
+    case Mode::QRSS6:
+    case Mode::QRSS10:
+    case Mode::QRSS120:
+    case Mode::CW:
+    case Mode::HELL:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(msg_buffer);
+      }
+      yield();
+      break;
+      
+    case Mode::WSPR:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (cur_symbol * 100) / WSPR_SYMBOL_COUNT;
+      }
+      yield();
+      break;
+      
+    case Mode::JT65:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (cur_symbol * 100) / JT65_SYMBOL_COUNT;
+      }
+      yield();
+      break;
+      
+    case Mode::JT9:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (cur_symbol * 100) / JT9_SYMBOL_COUNT;
+      }
+      yield();
+      break;
+      
+    case Mode::JT4:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (cur_symbol * 100) / JT4_SYMBOL_COUNT;
+      }
+      yield();
+      break;
+      
+    case Mode::FT8:
+      if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
+      {
+        tx_progress = (morse.cur_char * 100) / strlen(cur_config.callsign);
+      }
+      else
+      {
+        tx_progress = (cur_symbol * 100) / FT8_SYMBOL_COUNT;
+      }
+      yield();
+      break;
+    }
+  }
+  else
+  {
+    tx_progress = 0;
+    yield();
+  }
 
   // Screen saver animation
   if(screen_saver_enable)
@@ -4533,6 +4659,7 @@ void processScreenSaver()
       {
         screen_saver_x_accel = 1;
       }
+      yield();
 
       // if((cur_screen_saver_y >= u8g2.getDisplayHeight() - u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == 1)
       if((cur_screen_saver_y >= u8g2.getDisplayHeight() - 1) && screen_saver_y_accel == 1)
@@ -4543,6 +4670,7 @@ void processScreenSaver()
       {
         screen_saver_y_accel = 1;
       }
+      yield();
 
       cur_screen_saver_x += screen_saver_x_accel;
       cur_screen_saver_y += screen_saver_y_accel;
@@ -4864,27 +4992,4 @@ void loop()
 //  yield();
   processScreenSaver();
   yield();
-
-  if(cur_timer > 2000 && !sent)
-  {
-//    menu.selectChild(0);
-//    menu.selectRoot();
-//    StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-//    char send_json[JSON_MAX_SIZE + 6];
-//    json_tx_doc["level"] = 0;
-//    json_tx_doc["text"] = "Menu Name";
-//    json_tx_doc["data"] = menu.active_menu->label;
-//    json_tx_doc["data"] = "test menu";
-//    serializeJson(json_tx_doc, send_json);
-//    sendSerialPacket(0xFE, send_json);
-//    json_tx_doc.clear();
-//    char send_json_2[JSON_MAX_SIZE + 6];
-//    json_tx_doc["level"] = 0;
-//    json_tx_doc["text"] = "Menu Name";
-//    json_tx_doc["data"] = BaseMenu::active_menu->label.c_str();
-//    serializeJson(json_tx_doc, send_json_2);
-//    sendSerialPacket(0xFE, send_json_2);
-    sent = true;
-//    menu.selectRoot();
-  }
 }
