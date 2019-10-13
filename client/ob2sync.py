@@ -165,7 +165,8 @@ def serial_handler():
                     start_time = time.strftime("%H:%M:%S", time.gmtime())
                 elif(json_payload["text"] == 'TX End'):
                     end = timer()
-                    CmdParser().async_alert('Transmission at {} - {:.3f} s on {} Hz'.format(start_time, end - start, json_payload['data']))
+                    # CmdParser().async_alert(payload)
+                    CmdParser().async_alert('{} Transmission at {} - {:.3f} s on {} Hz'.format(json_payload["mode"], start_time, end - start, json_payload["freq"]))
                     # if args.verbosity >= 0: # TODO
                     # logging.info(start_time + str(end - start))
 

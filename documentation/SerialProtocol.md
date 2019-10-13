@@ -150,6 +150,8 @@ None
 | id | uint64_t | Unique packet ID |
 | level | uint8_t | Notification level |
 | text | string | Notification text |
+| freq | string | Frequency |
+| mode | string | Mode |
 | data | string | Additional data |
 
 - ### 0xFF &mdash; Error
