@@ -344,6 +344,7 @@ uint8_t cur_band_module = 0;
 std::string band_name;
 bool time_sync_request = false;
 bool select_band_reset = true;
+char screen_saver_msg[40];
 bool screen_saver_enable = false;
 uint8_t screen_saver_interval = DEFAULT_SCREEN_SAVER_INTERVAL;
 uint32_t screen_saver_timeout = screen_saver_interval * 60 * 1000UL; // Convert to ms for timer
@@ -1781,27 +1782,22 @@ void drawOLED()
       {
         u8g2.setFont(u8g2_font_6x10_mr);
         yield();
-        char screen_saver_msg[40];
-        sprintf(screen_saver_msg, "TX: %s %d%%", 
+//        char screen_saver_msg[40];
+        sprintf(screen_saver_msg, "TX: %s %s %d%%", band_name.c_str(),
           mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name, tx_progress);
         yield();
         u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, screen_saver_msg);
-        yield();
       }
       else
       {
         u8g2.setFont(u8g2_font_prospero_bold_nbp_tr);
         yield();
-        u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, SCREEN_SAVER_MESSAGE);
-        yield();
+        sprintf(screen_saver_msg,"%s", SCREEN_SAVER_MESSAGE);
+        u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, screen_saver_msg);
       }
     }
-    
-    // if(cur_timer % 2 == 0) // only try to send every 2 ms
-    // {
-      // yield();
-      u8g2.sendBuffer();          // transfer internal memory to the display
-    // }
+    yield();
+    u8g2.sendBuffer();          // transfer internal memory to the display
   }
   yield();
 }
@@ -4543,19 +4539,12 @@ void processScreenSaver()
   {
     cur_screen_saver_x = random(16);
     cur_screen_saver_y = random(16);
-//    cur_screen_saver_x = 4;
-//    cur_screen_saver_y = 3;
     screen_saver_enable = true;
   }
-  yield();
 
   // Update the TX progress percentage
   if(cur_state != TxState::Idle)
-  {
-//    char buffer_str[81];
-    //std::string wspr_buffer;
-//        yield();
-    
+  {    
     switch(cur_config.mode)
     {
     case Mode::DFCW3:
@@ -4645,13 +4634,15 @@ void processScreenSaver()
     tx_progress = 0;
     yield();
   }
+//  yield();
 
   // Screen saver animation
   if(screen_saver_enable)
   {
+//    yield();
     if(cur_timer >= screen_saver_update)
     {
-      if((cur_screen_saver_x >= u8g2.getDisplayWidth() - u8g2.getStrWidth(SCREEN_SAVER_MESSAGE) - 1) && screen_saver_x_accel == 1)
+      if((cur_screen_saver_x >= u8g2.getDisplayWidth() - u8g2.getStrWidth(screen_saver_msg) - 1) && screen_saver_x_accel == 1)
       {
         screen_saver_x_accel = -1;
       }
