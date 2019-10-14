@@ -125,7 +125,7 @@ void processSerialIn()
                     case Mode::QRSS120:
                     case Mode::CW:
                     case Mode::HELL:
-                      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+                      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
                       break;
           
                     case Mode::WSPR:

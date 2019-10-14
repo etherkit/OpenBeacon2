@@ -2,7 +2,7 @@ void selectBand()
 {
   #ifdef REV_A
   static uint8_t prev_band_module_index[3] = {0, 0, 0};
-  static uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
+  static uint32_t new_freq, new_qrss_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
   static uint32_t new_lower_freq_limit, new_upper_freq_limit;
 
   //  constexpr uint8_t ADC0_RING_BUF_SIZE = 4;
@@ -52,7 +52,7 @@ void selectBand()
         //band_index = band.index;
         new_lower_freq_limit = band.lower_limit;
         new_upper_freq_limit = band.upper_limit;
-        new_cw_freq = band.cw_freq;
+        new_qrss_freq = band.qrss_freq;
         new_wspr_freq = band.wspr_freq;
         new_jt65_freq = band.jt65_freq;
         new_jt9_freq = band.jt9_freq;
@@ -70,7 +70,7 @@ void selectBand()
         //          case Mode::QRSS120:
         //          case Mode::CW:
         //          case Mode::HELL:
-        //            new_freq = band.cw_freq;
+        //            new_freq = band.qrss_freq;
         //            break;
         //
         //          case Mode::WSPR:
@@ -117,7 +117,7 @@ void selectBand()
           case Mode::QRSS120:
           case Mode::CW:
           case Mode::HELL:
-            new_freq = new_cw_freq;
+            new_freq = new_qrss_freq;
             break;
 
           case Mode::WSPR:
@@ -212,7 +212,7 @@ void selectBand()
   #ifdef REV_B
   static uint8_t prev_band_module_index_1[3] = {0, 0, 0};
   static uint8_t prev_band_module_index_2[3] = {0, 0, 0};
-  static uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
+  static uint32_t new_freq, new_qrss_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
   static uint32_t new_lower_freq_limit, new_upper_freq_limit;
   static std::string new_band_name;
 
@@ -285,7 +285,7 @@ void selectBand()
 //            // Set default frequencies for band
 //            new_lower_freq_limit = band.lower_limit;
 //            new_upper_freq_limit = band.upper_limit;
-//            new_cw_freq = band.cw_freq;
+//            new_qrss_freq = band.qrss_freq;
 //            new_wspr_freq = band.wspr_freq;
 //            new_jt65_freq = band.jt65_freq;
 //            new_jt9_freq = band.jt9_freq;
@@ -318,7 +318,7 @@ void selectBand()
               // Set default frequencies for band
               new_lower_freq_limit = band.lower_limit;
               new_upper_freq_limit = band.upper_limit;
-              new_cw_freq = band.cw_freq;
+              new_qrss_freq = band.qrss_freq;
               new_wspr_freq = band.wspr_freq;
               new_jt65_freq = band.jt65_freq;
               new_jt9_freq = band.jt9_freq;
@@ -355,7 +355,7 @@ void selectBand()
               // Set default frequencies for band
               new_lower_freq_limit = band.lower_limit;
               new_upper_freq_limit = band.upper_limit;
-              new_cw_freq = band.cw_freq;
+              new_qrss_freq = band.qrss_freq;
               new_wspr_freq = band.wspr_freq;
               new_jt65_freq = band.jt65_freq;
               new_jt9_freq = band.jt9_freq;
@@ -397,7 +397,7 @@ void selectBand()
             case Mode::QRSS120:
             case Mode::CW:
             case Mode::HELL:
-              new_freq = new_cw_freq;
+              new_freq = new_qrss_freq;
               break;
   
             case Mode::WSPR:
@@ -475,7 +475,7 @@ void selectBand()
             case Mode::QRSS120:
             case Mode::CW:
             case Mode::HELL:
-              new_freq = new_cw_freq;
+              new_freq = new_qrss_freq;
               break;
   
             case Mode::WSPR:

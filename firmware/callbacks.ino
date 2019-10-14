@@ -14,7 +14,7 @@ void selectMode(uint8_t sel)
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      settings["TX Intv"] = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -31,7 +31,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -48,7 +48,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -65,7 +65,7 @@ void selectMode(uint8_t sel)
       cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -81,7 +81,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -97,7 +97,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -113,7 +113,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -129,7 +129,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
@@ -145,7 +145,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_config.wpm = mode_table[static_cast<uint8_t>(cur_config.mode)].WPM;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
@@ -161,7 +161,7 @@ void selectMode(uint8_t sel)
 //      composeBuffer();
       cur_tone_spacing = mode_table[static_cast<uint8_t>(cur_config.mode)].tone_spacing;
 //      cur_config.tx_intv = mode_table[static_cast<uint8_t>(cur_config.mode)].tx_interval_mult;
-      cur_config.base_freq = band_table[cur_config.band].cw_freq;
+      cur_config.base_freq = band_table[cur_config.band].qrss_freq;
       #ifdef REV_B
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
@@ -488,12 +488,6 @@ void resetConfig(const uint8_t x)
       strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
       strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
       cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
-//      mode = cur_config.mode;
-//      strcpy(msg_buffer_1, cur_config.msg_buffer_1);
-//      strcpy(msg_buffer_2, cur_config.msg_buffer_2);
-//      strcpy(msg_buffer_3, cur_config.msg_buffer_3);
-//      strcpy(msg_buffer_4, cur_config.msg_buffer_4);
-//      cur_buffer = cur_config.buffer;
       selectBuffer(cur_config.buffer);
       cur_tone_spacing = cur_config.dfcw_offset;
       sprintf(temp_str, "U%lu", cur_config.pa_bias);
@@ -515,6 +509,14 @@ void resetConfig(const uint8_t x)
       else
       {
         settings["cwid"].second = "B0";
+      }
+      if(cur_config.rnd_tx)
+      {
+        settings["rnd_tx"].second = "B1";
+      }
+      else
+      {
+        settings["rnd_tx"].second = "B0";
       }
     
       // Save config to EEPROM

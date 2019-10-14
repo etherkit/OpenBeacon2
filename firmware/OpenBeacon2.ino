@@ -133,7 +133,7 @@ const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/.
 // 8 Oct 2018
 struct Config
 {
-  boolean valid;
+  bool valid;
   uint8_t version;
   Mode mode;
   uint8_t band;
@@ -146,12 +146,13 @@ struct Config
   char grid[10];
   int8_t power;
   uint16_t pa_bias;
-  boolean cwid;
+  bool cwid;
   char msg_buffer_1[MSG_BUFFER_SIZE];
   char msg_buffer_2[MSG_BUFFER_SIZE];
   char msg_buffer_3[MSG_BUFFER_SIZE];
   char msg_buffer_4[MSG_BUFFER_SIZE];
   int32_t si5351_int_corr; 
+  bool rnd_tx;
 };
 
 // Instantiate flash storage
@@ -184,13 +185,15 @@ constexpr uint16_t DEFAULT_PA_BIAS = 1800;
 #ifdef REV_B
 constexpr uint16_t DEFAULT_PA_BIAS = 2000;
 #endif
-constexpr boolean DEFAULT_CWID = false;
+constexpr bool DEFAULT_CWID = false;
 constexpr char DEFAULT_MSG_1[41] = "BUFFER1";
 constexpr char DEFAULT_MSG_2[41] = "BUFFER2";
 constexpr char DEFAULT_MSG_3[41] = "BUFFER3";
 constexpr char DEFAULT_MSG_4[41] = "BUFFER4";
 constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
+constexpr bool DEFAULT_RND_TX = false;
 constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 2; // In minutes
+constexpr uint16_t DEFAULT_RANDOM_TX_GUARD_BAND = 0;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -209,6 +212,7 @@ const std::string settings_table[][2] =
   {"grid", "Grid"},
   {"power", "Power"},
   {"tx_intv", "TX Intv"},
+  {"rnd_tx", "Rnd TX"},
   {"wpm", "CW WPM"},
   {"cwid", "CW ID"}
 };
@@ -324,6 +328,9 @@ int8_t screen_saver_x_accel = 1;
 int8_t screen_saver_y_accel = 1;
 uint32_t screen_saver_update = 0;
 uint8_t tx_progress = 0;
+//bool random_tx_freq = true;
+//uint16_t random_tx_guard_band = DEFAULT_RANDOM_TX_GUARD_BAND;
+uint16_t random_tx_guard_band = 20;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
@@ -512,6 +519,7 @@ void setup()
     strcpy(cur_config.msg_buffer_3, DEFAULT_MSG_3);
     strcpy(cur_config.msg_buffer_4, DEFAULT_MSG_4);
     cur_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+    cur_config.rnd_tx = DEFAULT_RND_TX;
     serializeConfig();
     sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"New EEPROM store written\"}");
   }
@@ -538,6 +546,7 @@ void setup()
     strcpy(flash_config.msg_buffer_3, DEFAULT_MSG_3);
     strcpy(flash_config.msg_buffer_4, DEFAULT_MSG_4);
     flash_config.si5351_int_corr = DEFAULT_SI5351_INT_CORR;
+    flash_config.rnd_tx = DEFAULT_RND_TX;
     flash_store.write(flash_config);
     deserializeConfig();
     sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"New flash store written\"}");

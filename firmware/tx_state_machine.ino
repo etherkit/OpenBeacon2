@@ -384,6 +384,85 @@ void processTxTrigger()
 {
   if (rtc.getEpoch() >= next_tx && isTimeValid())
   {
+    if(cur_config.rnd_tx)
+    {
+      switch (cur_config.mode)
+      {
+        case Mode::DFCW3:
+        case Mode::DFCW6:
+        case Mode::DFCW10:
+        case Mode::DFCW120:
+        case Mode::QRSS3:
+        case Mode::QRSS6:
+        case Mode::QRSS10:
+        case Mode::QRSS120:
+        case Mode::HELL:
+          if(random_tx_guard_band > 
+            (band_table[cur_config.band].qrss_upper_limit - band_table[cur_config.band].qrss_lower_limit) / 2)
+          {
+            random_tx_guard_band = 
+              (band_table[cur_config.band].qrss_upper_limit - band_table[cur_config.band].qrss_lower_limit) / 2 - 10;
+          }
+          cur_config.base_freq = band_table[cur_config.band].qrss_lower_limit + random_tx_guard_band +
+            random(band_table[cur_config.band].qrss_upper_limit - band_table[cur_config.band].qrss_lower_limit -
+              2 * random_tx_guard_band);
+          break;
+    
+        case Mode::CW:
+          break;
+    
+        case Mode::WSPR:
+          if(random_tx_guard_band > 
+            (band_table[cur_config.band].wspr_upper_limit - band_table[cur_config.band].wspr_lower_limit) / 2)
+          {
+            random_tx_guard_band = 
+              (band_table[cur_config.band].wspr_upper_limit - band_table[cur_config.band].wspr_lower_limit) / 2 - 10;
+          }
+          cur_config.base_freq = band_table[cur_config.band].wspr_lower_limit + random_tx_guard_band +
+            random(band_table[cur_config.band].wspr_upper_limit - band_table[cur_config.band].wspr_lower_limit -
+              2 * random_tx_guard_band);
+          break;
+    
+        case Mode::JT65:
+          if(random_tx_guard_band > 
+            (band_table[cur_config.band].jt65_upper_limit - band_table[cur_config.band].jt65_lower_limit) / 2)
+          {
+            random_tx_guard_band = 
+              (band_table[cur_config.band].jt65_upper_limit - band_table[cur_config.band].jt65_lower_limit) / 2 - 10;
+          }
+          cur_config.base_freq = band_table[cur_config.band].jt65_lower_limit + random_tx_guard_band +
+            random(band_table[cur_config.band].jt65_upper_limit - band_table[cur_config.band].jt65_lower_limit -
+              2 * random_tx_guard_band);
+          break;
+          
+        case Mode::JT9:
+          if(random_tx_guard_band > 
+            (band_table[cur_config.band].jt9_upper_limit - band_table[cur_config.band].jt9_lower_limit) / 2)
+          {
+            random_tx_guard_band = 
+              (band_table[cur_config.band].jt9_upper_limit - band_table[cur_config.band].jt9_lower_limit) / 2 - 10;
+          }
+          cur_config.base_freq = band_table[cur_config.band].jt9_lower_limit + random_tx_guard_band +
+            random(band_table[cur_config.band].jt9_upper_limit - band_table[cur_config.band].jt9_lower_limit -
+              2 * random_tx_guard_band);
+          break;
+          
+        case Mode::JT4:
+          break;
+    
+        case Mode::FT8:
+          if(random_tx_guard_band > 
+            (band_table[cur_config.band].ft8_upper_limit - band_table[cur_config.band].ft8_lower_limit) / 2)
+          {
+            random_tx_guard_band = 
+              (band_table[cur_config.band].ft8_upper_limit - band_table[cur_config.band].ft8_lower_limit) / 2 - 10;
+          }
+          cur_config.base_freq = band_table[cur_config.band].ft8_lower_limit + random_tx_guard_band +
+            random(band_table[cur_config.band].ft8_upper_limit - band_table[cur_config.band].ft8_lower_limit -
+              2 * random_tx_guard_band);
+          break;
+        }
+    }
     setTxState(next_state);
     next_tx = UINT32_MAX;
   }

@@ -516,6 +516,10 @@ void pollButtons()
           {
             cur_config.cwid = cur_setting_bool;
           }
+          else if (cur_setting_key == "rnd_tx")
+          {
+            cur_config.rnd_tx = cur_setting_bool;
+          }
   
           // If we need to make any immediate setting changes to hardware
   //        if (cur_setting_key == "pa_bias")
@@ -584,7 +588,7 @@ void pollButtons()
         {
           if (!tx_enable)
           {
-            uint32_t new_freq, new_cw_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
+            uint32_t new_freq, new_qrss_freq, new_wspr_freq, new_jt65_freq, new_jt9_freq;
             uint32_t new_lower_freq_limit, new_upper_freq_limit;
             std::string new_band_name;
             bool retune = false;
@@ -597,7 +601,7 @@ void pollButtons()
               ++cur_config.band;
               new_lower_freq_limit = band_table[cur_config.band].lower_limit;
               new_upper_freq_limit = band_table[cur_config.band].upper_limit;
-              new_cw_freq = band_table[cur_config.band].cw_freq;
+              new_qrss_freq = band_table[cur_config.band].qrss_freq;
               new_wspr_freq = band_table[cur_config.band].wspr_freq;
               new_jt65_freq = band_table[cur_config.band].jt65_freq;
               new_jt9_freq = band_table[cur_config.band].jt9_freq;
@@ -624,7 +628,7 @@ void pollButtons()
                       // Set default frequencies for band
 //                      new_lower_freq_limit = band.lower_limit;
 //                      new_upper_freq_limit = band.upper_limit;
-//                      new_cw_freq = band.cw_freq;
+//                      new_qrss_freq = band.cw_freq;
 //                      new_wspr_freq = band.wspr_freq;
 //                      new_jt65_freq = band.jt65_freq;
 //                      new_jt9_freq = band.jt9_freq;
@@ -632,7 +636,7 @@ void pollButtons()
 //                      retune = true;
                       new_lower_freq_limit = band_table[cur_config.band].lower_limit;
                       new_upper_freq_limit = band_table[cur_config.band].upper_limit;
-                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_qrss_freq = band_table[cur_config.band].qrss_freq;
                       new_wspr_freq = band_table[cur_config.band].wspr_freq;
                       new_jt65_freq = band_table[cur_config.band].jt65_freq;
                       new_jt9_freq = band_table[cur_config.band].jt9_freq;
@@ -654,7 +658,7 @@ void pollButtons()
                       // Set default frequencies for band
 //                      new_lower_freq_limit = band.lower_limit;
 //                      new_upper_freq_limit = band.upper_limit;
-//                      new_cw_freq = band.cw_freq;
+//                      new_qrss_freq = band.cw_freq;
 //                      new_wspr_freq = band.wspr_freq;
 //                      new_jt65_freq = band.jt65_freq;
 //                      new_jt9_freq = band.jt9_freq;
@@ -662,7 +666,7 @@ void pollButtons()
 //                      retune = true;
                       new_lower_freq_limit = band_table[cur_config.band].lower_limit;
                       new_upper_freq_limit = band_table[cur_config.band].upper_limit;
-                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_qrss_freq = band_table[cur_config.band].qrss_freq;
                       new_wspr_freq = band_table[cur_config.band].wspr_freq;
                       new_jt65_freq = band_table[cur_config.band].jt65_freq;
                       new_jt9_freq = band_table[cur_config.band].jt9_freq;
@@ -690,7 +694,7 @@ void pollButtons()
                       // Set default frequencies for band
 //                      new_lower_freq_limit = band.lower_limit;
 //                      new_upper_freq_limit = band.upper_limit;
-//                      new_cw_freq = band.cw_freq;
+//                      new_qrss_freq = band.cw_freq;
 //                      new_wspr_freq = band.wspr_freq;
 //                      new_jt65_freq = band.jt65_freq;
 //                      new_jt9_freq = band.jt9_freq;
@@ -698,7 +702,7 @@ void pollButtons()
 //                      retune = true;
                       new_lower_freq_limit = band_table[cur_config.band].lower_limit;
                       new_upper_freq_limit = band_table[cur_config.band].upper_limit;
-                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_qrss_freq = band_table[cur_config.band].qrss_freq;
                       new_wspr_freq = band_table[cur_config.band].wspr_freq;
                       new_jt65_freq = band_table[cur_config.band].jt65_freq;
                       new_jt9_freq = band_table[cur_config.band].jt9_freq;
@@ -719,7 +723,7 @@ void pollButtons()
                       // Set default frequencies for band
 //                      new_lower_freq_limit = band.lower_limit;
 //                      new_upper_freq_limit = band.upper_limit;
-//                      new_cw_freq = band.cw_freq;
+//                      new_qrss_freq = band.cw_freq;
 //                      new_wspr_freq = band.wspr_freq;
 //                      new_jt65_freq = band.jt65_freq;
 //                      new_jt9_freq = band.jt9_freq;
@@ -727,7 +731,7 @@ void pollButtons()
 //                      retune = true;
                       new_lower_freq_limit = band_table[cur_config.band].lower_limit;
                       new_upper_freq_limit = band_table[cur_config.band].upper_limit;
-                      new_cw_freq = band_table[cur_config.band].cw_freq;
+                      new_qrss_freq = band_table[cur_config.band].qrss_freq;
                       new_wspr_freq = band_table[cur_config.band].wspr_freq;
                       new_jt65_freq = band_table[cur_config.band].jt65_freq;
                       new_jt9_freq = band_table[cur_config.band].jt9_freq;
@@ -758,7 +762,7 @@ void pollButtons()
                 case Mode::QRSS120:
                 case Mode::CW:
                 case Mode::HELL:
-                  cur_config.base_freq = new_cw_freq;
+                  cur_config.base_freq = new_qrss_freq;
                   break;
       
                 case Mode::WSPR:

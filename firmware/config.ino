@@ -44,6 +44,7 @@ void serializeConfig()
   strcpy(flash_config.msg_buffer_3, cur_config.msg_buffer_3);
   strcpy(flash_config.msg_buffer_4, cur_config.msg_buffer_4);
   flash_config.si5351_int_corr = cur_config.si5351_int_corr;
+  flash_config.rnd_tx = cur_config.rnd_tx;
   flash_store.write(flash_config);
   #endif
 }
@@ -101,6 +102,14 @@ void deserializeConfig()
   {
     settings["cwid"].second = "B0";
   }
+  if(cur_config.rnd_tx)
+  {
+    settings["rnd_tx"].second = "B1";
+  }
+  else
+  {
+    settings["rnd_tx"].second = "B0";
+  }
   #else
   flash_config = flash_store.read();
   if(flash_config.valid == true)
@@ -149,6 +158,14 @@ void deserializeConfig()
     else
     {
       settings["cwid"].second = "B0";
+    }
+    if(cur_config.rnd_tx)
+    {
+      settings["rnd_tx"].second = "B1";
+    }
+    else
+    {
+      settings["rnd_tx"].second = "B0";
     }
   }
   else
