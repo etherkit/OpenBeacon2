@@ -14,6 +14,7 @@ import json
 import cmd2
 import colorama
 from colorama import Fore, Back, Style
+from typing import Callable
 
 colorama.init()
 
@@ -21,10 +22,12 @@ JSON_MAX_SIZE = 400
 PACKET_ID = b'\a'  # ASCII BEL
 PACKET_TERM = b'\n'  # ASCII LF
 
-modes = []
-bands = []
-band_modules = []
-inst_band_modules = []
+# lock = threading.Lock()
+
+# modes = []
+# bands = []
+# band_modules = []
+# inst_band_modules = []
 
 # logging.basicConfig(level=logging.DEBUG,
 #                     format='[%(levelname)s] (%(threadName)-10s) %(message)s',
@@ -58,10 +61,10 @@ class ListSerialPorts(argparse.Action):
 
 # Set up argument parser
 arg_parser = argparse.ArgumentParser(
-    description="OpenBeacon Mini Control",
+    description="OpenBeacon 2 Control",
     epilog="Type 'quit' to exit")
 arg_parser.add_argument(
-    "-p", "--port", help="Serial port connected to OpenBeacon Mini", nargs='?', default=DEVICE)
+    "-p", "--port", help="Serial port connected to OpenBeacon 2", nargs='?', default=DEVICE)
 arg_parser.add_argument(
     "-b", "--baud", help="Baud rate of the serial connection", nargs='?', default=BAUD)
 arg_parser.add_argument(
@@ -91,7 +94,7 @@ except:
 
 
 def serial_handler():
-    global modes, bands, band_modules, inst_band_modules, available_bands
+    # global modes, bands, band_modules, inst_band_modules, available_bands
 
     while True:
         ser_in = ser.read()
@@ -140,24 +143,28 @@ def serial_handler():
                 CmdParser().async_alert("Time sync at " + time.asctime(time.gmtime()))
             elif(message_type == 0x03): # Parameter Response
                 if(json_payload["config"] == 'mode'):
-                    CmdParser().async_alert('{}: {}'.format(json_payload["config"], modes[json_payload["value"]]))
+                    CmdParser().async_alert('{}: {}'.format(json_payload["config"], CmdParser.modes[json_payload["value"]]))
                 elif(json_payload["config"] == 'band'):
-                    CmdParser().async_alert('{}: {}'.format(json_payload["config"], bands[json_payload["value"]]["name"]))
+                    CmdParser().async_alert('{}: {}'.format(json_payload["config"], CmdParser.bands[json_payload["value"]]["name"]))
                 else:
                     CmdParser().async_alert('{}: {}'.format(json_payload["config"], json_payload["value"]))
             elif(message_type == 0x07): # Enumeration Response
                 if 'modes' in json_payload:
-                    modes = json_payload['modes']
-                    # CmdParser().async_alert('{}'.format(modes))
+                    CmdParser.modes = json_payload['modes']
+                    # CmdParser().async_alert('{}'.format(json_payload['modes']))
+                    # CmdParser().async_alert('{}'.format(CmdParser.modes))
                 elif 'bands' in json_payload:
-                    bands = json_payload['bands']
-                    # CmdParser().async_alert('{}'.format(bands))
-                    # CmdParser().async_alert('{}'.format(bands[7]['name']))
+                    CmdParser.bands = json_payload['bands']
+                    # CmdParser().async_alert('{}'.format(json_payload['bands']))
+                    # CmdParser().async_alert('{}'.format(CmdParser.bands))
                 elif 'band_modules' in json_payload:
-                    band_modules = json_payload['band_modules']
+                    CmdParser.band_modules = json_payload['band_modules']
                     # CmdParser().async_alert('{}'.format(band_modules))
                 elif 'inst_band_modules' in json_payload:
-                    band_modules = json_payload['inst_band_modules']
+                    CmdParser.band_modules = json_payload['inst_band_modules']
+                    for b in CmdParser.bands:
+                        if b['mod'] in CmdParser.band_modules:
+                            CmdParser.available_bands.append(b['name'].replace(' ', ''))
                     # CmdParser().async_alert('{}'.format(band_modules))
             elif(message_type == 0xFE): # Notification
                 if(json_payload["text"] == 'TX Start'):
@@ -167,6 +174,11 @@ def serial_handler():
                     end = timer()
                     # CmdParser().async_alert(payload)
                     CmdParser().async_alert('{} Transmission at {} - {:.3f} s on {} Hz'.format(json_payload["mode"], start_time, end - start, json_payload["freq"]))
+                    if 'tx_end' in CmdParser.callback:
+                        try:
+                            CmdParser.callback['tx_end']()
+                        except:
+                            pass
                     # if args.verbosity >= 0: # TODO
                     # logging.info(start_time + str(end - start))
 
@@ -225,13 +237,20 @@ def send_serial_packet(msg_type, payload):
 
 class CmdParser(cmd2.Cmd):
     prompt = Style.BRIGHT + Fore.MAGENTA + '>' + Style.RESET_ALL + ' '
-    intro = Style.BRIGHT + Fore.BLUE + 'OpenBeacon Mini' + Style.RESET_ALL
+    intro = Style.BRIGHT + Fore.BLUE + 'OpenBeacon 2' + Style.RESET_ALL
+    modes = []
+    bands = []
+    band_modules = []
+    inst_band_modules = []
+    available_bands = []
+    callback = {}
 
     def __init__(self):
         shortcuts = dict(cmd2.DEFAULT_SHORTCUTS)
         #shortcuts.update({'q': 'quit'})
         super().__init__(shortcuts=shortcuts)
         # cmd2.Cmd.__init__(self)
+        self.locals_in_py = True # Enabled to allow scrpits access to Self
 
     set_parser = argparse.ArgumentParser()
     set_parser.add_argument('config', help='Configuration parameter to set')
@@ -239,20 +258,29 @@ class CmdParser(cmd2.Cmd):
 
     @cmd2.with_argparser(set_parser)
     def do_set(self, args):
-        """Set an OpenBeacon Mini configuration parameter"""
+        """Set an OpenBeacon 2 configuration parameter"""
         if args.config == 'mode':
-            if args.value.upper() in modes:
-                send_payload = {'config': args.config, 'set': True, 'value': modes.index(args.value.upper())}
+            if args.value.upper() in self.modes:
+                send_payload = {'config': args.config, 'set': True, 'value': self.modes.index(args.value.upper())}
                 send_serial_packet(2, json.dumps(
                     send_payload, ensure_ascii=True, separators=(',', ':')))
         elif args.config == 'band':
             # TODO: get the most recent band modules first
-            for index, m in enumerate(bands):
+            for index, m in enumerate(self.bands):
                 if args.value.replace(' ', '').upper() == m['name'].replace(' ', '').upper(): # if the name of the band is found in the band table
-                    if m['mod'] in band_modules: # if that band module is installed
+                    if m['mod'] in self.band_modules: # if that band module is installed
                         send_payload = {'config': args.config, 'set': True, 'value': index}
                         send_serial_packet(2, json.dumps(
                             send_payload, ensure_ascii=True, separators=(',', ':')))
+        elif args.config == 'cwid' or args.config == 'rnd_tx':
+            val = False
+            if args.value == 'true' or args.value == 'True':
+                val = True
+            send_payload = {'config': args.config, 'set': True, 'value': val}
+            # CmdParser().async_alert(json.dumps(
+            #     send_payload, ensure_ascii=True, separators=(',', ':')))
+            send_serial_packet(2, json.dumps(
+                send_payload, ensure_ascii=True, separators=(',', ':')))
         else:
             send_payload = {'config': args.config, 'set': True, 'value': args.value}
             send_serial_packet(2, json.dumps(
@@ -263,7 +291,7 @@ class CmdParser(cmd2.Cmd):
 
     @cmd2.with_argparser(get_parser)
     def do_get(self, args):
-        """Get an OpenBeacon Mini configuration parameter"""
+        """Get an OpenBeacon 2 configuration parameter"""
         send_payload = {'config': args.config, 'get': True}
         send_serial_packet(2, json.dumps(
             send_payload, ensure_ascii=True, separators=(',', ':')))
@@ -285,12 +313,25 @@ class CmdParser(cmd2.Cmd):
         """List valid values in an enumeration"""
         if args.enum == 'modes':
             CmdParser().async_alert(Style.BRIGHT + Fore.RED + 'Modes:' + Style.RESET_ALL)
-            for m in modes:
+            for m in self.modes:
                 CmdParser().async_alert(m)
         elif args.enum == 'bands':
-            for b in bands:
-                if b['mod'] in band_modules:
-                    CmdParser().async_alert(b['name'])
+            for band in self.available_bands:
+                CmdParser().async_alert(band)
+            # for b in self.bands:
+            #     if b['mod'] in self.band_modules:
+            #         CmdParser().async_alert(b['name'])
+
+    # enum_parser = argparse.ArgumentParser()
+    # enum_parser.add_argument('enum', help='Enumeration to return')
+
+    # @cmd2.with_argparser(enum_parser)
+    # def do_enum(self, args):
+    #     """List valid values in an enumeration"""
+    #     if args.enum == 'modes':
+    #         CmdParser().async_alert(modes)
+    #     elif args.enum == 'bands':
+    #         CmdParser().async_alert(bands)
 
     tx_parser = argparse.ArgumentParser()
 
@@ -314,6 +355,27 @@ class CmdParser(cmd2.Cmd):
             send_serial_packet(4, json.dumps(
                 send_payload, ensure_ascii=True, separators=(',', ':')))
 
+    register_parser = argparse.ArgumentParser()
+    register_parser.add_argument('name', help='Callback dictionary name')
+    # register_parser.add_argument('cb', help='Callback function')
+    register_parser.add_argument('cb', type=Callable[[], None], help='Callback function')
+
+    # @cmd2.with_argparser(register_parser)
+    # def do_register(self, args):
+    #     """Register a callback funcion (for scripting)"""
+    #     self.callback[args.name] = args.cb
+
+    def register(self, name, cb):
+        """Register a callback funcion (for scripting)"""
+        self.callback[name] = cb
+
+    def alert(self, msg):
+        self.terminal_lock.acquire()
+        try:
+            self.async_alert(msg)
+        finally:
+            self.terminal_lock.release()
+
 
 def main():
     # Start threads
@@ -334,6 +396,8 @@ def main():
     send_payload = {'enum': 'inst_band_modules'}
     send_serial_packet(6, json.dumps(
         send_payload, ensure_ascii=True, separators=(',', ':')))
+
+    # CmdParser.callback['tx_end'] = CmdParser.b
 
     # Drop into command parser loop
     CmdParser().cmdloop()

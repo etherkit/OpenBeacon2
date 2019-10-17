@@ -269,6 +269,22 @@ void processSerialIn()
 //                settings["si5351_int_corr"].second = std::string(temp_str);
                 serializeConfig();
               }
+              else if(json_rx_doc["config"] == "rnd_tx")
+              {
+                char temp_str[40];
+                bool temp_rnd_tx = json_rx_doc["value"];
+                cur_config.rnd_tx = temp_rnd_tx;
+                if(temp_rnd_tx)
+                {
+                  sprintf(temp_str, "B1");
+                }
+                else
+                {
+                  sprintf(temp_str, "B0");
+                }
+                settings["rnd_tx"].second = std::string(temp_str);
+                serializeConfig();
+              }
             }
           }
           else if(json_rx_doc["get"] == true)

@@ -460,7 +460,7 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
+              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 
@@ -508,7 +508,7 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
+              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 
@@ -532,7 +532,7 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
+              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 
@@ -556,7 +556,7 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
+              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 
@@ -580,7 +580,7 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer);
+              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
               u8g2.drawStr(0, 30, buffer_str);
 

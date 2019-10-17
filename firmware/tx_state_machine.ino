@@ -31,8 +31,8 @@ void txStateMachine()
 //            selectMode(static_cast<uint8_t>(mode));
 
             setNextTx(0);
-            cur_screen_saver_x = random(16);
-            cur_screen_saver_y = random(16);
+            cur_screen_saver_x = random(1, 16);
+            cur_screen_saver_y = random(1, 16);
           }
           break;
       }
@@ -54,8 +54,8 @@ void txStateMachine()
             setNextTx(cur_config.tx_intv);
             setTxState(TxState::Idle);
             morse.tx_enable = false;
-            cur_screen_saver_x = random(16);
-            cur_screen_saver_y = random(16);
+            cur_screen_saver_x = random(1, 16);
+            cur_screen_saver_y = random(1, 16);
 //            #ifdef REV_B
 //            digitalWrite(TX_KEY, HIGH);
 //            #endif
@@ -98,16 +98,16 @@ void txStateMachine()
             if(cur_config.cwid)
             {
               setTxState(TxState::IDDelay);
-              cur_screen_saver_x = random(16);
-              cur_screen_saver_y = random(16);
+              cur_screen_saver_x = random(1, 16);
+              cur_screen_saver_y = random(1, 16);
             }
             else
             {
               setTxState(TxState::Idle);
               setNextTx(cur_config.tx_intv);
               morse.tx_enable = false;
-              cur_screen_saver_x = random(16);
-              cur_screen_saver_y = random(16);
+              cur_screen_saver_x = random(1, 16);
+              cur_screen_saver_y = random(1, 16);
             }
           }
           break;
@@ -131,8 +131,8 @@ void txStateMachine()
 
             setNextTx(cur_config.tx_intv);
             composeMFSKMessage();
-            cur_screen_saver_x = random(16);
-            cur_screen_saver_y = random(16);
+            cur_screen_saver_x = random(1, 16);
+            cur_screen_saver_y = random(1, 16);
           }
           break;
         case TxState::MFSK:
@@ -155,8 +155,8 @@ void txStateMachine()
               if(cur_config.cwid)
               {
                 setTxState(TxState::IDDelay);
-                cur_screen_saver_x = random(16);
-                cur_screen_saver_y = random(16);
+                cur_screen_saver_x = random(1, 16);
+                cur_screen_saver_y = random(1, 16);
               }
               else
               {
@@ -164,8 +164,8 @@ void txStateMachine()
                 setNextTx(cur_config.tx_intv);
 //                setNextTx(0);
                 composeMFSKMessage();
-                cur_screen_saver_x = random(16);
-                cur_screen_saver_y = random(16);
+                cur_screen_saver_x = random(1, 16);
+                cur_screen_saver_y = random(1, 16);
               }
               //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
               //frequency = (cur_config.base_freq * 100);
@@ -260,7 +260,8 @@ void setTxState(TxState state)
       prev_state = cur_state;
       cur_state = state;
       selectBuffer(cur_config.buffer);
-      morse.send(msg_buffer);
+//      morse.send(msg_buffer);
+      morse.send(msg_buffer.c_str());
       break;
     case TxState::IDDelay:
 //      sendSerialPacket(0xFE, "{\"level\":0,\"text\":\"TX Start\"}");
@@ -314,7 +315,6 @@ void setTxState(TxState state)
       #endif
       frequency = (cur_config.base_freq * 100ULL);
       change_freq = true;
-//      morse.output_pin = 0;
       morse.dfcw_mode = true;
       morse.setWPM(cur_config.wpm);
       next_state = TxState::DFCW;
@@ -322,7 +322,8 @@ void setTxState(TxState state)
       cur_state = state;
       morse.preamble_enable = true;
       selectBuffer(cur_config.buffer);
-      morse.send(msg_buffer);
+//      morse.send(msg_buffer);
+      morse.send(msg_buffer.c_str());
       break;
     default:
       break;

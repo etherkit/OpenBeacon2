@@ -336,27 +336,26 @@ void selectBuffer(const uint8_t buf)
   switch(buf)
   {
   case 1:
-    strcpy(msg_buffer, cur_config.msg_buffer_1);
-//    cur_buffer = buf;
+//    strcpy(msg_buffer, cur_config.msg_buffer_1);
+    msg_buffer = cur_config.msg_buffer_1;
     cur_config.buffer = buf;
     break;
   case 2:
-    strcpy(msg_buffer, cur_config.msg_buffer_2);
-//    cur_buffer = buf;
+//    strcpy(msg_buffer, cur_config.msg_buffer_2);
+    msg_buffer = cur_config.msg_buffer_2;
     cur_config.buffer = buf;
     break;
   case 3:
-    strcpy(msg_buffer, cur_config.msg_buffer_3);
-//    cur_buffer = buf;
+//    strcpy(msg_buffer, cur_config.msg_buffer_3);
+    msg_buffer = cur_config.msg_buffer_3;
     cur_config.buffer = buf;
     break;
   case 4:
-    strcpy(msg_buffer, cur_config.msg_buffer_4);
-//    cur_buffer = buf;
+//    strcpy(msg_buffer, cur_config.msg_buffer_4);
+    msg_buffer = cur_config.msg_buffer_4;
     cur_config.buffer = buf;
     break;
   }
-//  cur_config.buffer = buf;
   composeMFSKMessage();
   serializeConfig();
 }

@@ -3,8 +3,8 @@ void processScreenSaver()
   // Turn on screen saver if necessary
   if(cur_timer >= screen_saver_timeout && !screen_saver_enable)
   {
-    cur_screen_saver_x = random(16);
-    cur_screen_saver_y = random(16);
+    cur_screen_saver_x = random(1, 16);
+    cur_screen_saver_y = random(1, 16);
     screen_saver_enable = true;
   }
 
@@ -29,7 +29,8 @@ void processScreenSaver()
       }
       else
       {
-        tx_progress = (morse.cur_char * 100) / strlen(msg_buffer);
+//        tx_progress = (morse.cur_char * 100) / strlen(msg_buffer);
+        tx_progress = (morse.cur_char * 100) / msg_buffer.length();
       }
       yield();
       break;

@@ -138,7 +138,7 @@ struct Config
   Mode mode;
   uint8_t band;
   uint32_t base_freq;
-  uint16_t wpm;
+  float wpm;
   uint8_t tx_intv;
   uint8_t dfcw_offset;
   uint8_t buffer;
@@ -294,7 +294,8 @@ uint32_t initial_time_sync = 0;
 //bool time_sync_request = false;
 uint8_t mfsk_buffer[255];
 std::string wspr_buffer;
-char msg_buffer[MSG_BUFFER_SIZE];
+//char msg_buffer[MSG_BUFFER_SIZE];
+std::string msg_buffer;
 //uint8_t cur_buffer = DEFAULT_CUR_BUFFER;
 uint8_t cur_symbol_count;
 uint16_t cur_symbol_time;

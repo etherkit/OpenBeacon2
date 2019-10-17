@@ -189,6 +189,7 @@ OpenBeacon 2 Parameters
 | msg_buffer_3 | char[40] | Message buffer 3 |
 | msg_buffer_4 | char[40] | Message buffer 4 |
 | si5351_int_corr | int32_t | Si5351A internal reference frequency correction |
+| rnd_tx | bool | Transmit on random frequency within mode subband |
 
 OpenBeacon 2 Commands
 ------------------------
