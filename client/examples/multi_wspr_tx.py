@@ -1,5 +1,4 @@
 band_change = False
-modes = ['WSPR', 'DFCW6', 'JT65']
 
 def TXEnd():
     global band_change
@@ -17,13 +16,11 @@ try:
     app('tx enable')
 
     while True:
-        for mode in modes:
-            app('set mode {}'.format(mode))
-            for band in self.available_bands:
-                app('set band {}'.format(band))
-                while band_change == False:
-                    pass
-                band_change = False
+          for band in self.available_bands:
+              app('set band {}'.format(band))
+              while band_change == False:
+                  pass
+              band_change = False
 except:
     app('tx disable')
     self.async_alert("Script termniation")
