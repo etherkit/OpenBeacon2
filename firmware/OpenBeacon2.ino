@@ -125,7 +125,7 @@ constexpr static unsigned char lock_bits[] = {
 };
 
 constexpr char SCREEN_SAVER_MESSAGE[] = "OpenBeacon 2";
-constexpr uint32_t SCREEN_SAVER_TIMER_INTERVAL = 100;
+constexpr uint32_t SCREEN_SAVER_TIMER_INTERVAL = 2;
 
 const std::string settings_str_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/. ";
 

@@ -97,7 +97,11 @@ def serial_handler():
     # global modes, bands, band_modules, inst_band_modules, available_bands
 
     while True:
-        ser_in = ser.read()
+        try:
+            ser_in = ser.read()
+        except:
+            pass
+        
         if('\a' in ser_in.decode()):
             # Get message type
             message_type = int.from_bytes(ser.read(), byteorder='big')

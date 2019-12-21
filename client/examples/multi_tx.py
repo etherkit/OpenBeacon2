@@ -25,6 +25,7 @@ try:
                     pass
                 band_change = False
 except:
+    app('tx cancel')
     app('tx disable')
     self.async_alert("Script termniation")
 
