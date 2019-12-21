@@ -9,7 +9,7 @@ Packet Description
 ------------------
 A well-formed serial packet consists of three main components: a header, an optional JSON payload, and a termination byte. The header is formed from one identification byte (always 0x07/ASCII BEL), followed by a one-byte message type, and then a two-byte JSON payload length in big-endian format.
 
-The optional payload is a minified JSON string whose length in bytes must match the payload length field specified previously. Because this protocol is meant to be implemented on a microcontroller, the maximum length of this JSON string is 900 bytes.
+The optional payload is a minified JSON string whose length in bytes must match the payload length field specified previously. Because this protocol is meant to be implemented on a microcontroller, the maximum length of this JSON string is 400 bytes.
 
 Finally, the end of the packet is indicated with one byte (always 0x0A/ASCII LF).
 
@@ -24,7 +24,7 @@ Finally, the end of the packet is indicated with one byte (always 0x0A/ASCII LF)
 +--------------------+
 | JSON Payload (var) |
 |        ...         |
-|   max 900 bytes    |
+|   max 400 bytes    |
 +--------------------+
 | END [0x0A/LF] (1)  |
 +--------------------+
@@ -150,6 +150,8 @@ None
 | id | uint64_t | Unique packet ID |
 | level | uint8_t | Notification level |
 | text | string | Notification text |
+| freq | string | Frequency |
+| mode | string | Mode |
 | data | string | Additional data |
 
 - ### 0xFF &mdash; Error
@@ -187,6 +189,7 @@ OpenBeacon 2 Parameters
 | msg_buffer_3 | char[40] | Message buffer 3 |
 | msg_buffer_4 | char[40] | Message buffer 4 |
 | si5351_int_corr | int32_t | Si5351A internal reference frequency correction |
+| rnd_tx | bool | Transmit on random frequency within mode subband |
 
 OpenBeacon 2 Commands
 ------------------------
