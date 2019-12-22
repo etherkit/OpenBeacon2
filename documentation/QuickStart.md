@@ -96,7 +96,7 @@ Of course, you can also set your transmission frequency with
 
     set base_freq [FREQUENCY]
 
-where ```FREQUENCY``` is the desired operating frequency (within the current band) in Hertz.
+where ```[FREQUENCY]``` is the desired operating frequency (within the current band) in Hertz.
 
 Tune your receiver to that frequency, and then schedule a transmission by issuing the command:
 
@@ -116,7 +116,7 @@ The transmission interval can be set by issuing the command
 
     set tx_intv [INTERVAL]
 
-where ```INTERVAL``` is the amount of time in mintues you want between transmissions.
+where ```[INTERVAL]``` is the amount of time in mintues you want between transmissions.
 
 Since OpenBeacon 2 is a multi-band transmitter, you also have the option of getting a list of bands available to operate based on the currently plugged-in band modules:
 
@@ -126,7 +126,7 @@ You can set then set the current operating band to any of the ones listed with
 
     set band [BAND]
 
-where ```BAND``` is one of the strings listed in the ```list bands``` command.
+where ```[BAND]``` is one of the strings listed in the ```list bands``` command.
 
 ## Script Execution
 
