@@ -419,6 +419,13 @@ void processSerialIn()
               serializeJson(json_tx_doc, send_json);
               sendSerialPacket(0x03, send_json);
             }
+            else if(json_rx_doc["config"] == "rnd_tx")
+            {
+              json_tx_doc["config"] = "rnd_tx";
+              json_tx_doc["value"] = cur_config.rnd_tx;
+              serializeJson(json_tx_doc, send_json);
+              sendSerialPacket(0x03, send_json);
+            }
           }
           break;
         case 0x04:
