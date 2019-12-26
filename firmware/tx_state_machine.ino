@@ -66,7 +66,7 @@ void txStateMachine()
           {
             if (morse.tx)
             {
-              frequency = (cur_config.base_freq * 100ULL) + cur_tone_spacing;
+              frequency = (cur_config.base_freq * 100ULL) + (cur_config.dfcw_offset * 100ULL);
               change_freq = true;
             }
             else
