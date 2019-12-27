@@ -193,7 +193,7 @@ constexpr char DEFAULT_MSG_4[41] = "BUFFER4";
 constexpr uint64_t DEFAULT_SI5351_INT_CORR = 0ULL;
 constexpr bool DEFAULT_RND_TX = false;
 constexpr uint8_t DEFAULT_SCREEN_SAVER_INTERVAL = 2; // In minutes
-constexpr uint16_t DEFAULT_RANDOM_TX_GUARD_BAND = 0;
+constexpr uint16_t DEFAULT_RANDOM_TX_GUARD_BAND = 20;
 
 struct tm DEFAULT_TIME = {0, 1, 18, 19, 3, 2018, 1, 0, 1};
 
@@ -331,7 +331,7 @@ uint32_t screen_saver_update = 0;
 uint8_t tx_progress = 0;
 //bool random_tx_freq = true;
 //uint16_t random_tx_guard_band = DEFAULT_RANDOM_TX_GUARD_BAND;
-uint16_t random_tx_guard_band = 20;
+uint16_t random_tx_guard_band = 30;
 
 // Timer code derived from:
 // https://github.com/nebs/arduino-zero-timer-demo
