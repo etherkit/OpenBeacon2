@@ -141,16 +141,9 @@ void txStateMachine()
             ++cur_symbol;
             if (cur_symbol >= cur_symbol_count) //reset everything and switch to idle
             {
-//              StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
-//              DynamicJsonDocument json_tx_doc(JSON_MAX_SIZE);
               char send_json[JSON_PACKET_MAX_SIZE];
               sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"freq\":%lu,\"mode\":\"%s\"}",
                 cur_config.base_freq, mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name);
-                // cur_config.base_freq
-//              json_tx_doc["level"] = 0;
-//              json_tx_doc["text"] = "TX End";
-//              json_tx_doc["data"] = cur_config.base_freq;
-//              serializeJson(json_tx_doc, send_json);
               sendSerialPacket(0xFE, send_json);
               if(cur_config.cwid)
               {
@@ -162,16 +155,10 @@ void txStateMachine()
               {
                 setTxState(TxState::Idle);
                 setNextTx(cur_config.tx_intv);
-//                setNextTx(0);
                 composeMFSKMessage();
                 cur_screen_saver_x = random(1, 16);
                 cur_screen_saver_y = random(1, 16);
               }
-              //frequency = (cur_config.base_freq * 100) + (mfsk_buffer[cur_symbol] * cur_tone_spacing);
-              //frequency = (cur_config.base_freq * 100);
-              //change_freq = true;
-//              setNextTx(cur_config.tx_intv);
-//              setNextTx(atoi(settings["tx_intv"].second.substr(1).c_str()));
             }
             else // next symbol
             {

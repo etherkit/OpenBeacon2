@@ -6,6 +6,7 @@ void selectMode(uint8_t sel)
 //      mode = Mode::DFCW3;
 //      cur_config.mode = mode;
       cur_config.mode = Mode::DFCW3;
+//      mode_name = mode_table[static_cast<uint8_t>(cur_config.mode);
       meta_mode = MetaMode::DFCW;
       setTxState(TxState::Idle);
       next_state = TxState::DFCW;
@@ -19,6 +20,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::DFCW6:
 //      mode = Mode::DFCW6;
@@ -36,6 +38,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::DFCW10:
 //      mode = Mode::DFCW10;
@@ -53,6 +56,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::DFCW120:
 //      mode = Mode::DFCW120;
@@ -70,6 +74,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::QRSS3:
 //      mode = Mode::QRSS3;
@@ -86,6 +91,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::QRSS6:
 //      mode = Mode::QRSS6;
@@ -102,6 +108,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::QRSS10:
 //      mode = Mode::QRSS10;
@@ -118,6 +125,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::QRSS120:
 //      mode = Mode::QRSS120;
@@ -134,6 +142,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_HIGH);
       digitalWrite(TX_KEY, HIGH);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::CW:
 //      mode = Mode::CW;
@@ -150,6 +159,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::HELL:
 //      mode = Mode::HELL;
@@ -166,6 +176,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::WSPR:
 //      mode = Mode::WSPR;
@@ -188,6 +199,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::JT65:
 //      mode = Mode::JT65;
@@ -196,7 +208,7 @@ void selectMode(uint8_t sel)
       meta_mode = MetaMode::MFSK;
       setTxState(TxState::Idle);
       next_state = TxState::MFSK;
-      selectBuffer(cur_config.buffer);
+//      selectBuffer(cur_config.buffer);
 //      composeMFSKMessage();
 //      composeBuffer();
 //      memset(mfsk_buffer, 0, 255);
@@ -210,6 +222,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::JT9:
 //      mode = Mode::JT9;
@@ -232,6 +245,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::JT4:
 //      mode = Mode::JT4;
@@ -254,6 +268,7 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
     case Mode::FT8:
 //      mode = Mode::FT8;
@@ -284,8 +299,10 @@ void selectMode(uint8_t sel)
 //      si5351.set_clock_disable(SI5351_CLK0, SI5351_CLK_DISABLE_LOW);
       digitalWrite(TX_KEY, LOW);
       #endif
+      selectBuffer(cur_config.buffer);
       break;
   }
+  mode_name = mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name;
   serializeConfig();
   if(next_tx != UINT32_MAX)
   {
@@ -338,26 +355,43 @@ void selectBuffer(const uint8_t buf)
   case 1:
 //    strcpy(msg_buffer, cur_config.msg_buffer_1);
     msg_buffer = cur_config.msg_buffer_1;
-    cur_config.buffer = buf;
+    if(cur_config.buffer != buf)
+    {
+      cur_config.buffer = buf;
+      serializeConfig();
+    }
     break;
   case 2:
 //    strcpy(msg_buffer, cur_config.msg_buffer_2);
     msg_buffer = cur_config.msg_buffer_2;
-    cur_config.buffer = buf;
+    if(cur_config.buffer != buf)
+    {
+      cur_config.buffer = buf;
+      serializeConfig();
+    }
     break;
   case 3:
 //    strcpy(msg_buffer, cur_config.msg_buffer_3);
     msg_buffer = cur_config.msg_buffer_3;
-    cur_config.buffer = buf;
+    if(cur_config.buffer != buf)
+    {
+      cur_config.buffer = buf;
+      serializeConfig();
+    }
     break;
   case 4:
 //    strcpy(msg_buffer, cur_config.msg_buffer_4);
     msg_buffer = cur_config.msg_buffer_4;
-    cur_config.buffer = buf;
+    if(cur_config.buffer != buf)
+    {
+      cur_config.buffer = buf;
+      serializeConfig();
+    }
     break;
   }
+  snprintf(display_buffer, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
   composeMFSKMessage();
-  serializeConfig();
+//  serializeConfig();
 }
 
 void setConfig(const char * key, const char * label)

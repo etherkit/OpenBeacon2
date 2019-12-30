@@ -11,13 +11,16 @@ tx_over = False
 # Edit these values for your desired DFCW transmission frequencies
 dfcw_freq_table = {"80m": 3560000,
                    "60m": 5358000,
-                   "40m": 7039800,
-                   "30m": 10139900,
-                   "20m": 14096800,
-                   "17m": 18080000,
+                   "40m": 7039743,
+                   "30m": 10139843,
+                   "20m": 14096743,
+                   "17m": 18079943,
                    "15m": 21060000,
                    "12m": 24926000,
                    "10m": 28060000}
+
+callsign = 'NT7S'
+buffer = '{} HNY'.format(callsign)  # Change the message here
 
 def TXEnd():
     global tx_over
@@ -30,6 +33,8 @@ self.register('tx_end', TXEnd)
 self.async_alert("Script begin - Ctrl-C to terminate")
 
 try:
+    app('set callsign {}'.format(callsign))
+    app('set msg_buffer_1 \"{}\"'.format(buffer))
     app('set buffer 1')
 
     while True:

@@ -1,6 +1,6 @@
 void drawOLED()
 {
-  static char temp_str[8];
+  static char temp_str[41];
   static char freq_str[10];
   static char freq_str_1[4];
   static char freq_str_2[4];
@@ -44,15 +44,15 @@ void drawOLED()
           sprintf(temp_str, "   ");
           //u8g2.drawStr(0, 17, temp_str);
         }
-        yield();
+//        yield();
         // We do this because the desired font isn't quite monospaced :-/
         for(uint8_t i = 0; i < 3; ++i)
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
-          // yield();
+//          yield();
           u8g2.drawStr(i * 9, 17, temp_chr);
-          yield();
+//          yield();
         }
         freq %= 1000000UL;
         
@@ -71,14 +71,14 @@ void drawOLED()
         {
           sprintf(temp_str, "   ");
         }
-        yield();
+//        yield();
         for(uint8_t i = 0; i < 3; ++i)
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
-          // yield();
+//          yield();
           u8g2.drawStr(i * 9 + 29, 17, temp_chr);
-          yield();
+//          yield();
         }
         freq %= 1000UL;
         
@@ -92,14 +92,14 @@ void drawOLED()
         {
           sprintf(temp_str, "%3lu", freq);
         }
-        yield();
+//        yield();
         for(uint8_t i = 0; i < 3; ++i)
         {
           //memmove(temp_chr, temp_str + i, 1);
           sprintf(temp_chr, "%c", temp_str[i]);
           // yield();
           u8g2.drawStr(i * 9 + 58, 17, temp_chr);
-          yield();
+//          yield();
         }
         
         // Indicate step size
@@ -140,7 +140,7 @@ void drawOLED()
       //  u8g2.drawStr(90, 10, temp_str);
       
         // Draw clock
-  //      yield();
+//        yield();
         //u8g2.setFont(u8g2_font_6x10_mr);
         u8g2.setFont(u8g2_font_5x7_tn);
         sprintf(temp_str, "%02u:%02u:%02u", rtc.getHours(),
@@ -432,9 +432,11 @@ void drawOLED()
         // Draw buffer contents if transmitting
         if(cur_state != TxState::Idle)
         {
-          char buffer_str[81];
+//          char buffer_str[41];
+//          memset(buffer_str, 0, 41);
           //std::string wspr_buffer;
   //        yield();
+          uint8_t tx_progress_line;
           
           switch(cur_config.mode)
           {
@@ -450,9 +452,9 @@ void drawOLED()
           case Mode::HELL:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -460,9 +462,9 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
+              snprintf(temp_str, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 11;
@@ -473,9 +475,9 @@ void drawOLED()
           case Mode::WSPR:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -483,10 +485,10 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%s<", wspr_buffer.c_str());
+              snprintf(temp_str, 40, "%s<", wspr_buffer.c_str());
 //              sprintf(buffer_str, "%s<", "a test");
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
               yield();
@@ -498,9 +500,9 @@ void drawOLED()
           case Mode::JT65:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -508,13 +510,13 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
-              yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              snprintf(temp_str, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
+//              yield();
+              u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
-              yield();
-              uint8_t tx_progress_line = (cur_symbol * 128 / JT65_SYMBOL_COUNT);
+//              yield();
+              tx_progress_line = (cur_symbol * 128 / JT65_SYMBOL_COUNT);
               u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
             break;
@@ -522,9 +524,9 @@ void drawOLED()
           case Mode::JT9:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -532,9 +534,9 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
+              snprintf(temp_str, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
               yield();
@@ -546,9 +548,9 @@ void drawOLED()
           case Mode::JT4:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -556,9 +558,9 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
+              snprintf(temp_str, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
               yield();
@@ -570,9 +572,9 @@ void drawOLED()
           case Mode::FT8:
             if(cur_state == TxState::CWID or cur_state == TxState::IDDelay)
             {
-              sprintf(buffer_str, "CWID:%s<", cur_config.callsign);
+              snprintf(temp_str, 40, "CWID:%s<", cur_config.callsign);
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Underline current TX char
               uint8_t line_x = (morse.cur_char * 6) + 29;
@@ -580,9 +582,9 @@ void drawOLED()
             }
             else
             {
-              sprintf(buffer_str, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
+              snprintf(temp_str, 40, "%d:%s<", cur_config.buffer, msg_buffer.c_str());
               yield();
-              u8g2.drawStr(0, 30, buffer_str);
+              u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
               yield();
@@ -663,10 +665,11 @@ void drawOLED()
       if(tx_lock)
       {
         u8g2.setFont(u8g2_font_6x10_mr);
-        yield();
 //        char screen_saver_msg[40];
+//        sprintf(screen_saver_msg, "TX: %s %s %d%%", band_name.c_str(),
+//          mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name, tx_progress);
         sprintf(screen_saver_msg, "TX: %s %s %d%%", band_name.c_str(),
-          mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name, tx_progress);
+          mode_name.c_str(), tx_progress);
         yield();
         u8g2.drawStr(cur_screen_saver_x, cur_screen_saver_y, screen_saver_msg);
       }

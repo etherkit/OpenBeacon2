@@ -18,9 +18,9 @@ dfcw_freq_table = {"80m": 3560000,
                    "12m": 24926000,
                    "10m": 28060000}
 
-callsign = 'N0CALL'
+callsign = 'NT7S'
 band = '30m'  # Change the desired band here
-buffer = 'N0CALL HNY'  # Change the message here
+buffer = '{} HNY'.format(callsign)  # Change the message here
 
 def TXEnd():
     global tx_over
@@ -62,7 +62,7 @@ try:
 except:
     app('tx cancel')
     app('tx disable')
-    self.async_alert("Script termniation")
+    self.async_alert("Script termination")
 
 app('tx disable')
 self.async_alert("Script end")

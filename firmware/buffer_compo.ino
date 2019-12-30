@@ -56,6 +56,9 @@ void composeJTBuffer(uint8_t buf)
 
 void composeMFSKMessage()
 {
+  char temp_msg_buffer[15];
+  strncpy(temp_msg_buffer, msg_buffer.c_str(), 13);
+  
   switch(cur_config.mode)
   {
   case Mode::WSPR:
@@ -64,19 +67,19 @@ void composeMFSKMessage()
     break;
   case Mode::JT65:
     memset(mfsk_buffer, 0, 255);
-    jtencode.jt65_encode(msg_buffer.c_str(), mfsk_buffer);
+    jtencode.jt65_encode(temp_msg_buffer, mfsk_buffer);
     break;
   case Mode::JT9:
     memset(mfsk_buffer, 0, 255);
-    jtencode.jt9_encode(msg_buffer.c_str(), mfsk_buffer);
+    jtencode.jt9_encode(temp_msg_buffer, mfsk_buffer);
     break;
   case Mode::JT4:
     memset(mfsk_buffer, 0, 255);
-    jtencode.jt4_encode(msg_buffer.c_str(), mfsk_buffer);
+    jtencode.jt4_encode(temp_msg_buffer, mfsk_buffer);
     break;
   case Mode::FT8:
     memset(mfsk_buffer, 0, 255);
-    jtencode.ft8_encode(msg_buffer.c_str(), mfsk_buffer);
+    jtencode.ft8_encode(temp_msg_buffer, mfsk_buffer);
     break;
   }
 }

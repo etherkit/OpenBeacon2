@@ -436,6 +436,7 @@ void processSerialIn()
             // Re-compose the buffers to reflect changes
             selectBuffer(cur_config.buffer);
             composeWSPRBuffer();
+//            composeMFSKMessage();
             setNextTx(0);
           }
           else if(json_rx_doc["action"] == "tx_disable")

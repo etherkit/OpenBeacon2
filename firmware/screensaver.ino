@@ -109,7 +109,7 @@ void processScreenSaver()
 //    yield();
     if(cur_timer >= screen_saver_update)
     {
-      if((cur_screen_saver_x >= u8g2.getDisplayWidth() - u8g2.getStrWidth(screen_saver_msg) - 1) && screen_saver_x_accel == 1)
+      if((cur_screen_saver_x >= (u8g2.getDisplayWidth() - u8g2.getStrWidth(screen_saver_msg) - 1)) && screen_saver_x_accel == 1)
       {
         screen_saver_x_accel = -1;
       }
@@ -120,11 +120,11 @@ void processScreenSaver()
       yield();
 
       // if((cur_screen_saver_y >= u8g2.getDisplayHeight() - u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == 1)
-      if((cur_screen_saver_y >= u8g2.getDisplayHeight() - 1) && screen_saver_y_accel == 1)
+      if((cur_screen_saver_y >= (u8g2.getDisplayHeight() - 1)) && screen_saver_y_accel == 1)
       {
         screen_saver_y_accel = -1;
       }
-      else if((cur_screen_saver_y == u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == -1)
+      else if((cur_screen_saver_y <= u8g2.getMaxCharHeight() - 1) && screen_saver_y_accel == -1)
       {
         screen_saver_y_accel = 1;
       }

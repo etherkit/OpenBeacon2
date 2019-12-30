@@ -403,7 +403,7 @@ void pollButtons()
             // Re-compose the buffers to reflect changes
             selectBuffer(cur_config.buffer);
             composeWSPRBuffer();
-            composeMFSKMessage();
+//            composeMFSKMessage();
             setNextTx(0);
           }
         }
@@ -841,17 +841,13 @@ void pollButtons()
           else
           {
             setTxState(TxState::Idle);
-            morse.reset();
+//            morse.reset();
             setNextTx(0);
 
 //            StaticJsonDocument<JSON_MAX_SIZE> json_tx_doc;
             char send_json[JSON_MAX_SIZE + 6];
             sprintf(send_json, "{\"level\":0,\"text\":\"TX End\",\"freq\":%lu,\"mode\":\"%s\"}",
                 cur_config.base_freq, mode_table[static_cast<uint8_t>(cur_config.mode)].mode_name);
-//            json_tx_doc["level"] = 0;
-//            json_tx_doc["text"] = "TX End";
-//            json_tx_doc["data"] = cur_config.base_freq;
-//            serializeJson(json_tx_doc, send_json);
             sendSerialPacket(0xFE, send_json);
           }
         }
