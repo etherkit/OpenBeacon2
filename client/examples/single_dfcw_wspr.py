@@ -5,6 +5,8 @@ within a band and then immediately transmit WSPR on the same band on
 a random frequency within the WSPR sub-band.
 """
 
+from time import sleep
+
 tx_over = False
 
 # Edit these values for your desired DFCW transmission frequencies
@@ -46,7 +48,7 @@ try:
         app('set base_freq {}'.format(dfcw_freq_table[band]))
         app('tx enable')
         while tx_over == False:
-            pass
+            sleep(0.001)
         tx_over = False
         app('tx disable')
 
@@ -55,7 +57,7 @@ try:
         app('set rnd_tx true')
         app('tx enable')
         while tx_over == False:
-            pass
+            sleep(0.001)
         tx_over = False
         app('tx disable')
 

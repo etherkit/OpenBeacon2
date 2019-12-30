@@ -1,18 +1,4 @@
-class termcolors:
-    FG_BLUE = '\033[94m'
-    FG_YELLOW = '\033[93m'
-    FG_GREEN = '\033[92m'
-    FG_RED = '\033[91m'
-    FG_MAGENTA = '\033[95m'
-    FG_WHITE = '\033[97m'
-    FG_BLACK = '\033[30m'
-    BG_GREEN = '\033[42m'
-    BG_RED = '\033[41m'
-    BG_BLACK = '\033[40m'
-    BOLD = '\033[1m'
-    NORMAL = '\033[0m'
-    UNDERLINE = '\033[4m'
-    ENDC = '\033[0m'
+from time import sleep
 
 band_change = False
 
@@ -36,7 +22,7 @@ try:
           for band in self.available_bands:
               app('set band {}'.format(band))
               while band_change == False:
-                  pass
+                  sleep(0.001)
               band_change = False
 except:
     app('tx cancel')

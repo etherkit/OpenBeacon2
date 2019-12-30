@@ -1,3 +1,5 @@
+from time import sleep
+
 band_change = False
 modes = ['WSPR', 'DFCW6', 'JT65']
 
@@ -22,7 +24,7 @@ try:
             for band in self.available_bands:
                 app('set band {}'.format(band))
                 while band_change == False:
-                    pass
+                    sleep(0.001)
                 band_change = False
 except:
     app('tx cancel')
