@@ -1,12 +1,8 @@
 #!/home/jason/Nextcloud/Etherkit/git/OpenBeacon2/client/linux-x86/venv/bin/python3
-# EASY-INSTALL-ENTRY-SCRIPT: 'PyInstaller==3.6','console_scripts','pyi-grab_version'
-__requires__ = 'PyInstaller==3.6'
+# -*- coding: utf-8 -*-
 import re
 import sys
-from pkg_resources import load_entry_point
-
+from PyInstaller.utils.cliutils.grab_version import run
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(
-        load_entry_point('PyInstaller==3.6', 'console_scripts', 'pyi-grab_version')()
-    )
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(run())

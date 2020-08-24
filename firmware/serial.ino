@@ -497,7 +497,7 @@ void processSerialIn()
 //              bands.add(b.name);
 //            }
 
-            for(auto b : band_table)
+            for(auto& b : band_table)
             {
               JsonObject nested = bands.createNestedObject();
               nested["name"] = b.name.c_str();
@@ -515,7 +515,7 @@ void processSerialIn()
             JsonObject root = json_tx_doc.to<JsonObject>();
             JsonArray band_modules = root.createNestedArray("band_modules");
 
-            for(auto b : band_module_table)
+            for(auto& b : band_module_table)
             {
               band_modules.add(b.name.c_str());
             }
