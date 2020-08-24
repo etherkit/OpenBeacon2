@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void serializeConfig()
 {
   //flash_config = flash_store.read();

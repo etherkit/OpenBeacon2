@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void selectMode(uint8_t sel)
 {
   switch (static_cast<Mode>(sel))

@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void processSerialIn()
 {
   constexpr uint32_t DEFAULT_TIME = 946684800; // 1 Jan 2000

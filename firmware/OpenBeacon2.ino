@@ -30,6 +30,8 @@
 #define EXT_EEPROM // Microchip 24AA64T
 #endif
 
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 #include <Scheduler.h>
 #include <JTEncode.h>
 #include <ArduinoJson.h>

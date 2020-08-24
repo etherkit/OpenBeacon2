@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void txStateMachine()
 {
   static bool prev_morse_tx = false;

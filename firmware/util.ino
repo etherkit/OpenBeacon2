@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 constexpr unsigned long power_10(unsigned long exponent)
 {
   // bounds checking pls

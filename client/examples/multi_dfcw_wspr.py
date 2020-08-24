@@ -13,10 +13,10 @@ tx_over = False
 # Edit these values for your desired DFCW transmission frequencies
 dfcw_freq_table = {"80m": 3560000,
                    "60m": 5358000,
-                   "40m": 7039743,
-                   "30m": 10139843,
-                   "20m": 14096743,
-                   "17m": 18079943,
+                   "40m": 7039843,
+                   "30m": 10139943,
+                   "20m": 14096843,
+                   "17m": 18080043,
                    "15m": 21060000,
                    "12m": 24926000,
                    "10m": 28060000}
@@ -24,10 +24,12 @@ dfcw_freq_table = {"80m": 3560000,
 callsign = 'NT7S'
 buffer = '{} HNY'.format(callsign)  # Change the message here
 
+
 def TXEnd():
     global tx_over
 
     tx_over = True
+
 
 # Register callback for TX End
 self.register('tx_end', TXEnd)
@@ -40,27 +42,27 @@ try:
     app('set buffer 1')
 
     while True:
-          for band in self.available_bands:
-              app('set band {}'.format(band))
+        for band in self.available_bands:
+            app('set band {}'.format(band))
 
-              # DFCW6 transmission
-              app('set mode dfcw6')
-              app('set rnd_tx false')
-              app('set base_freq {}'.format(dfcw_freq_table[band]))
-              app('tx enable')
-              while tx_over == False:
-                  sleep(0.001)
-              tx_over = False
-              app('tx disable')
+            # DFCW6 transmission
+            app('set mode dfcw6')
+            app('set rnd_tx false')
+            app('set base_freq {}'.format(dfcw_freq_table[band]))
+            app('tx enable')
+            while tx_over == False:
+                sleep(0.001)
+            tx_over = False
+            app('tx disable')
 
-              # WSPR transmission
-              app('set mode wspr')
-              app('set rnd_tx true')
-              app('tx enable')
-              while tx_over == False:
-                  sleep(0.001)
-              tx_over = False
-              app('tx disable')
+            # WSPR transmission
+            app('set mode wspr')
+            app('set rnd_tx true')
+            app('tx enable')
+            while tx_over == False:
+                sleep(0.001)
+            tx_over = False
+            app('tx disable')
 
 except:
     app('tx cancel')

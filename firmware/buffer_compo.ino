@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void composeMorseBuffer(uint8_t buf)
 {
   char temp_call[16];

@@ -1,4 +1,4 @@
-#!/home/pi/git/OpenBeacon2/client/linux-arm/venv/bin/python3
+#!/home/jason/Nextcloud/Etherkit/git/OpenBeacon2/client/linux-arm/venv/bin/python3
 #
 # Very simple serial terminal
 #

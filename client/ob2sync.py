@@ -163,13 +163,13 @@ def serial_handler():
                     # CmdParser().async_alert('{}'.format(CmdParser.bands))
                 elif 'band_modules' in json_payload:
                     CmdParser.band_modules = json_payload['band_modules']
-                    # CmdParser().async_alert('{}'.format(band_modules))
+                    # CmdParser().async_alert('{}'.format(CmdParser.band_modules))
                 elif 'inst_band_modules' in json_payload:
                     CmdParser.band_modules = json_payload['inst_band_modules']
                     for b in CmdParser.bands:
                         if b['mod'] in CmdParser.band_modules:
                             CmdParser.available_bands.append(b['name'].replace(' ', ''))
-                    # CmdParser().async_alert('{}'.format(band_modules))
+                    # CmdParser().async_alert('{}'.format(CmdParser.band_modules))
             elif(message_type == 0xFE): # Notification
                 if(json_payload["text"] == 'TX Start'):
                     start = timer()
@@ -316,12 +316,14 @@ class CmdParser(cmd2.Cmd):
     def do_list(self, args):
         """List valid values in an enumeration"""
         if args.enum == 'modes':
-            CmdParser().async_alert(Style.BRIGHT + Fore.RED + 'Modes:' + Style.RESET_ALL)
+            # CmdParser().poutput(Style.BRIGHT + Fore.RED + 'Modes:' + Style.RESET_ALL)
             for m in self.modes:
-                CmdParser().async_alert(m)
+                # CmdParser().async_alert(m)
+                CmdParser().poutput(m)
         elif args.enum == 'bands':
             for band in self.available_bands:
-                CmdParser().async_alert(band)
+                # CmdParser().async_alert(band)
+                CmdParser().poutput(band)
             # for b in self.bands:
             #     if b['mod'] in self.band_modules:
             #         CmdParser().async_alert(b['name'])

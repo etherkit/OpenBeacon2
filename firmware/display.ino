@@ -1,3 +1,5 @@
+#define ARDUINOJSON_USE_LONG_LONG 1
+
 void drawOLED()
 {
   static char temp_str[41];
@@ -487,11 +489,11 @@ void drawOLED()
             {
               snprintf(temp_str, 40, "%s<", wspr_buffer.c_str());
 //              sprintf(buffer_str, "%s<", "a test");
-              yield();
+//              yield();
               u8g2.drawStr(0, 30, temp_str);
 
               // Draw TX progress bar
-              yield();
+//              yield();
               uint8_t tx_progress_line = (cur_symbol * 128 / WSPR_SYMBOL_COUNT);
               u8g2.drawLine(0, 31, tx_progress_line, 31);
             }
