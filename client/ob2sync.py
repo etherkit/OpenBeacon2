@@ -399,7 +399,7 @@ def main():
     send_payload = {'enum': 'band_modules'}
     send_serial_packet(6, json.dumps(
         send_payload, ensure_ascii=True, separators=(',', ':')))
-    time.sleep(0.5)
+    time.sleep(2)
     send_payload = {'enum': 'inst_band_modules'}
     send_serial_packet(6, json.dumps(
         send_payload, ensure_ascii=True, separators=(',', ':')))
