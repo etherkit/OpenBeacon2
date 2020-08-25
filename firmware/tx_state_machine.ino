@@ -53,7 +53,10 @@ void txStateMachine()
         case TxState::CWID:
           if (!morse.busy)
           {
-            setNextTx(cur_config.tx_intv);
+            if(tx_enable)
+            {
+              setNextTx(cur_config.tx_intv);
+            }
             setTxState(TxState::Idle);
             morse.tx_enable = false;
             cur_screen_saver_x = random(1, 16);
@@ -106,7 +109,10 @@ void txStateMachine()
             else
             {
               setTxState(TxState::Idle);
-              setNextTx(cur_config.tx_intv);
+              if(tx_enable)
+              {
+                setNextTx(cur_config.tx_intv);
+              }
               morse.tx_enable = false;
               cur_screen_saver_x = random(1, 16);
               cur_screen_saver_y = random(1, 16);
@@ -130,8 +136,10 @@ void txStateMachine()
           if (!morse.busy)
           {
             setTxState(TxState::Idle);
-
-            setNextTx(cur_config.tx_intv);
+            if(tx_enable)
+            {
+              setNextTx(cur_config.tx_intv);
+            }
             composeMFSKMessage();
             cur_screen_saver_x = random(1, 16);
             cur_screen_saver_y = random(1, 16);
@@ -156,7 +164,10 @@ void txStateMachine()
               else
               {
                 setTxState(TxState::Idle);
-                setNextTx(cur_config.tx_intv);
+                if(tx_enable)
+                {
+                  setNextTx(cur_config.tx_intv);
+                }
                 composeMFSKMessage();
                 cur_screen_saver_x = random(1, 16);
                 cur_screen_saver_y = random(1, 16);

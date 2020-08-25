@@ -444,6 +444,7 @@ void processSerialIn()
           else if(json_rx_doc["action"] == "tx_disable")
           {
             tx_enable = false;
+//            setNextTx(0);
             next_tx = UINT32_MAX;
           }
           else if(json_rx_doc["action"] == "tx_cancel")
