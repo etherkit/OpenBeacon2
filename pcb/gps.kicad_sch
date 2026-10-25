@@ -3232,7 +3232,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8367a01d-f3e1-4708-a937-4159d4c7c8a0")
-		(property "Reference" "#PWR901"
+		(property "Reference" "#PWR1001"
 			(at 88.9 101.6 0)
 			(effects
 				(font
@@ -3273,7 +3273,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR901")
+					(reference "#PWR1001")
 					(unit 1)
 				)
 			)
@@ -3381,7 +3381,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "632127cc-1141-425a-9ae5-1228afd6f495")
-		(property "Reference" "#PWR902"
+		(property "Reference" "#PWR1002"
 			(at 78.74 101.6 0)
 			(effects
 				(font
@@ -3422,7 +3422,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR902")
+					(reference "#PWR1002")
 					(unit 1)
 				)
 			)
@@ -3437,7 +3437,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e8c5d79b-ee06-421c-bc50-273f8d56c8ae")
-		(property "Reference" "#PWR903"
+		(property "Reference" "#PWR1003"
 			(at 71.12 96.52 0)
 			(effects
 				(font
@@ -3478,7 +3478,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR903")
+					(reference "#PWR1003")
 					(unit 1)
 				)
 			)
@@ -3493,7 +3493,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88e94e9b-5121-4ffa-829b-4a6776fb2323")
-		(property "Reference" "#PWR904"
+		(property "Reference" "#PWR1004"
 			(at 101.6 142.24 0)
 			(effects
 				(font
@@ -3534,7 +3534,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR904")
+					(reference "#PWR1004")
 					(unit 1)
 				)
 			)
@@ -3833,7 +3833,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88538f89-b853-4d02-8e7d-a45f13e4da75")
-		(property "Reference" "#PWR906"
+		(property "Reference" "#PWR1005"
 			(at 93.98 86.36 0)
 			(effects
 				(font
@@ -3874,7 +3874,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR906")
+					(reference "#PWR1005")
 					(unit 1)
 				)
 			)
@@ -3976,7 +3976,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "82d710b3-9986-48e0-8dde-5c4bfff70cc2")
-		(property "Reference" "#PWR907"
+		(property "Reference" "#PWR1006"
 			(at 83.82 88.9 0)
 			(effects
 				(font
@@ -4017,7 +4017,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR907")
+					(reference "#PWR1006")
 					(unit 1)
 				)
 			)
@@ -4241,7 +4241,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f579539b-6b13-4c81-9602-9545c1f27e75")
-		(property "Reference" "#PWR908"
+		(property "Reference" "#PWR1007"
 			(at 111.76 99.06 0)
 			(effects
 				(font
@@ -4282,7 +4282,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR908")
+					(reference "#PWR1007")
 					(unit 1)
 				)
 			)
@@ -4319,7 +4319,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "234c9571-756f-46d9-a90f-a26c38a1a4e9")
-		(property "Reference" "#PWR909"
+		(property "Reference" "#PWR1008"
 			(at 116.84 101.6 0)
 			(effects
 				(font
@@ -4360,7 +4360,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR909")
+					(reference "#PWR1008")
 					(unit 1)
 				)
 			)
@@ -4375,7 +4375,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8a4c4590-9190-4602-b59e-c235d0b610eb")
-		(property "Reference" "#PWR910"
+		(property "Reference" "#PWR1009"
 			(at 127 102.87 0)
 			(effects
 				(font
@@ -4416,7 +4416,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR910")
+					(reference "#PWR1009")
 					(unit 1)
 				)
 			)
@@ -4665,7 +4665,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9d2725ca-d11a-490d-bc14-199414e7cc3b")
-		(property "Reference" "#PWR911"
+		(property "Reference" "#PWR1010"
 			(at 147.32 99.06 0)
 			(effects
 				(font
@@ -4706,7 +4706,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR911")
+					(reference "#PWR1010")
 					(unit 1)
 				)
 			)
@@ -4923,7 +4923,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e850e8ff-f71b-4a6b-9e78-08f631d8b9f1")
-		(property "Reference" "#PWR912"
+		(property "Reference" "#PWR1011"
 			(at 180.34 129.54 0)
 			(effects
 				(font
@@ -4964,7 +4964,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR912")
+					(reference "#PWR1011")
 					(unit 1)
 				)
 			)
@@ -5256,7 +5256,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2fc0eab2-be11-4a60-9ef8-3a2bf57b6366")
-		(property "Reference" "#PWR913"
+		(property "Reference" "#PWR1012"
 			(at 172.72 154.94 0)
 			(effects
 				(font
@@ -5297,7 +5297,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR913")
+					(reference "#PWR1012")
 					(unit 1)
 				)
 			)
