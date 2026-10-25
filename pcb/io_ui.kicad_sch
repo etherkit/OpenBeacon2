@@ -3570,48 +3570,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "IO Headers"
-		(exclude_from_sim no)
-		(at 50.419 41.529 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "0e4b2060-4e96-4652-afe7-77ab32fa3923")
-	)
-	(text "I2C Level Conversion"
-		(exclude_from_sim no)
-		(at 154.432 169.926 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "a72d425b-5cc5-4590-b59d-8ac0e4dccf9e")
-	)
-	(text "External EEPROM"
-		(exclude_from_sim no)
-		(at 193.929 117.983 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "c90f5a53-54e6-4a01-bd19-39d81e33d6c7")
-	)
 	(junction
 		(at 154.94 116.967)
 		(diameter 0)
@@ -3649,15 +3607,15 @@
 		(uuid "ca58120b-3841-4562-aec6-751d7ac0b2a9")
 	)
 	(junction
-		(at 181.61 88.519)
+		(at 232.41 94.869)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d0191101-85c1-48f7-b4b1-000e956324f4")
 	)
 	(wire
 		(pts
-			(xy 101.6 26.67)
-			(xy 101.6 28.575)
+			(xy 102.87 26.67)
+			(xy 102.87 28.575)
 		)
 		(stroke
 			(width 0)
@@ -3667,8 +3625,8 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 48.26)
-			(xy 101.6 50.165)
+			(xy 102.87 48.26)
+			(xy 102.87 50.165)
 		)
 		(stroke
 			(width 0)
@@ -3678,8 +3636,8 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 69.85)
-			(xy 101.6 71.755)
+			(xy 102.87 69.85)
+			(xy 102.87 71.755)
 		)
 		(stroke
 			(width 0)
@@ -3689,8 +3647,8 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 26.67)
-			(xy 190.5 28.575)
+			(xy 191.77 26.67)
+			(xy 191.77 28.575)
 		)
 		(stroke
 			(width 0)
@@ -3700,8 +3658,8 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 48.26)
-			(xy 146.05 50.165)
+			(xy 147.32 48.26)
+			(xy 147.32 50.165)
 		)
 		(stroke
 			(width 0)
@@ -3711,8 +3669,8 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 48.26)
-			(xy 234.95 50.165)
+			(xy 236.22 48.26)
+			(xy 236.22 50.165)
 		)
 		(stroke
 			(width 0)
@@ -3722,8 +3680,8 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 69.85)
-			(xy 190.5 71.755)
+			(xy 191.77 69.85)
+			(xy 191.77 71.755)
 		)
 		(stroke
 			(width 0)
@@ -3755,8 +3713,8 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 88.519)
-			(xy 181.61 95.758)
+			(xy 232.41 94.869)
+			(xy 232.41 102.108)
 		)
 		(stroke
 			(width 0)
@@ -3799,8 +3757,8 @@
 	)
 	(wire
 		(pts
-			(xy 185.674 88.519)
-			(xy 181.61 88.519)
+			(xy 236.474 94.869)
+			(xy 232.41 94.869)
 		)
 		(stroke
 			(width 0)
@@ -3953,8 +3911,8 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 86.868)
-			(xy 181.61 88.519)
+			(xy 232.41 93.218)
+			(xy 232.41 94.869)
 		)
 		(stroke
 			(width 0)
@@ -4118,7 +4076,7 @@
 	)
 	(global_label "SCL"
 		(shape bidirectional)
-		(at 191.77 103.378 0)
+		(at 242.57 109.728 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4127,7 +4085,7 @@
 		)
 		(uuid "7f96cbe8-b217-4af4-9d91-47946fd18625")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 191.77 103.378 0)
+			(at 242.57 109.728 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4162,7 +4120,7 @@
 	)
 	(global_label "SDA"
 		(shape bidirectional)
-		(at 191.77 100.838 0)
+		(at 242.57 107.188 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4171,7 +4129,7 @@
 		)
 		(uuid "a054c8ba-cf4d-4bfe-9411-22338e48cf37")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 191.77 100.838 0)
+			(at 242.57 107.188 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5718,7 +5676,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:24AA64T")
-		(at 181.61 103.378 0)
+		(at 232.41 109.728 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5728,7 +5686,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20aecb")
 		(property "Reference" "U8"
-			(at 172.466 94.107 0)
+			(at 223.266 100.457 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5738,7 +5696,7 @@
 			)
 		)
 		(property "Value" "24AA64T"
-			(at 175.387 96.266 0)
+			(at 226.187 102.616 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5748,7 +5706,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-			(at 181.61 103.378 0)
+			(at 232.41 109.728 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5759,7 +5717,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.61 103.378 0)
+			(at 232.41 109.728 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5770,7 +5728,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.61 103.378 0)
+			(at 232.41 109.728 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5805,7 +5763,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 181.61 110.998 0)
+		(at 232.41 117.348 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5815,7 +5773,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b0f7")
 		(property "Reference" "#PWR082"
-			(at 181.61 117.348 0)
+			(at 232.41 123.698 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5826,7 +5784,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 181.61 114.3 0)
+			(at 232.41 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5836,7 +5794,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.61 110.998 0)
+			(at 232.41 117.348 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5847,7 +5805,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.61 110.998 0)
+			(at 232.41 117.348 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5858,7 +5816,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.61 110.998 0)
+			(at 232.41 117.348 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5881,7 +5839,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 171.45 100.838 0)
+		(at 222.25 107.188 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5891,7 +5849,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b33a")
 		(property "Reference" "#PWR076"
-			(at 171.45 107.188 0)
+			(at 222.25 113.538 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5902,7 +5860,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 171.45 104.14 0)
+			(at 222.25 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5912,7 +5870,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 171.45 100.838 0)
+			(at 222.25 107.188 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5923,7 +5881,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 171.45 100.838 0)
+			(at 222.25 107.188 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5934,7 +5892,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 171.45 100.838 0)
+			(at 222.25 107.188 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5957,7 +5915,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 181.61 86.868 0)
+		(at 232.41 93.218 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5967,7 +5925,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b975")
 		(property "Reference" "#PWR081"
-			(at 181.61 87.884 0)
+			(at 232.41 94.234 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5978,7 +5936,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 179.07 85.979 0)
+			(at 229.87 92.329 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5988,7 +5946,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.61 86.868 0)
+			(at 232.41 93.218 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5998,7 +5956,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.61 86.868 0)
+			(at 232.41 93.218 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6008,7 +5966,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 181.61 86.868 0)
+			(at 232.41 93.218 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6031,7 +5989,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:C")
-		(at 185.674 91.059 0)
+		(at 236.474 97.409 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6041,7 +5999,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c21e00d")
 		(property "Reference" "C22"
-			(at 189.484 90.17 0)
+			(at 240.284 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6051,7 +6009,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 190.373 91.948 0)
+			(at 241.173 98.298 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6061,7 +6019,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 185.674 91.059 0)
+			(at 236.474 97.409 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6072,7 +6030,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 185.674 91.059 0)
+			(at 236.474 97.409 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6082,7 +6040,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 185.674 91.059 0)
+			(at 236.474 97.409 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6108,7 +6066,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 185.674 93.599 0)
+		(at 236.474 99.949 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6118,7 +6076,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c21e28f")
 		(property "Reference" "#PWR083"
-			(at 185.674 99.949 0)
+			(at 236.474 106.299 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6129,7 +6087,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 185.674 96.901 0)
+			(at 236.474 103.251 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6139,7 +6097,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 185.674 93.599 0)
+			(at 236.474 99.949 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6150,7 +6108,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 185.674 93.599 0)
+			(at 236.474 99.949 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6161,7 +6119,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 185.674 93.599 0)
+			(at 236.474 99.949 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6184,8 +6142,8 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 26.67)
 			(xy 102.87 26.67)
+			(xy 104.14 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6195,8 +6153,8 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 26.67)
 			(xy 114.3 26.67)
+			(xy 115.57 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6206,7 +6164,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 107.95 26.67 0)
+		(at 109.22 26.67 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6216,7 +6174,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21ca09")
 		(property "Reference" "S1"
-			(at 107.95 29.591 0)
+			(at 109.22 29.591 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6226,7 +6184,7 @@
 			)
 		)
 		(property "Value" "Menu 1"
-			(at 108.077 32.131 0)
+			(at 109.347 32.131 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6236,7 +6194,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6247,7 +6205,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6258,7 +6216,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6269,7 +6227,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6280,7 +6238,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6291,7 +6249,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 107.95 26.67 0)
+			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6318,8 +6276,8 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 26.67)
-			(xy 116.84 26.67)
+			(xy 115.57 26.67)
+			(xy 118.11 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6329,7 +6287,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 28.575 0)
+		(at 102.87 28.575 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6339,7 +6297,7 @@
 		(dnp no)
 		(uuid "2ab36e05-d40a-4714-ba73-aea88a5d1b9d")
 		(property "Reference" "#PWR901"
-			(at 101.6 34.925 0)
+			(at 102.87 34.925 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6350,7 +6308,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 101.6 31.877 0)
+			(at 102.87 31.877 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6360,7 +6318,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 101.6 28.575 0)
+			(at 102.87 28.575 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6371,7 +6329,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 101.6 28.575 0)
+			(at 102.87 28.575 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6382,7 +6340,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 28.575 0)
+			(at 102.87 28.575 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6405,7 +6363,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 116.84 21.59 0)
+		(at 118.11 21.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6413,7 +6371,7 @@
 		(dnp no)
 		(uuid "672df337-6d65-49f4-aba3-5e37ab7ee44c")
 		(property "Reference" "R50"
-			(at 118.745 20.32 0)
+			(at 120.015 20.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6422,7 +6380,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 118.745 22.86 0)
+			(at 120.015 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6431,7 +6389,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 116.84 21.59 0)
+			(at 118.11 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6440,7 +6398,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 21.59 0)
+			(at 118.11 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6449,7 +6407,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 116.84 21.59 0)
+			(at 118.11 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6458,7 +6416,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 116.84 21.59 0)
+			(at 118.11 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6467,7 +6425,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 116.84 21.59 0)
+			(at 118.11 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6492,7 +6450,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 116.84 19.05 0)
+		(at 118.11 19.05 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6502,7 +6460,7 @@
 		(dnp no)
 		(uuid "005b63f1-bb4e-438c-8406-a893599e4a00")
 		(property "Reference" "#PWR902"
-			(at 116.84 20.066 0)
+			(at 118.11 20.066 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6513,7 +6471,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 114.3 18.161 0)
+			(at 115.57 18.161 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6523,7 +6481,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 19.05 0)
+			(at 118.11 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6533,7 +6491,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 19.05 0)
+			(at 118.11 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6543,7 +6501,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 19.05 0)
+			(at 118.11 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6566,8 +6524,8 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 24.13)
-			(xy 116.84 26.67)
+			(xy 118.11 24.13)
+			(xy 118.11 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6577,7 +6535,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 119.38 26.67 90)
+		(at 120.65 26.67 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6585,7 +6543,7 @@
 		(dnp no)
 		(uuid "2c2b80b3-566f-437d-aff3-dc1afb7b9b02")
 		(property "Reference" "R51"
-			(at 119.38 29.21 90)
+			(at 120.65 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6593,7 +6551,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 119.38 31.115 90)
+			(at 120.65 31.115 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6601,7 +6559,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 119.38 26.67 0)
+			(at 120.65 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6610,7 +6568,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 119.38 26.67 0)
+			(at 120.65 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6619,7 +6577,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 119.38 26.67 0)
+			(at 120.65 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6628,7 +6586,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 119.38 26.67 0)
+			(at 120.65 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6637,7 +6595,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 119.38 26.67 0)
+			(at 120.65 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6662,8 +6620,8 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 26.67)
-			(xy 127 26.67)
+			(xy 123.19 26.67)
+			(xy 128.27 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6673,8 +6631,8 @@
 	)
 	(wire
 		(pts
-			(xy 127 26.67)
-			(xy 129.54 26.67)
+			(xy 128.27 26.67)
+			(xy 130.81 26.67)
 		)
 		(stroke
 			(width 0)
@@ -6683,20 +6641,20 @@
 		(uuid "09ab5c9e-dfa9-4cc8-907f-1584f5efd8bb")
 	)
 	(junction
-		(at 127 26.67)
+		(at 128.27 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d249e14b-7c9a-40da-af3b-2401bf3b2670")
 	)
 	(junction
-		(at 116.84 26.67)
+		(at 118.11 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c2ee03c5-3461-4a12-b63b-7378c2a4289e")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 127 29.21 0)
+		(at 128.27 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6704,7 +6662,7 @@
 		(dnp no)
 		(uuid "f920d8c2-49c5-4c4c-9bb8-fd19da8ccf2e")
 		(property "Reference" "C17"
-			(at 128.905 28.575 0)
+			(at 130.175 28.575 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6713,7 +6671,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 128.905 30.48 0)
+			(at 130.175 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6722,7 +6680,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 127 29.21 0)
+			(at 128.27 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6731,7 +6689,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 29.21 0)
+			(at 128.27 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6740,7 +6698,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 127 29.21 0)
+			(at 128.27 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6749,7 +6707,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 127 29.21 0)
+			(at 128.27 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6758,7 +6716,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 127 29.21 0)
+			(at 128.27 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6783,7 +6741,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 127 31.75 0)
+		(at 128.27 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6793,7 +6751,7 @@
 		(dnp no)
 		(uuid "8fccba96-f73f-419b-84e0-cd5fed9a5d31")
 		(property "Reference" "#PWR903"
-			(at 127 38.1 0)
+			(at 128.27 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6804,7 +6762,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 127 35.052 0)
+			(at 128.27 35.052 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6814,7 +6772,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 127 31.75 0)
+			(at 128.27 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6825,7 +6783,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 31.75 0)
+			(at 128.27 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6836,7 +6794,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 127 31.75 0)
+			(at 128.27 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6859,7 +6817,7 @@
 	)
 	(global_label "BTN_DSP_1"
 		(shape output)
-		(at 129.54 26.67 0)
+		(at 130.81 26.67 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6868,7 +6826,7 @@
 		)
 		(uuid "d1ebe4fa-e72d-4b5e-a6a2-4a305be449be")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.54 26.67 0)
+			(at 130.81 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6881,8 +6839,8 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 48.26)
 			(xy 102.87 48.26)
+			(xy 104.14 48.26)
 		)
 		(stroke
 			(width 0)
@@ -6892,8 +6850,8 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 48.26)
 			(xy 114.3 48.26)
+			(xy 115.57 48.26)
 		)
 		(stroke
 			(width 0)
@@ -6903,7 +6861,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 107.95 48.26 0)
+		(at 109.22 48.26 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6913,7 +6871,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21ca6e")
 		(property "Reference" "S2"
-			(at 107.95 51.181 0)
+			(at 109.22 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6923,7 +6881,7 @@
 			)
 		)
 		(property "Value" "Menu 2"
-			(at 108.077 53.721 0)
+			(at 109.347 53.721 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6933,7 +6891,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6944,7 +6902,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6955,7 +6913,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6966,7 +6924,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6977,7 +6935,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6988,7 +6946,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 107.95 48.26 0)
+			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7015,8 +6973,8 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 48.26)
-			(xy 116.84 48.26)
+			(xy 115.57 48.26)
+			(xy 118.11 48.26)
 		)
 		(stroke
 			(width 0)
@@ -7026,7 +6984,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 50.165 0)
+		(at 102.87 50.165 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7036,7 +6994,7 @@
 		(dnp no)
 		(uuid "e644ab57-d987-482b-b48c-78b08e53e064")
 		(property "Reference" "#PWR904"
-			(at 101.6 56.515 0)
+			(at 102.87 56.515 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7047,7 +7005,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 101.6 53.467 0)
+			(at 102.87 53.467 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7057,7 +7015,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 101.6 50.165 0)
+			(at 102.87 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7068,7 +7026,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 101.6 50.165 0)
+			(at 102.87 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7079,7 +7037,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 50.165 0)
+			(at 102.87 50.165 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7102,7 +7060,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 116.84 43.18 0)
+		(at 118.11 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7110,7 +7068,7 @@
 		(dnp no)
 		(uuid "b52b002c-9e9e-4f52-a26c-138d02238294")
 		(property "Reference" "R52"
-			(at 118.745 41.91 0)
+			(at 120.015 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7119,7 +7077,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 118.745 44.45 0)
+			(at 120.015 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7128,7 +7086,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 116.84 43.18 0)
+			(at 118.11 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7137,7 +7095,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 43.18 0)
+			(at 118.11 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7146,7 +7104,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 116.84 43.18 0)
+			(at 118.11 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7155,7 +7113,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 116.84 43.18 0)
+			(at 118.11 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7164,7 +7122,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 116.84 43.18 0)
+			(at 118.11 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7189,7 +7147,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 116.84 40.64 0)
+		(at 118.11 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7199,7 +7157,7 @@
 		(dnp no)
 		(uuid "e3495c20-0ca0-488a-8323-420d8fccd759")
 		(property "Reference" "#PWR905"
-			(at 116.84 41.656 0)
+			(at 118.11 41.656 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7210,7 +7168,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 114.3 39.751 0)
+			(at 115.57 39.751 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7220,7 +7178,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 40.64 0)
+			(at 118.11 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7230,7 +7188,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 40.64 0)
+			(at 118.11 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7240,7 +7198,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 40.64 0)
+			(at 118.11 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7263,8 +7221,8 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 45.72)
-			(xy 116.84 48.26)
+			(xy 118.11 45.72)
+			(xy 118.11 48.26)
 		)
 		(stroke
 			(width 0)
@@ -7274,7 +7232,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 119.38 48.26 90)
+		(at 120.65 48.26 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7282,7 +7240,7 @@
 		(dnp no)
 		(uuid "f7b723bc-ccde-4819-a244-75d4a3d9b14c")
 		(property "Reference" "R53"
-			(at 119.38 50.8 90)
+			(at 120.65 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7290,7 +7248,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 119.38 52.705 90)
+			(at 120.65 52.705 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7298,7 +7256,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 119.38 48.26 0)
+			(at 120.65 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7307,7 +7265,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 119.38 48.26 0)
+			(at 120.65 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7316,7 +7274,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 119.38 48.26 0)
+			(at 120.65 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7325,7 +7283,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 119.38 48.26 0)
+			(at 120.65 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7334,7 +7292,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 119.38 48.26 0)
+			(at 120.65 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7359,8 +7317,8 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 48.26)
-			(xy 127 48.26)
+			(xy 123.19 48.26)
+			(xy 128.27 48.26)
 		)
 		(stroke
 			(width 0)
@@ -7370,8 +7328,8 @@
 	)
 	(wire
 		(pts
-			(xy 127 48.26)
-			(xy 129.54 48.26)
+			(xy 128.27 48.26)
+			(xy 130.81 48.26)
 		)
 		(stroke
 			(width 0)
@@ -7380,20 +7338,20 @@
 		(uuid "874b5f94-3f81-43ba-a870-563c58d15b03")
 	)
 	(junction
-		(at 127 48.26)
+		(at 128.27 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "016e9d10-f2c5-45d3-a60e-fa504a19d834")
 	)
 	(junction
-		(at 116.84 48.26)
+		(at 118.11 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1f6433a7-4c70-4213-aa3d-be59550df1f3")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 127 50.8 0)
+		(at 128.27 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7401,7 +7359,7 @@
 		(dnp no)
 		(uuid "e3384984-389f-404c-afdb-5d6c762789b1")
 		(property "Reference" "C19"
-			(at 128.905 50.165 0)
+			(at 130.175 50.165 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7410,7 +7368,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 128.905 52.07 0)
+			(at 130.175 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7419,7 +7377,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 127 50.8 0)
+			(at 128.27 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7428,7 +7386,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 50.8 0)
+			(at 128.27 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7437,7 +7395,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 127 50.8 0)
+			(at 128.27 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7446,7 +7404,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 127 50.8 0)
+			(at 128.27 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7455,7 +7413,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 127 50.8 0)
+			(at 128.27 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7480,7 +7438,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 127 53.34 0)
+		(at 128.27 53.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7490,7 +7448,7 @@
 		(dnp no)
 		(uuid "96a4b03d-723f-4105-9a19-99b3a485d279")
 		(property "Reference" "#PWR906"
-			(at 127 59.69 0)
+			(at 128.27 59.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7501,7 +7459,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 127 56.642 0)
+			(at 128.27 56.642 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7511,7 +7469,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 127 53.34 0)
+			(at 128.27 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7522,7 +7480,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 53.34 0)
+			(at 128.27 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7533,7 +7491,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 127 53.34 0)
+			(at 128.27 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7556,7 +7514,7 @@
 	)
 	(global_label "BTN_DSP_2"
 		(shape output)
-		(at 129.54 48.26 0)
+		(at 130.81 48.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7565,7 +7523,7 @@
 		)
 		(uuid "8ea7a5db-ca8f-44ad-8719-259af23d48a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.54 48.26 0)
+			(at 130.81 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7578,8 +7536,8 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 69.85)
 			(xy 102.87 69.85)
+			(xy 104.14 69.85)
 		)
 		(stroke
 			(width 0)
@@ -7589,8 +7547,8 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 69.85)
 			(xy 114.3 69.85)
+			(xy 115.57 69.85)
 		)
 		(stroke
 			(width 0)
@@ -7600,7 +7558,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 107.95 69.85 0)
+		(at 109.22 69.85 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7610,7 +7568,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a2481f8")
 		(property "Reference" "S6"
-			(at 107.95 72.771 0)
+			(at 109.22 72.771 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7620,7 +7578,7 @@
 			)
 		)
 		(property "Value" "Back"
-			(at 108.077 75.311 0)
+			(at 109.347 75.311 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7630,7 +7588,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7641,7 +7599,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7652,7 +7610,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7663,7 +7621,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7674,7 +7632,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7685,7 +7643,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 107.95 69.85 0)
+			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7712,8 +7670,8 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 69.85)
-			(xy 116.84 69.85)
+			(xy 115.57 69.85)
+			(xy 118.11 69.85)
 		)
 		(stroke
 			(width 0)
@@ -7723,7 +7681,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 71.755 0)
+		(at 102.87 71.755 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7733,7 +7691,7 @@
 		(dnp no)
 		(uuid "200f1ca1-b3b0-4174-9ff5-70fcaae748e2")
 		(property "Reference" "#PWR907"
-			(at 101.6 78.105 0)
+			(at 102.87 78.105 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7744,7 +7702,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 101.6 75.057 0)
+			(at 102.87 75.057 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7754,7 +7712,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 101.6 71.755 0)
+			(at 102.87 71.755 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7765,7 +7723,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 101.6 71.755 0)
+			(at 102.87 71.755 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7776,7 +7734,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 71.755 0)
+			(at 102.87 71.755 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7799,7 +7757,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 116.84 64.77 0)
+		(at 118.11 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7807,7 +7765,7 @@
 		(dnp no)
 		(uuid "b8a4fb77-5513-4715-8ea9-57e05479d7bf")
 		(property "Reference" "R54"
-			(at 118.745 63.5 0)
+			(at 120.015 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7816,7 +7774,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 118.745 66.04 0)
+			(at 120.015 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7825,7 +7783,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 116.84 64.77 0)
+			(at 118.11 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7834,7 +7792,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 64.77 0)
+			(at 118.11 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7843,7 +7801,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 116.84 64.77 0)
+			(at 118.11 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7852,7 +7810,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 116.84 64.77 0)
+			(at 118.11 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7861,7 +7819,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 116.84 64.77 0)
+			(at 118.11 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7886,7 +7844,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 116.84 62.23 0)
+		(at 118.11 62.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7896,7 +7854,7 @@
 		(dnp no)
 		(uuid "8307e211-3b4f-4a7f-a77d-d24af75789cd")
 		(property "Reference" "#PWR908"
-			(at 116.84 63.246 0)
+			(at 118.11 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7907,7 +7865,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 114.3 61.341 0)
+			(at 115.57 61.341 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7917,7 +7875,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 62.23 0)
+			(at 118.11 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7927,7 +7885,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 62.23 0)
+			(at 118.11 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7937,7 +7895,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 62.23 0)
+			(at 118.11 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7960,8 +7918,8 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 67.31)
-			(xy 116.84 69.85)
+			(xy 118.11 67.31)
+			(xy 118.11 69.85)
 		)
 		(stroke
 			(width 0)
@@ -7971,7 +7929,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 119.38 69.85 90)
+		(at 120.65 69.85 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7979,7 +7937,7 @@
 		(dnp no)
 		(uuid "b9e11936-204c-4164-beeb-d98181ab3896")
 		(property "Reference" "R55"
-			(at 119.38 72.39 90)
+			(at 120.65 72.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7987,7 +7945,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 119.38 74.295 90)
+			(at 120.65 74.295 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7995,7 +7953,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 119.38 69.85 0)
+			(at 120.65 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8004,7 +7962,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 119.38 69.85 0)
+			(at 120.65 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8013,7 +7971,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 119.38 69.85 0)
+			(at 120.65 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8022,7 +7980,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 119.38 69.85 0)
+			(at 120.65 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8031,7 +7989,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 119.38 69.85 0)
+			(at 120.65 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8056,8 +8014,8 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 69.85)
-			(xy 127 69.85)
+			(xy 123.19 69.85)
+			(xy 128.27 69.85)
 		)
 		(stroke
 			(width 0)
@@ -8067,8 +8025,8 @@
 	)
 	(wire
 		(pts
-			(xy 127 69.85)
-			(xy 129.54 69.85)
+			(xy 128.27 69.85)
+			(xy 130.81 69.85)
 		)
 		(stroke
 			(width 0)
@@ -8077,20 +8035,20 @@
 		(uuid "145f6c05-6ef4-4bba-aaa5-5b235e7aaec1")
 	)
 	(junction
-		(at 127 69.85)
+		(at 128.27 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "047f9b2d-1888-4642-b8b4-dcc041c34a4b")
 	)
 	(junction
-		(at 116.84 69.85)
+		(at 118.11 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "37166e4e-41b5-49cd-9ab7-6544d0b3e60c")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 127 72.39 0)
+		(at 128.27 72.39 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8098,7 +8056,7 @@
 		(dnp no)
 		(uuid "9c14a533-4d86-43d6-93b1-5740b01ea465")
 		(property "Reference" "C23"
-			(at 128.905 71.755 0)
+			(at 130.175 71.755 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8107,7 +8065,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 128.905 73.66 0)
+			(at 130.175 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8116,7 +8074,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 127 72.39 0)
+			(at 128.27 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8125,7 +8083,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 72.39 0)
+			(at 128.27 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8134,7 +8092,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 127 72.39 0)
+			(at 128.27 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8143,7 +8101,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 127 72.39 0)
+			(at 128.27 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8152,7 +8110,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 127 72.39 0)
+			(at 128.27 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8177,7 +8135,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 127 74.93 0)
+		(at 128.27 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8187,7 +8145,7 @@
 		(dnp no)
 		(uuid "ff0cbcc5-ea01-4a2f-aae9-42add6f5d74d")
 		(property "Reference" "#PWR909"
-			(at 127 81.28 0)
+			(at 128.27 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8198,7 +8156,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 127 78.232 0)
+			(at 128.27 78.232 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8208,7 +8166,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 127 74.93 0)
+			(at 128.27 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8219,7 +8177,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 74.93 0)
+			(at 128.27 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8230,7 +8188,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 127 74.93 0)
+			(at 128.27 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8253,7 +8211,7 @@
 	)
 	(global_label "BTN_BACK"
 		(shape output)
-		(at 129.54 69.85 0)
+		(at 130.81 69.85 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8262,7 +8220,7 @@
 		)
 		(uuid "fce7d6b3-b534-4426-b12d-61a26c9f672a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.54 69.85 0)
+			(at 130.81 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8275,8 +8233,8 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 26.67)
 			(xy 191.77 26.67)
+			(xy 193.04 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8286,8 +8244,8 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 26.67)
 			(xy 203.2 26.67)
+			(xy 204.47 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8297,7 +8255,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 196.85 26.67 0)
+		(at 198.12 26.67 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8307,7 +8265,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c770")
 		(property "Reference" "S5"
-			(at 196.85 29.591 0)
+			(at 198.12 29.591 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8317,7 +8275,7 @@
 			)
 		)
 		(property "Value" "Up"
-			(at 196.977 32.131 0)
+			(at 198.247 32.131 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8327,7 +8285,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8338,7 +8296,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8349,7 +8307,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8360,7 +8318,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8371,7 +8329,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8382,7 +8340,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 196.85 26.67 0)
+			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8409,8 +8367,8 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 26.67)
-			(xy 205.74 26.67)
+			(xy 204.47 26.67)
+			(xy 207.01 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8420,7 +8378,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 190.5 28.575 0)
+		(at 191.77 28.575 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8430,7 +8388,7 @@
 		(dnp no)
 		(uuid "2b829ba8-fe2f-40da-aca5-64ba1c5b1e49")
 		(property "Reference" "#PWR910"
-			(at 190.5 34.925 0)
+			(at 191.77 34.925 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8441,7 +8399,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 190.5 31.877 0)
+			(at 191.77 31.877 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8451,7 +8409,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 190.5 28.575 0)
+			(at 191.77 28.575 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8462,7 +8420,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 28.575 0)
+			(at 191.77 28.575 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8473,7 +8431,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 190.5 28.575 0)
+			(at 191.77 28.575 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8496,7 +8454,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 205.74 21.59 0)
+		(at 207.01 21.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8504,7 +8462,7 @@
 		(dnp no)
 		(uuid "0ee45354-b6a1-441e-94d7-9b649ef59148")
 		(property "Reference" "R56"
-			(at 207.645 20.32 0)
+			(at 208.915 20.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8513,7 +8471,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 207.645 22.86 0)
+			(at 208.915 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8522,7 +8480,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 205.74 21.59 0)
+			(at 207.01 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8531,7 +8489,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 21.59 0)
+			(at 207.01 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8540,7 +8498,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 205.74 21.59 0)
+			(at 207.01 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8549,7 +8507,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 205.74 21.59 0)
+			(at 207.01 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8558,7 +8516,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 205.74 21.59 0)
+			(at 207.01 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8583,7 +8541,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 205.74 19.05 0)
+		(at 207.01 19.05 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8593,7 +8551,7 @@
 		(dnp no)
 		(uuid "03fda2a1-d5fb-4521-a839-d95324051140")
 		(property "Reference" "#PWR911"
-			(at 205.74 20.066 0)
+			(at 207.01 20.066 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8604,7 +8562,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 203.2 18.161 0)
+			(at 204.47 18.161 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8614,7 +8572,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 19.05 0)
+			(at 207.01 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8624,7 +8582,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 19.05 0)
+			(at 207.01 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8634,7 +8592,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 205.74 19.05 0)
+			(at 207.01 19.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8657,8 +8615,8 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 24.13)
-			(xy 205.74 26.67)
+			(xy 207.01 24.13)
+			(xy 207.01 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8668,7 +8626,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 208.28 26.67 90)
+		(at 209.55 26.67 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8676,7 +8634,7 @@
 		(dnp no)
 		(uuid "d175705b-8802-496e-b36b-45b4b6269a71")
 		(property "Reference" "R57"
-			(at 208.28 29.21 90)
+			(at 209.55 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8684,7 +8642,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 208.28 31.115 90)
+			(at 209.55 31.115 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8692,7 +8650,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 208.28 26.67 0)
+			(at 209.55 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8701,7 +8659,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 208.28 26.67 0)
+			(at 209.55 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8710,7 +8668,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 208.28 26.67 0)
+			(at 209.55 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8719,7 +8677,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 208.28 26.67 0)
+			(at 209.55 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8728,7 +8686,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 208.28 26.67 0)
+			(at 209.55 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8753,8 +8711,8 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 26.67)
-			(xy 215.9 26.67)
+			(xy 212.09 26.67)
+			(xy 217.17 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8764,8 +8722,8 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 26.67)
-			(xy 218.44 26.67)
+			(xy 217.17 26.67)
+			(xy 219.71 26.67)
 		)
 		(stroke
 			(width 0)
@@ -8774,20 +8732,20 @@
 		(uuid "4dec9fde-a59f-4ab4-b997-0f898ff1f286")
 	)
 	(junction
-		(at 215.9 26.67)
+		(at 217.17 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ed0d291e-9733-4a33-b5d3-7640dfa363ad")
 	)
 	(junction
-		(at 205.74 26.67)
+		(at 207.01 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "10180895-7989-4a65-937e-4d8368815491")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 215.9 29.21 0)
+		(at 217.17 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8795,7 +8753,7 @@
 		(dnp no)
 		(uuid "916d99d3-8e1c-439d-a90e-7e8dcb8e9e79")
 		(property "Reference" "C21"
-			(at 217.805 28.575 0)
+			(at 219.075 28.575 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8804,7 +8762,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 217.805 30.48 0)
+			(at 219.075 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8813,7 +8771,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 215.9 29.21 0)
+			(at 217.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8822,7 +8780,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 215.9 29.21 0)
+			(at 217.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8831,7 +8789,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 215.9 29.21 0)
+			(at 217.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8840,7 +8798,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 215.9 29.21 0)
+			(at 217.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8849,7 +8807,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 215.9 29.21 0)
+			(at 217.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8874,7 +8832,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 215.9 31.75 0)
+		(at 217.17 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -8884,7 +8842,7 @@
 		(dnp no)
 		(uuid "d1a1f1c5-b7d5-489f-8263-741d4210f962")
 		(property "Reference" "#PWR912"
-			(at 215.9 38.1 0)
+			(at 217.17 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8895,7 +8853,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 215.9 35.052 0)
+			(at 217.17 35.052 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8905,7 +8863,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 215.9 31.75 0)
+			(at 217.17 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8916,7 +8874,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 215.9 31.75 0)
+			(at 217.17 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8927,7 +8885,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 215.9 31.75 0)
+			(at 217.17 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8950,7 +8908,7 @@
 	)
 	(global_label "BTN_UP"
 		(shape output)
-		(at 218.44 26.67 0)
+		(at 219.71 26.67 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8959,7 +8917,7 @@
 		)
 		(uuid "852bac02-88c7-4284-a355-77bd3be7b47c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 218.44 26.67 0)
+			(at 219.71 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8972,8 +8930,8 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 48.26)
 			(xy 147.32 48.26)
+			(xy 148.59 48.26)
 		)
 		(stroke
 			(width 0)
@@ -8983,8 +8941,8 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 48.26)
 			(xy 158.75 48.26)
+			(xy 160.02 48.26)
 		)
 		(stroke
 			(width 0)
@@ -8994,7 +8952,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 152.4 48.26 0)
+		(at 153.67 48.26 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9004,7 +8962,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c7ac")
 		(property "Reference" "S3"
-			(at 152.4 51.181 0)
+			(at 153.67 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9014,7 +8972,7 @@
 			)
 		)
 		(property "Value" "Left"
-			(at 152.527 53.721 0)
+			(at 153.797 53.721 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9024,7 +8982,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9035,7 +8993,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9046,7 +9004,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9057,7 +9015,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9068,7 +9026,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9079,7 +9037,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 152.4 48.26 0)
+			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9106,8 +9064,8 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 48.26)
-			(xy 161.29 48.26)
+			(xy 160.02 48.26)
+			(xy 162.56 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9117,7 +9075,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 146.05 50.165 0)
+		(at 147.32 50.165 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9127,7 +9085,7 @@
 		(dnp no)
 		(uuid "2079b0bc-a630-4022-8bfe-20f2237bcbaa")
 		(property "Reference" "#PWR913"
-			(at 146.05 56.515 0)
+			(at 147.32 56.515 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9138,7 +9096,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 146.05 53.467 0)
+			(at 147.32 53.467 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9148,7 +9106,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 146.05 50.165 0)
+			(at 147.32 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9159,7 +9117,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 146.05 50.165 0)
+			(at 147.32 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9170,7 +9128,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 146.05 50.165 0)
+			(at 147.32 50.165 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9193,7 +9151,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 161.29 43.18 0)
+		(at 162.56 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9201,7 +9159,7 @@
 		(dnp no)
 		(uuid "a1de3b75-afd9-4bdf-97f1-d7e408090883")
 		(property "Reference" "R58"
-			(at 163.195 41.91 0)
+			(at 164.465 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9210,7 +9168,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 163.195 44.45 0)
+			(at 164.465 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9219,7 +9177,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 161.29 43.18 0)
+			(at 162.56 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9228,7 +9186,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 161.29 43.18 0)
+			(at 162.56 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9237,7 +9195,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 161.29 43.18 0)
+			(at 162.56 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9246,7 +9204,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 161.29 43.18 0)
+			(at 162.56 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9255,7 +9213,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 161.29 43.18 0)
+			(at 162.56 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9280,7 +9238,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 161.29 40.64 0)
+		(at 162.56 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9290,7 +9248,7 @@
 		(dnp no)
 		(uuid "f7ba3c17-1804-4436-9f72-ddb472d21064")
 		(property "Reference" "#PWR914"
-			(at 161.29 41.656 0)
+			(at 162.56 41.656 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9301,7 +9259,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 158.75 39.751 0)
+			(at 160.02 39.751 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9311,7 +9269,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 161.29 40.64 0)
+			(at 162.56 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9321,7 +9279,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 161.29 40.64 0)
+			(at 162.56 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9331,7 +9289,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 161.29 40.64 0)
+			(at 162.56 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9354,8 +9312,8 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 45.72)
-			(xy 161.29 48.26)
+			(xy 162.56 45.72)
+			(xy 162.56 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9365,7 +9323,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 163.83 48.26 90)
+		(at 165.1 48.26 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9373,7 +9331,7 @@
 		(dnp no)
 		(uuid "ed09334b-1ff5-4c18-a0a1-6435fae1eced")
 		(property "Reference" "R59"
-			(at 163.83 50.8 90)
+			(at 165.1 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9381,7 +9339,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 163.83 52.705 90)
+			(at 165.1 52.705 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9389,7 +9347,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 163.83 48.26 0)
+			(at 165.1 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9398,7 +9356,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 163.83 48.26 0)
+			(at 165.1 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9407,7 +9365,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 163.83 48.26 0)
+			(at 165.1 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9416,7 +9374,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 163.83 48.26 0)
+			(at 165.1 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9425,7 +9383,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 163.83 48.26 0)
+			(at 165.1 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9450,8 +9408,8 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 48.26)
-			(xy 171.45 48.26)
+			(xy 167.64 48.26)
+			(xy 172.72 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9461,8 +9419,8 @@
 	)
 	(wire
 		(pts
-			(xy 171.45 48.26)
-			(xy 173.99 48.26)
+			(xy 172.72 48.26)
+			(xy 175.26 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9471,20 +9429,20 @@
 		(uuid "6ac8156e-00cd-42e0-a6d7-6e36935c63c6")
 	)
 	(junction
-		(at 171.45 48.26)
+		(at 172.72 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ca73d75b-381f-4caf-b794-b8d87e158e9a")
 	)
 	(junction
-		(at 161.29 48.26)
+		(at 162.56 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "07b582fd-2338-4adb-bf5a-9e4b5f264821")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 171.45 50.8 0)
+		(at 172.72 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9492,7 +9450,7 @@
 		(dnp no)
 		(uuid "8eb09ce5-2ebf-4ccb-a69a-76137514cc95")
 		(property "Reference" "C18"
-			(at 173.355 50.165 0)
+			(at 174.625 50.165 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9501,7 +9459,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 173.355 52.07 0)
+			(at 174.625 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9510,7 +9468,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 171.45 50.8 0)
+			(at 172.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9519,7 +9477,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 171.45 50.8 0)
+			(at 172.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9528,7 +9486,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 171.45 50.8 0)
+			(at 172.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9537,7 +9495,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 171.45 50.8 0)
+			(at 172.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9546,7 +9504,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 171.45 50.8 0)
+			(at 172.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9571,7 +9529,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 171.45 53.34 0)
+		(at 172.72 53.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9581,7 +9539,7 @@
 		(dnp no)
 		(uuid "9637de30-7c73-4f91-bc4f-54b1259ec80c")
 		(property "Reference" "#PWR915"
-			(at 171.45 59.69 0)
+			(at 172.72 59.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9592,7 +9550,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 171.45 56.642 0)
+			(at 172.72 56.642 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9602,7 +9560,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 171.45 53.34 0)
+			(at 172.72 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9613,7 +9571,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 171.45 53.34 0)
+			(at 172.72 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9624,7 +9582,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 171.45 53.34 0)
+			(at 172.72 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9647,7 +9605,7 @@
 	)
 	(global_label "BTN_LEFT"
 		(shape output)
-		(at 173.99 48.26 0)
+		(at 175.26 48.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9656,7 +9614,7 @@
 		)
 		(uuid "bae7692e-60a4-4bac-89f2-78e53bc5aafb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.99 48.26 0)
+			(at 175.26 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9669,8 +9627,8 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 48.26)
 			(xy 236.22 48.26)
+			(xy 237.49 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9680,8 +9638,8 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 48.26)
 			(xy 247.65 48.26)
+			(xy 248.92 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9691,7 +9649,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 241.3 48.26 0)
+		(at 242.57 48.26 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9701,7 +9659,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c8b8")
 		(property "Reference" "S7"
-			(at 241.3 51.181 0)
+			(at 242.57 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9711,7 +9669,7 @@
 			)
 		)
 		(property "Value" "Right"
-			(at 241.427 53.721 0)
+			(at 242.697 53.721 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9721,7 +9679,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9732,7 +9690,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9743,7 +9701,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9754,7 +9712,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9765,7 +9723,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9776,7 +9734,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 241.3 48.26 0)
+			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9803,8 +9761,8 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 48.26)
-			(xy 250.19 48.26)
+			(xy 248.92 48.26)
+			(xy 251.46 48.26)
 		)
 		(stroke
 			(width 0)
@@ -9814,7 +9772,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 234.95 50.165 0)
+		(at 236.22 50.165 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9824,7 +9782,7 @@
 		(dnp no)
 		(uuid "845ebd17-584a-4eb1-b702-4825f99943d3")
 		(property "Reference" "#PWR916"
-			(at 234.95 56.515 0)
+			(at 236.22 56.515 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9835,7 +9793,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 234.95 53.467 0)
+			(at 236.22 53.467 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9845,7 +9803,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 234.95 50.165 0)
+			(at 236.22 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9856,7 +9814,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 234.95 50.165 0)
+			(at 236.22 50.165 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9867,7 +9825,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 234.95 50.165 0)
+			(at 236.22 50.165 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9890,7 +9848,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 250.19 43.18 0)
+		(at 251.46 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9898,7 +9856,7 @@
 		(dnp no)
 		(uuid "6455edc0-a666-48e0-88a6-7d6dfb18df06")
 		(property "Reference" "R60"
-			(at 252.095 41.91 0)
+			(at 253.365 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9907,7 +9865,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 252.095 44.45 0)
+			(at 253.365 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9916,7 +9874,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 250.19 43.18 0)
+			(at 251.46 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9925,7 +9883,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 250.19 43.18 0)
+			(at 251.46 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9934,7 +9892,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 250.19 43.18 0)
+			(at 251.46 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9943,7 +9901,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 250.19 43.18 0)
+			(at 251.46 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9952,7 +9910,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 250.19 43.18 0)
+			(at 251.46 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9977,7 +9935,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 250.19 40.64 0)
+		(at 251.46 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9987,7 +9945,7 @@
 		(dnp no)
 		(uuid "67a7cbac-f1aa-462c-80ed-9cb88560a2f1")
 		(property "Reference" "#PWR917"
-			(at 250.19 41.656 0)
+			(at 251.46 41.656 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9998,7 +9956,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 247.65 39.751 0)
+			(at 248.92 39.751 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10008,7 +9966,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 250.19 40.64 0)
+			(at 251.46 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10018,7 +9976,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 250.19 40.64 0)
+			(at 251.46 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10028,7 +9986,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 250.19 40.64 0)
+			(at 251.46 40.64 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10051,8 +10009,8 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 45.72)
-			(xy 250.19 48.26)
+			(xy 251.46 45.72)
+			(xy 251.46 48.26)
 		)
 		(stroke
 			(width 0)
@@ -10062,7 +10020,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 252.73 48.26 90)
+		(at 254 48.26 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10070,7 +10028,7 @@
 		(dnp no)
 		(uuid "f8cb83be-8505-4659-a098-4b5e1c30d7ff")
 		(property "Reference" "R61"
-			(at 252.73 50.8 90)
+			(at 254 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10078,7 +10036,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 252.73 52.705 90)
+			(at 254 52.705 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10086,7 +10044,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 252.73 48.26 0)
+			(at 254 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10095,7 +10053,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 252.73 48.26 0)
+			(at 254 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10104,7 +10062,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 252.73 48.26 0)
+			(at 254 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10113,7 +10071,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 252.73 48.26 0)
+			(at 254 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10122,7 +10080,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 252.73 48.26 0)
+			(at 254 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10147,8 +10105,8 @@
 	)
 	(wire
 		(pts
-			(xy 255.27 48.26)
-			(xy 260.35 48.26)
+			(xy 256.54 48.26)
+			(xy 261.62 48.26)
 		)
 		(stroke
 			(width 0)
@@ -10158,8 +10116,8 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 48.26)
-			(xy 262.89 48.26)
+			(xy 261.62 48.26)
+			(xy 264.16 48.26)
 		)
 		(stroke
 			(width 0)
@@ -10168,20 +10126,20 @@
 		(uuid "185b1dd3-da19-41c1-a06d-962f10e6cf6f")
 	)
 	(junction
-		(at 260.35 48.26)
+		(at 261.62 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f8235420-fcba-4df2-bbc0-44dde73d65fa")
 	)
 	(junction
-		(at 250.19 48.26)
+		(at 251.46 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eaa740ca-4ff8-4b39-8a57-c385a403e87d")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 260.35 50.8 0)
+		(at 261.62 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10189,7 +10147,7 @@
 		(dnp no)
 		(uuid "0be5bd8d-6451-4b42-b20a-1a56d2ffb50d")
 		(property "Reference" "C24"
-			(at 262.255 50.165 0)
+			(at 263.525 50.165 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10198,7 +10156,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 262.255 52.07 0)
+			(at 263.525 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10207,7 +10165,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 260.35 50.8 0)
+			(at 261.62 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10216,7 +10174,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 260.35 50.8 0)
+			(at 261.62 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10225,7 +10183,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 260.35 50.8 0)
+			(at 261.62 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10234,7 +10192,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 260.35 50.8 0)
+			(at 261.62 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10243,7 +10201,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 260.35 50.8 0)
+			(at 261.62 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10268,7 +10226,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 260.35 53.34 0)
+		(at 261.62 53.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10278,7 +10236,7 @@
 		(dnp no)
 		(uuid "070563a0-8c71-4886-bcfa-ba3f8791b915")
 		(property "Reference" "#PWR918"
-			(at 260.35 59.69 0)
+			(at 261.62 59.69 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10289,7 +10247,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 260.35 56.642 0)
+			(at 261.62 56.642 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10299,7 +10257,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 260.35 53.34 0)
+			(at 261.62 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10310,7 +10268,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 260.35 53.34 0)
+			(at 261.62 53.34 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10321,7 +10279,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 260.35 53.34 0)
+			(at 261.62 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10344,7 +10302,7 @@
 	)
 	(global_label "BTN_RIGHT"
 		(shape output)
-		(at 262.89 48.26 0)
+		(at 264.16 48.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10353,7 +10311,7 @@
 		)
 		(uuid "9c323f55-f1b4-442a-83ed-4c697b5dc75d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 262.89 48.26 0)
+			(at 264.16 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10366,8 +10324,8 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 69.85)
 			(xy 191.77 69.85)
+			(xy 193.04 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10377,8 +10335,8 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 69.85)
 			(xy 203.2 69.85)
+			(xy 204.47 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10388,7 +10346,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 196.85 69.85 0)
+		(at 198.12 69.85 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10398,7 +10356,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c96b")
 		(property "Reference" "S4"
-			(at 196.85 72.771 0)
+			(at 198.12 72.771 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10408,7 +10366,7 @@
 			)
 		)
 		(property "Value" "Down"
-			(at 196.977 75.311 0)
+			(at 198.247 75.311 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10418,7 +10376,7 @@
 			)
 		)
 		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10429,7 +10387,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10440,7 +10398,7 @@
 			)
 		)
 		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10451,7 +10409,7 @@
 			)
 		)
 		(property "LCSC" "C2837537"
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10462,7 +10420,7 @@
 			)
 		)
 		(property "MPN" "KH-6X6X11H-STM"
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10473,7 +10431,7 @@
 			)
 		)
 		(property "Manufacturer" "Kinghelm"
-			(at 196.85 69.85 0)
+			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10500,8 +10458,8 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 69.85)
-			(xy 205.74 69.85)
+			(xy 204.47 69.85)
+			(xy 207.01 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10511,7 +10469,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 190.5 71.755 0)
+		(at 191.77 71.755 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10521,7 +10479,7 @@
 		(dnp no)
 		(uuid "86435c9e-9820-493c-9730-bd2f1a6288a5")
 		(property "Reference" "#PWR919"
-			(at 190.5 78.105 0)
+			(at 191.77 78.105 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10532,7 +10490,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 190.5 75.057 0)
+			(at 191.77 75.057 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10542,7 +10500,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 190.5 71.755 0)
+			(at 191.77 71.755 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10553,7 +10511,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 71.755 0)
+			(at 191.77 71.755 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10564,7 +10522,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 190.5 71.755 0)
+			(at 191.77 71.755 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10587,7 +10545,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 205.74 64.77 0)
+		(at 207.01 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10595,7 +10553,7 @@
 		(dnp no)
 		(uuid "84ae53be-4f2a-4bef-aa78-fff21d6e0dea")
 		(property "Reference" "R62"
-			(at 207.645 63.5 0)
+			(at 208.915 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10604,7 +10562,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 207.645 66.04 0)
+			(at 208.915 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10613,7 +10571,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 205.74 64.77 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10622,7 +10580,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 64.77 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10631,7 +10589,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 205.74 64.77 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10640,7 +10598,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 205.74 64.77 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10649,7 +10607,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 205.74 64.77 0)
+			(at 207.01 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10674,7 +10632,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 205.74 62.23 0)
+		(at 207.01 62.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10684,7 +10642,7 @@
 		(dnp no)
 		(uuid "83de4dad-9528-4e88-acdc-4213e2cf85c4")
 		(property "Reference" "#PWR920"
-			(at 205.74 63.246 0)
+			(at 207.01 63.246 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10695,7 +10653,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 203.2 61.341 0)
+			(at 204.47 61.341 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10705,7 +10663,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 62.23 0)
+			(at 207.01 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10715,7 +10673,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 62.23 0)
+			(at 207.01 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10725,7 +10683,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 205.74 62.23 0)
+			(at 207.01 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10748,8 +10706,8 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 67.31)
-			(xy 205.74 69.85)
+			(xy 207.01 67.31)
+			(xy 207.01 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10759,7 +10717,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 208.28 69.85 90)
+		(at 209.55 69.85 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10767,7 +10725,7 @@
 		(dnp no)
 		(uuid "334025c6-9d04-4b1f-8d87-06a12ab52b0b")
 		(property "Reference" "R63"
-			(at 208.28 72.39 90)
+			(at 209.55 72.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10775,7 +10733,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 208.28 74.295 90)
+			(at 209.55 74.295 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10783,7 +10741,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 208.28 69.85 0)
+			(at 209.55 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10792,7 +10750,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 208.28 69.85 0)
+			(at 209.55 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10801,7 +10759,7 @@
 			)
 		)
 		(property "LCSC" "C17414"
-			(at 208.28 69.85 0)
+			(at 209.55 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10810,7 +10768,7 @@
 			)
 		)
 		(property "MPN" "0805W8F1002T5E"
-			(at 208.28 69.85 0)
+			(at 209.55 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10819,7 +10777,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 208.28 69.85 0)
+			(at 209.55 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10844,8 +10802,8 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 69.85)
-			(xy 215.9 69.85)
+			(xy 212.09 69.85)
+			(xy 217.17 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10855,8 +10813,8 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 69.85)
-			(xy 218.44 69.85)
+			(xy 217.17 69.85)
+			(xy 219.71 69.85)
 		)
 		(stroke
 			(width 0)
@@ -10865,20 +10823,20 @@
 		(uuid "eb4831bd-8199-459e-ab8f-a244a3896d92")
 	)
 	(junction
-		(at 215.9 69.85)
+		(at 217.17 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f02448ac-f0fa-49a1-a093-0c07b539903e")
 	)
 	(junction
-		(at 205.74 69.85)
+		(at 207.01 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8d2716ab-037f-4551-a1ec-3b53685fdfb3")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 215.9 72.39 0)
+		(at 217.17 72.39 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10886,7 +10844,7 @@
 		(dnp no)
 		(uuid "9b4eb8f6-7024-46bb-876e-3a8b460e3473")
 		(property "Reference" "C20"
-			(at 217.805 71.755 0)
+			(at 219.075 71.755 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10895,7 +10853,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 217.805 73.66 0)
+			(at 219.075 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10904,7 +10862,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 215.9 72.39 0)
+			(at 217.17 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10913,7 +10871,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 215.9 72.39 0)
+			(at 217.17 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10922,7 +10880,7 @@
 			)
 		)
 		(property "LCSC" "C49678"
-			(at 215.9 72.39 0)
+			(at 217.17 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10931,7 +10889,7 @@
 			)
 		)
 		(property "MPN" "CC0805KRX7R9BB104"
-			(at 215.9 72.39 0)
+			(at 217.17 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10940,7 +10898,7 @@
 			)
 		)
 		(property "Manufacturer" "YAGEO"
-			(at 215.9 72.39 0)
+			(at 217.17 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10965,7 +10923,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 215.9 74.93 0)
+		(at 217.17 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10975,7 +10933,7 @@
 		(dnp no)
 		(uuid "2b31f139-6391-48fb-9d0b-fdd5d81f4d88")
 		(property "Reference" "#PWR921"
-			(at 215.9 81.28 0)
+			(at 217.17 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10986,7 +10944,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 215.9 78.232 0)
+			(at 217.17 78.232 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10996,7 +10954,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 215.9 74.93 0)
+			(at 217.17 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11007,7 +10965,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 215.9 74.93 0)
+			(at 217.17 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11018,7 +10976,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 215.9 74.93 0)
+			(at 217.17 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11041,7 +10999,7 @@
 	)
 	(global_label "BTN_DOWN"
 		(shape output)
-		(at 218.44 69.85 0)
+		(at 219.71 69.85 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11050,7 +11008,7 @@
 		)
 		(uuid "071c0f03-968a-487b-a2c1-34a843d724c0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 218.44 69.85 0)
+			(at 219.71 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11061,48 +11019,9 @@
 			)
 		)
 	)
-	(text "Function keys (under display)"
-		(exclude_from_sim no)
-		(at 147.32 83.82 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "42824fe4-58df-4bf2-92f7-2b37e0024714")
-	)
-	(text "D-pad"
-		(exclude_from_sim no)
-		(at 228.6 83.82 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "449601d5-6331-4d1e-8448-ed5b918eaeef")
-	)
-	(text "Layout: S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network)."
-		(exclude_from_sim no)
-		(at 101.6 87.63 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "6d5845b5-e7e3-4a17-9931-1488115c31fc")
-	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x07")
-		(at 78.74 68.58 0)
+		(at 78.74 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11112,7 +11031,7 @@
 		(dnp yes)
 		(uuid "b7c80e75-de4f-4795-b40e-3e465a81e502")
 		(property "Reference" "DS1"
-			(at 78.74 58.42 0)
+			(at 78.74 63.5 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11122,7 +11041,7 @@
 			)
 		)
 		(property "Value" "OLED_1.3in_SH1106_SPI_7pin"
-			(at 78.74 81.28 0)
+			(at 78.74 86.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11132,7 +11051,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical"
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11143,7 +11062,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11154,7 +11073,7 @@
 			)
 		)
 		(property "Description" "Generic 1.3in 128x64 SH1106 4-wire SPI OLED module, 7-pin 2.54 mm: GND,VCC,CLK(D0),MOSI(D1),RES,DC,CS. DNP, supplied in kit, user-soldered."
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11165,7 +11084,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11176,7 +11095,7 @@
 			)
 		)
 		(property "MPN" "generic 1.3in SH1106 SPI 7-pin"
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11187,7 +11106,7 @@
 			)
 		)
 		(property "Manufacturer" "generic"
-			(at 78.74 68.58 0)
+			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11229,7 +11148,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 71.12 60.96 270)
+		(at 71.12 66.04 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11239,7 +11158,7 @@
 		(dnp no)
 		(uuid "46cdea6a-ee21-4f78-a2db-3d3007996376")
 		(property "Reference" "#PWR922"
-			(at 71.12 67.31 0)
+			(at 71.12 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11250,7 +11169,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 66.04 60.96 0)
+			(at 66.04 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11261,7 +11180,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 60.96 0)
+			(at 71.12 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11272,7 +11191,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 60.96 0)
+			(at 71.12 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11283,7 +11202,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 71.12 60.96 0)
+			(at 71.12 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11306,17 +11225,6 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 60.96)
-			(xy 71.12 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d33cfbf3-ad17-4f10-b9de-7ad9f43f5de3")
-	)
-	(wire
-		(pts
 			(xy 73.66 66.04)
 			(xy 71.12 66.04)
 		)
@@ -11324,62 +11232,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "69e702fb-c282-419a-8459-c9e33433d7b3")
-	)
-	(global_label "OLED_SCK"
-		(shape input)
-		(at 71.12 66.04 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "0b372927-defa-43de-bb29-9bfebe720af8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 71.12 66.04 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 73.66 68.58)
-			(xy 71.12 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a2f050e-d42f-4d48-8188-6bf7a0fff082")
-	)
-	(global_label "OLED_MOSI"
-		(shape input)
-		(at 71.12 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "bb3e69ca-b916-4f7c-9ce2-eb8b2347d8aa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 71.12 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
+		(uuid "d33cfbf3-ad17-4f10-b9de-7ad9f43f5de3")
 	)
 	(wire
 		(pts
@@ -11390,9 +11243,9 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4568df42-308e-4236-b14e-262a2aa23e9c")
+		(uuid "69e702fb-c282-419a-8459-c9e33433d7b3")
 	)
-	(global_label "OLED_RES"
+	(global_label "OLED_SCK"
 		(shape input)
 		(at 71.12 71.12 180)
 		(effects
@@ -11401,7 +11254,7 @@
 			)
 			(justify right)
 		)
-		(uuid "3b974ccd-5f79-4262-8094-7e7718ccf77f")
+		(uuid "0b372927-defa-43de-bb29-9bfebe720af8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 71.12 71.12 0)
 			(hide yes)
@@ -11423,9 +11276,9 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "df957d6d-8f21-42f8-8729-705b818de9ba")
+		(uuid "7a2f050e-d42f-4d48-8188-6bf7a0fff082")
 	)
-	(global_label "OLED_DC"
+	(global_label "OLED_MOSI"
 		(shape input)
 		(at 71.12 73.66 180)
 		(effects
@@ -11434,7 +11287,7 @@
 			)
 			(justify right)
 		)
-		(uuid "71a06152-eac5-48f6-9ce2-0680c5eecca7")
+		(uuid "bb3e69ca-b916-4f7c-9ce2-eb8b2347d8aa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 71.12 73.66 0)
 			(hide yes)
@@ -11456,9 +11309,9 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3c2cba04-b344-430d-ada2-07b292ff90d2")
+		(uuid "4568df42-308e-4236-b14e-262a2aa23e9c")
 	)
-	(global_label "OLED_CS"
+	(global_label "OLED_RES"
 		(shape input)
 		(at 71.12 76.2 180)
 		(effects
@@ -11467,7 +11320,7 @@
 			)
 			(justify right)
 		)
-		(uuid "34d9d668-2fe0-4252-8c63-9f60c83db5da")
+		(uuid "3b974ccd-5f79-4262-8094-7e7718ccf77f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 71.12 76.2 0)
 			(hide yes)
@@ -11482,8 +11335,74 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 63.5)
-			(xy 25.4 63.5)
+			(xy 73.66 78.74)
+			(xy 71.12 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df957d6d-8f21-42f8-8729-705b818de9ba")
+	)
+	(global_label "OLED_DC"
+		(shape input)
+		(at 71.12 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "71a06152-eac5-48f6-9ce2-0680c5eecca7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.12 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 73.66 81.28)
+			(xy 71.12 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c2cba04-b344-430d-ada2-07b292ff90d2")
+	)
+	(global_label "OLED_CS"
+		(shape input)
+		(at 71.12 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "34d9d668-2fe0-4252-8c63-9f60c83db5da")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.12 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 73.66 68.58)
+			(xy 25.4 68.58)
 		)
 		(stroke
 			(width 0)
@@ -11493,7 +11412,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 45.72 66.04 0)
+		(at 45.72 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11501,7 +11420,7 @@
 		(dnp no)
 		(uuid "bd745525-a285-4147-9754-465690192e43")
 		(property "Reference" "C25"
-			(at 47.625 65.405 0)
+			(at 47.625 70.485 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11510,7 +11429,7 @@
 			)
 		)
 		(property "Value" "4.7u"
-			(at 47.625 67.31 0)
+			(at 47.625 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11519,7 +11438,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 45.72 66.04 0)
+			(at 45.72 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11528,7 +11447,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 66.04 0)
+			(at 45.72 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11537,7 +11456,7 @@
 			)
 		)
 		(property "LCSC" "C1779"
-			(at 45.72 66.04 0)
+			(at 45.72 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11546,7 +11465,7 @@
 			)
 		)
 		(property "MPN" "CL21A475KAQNNNE"
-			(at 45.72 66.04 0)
+			(at 45.72 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11555,7 +11474,7 @@
 			)
 		)
 		(property "Manufacturer" "Samsung"
-			(at 45.72 66.04 0)
+			(at 45.72 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11580,7 +11499,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 45.72 68.58 0)
+		(at 45.72 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11590,7 +11509,7 @@
 		(dnp no)
 		(uuid "91e8f808-210d-4585-974f-be25f5697cf6")
 		(property "Reference" "#PWR923"
-			(at 45.72 74.93 0)
+			(at 45.72 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11601,7 +11520,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 45.72 71.882 0)
+			(at 45.72 76.962 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11611,7 +11530,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 68.58 0)
+			(at 45.72 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11622,7 +11541,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 68.58 0)
+			(at 45.72 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11633,7 +11552,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.72 68.58 0)
+			(at 45.72 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11655,14 +11574,14 @@
 		)
 	)
 	(junction
-		(at 45.72 63.5)
+		(at 45.72 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "902ac6f7-3373-48ce-9870-f56c7f1df132")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 38.1 66.04 0)
+		(at 38.1 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11670,7 +11589,7 @@
 		(dnp no)
 		(uuid "0374ebba-6b90-4c1e-a838-523ba5554a1b")
 		(property "Reference" "C26"
-			(at 40.005 65.405 0)
+			(at 40.005 70.485 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11679,7 +11598,7 @@
 			)
 		)
 		(property "Value" "4.7u"
-			(at 40.005 67.31 0)
+			(at 40.005 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11688,7 +11607,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 38.1 66.04 0)
+			(at 38.1 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11697,7 +11616,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 66.04 0)
+			(at 38.1 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11706,7 +11625,7 @@
 			)
 		)
 		(property "LCSC" "C1779"
-			(at 38.1 66.04 0)
+			(at 38.1 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11715,7 +11634,7 @@
 			)
 		)
 		(property "MPN" "CL21A475KAQNNNE"
-			(at 38.1 66.04 0)
+			(at 38.1 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11724,7 +11643,7 @@
 			)
 		)
 		(property "Manufacturer" "Samsung"
-			(at 38.1 66.04 0)
+			(at 38.1 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11749,7 +11668,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 38.1 68.58 0)
+		(at 38.1 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11759,7 +11678,7 @@
 		(dnp no)
 		(uuid "88d3a3b8-53e9-4eee-9f74-7830fbb30658")
 		(property "Reference" "#PWR924"
-			(at 38.1 74.93 0)
+			(at 38.1 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11770,7 +11689,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 38.1 71.882 0)
+			(at 38.1 76.962 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11780,7 +11699,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 38.1 68.58 0)
+			(at 38.1 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11791,7 +11710,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 68.58 0)
+			(at 38.1 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11802,7 +11721,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 38.1 68.58 0)
+			(at 38.1 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11824,14 +11743,14 @@
 		)
 	)
 	(junction
-		(at 38.1 63.5)
+		(at 38.1 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "be1dd805-8e6e-48b6-be45-31de242a3518")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 30.48 66.04 0)
+		(at 30.48 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11839,7 +11758,7 @@
 		(dnp no)
 		(uuid "80d82e28-bc12-475a-9dd1-463fe8f3c5d4")
 		(property "Reference" "C27"
-			(at 32.385 65.405 0)
+			(at 32.385 70.485 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11848,7 +11767,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 32.385 67.31 0)
+			(at 32.385 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11857,7 +11776,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
-			(at 30.48 66.04 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11866,7 +11785,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 66.04 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11875,7 +11794,7 @@
 			)
 		)
 		(property "LCSC" "C12891"
-			(at 30.48 66.04 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11884,7 +11803,7 @@
 			)
 		)
 		(property "MPN" "CL31A226KAHNNNE"
-			(at 30.48 66.04 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11893,7 +11812,7 @@
 			)
 		)
 		(property "Manufacturer" "Samsung"
-			(at 30.48 66.04 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11918,7 +11837,7 @@
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 30.48 68.58 0)
+		(at 30.48 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -11928,7 +11847,7 @@
 		(dnp no)
 		(uuid "c9724fe2-f4c1-47c0-8263-018b5ff9958c")
 		(property "Reference" "#PWR925"
-			(at 30.48 74.93 0)
+			(at 30.48 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11939,7 +11858,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 30.48 71.882 0)
+			(at 30.48 76.962 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11949,7 +11868,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 30.48 68.58 0)
+			(at 30.48 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11960,7 +11879,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 68.58 0)
+			(at 30.48 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11971,7 +11890,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 30.48 68.58 0)
+			(at 30.48 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11993,14 +11912,14 @@
 		)
 	)
 	(junction
-		(at 30.48 63.5)
+		(at 30.48 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "76a27c3c-07d7-4250-8c91-ffd0f108ea9e")
 	)
 	(symbol
 		(lib_id "Device:FerriteBead_Small")
-		(at 22.86 63.5 90)
+		(at 22.86 68.58 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12008,7 +11927,7 @@
 		(dnp no)
 		(uuid "5282e8b0-f328-4505-85db-afd2ce2ea485")
 		(property "Reference" "FB1"
-			(at 22.86 60.325 90)
+			(at 22.86 65.405 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12016,7 +11935,7 @@
 			)
 		)
 		(property "Value" "BLM18PG221"
-			(at 22.86 66.675 90)
+			(at 22.86 71.755 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12024,7 +11943,7 @@
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_0603_1608Metric"
-			(at 22.86 63.5 0)
+			(at 22.86 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12033,7 +11952,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 22.86 63.5 0)
+			(at 22.86 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12042,7 +11961,7 @@
 			)
 		)
 		(property "LCSC" "C80165"
-			(at 22.86 63.5 0)
+			(at 22.86 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12051,7 +11970,7 @@
 			)
 		)
 		(property "MPN" "BLM18PG221SN1D"
-			(at 22.86 63.5 0)
+			(at 22.86 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12060,7 +11979,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 22.86 63.5 0)
+			(at 22.86 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12085,8 +12004,8 @@
 	)
 	(wire
 		(pts
-			(xy 20.32 63.5)
-			(xy 17.78 63.5)
+			(xy 20.32 68.58)
+			(xy 17.78 68.58)
 		)
 		(stroke
 			(width 0)
@@ -12096,7 +12015,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 17.78 63.5 0)
+		(at 17.78 68.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12106,7 +12025,7 @@
 		(dnp no)
 		(uuid "f27a7c88-1ec6-472b-847b-c4f4a3445bdc")
 		(property "Reference" "#PWR926"
-			(at 17.78 64.516 0)
+			(at 17.78 69.596 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12117,7 +12036,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 15.24 62.611 0)
+			(at 15.24 67.691 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12127,7 +12046,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 17.78 63.5 0)
+			(at 17.78 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12137,7 +12056,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 17.78 63.5 0)
+			(at 17.78 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12147,7 +12066,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 17.78 63.5 0)
+			(at 17.78 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12167,31 +12086,6 @@
 				)
 			)
 		)
-	)
-	(text "128x64 OLED (1.3in SH1106, SPI)"
-		(exclude_from_sim no)
-		(at 86.36 88.9 0)
-		(effects
-			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
-				(italic yes)
-			)
-			(justify right bottom)
-		)
-		(uuid "55320574-d3b2-4695-88be-3f6cb314b49d")
-	)
-	(text "Same module and pinout as Si5351AVFO DS1: DNP, kit-supplied,\nuser-soldered. 3.3 V logic, no level shift.\nFB1 + C25-C27 copy the VFO OLED rail filter at the header."
-		(exclude_from_sim no)
-		(at 17.78 93.98 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "9164ac6b-1fc5-44ec-b052-09e13d935c55")
 	)
 	(wire
 		(pts
@@ -12353,19 +12247,233 @@
 			)
 		)
 	)
-	(text "GPIO Headers (DxCore pin names)"
+	(rectangle
+		(start 13.97 13.97)
+		(end 99.69 59.06)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 0 0 200 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "e8a72be7-9c23-4fdd-afbe-cc00038e9297")
+	)
+	(text "I/O headers"
 		(exclude_from_sim no)
-		(at 50.8 182.88 0)
+		(at 15.24 16.51 0)
 		(effects
 			(font
-				(size 1.778 1.778)
-				(thickness 0.3556)
+				(size 1.6 1.6)
+				(thickness 0.32)
 				(bold yes)
-				(italic yes)
+				(color 0 0 200 1)
 			)
-			(justify right bottom)
+			(justify left)
 		)
-		(uuid "0f9195a5-5b31-4bd0-969b-cc17f8bb33d7")
+		(uuid "f2b5f80f-9cb8-45f6-9e0e-ae3fa6602d0c")
+	)
+	(text "J8: I2C bus (3.3 V, SDA/SCL pull-ups R14/R15 3.3k).\nJ10: UART on USART1 (PC0/PC1).\nESD: D19/D20 SP0503BAHT at the header pins,\nR76-R79 220R in series toward the MCU."
+		(exclude_from_sim no)
+		(at 52.07 19.05 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "d2a6f751-bd01-40f4-aa1d-e7df6bdf299f")
+	)
+	(rectangle
+		(start 13.97 60.33)
+		(end 99.69 99.06)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 0 0 0 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "6d06388d-3a61-4240-a1e0-8625e51b5cee")
+	)
+	(text "128x64 OLED (1.3in SH1106, SPI)"
+		(exclude_from_sim no)
+		(at 15.24 62.87 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.32)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "8de4ff3f-428c-4c95-a20e-8a40afa12fce")
+	)
+	(text "Same module and pinout as Si5351AVFO DS1: DNP, kit-supplied,\nuser-soldered. 3.3 V logic, no level shift.\nFB1 + C25-C27 copy the VFO OLED rail filter at the header.\nSPI1 ALT1: SCK PC6, MOSI PC4; CS PC7, DC PB4, RES PB5."
+		(exclude_from_sim no)
+		(at 15.24 90.17 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "d43a3b3a-737e-4664-a6b4-038e8bd855d7")
+	)
+	(rectangle
+		(start 100.97 13.97)
+		(end 284.48 83.82)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 0 110 0 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "15c6e66a-9e2c-4793-a1a2-6bb7e18c5720")
+	)
+	(text "Buttons"
+		(exclude_from_sim no)
+		(at 102.24 16.51 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.32)
+				(bold yes)
+				(color 0 110 0 1)
+			)
+			(justify left)
+		)
+		(uuid "bd2bf501-4745-4645-835a-d149f8c8561f")
+	)
+	(text "Function keys S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network).\nAll switches Kinghelm KH-6X6X11H-STM, pressed = low."
+		(exclude_from_sim no)
+		(at 147.32 20.32 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "2b993746-f6d8-4e77-852b-fffad8ad0156")
+	)
+	(rectangle
+		(start 13.97 100.33)
+		(end 106.68 191.77)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 0 120 120 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "359fe5c9-ef0e-4af0-8d54-584ae05b415f")
+	)
+	(text "GPIO headers (DxCore pin names)"
+		(exclude_from_sim no)
+		(at 15.24 102.87 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.32)
+				(bold yes)
+				(color 0 120 120 1)
+			)
+			(justify left)
+		)
+		(uuid "4920beba-3c62-434f-99ac-1ecf82cd2154")
+	)
+	(text "J4 1x10: D7/PA7, D17/PC3, D19/PC5, D38/A20/PF4, D39/A21/PF5.\nJ5 1x12: D22-D24/A0-A2 (PD0-PD2), D31-D33/A9-A11 (PE1-PE3).\nGND between signal pins.\nESD: TVS at the header pin, 220R in series to the MCU\n(limits clamp current into the AVR pin, R x 30 pF = 7 ns)."
+		(exclude_from_sim no)
+		(at 15.24 179.07 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "b7f5b9de-f236-4760-a293-a7f7bdec3c89")
+	)
+	(rectangle
+		(start 111.76 100.33)
+		(end 175.26 173.99)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 200 0 0 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "e55cf6a7-5e37-48b8-a935-9b837a1d35d3")
+	)
+	(text "I2C level conversion"
+		(exclude_from_sim no)
+		(at 113.03 102.87 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.32)
+				(bold yes)
+				(color 200 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "971f7e5e-aced-443c-87a6-1c3c66fc1cf3")
+	)
+	(text "Q4/Q5 2N7002 bidirectional\nshifters: SDA/SCL (3.3 V,\nR14/R15 3.3k) to SDA_5V /\nSCL_5V (R11/R12 3.3k to +5V)\nfor U5 MCP4725 on sheet 1."
+		(exclude_from_sim no)
+		(at 113.03 105.41 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "25f75e92-7cd2-46f2-bd8e-06f6bf11f246")
+	)
+	(rectangle
+		(start 205.74 88.9)
+		(end 259.08 130.81)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 0 0 0 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "32fd07e6-e288-45d3-89b6-eac32e1089b1")
+	)
+	(text "External EEPROM"
+		(exclude_from_sim no)
+		(at 207.01 91.44 0)
+		(effects
+			(font
+				(size 1.6 1.6)
+				(thickness 0.32)
+				(bold yes)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "9080d1b5-f300-468b-93c5-b26e60b6236b")
+	)
+	(text "U8 24AA64T 64 Kbit I2C EEPROM\non the 3.3 V SDA/SCL bus.\nWP tied to GND (writes enabled).\nC22 100n decoupling."
+		(exclude_from_sim no)
+		(at 207.01 121.92 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "14fc6d28-f762-4d94-87f7-c52882116d15")
 	)
 	(embedded_fonts no)	(label "HDR_D7"
 		(at 35.56 111.76 180)
@@ -14819,17 +14927,6 @@
 				)
 			)
 		)
-	)
-	(text "ESD: TVS at the header pin, 220R in series to the MCU\n(limits clamp current into the AVR pin, R x 30 pF = 7 ns)"
-		(exclude_from_sim no)
-		(at 48.26 186.69 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "49d5ddc3-8300-4fb6-adcb-1215aabbbd99")
 	)
 	(label "HDR_TX"
 		(at 44.577 27.813 180)
