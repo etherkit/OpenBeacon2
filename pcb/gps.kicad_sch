@@ -13,12 +13,12 @@
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols
-		(symbol "Device:D_Zener_Small"
+		(symbol "Device:D_TVS_Small"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0.254)
+				(offset 1.016)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -27,7 +27,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "D"
-				(at 0 2.286 0)
+				(at 0 2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -36,8 +36,8 @@
 					)
 				)
 			)
-			(property "Value" "D_Zener_Small"
-				(at 0 -2.286 0)
+			(property "Value" "D_TVS_Small"
+				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -47,28 +47,6 @@
 				)
 			)
 			(property "Footprint" ""
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Zener diode, small symbol"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -79,7 +57,29 @@
 					)
 				)
 			)
-			(property "ki_keywords" "diode"
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Bidirectional transient-voltage-suppression diode, small symbol"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode TVS thyrector"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -101,10 +101,10 @@
 					)
 				)
 			)
-			(symbol "D_Zener_Small_0_1"
+			(symbol "D_TVS_Small_0_1"
 				(polyline
 					(pts
-						(xy -0.254 1.016) (xy -0.762 1.016) (xy -0.762 -1.016)
+						(xy -1.27 1.016) (xy -1.27 -1.016) (xy 1.27 1.016) (xy 1.27 -1.016) (xy -1.27 1.016)
 					)
 					(stroke
 						(width 0.254)
@@ -116,19 +116,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 1.016) (xy -0.762 0) (xy 0.762 -1.016) (xy 0.762 1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0) (xy -0.762 0)
+						(xy -1.27 0) (xy 1.27 0)
 					)
 					(stroke
 						(width 0)
@@ -138,12 +126,24 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 0.508 1.016) (xy 0 1.016) (xy 0 -1.016) (xy -0.508 -1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
-			(symbol "D_Zener_Small_1_1"
+			(symbol "D_TVS_Small_1_1"
 				(pin passive line
 					(at -2.54 0 0)
-					(length 1.778)
-					(name "K"
+					(length 1.27)
+					(name "A1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -160,8 +160,8 @@
 				)
 				(pin passive line
 					(at 2.54 0 180)
-					(length 1.778)
-					(name "A"
+					(length 1.27)
+					(name "A2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5705,7 +5705,7 @@
 		(uuid "c69894ca-d51d-4fe6-a937-af7ed3d34818")
 	)
 	(symbol
-		(lib_id "Device:D_Zener_Small")
+		(lib_id "Device:D_TVS_Small")
 		(at 167.64 127 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5722,7 +5722,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ESD5V3U1U-02LRH"
+		(property "Value" "PESD5V0F1BL"
 			(at 163.83 135.89 90)
 			(effects
 				(font
@@ -5740,7 +5740,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PESD5V0F1BL.pdf"
 			(at 167.64 127 0)
 			(effects
 				(font
@@ -5749,7 +5749,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "ESD5V3U1U-02LRH"
+		(property "MPN" "PESD5V0F1BL,315"
 			(at 167.64 127 0)
 			(effects
 				(font
@@ -5758,7 +5758,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Infineon"
+		(property "Manufacturer" "Nexperia"
 			(at 167.64 127 0)
 			(effects
 				(font
@@ -5767,7 +5767,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C3011174"
+		(property "LCSC" "C45961"
 			(at 167.64 127 0)
 			(effects
 				(font
