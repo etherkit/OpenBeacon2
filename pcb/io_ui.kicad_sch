@@ -11822,7 +11822,7 @@
 		)
 		(uuid "9164ac6b-1fc5-44ec-b052-09e13d935c55")
 	)
-	(global_label "D7/PA7"
+	(global_label "D7_PA7"
 		(shape bidirectional)
 		(at 35.56 111.76 180)
 		(effects
@@ -11844,7 +11844,7 @@
 			)
 		)
 	)
-	(global_label "D17/PC3"
+	(global_label "D17_PC3"
 		(shape bidirectional)
 		(at 35.56 116.84 180)
 		(effects
@@ -11866,7 +11866,7 @@
 			)
 		)
 	)
-	(global_label "D19/PC5"
+	(global_label "D19_PC5"
 		(shape bidirectional)
 		(at 35.56 121.92 180)
 		(effects
@@ -11888,7 +11888,7 @@
 			)
 		)
 	)
-	(global_label "D38/A20/PF4"
+	(global_label "D38_A20_PF4"
 		(shape bidirectional)
 		(at 35.56 127 180)
 		(effects
@@ -11910,7 +11910,7 @@
 			)
 		)
 	)
-	(global_label "D39/A21/PF5"
+	(global_label "D39_A21_PF5"
 		(shape bidirectional)
 		(at 35.56 132.08 180)
 		(effects
@@ -12092,7 +12092,7 @@
 			)
 		)
 	)
-	(global_label "D22/A0/PD0"
+	(global_label "D22_A0_PD0"
 		(shape output)
 		(at 68.58 111.76 180)
 		(effects
@@ -12114,7 +12114,7 @@
 			)
 		)
 	)
-	(global_label "D23/A1/PD1"
+	(global_label "D23_A1_PD1"
 		(shape output)
 		(at 68.58 116.84 180)
 		(effects
@@ -12136,7 +12136,7 @@
 			)
 		)
 	)
-	(global_label "D24/A2/PD2"
+	(global_label "D24_A2_PD2"
 		(shape output)
 		(at 68.58 121.92 180)
 		(effects
@@ -12158,7 +12158,7 @@
 			)
 		)
 	)
-	(global_label "D31/A9/PE1"
+	(global_label "D31_A9_PE1"
 		(shape output)
 		(at 68.58 127 180)
 		(effects
@@ -12180,7 +12180,7 @@
 			)
 		)
 	)
-	(global_label "D32/A10/PE2"
+	(global_label "D32_A10_PE2"
 		(shape output)
 		(at 68.58 132.08 180)
 		(effects
@@ -12202,7 +12202,7 @@
 			)
 		)
 	)
-	(global_label "D33/A11/PE3"
+	(global_label "D33_A11_PE3"
 		(shape output)
 		(at 68.58 137.16 180)
 		(effects

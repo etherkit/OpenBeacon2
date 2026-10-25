@@ -10577,7 +10577,7 @@
 		)
 		(uuid "1d6ec0c9-60e3-4b8c-bf7d-32d535f17304")
 	)
-	(global_label "D7/PA7"
+	(global_label "D7_PA7"
 		(shape bidirectional)
 		(at 114.3 138.43 0)
 		(fields_autoplaced yes)
@@ -10765,7 +10765,7 @@
 		)
 		(uuid "c13274ab-0a8e-44ed-8756-21f021d1678a")
 	)
-	(global_label "D17/PC3"
+	(global_label "D17_PC3"
 		(shape bidirectional)
 		(at 114.3 168.91 0)
 		(fields_autoplaced yes)
@@ -10963,7 +10963,7 @@
 		)
 		(uuid "42801d8c-1a15-4eeb-925d-b6adbd25e58e")
 	)
-	(global_label "D22/A0/PD0"
+	(global_label "D22_A0_PD0"
 		(shape input)
 		(at 78.74 148.59 180)
 		(fields_autoplaced yes)
@@ -10996,7 +10996,7 @@
 		)
 		(uuid "0462556a-17a3-4265-9173-c8371d81936f")
 	)
-	(global_label "D23/A1/PD1"
+	(global_label "D23_A1_PD1"
 		(shape input)
 		(at 78.74 151.13 180)
 		(fields_autoplaced yes)
@@ -11029,7 +11029,7 @@
 		)
 		(uuid "09332ad5-167a-4913-ab2c-788ab8ec189e")
 	)
-	(global_label "D24/A2/PD2"
+	(global_label "D24_A2_PD2"
 		(shape input)
 		(at 78.74 153.67 180)
 		(fields_autoplaced yes)
@@ -11945,7 +11945,7 @@
 		)
 		(uuid "be084937-084c-4836-af8d-466be523ca57")
 	)
-	(global_label "D19/PC5"
+	(global_label "D19_PC5"
 		(shape bidirectional)
 		(at 114.3 173.99 0)
 		(fields_autoplaced yes)
@@ -11977,7 +11977,7 @@
 		)
 		(uuid "3fbccfd2-1293-4006-b5fc-986a128e93c9")
 	)
-	(global_label "D38/A20/PF4"
+	(global_label "D38_A20_PF4"
 		(shape bidirectional)
 		(at 78.74 140.97 180)
 		(fields_autoplaced yes)
@@ -12009,7 +12009,7 @@
 		)
 		(uuid "1feee165-b272-4094-8e98-f7dd8e0df3bc")
 	)
-	(global_label "D39/A21/PF5"
+	(global_label "D39_A21_PF5"
 		(shape bidirectional)
 		(at 78.74 143.51 180)
 		(fields_autoplaced yes)
@@ -12041,7 +12041,7 @@
 		)
 		(uuid "6bbe5ac7-d6d8-4b55-89af-a277b3488dc4")
 	)
-	(global_label "D31/A9/PE1"
+	(global_label "D31_A9_PE1"
 		(shape input)
 		(at 78.74 173.99 180)
 		(fields_autoplaced yes)
@@ -12073,7 +12073,7 @@
 		)
 		(uuid "8352f4ef-9d52-4f2f-b965-1bf837d7a3c6")
 	)
-	(global_label "D32/A10/PE2"
+	(global_label "D32_A10_PE2"
 		(shape input)
 		(at 78.74 176.53 180)
 		(fields_autoplaced yes)
@@ -12105,7 +12105,7 @@
 		)
 		(uuid "c5980116-f92d-4c58-901d-b6cb929f48ec")
 	)
-	(global_label "D33/A11/PE3"
+	(global_label "D33_A11_PE3"
 		(shape input)
 		(at 78.74 179.07 180)
 		(fields_autoplaced yes)
