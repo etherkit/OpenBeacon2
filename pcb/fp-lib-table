@@ -1,4 +1,6 @@
 (fp_lib_table
   (version 7)
   (lib (name "OB2")(type "KiCad")(uri "${KIPRJMOD}/lib/OB2.pretty")(options "")(descr "OpenBeacon 2 project-local footprints"))
+  (lib (name "EtherkitKicadLibrary")(type "KiCad")(uri "${KIPRJMOD}/lib/EtherkitKicadLibrary.pretty")(options "")(descr "Vendored from github.com/etherkit/EtherkitKicadLibrary (used footprints only)"))
+  (lib (name "Measurement_Points")(type "KiCad")(uri "${KIPRJMOD}/lib/Measurement_Points.pretty")(options "")(descr "Vendored legacy KiCad 5 Measurement_Points footprint"))
 )
