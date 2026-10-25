@@ -6148,8 +6148,8 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
+		(in_pos_files no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-00005a23d5f4")
 		(property "Reference" "J11"
 			(at 195.961 109.601 0)
@@ -6180,6 +6180,24 @@
 				(font
 					(size 1.524 1.524)
 				)
+			)
+		)
+		(property "MPN" "031-5431-10RFX"
+			(at 195.961 114.173 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol RF"
+			(at 195.961 114.173 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
