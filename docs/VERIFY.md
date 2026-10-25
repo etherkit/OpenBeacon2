@@ -1,8 +1,8 @@
 # OpenBeacon 2 rev C: open items to verify
 
-Draft schematic, not reviewed. These items cover the AVR128DA32 MCU sheet (`pcb/mcu_usb.kicad_sch`) the relay-driver swap and the 6-relay filter-bank tree (`pcb/filter_bank.kicad_sch`).
+Draft schematic, not reviewed. These items cover the AVR128DA48 MCU sheet (`pcb/mcu_usb.kicad_sch`) the relay-driver swap and the 6-relay filter-bank tree (`pcb/filter_bank.kicad_sch`).
 
-- [ ] **U9 pin map**: TWI0 SDA/SCL on PA2/PA3; USART0 PA0/PA1 goes to the CP2102N; USART1 PC0/PC1 goes to J10 (UART_TX/UART_RX; fixed in 823d8bb, previously swapped with LPF_15_10); ADC PD0-PD2 serves A2-A4; band select BAND_A on PA5 (pin 3) and BAND_B on PA6 (pin 4); TX keying on PA4; buttons on PD3-PD7/PF2/PF3; D10 on PC3; D4 on PA7 (pin 5); SYNC LED on PC2 (pin 8); GPS on USART2 ALT1: PF4 (pin 24) TX to GPS_RXD, PF5 (pin 25) RX from GPS_TXD. Check USART2 ALT1 = PF4/PF5 in the AVR DA PORTMUX table. The firmware pin table must follow this map.
+- [ ] **U9 pin map (AVR128DA48-E/PT TQFP-48, LCSC C5227775; alternate AVR128DA48-I/PT C1012825)**: TWI0 SDA/SCL on PA2/PA3 (pins 46/47); USART0 PA0/PA1 (44/45) goes to the CP2102N; USART1 PC0/PC1 (10/11) goes to J10; ADC PD0-PD2 (20-22) serves A2-A4; BAND_A PA5 (1), BAND_B PA6 (2); TX keying PA4 (48); buttons PD3-PD7 (23-27), BTN_DSP_2 PF3 (37), BTN_DSP_1 moved to PE0 (30); D4 PA7 (3); SYNC LED PC2 (12); D10 PC3 (13); crystal PF0/PF1 (34/35); RESET PF6 (40); UPDI (41). GPS on USART3 DEFAULT: PB0 (4) TX to GPS_RXD, PB1 (5) RX from GPS_TXD (DS40002183E PORTMUX USARTROUTEA bits 7:6, 0x0 = PB0/PB1; USART2 is no longer used because its DEFAULT is the crystal pins). Pinout checked against DS 3.1, 48-pin column. Decoupling: C49 100n on VDD 14, C38 100n + C39 1u on VDD 42, C40 100n on AVDD 28 (DS 4.2, Fig 4-1). The firmware pin table must follow this map.
   - Jason:
 - [x] **TX_LED**: resolved. D12 (KT-0603YG yellow-green, Vf 1.8-2.4 V) and R39 (470R) run from the TX net (PA4) to GND, so no extra MCU pin is used. Current is about (3.1 - 1.9)/470 = 2.6 mA, plus about 0.15 mA into R1 22k, all well under the 6 mA VOH spec (VOH >= VDD-0.7). Q1's gate stays above 3.0 V.
   - Jason: TX LED is essential; drive from TX keying net.
@@ -25,7 +25,7 @@ Draft schematic, not reviewed. These items cover the AVR128DA32 MCU sheet (`pcb/
 
 ## GPS option (pcb/gps.kicad_sch, U12 u-blox MAX-M10S-00B)
 
-- [ ] **GPS_PPS MCU pin is undecided.** GPS_PPS currently reaches only J14 pin 1. Options: (A) PC2, moving the SYNC LED elsewhere or dropping D4/D10; (B) PC3, replacing D10; (C) one of PD0-PD2, giving up an A2-A4 analog header pin. Pick one for the firmware's timer/event input.
+- [x] **GPS_PPS MCU pin: PF2 (pin 36).** PF2 has full asynchronous sensing (DS 3.1 note: Px2/Px6). EVSYS: PORTF pin generators are 0x48-0x4F on CHANNEL4/CHANNEL5, so CHANNEL4 = 0x4A (PORTF_PIN2) and user USERTCB0CAPT (user 0x1F, async/sync both) gives TCB0 input-capture on PPS. PF2 resets as an input without pull-up/down, which keeps SAFEBOOT_N high (see below). J14 stays as a probe point.
 - [x] **Backup source (was C47 supercap).** Resolved: no SMT supercap or rechargeable ML/MS cell is in stock at JLCPCB (searched XH414H, CPH3225A, ML614/621, MS621FE/920SE, DSK, DMF; all 0 stock or absent). C47, D13 and R41 are removed. BT1 is a CR1220 primary cell in a Kinghelm KH-BS1220-2-SMT holder (C5365932, 2394 in stock, $0.24 @1, $0.19 @50), straight onto V_BCKP with C46 1u. CR1220: 3 V, 35 mAh (Panasonic CR1220 datasheet), inside V_BCKP 1.65-3.6 V (DS Table 13). No charger, so a primary cell is safe. Hold time unpowered: 35 mAh / 28 uA (DS Table 17) = about 1250 h (about 52 days); while powered the backup draw is about 3 uA (DS Table 17 fn 29).
   - Jason:
 - [ ] **BT1 footprint and cell.** KiCad has no KH-BS1220-2-SMT footprint (field left blank); draw it from the Kinghelm drawing before layout. The cell is user-fitted (JLC places the holder only). Do NOT fit an ML1220 rechargeable: there is no charge circuit.
