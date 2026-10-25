@@ -2558,7 +2558,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1008CS-152XJLC"
+		(property "MPN" "1008CS-152XGRC"
 			(at 44.45 38.1 0)
 			(effects
 				(font
@@ -2569,6 +2569,15 @@
 		)
 		(property "Manufacturer" "Coilcraft"
 			(at 44.45 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6645233"
+			(at 44.45 34.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2776,7 +2785,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1008CS-152XJLC"
+		(property "MPN" "1008CS-152XGRC"
 			(at 67.31 38.1 0)
 			(effects
 				(font
@@ -2787,6 +2796,15 @@
 		)
 		(property "Manufacturer" "Coilcraft"
 			(at 67.31 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6645233"
+			(at 67.31 34.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2994,7 +3012,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1008CS-182XJLC"
+		(property "MPN" "1008CS-182XGLC"
 			(at 90.17 38.1 0)
 			(effects
 				(font
@@ -3005,6 +3023,15 @@
 		)
 		(property "Manufacturer" "Coilcraft"
 			(at 90.17 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C40228699"
+			(at 90.17 34.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5021,6 +5048,33 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CC0603BRNPO9BN1R1"
+			(at 103.505 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 103.505 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C519097"
+			(at 103.505 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8bf9e778-94f9-4da3-91a6-f922d34bd81a")
 		)
@@ -5368,7 +5422,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1008CS-561XJLC"
+		(property "MPN" "1008CS-561XJRC"
 			(at 67.31 99.06 0)
 			(effects
 				(font
@@ -5379,6 +5433,15 @@
 		)
 		(property "Manufacturer" "Coilcraft"
 			(at 67.31 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C5471933"
+			(at 67.31 95.76 90)
 			(effects
 				(font
 					(size 1.27 1.27)
