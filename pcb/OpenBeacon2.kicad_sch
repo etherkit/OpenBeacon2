@@ -3101,7 +3101,7 @@
 		(uuid "a95917da-2ec3-4ea3-932f-59c94a11aff7")
 	)
 	(junction
-		(at 187.198 41.275)
+		(at 187.198 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b3d81d16-59aa-4995-aeb6-77c20665c05f")
@@ -3141,6 +3141,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e6755d87-14c2-4d4c-9e0c-4d5ce6e9d7d2")
+	)
+	(wire
+		(pts
+			(xy 207.01 48.26) (xy 210.82 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5722da07-a14e-4ae8-ac68-8c208180a5b2")
 	)
 	(wire
 		(pts
@@ -3188,7 +3198,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.198 41.275)
+			(xy 187.198 40.64)
 			(xy 187.198 41.91)
 		)
 		(stroke
@@ -3306,17 +3316,6 @@
 			(type default)
 		)
 		(uuid "414927ba-2507-4295-ba9d-f9c4af6ff03a")
-	)
-	(wire
-		(pts
-			(xy 180.086 48.26)
-			(xy 180.086 41.275)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "41f87bce-970b-44cd-a21c-8f592673cdbf")
 	)
 	(wire
 		(pts
@@ -3728,7 +3727,7 @@
 	(wire
 		(pts
 			(xy 180.848 48.26)
-			(xy 180.086 48.26)
+			(xy 177.8 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3826,7 +3825,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 48.26)
+			(xy 201.93 48.26)
 			(xy 193.548 48.26)
 		)
 		(stroke
@@ -3870,25 +3869,14 @@
 	)
 	(wire
 		(pts
-			(xy 180.086 41.275)
-			(xy 187.198 41.275)
+			(xy 177.8 40.64)
+			(xy 187.198 40.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f9722634-8fba-4f68-9225-5e926c5871a5")
-	)
-	(wire
-		(pts
-			(xy 187.198 40.64)
-			(xy 187.198 41.275)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff479b03-fe89-47f3-a56b-1687e983281f")
 	)
 	(global_label "SDA_5V"
 		(shape bidirectional)
@@ -3979,8 +3967,8 @@
 		)
 	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:ChipAttenuator")
-		(at 204.47 48.26 0)
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 187.198 36.83 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3988,72 +3976,256 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a21e491")
+		(uuid "62fff52d-b036-4561-ab9c-33fb8267ba73")
 		(property "Reference" "R4"
-			(at 196.977 41.275 0)
-			(show_name no)
-			(do_not_autoplace no)
+			(at 189.103 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "PAT1220-C-10dB"
-			(at 204.597 43.053 0)
-			(show_name no)
-			(do_not_autoplace no)
+		(property "Value" "10"
+			(at 189.103 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:PAT1220"
-			(at 202.438 46.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 187.198 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
-			(at 202.438 46.99 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
+			(at 187.198 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 204.47 48.26 0)
-			(show_name no)
-			(do_not_autoplace no)
+		(property "MPN" "0805W8F100JT5E"
+			(at 187.198 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 187.198 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17415"
+			(at 187.198 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
-			(uuid "8c9be093-326e-4b67-b80d-23221e3f0946")
+			(uuid "b46e42e7-3453-4a8a-88d0-151f5965e6ef")
 		)
 		(pin "2"
-			(uuid "ced1d2c7-ba9e-4831-9c38-fcdebf22fcb9")
-		)
-		(pin "3"
-			(uuid "68367b76-7719-45f5-8c99-ba51e4ac47ce")
+			(uuid "fe310133-95fb-4a30-8069-30be23170a8d")
 		)
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 177.8 44.45 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp yes)
+		(uuid "770ac049-131b-467e-ba2e-cf260013d667")
+		(property "Reference" "R13"
+			(at 175.895 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0"
+			(at 175.895 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 177.8 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0805W8F0000T5E"
+			(at 177.8 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 177.8 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17477"
+			(at 177.8 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2dd7150f-1742-431c-8db2-1a12f1b16459")
+		)
+		(pin "2"
+			(uuid "de0edc74-b356-4ca9-9fa0-f715c99327f3")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 204.47 48.26 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2b76433c-7177-418f-85a7-fef8163f03da")
+		(property "Reference" "C12"
+			(at 204.47 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 204.47 52.07 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0805KRX7R9BB104"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
+			(at 204.47 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2fedd97a-a8d5-4b3b-b7ce-834fdf954917")
+		)
+		(pin "2"
+			(uuid "4a2fcff3-19d0-4b7c-a14b-62b31502b73d")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -4071,23 +4243,25 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21e50a")
 		(property "Reference" "U2"
-			(at 175.895 34.798 0)
+			(at 179.07 51.435 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Value" "ASTX-H11-25.000MHZ-T"
-			(at 187.198 36.703 0)
+		(property "Value" "25.000 MHz TCXO"
+			(at 179.07 53.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "EtherkitKicadLibrary:ASTX-H11-25.000MHZ-T"
@@ -4121,6 +4295,33 @@
 				)
 			)
 		)
+		(property "MPN" "OW2EL89CENUXK7YLC-25M"
+			(at 187.198 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "YXC"
+			(at 187.198 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48888230"
+			(at 187.198 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "87d2e9ab-7051-4b1b-a42f-cb75c6854851")
 		)
@@ -4137,82 +4338,6 @@
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 204.47 54.61 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a21ea0c")
-		(property "Reference" "#PWR014"
-			(at 204.47 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 207.137 56.007 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 204.47 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 204.47 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 204.47 54.61 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e542e1f4-6366-4bc7-9519-5c3f30d1c9d5")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -4296,7 +4421,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 187.198 40.64 0)
+		(at 187.198 33.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4306,7 +4431,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21ed38")
 		(property "Reference" "#PWR03"
-			(at 187.198 41.656 0)
+			(at 187.198 34.036 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4317,7 +4442,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 184.658 39.751 0)
+			(at 184.658 32.131 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4327,7 +4452,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 187.198 40.64 0)
+			(at 187.198 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4337,7 +4462,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 187.198 40.64 0)
+			(at 187.198 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4347,7 +4472,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 187.198 40.64 0)
+			(at 187.198 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9901,7 +10026,7 @@
 	)
 	(symbol
 		(lib_id "EtherkitKicadLibrary:C")
-		(at 175.26 43.815 0)
+		(at 167.64 43.18 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9911,7 +10036,7 @@
 		(dnp no)
 		(uuid "f4357c53-a119-46e4-865d-0c4174aebdc8")
 		(property "Reference" "C6"
-			(at 172.72 42.545 0)
+			(at 165.1 41.91 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9922,7 +10047,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 172.72 45.085 0)
+			(at 165.1 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9933,7 +10058,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 175.26 43.815 0)
+			(at 167.64 43.18 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9944,7 +10069,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 175.26 43.815 0)
+			(at 167.64 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9954,7 +10079,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 175.26 43.815 0)
+			(at 167.64 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9980,8 +10105,8 @@
 	)
 	(wire
 		(pts
-			(xy 180.086 41.275)
-			(xy 175.26 41.275)
+			(xy 177.8 40.64)
+			(xy 167.64 40.64)
 		)
 		(stroke
 			(width 0)
@@ -9990,14 +10115,14 @@
 		(uuid "128244db-9acf-4831-937c-8f728ee88ad5")
 	)
 	(junction
-		(at 180.086 41.275)
+		(at 177.8 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "71bb6479-ff00-4313-b032-6adc33130eb8")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 175.26 46.355 0)
+		(at 167.64 45.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10007,7 +10132,7 @@
 		(dnp no)
 		(uuid "f0ec1fac-ebae-493b-b1b6-6e55c5b482d6")
 		(property "Reference" "#PWR0309"
-			(at 175.26 52.705 0)
+			(at 167.64 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10018,7 +10143,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 177.927 47.752 0)
+			(at 170.307 47.117 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10028,7 +10153,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 175.26 46.355 0)
+			(at 167.64 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10039,7 +10164,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 175.26 46.355 0)
+			(at 167.64 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10050,7 +10175,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 175.26 46.355 0)
+			(at 167.64 45.72 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
