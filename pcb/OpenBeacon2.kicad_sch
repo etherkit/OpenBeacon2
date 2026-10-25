@@ -9271,7 +9271,7 @@
 				)
 			)
 		)
-		(property "Value" "FDSD0420-H-100M-P3"
+		(property "Value" "MWSA0402S-100MT"
 			(at 41.656 21.082 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9312,7 +9312,7 @@
 				)
 			)
 		)
-		(property "MPN" "FDSD0420-H-100M=P3"
+		(property "MPN" "MWSA0402S-100MT"
 			(at 30.988 19.05 90)
 			(effects
 				(font
@@ -9321,7 +9321,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Murata Electronics"
+		(property "Manufacturer" "Sunlord"
 			(at 30.988 19.05 90)
 			(effects
 				(font
@@ -9330,7 +9330,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C1329533"
+		(property "LCSC" "C408339"
 			(at 30.988 19.05 90)
 			(effects
 				(font
@@ -9385,7 +9385,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 55.245 42.164 0)
 			(hide yes)
 			(show_name no)
@@ -9416,7 +9416,7 @@
 				)
 			)
 		)
-		(property "MPN" "CL21A106KAYNNNE"
+		(property "MPN" "CL31A106KBHNNNE"
 			(at 59.055 41.275 0)
 			(effects
 				(font
@@ -9434,7 +9434,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C15850"
+		(property "LCSC" "C13585"
 			(at 59.055 41.275 0)
 			(effects
 				(font
