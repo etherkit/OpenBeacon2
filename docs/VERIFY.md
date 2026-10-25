@@ -18,5 +18,5 @@ Draft schematic, not reviewed. These items cover the AVR128DA32 MCU sheet (`pcb/
   - Jason:
 - [ ] **Power**: +5V now comes only from USB-C VBUS (500 mA default). The PA/boost current is not yet measured. U11 LP2985 (150 mA) carries about 45 mA on +3.3V.
   - Jason:
-- [ ] **U1 TLV61046A**: FB is tied to +5V (existing design, not changed). Check this.
-  - Jason:
+- [x] **U1 TLV61046A**: FB, EN and VIN are all on the +5V net (netlist checked).
+  - Jason: FB tied to VIN selects internal 12 V output (TLV61046A datasheet).
