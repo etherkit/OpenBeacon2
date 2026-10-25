@@ -1,0 +1,8277 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "c7f2e3b5-4d6a-4f8b-9e01-2a3b4c5d6e7f")
+	(paper "A4")
+	(title_block
+		(title "OpenBeacon 2 - I/O and User Interface")
+		(date "2026-10-25")
+		(rev "C")
+		(company "Etherkit")
+		(comment 1 "I/O headers, OLED + buttons, I2C 3.3 V / 5 V level shift, 24AA64 EEPROM")
+		(comment 4 "Creative Commons License CC-BY-SA")
+	)
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Connector_Generic:Conn_01x06"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x06"
+				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x06_1_1"
+				(rectangle
+					(start -1.27 6.35)
+					(end 1.27 -8.89)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 5.207)
+					(end 0 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -7.493)
+					(end 0 -7.747)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 3.81)
+					(name "Pin_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:+3.3V"
+			(power global)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.762 0.762)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_+3.3V"
+				(at 0 2.921 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3.3V_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+3.3V"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+			)
+			(symbol "+3.3V_0_1"
+				(circle
+					(center 0 1.524)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 1.016)
+						(xy 0 1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:+5V"
+			(power global)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.762 0.762)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_+5V"
+				(at 0 2.921 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5V_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+5V"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0.762 0.762)
+							)
+						)
+					)
+				)
+			)
+			(symbol "+5V_0_1"
+				(circle
+					(center 0 1.524)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 1.016)
+						(xy 0 1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:128x32OLED"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 1.143 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_128x32OLED"
+				(at 0 -1.524 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "128x32OLED_0_1"
+				(rectangle
+					(start -17.78 5.08)
+					(end 17.78 -5.08)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "128x32OLED_1_1"
+				(pin passive line
+					(at -20.32 3.81 0)
+					(length 2.54)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 1.27 0)
+					(length 2.54)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -1.27 0)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -3.81 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:24AA64T"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -7.62 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_24AA64T"
+				(at 2.54 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "24AA64T_1_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "WP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 3.81 0.889 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_C"
+				(at 3.81 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R? SM0603 SM0805 R?-*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.286 0.762)
+						(xy 2.286 0.762)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -0.762)
+						(xy -2.286 -0.762)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 1.778)
+					(name "~"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 1.778)
+					(name "~"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:MOS_N"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 6.477 1.143 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_MOS_N"
+				(at 10.414 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "MOS_N_0_1"
+				(polyline
+					(pts
+						(xy -0.762 -3.175)
+						(xy -0.762 3.556)
+					)
+					(stroke
+						(width 0.1524)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.524)
+						(xy 0 3.556)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.016)
+						(xy 0 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -3.429)
+						(xy 0 -1.651)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0.762)
+						(xy 1.27 -0.762)
+						(xy 0 0)
+						(xy 1.27 0.762)
+						(xy 1.27 0.762)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54)
+						(xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54)
+						(xy 2.54 0)
+						(xy 1.27 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MOS_N_1_1"
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -2.54 -3.175 0)
+					(length 1.778)
+					(name "G"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:PUSHBUTTON_TACTILE"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "S"
+				(at 0 -2.921 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_PUSHBUTTON_TACTILE"
+				(at 0.127 -5.461 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PUSHBUTTON_TACTILE_0_1"
+				(polyline
+					(pts
+						(xy -5.08 0)
+						(xy -3.937 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -1.905)
+						(xy -4.445 -1.905)
+						(xy -4.445 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 2.159)
+						(xy 3.81 2.159)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.921 0)
+					(radius 1.016)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.159)
+						(xy 0 3.556)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.921 0)
+					(radius 1.016)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0)
+						(xy 3.937 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -1.905)
+						(xy 4.445 -1.905)
+						(xy 4.445 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PUSHBUTTON_TACTILE_1_1"
+				(pin passive line
+					(at -6.35 0 0)
+					(length 1.27)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 -1.905 0)
+					(length 1.27)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 0 180)
+					(length 1.27)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 -1.905 180)
+					(length 1.27)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "EtherkitKicadLibrary:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.794 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "EtherkitKicadLibrary_R"
+				(at 2.286 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R? SM0603 SM0805 R?-*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(polyline
+					(pts
+						(xy 0 3.048)
+						(xy -1.27 2.54)
+						(xy 1.27 1.524)
+						(xy -1.27 0.508)
+						(xy 1.27 -0.508)
+						(xy -1.27 -1.524)
+						(xy 1.27 -2.54)
+						(xy 0 -3.048)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 0.762)
+					(name "~"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 0.762)
+					(name "~"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.524 1.524)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue"
+			(power global)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND-OpenBeaconMini-rescue"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND-OpenBeaconMini-rescue_0_1"
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 -1.27)
+						(xy 1.27 -1.27)
+						(xy 0 -2.54)
+						(xy -1.27 -1.27)
+						(xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND-OpenBeaconMini-rescue_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "IO Headers"
+		(exclude_from_sim no)
+		(at 68.199 41.529 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3556)
+				(bold yes)
+				(italic yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "0e4b2060-4e96-4652-afe7-77ab32fa3923")
+	)
+	(text "I2C Level Conversion"
+		(exclude_from_sim no)
+		(at 123.952 169.926 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3556)
+				(bold yes)
+				(italic yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "a72d425b-5cc5-4590-b59d-8ac0e4dccf9e")
+	)
+	(text "External EEPROM"
+		(exclude_from_sim no)
+		(at 193.929 117.983 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3556)
+				(bold yes)
+				(italic yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "c90f5a53-54e6-4a01-bd19-39d81e33d6c7")
+	)
+	(text "User Interface"
+		(exclude_from_sim no)
+		(at 162.941 83.058 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3556)
+				(bold yes)
+				(italic yes)
+			)
+			(justify right bottom)
+		)
+		(uuid "efe9d8ae-0f4c-47d6-941a-a682a0221534")
+	)
+	(junction
+		(at 118.872 68.199)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "07cf88eb-fcad-40bb-ac53-53720ede887e")
+	)
+	(junction
+		(at 174.625 36.703)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "12d81953-8382-4527-8765-912f3273510a")
+	)
+	(junction
+		(at 166.243 36.703)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1639ae24-bd0e-46c4-9a35-cd605227733a")
+	)
+	(junction
+		(at 186.69 68.453)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1be63d47-dc64-46dc-8183-b01f6ffe7bc1")
+	)
+	(junction
+		(at 164.592 22.479)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "25f09111-52f8-4b55-9f81-65551ae672df")
+	)
+	(junction
+		(at 118.872 70.104)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4023254d-8338-4232-8cbc-5793bc53d1c0")
+	)
+	(junction
+		(at 178.689 20.574)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "45d4cfa3-f114-4a09-844c-30956b21c817")
+	)
+	(junction
+		(at 177.8 48.768)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4668328f-c3d7-4f02-943d-5ed00c14331c")
+	)
+	(junction
+		(at 154.94 116.967)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "49a51dc1-a993-4814-85dd-7558af12c6b2")
+	)
+	(junction
+		(at 110.363 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5ac685c5-6d8a-4e45-950a-bb3dee3f62ab")
+	)
+	(junction
+		(at 163.449 48.768)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "74eaeda4-1dd2-474e-a78d-1e8a5e113e9a")
+	)
+	(junction
+		(at 188.468 34.798)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7bc465cf-da1a-4a18-8f51-55df4f1466d3")
+	)
+	(junction
+		(at 41.529 27.813)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e60cee6-efda-405b-942d-5c9072af67fb")
+	)
+	(junction
+		(at 155.956 68.199)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "82472924-c4b0-47c6-8067-13867cf02b24")
+	)
+	(junction
+		(at 172.72 70.358)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a662cb4a-74bb-4743-9733-47b0305daeb0")
+	)
+	(junction
+		(at 110.363 166.243)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6a81740-b4d5-4fa1-9e85-6c873e3392fd")
+	)
+	(junction
+		(at 178.689 22.479)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3efd759-92da-4c86-a933-13a1e1f41910")
+	)
+	(junction
+		(at 154.94 131.191)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b48c5090-faa7-41b6-a291-0bc6a3cce54d")
+	)
+	(junction
+		(at 146.812 128.651)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bb18472d-d330-48d8-b333-f0f405cc91ba")
+	)
+	(junction
+		(at 141.986 70.104)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bfb66051-63ed-447e-ae30-771d31278f54")
+	)
+	(junction
+		(at 188.468 36.703)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c51f05bb-61ae-4cf3-aef3-f5de3cc62dfb")
+	)
+	(junction
+		(at 177.8 46.863)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c7ffca34-76a7-4b44-917b-7da5dfade0f5")
+	)
+	(junction
+		(at 102.743 153.289)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca58120b-3841-4562-aec6-751d7ac0b2a9")
+	)
+	(junction
+		(at 181.61 88.519)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d0191101-85c1-48f7-b4b1-000e956324f4")
+	)
+	(junction
+		(at 41.529 32.893)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "da795579-0ee5-45b3-be9f-d0d1ae027368")
+	)
+	(junction
+		(at 20.193 30.353)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "df35db75-5c57-480c-a220-ef3d7f90a7c6")
+	)
+	(junction
+		(at 155.956 70.104)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e361f273-ff05-47cb-adb2-14da36f14922")
+	)
+	(junction
+		(at 186.69 70.358)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e60e84d8-ede2-4867-ade3-b765e375b5b4")
+	)
+	(junction
+		(at 132.969 70.104)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f1791c97-0000-4cc7-9445-64aa030bdc21")
+	)
+	(junction
+		(at 152.4 34.798)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6489a9b-dceb-4f5b-8055-ad2e41c028d4")
+	)
+	(junction
+		(at 152.4 36.703)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "faa59aa6-d8c8-4494-bf20-61ee8ecc1c83")
+	)
+	(wire
+		(pts
+			(xy 132.969 70.104)
+			(xy 133.35 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05e8e638-f4dc-4e4e-9f8f-c82ba3264a2a")
+	)
+	(wire
+		(pts
+			(xy 110.363 137.922)
+			(xy 110.363 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "064511dd-cbf6-4ba2-90bb-303a63c0959f")
+	)
+	(wire
+		(pts
+			(xy 119.507 70.104)
+			(xy 118.872 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ba2af72-8b74-49a2-ad31-33b89ba18103")
+	)
+	(wire
+		(pts
+			(xy 118.11 68.199)
+			(xy 118.872 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ed68751-ec3b-4543-89bc-310c9f474c58")
+	)
+	(wire
+		(pts
+			(xy 166.243 34.798)
+			(xy 166.243 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12592a2e-32ef-433b-8d00-c4fe63d10061")
+	)
+	(wire
+		(pts
+			(xy 154.94 116.967)
+			(xy 154.94 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "157d0e20-85eb-4d1f-91bc-08c16242464b")
+	)
+	(wire
+		(pts
+			(xy 41.529 27.813)
+			(xy 41.529 32.893)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1634ba68-ade4-460f-ad4a-fcffd210b4a4")
+	)
+	(wire
+		(pts
+			(xy 41.529 22.733)
+			(xy 47.752 22.733)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17946655-52a1-428c-83cd-f451cd69ede8")
+	)
+	(wire
+		(pts
+			(xy 186.69 70.866)
+			(xy 186.69 70.358)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c1b29d2-201d-40ee-a81b-c5a1730bc26b")
+	)
+	(wire
+		(pts
+			(xy 186.182 70.358)
+			(xy 186.69 70.358)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22d2de30-f604-4999-8540-623753d3ae67")
+	)
+	(wire
+		(pts
+			(xy 181.61 88.519)
+			(xy 181.61 95.758)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2620539f-d063-4d62-8613-16cc03246c99")
+	)
+	(wire
+		(pts
+			(xy 186.69 68.453)
+			(xy 187.198 68.453)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27f36395-a4ac-4356-9422-b88c6087051c")
+	)
+	(wire
+		(pts
+			(xy 102.743 149.098)
+			(xy 102.743 153.289)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28d28c5d-2c2b-4fb0-9e54-44221600f737")
+	)
+	(wire
+		(pts
+			(xy 166.243 36.703)
+			(xy 167.005 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e5551a9-b440-4fcb-9650-48ef40b8bb1c")
+	)
+	(wire
+		(pts
+			(xy 27.305 25.273)
+			(xy 20.193 25.273)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32a6ed3a-5b46-4733-b7a3-33b1630f3517")
+	)
+	(wire
+		(pts
+			(xy 188.468 34.798)
+			(xy 188.976 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "334022b5-b6b0-4f22-83b4-935149b1f087")
+	)
+	(wire
+		(pts
+			(xy 141.986 68.199)
+			(xy 141.986 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36d5c0d8-2b44-4bb1-ae2e-62b1d3340005")
+	)
+	(wire
+		(pts
+			(xy 102.743 139.7)
+			(xy 110.363 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3707e03a-45b5-4307-af3f-89325fc85666")
+	)
+	(wire
+		(pts
+			(xy 187.96 34.798)
+			(xy 188.468 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "379d9bce-2764-43ac-9272-38d6bd022429")
+	)
+	(wire
+		(pts
+			(xy 102.743 141.478)
+			(xy 102.743 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e38fb83-ba61-4e89-9bde-aea7927dddb5")
+	)
+	(wire
+		(pts
+			(xy 185.674 88.519)
+			(xy 181.61 88.519)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e6603e4-d881-4290-9eb2-934f6dcca472")
+	)
+	(wire
+		(pts
+			(xy 164.592 22.479)
+			(xy 164.973 22.479)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4190ec27-d18e-4ee2-9c61-4696788deca6")
+	)
+	(wire
+		(pts
+			(xy 144.018 131.191)
+			(xy 154.94 131.191)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "438d12c7-a81e-44ff-858c-7769bf1bd376")
+	)
+	(wire
+		(pts
+			(xy 146.812 116.967)
+			(xy 154.94 116.967)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4842712c-d67c-42c9-a9ea-ba27bd232cc6")
+	)
+	(wire
+		(pts
+			(xy 188.468 36.703)
+			(xy 188.468 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ba7bc06-42be-433a-9402-401d1158cc6a")
+	)
+	(wire
+		(pts
+			(xy 175.26 34.798)
+			(xy 174.625 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d340f47-0098-48d9-8661-cb20516406c1")
+	)
+	(wire
+		(pts
+			(xy 176.784 46.863)
+			(xy 177.8 46.863)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f29498f-121c-43ec-9e2d-fb4b7bdf46ed")
+	)
+	(wire
+		(pts
+			(xy 152.4 34.798)
+			(xy 153.035 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53a0d71c-504c-4fdf-a62c-0c242172566c")
+	)
+	(wire
+		(pts
+			(xy 155.956 70.612)
+			(xy 155.956 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5659520d-984c-4402-af7a-61e568471f5c")
+	)
+	(wire
+		(pts
+			(xy 172.72 68.453)
+			(xy 172.72 70.358)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "571596a6-81b9-4eba-8ecf-aee38452a543")
+	)
+	(wire
+		(pts
+			(xy 118.872 68.199)
+			(xy 119.507 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58f89f65-8b64-45bb-8e20-6c4b578c16cd")
+	)
+	(wire
+		(pts
+			(xy 162.814 48.768)
+			(xy 163.449 48.768)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59415bbc-07e3-470b-8626-2009387975c8")
+	)
+	(wire
+		(pts
+			(xy 132.207 70.104)
+			(xy 132.969 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b64f5cf-ca2e-4b04-b40a-9a83a734dce0")
+	)
+	(wire
+		(pts
+			(xy 155.956 70.104)
+			(xy 155.956 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c20adb6-01a6-4c27-adaa-1162ca9a42d7")
+	)
+	(wire
+		(pts
+			(xy 176.784 48.768)
+			(xy 177.8 48.768)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fef2348-22dc-4165-8f86-144f2dc1c09b")
+	)
+	(wire
+		(pts
+			(xy 141.224 70.104)
+			(xy 141.986 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61bc55e4-dc1f-49a3-9510-576e417a8040")
+	)
+	(wire
+		(pts
+			(xy 173.482 68.453)
+			(xy 172.72 68.453)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61fd2114-e82b-45c5-b017-41e57a34ffc1")
+	)
+	(wire
+		(pts
+			(xy 20.193 25.273)
+			(xy 20.193 30.353)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63d2e08a-d75f-40e4-8f29-59e5e33a6c44")
+	)
+	(wire
+		(pts
+			(xy 163.83 22.479)
+			(xy 164.592 22.479)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "684a7e32-afdd-40d3-a8d8-bf0bafb9eddf")
+	)
+	(wire
+		(pts
+			(xy 177.8 46.863)
+			(xy 178.816 46.863)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68b7c1e4-2bd8-4c55-a09c-fa480b4eb770")
+	)
+	(wire
+		(pts
+			(xy 27.305 30.353)
+			(xy 20.193 30.353)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6bcb2235-65c6-4b70-bf0a-6d59dc217acd")
+	)
+	(wire
+		(pts
+			(xy 144.018 128.651)
+			(xy 146.812 128.651)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f53d7c7-e57c-4da1-a6b4-7c09619e864e")
+	)
+	(wire
+		(pts
+			(xy 163.449 48.768)
+			(xy 164.084 48.768)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fac19f2-be16-4335-bfdd-754102e4eb47")
+	)
+	(wire
+		(pts
+			(xy 142.748 68.199)
+			(xy 141.986 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "731bea78-683b-4a51-be8b-8d7df83312ef")
+	)
+	(wire
+		(pts
+			(xy 146.812 118.11)
+			(xy 146.812 116.967)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7397ae0c-aa8a-4ae2-96f5-23af65e75091")
+	)
+	(wire
+		(pts
+			(xy 153.035 36.703)
+			(xy 152.4 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73dd1204-c434-432d-b490-7348bdb79ffe")
+	)
+	(wire
+		(pts
+			(xy 163.449 46.863)
+			(xy 163.449 48.768)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "754467b1-5cb6-4804-8893-9cae2128ac0f")
+	)
+	(wire
+		(pts
+			(xy 110.363 139.7)
+			(xy 110.363 141.478)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "767da662-8186-4523-81a8-badd6f711bd0")
+	)
+	(wire
+		(pts
+			(xy 118.745 166.243)
+			(xy 110.363 166.243)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "771dd7c0-ef89-4fff-bd5e-bb7b6f0b3673")
+	)
+	(wire
+		(pts
+			(xy 178.689 22.86)
+			(xy 178.689 22.479)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "799f2fd2-1879-426a-b65c-0f67c14ee433")
+	)
+	(wire
+		(pts
+			(xy 118.872 70.104)
+			(xy 118.872 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ee07ccd-243f-4fe4-8860-c31ffb468668")
+	)
+	(wire
+		(pts
+			(xy 110.363 166.243)
+			(xy 95.123 166.243)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "815dfb25-1e0d-4d86-a19e-07cd8a5de0a2")
+	)
+	(wire
+		(pts
+			(xy 172.72 70.358)
+			(xy 173.482 70.358)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81f2c49f-3a51-4d9f-9511-4243e09cdd43")
+	)
+	(wire
+		(pts
+			(xy 164.084 46.863)
+			(xy 163.449 46.863)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85c47d7b-a794-4188-ac0c-125b0601d9e5")
+	)
+	(wire
+		(pts
+			(xy 47.752 32.893)
+			(xy 41.529 32.893)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8684a211-d7bb-45dc-a3e9-56a9e3627797")
+	)
+	(wire
+		(pts
+			(xy 118.872 153.289)
+			(xy 102.743 153.289)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dff7834-c167-44ad-bc81-a23c2bd59a96")
+	)
+	(wire
+		(pts
+			(xy 85.217 22.733)
+			(xy 82.423 22.733)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "913f4ddc-606d-4f95-9f94-e55a6f0156e0")
+	)
+	(wire
+		(pts
+			(xy 110.363 149.098)
+			(xy 110.363 166.243)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "997d5618-b183-4490-98f1-4adea0e5fcdd")
+	)
+	(wire
+		(pts
+			(xy 174.625 34.798)
+			(xy 174.625 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99d2d986-66fb-4546-bebf-74347f9d3cab")
+	)
+	(wire
+		(pts
+			(xy 171.958 70.358)
+			(xy 172.72 70.358)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a31cb8c6-6364-41c2-8247-b7a000307cde")
+	)
+	(wire
+		(pts
+			(xy 102.743 153.289)
+			(xy 95.123 153.289)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3c6692f-a032-4992-b985-ce183b60e15e")
+	)
+	(wire
+		(pts
+			(xy 177.8 48.768)
+			(xy 177.8 46.863)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5d1aecf-59a3-4400-902f-9893f3788156")
+	)
+	(wire
+		(pts
+			(xy 132.969 68.199)
+			(xy 132.969 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5d1c100-8dc3-445a-9d7e-66977888f928")
+	)
+	(wire
+		(pts
+			(xy 107.569 54.737)
+			(xy 117.602 54.737)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a774ced7-38e2-43fc-841d-1ef38e501fba")
+	)
+	(wire
+		(pts
+			(xy 154.94 115.951)
+			(xy 154.94 116.967)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7a45fa1-ed09-460b-8c88-da1ea0f23589")
+	)
+	(wire
+		(pts
+			(xy 82.423 30.353)
+			(xy 85.217 30.353)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9045914-3c6b-4208-9276-851bbc7b7e2b")
+	)
+	(wire
+		(pts
+			(xy 41.529 22.733)
+			(xy 41.529 27.813)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a942f657-e310-4a9d-9fd4-b20eb48ee0ae")
+	)
+	(wire
+		(pts
+			(xy 187.96 36.703)
+			(xy 188.468 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa0c382a-a48f-4443-9260-83de9350a4ce")
+	)
+	(wire
+		(pts
+			(xy 178.689 22.479)
+			(xy 178.689 20.574)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abd1eb81-a860-4e09-84f4-e23259e5c4f3")
+	)
+	(wire
+		(pts
+			(xy 132.207 68.199)
+			(xy 132.969 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abefbe25-8f60-4d0c-ae69-6623b25c5476")
+	)
+	(wire
+		(pts
+			(xy 188.468 37.084)
+			(xy 188.468 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acdc454b-5090-4f29-b758-11dd193522ee")
+	)
+	(wire
+		(pts
+			(xy 155.448 68.199)
+			(xy 155.956 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae69c721-6aeb-447a-81ef-07852701a99b")
+	)
+	(wire
+		(pts
+			(xy 177.673 22.479)
+			(xy 178.689 22.479)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0aca9be-3c32-4859-bd98-24957b36d7d7")
+	)
+	(wire
+		(pts
+			(xy 181.61 86.868)
+			(xy 181.61 88.519)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b200556f-9dc1-409c-98d9-c6ace6ebfd8a")
+	)
+	(wire
+		(pts
+			(xy 64.008 30.353)
+			(xy 66.802 30.353)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b29c5f36-8606-425c-9adc-84a7e524fc0b")
+	)
+	(wire
+		(pts
+			(xy 186.182 68.453)
+			(xy 186.69 68.453)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b87093aa-084e-485c-a2cf-b6f989257461")
+	)
+	(wire
+		(pts
+			(xy 178.689 20.574)
+			(xy 179.578 20.574)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbe334d5-950d-4eb3-baec-5bde02f61201")
+	)
+	(wire
+		(pts
+			(xy 152.4 37.084)
+			(xy 152.4 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c91046b6-be3c-4f0e-8557-992f55adb32d")
+	)
+	(wire
+		(pts
+			(xy 165.735 36.703)
+			(xy 166.243 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d00b4c54-fddf-4614-98ea-2acec1182d2b")
+	)
+	(wire
+		(pts
+			(xy 20.193 30.353)
+			(xy 20.193 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d02a8082-6bbf-45ec-acbb-a2d03d9eb482")
+	)
+	(wire
+		(pts
+			(xy 155.956 68.199)
+			(xy 156.464 68.199)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6c6d91d-d987-4eb9-bd28-b4e87b36ed0b")
+	)
+	(wire
+		(pts
+			(xy 164.973 20.574)
+			(xy 164.592 20.574)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d889950a-0e47-419d-8204-40f95887d958")
+	)
+	(wire
+		(pts
+			(xy 152.4 36.703)
+			(xy 152.4 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9858f15-7df2-49d0-97fb-967b8cc996fe")
+	)
+	(wire
+		(pts
+			(xy 117.602 57.277)
+			(xy 116.078 57.277)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da14e882-ec96-4cd6-bdd6-1711f3522b99")
+	)
+	(wire
+		(pts
+			(xy 47.752 27.813)
+			(xy 41.529 27.813)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db2d243c-16cd-4b84-84e7-b0beafd7cbe2")
+	)
+	(wire
+		(pts
+			(xy 173.99 36.703)
+			(xy 174.625 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db68d6c4-ddd3-4c3e-8ce4-b4fdcb14e422")
+	)
+	(wire
+		(pts
+			(xy 118.872 70.485)
+			(xy 118.872 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df36a689-457a-466b-96f9-262e727b1a2c")
+	)
+	(wire
+		(pts
+			(xy 174.625 36.703)
+			(xy 175.26 36.703)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1e03379-2fe8-42ea-a9c5-e9e69cbe3036")
+	)
+	(wire
+		(pts
+			(xy 151.511 34.798)
+			(xy 152.4 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e85c4a84-074a-487e-ba91-cceb0f4cddaf")
+	)
+	(wire
+		(pts
+			(xy 154.94 125.73)
+			(xy 154.94 131.191)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9150d43-c125-47b0-b166-bbd8b1c5ee52")
+	)
+	(wire
+		(pts
+			(xy 66.802 22.733)
+			(xy 64.008 22.733)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec1715b2-9bab-4145-a6e2-4d3c56d2b8d2")
+	)
+	(wire
+		(pts
+			(xy 177.8 49.149)
+			(xy 177.8 48.768)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eda902f0-bd11-47c9-8ce6-52759d8d5dab")
+	)
+	(wire
+		(pts
+			(xy 165.735 34.798)
+			(xy 166.243 34.798)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6e0a962-aae8-44f1-bfda-655dc373e47e")
+	)
+	(wire
+		(pts
+			(xy 164.592 20.574)
+			(xy 164.592 22.479)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f803e470-1e48-4c3f-98fd-8a728b09de56")
+	)
+	(wire
+		(pts
+			(xy 186.69 70.358)
+			(xy 186.69 68.453)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9819dcf-b72b-4280-93a4-d8a7216d82b1")
+	)
+	(wire
+		(pts
+			(xy 155.448 70.104)
+			(xy 155.956 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9f173fc-47c6-4346-a896-3205d2b9c901")
+	)
+	(wire
+		(pts
+			(xy 141.986 70.104)
+			(xy 142.748 70.104)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa1a20f4-8fdd-40bb-9a58-fb8e5c5b182e")
+	)
+	(wire
+		(pts
+			(xy 146.812 125.73)
+			(xy 146.812 128.651)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fae35fe8-ab09-4fea-9eaa-550573bde81e")
+	)
+	(wire
+		(pts
+			(xy 177.673 20.574)
+			(xy 178.689 20.574)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbb567a6-75d7-4210-8034-7271c4ca2767")
+	)
+	(wire
+		(pts
+			(xy 41.529 32.893)
+			(xy 41.529 34.417)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff92e26b-4b4d-4387-b4eb-2d5005c9e5ef")
+	)
+	(global_label "BTN_DSP_2"
+		(shape output)
+		(at 156.464 68.199 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0057f443-ba4b-45b2-85cd-c7e319b79dda")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 156.464 68.199 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_5V"
+		(shape bidirectional)
+		(at 117.602 52.197 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "159388df-3c1f-4e78-b09c-24f59da4aa37")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 117.602 52.197 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "UART_TX"
+		(shape bidirectional)
+		(at 85.217 27.813 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "17407cc6-ace5-4fe3-a5f6-4e8fc0d1ba0f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 85.217 27.813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_DOWN"
+		(shape output)
+		(at 178.816 46.863 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "30e6a9c8-93cd-43bc-8004-1b09fe37b3d8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 178.816 46.863 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_5V"
+		(shape bidirectional)
+		(at 95.123 166.243 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "32a20477-8b8a-4fe0-b9c1-b37c84dfd570")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.123 166.243 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "UART_RX"
+		(shape bidirectional)
+		(at 85.217 25.273 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "35c7e1c4-bc30-4bc8-9342-d5a553b7e03c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 85.217 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 66.802 27.813 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "45a53173-af9a-4ea1-96b2-c9095085bf25")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 66.802 27.813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 144.018 131.191 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "48294584-33f1-454b-952d-889c644ac534")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 144.018 131.191 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_UP"
+		(shape output)
+		(at 179.578 20.574 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "78fd8751-ec0f-47b8-af1a-7cbb352a451e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 179.578 20.574 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 191.77 103.378 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7f96cbe8-b217-4af4-9d91-47946fd18625")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 191.77 103.378 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_RIGHT"
+		(shape output)
+		(at 188.976 34.798 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8b6f8192-3b75-4485-96ef-2ebcc8e72dc7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 188.976 34.798 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 66.802 25.273 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9903af81-81b8-47a5-a00b-d38a4040c850")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 66.802 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 191.77 100.838 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a054c8ba-cf4d-4bfe-9411-22338e48cf37")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 191.77 100.838 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "A2"
+		(shape output)
+		(at 47.752 20.193 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a16f63ae-5db4-43ec-86f0-5ebea35f3354")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 47.752 20.193 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 128.905 166.243 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "aaf7e428-2c94-4624-ac2e-722ecf7059e4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 128.905 166.243 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_LEFT"
+		(shape output)
+		(at 151.511 34.798 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ab86ce8b-5876-457a-bcb6-723a9f90ca8f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 151.511 34.798 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "A3"
+		(shape output)
+		(at 47.752 25.273 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "aba87082-5ac9-4ef9-9fa7-ff63673865a0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 47.752 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 129.032 153.289 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "adfc618a-bbfd-446d-aa92-7362dd8014d2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 129.032 153.289 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_DSP_1"
+		(shape output)
+		(at 118.11 68.199 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b1ff7ef6-ee17-4335-b8c8-71c71a90a8c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 118.11 68.199 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL_5V"
+		(shape bidirectional)
+		(at 95.123 153.289 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bb8723a0-4ec8-4d2b-b1d7-cf923b08099b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.123 153.289 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D4"
+		(shape bidirectional)
+		(at 27.305 22.733 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bda0c9cf-49a1-4e17-bba0-43d738fbed44")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 27.305 22.733 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "A4"
+		(shape output)
+		(at 47.752 30.353 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cc821a94-0a78-4cb6-9339-ad158858d732")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 47.752 30.353 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SDA_5V"
+		(shape bidirectional)
+		(at 117.602 49.657 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d5686ab6-b71c-4060-93ae-d8c07a199519")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 117.602 49.657 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BTN_BACK"
+		(shape output)
+		(at 187.198 68.453 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d8855455-0489-4f3e-97b6-ab1116c5b37e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.198 68.453 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "D10"
+		(shape bidirectional)
+		(at 27.305 27.813 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "db46c4a4-7d80-4d35-8bd8-db86d982bca8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 27.305 27.813 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 144.018 128.651 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f43caa1c-b9fe-4b47-bd9a-647229d36079")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 144.018 128.651 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+5V")
+		(at 107.569 54.737 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a208c1c")
+		(property "Reference" "#PWR055"
+			(at 107.569 55.753 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+5V"
+			(at 105.664 53.848 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.569 54.737 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.569 54.737 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 107.569 54.737 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "acd93734-9526-448c-ab4a-b37846f3e7a0")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR055")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 116.078 57.277 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a208c5f")
+		(property "Reference" "#PWR058"
+			(at 116.078 63.627 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 113.411 58.547 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.078 57.277 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.078 57.277 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 116.078 57.277 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e05fb748-51b7-42fe-8d50-3f02d2e3b9ec")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR058")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:128x32OLED")
+		(at 137.922 53.467 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a208cbc")
+		(property "Reference" "U6"
+			(at 137.922 52.324 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "128x32 OLED"
+			(at 137.922 54.991 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:128x32OLED"
+			(at 137.922 53.467 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.922 53.467 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 137.922 53.467 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "19a5c980-6f46-4873-b5a4-de4668e40c75")
+		)
+		(pin "1"
+			(uuid "754a4daf-e10b-4b75-839a-e66260daba0a")
+		)
+		(pin "2"
+			(uuid "fbf2529a-ffa5-48d7-bdc3-10c467c71b15")
+		)
+		(pin "3"
+			(uuid "47d4ff88-1ca6-4d7e-bb56-9ec3c580dbfa")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 171.323 20.574 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21c770")
+		(property "Reference" "S5"
+			(at 171.323 23.495 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Up"
+			(at 171.45 26.035 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 171.323 20.574 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.323 20.574 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 171.323 20.574 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "16b1d889-cb70-4651-8a09-daf5a80d5ca6")
+		)
+		(pin "2"
+			(uuid "400ba0ea-a8f2-426d-ae4c-784598d8decc")
+		)
+		(pin "3"
+			(uuid "e32251b5-a041-45b2-a1b7-376c2ff13f9e")
+		)
+		(pin "4"
+			(uuid "1a9f5620-0e9a-41da-962a-2b83fbe99042")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 159.385 34.798 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21c7ac")
+		(property "Reference" "S3"
+			(at 159.385 37.719 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Left"
+			(at 159.512 40.259 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 159.385 34.798 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 159.385 34.798 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 159.385 34.798 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "64b69fb4-b2d5-4943-a817-9cf112c82961")
+		)
+		(pin "2"
+			(uuid "49b3a7f4-6851-4af3-b8d9-388064152dac")
+		)
+		(pin "3"
+			(uuid "43987f04-00b4-408b-b79f-d22225a93c49")
+		)
+		(pin "4"
+			(uuid "bfacacb4-9282-4422-832f-9a0122947d12")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 181.61 34.798 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21c8b8")
+		(property "Reference" "S7"
+			(at 181.61 37.719 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Right"
+			(at 181.737 40.259 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 181.61 34.798 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 34.798 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 181.61 34.798 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e8a41776-0a9c-4868-adad-2e84f9617e36")
+		)
+		(pin "2"
+			(uuid "2e2255a7-f907-4326-91a2-2b5242289dba")
+		)
+		(pin "3"
+			(uuid "8547b05c-53d5-4d34-9dd8-922461f29967")
+		)
+		(pin "4"
+			(uuid "728671f9-73f8-405c-b788-ea05ad2ae1b8")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 170.434 46.863 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21c96b")
+		(property "Reference" "S4"
+			(at 170.434 49.784 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Down"
+			(at 170.561 52.324 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 170.434 46.863 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.434 46.863 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 170.434 46.863 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cb90f887-09d0-4b83-a852-9927088c0f7c")
+		)
+		(pin "2"
+			(uuid "437e8f15-0879-4f11-95be-b24f7b6d0d4e")
+		)
+		(pin "3"
+			(uuid "42aeaed0-9c24-48b5-8025-196db7d0c989")
+		)
+		(pin "4"
+			(uuid "ee52eb6b-9495-404d-94af-b5203c3b8961")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 125.857 68.199 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21ca09")
+		(property "Reference" "S1"
+			(at 125.857 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Menu 1"
+			(at 125.984 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 125.857 68.199 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 125.857 68.199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 125.857 68.199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6b5c6e6f-16c9-44a2-afe7-0937de148838")
+		)
+		(pin "2"
+			(uuid "045657b5-1634-4a7e-92e6-157fdb012db5")
+		)
+		(pin "3"
+			(uuid "bbb3da69-38d4-4943-97d7-64402c0feede")
+		)
+		(pin "4"
+			(uuid "c49a4e5c-008c-426f-80e0-400c1d4e5f2e")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 149.098 68.199 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21ca6e")
+		(property "Reference" "S2"
+			(at 149.098 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Menu 2"
+			(at 149.225 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 149.098 68.199 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.098 68.199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.098 68.199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09f58f8b-7dc7-40b4-bee8-618221009b40")
+		)
+		(pin "2"
+			(uuid "389a69c1-1ea2-45f3-875d-1b6b668fb3eb")
+		)
+		(pin "3"
+			(uuid "155ea72a-6bec-4d7d-8601-654b19fb1626")
+		)
+		(pin "4"
+			(uuid "85ec1781-55df-44fa-8008-919a53ca92cb")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 133.35 70.104 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d06c")
+		(property "Reference" "#PWR063"
+			(at 133.35 76.454 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.683 71.374 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 70.104 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 70.104 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 70.104 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4f750c64-cf6d-4a6d-8b29-3fa06b0f844f")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR063")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 141.224 70.104 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d0a7")
+		(property "Reference" "#PWR065"
+			(at 141.224 76.454 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 138.557 71.374 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 141.224 70.104 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 141.224 70.104 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 141.224 70.104 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "12f7bd09-b773-4caf-8e7b-feb39d953f68")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 163.83 22.479 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d0ca")
+		(property "Reference" "#PWR074"
+			(at 163.83 28.829 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 161.163 23.749 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 22.479 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 22.479 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 22.479 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4a187e8b-c33f-44f7-a2e3-fc1c1113bb16")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR074")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 162.814 48.768 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d155")
+		(property "Reference" "#PWR073"
+			(at 162.814 55.118 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 160.147 50.038 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.814 48.768 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.814 48.768 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 162.814 48.768 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0d88e5fd-05ef-454f-83ba-4feefbc4677b")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR073")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 167.005 36.703 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d1d8")
+		(property "Reference" "#PWR075"
+			(at 167.005 43.053 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 164.338 37.973 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 167.005 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 167.005 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 167.005 36.703 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "59adad0e-cb53-4756-930a-02ce9a89114d")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR075")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 173.99 36.703 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21d23b")
+		(property "Reference" "#PWR078"
+			(at 173.99 43.053 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 171.323 37.973 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 36.703 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d5e3ba02-391d-4be9-b6a7-10ebe230d6c2")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR078")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 154.94 121.92 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21f493")
+		(property "Reference" "R15"
+			(at 158.369 120.904 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3.3k"
+			(at 158.877 122.682 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 154.94 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "266778f7-3393-459a-ba55-17a51e11fc65")
+		)
+		(pin "2"
+			(uuid "78f48114-8108-4117-8e7c-a255032aaf6c")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 146.812 121.92 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21f518")
+		(property "Reference" "R14"
+			(at 150.114 120.904 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3.3k"
+			(at 150.241 122.682 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 146.812 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.812 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 146.812 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "043619a7-7ce9-4efa-8223-ed04da9d37d9")
+		)
+		(pin "2"
+			(uuid "17266898-c810-4418-a4f0-561d6ed4db41")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 154.94 115.951 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a21f6ff")
+		(property "Reference" "#PWR068"
+			(at 154.94 116.967 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 152.4 115.062 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 115.951 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 115.951 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 115.951 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4ebbba64-3628-46a6-a7d4-850a4bc4331a")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR068")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(at 179.832 68.453 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a2481f8")
+		(property "Reference" "S6"
+			(at 179.832 71.374 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Back"
+			(at 179.959 73.914 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+			(at 179.832 68.453 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.832 68.453 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.832 68.453 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1987d54b-bf0e-498c-a5b7-7bd15a2432a6")
+		)
+		(pin "2"
+			(uuid "34140508-fc6d-44af-8919-bffb93af9ae7")
+		)
+		(pin "3"
+			(uuid "db627eb9-3aea-4122-9b0a-ab9b1935b539")
+		)
+		(pin "4"
+			(uuid "da5e7155-1ff6-4370-9bee-5715c39156b3")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "S6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 171.958 70.358 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a2481ff")
+		(property "Reference" "#PWR077"
+			(at 171.958 76.708 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 169.291 71.628 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 171.958 70.358 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.958 70.358 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 171.958 70.358 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ba679230-0b05-45cc-8d66-0521f83b17ff")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR077")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x06")
+		(at 52.832 25.273 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a24d2d9")
+		(property "Reference" "J5"
+			(at 52.832 17.526 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ADC Inputs"
+			(at 52.832 35.687 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
+			(at 52.832 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 52.832 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 52.832 25.273 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6021fefa-a969-49c2-9c4a-8bec713e2677")
+		)
+		(pin "2"
+			(uuid "a21bb2df-0150-4ecb-9266-3f068ffbb526")
+		)
+		(pin "3"
+			(uuid "463bf4e8-8bc1-4a4e-8db0-95cfee778f37")
+		)
+		(pin "4"
+			(uuid "5b599991-e0eb-4e01-a450-279f91bc82fa")
+		)
+		(pin "5"
+			(uuid "200a2a80-f4ce-402d-8b32-86e4e7382681")
+		)
+		(pin "6"
+			(uuid "21d55714-d2ef-4a77-9089-39589b60c163")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 41.529 34.417 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a24ec49")
+		(property "Reference" "#PWR025"
+			(at 41.529 40.767 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 41.529 37.719 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 41.529 34.417 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 41.529 34.417 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 41.529 34.417 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d0709c20-f827-4c4f-9520-a751285441bb")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 20.193 31.75 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a24fb00")
+		(property "Reference" "#PWR021"
+			(at 20.193 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 20.193 35.052 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 20.193 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 20.193 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 20.193 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "24a430d5-b285-4c5c-af70-1122e32df1f8")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 71.882 25.273 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a250921")
+		(property "Reference" "J8"
+			(at 71.882 20.193 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "I2C Bus"
+			(at 71.882 32.893 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 71.882 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.882 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 71.882 25.273 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fdb53df0-89e7-4c86-a080-60485f4b713d")
+		)
+		(pin "2"
+			(uuid "93100e4f-0492-4e7a-8cf1-11582e0353fe")
+		)
+		(pin "3"
+			(uuid "77b30634-abc5-4723-a53c-c2e0f2af3448")
+		)
+		(pin "4"
+			(uuid "35b7e1db-476b-4b46-bc38-101c9f74110c")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "J8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 64.008 30.353 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a250bcf")
+		(property "Reference" "#PWR037"
+			(at 64.008 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.008 33.655 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 64.008 30.353 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.008 30.353 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.008 30.353 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ab1e82ad-c658-4e94-83a7-08e4bc57bd6c")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 64.008 22.733 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a250fa8")
+		(property "Reference" "#PWR036"
+			(at 64.008 23.749 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 61.468 21.844 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 64.008 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.008 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.008 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "82cac281-71ab-4b30-8b5c-ac8226b87eac")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:MOS_N")
+		(at 123.952 150.749 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a252f60")
+		(property "Reference" "Q5"
+			(at 117.856 145.542 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "2N7002"
+			(at 121.539 148.082 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:SOT23-2N7002"
+			(at 123.952 150.749 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.952 150.749 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 123.952 150.749 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "384a6337-28b3-43f6-a485-137cad792d04")
+		)
+		(pin "2"
+			(uuid "550576d9-a89f-4b70-926d-b6e5a5558671")
+		)
+		(pin "3"
+			(uuid "95600ce5-dc46-4f08-9a6e-557a0d152cab")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "Q5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:MOS_N")
+		(at 123.825 163.703 90)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a253413")
+		(property "Reference" "Q4"
+			(at 117.729 158.496 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "2N7002"
+			(at 121.412 161.036 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EtherkitKicadLibrary:SOT23-2N7002"
+			(at 123.825 163.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.825 163.703 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 123.825 163.703 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "22e795d3-3ee3-4183-b791-fbbc353d2a1d")
+		)
+		(pin "2"
+			(uuid "964f2fee-a000-4766-a337-68963c5f2707")
+		)
+		(pin "3"
+			(uuid "3bf1c1e3-cf69-40be-b41f-6378a282c494")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "Q4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 127.127 148.209 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a253515")
+		(property "Reference" "#PWR061"
+			(at 127.127 149.225 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 127.127 145.415 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127.127 148.209 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127.127 148.209 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127.127 148.209 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "84d2c523-9e9b-4016-9bfc-7059b8395beb")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 127 161.163 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a253746")
+		(property "Reference" "#PWR060"
+			(at 127 162.179 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 127 158.369 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 161.163 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 161.163 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127 161.163 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a93a40c5-5d44-459c-9104-34585853a3fc")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 110.363 145.288 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a2540d7")
+		(property "Reference" "R12"
+			(at 113.792 144.145 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3.3k"
+			(at 113.792 146.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 110.363 145.288 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.363 145.288 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.363 145.288 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "37637e8c-938c-458c-b48c-7b3f92163f49")
+		)
+		(pin "2"
+			(uuid "5fe6f4fb-dbdb-4746-b425-097f608ca689")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 102.743 145.288 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a254242")
+		(property "Reference" "R11"
+			(at 105.537 144.272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3.3k"
+			(at 106.172 146.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 102.743 145.288 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.743 145.288 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 102.743 145.288 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cffb4d89-b4c7-41ed-8b09-f72120f22666")
+		)
+		(pin "2"
+			(uuid "f4c3022b-6d55-49a1-b181-389204da611b")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+5V")
+		(at 110.363 137.922 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a2546de")
+		(property "Reference" "#PWR057"
+			(at 110.363 138.938 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+5V"
+			(at 108.458 137.033 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 110.363 137.922 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.363 137.922 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 110.363 137.922 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b86054ec-55e6-489a-b45b-2519f2c5ce34")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 32.385 25.273 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c0ef538")
+		(property "Reference" "J4"
+			(at 32.385 20.193 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Digital IO"
+			(at 32.385 32.893 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 32.385 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 32.385 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 32.385 25.273 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dee42abd-ea83-4945-b005-736351667051")
+		)
+		(pin "2"
+			(uuid "d16dd5a5-737f-409e-860c-a7ceb5c6b885")
+		)
+		(pin "3"
+			(uuid "4c1fd928-d6a4-40c4-9a19-46532a4606bf")
+		)
+		(pin "4"
+			(uuid "9ab85f85-57b9-4817-9f90-4c1721e83963")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 90.297 25.273 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c0fad0d")
+		(property "Reference" "J10"
+			(at 90.297 20.193 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "UART"
+			(at 90.297 32.893 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 90.297 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 90.297 25.273 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 90.297 25.273 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8c4cbe17-5095-47e8-829f-c9aa6b03629e")
+		)
+		(pin "2"
+			(uuid "90041e5e-58e9-4d00-8c58-a42f803e6a83")
+		)
+		(pin "3"
+			(uuid "7dfe555f-b0db-4e06-b543-c95f31bebd3b")
+		)
+		(pin "4"
+			(uuid "930f1543-9d6d-49cb-8fa2-e256d88e9263")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 82.423 30.353 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c0fad13")
+		(property "Reference" "#PWR046"
+			(at 82.423 36.703 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 82.423 33.655 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.423 30.353 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.423 30.353 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 82.423 30.353 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2e0dada1-6e76-4943-a8d9-1a6b419698e2")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR046")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 82.423 22.733 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c0fad19")
+		(property "Reference" "#PWR045"
+			(at 82.423 23.749 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 79.883 21.844 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.423 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.423 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 82.423 22.733 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9b2bae71-c25a-4ed9-b1a5-075dda33c3f6")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:24AA64T")
+		(at 181.61 103.378 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c20aecb")
+		(property "Reference" "U8"
+			(at 172.466 94.107 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "24AA64T"
+			(at 175.387 96.266 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 181.61 103.378 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 103.378 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 181.61 103.378 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8205d28e-d9f6-4d0c-963a-93c0549aa786")
+		)
+		(pin "2"
+			(uuid "9ec1667c-fa05-4074-b94f-7ee938ad62de")
+		)
+		(pin "3"
+			(uuid "7a376abd-35e6-412b-ab88-91b91bfac1a7")
+		)
+		(pin "4"
+			(uuid "75c3f1bd-09ce-40d1-8d1b-696ed589021e")
+		)
+		(pin "5"
+			(uuid "1b980e00-d897-46f0-af06-666a92b759c7")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "U8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 181.61 110.998 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c20b0f7")
+		(property "Reference" "#PWR082"
+			(at 181.61 117.348 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 181.61 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 181.61 110.998 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 110.998 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 181.61 110.998 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "076087a9-16c7-476c-bb89-fd5e03fceb77")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 171.45 100.838 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c20b33a")
+		(property "Reference" "#PWR076"
+			(at 171.45 107.188 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 171.45 104.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 171.45 100.838 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 100.838 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 100.838 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7edce33b-3dd8-4c22-a7e1-5d963bb41119")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR076")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 181.61 86.868 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c20b975")
+		(property "Reference" "#PWR081"
+			(at 181.61 87.884 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 179.07 85.979 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 181.61 86.868 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 86.868 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 181.61 86.868 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ff0273e7-1c1e-44b8-afa7-29237131ad58")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR081")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 185.674 91.059 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c21e00d")
+		(property "Reference" "C22"
+			(at 189.484 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 190.373 91.948 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 185.674 91.059 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.674 91.059 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 185.674 91.059 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "303d19c1-6c49-4116-b0c4-1dc065471f93")
+		)
+		(pin "2"
+			(uuid "c997cb58-be7f-4085-81de-f28e34d1f46c")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 185.674 93.599 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c21e28f")
+		(property "Reference" "#PWR083"
+			(at 185.674 99.949 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.674 96.901 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.674 93.599 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 185.674 93.599 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 185.674 93.599 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "91ac6b48-c25a-4caa-ba46-c8d80131a5f3")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR083")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 186.69 73.406 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c305de3")
+		(property "Reference" "C23"
+			(at 190.627 72.263 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 191.897 74.041 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 186.69 73.406 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.69 73.406 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 186.69 73.406 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d6554d57-6373-47e2-b50d-369202b50bca")
+		)
+		(pin "2"
+			(uuid "e3119a72-ec97-42b8-9f9b-5f3ec2865517")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 155.956 73.152 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c306b67")
+		(property "Reference" "C19"
+			(at 159.893 72.009 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 161.163 73.787 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 155.956 73.152 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 155.956 73.152 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 155.956 73.152 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cdb7e357-24f5-419b-8c98-5740f745c908")
+		)
+		(pin "2"
+			(uuid "196874c9-3cff-4746-ab80-be8a49de74af")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 186.69 75.946 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c306e55")
+		(property "Reference" "#PWR084"
+			(at 186.69 82.296 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 186.69 79.248 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 75.946 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.69 75.946 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 186.69 75.946 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d9cfd54e-3335-44d7-a32c-d5ef10a1fd27")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR084")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 155.956 75.692 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c3079f0")
+		(property "Reference" "#PWR069"
+			(at 155.956 82.042 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 155.956 78.994 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 155.956 75.692 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 155.956 75.692 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 155.956 75.692 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "87435666-bc72-4dc9-a594-96c4086e80ff")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR069")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 118.872 73.025 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c308827")
+		(property "Reference" "C17"
+			(at 114.935 71.882 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 113.919 73.787 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 118.872 73.025 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.872 73.025 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.872 73.025 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dd7c0b23-f49b-461a-a106-87f315c86007")
+		)
+		(pin "2"
+			(uuid "a61b5e06-5898-482b-9c90-20de2c7eba75")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 118.872 75.565 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c309738")
+		(property "Reference" "#PWR059"
+			(at 118.872 81.915 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 118.872 78.867 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.872 75.565 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.872 75.565 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 118.872 75.565 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8af34498-848f-48e8-8644-171f5c12b23e")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR059")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 188.468 39.624 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c30a00d")
+		(property "Reference" "C24"
+			(at 192.405 38.481 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 193.675 40.259 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 188.468 39.624 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 188.468 39.624 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 188.468 39.624 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6c5ce4e4-7858-4ce7-91f8-3e7f3acfb242")
+		)
+		(pin "2"
+			(uuid "41680be0-bb69-4aab-9062-98d2b55fb89a")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 188.468 42.164 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c30a4ad")
+		(property "Reference" "#PWR086"
+			(at 188.468 48.514 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.801 43.434 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 188.468 42.164 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 188.468 42.164 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 188.468 42.164 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9613569e-6991-4ab5-94bc-1da0ccabf9b6")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR086")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 177.8 51.689 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c30a7b0")
+		(property "Reference" "C20"
+			(at 181.737 50.546 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 183.007 52.324 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 177.8 51.689 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 51.689 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 177.8 51.689 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "71f26e76-8662-482c-9f9f-61433b9b04df")
+		)
+		(pin "2"
+			(uuid "1e3a8f5c-f4b2-4c0f-a719-0c87ad2a4724")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 177.8 54.229 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c30ab4f")
+		(property "Reference" "#PWR079"
+			(at 177.8 60.579 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 175.133 55.499 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 54.229 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 54.229 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 177.8 54.229 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b8e15dd9-27c6-4c7b-8834-7b867b2a1509")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR079")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 178.689 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c30ac8e")
+		(property "Reference" "C21"
+			(at 182.626 24.257 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 183.896 26.035 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 178.689 25.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 178.689 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 178.689 25.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "27ffc92d-c904-476d-af7d-5d4db2e77391")
+		)
+		(pin "2"
+			(uuid "c50cf974-f5fc-4f95-a1aa-c71be12590ad")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 178.689 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c330b0c")
+		(property "Reference" "#PWR080"
+			(at 178.689 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 176.022 29.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 178.689 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 178.689 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 178.689 27.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5e75877d-8a95-484e-bdce-79bbc4c0f16f")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR080")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 152.4 39.624 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c34387f")
+		(property "Reference" "C18"
+			(at 148.463 38.481 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 147.447 40.386 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 152.4 39.624 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 39.624 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 39.624 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "474c9b3b-92fa-47ae-8c36-be8ae514e0e0")
+		)
+		(pin "2"
+			(uuid "06d8e36a-5f14-4f12-a91f-e92f68eaa320")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 152.4 42.164 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005c343d56")
+		(property "Reference" "#PWR067"
+			(at 152.4 48.514 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.733 43.434 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 42.164 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 42.164 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 42.164 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "06b75eab-245b-4e60-89b1-9f929c73a04c")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
+					(reference "#PWR067")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)
