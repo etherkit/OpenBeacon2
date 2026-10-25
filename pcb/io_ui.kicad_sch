@@ -1431,7 +1431,10 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "EtherkitKicadLibrary:PUSHBUTTON_TACTILE"
+		(symbol "Switch:SW_Push"
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -1441,18 +1444,19 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "S"
-				(at 0 -2.921 0)
+			(property "Reference" "SW"
+				(at 1.27 2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "EtherkitKicadLibrary_PUSHBUTTON_TACTILE"
-				(at 0.127 -5.461 0)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1462,26 +1466,28 @@
 				)
 			)
 			(property "Footprint" ""
-				(at 0 0 0)
+				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
-						(size 1.524 1.524)
+						(size 1.27 1.27)
 					)
 				)
 			)
 			(property "Datasheet" ""
-				(at 0 0 0)
+				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
-						(size 1.524 1.524)
+						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Push button switch, generic, two pins"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1492,114 +1498,67 @@
 					)
 				)
 			)
-			(symbol "PUSHBUTTON_TACTILE_0_1"
-				(polyline
-					(pts
-						(xy -5.08 0)
-						(xy -3.937 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 -1.905)
-						(xy -4.445 -1.905)
-						(xy -4.445 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 2.159)
-						(xy 3.81 2.159)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.921 0)
-					(radius 1.016)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.159)
-						(xy 0 3.556)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.921 0)
-					(radius 1.016)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 0)
-						(xy 3.937 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 -1.905)
-						(xy 4.445 -1.905)
-						(xy 4.445 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
 				)
 			)
-			(symbol "PUSHBUTTON_TACTILE_1_1"
+			(symbol "SW_Push_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 0 3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
-					(at -6.35 0 0)
-					(length 1.27)
+					(at -5.08 0 0)
+					(length 2.54)
 					(name "1"
 						(effects
 							(font
@@ -1616,8 +1575,8 @@
 					)
 				)
 				(pin passive line
-					(at -6.35 -1.905 0)
-					(length 1.27)
+					(at 5.08 0 180)
+					(length 2.54)
 					(name "2"
 						(effects
 							(font
@@ -1626,42 +1585,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 6.35 0 180)
-					(length 1.27)
-					(name "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 6.35 -1.905 180)
-					(length 1.27)
-					(name "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2813,6 +2736,83 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "df35db75-5c57-480c-a220-ef3d7f90a7c6")
+	)
+	(wire
+		(pts
+			(xy 101.6 26.67)
+			(xy 101.6 28.575)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5821edb2-0ffb-4ff5-a4c2-7fa57e89ffd3")
+	)
+	(wire
+		(pts
+			(xy 101.6 48.26)
+			(xy 101.6 50.165)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37e709b9-1c7d-427e-9d88-f35a145c6a63")
+	)
+	(wire
+		(pts
+			(xy 101.6 69.85)
+			(xy 101.6 71.755)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d4ed79b-06e0-46f9-80bb-550673bd4e72")
+	)
+	(wire
+		(pts
+			(xy 190.5 26.67)
+			(xy 190.5 28.575)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7520910b-308e-49a5-ab69-6bb95948578b")
+	)
+	(wire
+		(pts
+			(xy 146.05 48.26)
+			(xy 146.05 50.165)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e03cd5a-e1cb-422b-9dd2-3212476dcf28")
+	)
+	(wire
+		(pts
+			(xy 234.95 48.26)
+			(xy 234.95 50.165)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d66d288c-864f-45e8-bd26-46e27b24b964")
+	)
+	(wire
+		(pts
+			(xy 190.5 69.85)
+			(xy 190.5 71.755)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c4ba3fa-2b67-4387-ab80-c8cb53694e91")
 	)
 	(wire
 		(pts
@@ -5601,8 +5601,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 101.6 26.67)
+			(xy 102.87 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6feadacd-3438-4a44-bb12-c0d30630b0b2")
+	)
+	(wire
+		(pts
+			(xy 113.03 26.67)
+			(xy 114.3 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d515100c-3655-47b3-a765-d67fabe1b8a2")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 107.95 26.67 0)
 		(unit 1)
 		(body_style 1)
@@ -5632,29 +5654,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 107.95 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 107.95 26.67 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 107.95 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 107.95 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 107.95 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 107.95 26.67 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5668,12 +5725,6 @@
 		)
 		(pin "2"
 			(uuid "045657b5-1634-4a7e-92e6-157fdb012db5")
-		)
-		(pin "3"
-			(uuid "bbb3da69-38d4-4943-97d7-64402c0feede")
-		)
-		(pin "4"
-			(uuid "c49a4e5c-008c-426f-80e0-400c1d4e5f2e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5694,28 +5745,6 @@
 			(type default)
 		)
 		(uuid "65c00f11-d821-40ed-8b3e-55fb406ba028")
-	)
-	(wire
-		(pts
-			(xy 114.3 26.67)
-			(xy 114.3 28.575)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0df6483a-b539-4c7e-a61c-6c05a185523f")
-	)
-	(wire
-		(pts
-			(xy 101.6 26.67)
-			(xy 101.6 28.575)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a2b8c11f-3dc6-45f0-bedc-f1b4afd5da2f")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -6269,8 +6298,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 101.6 48.26)
+			(xy 102.87 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "906fd7ce-cf6b-4f5e-bf51-2b620c4b05b6")
+	)
+	(wire
+		(pts
+			(xy 113.03 48.26)
+			(xy 114.3 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff6a6ad1-6000-4c08-969e-f88df251564b")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 107.95 48.26 0)
 		(unit 1)
 		(body_style 1)
@@ -6300,29 +6351,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 107.95 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 107.95 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 107.95 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 107.95 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 107.95 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 107.95 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6336,12 +6422,6 @@
 		)
 		(pin "2"
 			(uuid "389a69c1-1ea2-45f3-875d-1b6b668fb3eb")
-		)
-		(pin "3"
-			(uuid "155ea72a-6bec-4d7d-8601-654b19fb1626")
-		)
-		(pin "4"
-			(uuid "85ec1781-55df-44fa-8008-919a53ca92cb")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6362,28 +6442,6 @@
 			(type default)
 		)
 		(uuid "8dbc560e-1102-4415-9130-cc77debc4366")
-	)
-	(wire
-		(pts
-			(xy 114.3 48.26)
-			(xy 114.3 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c70fb96-61be-4fd2-b0d9-4386ace4308d")
-	)
-	(wire
-		(pts
-			(xy 101.6 48.26)
-			(xy 101.6 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "49f1c118-d852-4978-88e9-c387600b280f")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -6937,8 +6995,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 101.6 69.85)
+			(xy 102.87 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c290d33-9dea-49f3-aa86-df66d71682a8")
+	)
+	(wire
+		(pts
+			(xy 113.03 69.85)
+			(xy 114.3 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4135aff8-5df6-48a3-abbf-8365d4f3363b")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 107.95 69.85 0)
 		(unit 1)
 		(body_style 1)
@@ -6968,29 +7048,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 107.95 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 107.95 69.85 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 107.95 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 107.95 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 107.95 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 107.95 69.85 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7004,12 +7119,6 @@
 		)
 		(pin "2"
 			(uuid "34140508-fc6d-44af-8919-bffb93af9ae7")
-		)
-		(pin "3"
-			(uuid "db627eb9-3aea-4122-9b0a-ab9b1935b539")
-		)
-		(pin "4"
-			(uuid "da5e7155-1ff6-4370-9bee-5715c39156b3")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7030,28 +7139,6 @@
 			(type default)
 		)
 		(uuid "65d9672c-19db-4deb-adaf-e928666a8347")
-	)
-	(wire
-		(pts
-			(xy 114.3 69.85)
-			(xy 114.3 71.755)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4248c023-7307-47d7-bd12-3a7726048e59")
-	)
-	(wire
-		(pts
-			(xy 101.6 69.85)
-			(xy 101.6 71.755)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5429ab00-14db-468e-a552-1a9f1deb2e35")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -7605,8 +7692,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 190.5 26.67)
+			(xy 191.77 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2aff029f-cc8a-44ab-a9a6-62077b8a0f32")
+	)
+	(wire
+		(pts
+			(xy 201.93 26.67)
+			(xy 203.2 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae2e66af-5dee-4732-8bba-0d30455885df")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 196.85 26.67 0)
 		(unit 1)
 		(body_style 1)
@@ -7636,29 +7745,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 196.85 26.67 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 196.85 26.67 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 196.85 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 196.85 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 196.85 26.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 196.85 26.67 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7672,12 +7816,6 @@
 		)
 		(pin "2"
 			(uuid "400ba0ea-a8f2-426d-ae4c-784598d8decc")
-		)
-		(pin "3"
-			(uuid "e32251b5-a041-45b2-a1b7-376c2ff13f9e")
-		)
-		(pin "4"
-			(uuid "1a9f5620-0e9a-41da-962a-2b83fbe99042")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7698,28 +7836,6 @@
 			(type default)
 		)
 		(uuid "46314756-1213-4e25-bc2f-5aee57d93b22")
-	)
-	(wire
-		(pts
-			(xy 203.2 26.67)
-			(xy 203.2 28.575)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3d73b55-ea3c-4eb3-839e-8393a83b7153")
-	)
-	(wire
-		(pts
-			(xy 190.5 26.67)
-			(xy 190.5 28.575)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f3197a3a-6151-4e79-84c5-8b3d2dec696e")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -8273,8 +8389,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 146.05 48.26)
+			(xy 147.32 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0d5651a-3e87-4070-b8a8-910c1c9c0c31")
+	)
+	(wire
+		(pts
+			(xy 157.48 48.26)
+			(xy 158.75 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba56f82c-4920-4666-87e6-896a7478a403")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 152.4 48.26 0)
 		(unit 1)
 		(body_style 1)
@@ -8304,29 +8442,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 152.4 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 152.4 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 152.4 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 152.4 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 152.4 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 152.4 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8340,12 +8513,6 @@
 		)
 		(pin "2"
 			(uuid "49b3a7f4-6851-4af3-b8d9-388064152dac")
-		)
-		(pin "3"
-			(uuid "43987f04-00b4-408b-b79f-d22225a93c49")
-		)
-		(pin "4"
-			(uuid "bfacacb4-9282-4422-832f-9a0122947d12")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8366,28 +8533,6 @@
 			(type default)
 		)
 		(uuid "eaedcb81-d815-4126-b6bf-2e67f0ab2e23")
-	)
-	(wire
-		(pts
-			(xy 158.75 48.26)
-			(xy 158.75 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1530753d-e31f-443d-bf34-33c850291107")
-	)
-	(wire
-		(pts
-			(xy 146.05 48.26)
-			(xy 146.05 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87be0e23-7d3b-493a-9d76-70803ab4bad6")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -8941,8 +9086,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 234.95 48.26)
+			(xy 236.22 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bc4e93e-8d49-4ca8-8e79-9be7e24e2a0f")
+	)
+	(wire
+		(pts
+			(xy 246.38 48.26)
+			(xy 247.65 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f947a3b-7e06-4ee3-92e9-60a0ef79fe38")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 241.3 48.26 0)
 		(unit 1)
 		(body_style 1)
@@ -8972,29 +9139,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 241.3 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 241.3 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 241.3 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 241.3 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 241.3 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 241.3 48.26 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9008,12 +9210,6 @@
 		)
 		(pin "2"
 			(uuid "2e2255a7-f907-4326-91a2-2b5242289dba")
-		)
-		(pin "3"
-			(uuid "8547b05c-53d5-4d34-9dd8-922461f29967")
-		)
-		(pin "4"
-			(uuid "728671f9-73f8-405c-b788-ea05ad2ae1b8")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9034,28 +9230,6 @@
 			(type default)
 		)
 		(uuid "af39a454-846b-434e-b31c-7cb2a20d291f")
-	)
-	(wire
-		(pts
-			(xy 247.65 48.26)
-			(xy 247.65 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c880758d-13eb-48d8-8dbe-f62ce24df80c")
-	)
-	(wire
-		(pts
-			(xy 234.95 48.26)
-			(xy 234.95 50.165)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9bbb7e61-e6fc-448f-87ab-6b6108523b43")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
@@ -9609,8 +9783,30 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 190.5 69.85)
+			(xy 191.77 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04f92eff-0cde-49a4-9497-46f1c44cc18e")
+	)
+	(wire
+		(pts
+			(xy 201.93 69.85)
+			(xy 203.2 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15fc3687-0cf8-4e83-86dc-0eb85568ffb6")
+	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PUSHBUTTON_TACTILE")
+		(lib_id "Switch:SW_Push")
 		(at 196.85 69.85 0)
 		(unit 1)
 		(body_style 1)
@@ -9640,29 +9836,64 @@
 				)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:Omron_B3F-1052"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
 			(at 196.85 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
 		(property "Datasheet" ""
 			(at 196.85 69.85 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
 			(at 196.85 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2837537"
+			(at 196.85 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "KH-6X6X11H-STM"
+			(at 196.85 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Kinghelm"
+			(at 196.85 69.85 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9676,12 +9907,6 @@
 		)
 		(pin "2"
 			(uuid "437e8f15-0879-4f11-95be-b24f7b6d0d4e")
-		)
-		(pin "3"
-			(uuid "42aeaed0-9c24-48b5-8025-196db7d0c989")
-		)
-		(pin "4"
-			(uuid "ee52eb6b-9495-404d-94af-b5203c3b8961")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9702,28 +9927,6 @@
 			(type default)
 		)
 		(uuid "ea1d1644-715f-46c4-8afe-87f1adad11e5")
-	)
-	(wire
-		(pts
-			(xy 203.2 69.85)
-			(xy 203.2 71.755)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c60005e-3a2f-4cc3-aa40-bbc7c8d7106e")
-	)
-	(wire
-		(pts
-			(xy 190.5 69.85)
-			(xy 190.5 71.755)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3b416866-6ab8-482e-b7b6-32e4dc89c362")
 	)
 	(symbol
 		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
