@@ -9903,7 +9903,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002"
+		(property "Value" "AO3400A"
 			(at 45.72 158.48 0)
 			(effects
 				(font
@@ -9921,7 +9921,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "2N7002"
+		(property "MPN" "AO3400A"
 			(at 40.64 157.48 0)
 			(effects
 				(font
@@ -9930,7 +9930,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C8545"
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 40.64 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C20917"
 			(at 40.64 157.48 0)
 			(effects
 				(font
@@ -10117,7 +10126,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002"
+		(property "Value" "AO3400A"
 			(at 83.82 158.48 0)
 			(effects
 				(font
@@ -10135,7 +10144,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "2N7002"
+		(property "MPN" "AO3400A"
 			(at 78.74 157.48 0)
 			(effects
 				(font
@@ -10144,7 +10153,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C8545"
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 78.74 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C20917"
 			(at 78.74 157.48 0)
 			(effects
 				(font
@@ -10331,7 +10349,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002"
+		(property "Value" "AO3400A"
 			(at 121.92 158.48 0)
 			(effects
 				(font
@@ -10349,7 +10367,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "2N7002"
+		(property "MPN" "AO3400A"
 			(at 116.84 157.48 0)
 			(effects
 				(font
@@ -10358,7 +10376,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C8545"
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 116.84 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C20917"
 			(at 116.84 157.48 0)
 			(effects
 				(font
@@ -10545,7 +10572,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002"
+		(property "Value" "AO3400A"
 			(at 160.02 158.48 0)
 			(effects
 				(font
@@ -10563,7 +10590,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "2N7002"
+		(property "MPN" "AO3400A"
 			(at 154.94 157.48 0)
 			(effects
 				(font
@@ -10572,7 +10599,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C8545"
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 154.94 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C20917"
 			(at 154.94 157.48 0)
 			(effects
 				(font
