@@ -9,7 +9,7 @@
 		(date "2026-10-25")
 		(rev "C")
 		(company "Etherkit")
-		(comment 1 "MAX-M10S on USART3 (PB0/PB1), PPS to J14, current-limited active-antenna bias-T, CR1220 V_BCKP")
+		(comment 1 "MAX-M10S on USART3 (PB0/PB1), PPS to J14, active-antenna bias-T, CR1220")
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols

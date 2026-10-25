@@ -9,7 +9,7 @@
 		(date "2026-10-25")
 		(rev "C")
 		(company "Etherkit")
-		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (2-bit BAND_A/BAND_B); unselected filters open")
+		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (BAND_A/BAND_B)")
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols
