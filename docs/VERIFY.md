@@ -2,7 +2,7 @@
 
 Draft schematic, not reviewed. These items cover the AVR128DA32 MCU sheet (`pcb/mcu_usb.kicad_sch`) the relay-driver swap and the 6-relay filter-bank tree (`pcb/filter_bank.kicad_sch`).
 
-- [ ] **U9 pin map**: TWI0 SDA/SCL on PA2/PA3; USART0 PA0/PA1 goes to the CP2102N; USART1 PC0/PC1 goes to J10 (UART_TX/UART_RX; fixed in 823d8bb, previously swapped with LPF_15_10); ADC PD0-PD2 serves A2-A4; band select BAND_A on PA5 (pin 3) and BAND_B on PA6 (pin 4), with PA7 (pin 5) and PC2 (pin 8) now spare/no-connect; TX keying on PA4; buttons on PD3-PD7/PF2/PF3; D10 on PC3; D4 on PF4; SYNC LED on PF5. The firmware pin table must follow this map.
+- [ ] **U9 pin map**: TWI0 SDA/SCL on PA2/PA3; USART0 PA0/PA1 goes to the CP2102N; USART1 PC0/PC1 goes to J10 (UART_TX/UART_RX; fixed in 823d8bb, previously swapped with LPF_15_10); ADC PD0-PD2 serves A2-A4; band select BAND_A on PA5 (pin 3) and BAND_B on PA6 (pin 4); TX keying on PA4; buttons on PD3-PD7/PF2/PF3; D10 on PC3; D4 on PA7 (pin 5); SYNC LED on PC2 (pin 8); GPS on USART2 ALT1: PF4 (pin 24) TX to GPS_RXD, PF5 (pin 25) RX from GPS_TXD. Check USART2 ALT1 = PF4/PF5 in the AVR DA PORTMUX table. The firmware pin table must follow this map.
   - Jason:
 - [x] **TX_LED**: resolved. D12 (KT-0603YG yellow-green, Vf 1.8-2.4 V) and R39 (470R) run from the TX net (PA4) to GND, so no extra MCU pin is used. Current is about (3.1 - 1.9)/470 = 2.6 mA, plus about 0.15 mA into R1 22k, all well under the 6 mA VOH spec (VOH >= VDD-0.7). Q1's gate stays above 3.0 V.
   - Jason: TX LED is essential; drive from TX keying net.
@@ -22,3 +22,15 @@ Draft schematic, not reviewed. These items cover the AVR128DA32 MCU sheet (`pcb/
   - Jason:
 - [x] **U1 TLV61046A**: FB, EN and VIN are all on the +5V net (netlist checked).
   - Jason: FB tied to VIN selects internal 12 V output (TLV61046A datasheet).
+
+## GPS option (pcb/gps.kicad_sch, U12 u-blox MAX-M10S-00B)
+
+- [ ] **GPS_PPS MCU pin is undecided.** GPS_PPS currently reaches only J14 pin 1. Options: (A) PC2, moving the SYNC LED elsewhere or dropping D4/D10; (B) PC3, replacing D10; (C) one of PD0-PD2, giving up an A2-A4 analog header pin. Pick one for the firmware's timer/event input.
+- [ ] **C47 supercap sourcing.** I found no 0.22 F / 3.3 V+ supercap in stock at JLCPCB/LCSC. The placeholder is Panasonic EECS0HD224H (0.22 F, 5.5 V, THT, 10 mm lead pitch, not reflowable, 0 stock, no LCSC number). It has no footprint yet. Choose an orderable part and footprint, or hand-fit the part.
+- [ ] **Backup hold time.** D13 + R41 1k charge C47 to about 2.9 V (time constant about 220 s). At 28 uA hardware-backup current (DS Table 17), hold time down to 1.65 V is about 2.7 h, or about 2.2 h at -20 % capacitance. Confirm this is enough (ephemeris stays valid up to 4 h per IM 4.1.3).
+- [ ] **Antenna short-circuit current.** The R40 10R limit from IM 4.3.4 / Table 53 lets a shorted coax draw about 3.2 V / 10 R = 320 mA. That exceeds the VCC_RF 250 mA absolute maximum (DS Table 13) and the LP2985 150 mA rating. No antenna supervisor is fitted. Consider a larger R40, a PTC, or a current-limit switch, and check the active antenna's current/voltage at VCC_RF = VCC - 0.1 V.
+- [ ] **+3.3 V budget.** The existing load is about 45 mA, the GPS tracks at 12-14 mA, and the active antenna draws 10-15 mA. GPS start-up inrush is up to 100 mA (DS after Table 16), so the LP2985 peak is about 145 of 150 mA. Measure it, or uprate the regulator.
+- [ ] **V_IO ramp rate.** It must be 25-35000 us/V (DS 4.1 Table 12); ramping faster can damage the part. Measure the +3.3 V rise at power-up with the LP2985 and its output caps.
+- [ ] **Decoupling values.** u-blox gives no explicit VCC/V_IO capacitor values. C43 100n + C44 4.7u at pins 7/8 and C46 1u at V_BCKP are my choice. Place them beside the pins with short GND vias.
+- [ ] **TIMEPULSE = SAFEBOOT_N.** These are joined through 1k inside the module (DS Table 10 fn 15), and the module enters safeboot if the pin is low at start-up. Whatever connects to J14 / GPS_PPS must not pull low at power-up. The firmware pin must be a high-Z input with no pull-down.
+- [ ] **RF layout.** Use a 50 ohm line from U12 pin 11 to J15 U.FL, with L3's pad on the line. RF_IN is DC-blocked internally (IM Table 1), so there is no external DC block.
