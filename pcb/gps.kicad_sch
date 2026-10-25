@@ -3370,7 +3370,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "OB2:BAT-SMD_KH-CR1220-2"
 			(at 83.82 86.36 0)
 			(effects
 				(font

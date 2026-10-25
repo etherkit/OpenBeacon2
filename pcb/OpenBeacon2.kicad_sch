@@ -10819,7 +10819,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:SMA-ENDLAUNCH"
+		(property "Footprint" "OB2:SMA-ENDLAUNCH"
 			(at 172.72 185.42 0)
 			(effects
 				(font
@@ -10829,6 +10829,33 @@
 			)
 		)
 		(property "Datasheet" ""
+			(at 172.72 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C496550"
+			(at 172.72 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "BAT Wireless"
+			(at 172.72 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BWSMA-KE-P001"
 			(at 172.72 185.42 0)
 			(effects
 				(font
@@ -11071,7 +11098,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "EtherkitKicadLibrary:SMA-ENDLAUNCH"
+		(property "Footprint" "OB2:SMA-ENDLAUNCH"
 			(at 33.02 220.98 0)
 			(effects
 				(font

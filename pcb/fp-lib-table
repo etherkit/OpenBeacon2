@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "OB2")(type "KiCad")(uri "${KIPRJMOD}/lib/OB2.pretty")(options "")(descr "OpenBeacon 2 project-local footprints"))
+)
