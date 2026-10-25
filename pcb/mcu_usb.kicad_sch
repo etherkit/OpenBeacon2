@@ -4193,7 +4193,8 @@
 				)
 				(pin passive line
 					(at 0 -35.56 90)
-					(length 2.54) (hide yes)
+					(length 2.54)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -4211,7 +4212,8 @@
 				)
 				(pin passive line
 					(at 0 -35.56 90)
-					(length 2.54) (hide yes)
+					(length 2.54)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -10354,28 +10356,8 @@
 		(uuid "23dfb465-63bb-4ee8-a241-664cef182336")
 	)
 	(no_connect
-		(at 111.76 153.67)
-		(uuid "1948a51e-bcc2-4e9c-ac1e-6ec00e1fcb6c")
-	)
-	(no_connect
-		(at 111.76 156.21)
-		(uuid "f0c57f73-b6a3-493e-aa80-23fcb5138303")
-	)
-	(no_connect
-		(at 111.76 171.45)
-		(uuid "d98763cf-dd33-4e10-b8c5-791393cff03e")
-	)
-	(no_connect
 		(at 111.76 173.99)
 		(uuid "43a776a7-63d8-450b-8a29-ef54f93a2a94")
-	)
-	(no_connect
-		(at 111.76 176.53)
-		(uuid "afc104a6-e875-446e-9cd7-a0f64a9223de")
-	)
-	(no_connect
-		(at 111.76 179.07)
-		(uuid "ea7e0722-563a-422a-8b1d-3181d142c768")
 	)
 	(no_connect
 		(at 81.28 140.97)
@@ -11811,6 +11793,171 @@
 			(justify left top)
 		)
 		(uuid "789fbba8-097a-443d-a95b-4475d320b5a1")
+	)
+	(wire
+		(pts
+			(xy 111.76 171.45)
+			(xy 114.3 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a7cfa20-1331-48e3-b30e-0c08333dd310")
+	)
+	(global_label "OLED_MOSI"
+		(shape output)
+		(at 114.3 171.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 130 0 130 1)
+			)
+			(justify left)
+		)
+		(uuid "532ead80-1638-4712-ba66-be1a358e9c5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 111.76 176.53)
+			(xy 114.3 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f030efe-3c28-402c-8bc7-0221fe881cd0")
+	)
+	(global_label "OLED_SCK"
+		(shape output)
+		(at 114.3 176.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 130 0 130 1)
+			)
+			(justify left)
+		)
+		(uuid "29ffa087-9a32-4323-940a-3b1a82a5aa8a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 111.76 179.07)
+			(xy 114.3 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "011f4c52-98f2-43cb-b28a-744faa905279")
+	)
+	(global_label "OLED_CS"
+		(shape output)
+		(at 114.3 179.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 130 0 130 1)
+			)
+			(justify left)
+		)
+		(uuid "9e9a7957-65ad-4c4b-b91e-53a785179047")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 111.76 153.67)
+			(xy 114.3 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3be0f728-2674-4412-9896-12f2ccebdfee")
+	)
+	(global_label "OLED_DC"
+		(shape output)
+		(at 114.3 153.67 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 130 0 130 1)
+			)
+			(justify left)
+		)
+		(uuid "f2927bcd-be82-41ec-aa9c-b5bcb6e885c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 111.76 156.21)
+			(xy 114.3 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42224f16-d4fc-43a6-90a7-1635b2f39283")
+	)
+	(global_label "OLED_RES"
+		(shape output)
+		(at 114.3 156.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 130 0 130 1)
+			)
+			(justify left)
+		)
+		(uuid "ed89cfaa-8851-4af6-bd4f-aa72b8adfcc5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 114.3 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(sheet_instances
 		(path "/"
