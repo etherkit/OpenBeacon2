@@ -371,6 +371,7 @@
 			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -628,6 +629,7 @@
 		(symbol "EtherkitKicadLibrary:ChipAttenuator"
 			(pin_names
 				(offset 1.016)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1495,6 +1497,7 @@
 		(symbol "EtherkitKicadLibrary:OSCILLATOR"
 			(pin_names
 				(offset 1.016)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1829,6 +1832,7 @@
 			)
 			(pin_names
 				(offset 0)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1960,6 +1964,9 @@
 		)
 		(symbol "EtherkitKicadLibrary:SN74LVC1G17"
 			(body_styles demorgan)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
