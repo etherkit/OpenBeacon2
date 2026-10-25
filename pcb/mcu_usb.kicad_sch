@@ -4146,7 +4146,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "eab5a9ba-b30e-40ee-aaaa-ea63baf31c10")
+		(uuid "ca00b714-c1a7-48eb-a64e-a04abe3e2fb6")
 	)
 	(text "USB-C input + ESD"
 		(exclude_from_sim no)
@@ -4160,7 +4160,7 @@
 			)
 			(justify left)
 		)
-		(uuid "d93630ae-3107-42f9-8976-dc9ac6bb7b27")
+		(uuid "8423c6bb-be50-43ec-aed2-664ab544d1bb")
 	)
 	(symbol
 		(lib_id "Connector:USB_C_Receptacle_USB2.0_16P")
@@ -4170,7 +4170,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "939f211c-8e0a-48ba-9217-310f8206fa13")
+		(uuid "bc9f0c25-2455-416c-b01b-31bb2977b50b")
 		(property "Reference" "J12"
 			(at 20.32 33.02 0)
 			(effects
@@ -4235,55 +4235,55 @@
 			)
 		)
 		(pin "A1"
-			(uuid "9eb5149c-fa8d-425a-8f94-dfe1d55f6dbb")
+			(uuid "08ec541a-13e9-42d1-b9c0-315e6b20ecc5")
 		)
 		(pin "A4"
-			(uuid "d9f32ec8-5a9b-4dec-beda-c86d8981aff9")
+			(uuid "7fd7ee32-84b0-44fb-845f-c82b40a63b5f")
 		)
 		(pin "A5"
-			(uuid "9fdefae8-ae6f-4ae7-ba37-1f92c36f56e5")
+			(uuid "ecc43ee9-cef0-4f28-97f8-576b31947b82")
 		)
 		(pin "A6"
-			(uuid "3c41b990-a166-4384-9ab7-2c99f5107c94")
+			(uuid "2105b11b-2703-4517-882e-d9eddec5d0f5")
 		)
 		(pin "A7"
-			(uuid "d179ee38-cf2c-4ab9-b1ef-969745abc799")
+			(uuid "0c0f75a3-8cff-4fde-b4b3-81a614cd6d4c")
 		)
 		(pin "A8"
-			(uuid "0b50b517-14f7-4ca8-aab6-fa75eef14cb1")
+			(uuid "8e8f5bd8-d72d-47b2-8402-c59f7463c2e6")
 		)
 		(pin "A9"
-			(uuid "5adb06ca-8345-4e2e-b93d-6c584ba7cc5a")
+			(uuid "9e3fd7d8-4d45-4f94-8f36-9a9f4720fc42")
 		)
 		(pin "A12"
-			(uuid "df0474e0-fe64-4711-9257-c915de30874d")
+			(uuid "2bab4ba8-57d6-416d-8432-3e543735dd7e")
 		)
 		(pin "B1"
-			(uuid "e8365c40-bf8f-406f-b204-0409f3f6bff5")
+			(uuid "33ffbf8b-92c0-4c01-a996-4f20b8e27bdc")
 		)
 		(pin "B4"
-			(uuid "a1d4f4e7-6b9e-4014-962d-4a39cf763a67")
+			(uuid "02c2466b-6825-46c4-8165-6a1cae9bc606")
 		)
 		(pin "B5"
-			(uuid "0dfb04c4-e9b8-461a-b6d9-8cd4c0746656")
+			(uuid "22fc6fa8-0be7-4e4d-81d7-0317fc40afe6")
 		)
 		(pin "B6"
-			(uuid "c2ad8926-f217-4fae-82ec-dad5bd28fc92")
+			(uuid "c50db39c-45d7-4310-9d44-160727b02cd4")
 		)
 		(pin "B7"
-			(uuid "aed7e74c-e0ab-4a6e-81ba-5fa6cb68efd2")
+			(uuid "e7029bb6-e1f2-4ee0-871f-5a6677dcc6ce")
 		)
 		(pin "B8"
-			(uuid "2fb56313-c396-4e25-9810-82652a857e1f")
+			(uuid "d3a55937-455d-48cb-9de4-a11436d6bf20")
 		)
 		(pin "B9"
-			(uuid "bb8adfe6-a73f-4f38-ac00-cda9ae460947")
+			(uuid "113197cb-8004-436e-85b2-c9c12a92793c")
 		)
 		(pin "B12"
-			(uuid "27976a48-24bf-47ab-972e-42eef475ef4b")
+			(uuid "7f5a8232-a556-4753-b33e-2d23dd36f84e")
 		)
 		(pin "SH"
-			(uuid "cc3a7071-5212-4d64-b8c2-af3bc3f2f288")
+			(uuid "7af07022-f19a-4388-baa6-487a8b31c2bc")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4303,7 +4303,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e3bcdd9c-4e9e-4fa0-92db-61c0584b6a8d")
+		(uuid "5abaa095-3af8-4e05-a4bd-817ec5e376a9")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -4313,7 +4313,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "b5c5ec23-00df-4335-a3bc-012f0ee4822b")
+		(uuid "cd09cb86-1d48-4486-aea7-2cf5e1ce30a8")
 		(property "Reference" "#PWR901"
 			(at 55.88 40.64 0)
 			(effects
@@ -4350,7 +4350,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "91618a5c-943a-4ca7-985d-ba0ff607ba1d")
+			(uuid "d4054409-3806-4cbd-8f52-e79ba0b112e7")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4370,7 +4370,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "047ffaa6-1c2e-40c2-b077-d3eacd191e6a")
+		(uuid "9294e9dc-9fc5-4f16-b094-106af3059483")
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -4380,7 +4380,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "ee875eaf-7dac-440a-b7ab-32f6353805cc")
+		(uuid "b1aafe6e-a933-4853-a74d-b605cb2dc755")
 		(property "Reference" "#FLG902"
 			(at 63.5 40.64 0)
 			(effects
@@ -4417,7 +4417,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "602f261a-9b1a-465d-bc12-adba4f092fa4")
+			(uuid "2277a7b5-aab2-4e73-be38-fbdb8f7b51c0")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4437,7 +4437,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6998d960-995f-4a89-85a4-2449256f4a57")
+		(uuid "12b2b401-3cc5-49ab-80e8-7f1d53ffd734")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -4447,7 +4447,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "df4c0787-5f0c-4542-b0ac-7062601c8088")
+		(uuid "9db73a97-df64-4ac9-847c-d840abd0e8c5")
 		(property "Reference" "R30"
 			(at 75.565 46.99 0)
 			(effects
@@ -4512,10 +4512,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "46724aab-98d1-45d6-80b3-d049d02f3a77")
+			(uuid "9ed65300-cfef-4551-ab57-5673926beb77")
 		)
 		(pin "2"
-			(uuid "56116f35-44d1-4aa6-9437-bf6ff4619792")
+			(uuid "fd0ea46c-ab62-473d-9411-d0c78ea98a2e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4534,7 +4534,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "703c4cac-1334-44f9-8db3-cf611dc5c560")
+		(uuid "2fa293cb-2684-470c-a6f6-525e631088a1")
 		(property "Reference" "#PWR903"
 			(at 73.66 50.8 0)
 			(effects
@@ -4571,7 +4571,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "dc1ce03c-48c5-47e2-8acc-249afe4d1420")
+			(uuid "e70d5bf6-bdb6-4448-ad8b-18aa61c24a84")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4591,7 +4591,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2701134b-fad6-47f4-8401-512f840655e7")
+		(uuid "22b583c9-d0e6-493b-a0cf-d1f03e6808a3")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -4601,7 +4601,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "56f288a0-2e2a-4e4a-9b4e-d5744dc6a50e")
+		(uuid "eccea987-510b-4e2e-983f-f5555d2ca2ff")
 		(property "Reference" "R31"
 			(at 64.135 49.53 0)
 			(effects
@@ -4666,10 +4666,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "dd454424-b357-4d38-9761-3fd8ec25004b")
+			(uuid "9fe6bf0b-cf42-4002-8b34-2cf01bb51406")
 		)
 		(pin "2"
-			(uuid "da6b9afc-6c25-479e-8825-9ca16519af1f")
+			(uuid "b2cab9de-c228-468d-8e85-80f68ea44ff3")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4688,7 +4688,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "5459a09c-c282-4c16-8514-c995997e3cd4")
+		(uuid "28f5be23-af98-43ac-8365-8db1882df08a")
 		(property "Reference" "#PWR904"
 			(at 66.04 53.34 0)
 			(effects
@@ -4725,7 +4725,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "227ec99f-29fa-419d-b4d8-35e9604765eb")
+			(uuid "de4b9b14-1f3c-49b2-ae5d-6edeecfb7d52")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4745,7 +4745,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "46de25e1-a8cd-4420-bd2d-07fbc2b52037")
+		(uuid "7069d6f5-241a-472c-90c7-c5639205be30")
 	)
 	(wire
 		(pts
@@ -4756,7 +4756,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6143eb93-dbab-4e99-af93-4fa1c63581e1")
+		(uuid "7b4b60a2-3264-4ec4-a15b-580b794aaf7f")
 	)
 	(wire
 		(pts
@@ -4767,13 +4767,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8ae7d515-aa91-44af-a7b2-d7e966c03086")
+		(uuid "269fcade-b544-44af-b8fc-3095dc82c767")
 	)
 	(junction
 		(at 48.26 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0edb5759-b260-47ca-a3bf-bf651b1c4319")
+		(uuid "f8833967-a437-44f4-9eed-2d06014e2a89")
 	)
 	(label "USB_DM"
 		(at 53.34 53.34 0)
@@ -4785,7 +4785,7 @@
 			)
 			(justify left)
 		)
-		(uuid "401d5437-bf09-4a60-8ae5-071e5f1a6c61")
+		(uuid "4526b160-4036-469c-b535-2e1224668492")
 	)
 	(wire
 		(pts
@@ -4796,7 +4796,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8e801ff6-8341-4e0e-bed1-e6513044a897")
+		(uuid "2f286f78-1076-4e6a-97a9-fc9623fabd2d")
 	)
 	(wire
 		(pts
@@ -4807,7 +4807,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "27f0db3c-3048-4e6e-abd0-e9e229b4ddb7")
+		(uuid "c159f9bf-c68d-49c4-a675-1c2d3fc4ed81")
 	)
 	(wire
 		(pts
@@ -4818,13 +4818,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "17ca235f-2169-4f16-8d1c-553a1c1a9670")
+		(uuid "0f5a11d3-b483-4ecd-a2d1-90c25cdcb3f1")
 	)
 	(junction
 		(at 48.26 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3df30e20-24e5-4913-9a97-e59bd20ebfc1")
+		(uuid "f9a69ce2-de11-45e0-91d3-e8c8c6fc261c")
 	)
 	(label "USB_DP"
 		(at 53.34 60.96 0)
@@ -4836,15 +4836,15 @@
 			)
 			(justify left)
 		)
-		(uuid "cc1eafb1-7c1b-4329-aedf-090fb4ba65f6")
+		(uuid "2b2dea8e-c9ee-465a-a3aa-ae36beaceb02")
 	)
 	(no_connect
 		(at 45.72 68.58)
-		(uuid "cbaa62cc-6392-4bc7-926b-876ac830cd93")
+		(uuid "05cbab7a-a78f-425b-81f0-db81baebbef9")
 	)
 	(no_connect
 		(at 45.72 71.12)
-		(uuid "d0397fcf-41e7-4b40-9598-9bf2d244fa9b")
+		(uuid "18cdda63-3269-422d-b81f-00c2357efa91")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4854,7 +4854,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "9e9c5666-5e2a-4de0-b1a7-ec094eddf1e5")
+		(uuid "0e9e33c7-44e1-43c1-a729-99db51fc25ba")
 		(property "Reference" "#PWR905"
 			(at 30.48 78.74 0)
 			(effects
@@ -4891,7 +4891,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d9f0c806-e800-4504-8cae-df22482922ab")
+			(uuid "0c74306d-97db-46d2-afec-5b80c8c9676f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4910,7 +4910,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "cf53188f-c7b5-46c2-ae15-4102723340b7")
+		(uuid "94a1c7bf-3449-4802-b681-2685564bf21c")
 		(property "Reference" "#PWR906"
 			(at 22.86 78.74 0)
 			(effects
@@ -4947,7 +4947,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "a410da0c-fc63-44b2-9907-157711d65dca")
+			(uuid "9c187197-532a-4571-8ad0-b2724a5c0fe5")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -4966,7 +4966,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "f3f599a1-d099-45fb-9c4e-84973915a59c")
+		(uuid "1f54fb71-3878-446e-a39a-a0b25d339fc8")
 		(property "Reference" "#FLG907"
 			(at 40.64 78.74 0)
 			(effects
@@ -5003,7 +5003,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "a1e959e3-89ec-4289-b83b-9ed86a6705dd")
+			(uuid "839dd55d-0b9e-4f7b-a7cd-77f0a75a718e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5023,7 +5023,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0ffc64fb-97ff-4ed7-8231-3715d72fdea7")
+		(uuid "9105b958-71f3-4965-a06d-81bcd7c9fa8e")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5033,7 +5033,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "5e88e4ac-539d-4961-b0ca-780b02bbc5bd")
+		(uuid "e1bb78ef-323c-4505-9492-e4e3d1ed2236")
 		(property "Reference" "#PWR908"
 			(at 40.64 81.28 0)
 			(effects
@@ -5070,7 +5070,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "691e6806-b9db-441e-b074-42c29805e255")
+			(uuid "2a21840b-807c-4c4b-b00b-22375e36e8ae")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5089,7 +5089,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "de8b5809-8fb5-488b-ab78-4cc521b698c1")
+		(uuid "b5c79eaf-3c00-4fb0-8cb5-fc3633fe4de1")
 		(property "Reference" "D9"
 			(at 83.82 82.55 0)
 			(effects
@@ -5154,16 +5154,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "206862a5-4c39-4754-9927-eb89bb14394b")
+			(uuid "966c6896-f93b-4352-9b9d-5cbda2cfb88b")
 		)
 		(pin "2"
-			(uuid "60e1a1ce-e7c1-43e5-a8a8-5d990c225898")
+			(uuid "31ff908d-7888-4854-8ca8-3ee9dbacf09c")
 		)
 		(pin "3"
-			(uuid "8c56173e-1cb1-4bb2-816c-0109f93830d7")
+			(uuid "62f1db1e-fca1-48f9-9888-c64ae660cc16")
 		)
 		(pin "4"
-			(uuid "7e13075b-e88b-4b88-9e21-7bb79387f1af")
+			(uuid "2231b79d-9d08-42bd-9492-e591adf75868")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5183,7 +5183,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "50d113e7-9236-4bb1-817c-2e06bda40fc7")
+		(uuid "c0456054-c7e6-4bb2-b812-be8aeb8121c1")
 	)
 	(label "USB_DM"
 		(at 76.2 73.66 90)
@@ -5195,7 +5195,7 @@
 			)
 			(justify left)
 		)
-		(uuid "862b3873-aeb2-4390-a8fd-a2d3c910094c")
+		(uuid "8ad299a1-7754-4c51-88a4-ecdd4b111c69")
 	)
 	(wire
 		(pts
@@ -5206,7 +5206,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8c6397bc-3dbd-4d65-9dea-a0c91772f377")
+		(uuid "96322a46-6bed-480f-adf0-d103ff3c439f")
 	)
 	(label "USB_DP"
 		(at 78.74 73.66 90)
@@ -5218,7 +5218,7 @@
 			)
 			(justify left)
 		)
-		(uuid "f243a208-c990-4bcd-8974-a205d4a8662c")
+		(uuid "0cecd194-3e46-4bc5-bd6d-3fc92b8ef1f2")
 	)
 	(wire
 		(pts
@@ -5229,7 +5229,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "34c5a5b0-5e32-44fd-8a96-bc7fd9dc1bb9")
+		(uuid "2ca01db3-c95a-4e1d-9be2-329be78fab34")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -5239,7 +5239,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "6ff617a1-74f8-4a72-966e-f30b7f38ec79")
+		(uuid "b3eebb96-64a6-4a97-8924-e76a80aafcfd")
 		(property "Reference" "#PWR909"
 			(at 81.28 76.2 0)
 			(effects
@@ -5276,7 +5276,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "e7321f65-7a90-4dab-94c1-42afa2f6afc6")
+			(uuid "2790acc1-aa29-4c4f-b886-972839a5e0e0")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5295,7 +5295,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "c500a3fd-6035-4829-868f-c493da899c0b")
+		(uuid "e545408d-d6a1-4c62-9558-6b21c3990c1f")
 		(property "Reference" "#PWR910"
 			(at 78.74 88.9 0)
 			(effects
@@ -5332,7 +5332,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "a62dde3c-10b6-405e-bb2c-5df3900bc971")
+			(uuid "3401152b-a6d9-470e-83eb-32bd71645911")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5354,7 +5354,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "c7ac222b-ecd7-4c53-a417-0c796db7212a")
+		(uuid "fecd03af-210f-44a0-8cee-e5a221e8dff6")
 	)
 	(text "USB-UART (CP2102N, from Si5351AVFO)"
 		(exclude_from_sim no)
@@ -5368,7 +5368,7 @@
 			)
 			(justify left)
 		)
-		(uuid "5f10ecf7-a073-45b6-8870-83f262b626ee")
+		(uuid "e664ef62-15dd-463e-83d2-6ed90b3d9d6d")
 	)
 	(symbol
 		(lib_id "Interface_USB:CP2102N-Axx-xQFN24")
@@ -5378,7 +5378,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "da1895b9-d869-4364-bf9e-dfdb505d2dba")
+		(uuid "771a5db9-5a9f-44c2-a849-dd41c9c7a615")
 		(property "Reference" "U10"
 			(at 158.75 97.79 0)
 			(effects
@@ -5443,79 +5443,79 @@
 			)
 		)
 		(pin "1"
-			(uuid "6b1a78c0-662d-466e-8640-1d7851cfb987")
+			(uuid "ff535bb2-69d0-4294-9784-3a6c5ae43921")
 		)
 		(pin "2"
-			(uuid "0b9166e3-481b-401c-96d9-24df9f0a1a5f")
+			(uuid "035015e7-469c-4b8d-9048-92911d3d90f0")
 		)
 		(pin "3"
-			(uuid "b095cd95-882e-4d75-8eae-bb84a340ff6f")
+			(uuid "678f2267-0060-41ea-bc7d-9d76c403a1f3")
 		)
 		(pin "4"
-			(uuid "79c8930c-b7fe-43c0-9b39-e0891ed55d59")
+			(uuid "c5aa909d-f35e-4722-84e0-203379c79a8d")
 		)
 		(pin "5"
-			(uuid "347fbeda-f582-4c0c-be28-e33e4836112c")
+			(uuid "fe7dc13c-20b1-4507-9e54-70bb66bf6908")
 		)
 		(pin "6"
-			(uuid "de814dda-b5f2-459b-a09c-0d50465db5b0")
+			(uuid "4ba34d48-6520-426a-ad9f-880967c1792a")
 		)
 		(pin "7"
-			(uuid "84ab538e-56cd-4a39-9315-719978f58875")
+			(uuid "d6a6ba6d-7c30-437d-b1e0-f17f0e890ed4")
 		)
 		(pin "8"
-			(uuid "384f63d4-cca4-435f-8a05-228c8e54f9fd")
+			(uuid "61e1d522-86dc-44cf-b7c8-682216b7e086")
 		)
 		(pin "9"
-			(uuid "d7071121-a793-43d9-beb9-d2caf31454d4")
+			(uuid "978d1174-1212-4e54-a52d-616afbad99ba")
 		)
 		(pin "10"
-			(uuid "ad11c4ad-68f8-44f4-849f-656192a7990d")
+			(uuid "f1c99577-4823-4738-8f6c-547293491a51")
 		)
 		(pin "11"
-			(uuid "dbda7e2e-a70e-4060-9b11-d89b90b5a2f7")
+			(uuid "cb8330c6-7bda-4f2a-b835-cada0ce7c707")
 		)
 		(pin "12"
-			(uuid "c26fc954-6d47-4c24-8639-7414addcb006")
+			(uuid "b094d13a-7734-41dc-9774-46d296f84111")
 		)
 		(pin "13"
-			(uuid "c02a57bf-a962-400b-bb99-1b2494805730")
+			(uuid "b31b2172-d0a5-45ae-8613-26594c9d1690")
 		)
 		(pin "14"
-			(uuid "c6d7f0d1-0339-4cb8-a853-4614d26d6800")
+			(uuid "58ddafde-d3c2-41cb-9c32-5cd7a56335af")
 		)
 		(pin "15"
-			(uuid "78d975a4-7a9e-4166-83c8-d1939b10b720")
+			(uuid "bb71d73d-ff0e-4a85-ac50-37237b21be3b")
 		)
 		(pin "16"
-			(uuid "5d9074fb-24f7-4a00-815d-5440efcf0115")
+			(uuid "c0fc84b7-dbc0-4191-aa56-99d6684c9bba")
 		)
 		(pin "17"
-			(uuid "d4f0294c-ff84-45c6-9bb9-17e8e910478b")
+			(uuid "0538cf12-2b3d-4884-a8d3-59c8ad9408d0")
 		)
 		(pin "18"
-			(uuid "6039df0d-0756-4539-a698-518cd1e54fe1")
+			(uuid "7eaf07be-57b4-4671-ae46-5a188f122e64")
 		)
 		(pin "19"
-			(uuid "93b2baab-cdfb-4eae-88be-50dc07b1e152")
+			(uuid "7ce62dfb-e0de-4cfc-9070-24ca28622aa7")
 		)
 		(pin "20"
-			(uuid "5901764e-031f-4cff-8217-eca1fa85112b")
+			(uuid "f2abb078-3f90-4917-889b-bf9e7e3f8fa2")
 		)
 		(pin "21"
-			(uuid "ea7598ce-4ef4-4609-a72e-34e6c29c163c")
+			(uuid "43a86c82-1df9-47c8-8b31-7c1f62cebbe4")
 		)
 		(pin "22"
-			(uuid "d557c698-192c-41f7-83cb-8bf4083f1456")
+			(uuid "93ffd283-bcef-45c3-8590-db7e72c3fdc8")
 		)
 		(pin "23"
-			(uuid "6c833796-7a07-4376-8b31-3e8fcc3cc35c")
+			(uuid "b2ac70f6-6dda-4017-86a7-e96f210c1ea2")
 		)
 		(pin "24"
-			(uuid "dfab5e89-43b5-4ec3-b41a-9825f63ec3a0")
+			(uuid "75ac062e-d162-49ab-a630-aaafef650e73")
 		)
 		(pin "25"
-			(uuid "f30f1ce4-43b2-4596-b929-860fd21c775a")
+			(uuid "7d1638dd-64b9-48ac-abe6-b633d4c291f1")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5535,7 +5535,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f6badaf2-7723-4f36-9ff5-4195d9cf3468")
+		(uuid "70c2c15b-2d1d-4b43-bd3a-9b8b9ee81dcd")
 	)
 	(wire
 		(pts
@@ -5546,7 +5546,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "74b8f004-d01c-4a97-aad4-df14f9929358")
+		(uuid "819fbec0-7125-416f-a001-e721c945ac93")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -5556,7 +5556,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4a87fc2c-85eb-41e6-a6ee-2e441758d285")
+		(uuid "d0c4b2bb-5712-4bd0-bcf1-55fb622d64dd")
 		(property "Reference" "C30"
 			(at 146.685 36.83 0)
 			(effects
@@ -5621,10 +5621,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5ed8146c-6d5d-424f-a8b8-11abeb9d1f05")
+			(uuid "635935a6-caf8-4c33-abae-499288d829d8")
 		)
 		(pin "2"
-			(uuid "d39a67f2-de42-432b-abb1-3aa26d0d2e79")
+			(uuid "2309c7a5-ae8a-45ca-ac47-53b69b22ba18")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5643,7 +5643,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "062b7912-51e8-44dd-a729-bb21061e2a8d")
+		(uuid "67cd70a2-0746-45f2-af77-9847891bfd01")
 		(property "Reference" "#PWR911"
 			(at 144.78 40.64 0)
 			(effects
@@ -5680,7 +5680,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f5c6eb0b-fb2c-4ea0-883c-3f8b943c784f")
+			(uuid "42958ab9-88e4-4f59-b50b-f9057634be29")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5699,7 +5699,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e90a381e-9cbf-490f-8946-61d88426ee72")
+		(uuid "bbdff3a3-fef9-4ac5-bb8e-ab57c62f3267")
 		(property "Reference" "C31"
 			(at 139.065 36.83 0)
 			(effects
@@ -5764,10 +5764,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "13355630-047e-43c7-8429-890564cc40c5")
+			(uuid "0fde364b-3cd6-440b-8135-bc25d04a88a6")
 		)
 		(pin "2"
-			(uuid "19d40a6a-575a-4c4e-8200-15e93028d7a7")
+			(uuid "258bf851-c5ef-43f3-b087-63a9482b01bf")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5786,7 +5786,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "cac6fcfb-181c-41dd-aaeb-fc3f90fffe64")
+		(uuid "5a3914b9-defa-41c2-8235-02f3b02d13d8")
 		(property "Reference" "#PWR912"
 			(at 137.16 40.64 0)
 			(effects
@@ -5823,7 +5823,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "76677127-e9ad-4a0d-9aed-d68ca2586552")
+			(uuid "b6a8a349-653d-4b12-bfbd-be893091eac8")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5838,13 +5838,13 @@
 		(at 144.78 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5345aba5-d923-4efa-8dbe-49a06a34d24f")
+		(uuid "153a5b47-9aa6-4909-9e1d-cbb446c28e1f")
 	)
 	(junction
 		(at 137.16 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4b3e2d01-d092-4ebd-899b-54a07157b3e2")
+		(uuid "289c65dd-b7d0-45ed-81f5-2e6431282a6f")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -5854,7 +5854,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "52a47e7a-b028-448b-97b4-af88a488d72a")
+		(uuid "88dc2c46-d7bb-438c-8b78-5758aef2051f")
 		(property "Reference" "#PWR913"
 			(at 134.62 35.56 0)
 			(effects
@@ -5891,7 +5891,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "83a85e25-bdd6-4c4f-b999-542d2f48d9fe")
+			(uuid "3f25c2c7-34cb-45af-9bac-d1d8b9c93c26")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5911,7 +5911,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "193e06d6-4d97-4c0a-89fc-f6a1b97c49ab")
+		(uuid "80a3e21b-185c-4481-9ee1-e818d3222764")
 	)
 	(wire
 		(pts
@@ -5922,7 +5922,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9966c7af-fca8-4d20-9bcf-839cdccd975d")
+		(uuid "c275fc91-c581-4845-80f9-e25862199d8d")
 	)
 	(wire
 		(pts
@@ -5933,7 +5933,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "baa5cb28-00cd-490c-b866-7b8a99f03baa")
+		(uuid "eb523148-a7d7-4bd7-b09f-11e261e59170")
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -5943,7 +5943,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "4bfd79ce-5202-45f3-8e06-a8e0cffbc81d")
+		(uuid "eac11ab3-0c04-40a2-9bb6-db5d17e80bd4")
 		(property "Reference" "#FLG914"
 			(at 177.8 35.56 0)
 			(effects
@@ -5980,7 +5980,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "15c30c4a-9dbb-412b-8eed-32f08b618bce")
+			(uuid "f0adbcfb-6ce7-4869-924f-632bce019991")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -5995,13 +5995,13 @@
 		(at 165.1 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a7525831-6d59-45fb-ac2e-232252f3bb69")
+		(uuid "4a77ac40-ef5a-4112-b38a-ee1335572e89")
 	)
 	(junction
 		(at 172.72 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a82707c4-d691-4b1a-9480-ef38dc7fcc16")
+		(uuid "f955e613-d354-4efc-9af0-5578adceabdb")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -6011,7 +6011,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3aebbadf-8d00-4ce6-b8b1-4d7121c4fae8")
+		(uuid "c805823b-0fb7-4a4d-a16f-27cc469b6307")
 		(property "Reference" "C32"
 			(at 167.005 36.83 0)
 			(effects
@@ -6076,10 +6076,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "60960765-083c-49cf-be5a-b4a877f7174b")
+			(uuid "21df9eb5-bac1-4ca6-9091-e3271be7f081")
 		)
 		(pin "2"
-			(uuid "51d05ceb-b0fb-4252-861f-1880b8ff2dc7")
+			(uuid "b95a6df9-d68f-41a7-bf09-7efcc356dc13")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6098,7 +6098,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "11972cf2-c7c9-4174-a569-d3139772762c")
+		(uuid "1de2335a-6737-4b9c-9c8b-9086c95cf90f")
 		(property "Reference" "#PWR915"
 			(at 165.1 40.64 0)
 			(effects
@@ -6135,7 +6135,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "348267db-14b8-4f63-b190-770ef0d98e6c")
+			(uuid "5359b8fb-0220-4c72-82d8-0eed2044e2e1")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6154,7 +6154,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8eb8d0e0-6684-4bfa-8761-a8458a2f16f8")
+		(uuid "f6257419-b81d-4bbb-a0c6-3ff8989c72aa")
 		(property "Reference" "C33"
 			(at 174.625 36.83 0)
 			(effects
@@ -6219,10 +6219,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "e3680378-6fac-4761-9904-2c301931a342")
+			(uuid "81eb54ea-5d87-4928-8e22-53ca569f9e22")
 		)
 		(pin "2"
-			(uuid "afdfb2eb-22fb-4cb7-ade8-f7a1aff607e0")
+			(uuid "a4141caa-e9ed-4899-a19f-a2b7e6ec3aec")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6241,7 +6241,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "912159c0-6d98-43e9-879c-af17cf6611a6")
+		(uuid "a9c45371-86fe-49dc-ac59-517e1202b962")
 		(property "Reference" "#PWR916"
 			(at 172.72 40.64 0)
 			(effects
@@ -6278,7 +6278,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "fe3cf89f-7191-452b-be05-16aabcd13338")
+			(uuid "85bf84e1-4250-4ea7-b52b-1f93bf58407e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6299,7 +6299,7 @@
 			)
 			(justify left)
 		)
-		(uuid "a4bd6f8b-07f2-407a-98d4-3f967b7010c9")
+		(uuid "89dfa5e6-a655-4a27-8d97-c9f50f013f8d")
 	)
 	(wire
 		(pts
@@ -6310,7 +6310,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6c1db820-c133-41a0-aaa9-38b92daecd72")
+		(uuid "6d987e60-bcb5-48b5-a5d2-11ad116498c5")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -6320,7 +6320,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d9929032-616c-4046-8736-dc2c4b7b4c4d")
+		(uuid "76fe2185-c737-4a3b-a6fd-5d2e5847e45f")
 		(property "Reference" "R32"
 			(at 125.095 41.91 0)
 			(effects
@@ -6385,10 +6385,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ed2f8522-b46f-455a-8010-9aeef5fae821")
+			(uuid "6e2dde60-fbd3-44e3-9306-52339b1596b6")
 		)
 		(pin "2"
-			(uuid "275507f8-17c7-4d26-8eb8-884da4492482")
+			(uuid "f40571ac-cd5e-428f-a499-693e8271c047")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6408,7 +6408,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f62813ad-7b59-4f4c-b286-bdeac67e8542")
+		(uuid "b9501a84-6b7a-4d6e-aed3-f393a8b7a31b")
 	)
 	(label "CP_VDD"
 		(at 127 38.1 90)
@@ -6420,7 +6420,7 @@
 			)
 			(justify left)
 		)
-		(uuid "5dd9991c-8642-413f-9256-97c9b2a5e629")
+		(uuid "66b69aa7-9788-4bf2-9667-9eee702d49af")
 	)
 	(wire
 		(pts
@@ -6431,13 +6431,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9426f027-1807-4d81-af8b-307aa8490751")
+		(uuid "3643922f-2098-4643-ad1a-a10dbbb903db")
 	)
 	(junction
 		(at 109.22 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8c1d41ad-8cb2-4a09-ab1e-d72bca09a9b6")
+		(uuid "93547c53-619d-41a7-b270-2f8dee35521f")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -6447,7 +6447,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "88c243aa-2fd9-442b-a33b-66ed79954927")
+		(uuid "7c8ffb5b-1ae6-4115-9d17-d7bb5975611a")
 		(property "Reference" "R33"
 			(at 111.125 54.61 0)
 			(effects
@@ -6512,10 +6512,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "8c7d0734-b8e7-480f-a116-e0038034f529")
+			(uuid "643fdca5-28b3-4c37-aa23-25779e34358b")
 		)
 		(pin "2"
-			(uuid "12b5dceb-26b7-4874-8e13-6b3230bb1719")
+			(uuid "80db16a2-fb05-4bee-9b65-6d0d4daec39e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6534,7 +6534,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "41faf6be-da84-479a-abf7-4112924b853e")
+		(uuid "059889e5-775a-4352-be9e-28136b54725b")
 		(property "Reference" "#PWR917"
 			(at 109.22 53.34 0)
 			(effects
@@ -6571,7 +6571,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ba2f75d2-5466-4b2a-90ac-72b5d546fdf5")
+			(uuid "792d1467-7aff-43fc-b3a5-9a0f1a12d3bc")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6590,7 +6590,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ffb6c568-5626-426a-89f2-d3ffba199e08")
+		(uuid "9ea1fcc6-6932-4ada-a69f-efeb1c51c699")
 		(property "Reference" "R34"
 			(at 107.315 59.69 0)
 			(effects
@@ -6655,10 +6655,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "a27b6f7b-8d0c-45d5-b157-193f906208b2")
+			(uuid "827a61c6-d40b-474a-9239-81aff0ef8135")
 		)
 		(pin "2"
-			(uuid "d0805f15-d978-4ef8-928c-476023cf64eb")
+			(uuid "abdb607c-b83b-43a7-a9fd-1e16514271fe")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6677,7 +6677,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "55dc9681-a448-4cec-a865-6a2896ce8fb0")
+		(uuid "d929c690-f91f-4590-be00-91277622a414")
 		(property "Reference" "#PWR918"
 			(at 109.22 63.5 0)
 			(effects
@@ -6714,7 +6714,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "460d194b-a615-4707-b7b5-c8385eb9913d")
+			(uuid "41e96c04-bbe6-460d-bb8b-c95109243bb0")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6734,7 +6734,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4e11e5d4-61d9-417d-836d-206cc0f30bef")
+		(uuid "c0f51d76-fb93-44f8-a5d4-be4eb9ad1f69")
 	)
 	(label "USB_DM"
 		(at 129.54 60.96 180)
@@ -6746,7 +6746,7 @@
 			)
 			(justify right)
 		)
-		(uuid "0b289405-9b27-4680-8de2-4fd7da06e4a5")
+		(uuid "89ef3bb6-89ad-475e-b9df-4ed5ef3b2605")
 	)
 	(wire
 		(pts
@@ -6757,7 +6757,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ece81777-d471-43af-bdce-3696b144d65f")
+		(uuid "dacc29d4-e1d3-4465-8932-1523869a1eee")
 	)
 	(label "USB_DP"
 		(at 129.54 63.5 180)
@@ -6769,7 +6769,7 @@
 			)
 			(justify right)
 		)
-		(uuid "5060ee6f-dac4-41ba-97e9-445a9547522e")
+		(uuid "d0832341-c7b2-40ca-9279-4108ca29dd74")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -6779,7 +6779,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "a5b5d2d8-c6dc-4279-908a-5b15501eb054")
+		(uuid "47c75988-6106-4e55-b0c8-3ab9e0077837")
 		(property "Reference" "#PWR919"
 			(at 154.94 96.52 0)
 			(effects
@@ -6816,7 +6816,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "e02be1c1-57ef-4494-9d97-176730c257dd")
+			(uuid "9e071a5e-3851-43b3-b262-b985ff0c5b4e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -6829,55 +6829,55 @@
 	)
 	(no_connect
 		(at 144.78 91.44)
-		(uuid "a1ec8c24-636b-4bf3-80cd-3bfb92215862")
+		(uuid "9a2b680e-9359-46c9-baf6-54c2c090ad4d")
 	)
 	(no_connect
 		(at 165.1 91.44)
-		(uuid "3a85bc51-4e85-46b7-8cd8-55486a46174d")
+		(uuid "91e34f66-86f0-46b3-a29e-cd31ff710fba")
 	)
 	(no_connect
 		(at 167.64 63.5)
-		(uuid "5cdc6a4f-ae6e-42ab-8639-54e53ead36ca")
+		(uuid "7ee9479c-de8f-45d3-a487-1e369e029d3e")
 	)
 	(no_connect
 		(at 167.64 83.82)
-		(uuid "31d488b0-339f-4aad-90b7-c4433d641fe7")
+		(uuid "bd30096d-eae2-40a9-862b-d74239155339")
 	)
 	(no_connect
 		(at 167.64 81.28)
-		(uuid "4043c239-d7f8-40ff-b9d6-e9799000e51f")
+		(uuid "b4ceb020-ac38-4449-bc10-4cc5765be401")
 	)
 	(no_connect
 		(at 167.64 78.74)
-		(uuid "601fc9b6-faec-4f9c-b3f5-718c8a61085e")
+		(uuid "b9c03664-1227-4402-917f-69dcbb041322")
 	)
 	(no_connect
 		(at 167.64 76.2)
-		(uuid "77073649-55d5-46ad-8723-4f3b2c622987")
+		(uuid "145eeef2-1842-4a8d-9faa-1adb1f948c9a")
 	)
 	(no_connect
 		(at 167.64 71.12)
-		(uuid "70452c8e-183b-45b6-af7f-772e0e4e7df1")
+		(uuid "c1fe57c9-8b3c-47ee-a322-004a62f35d3b")
 	)
 	(no_connect
 		(at 167.64 68.58)
-		(uuid "78f373ac-bfa8-4911-83b2-842c93fef2f3")
+		(uuid "21feb393-e0c9-4974-978c-2d2e81b8326c")
 	)
 	(no_connect
 		(at 167.64 53.34)
-		(uuid "e6a448e6-b6f3-4d98-b435-b25707745068")
+		(uuid "7aaedefe-9477-49e5-87da-54e0270680fb")
 	)
 	(no_connect
 		(at 167.64 50.8)
-		(uuid "c049d541-3f97-4725-aac9-b6d556c8a8a4")
+		(uuid "241725b3-178a-4fb0-b53e-d5b24f355195")
 	)
 	(no_connect
 		(at 167.64 55.88)
-		(uuid "da5c91be-1b13-4485-9b29-24563eb7d757")
+		(uuid "e6ab87e4-6b52-4b85-914d-fb80d6f6f09f")
 	)
 	(no_connect
 		(at 167.64 60.96)
-		(uuid "50ef61d7-93cd-4a82-8411-7fb5c6a8c5e9")
+		(uuid "2d3a86e4-2e19-4dd1-8a6b-432a8e8951ae")
 	)
 	(wire
 		(pts
@@ -6888,7 +6888,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9ef1dbee-1b7f-429d-a8ea-77be45d523f3")
+		(uuid "50100364-7d68-4ba6-800d-bb9774f2c94b")
 	)
 	(label "MCU_RX"
 		(at 172.72 45.72 0)
@@ -6900,7 +6900,7 @@
 			)
 			(justify left)
 		)
-		(uuid "eb14b559-4d29-4a61-b932-e5b232b57a47")
+		(uuid "5cb29732-b149-47cc-8cb8-daad92ac7847")
 	)
 	(wire
 		(pts
@@ -6911,7 +6911,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "708020ef-720d-45a3-aef8-a92a62ef11e8")
+		(uuid "2a23486d-0ac9-4716-8178-5085fe6b0a06")
 	)
 	(label "MCU_TX"
 		(at 172.72 48.26 0)
@@ -6923,7 +6923,7 @@
 			)
 			(justify left)
 		)
-		(uuid "fd288151-84f5-42ce-be54-a12815f66b70")
+		(uuid "831e0565-7f04-48df-a334-c03fdadd674a")
 	)
 	(wire
 		(pts
@@ -6934,7 +6934,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "78e094e1-4492-47ed-b3a3-3439b8bee6b9")
+		(uuid "11bd507a-7654-4c8f-b9ca-642a73dd2051")
 	)
 	(label "DTR"
 		(at 172.72 58.42 0)
@@ -6946,7 +6946,7 @@
 			)
 			(justify left)
 		)
-		(uuid "9b1a0580-9058-41e3-9546-7d3d8f7e115d")
+		(uuid "41975786-b4ec-4875-81cc-83d89160af63")
 	)
 	(rectangle
 		(start 199.39 20.32)
@@ -6959,7 +6959,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "f3e8841b-77a1-471c-a00b-11b879d1a9fd")
+		(uuid "9e41dc6e-c735-421d-af1c-04f1048aab84")
 	)
 	(text "+3.3 V regulator (LP2985, from Si5351AVFO)"
 		(exclude_from_sim no)
@@ -6973,7 +6973,7 @@
 			)
 			(justify left)
 		)
-		(uuid "540997c6-e465-46df-85ff-0aacdb28da6f")
+		(uuid "03b86dbf-dcc9-4c81-a25c-9a4894ca334b")
 	)
 	(symbol
 		(lib_id "Regulator_Linear:LP2985-3.3")
@@ -6983,7 +6983,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0a59114d-fada-46a7-a52a-573836b35bfa")
+		(uuid "636f17a3-176a-4a0b-81e9-d6fff32afe25")
 		(property "Reference" "U11"
 			(at 241.3 33.02 0)
 			(effects
@@ -7046,19 +7046,19 @@
 			)
 		)
 		(pin "1"
-			(uuid "2dc5aebd-39c1-4b77-a9b9-f981bc322e55")
+			(uuid "b0d1169c-e1c4-4d7c-ad0d-cc347ad63842")
 		)
 		(pin "2"
-			(uuid "bfe1bca1-fedd-414b-9791-419c7b1b5538")
+			(uuid "c10ff274-e0cb-40a5-9d27-d5ab733d1f50")
 		)
 		(pin "3"
-			(uuid "1e2876cd-acbc-4c30-9822-86219b27a838")
+			(uuid "90ff8336-d6b5-45f4-899f-85edabf095f0")
 		)
 		(pin "4"
-			(uuid "e2f24f32-5b40-463c-9120-0af5f868630c")
+			(uuid "39bff700-04d6-48d5-a4ab-9fc5ece2f28c")
 		)
 		(pin "5"
-			(uuid "cbc2d90f-cde4-4c82-b93c-75a37e08bd2c")
+			(uuid "1d586cc9-1881-4213-b429-2a7377047775")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7078,7 +7078,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "591d0a2c-6806-4dbe-9afa-3cbdaa13927c")
+		(uuid "e888acef-6578-4017-904e-bbcdc3b95ac4")
 	)
 	(wire
 		(pts
@@ -7089,13 +7089,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "bab089cc-e019-4d08-9e52-61908c7ec81b")
+		(uuid "bfecc40b-fb6e-4c6e-b70c-9749caa7ca17")
 	)
 	(junction
 		(at 220.98 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a17d1d51-81f2-458c-bf13-dfc70a7b99d4")
+		(uuid "e893ea11-8e6f-4c09-b3d0-02d61c20c7b9")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -7105,7 +7105,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ea47c301-9d34-4e6e-8867-776516a3b32f")
+		(uuid "97d02a5d-8907-435c-85be-15af45def83b")
 		(property "Reference" "C34"
 			(at 219.075 39.37 0)
 			(effects
@@ -7170,10 +7170,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "f3197380-2ac5-4252-bb71-8d035110a1bb")
+			(uuid "ab0f8b32-2aa4-4aca-aaee-efd7c21bc26c")
 		)
 		(pin "2"
-			(uuid "730b12c5-305a-4bb1-b490-5e6e62090d12")
+			(uuid "a5eecf26-35a9-422c-8ecd-12c4c3540aec")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7192,7 +7192,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "74fc21a5-18ef-4919-843b-c555c39c0ada")
+		(uuid "efbe4e86-2bac-4788-8de5-fdfdd94731ae")
 		(property "Reference" "#PWR920"
 			(at 220.98 43.18 0)
 			(effects
@@ -7229,7 +7229,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "de795f8d-ec29-4b22-a7c6-e7d2b32dbddf")
+			(uuid "ca7fa3bd-b912-4bec-948d-f1c47c72e337")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7248,7 +7248,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "38d315c0-749c-4f0f-aed1-644654f3174e")
+		(uuid "50c63510-6661-47cc-bfc0-41d8f9b30c8d")
 		(property "Reference" "#PWR921"
 			(at 215.9 38.1 0)
 			(effects
@@ -7285,7 +7285,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "160774df-7b28-4c5d-82e1-9657c4ba0e8a")
+			(uuid "56931371-a7cd-453b-8597-5bd0d7855243")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7300,7 +7300,7 @@
 		(at 215.9 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "11123ce2-dfe2-46de-a6e0-21849f47c8bd")
+		(uuid "7757ee08-311e-4262-a3ab-bc244f122c4c")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7310,7 +7310,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "92c3d7b1-f19f-47bd-9f35-f56a7143967d")
+		(uuid "c9358538-def2-403d-a24b-e9427be17ec9")
 		(property "Reference" "#PWR922"
 			(at 241.3 48.26 0)
 			(effects
@@ -7347,7 +7347,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d66e7399-5125-4890-8d9c-cf114ed7c7c3")
+			(uuid "11e6ee17-7aac-4562-967b-9add799d7cc3")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7367,7 +7367,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "737d008e-dfa7-485f-995d-4946ef0d1961")
+		(uuid "ec45c7fa-b4ba-4278-b089-da34a5edce61")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -7377,7 +7377,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f1f9b67c-02f6-4859-a4a8-4c82e0827606")
+		(uuid "0e026ee4-ff2b-41b5-9c3b-f91e2e13af19")
 		(property "Reference" "C35"
 			(at 255.905 41.91 0)
 			(effects
@@ -7442,10 +7442,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "306d08d9-db28-495d-8653-e9cecbd76bac")
+			(uuid "7d14fe92-4c4c-4327-9553-3ba7adc23cf4")
 		)
 		(pin "2"
-			(uuid "c657969e-d78a-48c3-bcf7-80f70923b459")
+			(uuid "ebb44e9b-1687-4af6-bb3c-7ac4ad7df593")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7464,7 +7464,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "dd329516-9182-45a3-a8b8-ec8289e0e255")
+		(uuid "c72107cb-52cb-4d3b-a1a4-1fa2847dba1b")
 		(property "Reference" "#PWR923"
 			(at 254 45.72 0)
 			(effects
@@ -7501,7 +7501,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "8eea98a9-9644-4ac3-8564-c23432f936c6")
+			(uuid "cb057ad9-7129-4ff4-8d3e-49221f1c33ab")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7521,13 +7521,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a76ce843-7e34-4873-9bf4-b2915d2fce3f")
+		(uuid "a5deae9b-7322-476d-bede-82a6c5f4af6d")
 	)
 	(junction
 		(at 264.16 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "24d77706-3d99-498f-b35c-b638e3c878a8")
+		(uuid "f265b20d-a873-4f78-8425-56a804b28f22")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -7537,7 +7537,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cbbe237a-1ae8-4adf-926b-fddc38c5b80b")
+		(uuid "c493967e-e6ca-46ae-bee7-275f3da70e99")
 		(property "Reference" "C36"
 			(at 266.065 39.37 0)
 			(effects
@@ -7602,10 +7602,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5bd6c08e-4699-42e8-a2a7-0470b2f7a7bf")
+			(uuid "1e6f398e-dc3e-4bd9-8094-a2010689e0dc")
 		)
 		(pin "2"
-			(uuid "21fa9eb9-dec0-46b8-9b64-99715fa1d31f")
+			(uuid "85fab122-934b-4817-82c4-b53571c65a31")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7624,7 +7624,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "13aee8e4-a1aa-4a54-b839-bb6cf85d762b")
+		(uuid "6b43633e-1c35-490b-90ed-f4cfa7a85a0c")
 		(property "Reference" "#PWR924"
 			(at 264.16 43.18 0)
 			(effects
@@ -7661,7 +7661,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "954c83ea-331c-48b4-a62e-18fd682ab47f")
+			(uuid "2c3978de-4eda-44b4-983b-42be4166e22f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7680,7 +7680,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "350fa51f-20b2-43a7-a7ca-2ee265b2b1f2")
+		(uuid "2b78818a-4357-42f8-b1aa-6dede0bb2fa6")
 		(property "Reference" "#PWR925"
 			(at 269.24 38.1 0)
 			(effects
@@ -7717,7 +7717,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "3595d16c-14fe-47cf-986c-8b118c7b7225")
+			(uuid "e9971d3c-4a13-4e6b-995b-c27d21120385")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7732,7 +7732,7 @@
 		(at 269.24 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7f3c3514-5f04-46e7-b14f-b7574d52c474")
+		(uuid "998272ea-985c-4790-91d2-6414cf7e15c9")
 	)
 	(rectangle
 		(start 199.39 67.31)
@@ -7745,7 +7745,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "4a94eb67-3d89-4076-85f7-1855b4b63d57")
+		(uuid "75ed2795-7ca8-479c-b796-8255515bc9f5")
 	)
 	(text "UPDI header + DTR auto-reset (from Si5351AVFO)"
 		(exclude_from_sim no)
@@ -7759,7 +7759,7 @@
 			)
 			(justify left)
 		)
-		(uuid "945ebd69-e68a-4b3f-b287-2f50bfbbb91e")
+		(uuid "a103c8b0-59a9-4de7-8996-ebfe59bb10e8")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
@@ -7769,7 +7769,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c688f6cc-3a3f-4c91-97b1-66c91d17001e")
+		(uuid "aeb7f08c-90bd-47ab-a3d9-8c5e9740570a")
 		(property "Reference" "J13"
 			(at 275.59 78.74 0)
 			(effects
@@ -7834,16 +7834,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "bee85dc0-a03e-4f5e-a0f2-b82f383592ef")
+			(uuid "1ad35cc0-b347-4104-9b9d-66e476f73c27")
 		)
 		(pin "2"
-			(uuid "2af7f09b-2e09-490b-b272-614f79e04ffb")
+			(uuid "37c85abb-83f3-4904-803a-d5003e4dcdc5")
 		)
 		(pin "3"
-			(uuid "65e0747a-f632-4fc3-a433-d83e10e9e2cd")
+			(uuid "2fd1bfad-d5d6-43d8-bb32-59e6c99dd010")
 		)
 		(pin "4"
-			(uuid "18be8d96-335f-4e6d-a768-c96013a6e902")
+			(uuid "2a221d76-4a64-42c8-ab09-e26969554edf")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7863,7 +7863,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6b344412-0c83-42d9-aa78-b8e5ca4f031e")
+		(uuid "79b88ce6-0fb7-442c-8341-41a9fc3d7605")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -7873,7 +7873,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "966b954b-6b00-4e96-90a8-026a71147701")
+		(uuid "dc2c4033-4f64-4c76-b943-f73be625411e")
 		(property "Reference" "#PWR926"
 			(at 269.24 81.28 0)
 			(effects
@@ -7910,7 +7910,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "dd8a4cb3-8132-428f-a619-3f7c858b2c1e")
+			(uuid "4a01b7f8-f8fc-4f68-9284-334c662ba14a")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7930,7 +7930,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6bd2ebac-01be-47de-b17d-7fa11342cd1b")
+		(uuid "eda9ddb7-6366-4883-9d55-a9abc10b76cf")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -7940,7 +7940,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "e9c85577-09da-4fb9-be4d-9569f4982384")
+		(uuid "87fff18d-5632-4678-b468-bf96a9219faa")
 		(property "Reference" "#PWR927"
 			(at 269.24 88.9 0)
 			(effects
@@ -7977,7 +7977,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "60a7e1ed-26b2-4350-8484-3ab2a15f48bc")
+			(uuid "d9e78b4a-d54b-4ad9-9f12-e267382996fd")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -7997,7 +7997,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a68d864a-800f-4923-9d05-f1788597c83a")
+		(uuid "e45a7cd9-175a-4943-88cd-0a56c3870c2a")
 	)
 	(label "UPDI_TXD"
 		(at 264.16 83.82 180)
@@ -8009,7 +8009,7 @@
 			)
 			(justify right)
 		)
-		(uuid "91908c43-2888-41c5-952f-7c8a145b0dca")
+		(uuid "6b5a3c2c-ff39-44a8-9195-e134c7bb9e6d")
 	)
 	(wire
 		(pts
@@ -8020,7 +8020,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cf173cce-ff5e-46de-ad82-89db794017db")
+		(uuid "577443ba-c083-4c33-b730-1c19ec0b8a4e")
 	)
 	(label "UPDI_RX"
 		(at 264.16 86.36 180)
@@ -8032,7 +8032,7 @@
 			)
 			(justify right)
 		)
-		(uuid "989c1c40-d16b-495f-a08f-509bf123ecf5")
+		(uuid "43f8f293-95d9-48bd-8911-65cbb9a72b3d")
 	)
 	(label "UPDI_TXD"
 		(at 210.82 99.06 180)
@@ -8044,7 +8044,7 @@
 			)
 			(justify right)
 		)
-		(uuid "dea57698-b6ca-4592-ae8f-de410feeac65")
+		(uuid "db70b40b-b4d0-48d4-bcb4-eb1639035403")
 	)
 	(symbol
 		(lib_id "Device:D_Schottky")
@@ -8054,7 +8054,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3adda1ff-5288-4b3f-9c4d-dc5f84ad26c1")
+		(uuid "c4566613-7b53-42db-bfaa-71bcd5a1d31b")
 		(property "Reference" "D10"
 			(at 218.44 95.25 0)
 			(effects
@@ -8117,10 +8117,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "039525ad-2382-4058-9ba9-8a996f70cd19")
+			(uuid "7aa6f1ae-6bb5-474a-bf61-b9c35f0f940c")
 		)
 		(pin "2"
-			(uuid "dfb49c7c-1faf-4471-a512-214dafd60141")
+			(uuid "649086ff-cacd-4263-b801-eab811f063cd")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8140,7 +8140,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "32f8587b-0ac8-4b7e-b294-57507dbdd726")
+		(uuid "bcb332f1-5f06-4627-ac38-87210e06b3b4")
 	)
 	(wire
 		(pts
@@ -8151,13 +8151,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9e52dd70-e1e5-4606-9f9c-fa720983c57e")
+		(uuid "d7389c99-7e6c-449f-8c39-1f00466d208e")
 	)
 	(junction
 		(at 226.06 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "6eb9ee04-4f9e-45e2-84da-5f7e0d3a2556")
+		(uuid "88dfb1a9-74fb-4d87-9c98-7cf384778fbc")
 	)
 	(wire
 		(pts
@@ -8168,7 +8168,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a5fe7a11-cdde-40dd-b24b-dce827d51523")
+		(uuid "2d838388-897d-4d65-8b36-43ef3e2320e8")
 	)
 	(label "UPDI_RX"
 		(at 226.06 93.98 90)
@@ -8180,7 +8180,7 @@
 			)
 			(justify left)
 		)
-		(uuid "6ab02ae7-90df-42f4-9f09-666166c0a011")
+		(uuid "ab883f5d-671a-4d86-bc4f-b3734f5d3ee1")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -8190,7 +8190,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "74ff4b8f-2449-4d32-8305-f38043b76f2d")
+		(uuid "ea3d0b97-59e6-4c1c-9f97-a200fd178b28")
 		(property "Reference" "R35"
 			(at 231.14 96.52 90)
 			(effects
@@ -8253,10 +8253,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "38849f2b-e5fb-4b86-960d-9b636781b523")
+			(uuid "22986ebe-7a67-406a-a9f0-2d239ddec4fd")
 		)
 		(pin "2"
-			(uuid "77e4dda6-8835-416d-90c8-edcf1b5189ba")
+			(uuid "74673e50-2f22-46a7-a59b-ee3bc100c328")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8276,7 +8276,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "70d87b71-7f0a-4d6b-bd45-0d8664e76fac")
+		(uuid "159304e8-e421-41b6-bb13-88350e3bfe82")
 	)
 	(wire
 		(pts
@@ -8287,7 +8287,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ba105ba4-022f-4e95-bfd2-36e9b5923072")
+		(uuid "e018c396-c964-4adc-9244-1bb25ade4ae4")
 	)
 	(label "UPDI"
 		(at 238.76 99.06 0)
@@ -8299,7 +8299,7 @@
 			)
 			(justify left)
 		)
-		(uuid "108c2a2f-67a8-4605-94a0-ae6cf0d862cd")
+		(uuid "7aad6f48-5d73-4cdc-9ee8-4a60247e9bbe")
 	)
 	(text "J13 copied from Si5351AVFO J5\n(EtherKeyerMini pinout):\n1 VCC ref only, 2 TXD,\n3 RX/UPDI, 4 GND.\nNo solder jumpers."
 		(exclude_from_sim no)
@@ -8310,7 +8310,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "14e0622f-f0d2-429c-a908-847a7a26d837")
+		(uuid "51dfdb6c-6985-4ab7-bcc4-0379d474aa00")
 	)
 	(label "DTR"
 		(at 204.47 116.84 180)
@@ -8322,7 +8322,7 @@
 			)
 			(justify right)
 		)
-		(uuid "2d16413d-e8b9-4c4a-8ab7-2634cf3fd107")
+		(uuid "b8c9a4c2-8d05-4892-88f7-f1f35d0e272b")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -8332,7 +8332,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e8483052-2f8b-4dff-843c-a49b2b85d272")
+		(uuid "67050e73-32de-4b1c-bda8-c8f33ffeb2f8")
 		(property "Reference" "C37"
 			(at 209.55 114.3 90)
 			(effects
@@ -8395,10 +8395,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d11e01a5-4249-4a0c-9e07-b65404083c3e")
+			(uuid "97567a99-55bd-48bd-ac9b-36b1d6e72f74")
 		)
 		(pin "2"
-			(uuid "3aaabb97-a252-4148-9b38-0c9762e5e68e")
+			(uuid "c44d6731-d44f-439a-b810-3d8a391cb88b")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8418,7 +8418,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f2c50b6a-752f-4d28-94ff-c43a93a96a82")
+		(uuid "29684080-2387-4a76-8735-adaf8a0d72cd")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -8428,7 +8428,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "105e7c79-a403-427e-a27b-947cf61841c1")
+		(uuid "960a0078-a837-42c8-8763-66908b90626f")
 		(property "Reference" "R36"
 			(at 217.17 114.3 90)
 			(effects
@@ -8491,10 +8491,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "acd681d8-fd56-482c-bb28-9dbe56ab00f0")
+			(uuid "d4ed9545-ff45-46bd-b0f7-6168887f7322")
 		)
 		(pin "2"
-			(uuid "f8b88d6a-accc-4724-9c6f-f3b2934b6de1")
+			(uuid "3c85319f-8761-42a4-9107-239a1dce0ac6")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8514,7 +8514,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "979466af-75cb-4fc8-b469-2d1de7a7882a")
+		(uuid "f3c90367-2a0f-41c6-a309-04d1d3497eb2")
 	)
 	(wire
 		(pts
@@ -8525,13 +8525,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a66e50e9-8d9e-44ae-8ae2-041c7d117207")
+		(uuid "021bc98c-5351-4d2b-829d-96af9574545a")
 	)
 	(junction
 		(at 224.79 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c114d697-fdd0-4e14-977c-e34971477ec9")
+		(uuid "e3ec2543-1062-4cc0-87c5-c4482e6bf604")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -8541,7 +8541,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "65a3a96f-ea99-4d5b-8c0b-94bc6c11ce3b")
+		(uuid "372fcfb6-0e9c-484c-af6f-387fcaeac224")
 		(property "Reference" "R37"
 			(at 226.695 110.49 0)
 			(effects
@@ -8606,10 +8606,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "6ca8ea2e-94f9-481f-910e-d13b99f38c7b")
+			(uuid "80a96570-6441-4e16-b110-1cf6bbd0a06a")
 		)
 		(pin "2"
-			(uuid "a49aeafc-ae21-473a-812d-01ae776a90a7")
+			(uuid "267bde77-1a08-4137-9ada-d807ef49d76e")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8629,7 +8629,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e39e34cb-b644-4c8c-9e45-db16980c04e4")
+		(uuid "a1ba023a-b6a3-425c-bed2-b727e46db3c7")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -8639,7 +8639,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "c6799098-6363-4b67-99f0-2ab75d8abf63")
+		(uuid "c3583eb7-a006-4b5a-8766-fcf6416e92a5")
 		(property "Reference" "#PWR928"
 			(at 224.79 109.22 0)
 			(effects
@@ -8676,7 +8676,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "30434600-4bea-4a59-ae37-43fcec2e97d1")
+			(uuid "f4ca5b1a-85ce-42ee-88ee-e590f59296bc")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8697,7 +8697,7 @@
 			)
 			(justify left)
 		)
-		(uuid "bd7a6770-ad43-4539-9571-816b3b5d0df3")
+		(uuid "02a83232-889c-48a2-9a2f-448665c96ffe")
 	)
 	(rectangle
 		(start 12.7 102.87)
@@ -8710,7 +8710,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "7c3108ee-84e9-41f2-9d16-791ffa081e0b")
+		(uuid "da5a46a1-2146-40c3-882d-9288ad71bd3e")
 	)
 	(text "MCU (AVR128DA32, DxCore, 3.3 V)"
 		(exclude_from_sim no)
@@ -8724,7 +8724,7 @@
 			)
 			(justify left)
 		)
-		(uuid "7252e2ed-99bd-4f27-9ac5-f862e140370d")
+		(uuid "e58d6284-97c4-448b-8f5d-522d4902187d")
 	)
 	(symbol
 		(lib_id "OpenBeacon2:AVR128DA32x-xPT")
@@ -8734,7 +8734,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b0da2e9b-7d61-45d1-a886-6c48c190e147")
+		(uuid "fd964a51-be43-4745-9b88-1d376c1f3a41")
 		(property "Reference" "U9"
 			(at 88.9 123.19 0)
 			(effects
@@ -8799,100 +8799,100 @@
 			)
 		)
 		(pin "30"
-			(uuid "8e72dacc-57d2-456b-8827-2e92be5e16cb")
+			(uuid "b74bbf08-bb72-438b-b82c-d1ad66fdbe83")
 		)
 		(pin "31"
-			(uuid "b5c11606-d6b2-4367-b8b4-1d20af723cd5")
+			(uuid "820f169d-82a1-4f3a-87b2-44c6b8022bdf")
 		)
 		(pin "32"
-			(uuid "51dacdec-6f59-4171-b505-d09731b58092")
+			(uuid "cd357bff-f4f6-412f-ab3f-5a21813c6748")
 		)
 		(pin "1"
-			(uuid "3c215a97-96ba-4e7f-b044-153368811da0")
+			(uuid "17164679-26bf-4408-89ac-737b80e0e996")
 		)
 		(pin "2"
-			(uuid "5925c6fb-83f6-451b-910c-abf41031a8d4")
+			(uuid "3fdd0d6a-0dea-4753-8cda-18495e684c9c")
 		)
 		(pin "3"
-			(uuid "7426337d-1f7c-4a66-8c85-25701065c47d")
+			(uuid "587cf4e2-55da-4789-be9f-b6b99cbb628f")
 		)
 		(pin "4"
-			(uuid "e8ddcc74-454f-429b-a8ad-35533ccd530e")
+			(uuid "58be62c5-b2d0-4f1c-b949-85b863112ac8")
 		)
 		(pin "5"
-			(uuid "79d3ed0d-11ba-4cbc-b5f7-bf1b6c1078ca")
+			(uuid "53deb4fb-b065-4386-918a-1c8170ac6d06")
 		)
 		(pin "6"
-			(uuid "f7cb78c0-6f5e-453c-8960-e08d64f9ddbd")
+			(uuid "c213cf56-cd80-4516-baa8-6ad7b5719ad9")
 		)
 		(pin "7"
-			(uuid "b53a1e63-5fcf-49d2-b0a7-30206b9b1423")
+			(uuid "5d7ce95c-abca-4b75-ab9f-4d206a8d06b8")
 		)
 		(pin "8"
-			(uuid "439a6e85-a78e-40e0-9481-a0c0a7f03b6c")
+			(uuid "554b5149-feb4-4616-8a88-e725ac4b2b3e")
 		)
 		(pin "9"
-			(uuid "ec209048-54a3-4943-8ee0-0755ab47990d")
+			(uuid "17cdf59c-77d2-48b4-850e-d5ad9beeeca3")
 		)
 		(pin "22"
-			(uuid "8cca1b97-236b-487a-a3f9-3939a4ce881b")
+			(uuid "0acbe0e1-a5d7-472b-a31f-c31ed4afc2db")
 		)
 		(pin "23"
-			(uuid "949c10f4-d1c5-4104-9452-b921568a7d7b")
+			(uuid "cc040372-c5b2-4945-89e2-f601ae398dac")
 		)
 		(pin "24"
-			(uuid "a13982a8-a3a3-42ea-89a0-23244a13c4cd")
+			(uuid "7a1d7318-6c80-4bdf-861f-65a070c270f6")
 		)
 		(pin "25"
-			(uuid "aa4bb4f8-17ed-46fc-8a02-9c7a23a759b3")
+			(uuid "3539a3e0-8b6f-4e07-8867-40dc9acc27b6")
 		)
 		(pin "27"
-			(uuid "7fbc82af-714a-43e3-b3ca-2c26019b66af")
+			(uuid "09b4106d-90ea-4572-a4a7-ea9b7ab1f883")
 		)
 		(pin "26"
-			(uuid "5d6abd0c-7390-4d42-b713-423e5a27fe6e")
+			(uuid "3ef95f45-0aba-4cdc-962b-85f44d6c323d")
 		)
 		(pin "20"
-			(uuid "786043cc-3383-4900-85c4-f1cf561d6c3b")
+			(uuid "6c67d0be-dbac-4083-9654-4a44da65005d")
 		)
 		(pin "21"
-			(uuid "e7452b6e-eb6d-425d-9493-9bf3354fdb30")
+			(uuid "2ac7a83d-c252-4e31-a657-f33f0a54d0ad")
 		)
 		(pin "10"
-			(uuid "6cac96a7-e24a-4993-895f-5be6a700010d")
+			(uuid "d35d65ab-a847-42fb-a07c-953c03e87382")
 		)
 		(pin "11"
-			(uuid "c7dad471-955f-447f-9c4e-5359248f8924")
+			(uuid "e98dc873-b993-4984-839d-69893a450467")
 		)
 		(pin "12"
-			(uuid "e5e371d8-de9c-47f2-817c-d4d8735a2f6d")
+			(uuid "226b5ec9-4656-4b88-91e2-0b90c66e177c")
 		)
 		(pin "13"
-			(uuid "bc869a82-bec0-4df4-93c0-7e4b1a63e3bb")
+			(uuid "f61a102a-a641-46fa-8a39-a5d2b23367ca")
 		)
 		(pin "14"
-			(uuid "784cc9a5-a6b4-402f-ade6-d4b5fe8112e4")
+			(uuid "55afcb51-0dde-4f19-80ae-805fb452e915")
 		)
 		(pin "15"
-			(uuid "c661bae8-567d-4ab1-afb4-fca947ac8daf")
+			(uuid "afd9c103-2474-4b24-ac18-1bcff165124f")
 		)
 		(pin "16"
-			(uuid "d21b346f-29d5-4a1e-8b96-536223713947")
+			(uuid "0944eea2-78b1-4ad4-8041-e521f8428a9e")
 		)
 		(pin "17"
-			(uuid "8172b5fe-5b62-4d18-8e2d-276ac5100ca8")
+			(uuid "39ec3e4c-3033-4b4e-a0ed-7446199d1762")
 		)
 		(pin "28"
-			(uuid "db470ea3-6c5a-4073-b8f9-24ad1ebad16c")
+			(uuid "d68eb8aa-eccf-4dc6-9bf0-1f22f9d1ab26")
 		)
 		(pin "18"
-			(uuid "5d6a3d1c-a206-4de5-9254-f4e0a72e1d23")
+			(uuid "bb94b9f8-27c5-492e-8d19-c82bf8aa2417")
 		)
 		(pin "19"
-			(uuid "242b009f-6851-4880-b6db-207509808037")
+			(uuid "5b72ebc0-5a64-4585-ad3b-1c97016be85c")
 		)
 		(pin "29"
-			(uuid "c721ad65-cb5c-4fd5-af69-65eb7c7c6b93")
+			(uuid "aee67e0f-819a-4bb3-b8cf-cd0ab30bc15f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -8912,7 +8912,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3725a675-548d-45fa-80d8-352e5fdd3481")
+		(uuid "29e2e69a-7a70-46b0-83e4-2e40dc197af2")
 	)
 	(wire
 		(pts
@@ -8923,13 +8923,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e8405f80-29bc-4218-ad7a-bddcfffea98f")
+		(uuid "65b9c856-4c57-47a0-9da6-45432a162ba1")
 	)
 	(junction
 		(at 91.44 111.76)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3247be4f-5186-41d6-8598-b4ebb2bcd1e0")
+		(uuid "05f0b987-c9d7-46b0-8c39-ccc09af7257e")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -8939,7 +8939,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "da44b983-27ee-4661-94fe-7ced48ad6b4c")
+		(uuid "4b7520bb-a12a-4225-b201-2c577604ad53")
 		(property "Reference" "C38"
 			(at 89.535 113.03 0)
 			(effects
@@ -9004,10 +9004,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "510670c1-204c-4183-a899-aaabc378023c")
+			(uuid "c0d66d92-4b8f-45ac-a24a-4b8762beda89")
 		)
 		(pin "2"
-			(uuid "7ece73e8-bd87-430a-a05e-33401ff29b72")
+			(uuid "db0ee40a-8b89-4265-ab24-75486c6bee16")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9026,7 +9026,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "9e58dff1-4998-4410-ac10-bd65fe4bd827")
+		(uuid "a55a5a49-a7ce-4c58-affb-ed7ebf6f508d")
 		(property "Reference" "#PWR929"
 			(at 91.44 116.84 0)
 			(effects
@@ -9063,7 +9063,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "935b839b-7826-4e71-95d3-df304d226efb")
+			(uuid "2615df27-0d0b-4e8b-a3d3-68d9fd91ed2f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9082,7 +9082,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "518188fd-8970-4f23-9e69-8b415e40a3a0")
+		(uuid "06878f7e-2aef-4cc1-a260-b7146886d211")
 		(property "Reference" "C39"
 			(at 79.375 113.03 0)
 			(effects
@@ -9147,10 +9147,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "1df6d783-6ba3-46aa-a910-1ac8b38f5b07")
+			(uuid "16ca8797-d138-413e-8e51-9b390a528243")
 		)
 		(pin "2"
-			(uuid "0c28b23b-2347-4625-9dad-06b19ec14480")
+			(uuid "1238e33a-c742-49c9-bb20-4e92b3ed2397")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9169,7 +9169,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "eecda1d0-e139-4ff9-a9cc-d34ab4d8b286")
+		(uuid "79e3f658-f370-4630-9fce-74075e9fd0e6")
 		(property "Reference" "#PWR930"
 			(at 81.28 116.84 0)
 			(effects
@@ -9206,7 +9206,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "524609b2-0123-43de-8215-aa4a12f0fb13")
+			(uuid "6b30a5bf-6b87-431e-baf0-2ef36dd2f92f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9225,7 +9225,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "15135356-517b-4686-8dea-647b9de76b24")
+		(uuid "3931e820-1585-4931-9096-83ef429df0e4")
 		(property "Reference" "#PWR931"
 			(at 99.06 111.76 0)
 			(effects
@@ -9262,7 +9262,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "33fcb498-5a32-48f6-8b6b-94e789740503")
+			(uuid "970cb4fa-7d5e-45c5-a74c-ee57d23ddf6b")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9282,7 +9282,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4f6d6690-8329-48f9-a0e7-43bcf80e1f09")
+		(uuid "1dcceb6c-bff5-476b-a74c-ccdbc2489123")
 	)
 	(wire
 		(pts
@@ -9293,7 +9293,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "069e793b-4114-43ec-9cab-7cabf4fb3979")
+		(uuid "a1974fa2-b375-4d2b-90b3-4a5f4f758f03")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -9303,7 +9303,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "83694183-19d7-4f3d-9eaf-a655e65c7721")
+		(uuid "222f0038-d863-4070-8bf1-cc5e1763eb1e")
 		(property "Reference" "C40"
 			(at 116.205 113.03 0)
 			(effects
@@ -9368,10 +9368,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d99bec31-2ecc-44af-bac8-26c85c00de0e")
+			(uuid "6d0949f8-fe2a-42a5-b7b4-8c74de44e4b6")
 		)
 		(pin "2"
-			(uuid "7d124850-2b81-43d9-ac5a-61d5373227b1")
+			(uuid "63514617-87ed-4c79-94cb-95b009a47cab")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9390,7 +9390,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "29e105f6-ed4f-4df2-bab3-afd21a2f8572")
+		(uuid "8b01a481-cb24-4df9-a463-84b34a04c1c1")
 		(property "Reference" "#PWR932"
 			(at 114.3 116.84 0)
 			(effects
@@ -9427,7 +9427,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "54904bd5-cbff-49d8-99a3-dda4c2977cfb")
+			(uuid "1572944f-267c-4abc-9da8-614977cdcfcd")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9446,7 +9446,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "55095bec-614e-4288-bc25-88792edc2630")
+		(uuid "f713eb5e-c82e-4ee2-b69c-e3ce457c855d")
 		(property "Reference" "#PWR933"
 			(at 106.68 111.76 0)
 			(effects
@@ -9483,7 +9483,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9f47b62d-9125-419d-9290-946852f47e7e")
+			(uuid "34e7be9b-82ee-4301-890f-2dd30a36d4b0")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9502,7 +9502,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "0e0de1b0-863d-43ae-a9e1-66e000dce4f1")
+		(uuid "07d8e7db-d3cd-49c1-99df-f5cc1025995d")
 		(property "Reference" "#PWR934"
 			(at 101.6 175.26 0)
 			(effects
@@ -9539,7 +9539,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "545fc70c-6d3c-4792-aafa-2c35424758c2")
+			(uuid "e0aad3c7-6fcf-46ce-9ed7-58503052375d")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9558,7 +9558,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "79f369f1-e87c-40d6-897c-0450b1418794")
+		(uuid "bf273083-e2fc-4048-bda1-eb343f2db941")
 		(property "Reference" "Y1"
 			(at 73.66 137.16 90)
 			(effects
@@ -9623,10 +9623,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "2475da65-45b1-4b3f-9fe3-27f5d5a0ceeb")
+			(uuid "9590fd39-0179-40bc-91fe-312a898a80b8")
 		)
 		(pin "2"
-			(uuid "f98a6240-f1af-4f5b-9a26-5d050e5dad7c")
+			(uuid "73513ddc-d63b-4f6e-bcda-ed1f6f5ff955")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9646,7 +9646,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1e90d6e3-c6a9-4513-9061-9003f3c71586")
+		(uuid "af2e08df-54c8-4f31-b899-27333dcf594c")
 	)
 	(wire
 		(pts
@@ -9657,19 +9657,19 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4d8a738f-f434-43f7-ba48-20cdd2e2f4be")
+		(uuid "8225463d-a155-4610-9d0d-0f6a21eae7d4")
 	)
 	(junction
 		(at 76.2 134.62)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cfd6c850-33d9-49e9-a8e2-d50546499e6d")
+		(uuid "3e54faec-ea7a-4d2c-9a6f-f0b4f5ee79ef")
 	)
 	(junction
 		(at 76.2 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1a5aa9af-e1e0-4333-9b0f-d85e3ceb2e92")
+		(uuid "32547b2a-0e90-4539-93e8-b5f60b2d5e79")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -9679,7 +9679,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8128dd93-a27a-43ec-bca3-60d3f624f768")
+		(uuid "90fdf53c-d009-494b-bbf9-f7e171a51052")
 		(property "Reference" "C41"
 			(at 66.04 132.08 90)
 			(effects
@@ -9742,10 +9742,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d4e85df5-56f1-4537-bee0-6de2cec29c84")
+			(uuid "b6ed29bf-548a-476b-9a27-a372131b2a74")
 		)
 		(pin "2"
-			(uuid "66ebb03e-6f59-4445-9a52-b7a75b0b5ba3")
+			(uuid "44fccd8a-349b-4eb7-b1a7-b69ddaefdd47")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9765,7 +9765,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "05b00a3a-dcf1-4d9c-8f10-0dca22ad6a03")
+		(uuid "40173347-9fcd-4a1a-a70b-53d89aca52de")
 	)
 	(wire
 		(pts
@@ -9776,7 +9776,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3fa4c41e-1d6c-4d53-9899-95ed807c5c6e")
+		(uuid "6467e2e3-5a8b-4fff-b368-77d2bd28e02c")
 	)
 	(symbol
 		(lib_id "Device:C_Small")
@@ -9786,7 +9786,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d4afffc8-0dbc-4320-8725-ede0d10659f1")
+		(uuid "d0c007d8-1611-4b52-95bc-1fbe2f6bd552")
 		(property "Reference" "C42"
 			(at 66.04 139.7 90)
 			(effects
@@ -9849,10 +9849,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "7935d4e5-5997-407b-8f14-959e238a988d")
+			(uuid "10a15604-924b-4e8d-b867-b65b8f095b56")
 		)
 		(pin "2"
-			(uuid "209f699e-7ba5-4391-9241-1b54908a4432")
+			(uuid "c9702f7f-e998-402b-8d4a-aca84ca9c0bc")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9872,7 +9872,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c9a9aceb-a2df-4f23-9846-f268f6ccd0c6")
+		(uuid "4d4bf1b3-5100-4af1-ad9a-4dfec9bfd501")
 	)
 	(wire
 		(pts
@@ -9883,7 +9883,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "13749a3e-542c-4541-8eb8-2e82499fd588")
+		(uuid "17737ffe-6426-4603-aa38-1cbcaa76225d")
 	)
 	(wire
 		(pts
@@ -9894,13 +9894,13 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f7bf90cd-e35c-404b-a349-0b671ae8bd8b")
+		(uuid "78132792-7157-4068-aa3b-8fc4c9905633")
 	)
 	(junction
 		(at 58.42 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "71257c74-590b-4419-8135-cf354ca48440")
+		(uuid "5a0d2a3a-4621-49d9-976e-5fcd43a7697c")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -9910,7 +9910,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "b094a43d-5cb3-4883-a167-f608fb1a3ded")
+		(uuid "50b57533-5797-4a81-a46b-fa834a824fd4")
 		(property "Reference" "#PWR935"
 			(at 58.42 144.78 0)
 			(effects
@@ -9947,7 +9947,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "2da715fe-0b47-4335-b439-d962ee5bac80")
+			(uuid "ec055b07-322f-41e0-88ed-06bd0836f2d1")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -9967,7 +9967,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4e5a36b5-0f98-4998-8628-dc3076efea3e")
+		(uuid "19f1521c-1c3a-4258-b94d-ef37d442ef39")
 	)
 	(label "UPDI"
 		(at 81.28 127 180)
@@ -9979,7 +9979,7 @@
 			)
 			(justify right)
 		)
-		(uuid "a1f9f326-d128-4e30-8d60-8a67c1983555")
+		(uuid "43d2a698-1425-4c5b-9ec7-fa5569c2414f")
 	)
 	(wire
 		(pts
@@ -9990,7 +9990,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b1fb1927-d164-4322-b065-32a1229df270")
+		(uuid "74e92be5-f35d-406a-9aa6-46cc29799a18")
 	)
 	(label "~{RESET}"
 		(at 81.28 129.54 180)
@@ -10002,7 +10002,7 @@
 			)
 			(justify right)
 		)
-		(uuid "09a1ccfd-e7ea-4980-ab6b-8c3ea885c53b")
+		(uuid "9fcec7c6-256d-4414-b0c3-edb2393123fb")
 	)
 	(wire
 		(pts
@@ -10013,7 +10013,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7ed6a789-6cc5-471f-9535-adbdda3cede1")
+		(uuid "6205cdd2-6e28-4932-a327-94940a47b65f")
 	)
 	(label "MCU_TX"
 		(at 119.38 127 0)
@@ -10025,7 +10025,7 @@
 			)
 			(justify left)
 		)
-		(uuid "7326142a-cf64-4297-8402-2fff083d71db")
+		(uuid "5f5fafde-972c-427e-9974-b59f6fa45a0e")
 	)
 	(wire
 		(pts
@@ -10036,7 +10036,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a5f7b7b5-253f-43b6-a6cc-3c0b45d206c5")
+		(uuid "63298091-8c7e-40e8-aa41-7f10b34b8c87")
 	)
 	(label "MCU_RX"
 		(at 119.38 129.54 0)
@@ -10048,7 +10048,7 @@
 			)
 			(justify left)
 		)
-		(uuid "c874f736-3f35-46b8-82a0-80eabbdb7f43")
+		(uuid "3fa77916-a488-45b9-8afb-e51499b2f428")
 	)
 	(wire
 		(pts
@@ -10059,7 +10059,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0904d147-3fe1-4a75-9398-021c0ca653f4")
+		(uuid "753ff821-4a05-4b55-a166-be38cbe8914a")
 	)
 	(global_label "SDA"
 		(shape bidirectional)
@@ -10072,7 +10072,7 @@
 			)
 			(justify left)
 		)
-		(uuid "2dd6a65d-c26d-4794-a44d-09e98bc3e262")
+		(uuid "f439eccb-8e9c-475a-a0e2-6b5118be4510")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 132.08 0)
 			(effects
@@ -10092,7 +10092,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c5ef8413-74c2-4f1e-a239-a8f07879f1dd")
+		(uuid "ce8a96b4-fb50-42f8-b9d6-19a295d76072")
 	)
 	(global_label "SCL"
 		(shape bidirectional)
@@ -10105,7 +10105,7 @@
 			)
 			(justify left)
 		)
-		(uuid "002a1187-514b-4d49-8fbb-e8aa25ea8844")
+		(uuid "49ba9f99-4f94-46c6-b5d7-27c0d686003b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 134.62 0)
 			(effects
@@ -10125,7 +10125,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "aca805b2-94e8-4afe-8208-9793fc1e289b")
+		(uuid "772adc06-7e38-423d-8b95-cade5dd7e981")
 	)
 	(global_label "TX"
 		(shape output)
@@ -10138,7 +10138,7 @@
 			)
 			(justify left)
 		)
-		(uuid "c908c703-b73c-4120-b029-3128de148bf8")
+		(uuid "2f83813c-7d37-40e4-adf0-050243ca4120")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 137.16 0)
 			(effects
@@ -10158,7 +10158,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "aa2a90d7-bc60-4c66-85f3-1b7a06b14302")
+		(uuid "faa4f592-3285-4940-a270-dbe0a8bd734e")
 	)
 	(global_label "LPF_80_60"
 		(shape output)
@@ -10171,7 +10171,7 @@
 			)
 			(justify left)
 		)
-		(uuid "f3dcf386-6643-4961-973c-74c3592a05f7")
+		(uuid "a8977eb6-155b-40b5-bb41-8783574fac84")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 139.7 0)
 			(effects
@@ -10191,7 +10191,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ce00adf2-6890-40e2-928d-cf9e2105f3cf")
+		(uuid "63bc907c-f3ec-4738-823e-c087bfce6341")
 	)
 	(global_label "LPF_40_30"
 		(shape output)
@@ -10204,7 +10204,7 @@
 			)
 			(justify left)
 		)
-		(uuid "ebbcb018-f408-43aa-8e8b-fcde791ed383")
+		(uuid "88fd6750-9cf6-4923-ac9c-fd02d664cabc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 142.24 0)
 			(effects
@@ -10224,7 +10224,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5942388e-7931-4d13-acbb-9f07ad308fcf")
+		(uuid "ba154df3-7d55-4563-b205-f55469cfcee6")
 	)
 	(global_label "LPF_20_17"
 		(shape output)
@@ -10237,7 +10237,7 @@
 			)
 			(justify left)
 		)
-		(uuid "e2bdca4d-c208-4d0a-bff6-7943be2e40e0")
+		(uuid "9c12db2f-f3a4-488c-bed8-7e1c32939832")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 144.78 0)
 			(effects
@@ -10257,7 +10257,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e6f5ee37-0303-4d46-bbb0-1207c0060980")
+		(uuid "ce11dca8-5f6d-4bbc-8277-753e87d8c039")
 	)
 	(global_label "LPF_15_10"
 		(shape output)
@@ -10270,7 +10270,7 @@
 			)
 			(justify left)
 		)
-		(uuid "885dc28a-d1d7-4e1f-a32c-2badd45bf815")
+		(uuid "6c7bfb96-ef4f-4440-8683-4266997721ec")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 154.94 0)
 			(effects
@@ -10290,7 +10290,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "98612fd3-7fe7-4932-9c12-6009e4de384e")
+		(uuid "08e9e3c3-7de9-49cd-9eaa-51dd5eeb94ee")
 	)
 	(global_label "UART_TX"
 		(shape output)
@@ -10303,7 +10303,7 @@
 			)
 			(justify left)
 		)
-		(uuid "920de2f5-970c-4a98-874f-6cbd36e1f7b7")
+		(uuid "01ac2b2f-a70b-4581-9363-11f368144cb4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 149.86 0)
 			(effects
@@ -10323,7 +10323,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d751e490-1463-41d4-a8b0-5f491c8253ec")
+		(uuid "50d1632e-4324-42d9-b1ec-4bdd93a1b12a")
 	)
 	(global_label "UART_RX"
 		(shape input)
@@ -10336,7 +10336,7 @@
 			)
 			(justify left)
 		)
-		(uuid "bfd1e269-2d4e-40a4-af0b-4e97ec253ffc")
+		(uuid "3165677e-fb28-47e3-908d-9d204103e3f3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 152.4 0)
 			(effects
@@ -10356,7 +10356,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ea4ca701-1f61-4d99-93f3-dde3adef4365")
+		(uuid "c9c5e984-799a-4bc9-ae23-9bd8a1fa310c")
 	)
 	(global_label "D10"
 		(shape bidirectional)
@@ -10369,7 +10369,7 @@
 			)
 			(justify left)
 		)
-		(uuid "1cba9f3b-426f-4aa1-8bdd-67f905bc25d0")
+		(uuid "5e6b4072-2125-4071-8506-47065eddafaf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 157.48 0)
 			(effects
@@ -10389,7 +10389,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "12faf82d-b76f-4849-bf09-139e47434ba5")
+		(uuid "ded162ae-ae20-4c06-a0db-6f4beff1c001")
 	)
 	(global_label "D4"
 		(shape bidirectional)
@@ -10402,7 +10402,7 @@
 			)
 			(justify left)
 		)
-		(uuid "b1081b46-c7fe-4040-a18a-5e2e33c0ef99")
+		(uuid "6487559a-4293-4fa5-8aa7-e794c764c458")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 167.64 0)
 			(effects
@@ -10422,7 +10422,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b1764f97-379f-4006-9bdb-616e213cda4c")
+		(uuid "e481d4b4-a53a-4f48-b2dd-1603fcd2f071")
 	)
 	(global_label "BTN_DSP_1"
 		(shape input)
@@ -10435,7 +10435,7 @@
 			)
 			(justify left)
 		)
-		(uuid "8200db09-7d67-4859-9f48-921902452ceb")
+		(uuid "5a493848-a5c0-4ac5-8c73-8d8b9132201d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 162.56 0)
 			(effects
@@ -10455,7 +10455,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d2910372-83e1-4d8c-81d2-721b54c59519")
+		(uuid "721b4358-a9ef-4850-a3ef-979241daf0ac")
 	)
 	(global_label "BTN_DSP_2"
 		(shape input)
@@ -10468,7 +10468,7 @@
 			)
 			(justify left)
 		)
-		(uuid "40f6c0fd-19e3-4d0a-9077-22dc07abf067")
+		(uuid "eff2488a-a1a0-4099-bbb1-a596d11bc38d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 119.38 165.1 0)
 			(effects
@@ -10488,7 +10488,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a9153534-a960-4c97-b08e-2650e7090d15")
+		(uuid "3e94d998-c4dc-4942-81a3-00d832cc6011")
 	)
 	(global_label "A2"
 		(shape input)
@@ -10501,7 +10501,7 @@
 			)
 			(justify right)
 		)
-		(uuid "bc1f385e-81fa-4492-ad15-2d5675afbe0d")
+		(uuid "da34f41c-d763-4522-9901-6add0e6f4968")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 149.86 0)
 			(effects
@@ -10521,7 +10521,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4d147610-a5b1-482b-a5ef-2448be6bb489")
+		(uuid "bd4c9979-c56f-4a9c-8976-c8cb22c740d4")
 	)
 	(global_label "A3"
 		(shape input)
@@ -10534,7 +10534,7 @@
 			)
 			(justify right)
 		)
-		(uuid "4cba5b19-69f2-4b4a-8909-dae0f5cf8d6e")
+		(uuid "bb7b3cb7-56a5-4985-bc58-623e3a99680a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 152.4 0)
 			(effects
@@ -10554,7 +10554,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "702de883-f653-45ae-a972-9116a939771c")
+		(uuid "fa5c01c1-098d-4a31-92d1-2892e2eac409")
 	)
 	(global_label "A4"
 		(shape input)
@@ -10567,7 +10567,7 @@
 			)
 			(justify right)
 		)
-		(uuid "ccf36671-bbb9-4f9d-95dc-d21b7bcf8a49")
+		(uuid "f20cde92-dc34-4669-9965-b7bc9bdc18fd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 154.94 0)
 			(effects
@@ -10587,7 +10587,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "64a93ed3-a2e4-4176-99ed-832c882d85dc")
+		(uuid "2bee4dfa-e625-47fe-b2e3-c79b6688a0f1")
 	)
 	(global_label "BTN_UP"
 		(shape input)
@@ -10600,7 +10600,7 @@
 			)
 			(justify right)
 		)
-		(uuid "659481e0-1f5d-4e55-82a6-013f0140934e")
+		(uuid "8feabe6a-e5f5-408b-ba6d-8b1aa2c600a6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 157.48 0)
 			(effects
@@ -10620,7 +10620,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ef31fa25-dab4-4a39-ad21-d7d191e6a4e5")
+		(uuid "16029419-9a7a-4526-bd2c-9efde34547b2")
 	)
 	(global_label "BTN_DOWN"
 		(shape input)
@@ -10633,7 +10633,7 @@
 			)
 			(justify right)
 		)
-		(uuid "e4eb490d-7890-4f1f-ba1a-5a4d67ee2f17")
+		(uuid "da812c02-92a6-4a3b-93d2-42a4558c03cf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 160.02 0)
 			(effects
@@ -10653,7 +10653,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "616f7d76-cc9a-4142-b4fd-2873a811b941")
+		(uuid "cef4d591-a612-418d-9267-094ec0945d0a")
 	)
 	(global_label "BTN_LEFT"
 		(shape input)
@@ -10666,7 +10666,7 @@
 			)
 			(justify right)
 		)
-		(uuid "5b005438-c80c-4772-848e-9c292a6b0173")
+		(uuid "6da1e413-deed-46c0-b73e-3a66a371a99b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 162.56 0)
 			(effects
@@ -10686,7 +10686,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6311f19a-489c-448c-817b-36f78945dd34")
+		(uuid "1bbc3ffb-dc64-4f7b-82df-960ab3442d87")
 	)
 	(global_label "BTN_RIGHT"
 		(shape input)
@@ -10699,7 +10699,7 @@
 			)
 			(justify right)
 		)
-		(uuid "ce36c10a-b2a7-4586-b8ca-3f4ac31683da")
+		(uuid "b17b51da-fd8b-4015-b8d1-5a01ae774fc6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 165.1 0)
 			(effects
@@ -10719,7 +10719,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5ae39756-6d1d-47e5-8cf3-fa434fcf7a48")
+		(uuid "a6e1dbc4-310e-4350-877e-b020bd9b8fe7")
 	)
 	(global_label "BTN_BACK"
 		(shape input)
@@ -10732,7 +10732,7 @@
 			)
 			(justify right)
 		)
-		(uuid "80f021bc-6f9e-4053-a4ce-c90a4f293170")
+		(uuid "877cabce-55e9-4b76-aef5-02d20d670853")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 83.82 167.64 0)
 			(effects
@@ -10752,7 +10752,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9e8a97f3-52f0-4a94-9bec-b6e923df7ebc")
+		(uuid "07ff1a59-a379-4258-8bfd-d08d1756b9fe")
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
@@ -10762,7 +10762,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "94c3333c-9811-4a6c-a7aa-75f7c3aeddca")
+		(uuid "396b5988-a619-491d-b550-2c38d46e36c0")
 		(property "Reference" "R38"
 			(at 131.445 171.45 0)
 			(effects
@@ -10772,7 +10772,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 131.445 173.99 0)
 			(effects
 				(font
@@ -10799,7 +10799,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0603WAF1001T5E"
+		(property "MPN" "0603WAF4700T5E"
 			(at 129.54 172.72 0)
 			(effects
 				(font
@@ -10817,7 +10817,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C21190"
+		(property "LCSC" "C23179"
 			(at 129.54 172.72 0)
 			(effects
 				(font
@@ -10827,10 +10827,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "56bc5913-c437-4d61-89f5-4515a4d8608e")
+			(uuid "25962fbc-74df-48c4-b4eb-569b60a0bfcc")
 		)
 		(pin "2"
-			(uuid "1e0819a3-71af-49c9-bc0c-2bb5945d3bec")
+			(uuid "c685ef79-f2c4-48a0-b44a-bc623ecf5d2f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -10849,7 +10849,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "63df4e17-d7e0-4e29-86f4-d41b40494209")
+		(uuid "a425f51c-1821-41e9-8871-a189e17aeb72")
 		(property "Reference" "D11"
 			(at 134.62 177.8 90)
 			(effects
@@ -10886,7 +10886,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "KT-0603R"
+		(property "MPN" "KT-0603Y"
 			(at 129.54 179.07 0)
 			(effects
 				(font
@@ -10904,7 +10904,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "LCSC" "C2287"
 			(at 129.54 179.07 0)
 			(effects
 				(font
@@ -10914,10 +10914,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d2c2ba6b-8770-46b6-9c4d-5746b6bdc290")
+			(uuid "3ab4f502-ed1a-44e5-af05-5099d15c96d2")
 		)
 		(pin "2"
-			(uuid "421c8658-9e9e-4438-964e-f0a58f6684a7")
+			(uuid "832b5b76-c182-43f4-ba6d-f27b1e293773")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -10937,7 +10937,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "389a9e4d-cf4e-4f3e-a485-cc9b76efc477")
+		(uuid "64263975-e2d2-4260-9d28-d24fe36712dd")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10947,7 +10947,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "d73259b8-e23b-4565-b63c-d08a7e1e04d3")
+		(uuid "7495c74e-4187-439a-b387-6200936c7feb")
 		(property "Reference" "#PWR936"
 			(at 129.54 182.88 0)
 			(effects
@@ -10984,7 +10984,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "71df09e9-230a-4d14-b1fa-11c792557f25")
+			(uuid "cf8bbb9c-3661-4acc-9263-bf8258f6b4f6")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -11006,7 +11006,7 @@
 			)
 			(justify left)
 		)
-		(uuid "3ae79e23-2deb-4a55-88ca-b89736d478d0")
+		(uuid "27c63998-0477-4480-9502-ba081be54e3f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 139.7 167.64 0)
 			(effects
@@ -11025,7 +11025,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3094c18b-7cf2-49ea-8722-76b742f33df5")
+		(uuid "2824d910-2e72-49fe-9d6b-591f6ae247fb")
 		(property "Reference" "R39"
 			(at 141.605 168.91 0)
 			(effects
@@ -11090,10 +11090,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "0ea33c71-9883-4782-9db9-8f40ab9e1c7d")
+			(uuid "2235911c-7e6c-43a1-b7bb-0efabea77ddf")
 		)
 		(pin "2"
-			(uuid "171b6dac-44ae-45f9-a5c5-d032fc4397c9")
+			(uuid "9563a7a6-c3f7-4140-a9c7-5052a8d0dc3f")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -11112,7 +11112,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b41f9843-7c26-45e3-a1e9-7edecdde29a7")
+		(uuid "5f825b09-b0ff-4e49-a8f4-b1a4078f4bc1")
 		(property "Reference" "D12"
 			(at 144.78 175.26 90)
 			(effects
@@ -11177,10 +11177,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "a13dd5bc-7027-4ebe-a0ea-3fa772dfe2b1")
+			(uuid "9ef8c71a-c97f-487a-b75d-bfb3f280b1af")
 		)
 		(pin "2"
-			(uuid "b7656e00-6f83-439c-9159-807eeabddec5")
+			(uuid "33377624-0000-42c8-8b24-a4803c7adaf2")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -11200,7 +11200,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fc1ba486-fece-4723-a517-e7d8b180d2a6")
+		(uuid "b1550d10-66bf-4ca8-945b-922fb0b68383")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -11210,7 +11210,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "b3b40f08-29d6-491a-a7c2-4643b074d1a9")
+		(uuid "3190dac7-16ee-4ae0-b44a-f15138958b48")
 		(property "Reference" "#PWR937"
 			(at 139.7 180.34 0)
 			(effects
@@ -11247,7 +11247,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "c72d1096-aed8-4fc9-b6cd-f094d6b130c2")
+			(uuid "f3c9fc5e-b8eb-43e0-b9d2-bf115b824d73")
 		)
 		(instances
 			(project "OpenBeacon2"
@@ -11269,7 +11269,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "2cab5bed-dd4f-41e3-89c2-970479641bd9")
+		(uuid "0e72cc9a-c933-4e21-a416-935d016ce8fb")
 	)
 	(text "VERIFY"
 		(exclude_from_sim no)
@@ -11283,9 +11283,9 @@
 			)
 			(justify left)
 		)
-		(uuid "718e7db2-3045-4a5f-a05d-9a171fd120ed")
+		(uuid "0d0abc0c-5a32-4c86-a5bf-8600e2e25a82")
 	)
-	(text "[ ] U9 pin map: TWI0 PA2/PA3, USART0 PA0/PA1 (CP2102N), USART1 PC0/PC1 (J10),\n     ADC on PD0-PD2 (A2-A4); firmware pin table must follow it.\n[ ] Y1: CL 12.5 pF, C41/C42 15p assumes 5 pF pin + ~2 pF stray (XOSC32K LPMODE=0);\n     trim after measuring the 32 kHz error.\n[x] TX LED D12 (KT-0603YG) + R39 470R hang off the TX net (PA4); ~3 mA, no extra MCU pin.\n[ ] D10/R35 UPDI diode kept from Si5351AVFO J5; confirm.\n[ ] Q6-Q9 changed 2N7002 -> AO3400A (2N7002 Vth up to 2.5 V, no Rds(on) spec below 4.5 V).\n[ ] +5V now from USB-C VBUS only (500 mA default USB); PA draw not yet measured."
+	(text "[ ] U9 pin map: TWI0 PA2/PA3, USART0 PA0/PA1 (CP2102N), USART1 PC0/PC1 (J10),\n     ADC on PD0-PD2 (A2-A4); firmware pin table must follow it.\n[ ] Y1: CL 12.5 pF, C41/C42 15p assumes 5 pF pin + ~2 pF stray (XOSC32K LPMODE=0);\n     trim after measuring the 32 kHz error.\n[x] TX LED D12 (KT-0603YG) + R39 470R hang off the TX net (PA4); ~3 mA, no extra MCU pin.\n[x] D10/R35 UPDI diode + 470R identical to Si5351AVFO J5 and EtherKeyerMini J3.\n[ ] Q6-Q9 changed 2N7002 -> AO3400A (2N7002 Vth up to 2.5 V, no Rds(on) spec below 4.5 V).\n[ ] +5V now from USB-C VBUS only (500 mA default USB); PA draw not yet measured."
 		(exclude_from_sim no)
 		(at 152.4 133.35 0)
 		(effects
@@ -11294,7 +11294,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "25a25422-cf15-40f8-aedf-3d13bdf66119")
+		(uuid "3909c1d3-db23-4288-b896-93f18a1714be")
 	)
 	(sheet_instances
 		(path "/"
