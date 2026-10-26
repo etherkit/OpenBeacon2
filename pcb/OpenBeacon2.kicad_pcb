@@ -8504,7 +8504,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C310"
-			(at -2.3 -2.4 0)
+			(at -2.3 -1.93006 0)
 			(layer "F.SilkS")
 			(uuid "e9d8d9a3-7a9f-41ac-a770-0d6a77172f33")
 			(effects
@@ -14373,7 +14373,7 @@
 	(footprint "OB2:BAT-SMD_KH-CR1220-2"
 		(layer "F.Cu")
 		(uuid "40b13e88-7be0-4c95-ae80-95af4296e20d")
-		(at 155.25 166)
+		(at 156.71 166)
 		(property "Reference" "BT1"
 			(at -11.025 0 90)
 			(layer "F.SilkS")
@@ -21958,11 +21958,11 @@
 	(footprint "Diode_SMD:D_SOD-123"
 		(layer "F.Cu")
 		(uuid "55306425-f8a9-4a72-a267-16bcfaf00845")
-		(at 168.795865 157.91696)
+		(at 169.355865 157.91696)
 		(descr "SOD-123")
 		(tags "SOD-123")
 		(property "Reference" "D6"
-			(at -13.57 -0.8 90)
+			(at -14.13 -0.8 90)
 			(layer "F.SilkS")
 			(uuid "b84363a6-da07-48c5-90d0-cf6800e7ea84")
 			(effects
@@ -31037,7 +31037,7 @@
 			(uuid "77fa66a1-8ca5-41a5-a6c3-ccb8b1091df9")
 		)
 		(fp_rect
-			(start 1.999999 -10.08)
+			(start 2 -10.08)
 			(end -31.5 25.32)
 			(stroke
 				(width 0.12)
@@ -31045,7 +31045,7 @@
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "552c5feb-97b3-4a2b-9334-ebc848869880")
+			(uuid "dfbea145-9a3d-4978-8403-b9d8c77fae82")
 		)
 		(fp_rect
 			(start -1.77 -1.78)
@@ -46580,11 +46580,11 @@
 	(footprint "Resistor_SMD:R_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "c25da244-f717-43e7-968e-b6059011b0c8")
-		(at 167.634907 162.440093 90)
+		(at 168.634907 162.440093 90)
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R56"
-			(at -2.5 0 0)
+			(at -2.5 -1 0)
 			(layer "F.SilkS")
 			(uuid "b71023f8-3b9b-44e1-98e5-9e0e89b40915")
 			(effects
