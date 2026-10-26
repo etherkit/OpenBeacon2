@@ -5,7 +5,19 @@
       "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "track_widths": [],
-      "via_dimensions": []
+      "via_dimensions": [],
+      "rules": {
+        "min_hole_clearance": 0.2,
+        "min_through_hole_diameter": 0.2,
+        "min_clearance": 0.15,
+        "min_copper_edge_clearance": 0.3,
+        "min_hole_to_hole": 0.25,
+        "min_via_annular_width": 0.1,
+        "min_track_width": 0.127
+      },
+      "defaults": {
+        "board_outline_line_width": 0.1
+      }
     },
     "ipc2581": {
       "bom_rev": "",
@@ -286,6 +298,25 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "RF50",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.31,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -293,7 +324,40 @@
     },
     "net_colors": {},
     "netclass_assignments": {},
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "RF50",
+        "pattern": "/CLKIN_SMA"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "Net-(J6-In)"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/LPF_IN"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/LPF_OUT"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/P1_*"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/P2_*"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/F*_IN"
+      },
+      {
+        "netclass": "RF50",
+        "pattern": "/Filter Bank/F*_OUT"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
