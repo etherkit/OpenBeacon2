@@ -2950,6 +2950,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "0a6a329e-1e8d-4b45-b3d5-2b334916321e")
 		(at 194.25 182.55)
@@ -14893,6 +14894,7 @@
 		)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "4af9e571-0b7c-425a-ad6e-0df728b46f4e")
 		(at 120.13 159.05 90)
@@ -15216,6 +15218,7 @@
 		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "4b4ac308-d04b-443b-989f-60d0af149909")
 		(at 104.05 196.05)
@@ -16545,6 +16548,7 @@
 		)
 	)
 	(footprint "OB2:SMA-ENDLAUNCH"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "55cb5b2d-76bf-4cfc-ab97-04606b3ca1e4")
 		(at 128.5 100.05 180)
@@ -17394,6 +17398,7 @@
 		)
 	)
 	(footprint "Connector_USB:USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "57a2d29d-1574-440c-8446-9fcd22273c91")
 		(at 113.5 103.75 180)
@@ -20496,6 +20501,7 @@
 		)
 	)
 	(footprint "OB2:SMA-ENDLAUNCH"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "629b7117-8d9c-442b-94ef-2c793b8e02d0")
 		(at 144.5 100.05 180)
@@ -25172,6 +25178,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "7215a4ba-494f-4323-bdf4-25c6c03ccc2f")
 		(at 181.55 172.55)
@@ -27693,6 +27700,7 @@
 		)
 	)
 	(footprint "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "7a815fa4-2a0a-47d6-a5ed-a722055ad8b7")
 		(at 103.275 114)
@@ -29771,6 +29779,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "82598d6f-a5da-4f53-bc9b-6533f887960b")
 		(at 181.55 192.55)
@@ -37085,6 +37094,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "96114091-e9fc-48cb-be5c-dd2e7c4428a7")
 		(at 127.75 196.05)
@@ -37766,6 +37776,7 @@
 		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "9b51eda0-c593-48ec-a9c2-9e686eb4f919")
 		(at 104.05 104.05)
@@ -39616,6 +39627,7 @@
 		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "a449459c-ad2d-4656-923e-83823d675125")
 		(at 215.95 104.05)
@@ -42369,6 +42381,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "b6d0e3ad-c644-48f5-9142-149454c857bd")
 		(at 168.85 182.55)
@@ -43193,6 +43206,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "bc5e0da4-afe6-418b-a2ec-ebec140b273f")
 		(at 115.05 196.05)
@@ -44352,6 +44366,7 @@
 		)
 	)
 	(footprint "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "c06e9541-6aa6-4bbd-bc52-6402ba4551b3")
 		(at 140.45 196.05)
@@ -46056,6 +46071,7 @@
 		(embedded_fonts no)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "c78eb2dc-a20e-402b-b55f-3acb45a69f26")
 		(at 215.95 196.05)
@@ -51767,6 +51783,7 @@
 		)
 	)
 	(footprint "EtherkitKicadLibrary:BNC-AMPHENOL-31-5431-10RFX"
+		(locked yes)
 		(layer "F.Cu")
 		(uuid "dd4f0e31-2a4f-420a-8a25-46aef87c09b9")
 		(at 204.5 100 180)
