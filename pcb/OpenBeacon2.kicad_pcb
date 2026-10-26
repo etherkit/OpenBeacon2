@@ -31037,6 +31037,17 @@
 			(uuid "77fa66a1-8ca5-41a5-a6c3-ccb8b1091df9")
 		)
 		(fp_rect
+			(start 1.999999 -10.08)
+			(end -31.5 25.32)
+			(stroke
+				(width 0.12)
+				(type default)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "552c5feb-97b3-4a2b-9334-ebc848869880")
+		)
+		(fp_rect
 			(start -1.77 -1.78)
 			(end 1.77 17.02)
 			(stroke
@@ -58373,7 +58384,7 @@
 	(footprint "Package_TO_SOT_SMD:SOT-23-5"
 		(layer "F.Cu")
 		(uuid "f3411c9b-a2e3-4a6c-a4bf-03886444600f")
-		(at 141.306103 156.112811)
+		(at 141.305 155.115)
 		(descr "SOT, 5 Pin (JEDEC MO-178 Var AA https://www.jedec.org/document_search?search_api_views_fulltext=MO-178)")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "U8"
