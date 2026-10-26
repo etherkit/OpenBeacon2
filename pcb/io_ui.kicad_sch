@@ -6539,7 +6539,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6550,7 +6550,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6561,7 +6561,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -7236,7 +7236,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7247,7 +7247,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7258,7 +7258,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7933,7 +7933,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -7944,7 +7944,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -7955,7 +7955,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -8630,7 +8630,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8641,7 +8641,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8652,7 +8652,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -9327,7 +9327,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9338,7 +9338,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9349,7 +9349,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10024,7 +10024,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10035,7 +10035,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10046,7 +10046,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10721,7 +10721,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10732,7 +10732,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10743,7 +10743,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -12683,7 +12683,7 @@
 		)
 		(uuid "bd2bf501-4745-4645-835a-d149f8c8561f")
 	)
-	(text "Function keys S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network).\nAll switches Kinghelm KH-6X6X11H-STM, pressed = low."
+	(text "Function keys S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network).\nAll switches Kinghelm KH-6X6X13H-STM, pressed = low."
 		(exclude_from_sim no)
 		(at 147.32 20.32 0)
 		(effects
