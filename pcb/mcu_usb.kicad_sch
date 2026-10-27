@@ -10634,39 +10634,6 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 146.05)
-			(xy 114.3 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f6879bdc-319c-45d2-b62c-aae16efbdd32")
-	)
-	(global_label "GPS_TXD"
-		(shape input)
-		(at 114.3 146.05 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 0 0 200 1)
-			)
-			(justify left)
-		)
-		(uuid "9fe2fd47-598c-4bdc-8c00-49a7ac4a39f8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 114.3 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
 			(xy 111.76 161.29)
 			(xy 114.3 161.29)
 		)
@@ -12009,14 +11976,14 @@
 		)
 		(uuid "1feee165-b272-4094-8e98-f7dd8e0df3bc")
 	)
-	(global_label "D39_A21_PF5"
-		(shape bidirectional)
+	(global_label "GPS_TXD"
+		(shape input)
 		(at 78.74 143.51 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
-				(color 0 0 0 1)
+				(color 0 0 200 1)
 			)
 			(justify right)
 		)
@@ -12126,6 +12093,10 @@
 				(hide yes)
 			)
 		)
+	)
+	(no_connect
+		(at 111.76 146.05)
+		(uuid "0708795e-209d-4a15-b0aa-4e9d1e829d40")
 	)
 	(sheet_instances
 		(path "/"

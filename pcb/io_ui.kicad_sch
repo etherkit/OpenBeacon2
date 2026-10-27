@@ -12808,6 +12808,14 @@
 		)
 		(uuid "14fc6d28-f762-4d94-87f7-c52882116d15")
 	)
+	(no_connect
+		(at 35.56 132.08)
+		(uuid "c8e15459-1918-4a56-bf41-3b1980a4b9a2")
+	)
+	(no_connect
+		(at 86.36 132.08)
+		(uuid "69daed30-c0fa-407b-9227-9344b6181660")
+	)
 	(embedded_fonts no)	(label "HDR_D7"
 		(at 35.56 111.76 180)
 		(effects
@@ -12847,16 +12855,6 @@
 			(justify right bottom)
 		)
 		(uuid "1867cbac-c320-477e-a236-7037c830c6f3")
-	)
-	(label "HDR_D39"
-		(at 35.56 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "59d8d0c0-6811-45e9-90a4-279960ef12b9")
 	)
 	(label "HDR_D22"
 		(at 35.56 142.24 180)
@@ -13800,131 +13798,6 @@
 			(type default)
 		)
 		(uuid "d50b3e03-a331-4490-8918-3210056df416")
-	)
-	(global_label "D39_A21_PF5"
-		(shape bidirectional)
-		(at 66.04 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "de55651a-7998-4b0e-8c89-8a24beac57b9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 132.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 132.08 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7b0892bf-b359-4d59-bf4e-5b1ac7ed717f")
-		(property "Reference" "R68"
-			(at 68.58 130.556 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 133.731 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9a9ae53f-2cc9-4d81-9b2a-8d97588215e4")
-		)
-		(pin "2"
-			(uuid "d5eb0e0f-efbe-4f6e-ac2f-22a4155a31c6")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R68")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D39"
-		(at 72.39 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6910c72a-0445-4dc0-a926-fcbcf4f0e34a")
-	)
-	(wire
-		(pts
-			(xy 71.12 132.08) (xy 86.36 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "822c5bfb-a535-4f54-8635-293d908b268f")
 	)
 	(no_connect
 		(at 86.36 134.62)

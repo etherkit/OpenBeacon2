@@ -9,9 +9,13 @@
   (constraint zone_connection solid))
 # CPWG: 0.20 mm gap from every RF50 track/pad to the coplanar GND pour (JLC calc: 0.31/0.20 = 50 ohm on L1 over L2)
 (rule "RF50 CPWG gap to GND pour"
-  (condition "A.NetClass == 'RF50' && B.Type == 'Zone' && B.Net == 'GND'")
+  (condition "A.NetClass == 'RF50' && B.Type == 'Zone' && B.NetName == 'GND'")
   (constraint clearance (min 0.2mm)))
 # Edge-launch / edge-mount connectors sit on the board edge by design
 (rule "edge connectors"
   (condition "A.memberOfFootprint('J6') || A.memberOfFootprint('J16') || A.memberOfFootprint('J11') || A.memberOfFootprint('J12')")
   (constraint edge_clearance (min 0mm)))
+# SDA escape from U4 (Si5351) is boxed in by CLKIN/J6-In; allow 0.15 mm (JLC min 0.10) to non-RF items
+(rule "SDA escape clearance"
+  (condition "A.NetName == 'SDA' && B.NetClass != 'RF50'")
+  (constraint clearance (min 0.15mm)))
