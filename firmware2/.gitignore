@@ -1,0 +1,7 @@
+.arduino/
+host/build/
+OpenBeacon2/*.lst
+OpenBeacon2/*.map
+OpenBeacon2/*.hex
+OpenBeacon2/*.eep
+OpenBeacon2/*.elf
