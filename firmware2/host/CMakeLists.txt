@@ -17,11 +17,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
-add_executable(ob2_host_tests test_pins.cpp)
+add_executable(ob2_host_tests
+  test_pins.cpp
+  test_hal.cpp
+  ../OpenBeacon2/ob2_relays.cpp
+  ../OpenBeacon2/ob2_power.cpp
+  ../OpenBeacon2/ob2_softstart.cpp
+  ../OpenBeacon2/ob2_dac.cpp
+  ../OpenBeacon2/ob2_hold.cpp)
 target_include_directories(ob2_host_tests PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/../OpenBeacon2)
 target_include_directories(ob2_host_tests SYSTEM PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/doctest)
 target_compile_options(ob2_host_tests PRIVATE -Wall -Wextra -Werror)
 
-add_test(NAME pins COMMAND ob2_host_tests)
+add_test(NAME host COMMAND ob2_host_tests)
