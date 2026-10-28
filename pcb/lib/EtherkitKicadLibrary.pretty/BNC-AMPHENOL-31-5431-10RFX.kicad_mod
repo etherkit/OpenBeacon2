@@ -12,4 +12,5 @@
   (pad "" thru_hole circle (at -5.08 -7.86892) (size 2.99974 2.99974) (drill 1.99898) (layers *.Cu *.Mask))
   (pad 1 thru_hole circle (at 0 -12.94892) (size 1.7 1.7) (drill 0.9) (layers *.Cu *.Mask))
   (pad 2 thru_hole circle (at 2.54 -12.94892) (size 1.7 1.7) (drill 0.9) (layers *.Cu *.Mask))
+  (model "${KIPRJMOD}/lib/OB2.3dshapes/BNC_Amphenol_031-5431-10RFX_simple.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

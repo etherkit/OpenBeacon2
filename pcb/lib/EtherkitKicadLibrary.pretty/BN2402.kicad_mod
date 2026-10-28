@@ -13,4 +13,5 @@
   (fp_arc (start 0 -5) (end 0 -7.1) (angle 90) (layer F.SilkS) (width 0.15))
   (pad 2 thru_hole circle (at 0 -5) (size 1.7 1.7) (drill 0.8) (layers *.Cu *.Mask))
   (pad 1 thru_hole circle (at 0 -2.1) (size 1.7 1.7) (drill 0.8) (layers *.Cu *.Mask))
+  (model "${KIPRJMOD}/lib/OB2.3dshapes/BN-43-2402_simple.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )
