@@ -9,7 +9,7 @@
 		(date "2026-10-25")
 		(rev "C")
 		(company "Etherkit")
-		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (BAND_A/BAND_B)")
+		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (BAND_A/B/C, 3-bit)")
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols
@@ -3137,7 +3137,7 @@
 		)
 		(uuid "555dc029-2850-4733-9e62-36b0d8773e03")
 	)
-	(label "COIL_B"
+	(label "COIL_C"
 		(at 165.1 135.89 0)
 		(fields_autoplaced yes)
 		(effects
@@ -4394,7 +4394,7 @@
 		)
 		(uuid "f61add8c-d1d2-40d1-b214-ed3d600abcbf")
 	)
-	(label "COIL_B"
+	(label "COIL_C"
 		(at 248.92 135.89 0)
 		(fields_autoplaced yes)
 		(effects
@@ -5141,7 +5141,7 @@
 		)
 		(uuid "ef8ff2a7-1095-4be4-9867-c33f5ff340c6")
 	)
-	(text "BAND_A -> K1/K4, BAND_B -> K2/K3/K5/K6.\nQ6 (BAND_A): 2 coils, 42 mA nom (5 V / 237 R),\n  <= 49 mA at 5.25 V, -10 % coil R.\nQ7 (BAND_B): 4 coils, 84 mA nom, <= 98 mA.\nAO3400A: 5.7 A cont., 48 mR @ Vgs 2.5 V -> <5 mV drop.\nOne 1N4148W flyback per coil, at each relay."
+	(text "BAND_A -> K1/K4, BAND_B -> K2/K5, BAND_C -> K3/K6.\nQ6 (BAND_A): 2 coils, 42 mA nom (5 V / 237 R),\n  <= 49 mA at 5.25 V, -10 % coil R.\nQ7 (BAND_B), Q9 (BAND_C): 2 coils each, 42 mA nom, <= 49 mA.\nAO3400A: 5.7 A cont., 48 mR @ Vgs 2.5 V -> <5 mV drop.\nOne 1N4148W flyback per coil, at each relay."
 		(exclude_from_sim no)
 		(at 15.24 184.15 0)
 		(effects
@@ -5152,7 +5152,7 @@
 		)
 		(uuid "52c2fe21-26fa-40ea-9a04-476c884977b0")
 	)
-	(text "Band code (BAND_A, BAND_B):\n 0 0  80/60 m    (all relays off, NC path, default)\n 0 1  40/30 m    (K2, K3, K5, K6 on)\n 1 0  20/17 m    (K1, K4 on)\n 1 1  15/12/10 m (all six on)\nUnselected filters float (open at both ends).\n+5V relay load: 0 / 84 / 42 / 127 mA nominal (<=147 mA).\nRelay pins: COM right, NC lower left, NO upper left; pole 2 unused.\nInput and output paths never share a relay body.\nLayout: keep K1-K2-K3 and K4-K5-K6 traces short,\n  50 ohm CPWG over solid GND, filters next to their relays."
+	(text "Band code (BAND_A, BAND_B, BAND_C):\n 0 0 0  80/60 m    (all relays off, NC path, default)\n 0 1 0  40/30 m    (K2, K5 on)\n 1 0 0  20/17 m    (K1, K4 on)\n 1 0 1  15/12/10 m (K1, K4, K3, K6 on)\nOther codes unused; never more than 4 coils on.\nUnselected filters float (open at both ends).\n+5V relay load: 0 / 42 / 42 / 84 mA nominal (<=98 mA worst).\nRelay pins: COM right, NC lower left, NO upper left; pole 2 unused.\nInput and output paths never share a relay body.\nLayout: keep K1-K2-K3 and K4-K5-K6 traces short,\n  50 ohm CPWG over solid GND, filters next to their relays."
 		(exclude_from_sim no)
 		(at 113.03 157.48 0)
 		(effects
@@ -5194,6 +5194,258 @@
 		(pin "F15_10_IN" passive (at 38.1 106.68 180) (uuid "f71c730b-dea1-4786-bec0-9977382009de") (effects (font (size 1.27 1.27)) (justify left)))
 		(pin "F15_10_OUT" passive (at 99.06 106.68 0) (uuid "a48c1085-501f-449f-a664-caa6d75c33b6") (effects (font (size 1.27 1.27)) (justify right)))
 		(instances (project "OpenBeacon2" (path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01" (page "6"))))
+	)
+	(hierarchical_label "BAND_C"
+		(shape input)
+		(at 73.66 185.42 180)
+		(effects (font (size 1.27 1.27)) (justify right bottom))
+		(uuid "07b1c6cc-1003-4df3-bbb1-767ef153beb2")
+	)
+	(wire
+		(pts (xy 73.66 185.42) (xy 83.82 185.42))
+		(stroke (width 0) (type default))
+		(uuid "e4c04818-1bce-4470-aea6-6d639149bd95")
+	)
+	(junction
+		(at 78.74 185.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bdd8629d-570d-48b5-806c-d070a230a0b1")
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7002")
+		(at 88.9 185.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5b23bfb4-c4f5-4168-aec4-8b29051893f2")
+		(property "Reference" "Q9"
+			(at 93.98 184.15 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "AO3400A"
+			(at 93.98 186.69 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "AO3400A"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C20917"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "cbdb25c8-90c0-4213-abbd-f2a5568c0bd2")
+		)
+		(pin "2"
+			(uuid "98348a20-70e8-41b0-b680-f1a41e7e49cb")
+		)
+		(pin "3"
+			(uuid "940e59f3-75e4-47b7-9079-544a6b50c5ec")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "Q9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 78.74 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ec6b8ee7-e18f-44ab-a6bf-47961645b3de")
+		(property "Reference" "R91"
+			(at 73.2 187.4 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "22k"
+			(at 73.2 189.2 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF2202T5E"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C31850"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "3a68f4f7-4918-4988-82b7-d395b5e4e8c1")
+		)
+		(pin "2"
+			(uuid "5f551f96-f6e7-4252-a1ba-d5e4cb2e64c4")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "R91")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 78.74 190.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e8a43ae1-4cdd-49c1-bd6c-98ce8022a8e5")
+		(property "Reference" "#PWR1991"
+			(at 81.28 189.23 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 78.74 194.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "b964dde4-b401-4ee2-ab89-4a3e41794b3d")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "#PWR1991")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 91.44 190.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5aaf07e1-b400-404b-af7d-2a47134e74ee")
+		(property "Reference" "#PWR1992"
+			(at 93.98 189.23 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 91.44 194.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "dd4de134-c291-4874-93c4-5bd563929d90")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "#PWR1992")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 91.44 180.34) (xy 96.52 180.34))
+		(stroke (width 0) (type default))
+		(uuid "9321679c-5d24-4b8b-86c4-fe50234b0da1")
+	)
+	(label "COIL_C"
+		(at 96.52 180.34 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "8e3fe424-835e-4f54-be84-86196e98d63c")
 	)
 	(sheet_instances
 		(path "/"

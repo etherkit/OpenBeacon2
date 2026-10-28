@@ -19,3 +19,12 @@
 (rule "SDA escape clearance"
   (condition "A.NetName == 'SDA' && B.NetClass != 'RF50'")
   (constraint clearance (min 0.15mm)))
+# Fine-pitch (0.5 mm) pad escape: 0.20 mm clearance allowed only inside the ESC_* rule areas
+# (pad bbox + 1 mm around U4, U10, J12, U9). Router uses 0.22 mm everywhere else.
+(rule "fine-pitch pad escape 0.20"
+  (condition "A.intersectsArea('ESC_U4') || A.intersectsArea('ESC_U10') || A.intersectsArea('ESC_J12') || A.intersectsArea('ESC_U9')")
+  (constraint clearance (min 0.2mm)))
+
+(rule "U1 pad-to-pad (TSSOP 0.65 pitch)"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == 'U1' && B.Parent == 'U1'")
+  (constraint clearance (min 0.14mm)))

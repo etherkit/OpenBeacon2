@@ -3621,12 +3621,1223 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "OpenBeacon2:TPS61085DGK"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -7.62 10.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Value" "TPS61085DGK"
+			(at 1.27 8.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:VSSOP-8_3x3mm_P0.65mm"
+			(at 22.86 -8.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps61085.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Step-Up DC-DC Converter, input 2.3V to 6V , output 2.8V to 18.5, VSSOP-8"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "boost converter switching VSSOP-8"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "VSSOP*3x3mm*P0.65mm*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TPS61085DGK_0_1"
+			(rectangle
+				(start -7.62 7.62)
+				(end 7.62 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "TPS61085DGK_1_1"
+			(pin passive line
+				(at 10.16 -5.08 180)
+				(length 2.54)
+				(name "COMP"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 10.16 0 180)
+				(length 2.54)
+				(name "FB"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "EN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -10.16 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 10.16 5.08 180)
+				(length 2.54)
+				(name "SW"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "FREQ"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "SS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	)
-	(junction
-		(at 55.245 25.908)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3a8a3909-a9bf-4365-a7c8-05470119d644")
+		(symbol "OpenBeacon2:L"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "L"
+			(at -1.27 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "L"
+			(at 1.905 0 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Inductor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "inductor choke coil reactor magnetic"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "L_0_1"
+			(arc
+				(start 0 2.54)
+				(mid 0.6323 1.905)
+				(end 0 1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 1.27)
+				(mid 0.6323 0.635)
+				(end 0 0)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 0)
+				(mid 0.6323 -0.635)
+				(end 0 -1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 -1.27)
+				(mid 0.6323 -1.905)
+				(end 0 -2.54)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "L_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 1.27)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 1.27)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "OpenBeacon2:D_Schottky"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "D"
+			(at 0 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Schottky"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Schottky diode"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "diode Schottky"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "D_Schottky_0_1"
+			(polyline
+				(pts
+					(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "D_Schottky_1_1"
+			(pin passive line
+				(at -3.81 0 0)
+				(length 2.54)
+				(name "K"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 0 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "OpenBeacon2:AO3407A"
+		(pin_names
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "Q"
+			(at 5.08 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AO3407A"
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 5.08 -1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf"
+			(at 5.08 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "P-Channel MOSFET"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "SOT?23*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "AO3407A_0_1"
+			(polyline
+				(pts
+					(xy 0.254 1.905) (xy 0.254 -1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.254 0) (xy -2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 2.286) (xy 0.762 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 0.508) (xy 0.762 -0.508)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -1.27) (xy 0.762 -2.286)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 1.651 0)
+				(radius 2.794)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 2.54) (xy 2.54 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.54 1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(circle
+				(center 2.54 -1.778)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.794 -0.508) (xy 2.921 -0.381) (xy 3.683 -0.381) (xy 3.81 -0.254)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "AO3407A_1_1"
+			(pin input line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 -5.08 90)
+				(length 2.54)
+				(name "S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 5.08 270)
+				(length 2.54)
+				(name "D"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "OpenBeacon2:TestPoint"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "TP"
+			(at 0 6.858 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 5.08 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "test point tp"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "TestPoint_0_1"
+			(circle
+				(center 0 3.302)
+				(radius 0.762)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "TestPoint_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "OpenBeacon2:INA193"
+		(pin_names
+			(offset 0.127)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at 3.81 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "INA193"
+			(at 3.81 -3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 0 -21.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/ina193.pdf"
+			(at 0 -19.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Current Shunt Monitor −16V to +80V Common-Mode Range, 20V/V, SOT-23-5"
+			(at 0 -16.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "current sense shunt monitor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "SOT?23*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "INA193_0_1"
+			(polyline
+				(pts
+					(xy 5.08 0) (xy -5.08 5.08) (xy -5.08 -5.08) (xy 5.08 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "INA193_1_1"
+			(pin output line
+				(at 7.62 0 180)
+				(length 2.54)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -7.62 90)
+				(length 3.81)
+				(name "GND"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 2.54 0)
+				(length 2.54)
+				(name "+"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 -2.54 0)
+				(length 2.54)
+				(name "-"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 7.62 270)
+				(length 3.81)
+				(name "V+"
+					(effects
+						(font
+							(size 1.016 1.016)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 	(junction
 		(at 74.93 62.738)
@@ -3699,18 +4910,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c5a58b0a-034e-43c7-bf1c-220337dec213")
-	)
-	(junction
-		(at 55.245 38.481)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "da5c2c6d-243d-47bd-9f31-55fed981a8aa")
-	)
-	(junction
-		(at 50.673 25.908)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dacf2938-39a2-4508-a336-dd0c9e16ffc2")
 	)
 	(junction
 		(at 76.073 144.653)
@@ -3812,17 +5011,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.357 62.738)
-			(xy 64.008 62.738)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "03fda7dd-d123-49ff-a504-02178b5fe83a")
-	)
-	(wire
-		(pts
 			(xy 70.104 129.667)
 			(xy 76.073 129.667)
 		)
@@ -3831,17 +5019,6 @@
 			(type default)
 		)
 		(uuid "082934f0-4d78-477a-8702-b2c462d49f03")
-	)
-	(wire
-		(pts
-			(xy 50.673 25.908)
-			(xy 55.245 25.908)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08f8cc00-d726-4ab3-8538-77aa78d163bd")
 	)
 	(wire
 		(pts
@@ -3922,28 +5099,6 @@
 	)
 	(wire
 		(pts
-			(xy 37.592 25.908)
-			(xy 34.29 25.908)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3284e845-afcd-4201-8a82-ed0f8bdf4219")
-	)
-	(wire
-		(pts
-			(xy 74.93 60.579)
-			(xy 74.93 62.738)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36f01fc4-458f-44b2-b04e-334b47b99b60")
-	)
-	(wire
-		(pts
 			(xy 55.118 129.667)
 			(xy 61.341 129.667)
 		)
@@ -3977,17 +5132,6 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 38.481)
-			(xy 63.5 54.229)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "466509be-d9b1-4d59-a4fe-6cf79b4db107")
-	)
-	(wire
-		(pts
 			(xy 64.008 70.739)
 			(xy 64.008 72.644)
 		)
@@ -3996,17 +5140,6 @@
 			(type default)
 		)
 		(uuid "4938db4f-c435-495a-b206-eb4510b05e2d")
-	)
-	(wire
-		(pts
-			(xy 55.245 38.481)
-			(xy 63.5 38.481)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a1552fd-b864-4fab-9ad0-afd7f06c6c77")
 	)
 	(wire
 		(pts
@@ -4076,17 +5209,6 @@
 	)
 	(wire
 		(pts
-			(xy 28.956 42.926)
-			(xy 34.29 42.926)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5e2c8c92-6f5b-43ca-9f97-458c89c2c29f")
-	)
-	(wire
-		(pts
 			(xy 85.09 62.738)
 			(xy 88.392 62.738)
 		)
@@ -4142,28 +5264,6 @@
 	)
 	(wire
 		(pts
-			(xy 50.673 34.036)
-			(xy 50.673 25.908)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "727ff427-7420-4698-b83f-376040f7717f")
-	)
-	(wire
-		(pts
-			(xy 53.467 62.738)
-			(xy 50.8 62.738)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7872e92f-363a-4014-b9a8-4613ade1e879")
-	)
-	(wire
-		(pts
 			(xy 61.341 120.523)
 			(xy 61.341 129.667)
 		)
@@ -4186,17 +5286,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 25.908)
-			(xy 50.673 25.908)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7f3b5d2e-64d9-45a4-9b3b-77b5e8c84ee5")
-	)
-	(wire
-		(pts
 			(xy 50.927 119.253)
 			(xy 47.498 119.253)
 		)
@@ -4208,28 +5297,6 @@
 	)
 	(wire
 		(pts
-			(xy 51.562 42.926)
-			(xy 49.53 42.926)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "813ae7c2-f061-4a5f-a6fd-b48a767471bc")
-	)
-	(wire
-		(pts
-			(xy 55.245 25.908)
-			(xy 55.245 28.194)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "854fadaa-99f5-4bc5-b3c7-686f54653f3c")
-	)
-	(wire
-		(pts
 			(xy 63.5 54.229)
 			(xy 50.8 54.229)
 		)
@@ -4238,28 +5305,6 @@
 			(type default)
 		)
 		(uuid "869b3daf-dda7-4c32-b247-73b44fa6ca89")
-	)
-	(wire
-		(pts
-			(xy 49.53 34.036)
-			(xy 50.673 34.036)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a32b0c9-2c05-47c1-8542-079cc95d831b")
-	)
-	(wire
-		(pts
-			(xy 49.53 38.481)
-			(xy 55.245 38.481)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "93d52b9d-97ea-4c05-9db6-40a0bcb3eef1")
 	)
 	(wire
 		(pts
@@ -4296,17 +5341,6 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 60.579)
-			(xy 85.09 62.738)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8af1e9d-3bda-49be-93e5-43efc319719b")
-	)
-	(wire
-		(pts
 			(xy 74.93 62.738)
 			(xy 74.93 65.913)
 		)
@@ -4315,17 +5349,6 @@
 			(type default)
 		)
 		(uuid "ac5da18c-61fb-4b40-921e-b652e5a02bfc")
-	)
-	(wire
-		(pts
-			(xy 51.562 41.529)
-			(xy 51.562 42.926)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3c9bbd4-7111-4892-ba25-aa1a95894162")
 	)
 	(wire
 		(pts
@@ -4348,17 +5371,6 @@
 			(type default)
 		)
 		(uuid "b51a8f8d-9971-4c89-a751-21e34020a20f")
-	)
-	(wire
-		(pts
-			(xy 34.29 25.908)
-			(xy 34.29 34.036)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bba00abc-2eae-4090-98c4-7f8731b6204c")
 	)
 	(wire
 		(pts
@@ -4439,17 +5451,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.245 39.624)
-			(xy 55.245 38.481)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6f72f14-7c93-4ba2-a9d6-3a6d1c47e03f")
-	)
-	(wire
-		(pts
 			(xy 83.566 153.543)
 			(xy 86.614 153.543)
 		)
@@ -4458,17 +5459,6 @@
 			(type default)
 		)
 		(uuid "dfb59708-223d-4483-83d2-d4bcdd8ab76a")
-	)
-	(wire
-		(pts
-			(xy 55.245 25.019)
-			(xy 55.245 25.908)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e0b36384-e316-4170-9a57-651ec088f987")
 	)
 	(wire
 		(pts
@@ -4505,17 +5495,6 @@
 	)
 	(wire
 		(pts
-			(xy 57.912 67.818)
-			(xy 57.912 72.644)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ed6e7768-0be7-4406-9353-dd548676d85c")
-	)
-	(wire
-		(pts
 			(xy 50.8 72.644)
 			(xy 57.912 72.644)
 		)
@@ -4548,28 +5527,6 @@
 		(uuid "08e88ec1-3301-498a-a384-da003e452cfa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 101.854 153.543 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "CLK0"
-		(shape input)
-		(at 42.418 129.667 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ab8fecce-ea17-44d7-9d4d-61ba274a174d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 42.418 129.667 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6214,7 +7171,7 @@
 				)
 			)
 		)
-		(property "Value" "56"
+		(property "Value" "470"
 			(at 78.867 136.652 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6255,7 +7212,7 @@
 				)
 			)
 		)
-		(property "MPN" "0805W8F560JT5E"
+		(property "MPN" "0805W8F4700T5E"
 			(at 78.867 134.747 0)
 			(effects
 				(font
@@ -6273,7 +7230,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C17757"
+		(property "LCSC" "C17710"
 			(at 78.867 134.747 0)
 			(effects
 				(font
@@ -7922,113 +8879,6 @@
 		)
 	)
 	(symbol
-		(lib_id "EtherkitKicadLibrary:PNP")
-		(at 57.912 65.278 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a23e9a0")
-		(property "Reference" "Q2"
-			(at 54.229 59.436 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MMBT4403"
-			(at 58.166 61.341 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "EtherkitKicadLibrary:SOT23-MMBT440X"
-			(at 57.912 65.278 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 57.912 65.278 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 57.912 65.278 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "MMBT4403"
-			(at 54.229 59.436 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Jiangsu Changjing Electronics Technology"
-			(at 54.229 59.436 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C8513"
-			(at 54.229 59.436 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b8ced837-f36b-4695-9334-62d83fe051e5")
-		)
-		(pin "2"
-			(uuid "e1ebdd95-a414-4408-ae05-493eecaed7e5")
-		)
-		(pin "3"
-			(uuid "8ba52855-3267-4c2a-955c-bd11a1067a0d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "EtherkitKicadLibrary:R")
 		(at 50.8 68.199 0)
 		(unit 1)
@@ -8617,7 +9467,7 @@
 				)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "FB 220R"
 			(at 70.231 60.071 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8627,7 +9477,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Inductor_SMD:L_0603_1608Metric"
 			(at 70.104 62.738 0)
 			(hide yes)
 			(show_name no)
@@ -8658,7 +9508,7 @@
 				)
 			)
 		)
-		(property "MPN" "0805W8F100JT5E"
+		(property "MPN" "BLM18PG221SN1D"
 			(at 70.231 58.166 90)
 			(effects
 				(font
@@ -8667,7 +9517,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+		(property "Manufacturer" "Murata Electronics"
 			(at 70.231 58.166 90)
 			(effects
 				(font
@@ -8676,7 +9526,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C17415"
+		(property "LCSC" "C80165"
 			(at 70.231 58.166 90)
 			(effects
 				(font
@@ -8712,7 +9562,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a240a92")
 		(property "Reference" "R8"
-			(at 80.01 58.166 90)
+			(at 77.2 60.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8721,8 +9571,8 @@
 				)
 			)
 		)
-		(property "Value" "1 1%"
-			(at 80.01 60.071 90)
+		(property "Value" "0.2 1%"
+			(at 81.8 60.2 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8762,7 +9612,7 @@
 				)
 			)
 		)
-		(property "MPN" "0805W8F100KT5E"
+		(property "MPN" "0805W8F200LT5E"
 			(at 80.01 58.166 90)
 			(effects
 				(font
@@ -8780,7 +9630,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25271"
+		(property "LCSC" "C44051"
 			(at 80.01 58.166 90)
 			(effects
 				(font
@@ -8979,1034 +9829,6 @@
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381"
 					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:CONN_01X01")
-		(at 74.93 56.769 270)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a241320")
-		(property "Reference" "J2"
-			(at 74.93 52.705 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PAI+"
-			(at 74.93 54.483 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Measurement_Points:Measurement_Point_Square-TH_Small"
-			(at 74.93 56.769 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 74.93 56.769 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 74.93 56.769 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2a7147f5-72fc-4d48-a0df-ac7114fe391d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:CONN_01X01")
-		(at 85.09 56.769 270)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a241664")
-		(property "Reference" "J3"
-			(at 85.09 52.705 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PAI-"
-			(at 85.09 54.483 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Measurement_Points:Measurement_Point_Square-TH_Small"
-			(at 85.09 56.769 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 85.09 56.769 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 85.09 56.769 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "061064fc-5fa2-4c13-a092-63c795ff4b33")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:TLV61046A")
-		(at 41.91 38.481 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a243f1c")
-		(property "Reference" "U1"
-			(at 41.91 28.702 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TLV61046A"
-			(at 41.91 30.861 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "EtherkitKicadLibrary:SOT23-6"
-			(at 41.91 38.481 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 41.91 38.481 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 41.91 38.481 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "TLV61046ADBVR"
-			(at 41.91 28.702 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Texas Instruments"
-			(at 41.91 28.702 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C464815"
-			(at 41.91 28.702 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "65a62cef-ea7c-4ae4-8c09-6240c0b84884")
-		)
-		(pin "2"
-			(uuid "1aff398d-8e81-455f-b8e0-483cbc07f1ad")
-		)
-		(pin "3"
-			(uuid "8cb06cce-5e17-458c-890e-dbd50be1970b")
-		)
-		(pin "4"
-			(uuid "320cad7d-8caf-4480-9790-b80c49e65902")
-		)
-		(pin "5"
-			(uuid "300786dd-3050-4809-9f56-045076a6e033")
-		)
-		(pin "6"
-			(uuid "bed221d7-a1d6-4231-8435-0cee7d926ea9")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:L-IRONCORE")
-		(at 41.656 24.638 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a24425f")
-		(property "Reference" "L1"
-			(at 30.988 19.05 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MWSA0402S-100MT"
-			(at 41.656 21.082 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "EtherkitKicadLibrary:Murata100M"
-			(at 41.656 24.638 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 41.656 24.638 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 41.656 24.638 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "MWSA0402S-100MT"
-			(at 30.988 19.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Sunlord"
-			(at 30.988 19.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C408339"
-			(at 30.988 19.05 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "31b92232-f616-430b-8b3b-1e22d775b7c8")
-		)
-		(pin "2"
-			(uuid "bc5fd443-6a2d-4d8e-aa7c-0c850d2cb095")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "L1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:C")
-		(at 55.245 42.164 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a244aab")
-		(property "Reference" "C3"
-			(at 59.055 41.275 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10u"
-			(at 59.69 43.18 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
-			(at 55.245 42.164 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.245 42.164 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 55.245 42.164 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "CL31A106KBHNNNE"
-			(at 59.055 41.275 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 59.055 41.275 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C13585"
-			(at 59.055 41.275 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d51f6fcb-6280-4f21-bd4f-1f9dd828c601")
-		)
-		(pin "2"
-			(uuid "118576b0-6b2b-4d06-b79c-573163985825")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "C3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 55.245 44.704 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a244e16")
-		(property "Reference" "#PWR012"
-			(at 55.245 51.054 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 55.245 48.006 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 55.245 44.704 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.245 44.704 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 55.245 44.704 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "4f2bbe69-bcfb-4fa3-aa72-338a4e82d339")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 34.29 38.481 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a2451d2")
-		(property "Reference" "#PWR02"
-			(at 34.29 44.831 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 31.496 39.751 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 34.29 38.481 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 38.481 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 34.29 38.481 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "49d57d21-c2b7-42dd-90ce-f293cf76414b")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:+5V")
-		(at 28.956 42.926 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a2457aa")
-		(property "Reference" "#PWR01"
-			(at 28.956 43.942 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 27.051 42.037 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 28.956 42.926 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 28.956 42.926 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 28.956 42.926 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a127283a-f7aa-48ae-a941-99626266654a")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:+5V")
-		(at 55.245 25.019 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a2459fe")
-		(property "Reference" "#PWR010"
-			(at 55.245 26.035 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 53.34 24.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 55.245 25.019 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.245 25.019 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 55.245 25.019 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "097325d2-401b-49c5-98fd-eddf25506ccb")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:+5V")
-		(at 51.562 41.529 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a245bcb")
-		(property "Reference" "#PWR09"
-			(at 51.562 42.545 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 49.657 40.64 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 51.562 41.529 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 51.562 41.529 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 51.562 41.529 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "00354249-ac3e-48e5-92b1-42ca29f64d88")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR09")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:C")
-		(at 55.245 30.734 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a246653")
-		(property "Reference" "C2"
-			(at 59.055 29.845 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4.7u"
-			(at 59.944 31.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 55.245 30.734 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.245 30.734 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 55.245 30.734 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "CL21A475KAQNNNE"
-			(at 59.055 29.845 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 59.055 29.845 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C1779"
-			(at 59.055 29.845 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "24a3b29e-5e42-452b-ac94-f71b3b738ec6")
-		)
-		(pin "2"
-			(uuid "41ddcdbf-1230-4839-b20f-05262e3035fc")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 55.245 33.274 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a246807")
-		(property "Reference" "#PWR011"
-			(at 55.245 39.624 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 55.245 36.576 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 55.245 33.274 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.245 33.274 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 55.245 33.274 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "539f2c86-cc3b-46aa-b658-cdf748fad62e")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381"
-					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -10518,7 +10340,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 218.44 35.56 0)
 			(effects
 				(font
@@ -10536,7 +10358,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CC0805KRX7R9BB104"
+		(property "MPN" "CL05B104KO5NNNC"
 			(at 212.852 34.671 0)
 			(effects
 				(font
@@ -10545,7 +10367,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" "Samsung Electro-Mechanics"
 			(at 212.852 34.671 0)
 			(effects
 				(font
@@ -10554,7 +10376,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C49678"
+		(property "LCSC" "C1525"
 			(at 212.852 34.671 0)
 			(effects
 				(font
@@ -13207,6 +13029,16 @@
 				(justify left)
 			)
 		)
+(pin "BAND_C" input
+			(at 140.97 113.03 180)
+			(uuid "473c6be5-38ad-4e37-ae24-4f3ee2ed6397")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381"
@@ -13521,7 +13353,7 @@
 	)
 	(rectangle
 		(start 13.97 13.97)
-		(end 100.33 49.53)
+		(end 151.13 49.53)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -13545,17 +13377,6 @@
 			(justify left)
 		)
 		(uuid "23be16bf-f505-4c35-a1e8-c54ba4fd2873")
-	)
-	(text "U1 TLV61046A boost from +5V (USB VBUS).\nFB and EN tied to VIN: internal fixed 12 V\noutput, always enabled.\nL1 10 uH, C2 4.7u in, C3 10u out.\n12 V out feeds the Q2 keying switch."
-		(exclude_from_sim no)
-		(at 66.04 20.32 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left top)
-		)
-		(uuid "986cca59-7b45-45b3-8b5f-6936ea4d0957")
 	)
 	(rectangle
 		(start 13.97 50.8)
@@ -13584,7 +13405,7 @@
 		)
 		(uuid "0093eb5d-27e7-41b1-bfdb-c7d1adc85862")
 	)
-	(text "TX (MCU PA4) drives Q1\n2N7002; R1 22k pull-down\nholds it off at reset.\nQ1 pulls Q2 MMBT4403 base\nvia R3 22k: high-side\nswitch for the 12 V PA\nsupply. R2 22k B-E pull-up,\nC4 10n C-B.\nR6 10R + C7 1u filter.\nR8 1R 1% PA current\nsense: measure across\nJ2 PAI+ / J3 PAI-."
+	(text "TX (MCU PA4) drives Q1\n2N7002; R1 22k pull-down\nholds it off at reset.\nQ1 pulls the Q2 AO3407A\ngate low via R3 22k: P-FET\nhigh-side switch for the\n12 V PA supply. R2 22k G-S\npull-up, C4 10n D-G slows\nthe edges.\nR6 ferrite + C7 1u filter.\nR8 0.2R 1% PA current shunt;\nU14 senses it (TP1/TP2)."
 		(exclude_from_sim no)
 		(at 15.24 55.88 0)
 		(effects
@@ -13736,7 +13557,7 @@
 		)
 		(uuid "37c3a3f8-dc7e-416b-b23a-f05e486ae186")
 	)
-	(text "BAND_A/BAND_B select one of four LPFs:\n00 80/60 m, 01 40/30 m, 10 20/17 m, 11 15/12/10 m.\nJ11 BNC output (DNP, hand-soldered)."
+	(text "BAND_A/B/C select one of four LPFs (A B C):\n000 80/60 m, 010 40/30 m, 100 20/17 m, 101 15/12/10 m.\nJ11 BNC output (DNP, hand-soldered)."
 		(exclude_from_sim no)
 		(at 139.7 131.45 0)
 		(effects
@@ -13746,6 +13567,2540 @@
 			(justify left top)
 		)
 		(uuid "694c18c1-0910-470d-8990-a66881150405")
+	)
+	(symbol
+		(lib_id "OpenBeacon2:TPS61085DGK")
+		(at 68.58 33.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6e0a76d5-2baf-4a06-b33a-9e400d72a216")
+		(property "Reference" "U1"
+			(at 63.5 24.13 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "TPS61085DGKR"
+			(at 66.68 24.13 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_SO:VSSOP-8_3x3mm_P0.65mm"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "TPS61085DGKR"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C113659"
+			(at 68.58 33.02 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "579f9b72-2d15-4bde-baa0-1612588f0287")
+		)
+		(pin "2"
+			(uuid "7916ee8e-e25e-4f7c-892f-8317ceeeb711")
+		)
+		(pin "3"
+			(uuid "8df1d21b-a3fa-4c0b-a6f4-645fde376680")
+		)
+		(pin "4"
+			(uuid "5b77d015-2d4d-4686-8fcf-0aefcc870330")
+		)
+		(pin "5"
+			(uuid "610aa544-c0e0-47f0-bb11-d014402fc3c8")
+		)
+		(pin "6"
+			(uuid "7e7ed823-f4fd-4935-9eb4-2c5b3a38ebbf")
+		)
+		(pin "7"
+			(uuid "81312371-5b42-41ae-ab9f-91a836fdf4fb")
+		)
+		(pin "8"
+			(uuid "590489a1-1815-4bee-9903-d74153970686")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+5V")
+		(at 50.8 20.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "96f6992c-8ae9-44dc-a474-99fc60df0bf8")
+		(property "Reference" "#PWR951"
+			(at 53.34 19.05 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "+5V"
+			(at 50.8 17.32 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 50.8 20.32 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 50.8 20.32 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 50.8 20.32 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "17ac9a54-0cdd-4199-9e52-8d3c2f9758c0")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR951")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 50.8 20.32) (xy 50.8 33.02))
+		(stroke (width 0) (type default))
+		(uuid "46d5b427-88d0-423c-a8b3-9fca079bc287")
+	)
+	(wire
+		(pts (xy 50.8 27.94) (xy 58.42 27.94))
+		(stroke (width 0) (type default))
+		(uuid "eec54312-0166-4e19-9abd-0ef337699cfe")
+	)
+	(wire
+		(pts (xy 50.8 30.48) (xy 58.42 30.48))
+		(stroke (width 0) (type default))
+		(uuid "eb077836-c788-408a-b893-a25b83ae4288")
+	)
+	(wire
+		(pts (xy 50.8 33.02) (xy 58.42 33.02))
+		(stroke (width 0) (type default))
+		(uuid "6ee7b758-5878-47fa-a69f-7576814147f2")
+	)
+	(junction
+		(at 50.8 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "465994ae-e685-4047-bc7d-36ccfe682a67")
+	)
+	(junction
+		(at 50.8 27.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "332264db-5d44-4f51-a889-710e65161c14")
+	)
+	(junction
+		(at 50.8 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2159c19c-2039-43eb-824c-8e0affd0ac7a")
+	)
+	(wire
+		(pts (xy 50.8 22.86) (xy 43.18 22.86))
+		(stroke (width 0) (type default))
+		(uuid "46639d53-619b-445e-a688-d3c1c2f72d5e")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 43.18 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0fc66a78-9be3-4c87-bc70-71c34a0f71be")
+		(property "Reference" "C2"
+			(at 45.72 24.13 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "10u"
+			(at 45.72 26.67 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CL21A106KAYNNNE"
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C15850"
+			(at 43.18 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "661a7a8c-e393-4ea8-9233-414cc0346ff7")
+		)
+		(pin "2"
+			(uuid "f1a04295-2c61-4d94-812e-bdcd22fd94a0")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 43.18 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "29c905d5-7b81-4cb9-ad83-016fc17230c1")
+		(property "Reference" "#PWR952"
+			(at 45.72 26.67 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 43.18 31.44 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 43.18 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 43.18 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 43.18 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "15059dd5-a6ff-4e1d-96cc-08a2be985a66")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR952")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2:L")
+		(at 60.96 22.86 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c4f74024-5d46-4d9c-84ea-5dfa6a407705")
+		(property "Reference" "L1"
+			(at 58.42 19.05 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "4.7u"
+			(at 62.23 19.05 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Inductor_SMD:L_Sunlord_MWSA0503S"
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "MWSA0503S-4R7MT"
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Sunlord"
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C408410"
+			(at 60.96 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "b58940b2-41fc-4a1e-bac8-fadb8c22e8e6")
+		)
+		(pin "2"
+			(uuid "96fe722e-542f-45c6-a6f1-94e435e0db80")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 50.8 22.86) (xy 57.15 22.86))
+		(stroke (width 0) (type default))
+		(uuid "a439ba81-a618-4390-9c49-c58ff49b86eb")
+	)
+	(wire
+		(pts (xy 64.77 22.86) (xy 81.28 22.86))
+		(stroke (width 0) (type default))
+		(uuid "45a84b4b-351c-4613-bf61-3ed3f301a8fa")
+	)
+	(wire
+		(pts (xy 81.28 22.86) (xy 81.28 27.94))
+		(stroke (width 0) (type default))
+		(uuid "d475d1c4-4dea-4d7a-8364-acf54c46a102")
+	)
+	(wire
+		(pts (xy 81.28 27.94) (xy 78.74 27.94))
+		(stroke (width 0) (type default))
+		(uuid "5499ac36-162a-41e1-8016-e2bd62ae0f1f")
+	)
+	(junction
+		(at 81.28 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "398aad1a-d000-4600-b412-5efc4b901527")
+	)
+	(symbol
+		(lib_id "OpenBeacon2:D_Schottky")
+		(at 88.9 22.86 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ed16f8d0-4e4d-4fa0-98b2-ef4ed08ee460")
+		(property "Reference" "D22"
+			(at 88.9 18.8 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "B5819W"
+			(at 88.9 26.2 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-123"
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "B5819W SL"
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Changjiang Electronics Tech (CJ)"
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C8598"
+			(at 88.9 22.86 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "bc8b1b66-eb69-451f-9233-84ffdeca72c6")
+		)
+		(pin "2"
+			(uuid "6512334a-945a-4847-9262-181d5f598d12")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "D22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 81.28 22.86) (xy 85.09 22.86))
+		(stroke (width 0) (type default))
+		(uuid "a0677dd5-8ffd-423d-9541-9eadda339155")
+	)
+	(wire
+		(pts (xy 92.71 22.86) (xy 120.65 22.86))
+		(stroke (width 0) (type default))
+		(uuid "4b8557ed-b9be-4ac0-ab21-7fffa044c74d")
+	)
+	(label "+12V_BOOST"
+		(at 99.06 22.86 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "ea787598-47ae-4c45-97dc-515e0f584c12")
+	)
+	(junction
+		(at 95.25 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fbc7f0b3-1787-4e1e-a27c-8b334201c0ba")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 95.25 29.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fb954e99-e736-4cde-8062-28383cda14f5")
+		(property "Reference" "R80"
+			(at 97.79 27.94 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "158k"
+			(at 97.79 30.48 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF1583T5E"
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C22883"
+			(at 95.25 29.21 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "c930f7d4-bc0d-479e-9ca4-ee46813db13a")
+		)
+		(pin "2"
+			(uuid "54de739b-85b9-4b42-bbcf-ba69d01beb94")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R80")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 95.25 22.86) (xy 95.25 25.4))
+		(stroke (width 0) (type default))
+		(uuid "01510a67-ff74-4cb8-9a17-dc732af19f42")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 95.25 36.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f52b60fe-85a5-405e-9387-5feb69309221")
+		(property "Reference" "R81"
+			(at 97.79 35.56 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "18.2k"
+			(at 97.79 38.1 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF1822T5E"
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C22892"
+			(at 95.25 36.83 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "a22746e4-5d07-4e65-a585-2bf71d44d82f")
+		)
+		(pin "2"
+			(uuid "b081368f-142e-440f-98ee-24f3beac5cdd")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R81")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 95.25 40.64 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0dfe724f-bdba-4f84-ac69-04bede2b0ce4")
+		(property "Reference" "#PWR953"
+			(at 97.79 39.37 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 95.25 44.14 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 95.25 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 95.25 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 95.25 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "e89f944e-5d54-4e68-bc02-eb87fd9cfe29")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR953")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 78.74 33.02) (xy 95.25 33.02))
+		(stroke (width 0) (type default))
+		(uuid "ff3541e0-73a2-412e-a300-7c4154684b94")
+	)
+	(junction
+		(at 95.25 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1f25aaa7-2d3a-43e9-892e-6d93fd68d5d8")
+	)
+	(wire
+		(pts (xy 78.74 38.1) (xy 83.82 38.1))
+		(stroke (width 0) (type default))
+		(uuid "6f666081-529d-45e4-9523-b45915912740")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 83.82 41.91 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "186dbfe3-7916-4358-bbe8-a26858f26b02")
+		(property "Reference" "R82"
+			(at 85.6 40.6 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "33k"
+			(at 85.6 42.4 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF3302T5E"
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C4216"
+			(at 83.82 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "61deff10-3c1c-4db4-abaa-fb7a7b8cc608")
+		)
+		(pin "2"
+			(uuid "89ac9b23-95f1-4283-8d32-9fb9b5767044")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R82")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 86.36 45.72 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5d2f7e5a-2bbb-419e-8198-653ea2992a0d")
+		(property "Reference" "C55"
+			(at 78.2 45.2 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "1n"
+			(at 78.2 47.0 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CL10B102KB8NNNC"
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C1588"
+			(at 86.36 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "a51f1214-78be-4e35-afc4-d47074199657")
+		)
+		(pin "2"
+			(uuid "86335466-049b-4a25-aed7-c9f45787fc28")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 88.9 45.72 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8beec304-853e-473d-b520-23d8bac9aaae")
+		(property "Reference" "#PWR954"
+			(at 91.44 44.45 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 88.9 49.22 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 88.9 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 88.9 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 88.9 45.72 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "bde71aae-ff84-410a-8e8e-8074af215f07")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR954")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 58.42 38.1) (xy 55.88 38.1))
+		(stroke (width 0) (type default))
+		(uuid "abd45405-0d58-404b-8cad-28c273522df0")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 55.88 40.64 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "28b8571c-8400-4c0d-b632-bb503a81dc32")
+		(property "Reference" "C56"
+			(at 49.0 40.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "100n"
+			(at 49.0 41.8 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C14663"
+			(at 55.88 40.64 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "f718df4d-c90d-4d18-abdf-cf8ba93cdb9a")
+		)
+		(pin "2"
+			(uuid "1942e93c-7f74-4077-97a1-c5561f550307")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C56")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 55.88 43.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3a25997f-4817-4fdf-9322-b96ce2fe4c27")
+		(property "Reference" "#PWR955"
+			(at 58.42 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 55.88 46.68 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 55.88 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 55.88 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 55.88 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "fba001f5-4fdd-42f4-bf21-8966b4a2da41")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR955")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 68.58 43.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "87ba339f-aca1-4bd5-8bb7-28e75e1c98d8")
+		(property "Reference" "#PWR956"
+			(at 71.12 41.91 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 68.58 46.68 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 68.58 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 68.58 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 68.58 43.18 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "03f06983-ddee-45a6-9b7c-2f2ce51dd672")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR956")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(junction
+		(at 104.14 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "40e0a41e-ce42-46c0-be3a-43a77c04ddc3")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 104.14 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d7a922c4-6f37-4866-af93-37bea59f638a")
+		(property "Reference" "C3"
+			(at 106.68 24.13 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "10u"
+			(at 106.68 26.67 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CL31A106KBHNNNE"
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C13585"
+			(at 104.14 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "8bc37667-05c4-4d7d-923d-6482528c6505")
+		)
+		(pin "2"
+			(uuid "c0364db4-4515-4454-921d-f66e9003a43a")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 104.14 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "18df164c-e819-475f-8a60-652fcba0d421")
+		(property "Reference" "#PWR957"
+			(at 106.68 26.67 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 104.14 31.44 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 104.14 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 104.14 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 104.14 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "c8fe8220-a7ce-450b-891b-72cea6bd4a35")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR957")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(junction
+		(at 113.03 22.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4ac9541-74f6-4be7-bf1e-32cf472644a7")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 113.03 25.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "91f64e74-4b0f-4de4-8ed9-4b71c8a16c00")
+		(property "Reference" "C57"
+			(at 115.57 24.13 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "10u"
+			(at 115.57 26.67 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CL31A106KBHNNNE"
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C13585"
+			(at 113.03 25.4 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "431e3bed-0728-4c9c-a0ae-e615472d673c")
+		)
+		(pin "2"
+			(uuid "cf531951-fcd8-4f96-bca2-794cce408e53")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C57")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 113.03 27.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f918d216-5239-4fe5-9721-27c4ae266062")
+		(property "Reference" "#PWR958"
+			(at 115.57 26.67 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 113.03 31.44 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 113.03 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 113.03 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 113.03 27.94 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "f8242c60-7ca3-4dd6-9773-57ac0f7a4984")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR958")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 120.65 22.86) (xy 120.65 48.26))
+		(stroke (width 0) (type default))
+		(uuid "c1f258cf-1df6-402b-ab53-f0ba6d981ed4")
+	)
+	(wire
+		(pts (xy 120.65 48.26) (xy 63.5 48.26))
+		(stroke (width 0) (type default))
+		(uuid "6675b41a-935b-4978-b710-49fa45250b45")
+	)
+	(wire
+		(pts (xy 63.5 48.26) (xy 63.5 54.229))
+		(stroke (width 0) (type default))
+		(uuid "5bebc026-434b-4784-9459-98b23cb24dde")
+	)
+	(text "U1 TPS61085: +5V to 12 V.\nFREQ high (1.2 MHz),\nEN tied to +5V.\nVout = 1.238 x (1+R80/R81)\n     = 11.98 V.\nR82 33k/C55 1n: comp (TI eq. 9).\nC56: soft-start (100n, ~5 ms).\nL1 4.7u MWSA0503S (Isat 4.6 A), D22 B5819W.\nC2 10u in, C3+C57 out.\nFeeds Q2 AO3407A switch."
+		(exclude_from_sim no)
+		(at 123.19 26.67 0)
+		(effects (font (size 1.0 1.0)) (justify left top))
+		(uuid "d1c9aadc-b46b-4645-950f-cbe6e4ae8bb3")
+	)
+	(symbol
+		(lib_id "OpenBeacon2:AO3407A")
+		(at 57.912 65.278 90)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "047a7282-f78d-4896-9563-d034c9497555")
+		(property "Reference" "Q2"
+			(at 53.34 57.9 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "AO3407A"
+			(at 53.34 59.7 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "EtherkitKicadLibrary:SOT23-MMBT440X"
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "AO3407A"
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C15155"
+			(at 57.912 65.278 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "c7a90cb0-904c-46cc-bfa3-5decf57fbfe3")
+		)
+		(pin "2"
+			(uuid "50f95c78-597b-4df1-9e63-1289f3d83b0c")
+		)
+		(pin "3"
+			(uuid "31024983-e36a-467e-91ea-5f6fdab7c804")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 50.8 62.738) (xy 52.832 62.738))
+		(stroke (width 0) (type default))
+		(uuid "9e523411-c6a1-4ac5-95a1-0d47ce18fa6c")
+	)
+	(wire
+		(pts (xy 62.992 62.738) (xy 64.008 62.738))
+		(stroke (width 0) (type default))
+		(uuid "aaba5143-bc34-4e58-9bb2-48afc6d13823")
+	)
+	(wire
+		(pts (xy 57.912 70.358) (xy 57.912 72.644))
+		(stroke (width 0) (type default))
+		(uuid "5ec8be14-6025-4372-8340-a4121feb08bb")
+	)
+	(symbol
+		(lib_id "OpenBeacon2:TestPoint")
+		(at 74.93 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7603dafe-8471-4698-980a-2962bbcf7858")
+		(property "Reference" "TP1"
+			(at 66.5 52.7 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "PA_I+"
+			(at 66.5 54.5 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Measurement_Points:Measurement_Point_Square-TH_Small"
+			(at 74.93 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 74.93 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 74.93 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "4a6e036e-f44c-4926-a563-b73453b77f7f")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2:TestPoint")
+		(at 85.09 55.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d3d76077-30c7-410c-93ae-4913cd0825eb")
+		(property "Reference" "TP2"
+			(at 77.0 52.7 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "PA_I-"
+			(at 77.0 54.5 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Measurement_Points:Measurement_Point_Square-TH_Small"
+			(at 85.09 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 85.09 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 85.09 55.88 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "c89e761e-f443-49a4-9bd0-7edc449465bc")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 74.93 62.738) (xy 74.93 55.88))
+		(stroke (width 0) (type default))
+		(uuid "7f6d176b-ac10-471b-b60a-6ecfce53467f")
+	)
+	(wire
+		(pts (xy 85.09 62.738) (xy 85.09 55.88))
+		(stroke (width 0) (type default))
+		(uuid "ee04967f-8451-4bcb-90df-339f58afe3d3")
+	)
+	(junction
+		(at 74.93 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4bef4432-6fea-4f45-a8e3-ec4e054b492d")
+	)
+	(junction
+		(at 85.09 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6364fbe1-545f-4b52-9117-6befde75e71d")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 106.68 58.42 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ea82cfcd-7717-4d2c-a308-0ed5cd59e120")
+		(property "Reference" "R83"
+			(at 103.4 56.6 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10"
+			(at 108.0 56.6 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF100JT5E"
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C22859"
+			(at 106.68 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "ab501929-02a4-4348-b844-dd261ca8d8ad")
+		)
+		(pin "2"
+			(uuid "54b28404-f9e0-4428-aeec-9431746919c4")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R83")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 74.93 58.42) (xy 102.87 58.42))
+		(stroke (width 0) (type default))
+		(uuid "f478b86c-6135-4c88-b6f9-97cc77762d63")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 106.68 63.5 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9c1b6a8d-5e83-427e-a006-ea4ed78c3e4b")
+		(property "Reference" "R84"
+			(at 103.4 65.8 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10"
+			(at 108.0 65.8 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF100JT5E"
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C22859"
+			(at 106.68 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "00213a9e-60b0-4402-bcce-d3d7835dcb94")
+		)
+		(pin "2"
+			(uuid "819e3621-a7a7-48bd-bf9c-4f517e66fef5")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R84")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 85.09 60.96) (xy 99.06 60.96))
+		(stroke (width 0) (type default))
+		(uuid "a6e7f636-28fd-496b-852c-011915a0931b")
+	)
+	(wire
+		(pts (xy 99.06 60.96) (xy 99.06 63.5))
+		(stroke (width 0) (type default))
+		(uuid "a9f40a14-788d-4d4b-a727-f74cd907e2fb")
+	)
+	(wire
+		(pts (xy 99.06 63.5) (xy 102.87 63.5))
+		(stroke (width 0) (type default))
+		(uuid "46d1eeb4-cb97-462e-97b9-154530d5da4b")
+	)
+	(symbol
+		(lib_id "OpenBeacon2:INA193")
+		(at 127.0 71.12 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "51a4d414-e270-4125-83f8-ebed252d0193")
+		(property "Reference" "U14"
+			(at 128.3 64.8 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "INA193AIDBVR"
+			(at 128.3 78.2 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "INA193AIDBVR"
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C19548"
+			(at 127.0 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "b85b4d26-f4ab-404d-a990-8144d9233e0c")
+		)
+		(pin "2"
+			(uuid "8fb6a361-0fad-4391-a9be-eaa099035b2b")
+		)
+		(pin "3"
+			(uuid "6fc504f1-fd37-4e68-ac59-4dc58f578f95")
+		)
+		(pin "4"
+			(uuid "ea20c78b-1781-4515-91e1-59403003c015")
+		)
+		(pin "5"
+			(uuid "560f6663-2663-4bf7-81b1-ca5b5e96d150")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "U14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 110.49 58.42) (xy 118.11 58.42))
+		(stroke (width 0) (type default))
+		(uuid "fa21c848-f7c1-4e7e-82b2-7b2a071440aa")
+	)
+	(wire
+		(pts (xy 118.11 58.42) (xy 118.11 68.58))
+		(stroke (width 0) (type default))
+		(uuid "8249f312-a16e-4a34-8a51-3dc90ede96d8")
+	)
+	(wire
+		(pts (xy 118.11 68.58) (xy 119.38 68.58))
+		(stroke (width 0) (type default))
+		(uuid "9f878615-5dee-48eb-b166-43277744bfc2")
+	)
+	(label "ISNS_P"
+		(at 114.3 58.42 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "e61b7370-6da1-45a4-b854-8c9c81a4ce26")
+	)
+	(wire
+		(pts (xy 110.49 63.5) (xy 114.3 63.5))
+		(stroke (width 0) (type default))
+		(uuid "85b4a89e-2b3f-4271-891f-5bd976be8c5c")
+	)
+	(wire
+		(pts (xy 114.3 63.5) (xy 114.3 73.66))
+		(stroke (width 0) (type default))
+		(uuid "d468214b-64bb-4a65-bd48-4b817eb03e64")
+	)
+	(wire
+		(pts (xy 114.3 73.66) (xy 119.38 73.66))
+		(stroke (width 0) (type default))
+		(uuid "09331e1e-a58c-449f-85cf-6d7f1b6e0c95")
+	)
+	(label "ISNS_N"
+		(at 114.3 70.0 90)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "d889774c-1db1-4733-88e3-8698542856d3")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 111.76 60.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f2c02386-df16-4483-9857-b4218fa8c537")
+		(property "Reference" "C58"
+			(at 113.0 60.3 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "100n"
+			(at 113.0 62.1 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C14663"
+			(at 111.76 60.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "f6aeaa96-4b10-4a3f-9cef-6deed4b5def9")
+		)
+		(pin "2"
+			(uuid "8dc108ff-9482-45ff-9bb7-8b0db4277643")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C58")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(junction
+		(at 111.76 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "da1e6cd8-a135-4d0b-9c1e-1b8c19e83689")
+	)
+	(junction
+		(at 111.76 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "59fe4215-8d53-4651-b7e5-cab7098539cb")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+3.3V")
+		(at 124.46 58.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3d565661-30ed-4634-b027-19e76502f169")
+		(property "Reference" "#PWR959"
+			(at 127.0 57.15 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "+3.3V"
+			(at 124.46 55.42 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 124.46 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 124.46 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 124.46 58.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "24cfbdb2-839d-4e84-ae5b-c80cbf3612e1")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR959")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 124.46 58.42) (xy 124.46 63.5))
+		(stroke (width 0) (type default))
+		(uuid "6a6d46a0-2503-4b32-82fc-3a41c3f92f52")
+	)
+	(junction
+		(at 124.46 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "42af32c9-83a6-406d-8da4-9267a0cec138")
+	)
+	(wire
+		(pts (xy 124.46 60.96) (xy 135.89 60.96))
+		(stroke (width 0) (type default))
+		(uuid "23366ded-164c-480b-ba4c-1bee75cb2cce")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 135.89 63.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8b29c38-cdb7-45af-9412-9941a6c8d138")
+		(property "Reference" "C59"
+			(at 137.2 62.9 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "100n"
+			(at 137.2 64.7 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C14663"
+			(at 135.89 63.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "16cd8aca-2d44-4702-afb1-31ff1be70fbe")
+		)
+		(pin "2"
+			(uuid "f5d35d79-2a8e-4388-a7bf-cc5144ce57bc")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C59")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 135.89 66.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "784ca1aa-f5d3-46ce-9d51-f1e4383e576f")
+		(property "Reference" "#PWR960"
+			(at 138.43 64.77 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 135.89 69.54 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 135.89 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 135.89 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 135.89 66.04 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "0ca4eb08-7279-437f-928f-df085654addf")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR960")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 124.46 78.74 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b1a28412-e8cd-4ffb-b5a6-749fa7bc0967")
+		(property "Reference" "#PWR961"
+			(at 127.0 77.47 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 124.46 82.24 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 124.46 78.74 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 124.46 78.74 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 124.46 78.74 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "ce602e92-f30e-4e9b-bc3f-257ac72a138b")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR961")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 139.7 71.12 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "422e313f-6236-496f-9cf3-7cc1dbd01054")
+		(property "Reference" "R85"
+			(at 136.5 73.6 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "1k"
+			(at 140.3 73.6 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF1001T5E"
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C21190"
+			(at 139.7 71.12 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "52856395-e440-4289-afcb-1c39b195a0b2")
+		)
+		(pin "2"
+			(uuid "b0a5dc60-fadc-49c4-9a5d-744394ac454f")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R85")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 134.62 71.12) (xy 135.89 71.12))
+		(stroke (width 0) (type default))
+		(uuid "930a8aa5-edc6-49a2-929d-89198d7ad477")
+	)
+	(wire
+		(pts (xy 143.51 71.12) (xy 148.59 71.12))
+		(stroke (width 0) (type default))
+		(uuid "c3cb57c6-53e6-4602-ae0e-ab00875d27e7")
+	)
+	(wire
+		(pts (xy 148.59 71.12) (xy 148.59 66.04))
+		(stroke (width 0) (type default))
+		(uuid "66be5d9d-1719-4519-8de0-208cab310dd9")
+	)
+	(junction
+		(at 146.05 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3f9b362d-1a88-4529-a4c2-ef35a2d0e6b9")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 146.05 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8a7a74d2-2999-4aa1-9691-6048d6865d48")
+		(property "Reference" "C60"
+			(at 140.3 76.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "100n"
+			(at 140.3 77.8 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C14663"
+			(at 146.05 73.66 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "d8bd6b90-0475-494a-a834-821cdbe1d0d3")
+		)
+		(pin "2"
+			(uuid "5a8ffb17-7aed-47b5-b55b-5151d8b39614")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C60")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 146.05 76.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "65e6019e-f6c9-419d-af61-ed185084557a")
+		(property "Reference" "#PWR962"
+			(at 148.59 74.93 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 146.05 79.7 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 146.05 76.2 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 146.05 76.2 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 146.05 76.2 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "67a7060f-69f3-4e7f-a1e4-39e43c27d9e4")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR962")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "TX_ISENSE"
+		(shape output)
+		(at 148.59 66.04 90)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "b008f6bb-cd67-4c88-be05-3c6ae6c4a6be")
+	)
+	(text "PA current sense: R8 0.2R shunt, U14 INA193 (gain 20 V/V).\nR83/R84 10R + C58 100n differential filter.\nR85 1k + C60 100n RC to MCU ADC (PE1).\nI_PA = V(TX_ISENSE) / 4.0 V/A.\nTP1/TP2 Kelvin test points across R8."
+		(exclude_from_sim no)
+		(at 102.87 84.46 0)
+		(effects (font (size 1.0 1.0)) (justify left top))
+		(uuid "f396be0d-2d99-4610-99e6-2dded2543d88")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:C")
+		(at 36.83 129.667 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cf93fbb6-2c72-4c0b-a9a4-da26954d1fb3")
+		(property "Reference" "C61"
+			(at 33.0 133.0 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "100n"
+			(at 33.0 134.8 90)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "YAGEO"
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C14663"
+			(at 36.83 129.667 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "5050ef9f-5af6-43b7-80f7-c637f232030b")
+		)
+		(pin "2"
+			(uuid "acb87730-0a5f-479d-b7eb-cb76494ff601")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "C61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 39.37 129.667) (xy 42.418 129.667))
+		(stroke (width 0) (type default))
+		(uuid "f507aab3-f9d7-46bf-b91d-b0e629373a61")
+	)
+	(junction
+		(at 40.64 129.667)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f303eaa8-e471-4f55-8786-349cb964730f")
+	)
+	(global_label "CLK0"
+		(shape input)
+		(at 34.29 129.667 180)
+		(effects (font (size 1.27 1.27)) (justify right bottom))
+		(uuid "72068df6-0c79-4eba-8a50-60a1b39ccc6b")
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 40.64 125.857 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "03f7dcd4-50a0-4e2c-b3d0-65d1c48df1cb")
+		(property "Reference" "R86"
+			(at 41.9 124.7 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "10k"
+			(at 41.9 126.5 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF1002T5E"
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C25804"
+			(at 40.64 125.857 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "934915d7-ab0f-4e42-8a44-f4a9d008c2a7")
+		)
+		(pin "2"
+			(uuid "0019e40d-a815-4290-912f-d8c567af9aa2")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R86")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:+5V")
+		(at 40.64 122.047 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ce88def9-0e03-4c98-bc19-df9efa17b552")
+		(property "Reference" "#PWR963"
+			(at 43.18 120.777 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "+5V"
+			(at 40.64 119.047 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 40.64 122.047 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 40.64 122.047 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 40.64 122.047 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "768bfff9-444e-4a74-93a4-2d2e4b33581d")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR963")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "EtherkitKicadLibrary:R")
+		(at 40.64 133.477 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "21e886cb-d7cc-4c7f-b422-9709021dd2de")
+		(property "Reference" "R87"
+			(at 42.2 133.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "10k"
+			(at 42.2 134.8 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF1002T5E"
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C25804"
+			(at 40.64 133.477 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "38942fce-c06f-4fa4-80a6-f91aaf301636")
+		)
+		(pin "2"
+			(uuid "1b054da3-7607-4d0f-b231-82b6a1a2ab91")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "R87")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
+		(at 40.64 137.287 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "657c94c1-23f4-458c-93c4-552ff9f03715")
+		(property "Reference" "#PWR964"
+			(at 43.18 136.017 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 40.64 140.787 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 40.64 137.287 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 40.64 137.287 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 40.64 137.287 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "204f699b-f368-4910-a6e0-a92b57d2c5b9")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381"
+					(reference "#PWR964")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "BAND_C"
+		(shape output)
+		(at 140.97 113.03 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "80fbdb49-5b3e-4d5b-a3d5-fa3524572c5b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(sheet_instances
 		(path "/"

@@ -620,6 +620,10 @@
     "netclass_patterns": [
       {
         "netclass": "RF50",
+        "pattern": "Net-(D18-A1)"
+      },
+      {
+        "netclass": "RF50",
         "pattern": "/CLKIN_SMA"
       },
       {
