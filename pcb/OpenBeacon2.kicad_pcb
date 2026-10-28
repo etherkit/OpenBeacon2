@@ -1999,7 +1999,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L201"
-			(at -5.88788 2.54 90)
+			(at -4 -1.03588 180)
 			(layer "F.SilkS")
 			(uuid "73af30fe-136d-4616-859b-92d98cdb2290")
 			(effects
@@ -3866,7 +3866,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L203"
-			(at 0 6.9866 0)
+			(at 4 -0.86 0)
 			(layer "F.SilkS")
 			(uuid "e45fbf50-e6a1-4e99-b7a4-e7c8ec40f89c")
 			(effects
@@ -4252,7 +4252,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L202"
-			(at 1.5 7.1836 90)
+			(at 5.9 2.54 180)
 			(layer "F.SilkS")
 			(uuid "2a0bcc54-1da9-421d-ba00-49f0e498d09f")
 			(effects
@@ -5699,7 +5699,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L401"
-			(at 5.9866 4.54 90)
+			(at -2.5 -0.86 180)
 			(layer "F.SilkS")
 			(uuid "69be4660-90ef-421f-8576-75b4ba5aff62")
 			(effects
@@ -18243,7 +18243,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L301"
-			(at 0 -2.0236 90)
+			(at 6 2.54 180)
 			(layer "F.SilkS")
 			(uuid "077c6dc8-029f-43af-92f2-02118547802e")
 			(effects
@@ -24315,7 +24315,7 @@
 		(descr "Mesurement Point, Square, Trough Hole,  1.5mm x 1.5mm, Drill 0.8mm,")
 		(tags "Mesurement Point Square Trough Hole 1.5x1.5mm Drill 0.8mm")
 		(property "Reference" "TP1"
-			(at -1.045 2.280714 90)
+			(at 2.5298 -2.0747 180)
 			(layer "F.SilkS")
 			(uuid "c9f91381-f6f4-4a3b-9fff-ca9466460f13")
 			(effects
@@ -25012,7 +25012,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R7"
-			(at -3.235953 2 0)
+			(at -0.0216 -1.5153 0)
 			(layer "F.SilkS")
 			(uuid "7f9d0502-eb63-4bd9-9c04-74d5b86993d7")
 			(effects
@@ -30119,7 +30119,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L502"
-			(at 2 7.1836 0)
+			(at -1 -1.76 0)
 			(layer "F.SilkS")
 			(uuid "c5b8e25d-1319-41bb-92d2-305838fc720f")
 			(effects
@@ -33795,7 +33795,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L302"
-			(at 0 7.0666 0)
+			(at 3.1 -0.66 0)
 			(layer "F.SilkS")
 			(uuid "6c8e96f0-822f-45f5-9054-36d146cfa735")
 			(effects
@@ -38888,7 +38888,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L403"
-			(at 0 7.0666 0)
+			(at -2.4 -0.76 0)
 			(layer "F.SilkS")
 			(uuid "f668a408-b04d-4544-9676-872f43d558fe")
 			(effects
@@ -42454,7 +42454,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L503"
-			(at -6.0236 2.54 0)
+			(at 5.7 3.24 0)
 			(layer "F.SilkS")
 			(uuid "e119c0f3-4a47-4925-a445-4ab577098842")
 			(effects
@@ -43211,7 +43211,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C202"
-			(at 2.852143 -0.775 0)
+			(at 2.1836 -1.4179 0)
 			(layer "F.SilkS")
 			(uuid "98afdb24-02aa-4264-9f77-fa8426792d16")
 			(effects
@@ -45304,7 +45304,7 @@
 			(uuid "ffaf52ce-450f-45b2-bd48-af27e1a2bd70")
 			(effects
 				(font
-					(size 0.6 0.6)
+					(size 0.8 0.8)
 					(thickness 0.12)
 				)
 			)
@@ -48860,7 +48860,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R50"
-			(at 3.116905 1 0)
+			(at 0.227064 -1.6432 0)
 			(layer "F.SilkS")
 			(uuid "eb9249a9-109a-48ab-8452-4f53f2ee8ca9")
 			(effects
@@ -55714,7 +55714,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "resistor")
 		(property "Reference" "R54"
-			(at 3.116905 1 0)
+			(at 0.0672 -1.6432 0)
 			(layer "F.SilkS")
 			(uuid "2ccfcd58-df2a-4824-af37-97969f9025de")
 			(effects
@@ -56824,7 +56824,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf)")
 		(tags "capacitor")
 		(property "Reference" "C55"
-			(at -1.525 1.5036 0)
+			(at -0.1873 1.5036 0)
 			(layer "F.SilkS")
 			(uuid "88a639c7-8a8a-482a-ab5f-db2332d97622")
 			(effects
@@ -58871,7 +58871,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L501"
-			(at 2 8.071667 0)
+			(at 6 2.54 0)
 			(layer "F.SilkS")
 			(uuid "885b0d82-3f91-4dfe-9d2b-74f21ed3b7c8")
 			(effects
@@ -59812,7 +59812,7 @@
 		(descr "L_Toroid, Vertical series, Radial, pin pitch=5.08mm, length*width=10*5mm^2")
 		(tags "L_Toroid Vertical series Radial pin pitch 5.08mm  length 10mm width 5mm")
 		(property "Reference" "L402"
-			(at -5.9066 2.54 0)
+			(at 5.8 2.54 0)
 			(layer "F.SilkS")
 			(uuid "ea9dc1de-845d-4b8e-b588-09595117ce74")
 			(effects
@@ -60198,7 +60198,7 @@
 		(descr "Mesurement Point, Square, Trough Hole,  1.5mm x 1.5mm, Drill 0.8mm,")
 		(tags "Mesurement Point Square Trough Hole 1.5x1.5mm Drill 0.8mm")
 		(property "Reference" "J1"
-			(at -1.960715 0 0)
+			(at -1.960715 -0.3586 0)
 			(layer "F.SilkS")
 			(uuid "32e2eb0a-36cf-44cc-a2c2-e793e77485fa")
 			(effects
@@ -61870,7 +61870,7 @@
 		)
 	)
 	(gr_text "BIAS"
-		(at 106.721237 142.77858 0)
+		(at 104.2 141.7 0)
 		(layer "F.SilkS")
 		(uuid "d0d27dea-1053-4563-8acf-a19d90f5728a")
 		(effects
@@ -61881,7 +61881,7 @@
 		)
 	)
 	(gr_text "GND"
-		(at 118.59445 133.4096 0)
+		(at 116.6 133.4096 0)
 		(layer "F.SilkS")
 		(uuid "801506c5-19e9-4f1c-bbfc-ec3005a7f8ed")
 		(effects
@@ -61902,6 +61902,17 @@
 			)
 		)
 	)
+	(gr_text "PAI+"
+		(at 128.4 132.7 0)
+		(layer "F.SilkS")
+		(uuid "eea93e4e-f652-48b9-ac34-c16c711aaa1b")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
 	(gr_text "UPDI J13"
 		(at 204.14 120.66 0)
 		(layer "F.SilkS")
@@ -61913,44 +61924,8 @@
 			)
 		)
 	)
-	(gr_text "+3.3V"
-		(at 202.64 122.86 0)
-		(layer "F.SilkS")
-		(uuid "35bd3c21-0cf6-4dcd-a4c2-70a5ef4cb976")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-			(justify right)
-		)
-	)
-	(gr_text "UPDI_TXD"
-		(at 202.64 125.4 0)
-		(layer "F.SilkS")
-		(uuid "84520110-f257-4b95-bf18-f8c9e772a3a7")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-			(justify right)
-		)
-	)
-	(gr_text "UPDI_RX"
-		(at 202.64 127.94 0)
-		(layer "F.SilkS")
-		(uuid "f72f4783-dd93-43c4-b7a1-4bce27b7d387")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-			(justify right)
-		)
-	)
 	(gr_text "GND"
-		(at 202.64 130.479999 0)
+		(at 208.4 130.479999 0)
 		(layer "F.SilkS")
 		(uuid "bc2c16b4-f0bb-4ecb-a048-799cabfc7d10")
 		(effects
@@ -61961,15 +61936,40 @@
 			(justify right)
 		)
 	)
-	(gr_text "PAI+"
-		(at 114.594715 128.177998 90)
+	(gr_text "+3.3V"
+		(at 209.6 122.86 0)
 		(layer "F.SilkS")
-		(uuid "eea93e4e-f652-48b9-ac34-c16c711aaa1b")
+		(uuid "35bd3c21-0cf6-4dcd-a4c2-70a5ef4cb976")
 		(effects
 			(font
 				(size 0.8 0.8)
 				(thickness 0.12)
 			)
+			(justify right)
+		)
+	)
+	(gr_text "UPDI_RX"
+		(at 210.9 127.94 0)
+		(layer "F.SilkS")
+		(uuid "f72f4783-dd93-43c4-b7a1-4bce27b7d387")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify right)
+		)
+	)
+	(gr_text "UPDI_TXD"
+		(at 211.6 125.4 0)
+		(layer "F.SilkS")
+		(uuid "84520110-f257-4b95-bf18-f8c9e772a3a7")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+			(justify right)
 		)
 	)
 	(gr_text "Creative Commons License\nCC-BY-SA 4.0"
@@ -61981,6 +61981,30 @@
 				(size 0.8 0.8)
 				(thickness 0.15)
 			)
+		)
+	)
+	(gr_text "CLK2"
+		(at 127.6 98.3 0)
+		(layer "F.SilkS")
+		(uuid "fd1b5493-b8a1-4d2d-be8f-578b5f11c3ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "REF IN"
+		(at 143.3 98.3 0)
+		(layer "F.SilkS")
+		(uuid "7be186e2-9f14-43c1-a823-c03e2566eafb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
 		)
 	)
 	(gr_text "etherkit.com 2026"
@@ -128093,14 +128117,6 @@
 		(uuid "14a16936-98b4-4cd7-8bdf-980a5aa6368c")
 	)
 	(segment
-		(start 130.75 100.466)
-		(end 130.85 100.366)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "1de80de3-bfda-4bd2-9cf0-bdbd8183dbe6")
-	)
-	(segment
 		(start 131.5 100.016)
 		(end 131.6 100.016)
 		(width 0.2)
@@ -128157,22 +128173,6 @@
 		(uuid "3502a749-7b91-4fb0-b859-d7f4c41d89c0")
 	)
 	(segment
-		(start 130.25 100.966)
-		(end 130.35 100.866)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "369752cd-80e5-420e-9e93-6406d7d791a2")
-	)
-	(segment
-		(start 130.35 100.866)
-		(end 130.449999 100.766)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "3751bde8-30ed-4b3b-9940-781e1c10ace0")
-	)
-	(segment
 		(start 131.25 100.37)
 		(end 131.449999 100.37)
 		(width 0.2)
@@ -128195,14 +128195,6 @@
 		(layer "F.Cu")
 		(net "Net-(Q2-D)")
 		(uuid "444a28a9-ca11-4a10-af9c-88f49004a8a0")
-	)
-	(segment
-		(start 130.75 100.47)
-		(end 130.85 100.37)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "484a6652-426c-478e-bac7-0a6af94420d9")
 	)
 	(segment
 		(start 131.767 120.848)
@@ -128235,14 +128227,6 @@
 		(layer "F.Cu")
 		(net "Net-(Q2-D)")
 		(uuid "5171682e-a543-4b25-9472-dfedddd0f469")
-	)
-	(segment
-		(start 130.65 100.566)
-		(end 130.75 100.466)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "526d69fb-f26b-4d4e-b83a-6a2aa833ea25")
 	)
 	(segment
 		(start 132.16 100)
@@ -128357,28 +128341,12 @@
 		(uuid "7b11ac03-c04a-4cfe-99ea-90c1e2716d2f")
 	)
 	(segment
-		(start 130.15 101.07)
-		(end 130.35 100.87)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "7bd899f9-c131-4b1c-9b40-511f959a59fb")
-	)
-	(segment
 		(start 133.167 103.548)
 		(end 133.217 103.498)
 		(width 0.2)
 		(layer "F.Cu")
 		(net "Net-(Q2-D)")
 		(uuid "7bda686f-bb34-45c6-94ec-ccb1dc9230bf")
-	)
-	(segment
-		(start 130.449999 100.766)
-		(end 130.55 100.666)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "7f88637c-0c33-4573-b4da-0e0f66e9e655")
 	)
 	(segment
 		(start 131.567 120.848)
@@ -128411,14 +128379,6 @@
 		(layer "F.Cu")
 		(net "Net-(Q2-D)")
 		(uuid "8482d097-80c6-451d-8383-d252d168b8ae")
-	)
-	(segment
-		(start 130.55 100.67)
-		(end 130.75 100.47)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "84a604b3-8af7-4643-b4ca-f930033ea187")
 	)
 	(segment
 		(start 132.8 103.516)
@@ -128477,14 +128437,6 @@
 		(uuid "a05883f8-5b5e-4505-9bb7-e3077616954c")
 	)
 	(segment
-		(start 130.35 100.87)
-		(end 130.55 100.67)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "a16f7243-8fe7-490b-9818-ac4097b28a0d")
-	)
-	(segment
 		(start 130.767 121.348)
 		(end 130.866999 121.248)
 		(width 0.2)
@@ -128507,22 +128459,6 @@
 		(layer "F.Cu")
 		(net "Net-(Q2-D)")
 		(uuid "b349c56a-1c30-4526-922b-791c475d03e8")
-	)
-	(segment
-		(start 130.55 100.666)
-		(end 130.65 100.566)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "b9b89d09-21dc-4ac9-b210-e8f88cc96bdb")
-	)
-	(segment
-		(start 130.15 101.066)
-		(end 130.25 100.966)
-		(width 0.2)
-		(layer "F.Cu")
-		(net "Net-(Q2-D)")
-		(uuid "bec9c5df-9da9-49f0-803f-f0ac213ca953")
 	)
 	(segment
 		(start 131.199999 100.016)
