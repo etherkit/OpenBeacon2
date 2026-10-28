@@ -620,7 +620,7 @@
     "netclass_patterns": [
       {
         "netclass": "RF50",
-        "pattern": "Net-(D18-A1)"
+        "pattern": "Net-(D13-A1)"
       },
       {
         "netclass": "RF50",
@@ -628,15 +628,15 @@
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(U4-CLKIN)"
+        "pattern": "Net-(U3-CLKIN)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(U4-CLK4)"
+        "pattern": "Net-(U3-CLK4)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(J6-In)"
+        "pattern": "Net-(J1-In)"
       },
       {
         "netclass": "RF50",
@@ -648,7 +648,7 @@
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C5-~-Pad*)"
+        "pattern": "Net-(C23-~-Pad*)"
       },
       {
         "netclass": "RF50",
@@ -672,35 +672,35 @@
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C202-Pad2)"
+        "pattern": "Net-(C26-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C204-Pad2)"
+        "pattern": "Net-(C27-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C302-Pad2)"
+        "pattern": "Net-(C28-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C304-Pad2)"
+        "pattern": "Net-(C33-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C402-Pad2)"
+        "pattern": "Net-(C63-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C404-Pad2)"
+        "pattern": "Net-(C64-Pad1)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C502-Pad2)"
+        "pattern": "Net-(C65-Pad2)"
       },
       {
         "netclass": "RF50",
-        "pattern": "Net-(C504-Pad2)"
+        "pattern": "Net-(C66-Pad2)"
       },
       {
         "netclass": "PA",
