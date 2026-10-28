@@ -251,10 +251,11 @@ class CmdParser(cmd2.Cmd):
 
     def __init__(self):
         shortcuts = dict(cmd2.DEFAULT_SHORTCUTS)
-        #shortcuts.update({'q': 'quit'})
+        shortcuts.update({'exit': 'quit'})
         super().__init__(shortcuts=shortcuts)
         # cmd2.Cmd.__init__(self)
-        self.locals_in_py = True # Enabled to allow scrpits access to Self
+        # self.locals_in_py = True # Enabled to allow scrpits access to Self
+        self.self_in_py = True
 
     set_parser = argparse.ArgumentParser()
     set_parser.add_argument('config', help='Configuration parameter to set')
@@ -299,6 +300,28 @@ class CmdParser(cmd2.Cmd):
         send_payload = {'config': args.config, 'get': True}
         send_serial_packet(2, json.dumps(
             send_payload, ensure_ascii=True, separators=(',', ':')))
+
+    band_eeprom_parser = argparse.ArgumentParser()
+    band_eeprom_parser.add_argument('RW', help='Read or write directive')
+    band_eeprom_parser.add_argument('module', help='Desired band module')
+    band_eeprom_parser.add_argument('addr', help='Band module EEPROM address')
+    band_eeprom_parser.add_argument('data', help='Band module EEPROM data')
+
+    @cmd2.with_argparser(band_eeprom_parser)
+    def do_band_eeprom(self, args):
+        """Read or write memory in band module EEPROM"""
+        if(args.RW == 'W' or args.RW == 'w'):
+            send_payload = {'RW': True, 'module': int(args.module), 'addr': int(args.addr), 'data': int(args.data)}
+            CmdParser().async_alert(json.dumps(
+                send_payload, ensure_ascii=True, separators=(',', ':')))
+            send_serial_packet(0xa, json.dumps(
+                send_payload, ensure_ascii=True, separators=(',', ':')))
+        else:
+            send_payload = {'RW': False, 'module': args.module, 'addr': args.addr}
+            CmdParser().async_alert(json.dumps(
+                send_payload, ensure_ascii=True, separators=(',', ':')))
+            send_serial_packet(0xa, json.dumps(
+                send_payload, ensure_ascii=True, separators=(',', ':')))
 
     # enum_parser = argparse.ArgumentParser()
     # enum_parser.add_argument('enum', help='Configuration parameter to get')

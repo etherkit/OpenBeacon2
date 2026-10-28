@@ -38,4 +38,5 @@
     (zone_connect 2))
   (pad 2 smd rect (at 3 -2.54) (size 1.8 5.08) (layers F.Cu F.Mask))
   (pad 2 smd rect (at -3 -2.54) (size 1.8 5.08) (layers B.Cu B.Mask))
+  (model "${KIPRJMOD}/lib/OB2.3dshapes/SMA_EndLaunch_simple.step" (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
 )

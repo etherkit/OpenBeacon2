@@ -9,7 +9,7 @@
 		(date "2026-10-25")
 		(rev "C")
 		(company "Etherkit")
-		(comment 1 "MAX-M10S on USART3 (PB0/PB1), PPS to J14, active-antenna bias-T, CR1220")
+		(comment 1 "MAX-M10S: RXD from PB0 (USART3 TX), TXD to PF5 (USART2 RX ALT1), PPS to J14, active-antenna bias-T, CR1220")
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols
@@ -2954,7 +2954,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "de71e624-fa87-4243-933a-3654d5f20abb")
-		(property "Reference" "U12"
+		(property "Reference" "U11"
 			(at 104.14 144.78 0)
 			(effects
 				(font
@@ -3074,7 +3074,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "U12")
+					(reference "U11")
 					(unit 1)
 				)
 			)
@@ -3139,7 +3139,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "31ab92a3-b8bb-40cc-ba99-e239f23483cd")
-		(property "Reference" "C43"
+		(property "Reference" "C107"
 			(at 86.995 97.79 0)
 			(effects
 				(font
@@ -3211,7 +3211,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "C43")
+					(reference "C107")
 					(unit 1)
 				)
 			)
@@ -3232,7 +3232,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8367a01d-f3e1-4708-a937-4159d4c7c8a0")
-		(property "Reference" "#PWR1001"
+		(property "Reference" "#PWR116"
 			(at 88.9 101.6 0)
 			(effects
 				(font
@@ -3273,7 +3273,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1001")
+					(reference "#PWR116")
 					(unit 1)
 				)
 			)
@@ -3288,7 +3288,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "78184b8b-47f7-4bfd-913c-80be0dd3f0d1")
-		(property "Reference" "C44"
+		(property "Reference" "C106"
 			(at 76.835 97.79 0)
 			(effects
 				(font
@@ -3360,7 +3360,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "C44")
+					(reference "C106")
 					(unit 1)
 				)
 			)
@@ -3381,7 +3381,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "632127cc-1141-425a-9ae5-1228afd6f495")
-		(property "Reference" "#PWR1002"
+		(property "Reference" "#PWR115"
 			(at 78.74 101.6 0)
 			(effects
 				(font
@@ -3422,7 +3422,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1002")
+					(reference "#PWR115")
 					(unit 1)
 				)
 			)
@@ -3437,7 +3437,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e8c5d79b-ee06-421c-bc50-273f8d56c8ae")
-		(property "Reference" "#PWR1003"
+		(property "Reference" "#PWR112"
 			(at 71.12 96.52 0)
 			(effects
 				(font
@@ -3478,7 +3478,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1003")
+					(reference "#PWR112")
 					(unit 1)
 				)
 			)
@@ -3493,7 +3493,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88e94e9b-5121-4ffa-829b-4a6776fb2323")
-		(property "Reference" "#PWR1004"
+		(property "Reference" "#PWR121"
 			(at 101.6 142.24 0)
 			(effects
 				(font
@@ -3534,7 +3534,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1004")
+					(reference "#PWR121")
 					(unit 1)
 				)
 			)
@@ -3684,7 +3684,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "acd940f2-73c1-4a5f-ace3-484fa27c8914")
-		(property "Reference" "#FLG905"
+		(property "Reference" "#FLG5"
 			(at 101.6 81.28 0)
 			(effects
 				(font
@@ -3725,7 +3725,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#FLG905")
+					(reference "#FLG5")
 					(unit 1)
 				)
 			)
@@ -3740,7 +3740,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2b9ea50d-5fc3-46cf-bbd6-5c8afb0a4364")
-		(property "Reference" "C46"
+		(property "Reference" "C103"
 			(at 92.075 82.55 0)
 			(effects
 				(font
@@ -3758,7 +3758,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 93.98 83.82 0)
 			(effects
 				(font
@@ -3776,7 +3776,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21B105KBFNNNE"
+		(property "MPN" "CL05A105KA5NQNC"
 			(at 93.98 83.82 0)
 			(effects
 				(font
@@ -3794,7 +3794,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C28323"
+		(property "LCSC" "C52923"
 			(at 93.98 83.82 0)
 			(effects
 				(font
@@ -3812,7 +3812,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "C46")
+					(reference "C103")
 					(unit 1)
 				)
 			)
@@ -3833,7 +3833,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88538f89-b853-4d02-8e7d-a45f13e4da75")
-		(property "Reference" "#PWR1005"
+		(property "Reference" "#PWR110"
 			(at 93.98 86.36 0)
 			(effects
 				(font
@@ -3874,7 +3874,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1005")
+					(reference "#PWR110")
 					(unit 1)
 				)
 			)
@@ -3976,7 +3976,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "82d710b3-9986-48e0-8dde-5c4bfff70cc2")
-		(property "Reference" "#PWR1006"
+		(property "Reference" "#PWR111"
 			(at 83.82 88.9 0)
 			(effects
 				(font
@@ -4017,7 +4017,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1006")
+					(reference "#PWR111")
 					(unit 1)
 				)
 			)
@@ -4032,7 +4032,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4a24f349-3b61-40b8-9da4-46e72358aea6")
-		(property "Reference" "U13"
+		(property "Reference" "U10"
 			(at 127 87.63 0)
 			(effects
 				(font
@@ -4111,7 +4111,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "U13")
+					(reference "U10")
 					(unit 1)
 				)
 			)
@@ -4154,7 +4154,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8e89c550-5bc1-4941-8489-2ed890e16581")
-		(property "Reference" "C48"
+		(property "Reference" "C104"
 			(at 109.855 95.25 0)
 			(effects
 				(font
@@ -4226,7 +4226,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "C48")
+					(reference "C104")
 					(unit 1)
 				)
 			)
@@ -4241,7 +4241,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f579539b-6b13-4c81-9602-9545c1f27e75")
-		(property "Reference" "#PWR1007"
+		(property "Reference" "#PWR113"
 			(at 111.76 99.06 0)
 			(effects
 				(font
@@ -4282,7 +4282,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1007")
+					(reference "#PWR113")
 					(unit 1)
 				)
 			)
@@ -4319,7 +4319,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "234c9571-756f-46d9-a90f-a26c38a1a4e9")
-		(property "Reference" "#PWR1008"
+		(property "Reference" "#PWR117"
 			(at 116.84 101.6 0)
 			(effects
 				(font
@@ -4360,7 +4360,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1008")
+					(reference "#PWR117")
 					(unit 1)
 				)
 			)
@@ -4375,7 +4375,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8a4c4590-9190-4602-b59e-c235d0b610eb")
-		(property "Reference" "#PWR1009"
+		(property "Reference" "#PWR118"
 			(at 127 102.87 0)
 			(effects
 				(font
@@ -4416,7 +4416,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1009")
+					(reference "#PWR118")
 					(unit 1)
 				)
 			)
@@ -4465,7 +4465,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9dac7e03-6734-4a6e-b1ad-3c716aaa4b5b")
-		(property "Reference" "R40"
+		(property "Reference" "R41"
 			(at 139.7 91.44 90)
 			(effects
 				(font
@@ -4535,7 +4535,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "R40")
+					(reference "R41")
 					(unit 1)
 				)
 			)
@@ -4578,7 +4578,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ed54057e-acb8-4a44-ba8f-42d3745d6b97")
-		(property "Reference" "C45"
+		(property "Reference" "C105"
 			(at 149.225 95.25 0)
 			(effects
 				(font
@@ -4650,7 +4650,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "C45")
+					(reference "C105")
 					(unit 1)
 				)
 			)
@@ -4665,7 +4665,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9d2725ca-d11a-490d-bc14-199414e7cc3b")
-		(property "Reference" "#PWR1010"
+		(property "Reference" "#PWR114"
 			(at 147.32 99.06 0)
 			(effects
 				(font
@@ -4706,7 +4706,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1010")
+					(reference "#PWR114")
 					(unit 1)
 				)
 			)
@@ -4732,7 +4732,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1e176ad7-246a-4daa-b4c1-751f0c49066b")
-		(property "Reference" "L3"
+		(property "Reference" "L15"
 			(at 162.56 100.33 0)
 			(effects
 				(font
@@ -4804,7 +4804,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "L3")
+					(reference "L15")
 					(unit 1)
 				)
 			)
@@ -4836,7 +4836,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a851e1a8-9eb8-4c74-a9bf-8a0c6aec1eb6")
-		(property "Reference" "J15"
+		(property "Reference" "J8"
 			(at 184.15 121.92 0)
 			(effects
 				(font
@@ -4908,7 +4908,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "J15")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -4923,7 +4923,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e850e8ff-f71b-4a6b-9e78-08f631d8b9f1")
-		(property "Reference" "#PWR1011"
+		(property "Reference" "#PWR120"
 			(at 180.34 129.54 0)
 			(effects
 				(font
@@ -4964,7 +4964,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1011")
+					(reference "#PWR120")
 					(unit 1)
 				)
 			)
@@ -5099,12 +5099,6 @@
 		)
 		(uuid "21ffcf04-b2cf-497a-bf59-99e5c42bad65")
 	)
-	(junction
-		(at 142.24 147.32)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "843fbf6f-6d6f-4fd5-9006-5d1b2fd16400")
-	)
 	(wire
 		(pts
 			(xy 142.24 147.32)
@@ -5138,171 +5132,6 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 180.34 147.32 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "10e4f9b2-0bb2-4a04-b7e1-526a1c41ed14")
-		(property "Reference" "J14"
-			(at 182.88 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "PPS"
-			(at 182.88 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 180.34 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 180.34 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "HX PZ2.54-1x2P ZZ"
-			(at 180.34 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "HX"
-			(at 180.34 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C32713268"
-			(at 180.34 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c0e34c8c-eba8-4045-960e-8b4409a40a1f")
-		)
-		(pin "2"
-			(uuid "c8363812-edb0-4cd8-a20a-966792b67f0d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "J14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 175.26 149.86)
-			(xy 172.72 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83bd3bd8-8170-4dca-bda2-db0e7651f618")
-	)
-	(wire
-		(pts
-			(xy 172.72 149.86)
-			(xy 172.72 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eb095372-5392-4edc-bc03-6e582b7bf952")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 172.72 154.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "2fc0eab2-be11-4a60-9ef8-3a2bf57b6366")
-		(property "Reference" "#PWR1012"
-			(at 172.72 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 172.72 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 172.72 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 172.72 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed1503d7-5741-4b72-9339-e5ee023e9b47")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR1012")
-					(unit 1)
-				)
-			)
-		)
-	)
 	(rectangle
 		(start 50.8 73.66)
 		(end 190.5 165.1)
@@ -5316,7 +5145,7 @@
 		)
 		(uuid "481892ff-a867-41e6-843e-1ad57661e57c")
 	)
-	(text "GPS option: u-blox MAX-M10S on USART3 (PB0/PB1)"
+	(text "GPS option: u-blox MAX-M10S, RXD from PB0 (USART3 TX), TXD to PF5 (USART2 RX ALT1)"
 		(exclude_from_sim no)
 		(at 52.07 76.2 0)
 		(effects
@@ -5330,7 +5159,7 @@
 		)
 		(uuid "7cccc5e8-6ae9-4807-a011-4641782fb47f")
 	)
-	(text "RECEIVER: VCC + V_IO tied to +3.3V; VIO_SEL open = 3.3 V I/O (IM 4.1.2).\nC43/C44 beside pins 7/8, short GND vias; no series R > 0.2 ohm in VCC (IM 4.1.1).\nRESET_N, EXTINT, SCL, SAFEBOOT_N, LNA_EN left open (DS Table 10).\nSDA = ANT_SHORT_N (IM 3.3.1.2): CFG-HW-ANT_CFG_SHORTDET=1, ANT_SUP_SHORT_PIN=SDA PIO.\nPPS: TIMEPULSE = SAFEBOOT_N via 1k inside (DS fn 15); nothing may hold it\nlow at power-up, so no pull-down. R42 limits a shorted J14 to ~7 mA (I_PIO 10 mA)."
+	(text "RECEIVER: VCC + V_IO tied to +3.3V; VIO_SEL open = 3.3 V I/O (IM 4.1.2).\nC43/C44 beside pins 7/8, short GND vias; no series R > 0.2 ohm in VCC (IM 4.1.1).\nRESET_N, EXTINT, SCL, SAFEBOOT_N, LNA_EN left open (DS Table 10).\nSDA = ANT_SHORT_N (IM 3.3.1.2): CFG-HW-ANT_CFG_SHORTDET=1, ANT_SUP_SHORT_PIN=SDA PIO.\nPPS: TIMEPULSE = SAFEBOOT_N via 1k inside (DS fn 15); nothing may hold it\nlow at power-up, so no pull-down. R42 limits PPS fault current to ~7 mA (I_PIO 10 mA)."
 		(exclude_from_sim no)
 		(at 50.8 167.64 0)
 		(effects
@@ -5402,284 +5231,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 147.32) (xy 144.78 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2a6abdcb-ab59-428d-822c-0b63bfa80cc8")
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 147.32 147.32 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "85aaf613-4c11-4b66-b655-4740ec142c8b")
-		(property "Reference" "R75"
-			(at 147.32 145.796 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 147.32 149.098 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 147.32 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 147.32 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 147.32 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 147.32 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 147.32 147.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5e8c66f9-1564-414e-b9e6-86d57eeb10bb")
-		)
-		(pin "2"
-			(uuid "22a043ed-98a2-4be1-b436-3ce47751b93e")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "R75")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 149.86 147.32) (xy 175.26 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b25bc682-c992-4138-ac98-86ca531394b1")
-	)
-	(junction
-		(at 160.02 147.32)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6990aabc-6954-4456-bc11-398180492891")
-	)
-	(wire
-		(pts
-			(xy 160.02 147.32) (xy 160.02 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2ac2e226-e5b4-4674-ad09-2d840108b42e")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 160.02 154.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5272da1a-bc29-4743-a6c1-7e2f2f689dd0")
-		(property "Reference" "D17"
-			(at 164.465 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 164.465 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 160.02 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 160.02 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 160.02 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 160.02 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 160.02 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "77ef9224-c220-475e-8265-211eee21971d")
-		)
-		(pin "2"
-			(uuid "f7ca3bae-041d-4c29-9b55-0121b7ddcacf")
-		)
-		(pin "3"
-			(uuid "5dab89c9-8e22-4493-9ca6-8d27e97a88a7")
-		)
-		(pin "4"
-			(uuid "6e72d56e-7c2b-46df-b832-cac2cb12539c")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "D17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(no_connect
-		(at 157.48 149.86)
-		(uuid "b1b11f1f-82e7-4a19-a093-906c43e0b0f9")
-	)
-	(no_connect
-		(at 162.56 149.86)
-		(uuid "52fd05ef-264a-4159-9dae-67821f55ceb2")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 160.02 160.02 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "6fe37f30-e4f6-48b0-8681-94e2fffb2902")
-		(property "Reference" "#PWR942"
-			(at 160.02 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 160.02 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 160.02 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 160.02 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "172bd53f-5aee-4c48-8e0f-9ef9b594d7f2")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR942")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
 			(xy 116.84 124.46) (xy 167.64 124.46)
 		)
 		(stroke
@@ -5713,7 +5264,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "411b512e-8505-4229-a69e-f9708972c1c5")
-		(property "Reference" "D18"
+		(property "Reference" "D13"
 			(at 169.545 126.365 90)
 			(effects
 				(font
@@ -5785,7 +5336,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "D18")
+					(reference "D13")
 					(unit 1)
 				)
 			)
@@ -5800,7 +5351,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3307b9c3-2809-45f4-896b-20ea53e3718b")
-		(property "Reference" "#PWR943"
+		(property "Reference" "#PWR119"
 			(at 167.64 129.54 0)
 			(effects
 				(font
@@ -5841,7 +5392,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/a3f6c2d4-5b7e-4f10-9c8d-2e4b6a8c0d12"
-					(reference "#PWR943")
+					(reference "#PWR119")
 					(unit 1)
 				)
 			)

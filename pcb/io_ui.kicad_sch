@@ -3569,6 +3569,612 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x08"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "J"
+			(at 0 10.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x08"
+			(at 0 -12.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Conn_01x08_1_1"
+			(rectangle
+				(start -1.27 8.89)
+				(end 1.27 -11.43)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 7.747)
+				(end 0 7.493)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -7.493)
+				(end 0 -7.747)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -10.033)
+				(end 0 -10.287)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 7.62 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -7.62 0)
+				(length 3.81)
+				(name "Pin_7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -10.16 0)
+				(length 3.81)
+				(name "Pin_8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "Connector_Generic:Conn_01x06"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "J"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x06"
+			(at 0 -10.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Conn_01x06_1_1"
+			(rectangle
+				(start -1.27 6.35)
+				(end 1.27 -8.89)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -7.493)
+				(end 0 -7.747)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -7.62 0)
+				(length 3.81)
+				(name "Pin_6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 	(junction
 		(at 154.94 116.967)
@@ -3856,17 +4462,6 @@
 	)
 	(wire
 		(pts
-			(xy 44.577 22.733)
-			(xy 41.783 22.733)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "913f4ddc-606d-4f95-9f94-e55a6f0156e0")
-	)
-	(wire
-		(pts
 			(xy 140.843 149.098)
 			(xy 140.843 166.243)
 		)
@@ -3900,17 +4495,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.783 30.353)
-			(xy 44.577 30.353)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a9045914-3c6b-4208-9276-851bbc7b7e2b")
-	)
-	(wire
-		(pts
 			(xy 232.41 93.218)
 			(xy 232.41 94.869)
 		)
@@ -3919,17 +4503,6 @@
 			(type default)
 		)
 		(uuid "b200556f-9dc1-409c-98d9-c6ace6ebfd8a")
-	)
-	(wire
-		(pts
-			(xy 23.368 30.353)
-			(xy 26.162 30.353)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b29c5f36-8606-425c-9adc-84a7e524fc0b")
 	)
 	(wire
 		(pts
@@ -3944,17 +4517,6 @@
 	)
 	(wire
 		(pts
-			(xy 26.162 22.733)
-			(xy 23.368 22.733)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ec1715b2-9bab-4145-a6e2-4d3c56d2b8d2")
-	)
-	(wire
-		(pts
 			(xy 146.812 125.73)
 			(xy 146.812 128.651)
 		)
@@ -3963,28 +4525,6 @@
 			(type default)
 		)
 		(uuid "fae35fe8-ab09-4fea-9eaa-550573bde81e")
-	)
-	(global_label "UART_TX"
-		(shape bidirectional)
-		(at 66.04 52.07 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "17407cc6-ace5-4fe3-a5f6-4e8fc0d1ba0f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 	)
 	(global_label "SDA_5V"
 		(shape bidirectional)
@@ -3998,50 +4538,6 @@
 		(uuid "32a20477-8b8a-4fe0-b9c1-b37c84dfd570")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 125.603 166.243 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "UART_RX"
-		(shape bidirectional)
-		(at 66.04 46.99 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "35c7e1c4-bc30-4bc8-9342-d5a553b7e03c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 46.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "SDA"
-		(shape bidirectional)
-		(at 22.86 52.07 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "45a53173-af9a-4ea1-96b2-c9095085bf25")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 22.86 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4086,28 +4582,6 @@
 		(uuid "7f96cbe8-b217-4af4-9d91-47946fd18625")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 242.57 109.728 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "SCL"
-		(shape bidirectional)
-		(at 22.86 46.99 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "9903af81-81b8-47a5-a00b-d38a4040c850")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 22.86 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4239,7 +4713,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21f493")
-		(property "Reference" "R15"
+		(property "Reference" "R58"
 			(at 158.369 120.904 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4326,7 +4800,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R15")
+					(reference "R58")
 					(unit 1)
 				)
 			)
@@ -4343,7 +4817,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21f518")
-		(property "Reference" "R14"
+		(property "Reference" "R57"
 			(at 150.114 120.904 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4430,7 +4904,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R14")
+					(reference "R57")
 					(unit 1)
 				)
 			)
@@ -4447,7 +4921,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21f6ff")
-		(property "Reference" "#PWR068"
+		(property "Reference" "#PWR151"
 			(at 154.94 116.967 0)
 			(hide yes)
 			(show_name no)
@@ -4504,403 +4978,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR068")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x12")
-		(at 40.64 154.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a24d2d9")
-		(property "Reference" "J5"
-			(at 40.64 139.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ADC Inputs"
-			(at 40.64 172.72 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x12_P2.54mm_Vertical"
-			(at 40.64 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 40.64 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 40.64 154.94 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "PZ254V-11-12P"
-			(at 40.64 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "XFCN"
-			(at 40.64 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C2840012"
-			(at 40.64 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed9582cf-2622-4e16-8416-42e50cc05c59")
-		)
-		(pin "2"
-			(uuid "7abb961a-fb23-477a-9157-8c06654637e2")
-		)
-		(pin "3"
-			(uuid "1ebfae26-9f63-413a-9afe-d8849dcdd504")
-		)
-		(pin "4"
-			(uuid "736756da-a3c0-4b49-a576-6216459783b8")
-		)
-		(pin "5"
-			(uuid "b74616df-7a33-4a3c-8703-cf4ef526821e")
-		)
-		(pin "6"
-			(uuid "fbbf23c3-c39c-4b9f-88ac-5a57d25c107f")
-		)
-		(pin "7"
-			(uuid "2deaa48e-d08f-4b00-8dfe-8494a2456ecf")
-		)
-		(pin "8"
-			(uuid "77ac240f-1125-4fbd-adcb-388eaa09b2ae")
-		)
-		(pin "9"
-			(uuid "ea20368c-0564-4cf4-a13a-d350d37e0516")
-		)
-		(pin "10"
-			(uuid "28afc72d-77cf-49fb-af0c-b597ec2b60be")
-		)
-		(pin "11"
-			(uuid "6387642c-0588-42a0-ae5c-6f173d0dd789")
-		)
-		(pin "12"
-			(uuid "4e41b0d9-36de-4770-8e65-062afa24e94e")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "J5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 31.242 25.273 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a250921")
-		(property "Reference" "J8"
-			(at 31.242 20.193 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "I2C Bus"
-			(at 31.242 32.893 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-			(at 31.242 25.273 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 31.242 25.273 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 31.242 25.273 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "B-2100S04P-A110"
-			(at 31.242 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Ckmtw(Shenzhen Cankemeng)"
-			(at 31.242 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C124378"
-			(at 31.242 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fdb53df0-89e7-4c86-a080-60485f4b713d")
-		)
-		(pin "2"
-			(uuid "93100e4f-0492-4e7a-8cf1-11582e0353fe")
-		)
-		(pin "3"
-			(uuid "77b30634-abc5-4723-a53c-c2e0f2af3448")
-		)
-		(pin "4"
-			(uuid "35b7e1db-476b-4b46-bc38-101c9f74110c")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "J8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 23.368 30.353 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a250bcf")
-		(property "Reference" "#PWR037"
-			(at 23.368 36.703 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 23.368 33.655 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 23.368 30.353 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 23.368 30.353 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 23.368 30.353 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ab1e82ad-c658-4e94-83a7-08e4bc57bd6c")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR037")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 23.368 22.733 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005a250fa8")
-		(property "Reference" "#PWR036"
-			(at 23.368 23.749 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 20.828 21.844 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 23.368 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 23.368 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 23.368 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "82cac281-71ab-4b30-8b5c-ac8226b87eac")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR036")
+					(reference "#PWR151")
 					(unit 1)
 				)
 			)
@@ -4918,7 +4996,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a252f60")
-		(property "Reference" "Q5"
+		(property "Reference" "Q9"
 			(at 148.336 145.542 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5009,7 +5087,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "Q5")
+					(reference "Q9")
 					(unit 1)
 				)
 			)
@@ -5027,7 +5105,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a253413")
-		(property "Reference" "Q4"
+		(property "Reference" "Q10"
 			(at 148.209 158.496 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5118,7 +5196,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "Q4")
+					(reference "Q10")
 					(unit 1)
 				)
 			)
@@ -5135,7 +5213,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a253515")
-		(property "Reference" "#PWR061"
+		(property "Reference" "#PWR154"
 			(at 157.607 149.225 0)
 			(hide yes)
 			(show_name no)
@@ -5192,7 +5270,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR061")
+					(reference "#PWR154")
 					(unit 1)
 				)
 			)
@@ -5209,7 +5287,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a253746")
-		(property "Reference" "#PWR060"
+		(property "Reference" "#PWR155"
 			(at 157.48 162.179 0)
 			(hide yes)
 			(show_name no)
@@ -5266,7 +5344,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR060")
+					(reference "#PWR155")
 					(unit 1)
 				)
 			)
@@ -5283,7 +5361,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a2540d7")
-		(property "Reference" "R12"
+		(property "Reference" "R60"
 			(at 144.272 144.145 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5370,7 +5448,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R12")
+					(reference "R60")
 					(unit 1)
 				)
 			)
@@ -5387,7 +5465,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a254242")
-		(property "Reference" "R11"
+		(property "Reference" "R59"
 			(at 136.017 144.272 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5474,7 +5552,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R11")
+					(reference "R59")
 					(unit 1)
 				)
 			)
@@ -5491,7 +5569,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a2546de")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR153"
 			(at 140.843 138.938 0)
 			(hide yes)
 			(show_name no)
@@ -5548,397 +5626,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR057")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x10")
-		(at 40.64 121.92 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005c0ef538")
-		(property "Reference" "J4"
-			(at 40.64 109.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Digital IO"
-			(at 40.64 137.16 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical"
-			(at 40.64 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 40.64 121.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 40.64 121.92 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "PZ254V-11-10P"
-			(at 40.64 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "XFCN"
-			(at 40.64 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C492409"
-			(at 40.64 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fd4734a3-ccbc-4d24-95f1-5a90d27672ad")
-		)
-		(pin "2"
-			(uuid "08f49779-7df7-40d1-860d-4e67cd433aae")
-		)
-		(pin "3"
-			(uuid "fc3b2194-5bc6-4f66-8e18-2521d405cd3f")
-		)
-		(pin "4"
-			(uuid "23e7b6f7-0f87-4cf9-8522-791967c54a04")
-		)
-		(pin "5"
-			(uuid "d10c5205-26fb-4b67-9558-f4bd852a0dbf")
-		)
-		(pin "6"
-			(uuid "f22ba1ff-ee5d-4f0d-ad6f-ee3054bae7d6")
-		)
-		(pin "7"
-			(uuid "aa71d667-d0fc-4afb-9194-b1d436a193dd")
-		)
-		(pin "8"
-			(uuid "20fe8ba0-e00d-4638-ae8c-e007fbce5d79")
-		)
-		(pin "9"
-			(uuid "30c79010-9742-4ca5-ac48-364c1217d779")
-		)
-		(pin "10"
-			(uuid "d699cc85-a634-46ee-8abc-713ff3dfb347")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
-		(at 49.657 25.273 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005c0fad0d")
-		(property "Reference" "J10"
-			(at 49.657 20.193 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "UART"
-			(at 49.657 32.893 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-			(at 49.657 25.273 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 49.657 25.273 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 49.657 25.273 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "B-2100S04P-A110"
-			(at 49.657 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Ckmtw(Shenzhen Cankemeng)"
-			(at 49.657 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C124378"
-			(at 49.657 20.193 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8c4cbe17-5095-47e8-829f-c9aa6b03629e")
-		)
-		(pin "2"
-			(uuid "90041e5e-58e9-4d00-8c58-a42f803e6a83")
-		)
-		(pin "3"
-			(uuid "7dfe555f-b0db-4e06-b543-c95f31bebd3b")
-		)
-		(pin "4"
-			(uuid "930f1543-9d6d-49cb-8fa2-e256d88e9263")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "J10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 41.783 30.353 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005c0fad13")
-		(property "Reference" "#PWR046"
-			(at 41.783 36.703 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 41.783 33.655 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 41.783 30.353 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 41.783 30.353 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 41.783 30.353 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2e0dada1-6e76-4943-a8d9-1a6b419698e2")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR046")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "EtherkitKicadLibrary:+3.3V")
-		(at 41.783 22.733 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005c0fad19")
-		(property "Reference" "#PWR045"
-			(at 41.783 23.749 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 39.243 21.844 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 41.783 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 41.783 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 41.783 22.733 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "9b2bae71-c25a-4ed9-b1a5-075dda33c3f6")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR045")
+					(reference "#PWR153")
 					(unit 1)
 				)
 			)
@@ -5955,7 +5643,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20aecb")
-		(property "Reference" "U8"
+		(property "Reference" "U12"
 			(at 223.266 100.457 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6052,7 +5740,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "U8")
+					(reference "U12")
 					(unit 1)
 				)
 			)
@@ -6069,7 +5757,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b0f7")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR152"
 			(at 232.41 123.698 0)
 			(hide yes)
 			(show_name no)
@@ -6128,7 +5816,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR082")
+					(reference "#PWR152")
 					(unit 1)
 				)
 			)
@@ -6145,7 +5833,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b33a")
-		(property "Reference" "#PWR076"
+		(property "Reference" "#PWR150"
 			(at 222.25 113.538 0)
 			(hide yes)
 			(show_name no)
@@ -6204,7 +5892,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR076")
+					(reference "#PWR150")
 					(unit 1)
 				)
 			)
@@ -6221,7 +5909,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c20b975")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR148"
 			(at 232.41 94.234 0)
 			(hide yes)
 			(show_name no)
@@ -6278,7 +5966,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR081")
+					(reference "#PWR148")
 					(unit 1)
 				)
 			)
@@ -6295,7 +5983,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c21e00d")
-		(property "Reference" "C22"
+		(property "Reference" "C118"
 			(at 240.284 96.52 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6382,7 +6070,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C22")
+					(reference "C118")
 					(unit 1)
 				)
 			)
@@ -6399,7 +6087,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005c21e28f")
-		(property "Reference" "#PWR083"
+		(property "Reference" "#PWR149"
 			(at 236.474 106.299 0)
 			(hide yes)
 			(show_name no)
@@ -6458,7 +6146,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR083")
+					(reference "#PWR149")
 					(unit 1)
 				)
 			)
@@ -6517,7 +6205,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6539,7 +6227,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6550,7 +6238,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6561,7 +6249,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6620,7 +6308,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2ab36e05-d40a-4714-ba73-aea88a5d1b9d")
-		(property "Reference" "#PWR1013"
+		(property "Reference" "#PWR124"
 			(at 102.87 34.925 0)
 			(hide yes)
 			(show_name no)
@@ -6679,7 +6367,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1013")
+					(reference "#PWR124")
 					(unit 1)
 				)
 			)
@@ -6694,7 +6382,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "672df337-6d65-49f4-aba3-5e37ab7ee44c")
-		(property "Reference" "R50"
+		(property "Reference" "R43"
 			(at 120.015 20.32 0)
 			(effects
 				(font
@@ -6766,7 +6454,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R50")
+					(reference "R43")
 					(unit 1)
 				)
 			)
@@ -6783,7 +6471,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "005b63f1-bb4e-438c-8406-a893599e4a00")
-		(property "Reference" "#PWR1014"
+		(property "Reference" "#PWR122"
 			(at 118.11 20.066 0)
 			(hide yes)
 			(show_name no)
@@ -6840,7 +6528,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1014")
+					(reference "#PWR122")
 					(unit 1)
 				)
 			)
@@ -6866,7 +6554,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2c2b80b3-566f-437d-aff3-dc1afb7b9b02")
-		(property "Reference" "R51"
+		(property "Reference" "R45"
 			(at 120.65 29.21 90)
 			(effects
 				(font
@@ -6936,7 +6624,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R51")
+					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -6985,7 +6673,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f920d8c2-49c5-4c4c-9bb8-fd19da8ccf2e")
-		(property "Reference" "C17"
+		(property "Reference" "C108"
 			(at 130.175 29.845 0)
 			(effects
 				(font
@@ -7057,7 +6745,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C17")
+					(reference "C108")
 					(unit 1)
 				)
 			)
@@ -7074,7 +6762,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8fccba96-f73f-419b-84e0-cd5fed9a5d31")
-		(property "Reference" "#PWR1015"
+		(property "Reference" "#PWR126"
 			(at 128.27 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -7133,7 +6821,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1015")
+					(reference "#PWR126")
 					(unit 1)
 				)
 			)
@@ -7194,7 +6882,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21ca6e")
-		(property "Reference" "S2"
+		(property "Reference" "S3"
 			(at 109.22 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7214,7 +6902,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7236,7 +6924,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7247,7 +6935,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7258,7 +6946,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -7289,7 +6977,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "S2")
+					(reference "S3")
 					(unit 1)
 				)
 			)
@@ -7317,7 +7005,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e644ab57-d987-482b-b48c-78b08e53e064")
-		(property "Reference" "#PWR1016"
+		(property "Reference" "#PWR131"
 			(at 102.87 56.515 0)
 			(hide yes)
 			(show_name no)
@@ -7376,7 +7064,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1016")
+					(reference "#PWR131")
 					(unit 1)
 				)
 			)
@@ -7391,7 +7079,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b52b002c-9e9e-4f52-a26c-138d02238294")
-		(property "Reference" "R52"
+		(property "Reference" "R47"
 			(at 120.015 41.91 0)
 			(effects
 				(font
@@ -7463,7 +7151,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R52")
+					(reference "R47")
 					(unit 1)
 				)
 			)
@@ -7480,7 +7168,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e3495c20-0ca0-488a-8323-420d8fccd759")
-		(property "Reference" "#PWR1017"
+		(property "Reference" "#PWR128"
 			(at 118.11 41.656 0)
 			(hide yes)
 			(show_name no)
@@ -7537,7 +7225,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1017")
+					(reference "#PWR128")
 					(unit 1)
 				)
 			)
@@ -7563,7 +7251,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f7b723bc-ccde-4819-a244-75d4a3d9b14c")
-		(property "Reference" "R53"
+		(property "Reference" "R50"
 			(at 120.65 50.8 90)
 			(effects
 				(font
@@ -7633,7 +7321,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R53")
+					(reference "R50")
 					(unit 1)
 				)
 			)
@@ -7682,7 +7370,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e3384984-389f-404c-afdb-5d6c762789b1")
-		(property "Reference" "C19"
+		(property "Reference" "C110"
 			(at 130.175 51.435 0)
 			(effects
 				(font
@@ -7754,7 +7442,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C19")
+					(reference "C110")
 					(unit 1)
 				)
 			)
@@ -7771,7 +7459,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "96a4b03d-723f-4105-9a19-99b3a485d279")
-		(property "Reference" "#PWR1018"
+		(property "Reference" "#PWR134"
 			(at 128.27 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -7830,7 +7518,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1018")
+					(reference "#PWR134")
 					(unit 1)
 				)
 			)
@@ -7911,7 +7599,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -7933,7 +7621,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -7944,7 +7632,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -7955,7 +7643,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 109.22 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -8014,7 +7702,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "200f1ca1-b3b0-4174-9ff5-70fcaae748e2")
-		(property "Reference" "#PWR1019"
+		(property "Reference" "#PWR141"
 			(at 102.87 78.105 0)
 			(hide yes)
 			(show_name no)
@@ -8073,7 +7761,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1019")
+					(reference "#PWR141")
 					(unit 1)
 				)
 			)
@@ -8088,7 +7776,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b8a4fb77-5513-4715-8ea9-57e05479d7bf")
-		(property "Reference" "R54"
+		(property "Reference" "R53"
 			(at 120.015 63.5 0)
 			(effects
 				(font
@@ -8160,7 +7848,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R54")
+					(reference "R53")
 					(unit 1)
 				)
 			)
@@ -8177,7 +7865,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8307e211-3b4f-4a7f-a77d-d24af75789cd")
-		(property "Reference" "#PWR1020"
+		(property "Reference" "#PWR137"
 			(at 118.11 63.246 0)
 			(hide yes)
 			(show_name no)
@@ -8234,7 +7922,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1020")
+					(reference "#PWR137")
 					(unit 1)
 				)
 			)
@@ -8379,7 +8067,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9c14a533-4d86-43d6-93b1-5740b01ea465")
-		(property "Reference" "C23"
+		(property "Reference" "C116"
 			(at 130.175 73.025 0)
 			(effects
 				(font
@@ -8451,7 +8139,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C23")
+					(reference "C116")
 					(unit 1)
 				)
 			)
@@ -8468,7 +8156,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ff0cbcc5-ea01-4a2f-aae9-42add6f5d74d")
-		(property "Reference" "#PWR1021"
+		(property "Reference" "#PWR146"
 			(at 128.27 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -8527,7 +8215,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1021")
+					(reference "#PWR146")
 					(unit 1)
 				)
 			)
@@ -8588,7 +8276,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c770")
-		(property "Reference" "S5"
+		(property "Reference" "S2"
 			(at 198.12 29.591 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8608,7 +8296,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8630,7 +8318,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8641,7 +8329,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8652,7 +8340,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 198.12 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8683,7 +8371,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "S5")
+					(reference "S2")
 					(unit 1)
 				)
 			)
@@ -8711,7 +8399,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2b829ba8-fe2f-40da-aca5-64ba1c5b1e49")
-		(property "Reference" "#PWR1022"
+		(property "Reference" "#PWR125"
 			(at 191.77 34.925 0)
 			(hide yes)
 			(show_name no)
@@ -8770,7 +8458,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1022")
+					(reference "#PWR125")
 					(unit 1)
 				)
 			)
@@ -8785,7 +8473,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0ee45354-b6a1-441e-94d7-9b649ef59148")
-		(property "Reference" "R56"
+		(property "Reference" "R44"
 			(at 208.915 20.32 0)
 			(effects
 				(font
@@ -8857,7 +8545,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R56")
+					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -8874,7 +8562,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "03fda2a1-d5fb-4521-a839-d95324051140")
-		(property "Reference" "#PWR1023"
+		(property "Reference" "#PWR123"
 			(at 207.01 20.066 0)
 			(hide yes)
 			(show_name no)
@@ -8931,7 +8619,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1023")
+					(reference "#PWR123")
 					(unit 1)
 				)
 			)
@@ -8957,7 +8645,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d175705b-8802-496e-b36b-45b4b6269a71")
-		(property "Reference" "R57"
+		(property "Reference" "R46"
 			(at 209.55 29.21 90)
 			(effects
 				(font
@@ -9027,7 +8715,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R57")
+					(reference "R46")
 					(unit 1)
 				)
 			)
@@ -9076,7 +8764,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "916d99d3-8e1c-439d-a90e-7e8dcb8e9e79")
-		(property "Reference" "C21"
+		(property "Reference" "C109"
 			(at 219.075 29.845 0)
 			(effects
 				(font
@@ -9148,7 +8836,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C21")
+					(reference "C109")
 					(unit 1)
 				)
 			)
@@ -9165,7 +8853,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d1a1f1c5-b7d5-489f-8263-741d4210f962")
-		(property "Reference" "#PWR1024"
+		(property "Reference" "#PWR127"
 			(at 217.17 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -9224,7 +8912,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1024")
+					(reference "#PWR127")
 					(unit 1)
 				)
 			)
@@ -9285,7 +8973,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c7ac")
-		(property "Reference" "S3"
+		(property "Reference" "S4"
 			(at 153.67 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9305,7 +8993,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9327,7 +9015,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9338,7 +9026,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9349,7 +9037,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 153.67 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -9380,7 +9068,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "S3")
+					(reference "S4")
 					(unit 1)
 				)
 			)
@@ -9408,7 +9096,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2079b0bc-a630-4022-8bfe-20f2237bcbaa")
-		(property "Reference" "#PWR1025"
+		(property "Reference" "#PWR132"
 			(at 147.32 56.515 0)
 			(hide yes)
 			(show_name no)
@@ -9467,7 +9155,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1025")
+					(reference "#PWR132")
 					(unit 1)
 				)
 			)
@@ -9482,7 +9170,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a1de3b75-afd9-4bdf-97f1-d7e408090883")
-		(property "Reference" "R58"
+		(property "Reference" "R48"
 			(at 164.465 41.91 0)
 			(effects
 				(font
@@ -9554,7 +9242,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R58")
+					(reference "R48")
 					(unit 1)
 				)
 			)
@@ -9571,7 +9259,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f7ba3c17-1804-4436-9f72-ddb472d21064")
-		(property "Reference" "#PWR1026"
+		(property "Reference" "#PWR129"
 			(at 162.56 41.656 0)
 			(hide yes)
 			(show_name no)
@@ -9628,7 +9316,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1026")
+					(reference "#PWR129")
 					(unit 1)
 				)
 			)
@@ -9654,7 +9342,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ed09334b-1ff5-4c18-a0a1-6435fae1eced")
-		(property "Reference" "R59"
+		(property "Reference" "R51"
 			(at 165.1 50.8 90)
 			(effects
 				(font
@@ -9724,7 +9412,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R59")
+					(reference "R51")
 					(unit 1)
 				)
 			)
@@ -9773,7 +9461,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8eb09ce5-2ebf-4ccb-a69a-76137514cc95")
-		(property "Reference" "C18"
+		(property "Reference" "C111"
 			(at 174.625 51.435 0)
 			(effects
 				(font
@@ -9845,7 +9533,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C18")
+					(reference "C111")
 					(unit 1)
 				)
 			)
@@ -9862,7 +9550,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9637de30-7c73-4f91-bc4f-54b1259ec80c")
-		(property "Reference" "#PWR1027"
+		(property "Reference" "#PWR135"
 			(at 172.72 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -9921,7 +9609,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1027")
+					(reference "#PWR135")
 					(unit 1)
 				)
 			)
@@ -9982,7 +9670,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c8b8")
-		(property "Reference" "S7"
+		(property "Reference" "S5"
 			(at 242.57 51.181 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10002,7 +9690,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10024,7 +9712,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10035,7 +9723,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10046,7 +9734,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 242.57 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -10077,7 +9765,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "S7")
+					(reference "S5")
 					(unit 1)
 				)
 			)
@@ -10105,7 +9793,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "845ebd17-584a-4eb1-b702-4825f99943d3")
-		(property "Reference" "#PWR1028"
+		(property "Reference" "#PWR133"
 			(at 236.22 56.515 0)
 			(hide yes)
 			(show_name no)
@@ -10164,7 +9852,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1028")
+					(reference "#PWR133")
 					(unit 1)
 				)
 			)
@@ -10179,7 +9867,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6455edc0-a666-48e0-88a6-7d6dfb18df06")
-		(property "Reference" "R60"
+		(property "Reference" "R49"
 			(at 253.365 41.91 0)
 			(effects
 				(font
@@ -10251,7 +9939,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R60")
+					(reference "R49")
 					(unit 1)
 				)
 			)
@@ -10268,7 +9956,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "67a7cbac-f1aa-462c-80ed-9cb88560a2f1")
-		(property "Reference" "#PWR1029"
+		(property "Reference" "#PWR130"
 			(at 251.46 41.656 0)
 			(hide yes)
 			(show_name no)
@@ -10325,7 +10013,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1029")
+					(reference "#PWR130")
 					(unit 1)
 				)
 			)
@@ -10351,7 +10039,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f8cb83be-8505-4659-a098-4b5e1c30d7ff")
-		(property "Reference" "R61"
+		(property "Reference" "R52"
 			(at 254 50.8 90)
 			(effects
 				(font
@@ -10421,7 +10109,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R61")
+					(reference "R52")
 					(unit 1)
 				)
 			)
@@ -10470,7 +10158,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0be5bd8d-6451-4b42-b20a-1a56d2ffb50d")
-		(property "Reference" "C24"
+		(property "Reference" "C112"
 			(at 263.525 51.435 0)
 			(effects
 				(font
@@ -10542,7 +10230,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C24")
+					(reference "C112")
 					(unit 1)
 				)
 			)
@@ -10559,7 +10247,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "070563a0-8c71-4886-bcfa-ba3f8791b915")
-		(property "Reference" "#PWR1030"
+		(property "Reference" "#PWR136"
 			(at 261.62 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -10618,7 +10306,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1030")
+					(reference "#PWR136")
 					(unit 1)
 				)
 			)
@@ -10679,7 +10367,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005a21c96b")
-		(property "Reference" "S4"
+		(property "Reference" "S7"
 			(at 198.12 72.771 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10699,7 +10387,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X11H-STM"
+		(property "Footprint" "OB2:SW_Push_6x6mm_SMD_KH-6X6X13H-STM"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10721,7 +10409,7 @@
 				)
 			)
 		)
-		(property "Description" "Tactile switch 6x6 mm SMD, 11 mm actuator (front-panel height, no cap)"
+		(property "Description" "Tactile switch 6x6 mm SMD, 13 mm actuator (front-panel height, no cap)"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10732,7 +10420,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C2837537"
+		(property "LCSC" "C2837539"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10743,7 +10431,7 @@
 				)
 			)
 		)
-		(property "MPN" "KH-6X6X11H-STM"
+		(property "MPN" "KH-6X6X13H-STM"
 			(at 198.12 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -10774,7 +10462,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "S4")
+					(reference "S7")
 					(unit 1)
 				)
 			)
@@ -10802,7 +10490,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "86435c9e-9820-493c-9730-bd2f1a6288a5")
-		(property "Reference" "#PWR1031"
+		(property "Reference" "#PWR142"
 			(at 191.77 78.105 0)
 			(hide yes)
 			(show_name no)
@@ -10861,7 +10549,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1031")
+					(reference "#PWR142")
 					(unit 1)
 				)
 			)
@@ -10876,7 +10564,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "84ae53be-4f2a-4bef-aa78-fff21d6e0dea")
-		(property "Reference" "R62"
+		(property "Reference" "R54"
 			(at 208.915 63.5 0)
 			(effects
 				(font
@@ -10948,7 +10636,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R62")
+					(reference "R54")
 					(unit 1)
 				)
 			)
@@ -10965,7 +10653,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "83de4dad-9528-4e88-acdc-4213e2cf85c4")
-		(property "Reference" "#PWR1032"
+		(property "Reference" "#PWR138"
 			(at 207.01 63.246 0)
 			(hide yes)
 			(show_name no)
@@ -11022,7 +10710,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1032")
+					(reference "#PWR138")
 					(unit 1)
 				)
 			)
@@ -11048,7 +10736,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "334025c6-9d04-4b1f-8d87-06a12ab52b0b")
-		(property "Reference" "R63"
+		(property "Reference" "R56"
 			(at 209.55 72.39 90)
 			(effects
 				(font
@@ -11118,7 +10806,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R63")
+					(reference "R56")
 					(unit 1)
 				)
 			)
@@ -11167,7 +10855,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9b4eb8f6-7024-46bb-876e-3a8b460e3473")
-		(property "Reference" "C20"
+		(property "Reference" "C117"
 			(at 219.075 73.025 0)
 			(effects
 				(font
@@ -11239,7 +10927,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C20")
+					(reference "C117")
 					(unit 1)
 				)
 			)
@@ -11256,7 +10944,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "2b31f139-6391-48fb-9d0b-fdd5d81f4d88")
-		(property "Reference" "#PWR1033"
+		(property "Reference" "#PWR147"
 			(at 217.17 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -11315,7 +11003,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1033")
+					(reference "#PWR147")
 					(unit 1)
 				)
 			)
@@ -11374,7 +11062,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical"
+		(property "Footprint" "OB2:OLED_1.3in_SH1106_PinHeader_1x07_P2.54mm"
 			(at 78.74 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -11490,7 +11178,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "46cdea6a-ee21-4f78-a2db-3d3007996376")
-		(property "Reference" "#PWR1034"
+		(property "Reference" "#PWR139"
 			(at 71.12 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -11550,7 +11238,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1034")
+					(reference "#PWR139")
 					(unit 1)
 				)
 			)
@@ -11752,7 +11440,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bd745525-a285-4147-9754-465690192e43")
-		(property "Reference" "C25"
+		(property "Reference" "C115"
 			(at 47.625 70.485 0)
 			(effects
 				(font
@@ -11824,7 +11512,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C25")
+					(reference "C115")
 					(unit 1)
 				)
 			)
@@ -11841,7 +11529,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "91e8f808-210d-4585-974f-be25f5697cf6")
-		(property "Reference" "#PWR1035"
+		(property "Reference" "#PWR145"
 			(at 45.72 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -11900,7 +11588,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1035")
+					(reference "#PWR145")
 					(unit 1)
 				)
 			)
@@ -11921,7 +11609,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0374ebba-6b90-4c1e-a838-523ba5554a1b")
-		(property "Reference" "C26"
+		(property "Reference" "C114"
 			(at 40.005 70.485 0)
 			(effects
 				(font
@@ -11993,7 +11681,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C26")
+					(reference "C114")
 					(unit 1)
 				)
 			)
@@ -12010,7 +11698,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "88d3a3b8-53e9-4eee-9f74-7830fbb30658")
-		(property "Reference" "#PWR1036"
+		(property "Reference" "#PWR144"
 			(at 38.1 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -12069,7 +11757,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1036")
+					(reference "#PWR144")
 					(unit 1)
 				)
 			)
@@ -12090,7 +11778,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "80d82e28-bc12-475a-9dd1-463fe8f3c5d4")
-		(property "Reference" "C27"
+		(property "Reference" "C113"
 			(at 32.385 70.485 0)
 			(effects
 				(font
@@ -12162,7 +11850,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "C27")
+					(reference "C113")
 					(unit 1)
 				)
 			)
@@ -12179,7 +11867,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c9724fe2-f4c1-47c0-8263-018b5ff9958c")
-		(property "Reference" "#PWR1037"
+		(property "Reference" "#PWR143"
 			(at 30.48 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -12238,7 +11926,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1037")
+					(reference "#PWR143")
 					(unit 1)
 				)
 			)
@@ -12357,7 +12045,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f27a7c88-1ec6-472b-847b-c4f4a3445bdc")
-		(property "Reference" "#PWR1038"
+		(property "Reference" "#PWR140"
 			(at 17.78 69.596 0)
 			(hide yes)
 			(show_name no)
@@ -12414,167 +12102,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR1038")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 35.56 114.3) (xy 15.24 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc3869df-56c0-4253-87de-670875179933")
-	)
-	(wire
-		(pts
-			(xy 35.56 119.38) (xy 15.24 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "164bd995-5b6a-456b-8fa3-35ef4bea5b6d")
-	)
-	(junction
-		(at 15.24 119.38)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "73f3d613-dda7-4fc4-992f-c86e10025d1f")
-	)
-	(wire
-		(pts
-			(xy 35.56 124.46) (xy 15.24 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "004cc488-11a4-4c67-8911-53791f38289d")
-	)
-	(junction
-		(at 15.24 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "685adfc1-ca8f-459b-a846-a43c3cbbb121")
-	)
-	(wire
-		(pts
-			(xy 35.56 129.54) (xy 15.24 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "043b8f10-4d2e-4566-b541-f7881e861826")
-	)
-	(junction
-		(at 15.24 129.54)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b3390e40-65fc-4b1b-8ebf-48f825260c2e")
-	)
-	(wire
-		(pts
-			(xy 35.56 134.62) (xy 15.24 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "47c599c2-1606-4c12-aecb-d69a5bd4fe2e")
-	)
-	(junction
-		(at 15.24 134.62)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e9745ccd-5b57-4ead-be7a-49e33654b797")
-	)
-	(wire
-		(pts
-			(xy 15.24 114.3) (xy 15.24 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fec4d9ef-b8fe-44b2-9c3b-ed47d89fe09c")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 15.24 135.89 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fbd1b9aa-be91-4428-b2a7-ed4bf2a783dc")
-		(property "Reference" "#PWR021"
-			(at 15.24 139.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 15.24 139.446 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 15.24 135.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 15.24 135.89 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 15.24 135.89 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "defd0131-f9de-43cf-882a-327afdc0e0aa")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR021")
+					(reference "#PWR140")
 					(unit 1)
 				)
 			)
@@ -12592,31 +12120,6 @@
 			(type none)
 		)
 		(uuid "e8a72be7-9c23-4fdd-afbe-cc00038e9297")
-	)
-	(text "I/O headers"
-		(exclude_from_sim no)
-		(at 15.24 16.51 0)
-		(effects
-			(font
-				(size 1.6 1.6)
-				(thickness 0.32)
-				(bold yes)
-				(color 0 0 200 1)
-			)
-			(justify left)
-		)
-		(uuid "f2b5f80f-9cb8-45f6-9e0e-ae3fa6602d0c")
-	)
-	(text "J8: I2C bus (3.3 V, SDA/SCL pull-ups R14/R15 3.3k).\nJ10: UART on USART1 (PC0/PC1).\nESD: D19/D20 SP0503BAHT at the header pins,\nR76-R79 220R in series toward the MCU."
-		(exclude_from_sim no)
-		(at 52.07 19.05 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left top)
-		)
-		(uuid "d2a6f751-bd01-40f4-aa1d-e7df6bdf299f")
 	)
 	(rectangle
 		(start 13.97 60.33)
@@ -12683,7 +12186,7 @@
 		)
 		(uuid "bd2bf501-4745-4645-835a-d149f8c8561f")
 	)
-	(text "Function keys S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network).\nAll switches Kinghelm KH-6X6X11H-STM, pressed = low."
+	(text "Function keys S1 / S2 / S6 in one row directly under DS1\n(as on Si5351AVFO). D-pad cross: S5 Up, S4 Down,\nS3 Left, S7 Right. Each line: 10k pull-up, 10k series,\n100n at the MCU pin (Si5351AVFO network).\nAll switches Kinghelm KH-6X6X13H-STM, pressed = low."
 		(exclude_from_sim no)
 		(at 147.32 20.32 0)
 		(effects
@@ -12706,31 +12209,6 @@
 			(type none)
 		)
 		(uuid "359fe5c9-ef0e-4af0-8d54-584ae05b415f")
-	)
-	(text "GPIO headers (DxCore pin names)"
-		(exclude_from_sim no)
-		(at 15.24 102.87 0)
-		(effects
-			(font
-				(size 1.6 1.6)
-				(thickness 0.32)
-				(bold yes)
-				(color 0 120 120 1)
-			)
-			(justify left)
-		)
-		(uuid "4920beba-3c62-434f-99ac-1ecf82cd2154")
-	)
-	(text "J4 1x10: D7/PA7, D17/PC3, D19/PC5, D38/A20/PF4, D39/A21/PF5.\nJ5 1x12: D22-D24/A0-A2 (PD0-PD2), D31-D33/A9-A11 (PE1-PE3).\nGND between signal pins.\nESD: TVS at the header pin, 220R in series to the MCU\n(limits clamp current into the AVR pin, R x 30 pF = 7 ns)."
-		(exclude_from_sim no)
-		(at 15.24 179.07 0)
-		(effects
-			(font
-				(size 1.0 1.0)
-			)
-			(justify left top)
-		)
-		(uuid "b7f5b9de-f236-4760-a293-a7f7bdec3c89")
 	)
 	(rectangle
 		(start 111.76 100.33)
@@ -12808,3300 +12286,4 @@
 		)
 		(uuid "14fc6d28-f762-4d94-87f7-c52882116d15")
 	)
-	(embedded_fonts no)	(label "HDR_D7"
-		(at 35.56 111.76 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f18f26f5-08c4-43a5-a722-45377cd9dd44")
-	)
-	(label "HDR_D17"
-		(at 35.56 116.84 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e960c90a-317f-42f9-a349-c237428a88a8")
-	)
-	(label "HDR_D19"
-		(at 35.56 121.92 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "43c86dbe-70a1-4b87-acba-7067f1a6e84a")
-	)
-	(label "HDR_D38"
-		(at 35.56 127 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1867cbac-c320-477e-a236-7037c830c6f3")
-	)
-	(label "HDR_D39"
-		(at 35.56 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "59d8d0c0-6811-45e9-90a4-279960ef12b9")
-	)
-	(label "HDR_D22"
-		(at 35.56 142.24 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "c9239738-7b61-4c29-8389-fa90dbff3325")
-	)
-	(label "HDR_D23"
-		(at 35.56 147.32 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7358bf6d-2837-4ccf-9bb1-08dc62e67d78")
-	)
-	(label "HDR_D24"
-		(at 35.56 152.4 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ce4b5948-dcde-452e-bf1b-a2e818c425d2")
-	)
-	(label "HDR_D31"
-		(at 35.56 157.48 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "d714ba0d-1ef7-45e2-b120-7c3362822e24")
-	)
-	(label "HDR_D32"
-		(at 35.56 162.56 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "52bf30f3-bd34-4aed-bf6f-e6171a9d447a")
-	)
-	(label "HDR_D33"
-		(at 35.56 167.64 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "2841892e-5c01-41db-aade-eb5af3c1cb8e")
-	)
-	(wire
-		(pts
-			(xy 15.24 144.78) (xy 35.56 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d16ef89a-e3be-4fe1-90ee-24ad234d02a0")
-	)
-	(wire
-		(pts
-			(xy 15.24 149.86) (xy 35.56 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29c77550-5555-4373-8198-5387f577617b")
-	)
-	(junction
-		(at 15.24 149.86)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ec4cf723-6d5e-4990-a57f-b3d7a9381610")
-	)
-	(wire
-		(pts
-			(xy 15.24 154.94) (xy 35.56 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b4c0755d-1789-4c35-827e-552c6a41185d")
-	)
-	(junction
-		(at 15.24 154.94)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "02b991eb-08d0-45d3-8e86-7d17fcfbd220")
-	)
-	(wire
-		(pts
-			(xy 15.24 160.02) (xy 35.56 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fef8e542-2c7e-48a6-92db-4f43bbdbb03f")
-	)
-	(junction
-		(at 15.24 160.02)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f3892f84-819a-4528-8f5d-e835da0708c5")
-	)
-	(wire
-		(pts
-			(xy 15.24 165.1) (xy 35.56 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "175ba4af-6bd4-490c-8c00-cf79f39b61d7")
-	)
-	(junction
-		(at 15.24 165.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7865dcf9-0139-47a5-ab34-bc023984e60a")
-	)
-	(wire
-		(pts
-			(xy 15.24 170.18) (xy 35.56 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4c6240c-1da1-48b8-85d5-02bbf805bc8e")
-	)
-	(junction
-		(at 15.24 170.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bd855464-b6f0-4412-b232-168518bb947d")
-	)
-	(wire
-		(pts
-			(xy 15.24 144.78) (xy 15.24 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e52fe29-a04e-4a5d-8113-81a2e6616db4")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 15.24 172.72 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "e5c2efba-6e0b-4ff4-b7e5-3c2b93565266")
-		(property "Reference" "#PWR025"
-			(at 15.24 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 15.24 176.276 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 15.24 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 15.24 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0f86ebda-f60a-4c88-ba2f-0c96f63ab63d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR025")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(global_label "D7_PA7"
-		(shape bidirectional)
-		(at 66.04 109.22 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "70009298-4166-4e19-8279-691dd131d058")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 109.22 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 109.22 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c9266547-04ea-4534-b366-bc8e1ffad710")
-		(property "Reference" "R64"
-			(at 68.58 107.696 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 110.871 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1de48c0d-1b8a-4ded-aa8b-686d7e640ae1")
-		)
-		(pin "2"
-			(uuid "6ee2badf-459b-451f-b68a-ab3eb9a444e3")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R64")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D7"
-		(at 72.39 109.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9a77f1fa-4671-4874-b328-51d4acba4e54")
-	)
-	(wire
-		(pts
-			(xy 71.12 109.22) (xy 83.82 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5b97c77-576a-4d78-a29d-dffd3231433a")
-	)
-	(wire
-		(pts
-			(xy 83.82 109.22) (xy 83.82 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4698e4f5-fc9b-4e61-8b30-002c8d589239")
-	)
-	(wire
-		(pts
-			(xy 83.82 111.76) (xy 86.36 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0061b07-55a0-44da-86c5-82157dc7f18e")
-	)
-	(global_label "D17_PC3"
-		(shape bidirectional)
-		(at 66.04 114.3 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c0e6efa4-e9fb-4e02-bc65-7abe96292ce1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 114.3 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 114.3 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e120b561-49fc-4cc7-be85-c3d07a5c00ce")
-		(property "Reference" "R65"
-			(at 68.58 112.776 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 115.951 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "009564ee-9425-4dbf-86ff-d002ab9a7db0")
-		)
-		(pin "2"
-			(uuid "408396ab-2b62-4d8b-a51e-7f975e1e1047")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R65")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D17"
-		(at 72.39 114.3 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "da51af7e-419b-4ff4-8a7a-c502ad93188a")
-	)
-	(wire
-		(pts
-			(xy 71.12 114.3) (xy 86.36 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a040726-bdb4-4da7-b7c2-38d6a272d754")
-	)
-	(global_label "D19_PC5"
-		(shape bidirectional)
-		(at 66.04 119.38 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ec54957e-9406-4034-82fd-f24a663a5f7b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 119.38 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 119.38 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5981ed52-b6be-469d-bc8d-59f283343e0c")
-		(property "Reference" "R66"
-			(at 68.58 117.856 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 121.031 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "64abd3a4-54f7-4fe3-a8f9-0d200c6a6507")
-		)
-		(pin "2"
-			(uuid "e624d376-f90b-49fd-8e08-693cc4f5d325")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R66")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D19"
-		(at 72.39 119.38 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c9e902eb-a128-4aea-817d-e8ed6d238616")
-	)
-	(wire
-		(pts
-			(xy 71.12 119.38) (xy 83.82 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63dc8dbd-2213-42ac-bfa8-87fe5d546dfe")
-	)
-	(wire
-		(pts
-			(xy 83.82 119.38) (xy 83.82 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "09014ecc-2928-411a-abf1-b07419138cbe")
-	)
-	(wire
-		(pts
-			(xy 83.82 116.84) (xy 86.36 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e6cdc14-20f4-4018-8795-083c70493af0")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 91.44 114.3 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f06ee914-dda1-49d9-82af-234c3eb473fd")
-		(property "Reference" "D13"
-			(at 91.44 108.585 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 91.44 120.269 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 91.44 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 91.44 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 91.44 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 91.44 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 91.44 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3574247d-0914-4bb9-91ff-c94387672f7c")
-		)
-		(pin "2"
-			(uuid "d2406920-5b30-45ed-a28a-472a5e7ccaf9")
-		)
-		(pin "3"
-			(uuid "9fa4ac70-606e-481c-a0d5-afd0c99fcfe3")
-		)
-		(pin "4"
-			(uuid "b4ba3c55-a5b6-4bef-ba91-c72648c4d509")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 96.52 114.3) (xy 101.6 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "370e2afc-bd38-460f-9dbb-64c188a051fb")
-	)
-	(wire
-		(pts
-			(xy 101.6 114.3) (xy 101.6 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4065172-7d0d-4f12-a358-58ade867646f")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 116.84 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "541674c6-8ea0-4534-acef-41117ca94083")
-		(property "Reference" "#PWR938"
-			(at 101.6 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 101.6 120.396 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 101.6 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "969b9953-af04-4777-8fde-376c80d1fd71")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR938")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(global_label "D38_A20_PF4"
-		(shape bidirectional)
-		(at 66.04 127 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "82847320-60ce-4390-afa2-8edb6195f1dc")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 127 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 127 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "eae68fa9-9720-49f3-9812-282c45d7c692")
-		(property "Reference" "R67"
-			(at 68.58 125.476 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 128.651 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "06af35e7-10f0-4c05-9ce3-dfeb951d8754")
-		)
-		(pin "2"
-			(uuid "4a110909-1ee9-435b-8d1d-acb83127d228")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R67")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D38"
-		(at 72.39 127 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9909a76a-d4e9-4f0b-b773-fa7af44db3d9")
-	)
-	(wire
-		(pts
-			(xy 71.12 127) (xy 83.82 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b64f925-feac-4eb4-a2f5-455a78f24397")
-	)
-	(wire
-		(pts
-			(xy 83.82 127) (xy 83.82 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "289b5516-be01-4112-a6c0-26dde1251bf1")
-	)
-	(wire
-		(pts
-			(xy 83.82 129.54) (xy 86.36 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d50b3e03-a331-4490-8918-3210056df416")
-	)
-	(global_label "D39_A21_PF5"
-		(shape bidirectional)
-		(at 66.04 132.08 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "de55651a-7998-4b0e-8c89-8a24beac57b9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 132.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 132.08 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7b0892bf-b359-4d59-bf4e-5b1ac7ed717f")
-		(property "Reference" "R68"
-			(at 68.58 130.556 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 133.731 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9a9ae53f-2cc9-4d81-9b2a-8d97588215e4")
-		)
-		(pin "2"
-			(uuid "d5eb0e0f-efbe-4f6e-ac2f-22a4155a31c6")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R68")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D39"
-		(at 72.39 132.08 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6910c72a-0445-4dc0-a926-fcbcf4f0e34a")
-	)
-	(wire
-		(pts
-			(xy 71.12 132.08) (xy 86.36 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "822c5bfb-a535-4f54-8635-293d908b268f")
-	)
-	(no_connect
-		(at 86.36 134.62)
-		(uuid "bb0e0666-1dbd-494b-b118-6f03ac46aa6c")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 91.44 132.08 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bb4d61f7-ede9-4401-8d51-5784a3de08eb")
-		(property "Reference" "D14"
-			(at 91.44 126.365 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 91.44 138.049 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 91.44 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 91.44 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 91.44 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 91.44 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 91.44 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ac666085-83bd-4879-b089-73c6a2ca2ab6")
-		)
-		(pin "2"
-			(uuid "ae2537a3-9aa6-4be8-9f9e-c4f7da9bc7ba")
-		)
-		(pin "3"
-			(uuid "0a4a66b5-ed8d-4930-8988-837d92407457")
-		)
-		(pin "4"
-			(uuid "0b4df35f-4b9c-45d0-811b-9c7a2daf2a0f")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 96.52 132.08) (xy 101.6 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e21d1d41-605a-4905-9f01-47e84a2b5df2")
-	)
-	(wire
-		(pts
-			(xy 101.6 132.08) (xy 101.6 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7906dcd4-a67a-4afd-b31c-13f1e568ab3e")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 134.62 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "ea5d12af-0ba4-4959-86ce-7cb843837a2e")
-		(property "Reference" "#PWR939"
-			(at 101.6 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 101.6 138.176 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 101.6 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bff3955c-154e-47a6-8c15-0389911a7c41")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR939")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(global_label "D22_A0_PD0"
-		(shape bidirectional)
-		(at 66.04 144.78 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a255b505-b657-4254-af94-b97cddba3016")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 144.78 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 144.78 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "12b05076-0956-4d6a-99a9-3e3fa749eb33")
-		(property "Reference" "R69"
-			(at 68.58 143.256 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 146.431 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "51bdb12d-8737-46cc-9b55-aac5640152ed")
-		)
-		(pin "2"
-			(uuid "fa09e185-cc22-44fc-a737-08872470235d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R69")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D22"
-		(at 72.39 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7b863d9e-22ea-4258-842a-159fd71d6543")
-	)
-	(wire
-		(pts
-			(xy 71.12 144.78) (xy 83.82 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c7fdedb-73aa-4986-aa4b-358cffb333fe")
-	)
-	(wire
-		(pts
-			(xy 83.82 144.78) (xy 83.82 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7d06d77-027a-413a-b48d-c3f6cebdb280")
-	)
-	(wire
-		(pts
-			(xy 83.82 147.32) (xy 86.36 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf58f199-e3d8-4367-99ac-4e3c27e186f2")
-	)
-	(global_label "D23_A1_PD1"
-		(shape bidirectional)
-		(at 66.04 149.86 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "af44ddec-c33f-4372-818c-b85a82235c16")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 149.86 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 149.86 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "386dccf5-84df-4a2a-a227-1d9f456d1656")
-		(property "Reference" "R70"
-			(at 68.58 148.336 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 151.511 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fc7e3624-7c32-411a-9796-fed9345d6daf")
-		)
-		(pin "2"
-			(uuid "c8bf8c00-7ece-469a-99c6-d17baf931382")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R70")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D23"
-		(at 72.39 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ddadc568-abcc-42b0-a667-e4930014a0fd")
-	)
-	(wire
-		(pts
-			(xy 71.12 149.86) (xy 86.36 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "99aaea5b-8373-4d87-9eee-a43bcec57076")
-	)
-	(global_label "D24_A2_PD2"
-		(shape bidirectional)
-		(at 66.04 154.94 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "6a45c47f-e6bb-459c-a041-e806713b88ae")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 154.94 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 154.94 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4d754f17-3360-4db3-897e-658d05e4f848")
-		(property "Reference" "R71"
-			(at 68.58 153.416 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 156.591 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2d0ab8a1-78d4-47db-8b12-7775b0a388ba")
-		)
-		(pin "2"
-			(uuid "380b9a24-3317-471d-bbb2-7654a7667f5d")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R71")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D24"
-		(at 72.39 154.94 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1ca5a3ff-215b-4a3b-9faf-60a55fab8cf1")
-	)
-	(wire
-		(pts
-			(xy 71.12 154.94) (xy 83.82 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "abff5e2d-cfbf-426d-9e94-426e0c26a89d")
-	)
-	(wire
-		(pts
-			(xy 83.82 154.94) (xy 83.82 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7e4fa985-48a8-4aef-b203-6d60ee0ad98d")
-	)
-	(wire
-		(pts
-			(xy 83.82 152.4) (xy 86.36 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05c688ab-b37b-43ad-9411-d551c8512b5b")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 91.44 149.86 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fa8f1c80-0636-4a06-b9ae-fa0fbf553acf")
-		(property "Reference" "D15"
-			(at 91.44 144.145 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 91.44 155.829 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 91.44 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 91.44 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 91.44 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 91.44 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 91.44 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "608f7c97-a32e-47ad-8f9c-81d6c6beee6a")
-		)
-		(pin "2"
-			(uuid "f8dd03dd-c5b0-4255-8c32-01178dfd3dc5")
-		)
-		(pin "3"
-			(uuid "5b2166d0-319f-44c6-a679-fc264cba158d")
-		)
-		(pin "4"
-			(uuid "eaaddf87-5329-4e57-a4d4-b5dbd62a42b2")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 96.52 149.86) (xy 101.6 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fadd8f50-08ae-449f-afb9-8cb1fd9467e1")
-	)
-	(wire
-		(pts
-			(xy 101.6 149.86) (xy 101.6 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7dba9d33-eb13-4768-a592-358e8e959884")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 152.4 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "6698b721-af48-4715-b31e-55f400524991")
-		(property "Reference" "#PWR940"
-			(at 101.6 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 101.6 155.956 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 101.6 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ae3cc7a1-e47a-4428-835a-b4784086b87f")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR940")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(global_label "D31_A9_PE1"
-		(shape bidirectional)
-		(at 66.04 162.56 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "8c2f25d5-a909-4473-a3c8-bb2ec114cb2a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 162.56 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 162.56 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e820549b-e4b5-4c3b-a2da-8762c6a88864")
-		(property "Reference" "R72"
-			(at 68.58 161.036 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 164.211 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ea96d37d-c6ba-479c-959f-52a5e2b02bb7")
-		)
-		(pin "2"
-			(uuid "1192fcc5-61bc-4a7d-b264-17fd706af268")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R72")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D31"
-		(at 72.39 162.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3dd38daf-5e23-4b70-81a9-519551351303")
-	)
-	(wire
-		(pts
-			(xy 71.12 162.56) (xy 83.82 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f61c8285-26df-45f8-bff7-796fabd4737c")
-	)
-	(wire
-		(pts
-			(xy 83.82 162.56) (xy 83.82 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16f990da-c69c-4556-ad91-afd27f5fe5e0")
-	)
-	(wire
-		(pts
-			(xy 83.82 165.1) (xy 86.36 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a9c6f37-8a80-41d4-bf04-12dbc251c289")
-	)
-	(global_label "D32_A10_PE2"
-		(shape bidirectional)
-		(at 66.04 167.64 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a4d3709a-7601-40f4-90c4-dd32dddeee58")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 167.64 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fd45eaa4-59ce-4b20-8a89-8105e371b4f5")
-		(property "Reference" "R73"
-			(at 68.58 166.116 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 169.291 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8874d397-8e7d-4116-be86-ba5c80b95807")
-		)
-		(pin "2"
-			(uuid "f1ee768c-29b1-4260-b612-e761fba02d9a")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R73")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D32"
-		(at 72.39 167.64 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d092cd53-c7b9-438d-bf6b-87474f829a5a")
-	)
-	(wire
-		(pts
-			(xy 71.12 167.64) (xy 86.36 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ef31538-a623-4aea-9b85-7414601bd011")
-	)
-	(global_label "D33_A11_PE3"
-		(shape bidirectional)
-		(at 66.04 172.72 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2f8d8c06-31ad-41cd-8341-bd13945a9a4c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.04 172.72 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 172.72 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1f4b1498-707b-4bfd-8e58-bef82978f1a9")
-		(property "Reference" "R74"
-			(at 68.58 171.196 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 174.371 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "28eae26f-c0b0-489d-922d-4795b759ddeb")
-		)
-		(pin "2"
-			(uuid "3bacc7c3-9725-4182-a01e-e88f18b88b82")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R74")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_D33"
-		(at 72.39 172.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9851b325-66f5-4e68-9c87-0440d67493d6")
-	)
-	(wire
-		(pts
-			(xy 71.12 172.72) (xy 83.82 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d2b571e0-16f1-4056-ae2c-bca843c6baaf")
-	)
-	(wire
-		(pts
-			(xy 83.82 172.72) (xy 83.82 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "daadf73d-7a51-4cd2-96e5-54b83b632fc7")
-	)
-	(wire
-		(pts
-			(xy 83.82 170.18) (xy 86.36 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5fc81c53-517d-4895-a551-28358a8c914c")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 91.44 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f3c02afc-8a17-4f56-811e-e8540c852a8c")
-		(property "Reference" "D16"
-			(at 91.44 161.925 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 91.44 173.609 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 91.44 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 91.44 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 91.44 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 91.44 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 91.44 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4f22d3c6-6593-471d-a0a1-d6cd982d5914")
-		)
-		(pin "2"
-			(uuid "6b75ab8c-4bfc-400c-ae18-f3eb7b92b2b2")
-		)
-		(pin "3"
-			(uuid "8f9e9ef2-de48-484c-836a-30b20e4dd431")
-		)
-		(pin "4"
-			(uuid "c7afe2fc-65eb-4aaa-b1cb-2d96e36871f9")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 96.52 167.64) (xy 101.6 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d68d40d2-1175-4eb7-b226-c4b9f8a0b914")
-	)
-	(wire
-		(pts
-			(xy 101.6 167.64) (xy 101.6 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86a1d018-2c5b-4f41-b50c-562b68c0fc32")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 101.6 170.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "6729d711-5c74-4a2f-8702-b03c2680e3c8")
-		(property "Reference" "#PWR941"
-			(at 101.6 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 101.6 173.736 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 101.6 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 101.6 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b0a9962c-4879-4da7-b4f1-05f39a93d754")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR941")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_TX"
-		(at 44.577 27.813 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "b778756f-d2c9-4459-b0cb-00658645a753")
-	)
-	(label "HDR_RX"
-		(at 44.577 25.273 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "59975902-2ca0-4811-8db4-7254ee7238d6")
-	)
-	(label "HDR_SDA"
-		(at 26.162 27.813 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "0c10aaf0-1b24-4d1c-b911-82f601023f0f")
-	)
-	(label "HDR_SCL"
-		(at 26.162 25.273 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9f6cf1b3-3216-49f5-9a7e-c7e71178e366")
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 25.4 46.99 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "eec39ef2-7fbe-4b07-8829-f48be580fddf")
-		(property "Reference" "R76"
-			(at 25.4 45.466 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 25.4 48.641 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 25.4 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 25.4 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 25.4 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 25.4 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 25.4 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "35fc04fe-1c7a-4144-a9e8-a3007572fcf7")
-		)
-		(pin "2"
-			(uuid "e993a690-a630-4c65-864f-b3630c373f58")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R76")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_SCL"
-		(at 28.575 46.99 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d108e4cc-749b-45cb-acc5-f8cd6644e95d")
-	)
-	(wire
-		(pts
-			(xy 27.94 46.99) (xy 35.56 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e32e889a-3de1-440d-8a4f-90c1bb6603f3")
-	)
-	(wire
-		(pts
-			(xy 35.56 46.99) (xy 35.56 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "336a041f-6171-4673-bdaf-629ad8be7a89")
-	)
-	(wire
-		(pts
-			(xy 35.56 49.53) (xy 38.1 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3b6ceea1-e3e8-4bcf-acc5-1228b131a544")
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 25.4 52.07 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d2acea0d-98c6-412c-a561-5534c713f179")
-		(property "Reference" "R77"
-			(at 25.4 50.546 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 25.4 53.721 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 25.4 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 25.4 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 25.4 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 25.4 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 25.4 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "df017af0-46fc-4d9a-ae33-35ed69960483")
-		)
-		(pin "2"
-			(uuid "528537f5-d690-41bf-bc56-9c308dce1d10")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R77")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_SDA"
-		(at 28.575 52.07 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "77fb170b-bab7-4f08-8ac6-ace0497ee8c4")
-	)
-	(wire
-		(pts
-			(xy 27.94 52.07) (xy 38.1 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d1fcee49-a07e-4fe0-9fa9-b3cb865a453a")
-	)
-	(no_connect
-		(at 38.1 54.61)
-		(uuid "abaef9aa-8eef-495e-b2b5-c41c23f56eb5")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 43.18 52.07 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ea5a3032-0da8-4236-b5d7-35a0eeb74f5c")
-		(property "Reference" "D19"
-			(at 43.18 46.355 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 43.18 58.039 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 43.18 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 43.18 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 43.18 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 43.18 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 43.18 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "11242d90-f60f-468c-826d-28201ee66c97")
-		)
-		(pin "2"
-			(uuid "1a98eafe-2862-4e91-b00f-e4464a2937c3")
-		)
-		(pin "3"
-			(uuid "b1edf3fa-63bd-4c56-a8a7-33587295fdce")
-		)
-		(pin "4"
-			(uuid "18d40650-10ee-4909-920f-38dda592161c")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D19")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 48.26 52.07) (xy 53.34 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8873cfb-7e10-4062-b9c3-105de442e314")
-	)
-	(wire
-		(pts
-			(xy 53.34 52.07) (xy 53.34 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af8302b5-dcaa-42bf-ae94-8fe62229b64f")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 53.34 54.61 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "f7c8a97f-ff5d-4a9b-ad16-a4b1c5b4e5a1")
-		(property "Reference" "#PWR944"
-			(at 53.34 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 53.34 58.166 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 53.34 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 53.34 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4b3bfd73-9965-4409-916a-4507e4f3bb54")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR944")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 46.99 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cb34582c-1f1f-47db-bc08-5beb89acb66a")
-		(property "Reference" "R78"
-			(at 68.58 45.466 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 48.641 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9fdc82ca-a867-4d5d-b585-5f0f77272f04")
-		)
-		(pin "2"
-			(uuid "354d1d3f-2d13-4507-8a35-3854e332a271")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R78")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_RX"
-		(at 71.755 46.99 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "75d1a1b4-c20e-4236-bfd6-f61a2f4d9a5d")
-	)
-	(wire
-		(pts
-			(xy 71.12 46.99) (xy 78.74 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a668cf26-3484-4d2c-80a2-268223674f13")
-	)
-	(wire
-		(pts
-			(xy 78.74 46.99) (xy 78.74 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "711fcf58-113b-4142-a477-bd0bcf117992")
-	)
-	(wire
-		(pts
-			(xy 78.74 49.53) (xy 81.28 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "22c5e175-43cb-4d7b-a288-8c9dc5f9c269")
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 68.58 52.07 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "614d3d26-6ccf-44f7-9fc1-2031bcb303ce")
-		(property "Reference" "R79"
-			(at 68.58 50.546 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220R"
-			(at 68.58 53.721 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 68.58 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17557"
-			(at 68.58 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0805W8F2200T5E"
-			(at 68.58 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "UNI-ROYAL"
-			(at 68.58 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "05784753-0447-4fa6-af97-7712d485811a")
-		)
-		(pin "2"
-			(uuid "5f66e303-c5e4-4920-b992-70e8aa5b12e2")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "R79")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(label "HDR_TX"
-		(at 71.755 52.07 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7f8da8b1-5ede-4ac8-8e07-b46c3b2e99c5")
-	)
-	(wire
-		(pts
-			(xy 71.12 52.07) (xy 81.28 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e8a51d65-1805-4b15-948f-e22faa37fab5")
-	)
-	(no_connect
-		(at 81.28 54.61)
-		(uuid "32ef1a53-5bf1-44fa-8120-cbf9f30d262f")
-	)
-	(symbol
-		(lib_id "Power_Protection:SP0503BAHT")
-		(at 86.36 52.07 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "15948572-8038-4c2a-ac59-4a34a4bdcfe2")
-		(property "Reference" "D20"
-			(at 86.36 46.355 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SP0503BAHT"
-			(at 86.36 58.039 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-143"
-			(at 86.36 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 86.36 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SP0503BAHTG"
-			(at 86.36 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Littelfuse"
-			(at 86.36 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7074"
-			(at 86.36 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "97936b91-8c9d-43dc-a3d5-8c5fc01509cb")
-		)
-		(pin "2"
-			(uuid "e82a32cf-1ddb-4893-bd35-5725f516eb03")
-		)
-		(pin "3"
-			(uuid "0547e2e7-59f1-49ee-9455-309e6d167c3a")
-		)
-		(pin "4"
-			(uuid "ea9a2644-9f11-4126-89ba-8e1ccef1a8d8")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "D20")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 91.44 52.07) (xy 96.52 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c4cfb27-16dc-4d6e-8199-41c9fec1e0ba")
-	)
-	(wire
-		(pts
-			(xy 96.52 52.07) (xy 96.52 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6c878bab-cb4c-42c9-960e-e8af4b27b384")
-	)
-	(symbol
-		(lib_id "OpenBeacon2-rescue:GND-OpenBeaconMini-rescue")
-		(at 96.52 54.61 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "463a7b8d-d6f8-491c-95db-ab8be1461ab0")
-		(property "Reference" "#PWR945"
-			(at 96.52 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 96.52 58.166 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 96.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2818a553-1088-4c6d-9d9c-5746096d109e")
-		)
-		(instances
-			(project "OpenBeacon2"
-				(path "/046319a3-a6ce-4e59-a888-94e340127381/b6e1d2a4-3c5f-4e7a-8d90-1f2a3b4c5d6e"
-					(reference "#PWR945")
-					(unit 1)
-				)
-			)
-		)
-	)
-
-)
+	(embedded_fonts no))

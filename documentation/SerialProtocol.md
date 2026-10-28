@@ -45,6 +45,8 @@ Message Types Summary
 | 0x07 | Enumeration Response | OB2 | List of valid values in an enumeration
 | 0x08 | Serialize Configuration Request | PC |
 | 0x09 | Serialize Configuration Response | OB2 |
+| 0x0A | Band Module EEPROM Request | PC | Request to get or set a band module EEPROM value |
+| 0x0B | Band Module EEPROM Response | OB2 | Confirm band module request |
 | 0xFE | Notification | OB2 | Notification to client PC |
 | 0xFF | Error | Either | Response to an unknown packet type |
 
@@ -130,6 +132,23 @@ None
 | Field | Type | Description |
 |-------|------|-------------|
 | enum | string | [Enumeration](#openbeacon-mini-enumerations) list to retrieve |
+
+#### Optional Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | uint64_t | Unique packet ID |
+
+- ### 0x0A &mdash; Band Module EEPROM Request
+
+#### Required Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| RW | bool (true) | Read or write directive |
+| module | uint8_t | Desired band module |
+| addr | uint8_t | Band module EEPROM address from which to read/write |
+| data | uint8_t | Byte value to write to band module EEPROM (valid on write-only) |
 
 #### Optional Fields
 

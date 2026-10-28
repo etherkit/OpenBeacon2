@@ -9,7 +9,7 @@
 		(date "2026-10-25")
 		(rev "C")
 		(company "Etherkit")
-		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (BAND_A/BAND_B)")
+		(comment 1 "4 7th-order Cauer LPFs, 6-relay 2-level tree (BAND_A/B/C, 3-bit)")
 		(comment 4 "Creative Commons License CC-BY-SA")
 	)
 	(lib_symbols
@@ -2102,7 +2102,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "67f27a4a-4ee4-4738-a4a3-5987d6a0e247")
-		(property "Reference" "D1"
+		(property "Reference" "D3"
 			(at 161.93 63.5 0)
 			(effects
 				(font
@@ -2165,7 +2165,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "D1")
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -2235,7 +2235,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9a22483c-3786-4068-a0c1-b1df5755e30e")
-		(property "Reference" "#PWR917"
+		(property "Reference" "#PWR49"
 			(at 139.7 57.15 0)
 			(effects
 				(font
@@ -2276,7 +2276,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR917")
+					(reference "#PWR49")
 					(unit 1)
 				)
 			)
@@ -2337,7 +2337,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "458c822d-cba0-46f6-9325-628f664c18bc")
-		(property "Reference" "K2"
+		(property "Reference" "K3"
 			(at 152.4 67.31 90)
 			(effects
 				(font
@@ -2425,7 +2425,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "K2")
+					(reference "K3")
 					(unit 1)
 				)
 			)
@@ -2521,7 +2521,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b9b6418d-c997-41bf-bf18-c5d178ce5b03")
-		(property "Reference" "D2"
+		(property "Reference" "D5"
 			(at 161.93 102.87 0)
 			(effects
 				(font
@@ -2584,7 +2584,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "D2")
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -2654,7 +2654,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0bdd6a57-3cdf-4616-b36c-cbd21f76bf2f")
-		(property "Reference" "#PWR918"
+		(property "Reference" "#PWR51"
 			(at 139.7 96.52 0)
 			(effects
 				(font
@@ -2695,7 +2695,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR918")
+					(reference "#PWR51")
 					(unit 1)
 				)
 			)
@@ -2756,7 +2756,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e9f7fa54-8c18-4d63-be2c-067d0b356cd7")
-		(property "Reference" "K3"
+		(property "Reference" "K5"
 			(at 152.4 106.68 90)
 			(effects
 				(font
@@ -2844,7 +2844,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "K3")
+					(reference "K5")
 					(unit 1)
 				)
 			)
@@ -2940,7 +2940,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bdd7a7f4-399f-4497-80a1-0555699527ea")
-		(property "Reference" "D3"
+		(property "Reference" "D7"
 			(at 161.93 142.24 0)
 			(effects
 				(font
@@ -3003,7 +3003,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "D3")
+					(reference "D7")
 					(unit 1)
 				)
 			)
@@ -3073,7 +3073,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1f2bc869-617a-40d3-989b-db5d4cf63372")
-		(property "Reference" "#PWR919"
+		(property "Reference" "#PWR53"
 			(at 139.7 135.89 0)
 			(effects
 				(font
@@ -3114,7 +3114,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR919")
+					(reference "#PWR53")
 					(unit 1)
 				)
 			)
@@ -3137,7 +3137,7 @@
 		)
 		(uuid "555dc029-2850-4733-9e62-36b0d8773e03")
 	)
-	(label "COIL_B"
+	(label "COIL_C"
 		(at 165.1 135.89 0)
 		(fields_autoplaced yes)
 		(effects
@@ -3175,7 +3175,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a2471103-137a-4b63-a4e0-b2bf73d2c597")
-		(property "Reference" "K4"
+		(property "Reference" "K2"
 			(at 236.22 27.94 90)
 			(effects
 				(font
@@ -3263,7 +3263,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "K4")
+					(reference "K2")
 					(unit 1)
 				)
 			)
@@ -3492,7 +3492,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dd4f371d-fc81-4058-b092-4d3aea4f9c85")
-		(property "Reference" "#PWR920"
+		(property "Reference" "#PWR50"
 			(at 223.52 57.15 0)
 			(effects
 				(font
@@ -3533,7 +3533,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR920")
+					(reference "#PWR50")
 					(unit 1)
 				)
 			)
@@ -3594,7 +3594,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "823de3e8-9ab8-4880-8b63-bfbde90b5065")
-		(property "Reference" "K5"
+		(property "Reference" "K4"
 			(at 236.22 67.31 90)
 			(effects
 				(font
@@ -3682,7 +3682,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "K5")
+					(reference "K4")
 					(unit 1)
 				)
 			)
@@ -3778,7 +3778,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9afcfb1a-3891-41ec-8f72-599bfdca91c5")
-		(property "Reference" "D5"
+		(property "Reference" "D6"
 			(at 245.75 102.87 0)
 			(effects
 				(font
@@ -3841,7 +3841,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "D5")
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -3911,7 +3911,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7cec312f-e8e1-4056-a397-f9e35937131c")
-		(property "Reference" "#PWR921"
+		(property "Reference" "#PWR52"
 			(at 223.52 96.52 0)
 			(effects
 				(font
@@ -3952,7 +3952,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR921")
+					(reference "#PWR52")
 					(unit 1)
 				)
 			)
@@ -4197,7 +4197,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "02e346b8-5333-4bfd-86fe-5d33d8fe4fa6")
-		(property "Reference" "D6"
+		(property "Reference" "D8"
 			(at 245.75 142.24 0)
 			(effects
 				(font
@@ -4260,7 +4260,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "D6")
+					(reference "D8")
 					(unit 1)
 				)
 			)
@@ -4330,7 +4330,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "467b53c1-a6d3-4377-b51c-c533bf8d51f7")
-		(property "Reference" "#PWR922"
+		(property "Reference" "#PWR54"
 			(at 223.52 135.89 0)
 			(effects
 				(font
@@ -4371,7 +4371,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR922")
+					(reference "#PWR54")
 					(unit 1)
 				)
 			)
@@ -4394,7 +4394,7 @@
 		)
 		(uuid "f61add8c-d1d2-40d1-b214-ed3d600abcbf")
 	)
-	(label "COIL_B"
+	(label "COIL_C"
 		(at 248.92 135.89 0)
 		(fields_autoplaced yes)
 		(effects
@@ -4509,7 +4509,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab6d5557-2895-44e9-9f33-2cbcf002530f")
-		(property "Reference" "Q6"
+		(property "Reference" "Q5"
 			(at 45.72 168.91 0)
 			(effects
 				(font
@@ -4584,7 +4584,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "Q6")
+					(reference "Q5")
 					(unit 1)
 				)
 			)
@@ -4599,7 +4599,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "850f0109-d0bb-4602-9005-0a333a59fb64")
-		(property "Reference" "R9"
+		(property "Reference" "R24"
 			(at 28.575 171.45 0)
 			(effects
 				(font
@@ -4662,7 +4662,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "R9")
+					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -4683,7 +4683,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3a3e3cf4-be41-46bd-a180-bbd6228fb875")
-		(property "Reference" "#PWR923"
+		(property "Reference" "#PWR55"
 			(at 30.48 175.26 0)
 			(effects
 				(font
@@ -4724,7 +4724,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR923")
+					(reference "#PWR55")
 					(unit 1)
 				)
 			)
@@ -4739,7 +4739,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "14969741-451f-497b-8ccf-dd39b5e91b13")
-		(property "Reference" "#PWR924"
+		(property "Reference" "#PWR56"
 			(at 43.18 175.26 0)
 			(effects
 				(font
@@ -4780,7 +4780,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR924")
+					(reference "#PWR56")
 					(unit 1)
 				)
 			)
@@ -4841,7 +4841,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9b0de709-32b4-40c8-b6d9-465eb6c8e2e0")
-		(property "Reference" "Q7"
+		(property "Reference" "Q6"
 			(at 93.98 168.91 0)
 			(effects
 				(font
@@ -4916,7 +4916,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "Q7")
+					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -4931,7 +4931,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "85c5673d-d96b-4d59-b41b-a9769a5951b6")
-		(property "Reference" "R10"
+		(property "Reference" "R25"
 			(at 76.835 171.45 0)
 			(effects
 				(font
@@ -4994,7 +4994,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "R10")
+					(reference "R25")
 					(unit 1)
 				)
 			)
@@ -5015,7 +5015,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b3f70606-a59b-45f1-90bd-11483ece9969")
-		(property "Reference" "#PWR925"
+		(property "Reference" "#PWR57"
 			(at 78.74 175.26 0)
 			(effects
 				(font
@@ -5056,7 +5056,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR925")
+					(reference "#PWR57")
 					(unit 1)
 				)
 			)
@@ -5071,7 +5071,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c100e58b-e145-40d3-9c81-a5d2971a3f94")
-		(property "Reference" "#PWR926"
+		(property "Reference" "#PWR58"
 			(at 91.44 175.26 0)
 			(effects
 				(font
@@ -5112,7 +5112,7 @@
 		(instances
 			(project "OpenBeacon2"
 				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
-					(reference "#PWR926")
+					(reference "#PWR58")
 					(unit 1)
 				)
 			)
@@ -5141,7 +5141,7 @@
 		)
 		(uuid "ef8ff2a7-1095-4be4-9867-c33f5ff340c6")
 	)
-	(text "BAND_A -> K1/K4, BAND_B -> K2/K3/K5/K6.\nQ6 (BAND_A): 2 coils, 42 mA nom (5 V / 237 R),\n  <= 49 mA at 5.25 V, -10 % coil R.\nQ7 (BAND_B): 4 coils, 84 mA nom, <= 98 mA.\nAO3400A: 5.7 A cont., 48 mR @ Vgs 2.5 V -> <5 mV drop.\nOne 1N4148W flyback per coil, at each relay."
+	(text "BAND_A -> K1/K4, BAND_B -> K2/K5, BAND_C -> K3/K6.\nQ6 (BAND_A): 2 coils, 42 mA nom (5 V / 237 R),\n  <= 49 mA at 5.25 V, -10 % coil R.\nQ7 (BAND_B), Q9 (BAND_C): 2 coils each, 42 mA nom, <= 49 mA.\nAO3400A: 5.7 A cont., 48 mR @ Vgs 2.5 V -> <5 mV drop.\nOne 1N4148W flyback per coil, at each relay."
 		(exclude_from_sim no)
 		(at 15.24 184.15 0)
 		(effects
@@ -5152,7 +5152,7 @@
 		)
 		(uuid "52c2fe21-26fa-40ea-9a04-476c884977b0")
 	)
-	(text "Band code (BAND_A, BAND_B):\n 0 0  80/60 m    (all relays off, NC path, default)\n 0 1  40/30 m    (K2, K3, K5, K6 on)\n 1 0  20/17 m    (K1, K4 on)\n 1 1  15/12/10 m (all six on)\nUnselected filters float (open at both ends).\n+5V relay load: 0 / 84 / 42 / 127 mA nominal (<=147 mA).\nRelay pins: COM right, NC lower left, NO upper left; pole 2 unused.\nInput and output paths never share a relay body.\nLayout: keep K1-K2-K3 and K4-K5-K6 traces short,\n  50 ohm CPWG over solid GND, filters next to their relays."
+	(text "Band code (BAND_A, BAND_B, BAND_C):\n 0 0 0  80/60 m    (all relays off, NC path, default)\n 0 1 0  40/30 m    (K2, K5 on)\n 1 0 0  20/17 m    (K1, K4 on)\n 1 0 1  15/12/10 m (K1, K4, K3, K6 on)\nOther codes unused; never more than 4 coils on.\nUnselected filters float (open at both ends).\n+5V relay load: 0 / 42 / 42 / 84 mA nominal (<=98 mA worst).\nRelay pins: COM right, NC lower left, NO upper left; pole 2 unused.\nInput and output paths never share a relay body.\nLayout: keep K1-K2-K3 and K4-K5-K6 traces short,\n  50 ohm CPWG over solid GND, filters next to their relays."
 		(exclude_from_sim no)
 		(at 113.03 157.48 0)
 		(effects
@@ -5194,6 +5194,258 @@
 		(pin "F15_10_IN" passive (at 38.1 106.68 180) (uuid "f71c730b-dea1-4786-bec0-9977382009de") (effects (font (size 1.27 1.27)) (justify left)))
 		(pin "F15_10_OUT" passive (at 99.06 106.68 0) (uuid "a48c1085-501f-449f-a664-caa6d75c33b6") (effects (font (size 1.27 1.27)) (justify right)))
 		(instances (project "OpenBeacon2" (path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01" (page "6"))))
+	)
+	(hierarchical_label "BAND_C"
+		(shape input)
+		(at 73.66 185.42 180)
+		(effects (font (size 1.27 1.27)) (justify right bottom))
+		(uuid "07b1c6cc-1003-4df3-bbb1-767ef153beb2")
+	)
+	(wire
+		(pts (xy 73.66 185.42) (xy 83.82 185.42))
+		(stroke (width 0) (type default))
+		(uuid "e4c04818-1bce-4470-aea6-6d639149bd95")
+	)
+	(junction
+		(at 78.74 185.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bdd8629d-570d-48b5-806c-d070a230a0b1")
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7002")
+		(at 88.9 185.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5b23bfb4-c4f5-4168-aec4-8b29051893f2")
+		(property "Reference" "Q7"
+			(at 93.98 184.15 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "AO3400A"
+			(at 93.98 186.69 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "AO3400A"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "Alpha & Omega Semicon"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C20917"
+			(at 88.9 185.42 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "cbdb25c8-90c0-4213-abbd-f2a5568c0bd2")
+		)
+		(pin "2"
+			(uuid "98348a20-70e8-41b0-b680-f1a41e7e49cb")
+		)
+		(pin "3"
+			(uuid "940e59f3-75e4-47b7-9079-544a6b50c5ec")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "Q7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 78.74 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ec6b8ee7-e18f-44ab-a6bf-47961645b3de")
+		(property "Reference" "R26"
+			(at 73.2 187.4 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "22k"
+			(at 73.2 189.2 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "MPN" "0603WAF2202T5E"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "LCSC" "C31850"
+			(at 78.74 187.96 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "3a68f4f7-4918-4988-82b7-d395b5e4e8c1")
+		)
+		(pin "2"
+			(uuid "5f551f96-f6e7-4252-a1ba-d5e4cb2e64c4")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 78.74 190.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e8a43ae1-4cdd-49c1-bd6c-98ce8022a8e5")
+		(property "Reference" "#PWR59"
+			(at 81.28 189.23 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 78.74 194.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 78.74 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "b964dde4-b401-4ee2-ab89-4a3e41794b3d")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "#PWR59")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 91.44 190.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5aaf07e1-b400-404b-af7d-2a47134e74ee")
+		(property "Reference" "#PWR60"
+			(at 93.98 189.23 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Value" "GND"
+			(at 91.44 194.0 0)
+			(effects (font (size 1.27 1.27)) (justify left))
+		)
+		(property "Footprint" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" ""
+			(at 91.44 190.5 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(pin "1"
+			(uuid "dd4de134-c291-4874-93c4-5bd563929d90")
+		)
+		(instances
+			(project "OpenBeacon2"
+				(path "/046319a3-a6ce-4e59-a888-94e340127381/7b1c0f3e-4a51-4c1e-9f2a-0b5e1f1a2b01"
+					(reference "#PWR60")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts (xy 91.44 180.34) (xy 96.52 180.34))
+		(stroke (width 0) (type default))
+		(uuid "9321679c-5d24-4b8b-86c4-fe50234b0da1")
+	)
+	(label "COIL_C"
+		(at 96.52 180.34 0)
+		(effects (font (size 1.27 1.27)) (justify left bottom))
+		(uuid "8e3fe424-835e-4f54-be84-86196e98d63c")
 	)
 	(sheet_instances
 		(path "/"

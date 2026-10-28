@@ -1,0 +1,69 @@
+name: Schematic PDF
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "pcb/**.kicad_sch"
+      - "pcb/**.kicad_sym"
+      - "pcb/sym-lib-table"
+      - "pcb/*.kicad_pro"
+      - ".github/workflows/schematic-pdf.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: schematic-pdf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export:
+    # Loop guard: never run on the bot's own commits
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      !contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    container:
+      # Project files are KiCad 10 format (kicad_sch version 20260306)
+      image: kicad/kicad:10.0
+      options: --user root
+    steps:
+      - name: Install git
+        run: |
+          if ! command -v git >/dev/null; then
+            apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Export schematic PDF
+        env:
+          HOME: /tmp/kicadhome
+        run: |
+          mkdir -p "$HOME" docs
+          # sym-lib-table uses ${KIPRJMOD}, so project libs resolve from pcb/
+          kicad-cli sch export pdf \
+            --output docs/OpenBeacon2_schematic.pdf \
+            pcb/OpenBeacon2.kicad_sch
+          # Pin the embedded CreationDate (same length, so xref offsets stay valid)
+          # so the PDF only changes when the schematic does
+          perl -pi -e 's/\/CreationDate \(D:[0-9:]+\)/\/CreationDate (D:2000:01:01:00:00:00)/' \
+            docs/OpenBeacon2_schematic.pdf
+          ls -l docs/OpenBeacon2_schematic.pdf
+
+      - name: Commit PDF if changed
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/OpenBeacon2_schematic.pdf
+          if git diff --cached --quiet; then
+            echo "Schematic PDF unchanged"
+            exit 0
+          fi
+          git commit -m "Regenerate schematic PDF [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

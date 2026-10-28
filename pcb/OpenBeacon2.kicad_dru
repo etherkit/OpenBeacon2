@@ -1,0 +1,30 @@
+(version 1)
+# House rules carried over from Si5351AVFO (NT7S/Si5351AVFO pcb-layout).
+# USB-C receptacle (J6): GND pads sit ~0.18 mm from the locating NPTHs by footprint design
+(rule "J6 footprint-internal hole clearance"
+  (condition "A.memberOfFootprint('J6') && B.memberOfFootprint('J6')")
+  (constraint hole_clearance (min 0.15mm)))
+(rule "J6 shield solid"
+  (condition "A.memberOfFootprint('J6') && A.Pad_Type == 'Through-hole'")
+  (constraint zone_connection solid))
+# CPWG: 0.20 mm gap from every RF50 track/pad to the coplanar GND pour (JLC calc: 0.31/0.20 = 50 ohm on L1 over L2)
+(rule "RF50 CPWG gap to GND pour"
+  (condition "A.NetClass == 'RF50' && B.Type == 'Zone' && B.NetName == 'GND'")
+  (constraint clearance (min 0.2mm)))
+# Edge-launch / edge-mount connectors sit on the board edge by design
+(rule "edge connectors"
+  (condition "A.memberOfFootprint('J1') || A.memberOfFootprint('J2') || A.memberOfFootprint('J3') || A.memberOfFootprint('J6')")
+  (constraint edge_clearance (min 0mm)))
+# SDA escape from U3 (Si5351) is boxed in by CLKIN/J1-In; allow 0.15 mm (JLC min 0.10) to non-RF items
+(rule "SDA escape clearance"
+  (condition "A.NetName == 'SDA' && B.NetClass != 'RF50'")
+  (constraint clearance (min 0.15mm)))
+# Fine-pitch (0.5 mm) pad escape: 0.20 mm clearance allowed only inside the ESC_* rule areas
+# (pad bbox + 1 mm around U3, U8, J6, U9). Router uses 0.22 mm everywhere else.
+(rule "fine-pitch pad escape 0.20"
+  (condition "A.intersectsArea('ESC_U4') || A.intersectsArea('ESC_U10') || A.intersectsArea('ESC_J12') || A.intersectsArea('ESC_U9')")
+  (constraint clearance (min 0.2mm)))
+
+(rule "U1 pad-to-pad (TSSOP 0.65 pitch)"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == 'U1' && B.Parent == 'U1'")
+  (constraint clearance (min 0.14mm)))
