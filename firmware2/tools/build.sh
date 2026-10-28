@@ -23,6 +23,13 @@ if ! arduino-cli core list | awk -v ver="$CORE_VER" 'NR > 1 && $1 == "DxCore:meg
   arduino-cli core install "DxCore:megaavr@${CORE_VER}"
 fi
 
+if ! arduino-cli lib list | grep -q "Etherkit Si5351.*2\\.4\\.0"; then
+  arduino-cli lib install "Etherkit Si5351@2.4.0"
+fi
+if ! arduino-cli lib list | grep -q "U8g2.*2\\.36\\.19"; then
+  arduino-cli lib install "U8g2@2.36.19"
+fi
+
 echo "OB2_FQBN ${FQBN}"
 echo "OB2_DXCORE ${CORE_VER}"
 arduino-cli compile --warnings all --fqbn "$FQBN" "$ROOT/OpenBeacon2"
