@@ -51403,7 +51403,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C6078003"
+		(property "Supplier" "Kits and Parts (kitsandparts.com)"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -51430,7 +51430,7 @@
 		(path "/00000000-0000-0000-0000-00005a239754")
 		(sheetname "OpenBeacon2")
 		(sheetfile "OpenBeacon2.kicad_sch")
-		(attr through_hole exclude_from_pos_files)
+		(attr through_hole exclude_from_pos_files dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 2.1 -2.1)

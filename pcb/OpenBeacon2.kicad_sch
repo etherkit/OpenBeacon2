@@ -5916,7 +5916,7 @@
 				(hide yes)
 			)
 		)
-		(property "Assembly" "Hand solder - exclude from JLC assembly"
+		(property "Assembly" "Hand-wound - exclude from JLC assembly"
 			(at 85.09 133.985 0)
 			(effects
 				(font
@@ -8075,7 +8075,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files no)
-		(dnp no)
+		(dnp yes)
 		(uuid "00000000-0000-0000-0000-00005a239754")
 		(property "Reference" "L2"
 			(at 88.011 108.966 0)
@@ -8146,7 +8146,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C6078003"
+		(property "Supplier" "Kits and Parts (kitsandparts.com)"
 			(at 88.011 108.966 0)
 			(effects
 				(font
